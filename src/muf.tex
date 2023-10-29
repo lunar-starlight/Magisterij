@@ -1,0 +1,191 @@
+% LTeX: enabled=false
+\renewcommand{\d}{\;\mathrm d}
+\renewcommand{\hat}{\widehat}
+\renewcommand{\tilde}{\widetilde}
+\let\oldbar\bar
+\renewcommand{\bar}{\overline}
+\newcommand{\subs}{\subseteq}
+\newcommand{\nin}{\not\in}
+\newcommand{\contradiction}{\,\,\lightning}
+
+\newcommand{\p}[1]{\left( {#1} \right)}
+\newcommand{\set}[2]{\left\{ #1 \mid #2 \right\}}
+\newcommand{\newfrac}[2]{{}^{#1}\!/_{\!#2}}
+\newcommand{\im}[1]{\mathrm{im}{\p{#1}}}
+\newcommand{\mb}[1]{\mathbf{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\cat}[1]{\mathbf{#1}}
+\newcommand{\tr}[1]{\textrm{tr}{#1}}
+\newcommand{\rang}[1]{\textrm{rang}{\p{#1}}}
+
+\usepackage{xstring}
+\newcommand{\mat}[1]{\begin{matrix} #1 \end{matrix}}
+\newcommand{\pmat}[1]{\left(\mat{#1}\right)}
+\newcommand{\bmat}[1]{\left[\mat{#1}\right]}
+\let\oldvec\vec
+\renewcommand{\vec}[1]{\bmat{\StrSubstitute[0]{#1}{,}{\\}}}
+\newcommand{\state}[1]{\left\{ {#1} \right\}}
+% \newcommand{\mixstate}[2]{%
+%   \StrSubstitute[0]{#1}{…}{⋯}[\A]%
+%   \StrSubstitute[0]{#2}{…}{⋯}[\B]%
+%   \pmat{\StrSubstitute[0]{\A}{,}{&}\\\StrSubstitute[0]{\B}{,}{&}}%
+% }
+\usepackage{pgffor}
+\newcommand{\mixstate}[2]{% cf. https://tex.stackexchange.com/a/87423/64454
+  \foreach \A [count=\ai] in {#1} {%
+  \foreach \B [count=\bi] in {#2} {
+    \ifnum\ai=\bi%
+      \ifnum\ai>1 {+} \fi
+      \if\A… {⋯} \else {\A \state{\B}} \fi
+    \fi%
+  }}
+}
+\newcommand{\bra}[1]{\left\langle #1 \right\rvert}
+\newcommand{\ket}[1]{\left\lvert #1 \right\rangle}
+\newcommand{\braket}[2]{\left\langle #1 \middle\vert \mathopen{}#2 \right\rangle}
+\newcommand{\density}[1]{\left\lvert #1 \middle\rangle\middle\langle \mathopen{}#1 \right\rvert}
+\newcommand{\ketbra}[2]{\left\lvert #1 \middle\rangle\middle\langle \mathopen{}#2 \right\rvert}
+% \newcommand{\expval}[2]{\left\langle #2 \middle\vert #1 \middle\vert #2 \right\rangle}
+\newcommand{\expval}[2]{{\left\langle #1 \right\rangle}_{\!#2}}
+\newcommand{\matelt}[3]{\left\langle #1 \middle\vert #2 \middle\vert #3 \right\rangle}
+
+\newcommand{\had}{\mathtt{Had}}
+\newcommand{\swap}{\mathtt{swap}}
+\newcommand{\hh}[1][]{\mathbf{h}_{#1}}
+\newcommand{\B}[1][]{\mathbf{B}_{#1}}
+\newcommand{\M}[1][]{\mathbf{M}_{#1}}
+\renewcommand{\H}[1][]{\mathbf{H}_{#1}}
+\renewcommand{\L}[2][]{\mathcal{L}_{#1}{\p{#2}}}
+\newcommand{\g}[1]{\mathtt{#1}}
+\newcommand{\D}[1]{D{\p{\g{#1}}}}
+\newcommand{\U}[1][]{\mathbf{U}_{#1}}
+\newcommand{\ctl}[1]{\g{c#1}}
+\newcommand{\ctlo}[1]{\g{\oldbar c} \g{#1}}
+\newcommand{\cstarcat}{\cat{Cstar}}
+\newcommand{\cstarcpucat}{\cat{Cstar}_{\textrm{CPU}}}
+\newcommand{\cstar}[2]{\cat{Cstar}{\arity{#1}{#2}}}
+\newcommand{\brat}[2]{\cat{Brat}{\arity{#1}{#2}}}
+
+\newcommand{\op}[1]{\textnormal{\ttfamily#1}}
+\newcommand{\mor}[1]{\textnormal{\sffamily#1}}
+\newcommand{\eff}[1]{\textnormal{\sffamily\ul{#1}}}
+\newcommand{\enew}{\eff{new}{\p{}}}
+% \newcommand{\enew}[1]{\eff{new}{\p{#1}}}
+\newcommand{\eapply}[2]{\eff{apply}_{\g{#1}}{\p{#2}}}
+\newcommand{\emeasure}[1]{\eff{measure}{\p{#1}}}
+\newcommand{\ediscard}[1]{\eff{discard}{\p{#1}}}
+\newcommand{\tnew}[2]{\op{new}{\p{#1.\,#2}}}
+\newcommand{\tapply}[3]{\op{apply}_{\g{#1}}{\p{#2;#2.\,#3}}}
+\newcommand{\tapplyd}[3]{\op{apply}_{\D{#1}}{\p{#2;#2.\,#3}}}
+\newcommand{\tmeasure}[3]{\op{measure}{\p{#1;\,#2,#3}}}
+\newcommand{\tdiscard}[2]{\op{discard}{\p{#1;\,#2}}}
+\newcommand{\new}[2]{ν{#1}.\,#2}
+\newcommand{\apply}[3]{{\g{#1}}_{#2}{\p{#3}}}
+\newcommand{\applyd}[3]{{\D{#1}}_{#2}{\p{#3}}}
+\renewcommand{\measure}[3]{#2 {\;?_{#1}\,} #3}
+\newcommand{\measurebr}[3]{\measure{#1}{\p{#2}}{\p{#3}}}
+\newcommand{\discard}[2]{\op{disc}_{#1}{\p{#2}}}
+\newcommand{\lam}[2]{λ{#1}.\,#2}
+\newcommand{\plet}[3]{\qpl{let |\(#1 ≔ #2\)| in |\(#3\)|}}
+\newcommand{\pseq}[2]{\qpl{|\(#1\)|;|\(#2\)|}}
+\newcommand{\pret}[1]{\qpl{return |\(#1\)|}}
+% \newcommand{\pret}[1]{#1}
+\newcommand{\snew}[2]{\mor{new}#1{\p{#2}}}
+\newcommand{\sapply}[2]{\mor{apply}_{\g{#1}}{\p{#2}}}
+\newcommand{\smeasure}[3]{\mor{measure}#1{\p{#2,#3}}}
+
+\newcommand{\type}[1]{\text{\ttfamily#1}}
+\newcommand{\unit}{\type{I}}
+\newcommand{\bit}{\type{bit}}
+\newcommand{\qbit}{\type{qbit}}
+
+\newcommand{\arity}[2]{\p{#1 \mid #2}}
+% \newcommand{\arity}[2]{\p{#1 \mid \StrSubstitute[0]{#2}{,}{\ }}}
+
+\newcommand{\sequent}[3]{#1 \mid #2 ⊢ #3}
+\newcommand{\sseq}[2]{#1 ⊢ #2}
+\newcommand{\seq}[1]{\sequent{x₁:m₁,…,xₖ:mₖ}{a₁,…,aₚ}{#1}}
+\newcommand{\absseq}[1]{\sequent{\Gamma}{\Delta}{#1}}
+\newcommand{\sem}[1]{\left⟦ #1 \right⟧}
+% \newcommand{\brsem}[1]{⟬ #1 ⟭}
+% \newcommand{\brsem}[1]{⦅ #1 ⦆}
+\newcommand{\brsem}[1]{\left⦇ #1 \right⦈}
+\usepackage[nomessages]{fp}
+\newcommand{\mormap}[2]{% cf. https://tex.stackexchange.com/a/87423/64454
+  \def\nextitem{\def\nextitem{⊕}}% Separator
+  \forcsvlist\mormapitem{#2} → M_{\IfInteger{#1}{\FPeval\result{round(2^(#1):0)}\result}{2^{#1}}}{\p X}
+}
+\newcommand{\mormapitem}[1]{%
+  \nextitem
+  \def\param{\detokenize{#1}}%
+  \if\param…%
+    ⋯%
+  \else%
+    M_{\IfInteger{\param}{\FPeval\result{round(2^(\param):0)}\result}{2^{\param}}}{\p X}\!%
+  \fi
+}
+\newcommand{\semmap}[2]{% cf. https://tex.stackexchange.com/a/87423/64454
+  \def\nextitem{\def\nextitem{⊕}}% Separator
+  \forcsvlist\semmapitem{#2} → \M[\IfInteger{#1}{\FPeval\result{round(2^(#1):0)}\result}{2^{#1}}]
+}
+\newcommand{\semmapitem}[1]{%
+  \nextitem
+  \def\param{\detokenize{#1}}%
+  \if\param…%
+    ⋯%
+  \else%
+    \M[\IfInteger{\param}{\FPeval\result{round(2^(\param):0)}\result}{2^{\param}}]\!%
+  \fi
+}
+\newcommand{\abssemmap}[2]{% cf. https://tex.stackexchange.com/a/87423/64454
+  \def\nextitem{\def\nextitem{×}}% Separator
+  \forcsvlist\abssemmapitem{#2} → #1 • X
+}
+\newcommand{\abssemmapitem}[1]{%
+  \nextitem
+  \def\param{\detokenize{#1}}%
+  \if\param…%
+    ⋯%
+  \else%
+    (\param • X)\!%
+  \fi
+}
+\newcommand{\semhom}[2]{
+  \def\nextitem{\def\nextitem{⊕}}% Separator
+  \cstar{\p{\forcsvlist\semhomitem{#2}, \M[\IfInteger{#1}{\FPeval\result{round(2^(#1):0)}\result}{2^{#1}}]}}
+}
+\newcommand{\semhomitem}[1]{%
+  \nextitem
+  \def\param{\detokenize{#1}}%
+  \if\param…%
+    ⋯%
+  \else%
+    \M[\IfInteger{\param}{\FPeval\result{round(2^(\param):0)}\result}{2^{\param}}]\!%
+  \fi
+}
+
+\newcommand{\airquotes}[1]{\enquote{#1}}
+
+\newminted[qplcode]{ocaml}{escapeinside=||, autogobble}
+\newmintinline[qpl]{ocaml}{escapeinside=||, autogobble}
+
+\makeatletter
+\newcommand{\oset}[3][0ex]{%
+  \mathrel{\mathop{#3}\limits^{
+    \vbox to#1{\kern-2\ex@
+    \hbox{$\scriptstyle#2$}\vss}}}}
+\makeatother
+
+\makeatletter
+\newcommand{\listintertext}{\@ifstar\listintertext@\listintertext@@}
+\newcommand{\listintertext@}[1]{% \listintertext*{#1}
+  \hspace*{-\@totalleftmargin}#1}
+\newcommand{\listintertext@@}[1]{% \listintertext{#1}
+  \hspace{-\leftmargin}#1}
+\makeatother
+
+\renewcommand{\for}[2]{\forall#1.\;#2}
+\newcommand{\exist}[2]{\exists#1.\;#2}
+\newcommand{\existi}[2]{\exists!#1.\;#2}
