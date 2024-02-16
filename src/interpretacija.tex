@@ -1,1 +1,239 @@
 \section{Interpretacija instance reducibility v toposu}
+
+
+\begin{izrek}
+  %Let \(X\) be a topological space. Then \(X\) is locally \(T₆\) if and only if the
+  %reduction \(\lem ≤_I \lpo\) holds.
+  Naj bo \(X\) topološki prostor. Tedaj je \(X\) lokalno \(T₆\) natanko tedaj,
+  ko nad \(X\) velja redukcija \(\lem ≤_I \lpo\).
+\end{izrek}
+\begin{proof}
+  \begin{enumerate}
+  \item[\((⇒)\)]
+    Denimo, da je \(X\) lokalno \(T₆\).
+    Potem imamo pokritje s \(T₆\) prostori, t.j. za vsak \(Xᵢ\) iz pokritja in
+    vsako zaprto množico \(A ⊆ Xᵢ\), imamo zvezno funkcijo \(f : Xᵢ → ℝ\), tako
+    da je \(f_A(x) = 0\) natanko tedaj, ko je \(x ∈ A\). Poleg tega lahko
+    zahtevamo, da je ta funkcija nenegativna.
+
+    %Potem imamo, za vsako zaprto množico \(A ⊆ X\), zvezno funkcijo
+    %\(f_A : X → ℝ\), tako da je \(f_A(x) = 0\) natanko tedaj, ko je \(x ∈ A\).
+    %Poleg tega lahko zahtevamo, da je ta funkcija nenegativna.
+
+    Dokažimo sedaj, da velja redukcija.
+    Naj bo \(U' ⊆ X\) poljubna odprta množica in \(p ∈ Ω(U')\).
+    Dokazati želimo, da obstaja tako pokritje \(U'\), da na njem lokalno
+    obstajajo realna števila, za katera \(\lpo\) pomeni, da (lokalno) velja
+    \(p ∨ ¬p\).
+
+    Naj bo \(Uᵢ' ≔ U'∩Xᵢ\) pokritje \(U'\) in \(Aᵢ ≔ \c{p ∨ ¬p} ∩ Uᵢ\),
+    in \(xᵢ : Uᵢ' → ℝ\) \(T₆\) separacijska funckija \(Aᵢ\) na \(Uᵢ'\).
+
+    %Izkaže se, da lahko za pokritje vzamemo kar celoten \(U'\), za realno število
+    %pa vzemimo \(x ≔ f_A\) funkcija, ki jo dobimo iz \(T₆\) lastnosti.
+
+    Predpostavimo sedaj, da je \(Uᵢ ⊆ Uᵢ'\) in da velja \(Uᵢ ⊩ \lpo{\p{xᵢ}}\).
+    % To pomeni, da obstaja pokritje \(\b{Uᵢⱼ} ∈ \cov{Uᵢ}\), tako da za vsak element
+    To pomeni, da obstaja pokritje \(\cov{Uᵢ}{j}\), tako da za vsak element
+    pokritja velja \(xᵢ\res{Uᵢⱼ} ≤ 0\) ali \(xᵢ\res{Uᵢⱼ} > 0\).
+
+    Ker je \(xᵢ\) nenegativna, je \(xᵢ ≤ 0\) natanko tedaj, ko je \(xᵢ = 0\), torej
+    po definiciji zgolj na množici \(Aᵢ\).
+    Od tod sledi, da je \(xᵢ\res{Uᵢⱼ} ≤ 0\) zgolj v primeru, ko je \(Uᵢⱼ ⊆ Aᵢ\).
+    Vendar pa ima \(Aᵢ\) prazno notranjost, tako da je tak \(Uᵢⱼ\) nujno prazen.
+
+    Ostane le še drugi primer, torej \(xᵢ\res{Uᵢⱼ} > 0\).
+    Ker množice \(Uᵢⱼ\) tvorijo pokritje \(Uᵢ\), je potem tudi \(xᵢ > 0\) na
+    celotnem \(Uᵢ\). Sledi, da je množica \(Aᵢ∩Uᵢ\) prazna,
+    in velja \(Uᵢ ⊩ \lem{\p{p}}\).
+  \item[\((⇐)\)]
+    V obratno smer pa predpostavimo, da obstaja redukcja iz \(\lem\) na \(\lpo\).
+
+    % To pomeni, da za vsako odprto množico \(U ⊆ X\) in \(p ∈ Ω(U)\) obstaja tako
+    % pokritje \(\b{Uᵢ} ∈ \cov{Uᵢ}\) in realna števila \(xᵢ : Uᵢ → ℝ\),
+    % da lokalno
+
+    Trditev bomo dokazali v dveh korakih. Najprej, naj bo \(A ⊆ X\) zaprta
+    množica s prazno notranjostjo.
+
+    Tedaj na \(U ≔ X\) in \(p = Aᶜ\) uporabimo redukcijo \(\lem ≤_I \lpo\).
+    % To pomeni, da dobimo pokritje \(\b{Xᵢ} ∈ \cov{X}\) in realna števila
+    To pomeni, da dobimo pokritje \(\cov{X}{i}\) in realna števila
+    \(xᵢ : Xᵢ → ℝ\), tako da za vsak \(i\) in \(Uᵢ ⊆ Xᵢ\) velja
+    % \(\exists{\b{Uᵢⱼ} ∈ \cov{\p{Uᵢ}}}{∀_j xᵢ\res{Uᵢⱼ} ≤ 0 ∨ xᵢ\res{Uᵢⱼ} > 0} ⇒ Uᵢ ⊩ \lem{\p{p}}\).
+    \(\exists{\cov{Uᵢ}j}{∀_j xᵢ\res{Uᵢⱼ} ≤ 0 ∨ xᵢ\res{Uᵢⱼ} > 0} ⇒ Uᵢ ⊩ \lem{\p{p}}\).
+
+    Ker ima \(A\) prazno notranjost, je \(p ∨ ¬p = p\), torej je
+    \(Uᵢ ⊩ \lem{\p{p}}\) ekvivalentno \(Uᵢ ⊆ p\).
+
+    Brez škode za splošnost lahko vzamemo \(Uᵢ = Xᵢ\) in
+    \(\b{Uᵢⱼ} = \b{Vᵢ,Vᵢ'}\), tako da \(xᵢ\res{Vᵢ} ≤ 0 ∨ xᵢ\res{Vᵢ'} > 0 ⇒ Xᵢ ⊆ p\).
+
+    Dokazati želimo, da je
+
+  \end{enumerate}
+\end{proof}
+
+
+\begin{izrek}
+  %Let \(X\) be a topological space. Then \(X\) is locally \(T₆\) if and only if the
+  %reduction \(\lem ≤_I \lpo\) holds.
+  Naj bo \(X\) topološki prostor. Tedaj je \(X\) lokalno \(T₆\) natanko tedaj,
+  ko nad \(X\) velja funkcijska redukcija \(\lem ≤_{FI} \lpo\).
+\end{izrek}
+\begin{proof}
+  \begin{enumerate}
+  \item[\((⇒)\)]
+    Denimo, da je \(X\) lokalno \(T₆\).
+    Potem imamo pokritje s \(T₆\) prostori, t.j. za vsak \(Xᵢ\) iz pokritja in
+    vsako zaprto množico \(A ⊆ Xᵢ\), imamo zvezno funkcijo \(f : Xᵢ → ℝ\), tako
+    da je \(f_A(x) = 0\) natanko tedaj, ko je \(x ∈ A\). Poleg tega lahko
+    zahtevamo, da je ta funkcija nenegativna.
+
+    %Potem imamo, za vsako zaprto množico \(A ⊆ X\), zvezno funkcijo
+    %\(f_A : X → ℝ\), tako da je \(f_A(x) = 0\) natanko tedaj, ko je \(x ∈ A\).
+    %Poleg tega lahko zahtevamo, da je ta funkcija nenegativna.
+
+    Po aksiomu o izbiri dobimo preslikavo \(Cl(Xᵢ) → \p{Xᵢ → ℝ}\).
+    Če jo preuredimo in uporabimo vložitev \(Ω(Xᵢ) \hookrightarrow Cl(Xᵢ)\),
+    ki \(p\) slika v \(\c{p ∪ ¬p}\), dobimo preslikavo \(Fᵢ: Xᵢ → \p{Ω(Xᵢ) → ℝ}\).
+
+    Dokažimo sedaj, da velja redukcija.
+    Vzamimo množice \(Uᵢ = Xᵢ\) in \(fᵢ = Fᵢ\).
+
+    Naj bo sedaj \(U ⊆ Xᵢ\), \(p ∈ Ω(U)\), \(A ≔ \c{p ∪ ¬p}\), \(x ≔ fᵢ(p)\) in predpostavimo,
+    da velja \(Xᵢ ⊩ \lpo{\p{x}}\)
+
+    % To pomeni, da obstaja pokritje \(\b{Uᵢ} ∈ \cov{U}\), tako da za vsak element
+    To pomeni, da obstaja pokritje \(\cov{U}i\), tako da za vsak element
+    pokritja velja \(x\res{Uᵢ} ≤ 0\) ali \(x\res{Uᵢ} > 0\).
+
+    Ker je \(x\) nenegativen, je \(x ≤ 0\) natanko tedaj, ko je \(x = 0\), torej
+    po definiciji zgolj na množici \(A\).
+    Od tod sledi, da je \(x\res{Uᵢ} ≤ 0\) zgolj v primeru, ko je \(Uᵢ ⊆ A\).
+    Vendar pa ima \(A\) prazno notranjost, tako da je tak \(Uᵢ\) nujno prazen.
+
+    Ostane le še drugi primer, torej \(x\res{Uᵢ} > 0\).
+    Ker množice \(Uᵢ\) tvorijo pokritje \(U\), je potem tudi \(x > 0\) na
+    celotnem \(U\). Sledi, da je množica \(A∩U\) prazna,
+    in velja \(U ⊩ \lem{\p{p}}\).
+  \item[\((⇐)\)]
+    V obratno smer pa predpostavimo, da obstaja redukcja iz \(\lem\) na \(\lpo\).
+
+    To pomeni, da obstaja pokritje \(Xᵢ \circlearrowright X\)
+    in preslikave \(Fᵢ: Xᵢ → \p{Ω(Xᵢ) → ℝ}\), za katere velja
+    \[Xᵢ ⊩ \for{p∈Ω}{\lpo{\p{Fᵢ(p)}} ⇒ \lem{\p{p}}}\text.\label{eq:lemlpo}\]
+
+    Trditev bomo dokazali v dveh korakih. Najprej, naj bo \(A ⊆ Xᵢ\) zaprta
+    množica s prazno notranjostjo.
+
+    Tedaj na \(U ≔ Xᵢ\) in \(p = Aᶜ\) uporabimo \ref{eq:lemlpo}.
+    To pomeni, da dobimo implikacijo \(U⊩\lpo{\p{Fᵢ(p)}} ⇒ U⊩\lem{\p{p}}\).
+
+    Naj bo \(f≔Fᵢ(p)\). Potem, če obstaja pokritje \(Uᵢ \circlearrowright U\),
+    tako da za vsak \(i\) velja \(f\res{Uᵢ} ≤ 0\) ali \(f\res{Uᵢ} > 0\),
+    potem velja tudi \(U ⊆ p ∪ ¬p = p\), oziroma \(A ⊆ Uᶜ\).
+
+    Če tako pokritje obstaja, ga lahko združimo v dve množici, eno, na kateri je
+    \(f\) nepozitiven (torej ker je nenegativen kar \(0\)), in eno, na kateri je pozitiven.
+    Naj bosta torej \(U₀ in Uₚ\) ti dve (odprti) množici.
+
+    Vednar je pa \(U₀ = f⁻¹{0}\), torej zaprta.
+
+  \end{enumerate}
+\end{proof}
+
+\begin{lema}
+  Vsaka preslikava \(f : C → I\) inducira preslikavo \(\floor f : C → C\),
+  s predpisom \(\floor f(a) ≔ \max\set{x ∈ C}{x ≤ f(a)}\).
+\end{lema}
+
+\begin{dokaz}
+  Ker je \(C\) kompakten, je predpis dobro definiram, torej moramo preveriti
+  zgolj zveznost. Naj bo \(U=w\) bazična odprta množica.
+
+  Naj bodo \(l ≔ (w-1)\hat{1}\), \(r ≔ (w+1)\hat{1}\), in \(U' ≔ \p{l, r}\).
+  Potem je \(U ⊆ \cli{w\hat{0}, w\hat{1}} ⊆ U'\) in \(U = U'∩C\).
+
+  Naj bo \(a ∈ α⁻¹(U)\), torej \(\max\set{x ∈ C}{x ≤ f(a)} ∈ U\).
+  Od tod sledi, da je \(f(a) ∈ U'\), torej je \(α⁻¹(U) ⊆ f⁻¹(U')\).
+
+  Če je pa \(a ∈ f⁻¹(U')\), je pa \(l < f(a) < r\).
+  Iz \(f(a) < r\) sledi \(α(a) < r\), torej \(α(a) ≤ w\hat{1}\),
+  iz \(l < f(a)\) pa sledi, da je \(l ≤ α(a)\).
+
+  Iz tega dvojega lahko sedaj sklepamo, da je \(α⁻¹(U) = f⁻¹(U') ⧵ \{l\}\),
+  torej odprta množica, kar pa pomeni, da je \(α\) zvezna.
+\end{dokaz}
+
+\begin{posledica}
+  V zgornji lemi lahko domeno zamenjamo s poljubno odprto množico.
+\end{posledica}
+
+\begin{lema}
+  Nad Cantorjevim prostorom je \(\lpo\) ekvivalenten \(\lpoR\).
+\end{lema}
+
+\begin{dokaz}
+  Vemo, da velja \(\lpo ≤_I \lpoR\).
+
+  Pokažimo sedaj, da velja tudi obrat.
+  Naj bo \(U ⊆ C\), \(f : U → ℝ\).
+  Brez škode za splošnost, lahko \(f\) popravimo do preslikave \(U → I\).
+  Vzamemo trivialno pokritje in naj bo \(α ≔ \floor f\).
+
+  Potem je očitno \(α ≤ f\), torej \(f(x) = 0 ⇒ α(x) = 0\).
+  Obratno pa, če je \(α(x) = 0\) pomeni, da imamo za vsak \(a ≠ 0\)
+  neenakost \(f(x) < a\), torej \(f(x) = 0\).
+
+  Sledi torej, da je \(\lpo\p{α} = \lpoR\p{f}\).
+\end{dokaz}
+
+% \begin{izrek}
+%   Nad Cantorjevim prostorom je \(\lpo\) idempotenten.
+% \end{izrek}
+
+% \begin{dokaz}
+%   Ker je \(\lpoR ≤_I \lpo\) moramo pokazati zgolj \(\lpo×\lpo ≤_I \lpoR\).
+
+%   Naj bodo \(U ⊆ C\), \(α,β : U → C\) in \(Uᵢ = U\) trivialno pokritje.
+
+%   Označimo \(A ≔ \c{\lpo α}\) in \(B ≔ \c{\lpo β}\).
+%   Ker je \(C\) metrizabilen obstaja funkcija \(f : U → ℝ\), ki je \(0\) na
+%   \(A ∪ B\) in \(> 0\) sicer.
+
+%   Naj bo \(V ⊆ U\) poljuben in predpostavimo, da velja \(V ⊩ \lpoR f\).
+%   Ker je notranjost \(A\) in \(B\) prazna, je prazna tudi notranjost \(A ∪ B\),
+%   torej velja \(f\res V > 0\).
+%   Ker je \(f\) pozitivna natanko na komplementu \(A ∪ B\) je torej \(V\)
+%   podmnožica \(\c{A ∪ B} = \lpo α ∩ \lpo β\), kar je točno to, kar smo želeli.
+% \end{dokaz}
+
+\begin{izrek}
+  Če je prostor \(X\) lokalno \(T₆\), velja \(\lpo×\lpo ≤_I \lpoR\).
+\end{izrek}
+
+\begin{dokaz}
+  Naj bo \(\cov X i\) \(T₆\) pokritje, \(U ⊆ X\), \(α,β : U → C\)
+  in \(Uᵢ = U∩Xᵢ \covsymb U\).
+
+  Označimo \(A ≔ {\lpo\p{α}}ᶜ\) in \(B ≔ {\lpo\p{β}}ᶜ\) (pod \(Uᵢ\)).
+  Ker je \(Uᵢ\) \(T₆\) obstaja funkcija \(fᵢ : Uᵢ → ℝ\), ki je \(0\) na
+  \(A ∪ B\) in pozitivna sicer.
+
+  Naj bo \(Vᵢ ⊆ Uᵢ\) poljuben in predpostavimo, da velja \(Vᵢ ⊩ \lpoR\p{fᵢ}\).
+  Ker sta notranjosti množic \(A\) in \(B\) prazni, je prazna tudi notranjost \(A ∪ B\),
+  torej velja \({fᵢ\res{Vᵢ} > 0}\).
+  Ker je \(fᵢ\) pozitivna natanko na komplementu \(A ∪ B\) je torej \(Vᵢ\)
+  podmnožica \(\c{A ∪ B} = \lpo\p{α} ∩ \lpo\p{β}\), kar je točno to, kar smo želeli.
+\end{dokaz}
+
+\begin{posledica}
+  Nad Cantorjevim prostorom je \(\lpo\) idempotenten.
+\end{posledica}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:

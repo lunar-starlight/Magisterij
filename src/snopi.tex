@@ -1,1 +1,75 @@
 \section{Snopi nad okolišem}
+
+Naj \(X, Y, …\) označujejo okoliše.
+
+
+
+\begin{definicija}
+  \emph{Predsnop nad okolišem \(X\)} je funktor \(F : \op{\O{\p{X}}} → \setcat\).
+  Elementom množic \(F(U)\) pravimo \emph{prerezi (pri U)}.
+\end{definicija}
+
+\begin{opomba}
+  Predsnope lahko definiramo tudi nad poljubno kategorijo \(\cat C\).
+  V tem primeru pišemo \(\psh{\cat C} ≔ \op{\cat C} → \setcat\), za predsnope nad okolišem
+  \(X\) pa raje spustimo \(\mc{O}\) in pišemo kar \(\psh{X}\).
+\end{opomba}
+
+Preden lahko definiramo snope, moramo nekaj povedati o družinah prerezov.
+
+\begin{definicija}
+  Prereza \(s ∈ F(U)\) in \(t ∈ F(V)\) sta \emph{skladna}, ko velja \(s\res{V} = t\res{U}\).
+  Družina prerezov \(sᵢ ∈ F(Uᵢ)\) je \emph{skladna}, ko so njeni elementi paroma
+  skladni. Prerez je \emph{skladen} z družino, ko je paroma skladen z vsemi
+  njenimi elementi.
+\end{definicija}
+
+\begin{definicija}
+  \emph{Snop nad okolišem} je predsnop, za katerega velja:
+  \begin{enumerate}
+  \item Za vsako skladno družino prerezov \(sᵢ ∈ F(Uᵢ)\) obstaja enoličen prerez
+    \({s ∈ F\p{⋃ᵢUᵢ}}\), ki je skladen z družino.
+  \item Za vsako pokritje \(Uᵢ \circlearrowright U\) in skladno družino prerezov \(sᵢ ∈ F(Uᵢ)\) obstaja enoličen prerez
+    \(s ∈ F(U)\), ki je skladen z družino.
+  \item Za vsako skladno družino prerezov \(sᵢ\) na \(Uᵢ\) obstaja enoličen prerez
+    \(s\) na \(⋃ᵢUᵢ\), ki je skladen z družino.
+  % \item Za vsako skladno družino prerezov \(sᵢ : Uᵢ\) obstaja enoličen prerez
+  %   \(s : ⋃ᵢUᵢ\), ki je skladen z družino.
+  \item Za vsako skladno družino prerezov \(Uᵢ ⊩ sᵢ\) obstaja enoličen prerez
+    \({⋃ᵢUᵢ ⊩ s}\), ki je skladen z družino.
+  \item Za vsako skladno družino prerezov \(Uᵢ ⊩ sᵢ ∈ F\) obstaja enoličen prerez
+    \({⋃ᵢUᵢ ⊩ s ∈ F}\), ki je skladen z družino.
+  % \item Za vsak par prerezov \(s, t ∈ F(U)\), je \(s = t\) natanko tedaj, ko za
+  %   pokritje \(Uᵢ \circlearrowright U\) velja,
+  \end{enumerate}
+\end{definicija}
+
+\begin{definicija} %TODO: popravi ta vsaj unija biznis
+  \emph{Amalgamacija} družine prerezov je vsak prerez, ki je definiran vsaj na
+  uniji družine in je z njo skladen.
+\end{definicija}
+
+\begin{opomba}
+  Če družina ni skladna očitno nima amalgamacije.
+\end{opomba}
+\begin{slogan}
+  Vsaka skladna družina prerezov v snopu ima enolično amalgamacijo.
+\end{slogan}
+\begin{slogan}
+  Predsnop je snop, kadar ima vsaka skladna družina prerezov enolično amalgamacijo.
+\end{slogan}
+
+\begin{definicija}
+  Preslikava med (pred)snopoma \(F\) in \(G\) je naravna transformacija med
+  njima kot funktorjema.
+\end{definicija}
+
+\begin{definicija}
+  Kategoriji vseh snopov na \(X\), skupaj z morfizmi med njimi pravimo \(\sh X\).
+\end{definicija}
+
+
+
+%%% Local Variables:
+%%% TeX-master: "main"
+%%% End:
