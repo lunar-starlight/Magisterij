@@ -20,6 +20,7 @@
 
 \newcommand{\p}[1]{\left( {#1} \right)}
 \newcommand{\cli}[1]{\left[ {#1} \right]}
+\newcommand{\floor}[1]{\left\lfloor {#1} \right\rfloor}
 \newcommand{\set}[2]{\left\{ #1 \mid #2 \right\}}
 \newcommand{\newfrac}[2]{{}^{#1}\!/_{\!#2}}
 \newcommand{\mb}[1]{\mathbf{#1}}
@@ -46,8 +47,8 @@
 }
 \usepackage{graphicx}
 \newcommand{\covsymb}{\raisebox{\depth}{\rotatebox[origin=c]{180}{\circlearrowright}}\,}
-\renewcommand{\cov}[2]{#1_{#2} \covsymb #1}
-
+%\newcommand{\cov}[2]{#1_{#2} \covsymb #1}
+\newcommand{\cov}[3][]{#2_{#1#3} \covsymb #2_{#1}}
 
 \newcommand{\setcat}{\cat{Set}}
 
