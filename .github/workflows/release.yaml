@@ -1,0 +1,44 @@
+# disabled until I think how I want to do it
+name: Pripravi preveden pdf
+
+on:
+  push:
+    #branches: [ "master" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: lunarstarlight/fmfdelo-texlive:latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Pripravi vsebino strani
+        run : |
+          mkdir gh-pages
+          cp docs/* gh-pages
+          mkdir gh-pages/arhivi
+
+          cd src
+          echo "Compiling src"
+
+          basename="main"
+          texname=$basename.tex
+          pdfname=$basename.pdf
+          zipname=../gh-pages/arhivi/$dirname.zip
+
+          zip -r $zipname *
+          latexmk -pdf $texname
+          verapdf -f 2b $pdfname
+          zip $zipname $pdfname
+
+          cd ..
+      - name: GitHub Pages action
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./gh-pages
+          enable_jekyll: true
