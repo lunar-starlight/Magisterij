@@ -179,25 +179,43 @@
 
 \begin{lema}
   Vsaka preslikava \(f : C → I\) inducira preslikavo \(\floor f : C → C\),
-  s predpisom \(\floor f(a) ≔ \max\set{x ∈ C}{x ≤ f(a)}\).
+  s predpisom \(\floor f(a) ≔ \sup\set{x ∈ C}{x < f(a)}\).
 \end{lema}
 
 \begin{dokaz}
-  Ker je \(C\) kompakten, je predpis dobro definiram, torej moramo preveriti
+  % dokaži da maksimum obstaja (da je zaprta).
+  Ker je \(C\) kompakten, je predpis dobro definiran, torej moramo preveriti
   zgolj zveznost. Naj bo \(U=w\) bazična odprta množica.
 
-  Naj bodo \(l ≔ (w-1)\hat{1}\), \(r ≔ (w+1)\hat{1}\), in \(U' ≔ \p{l, r}\).
-  Potem je \(U ⊆ \cli{w\hat{0}, w\hat{1}} ⊆ U'\) in \(U = U'∩C\).
+  %Naj bodo \(l ≔ (w-1)\hat{1}\), \(r ≔ (w+1)\hat{0}\), in \(U' ≔ \p{l, r}\).
+  Naj bodo \(l ≔ w\hat{0}\), \(r ≔ (w+1)\hat{0}\), in \(U' ≔ \p{l, r}\).
+  Potem je \(U ⊆ \cli{w\hat{0}, w\hat{1}} ⊆ U' ∪ \{l\}\).
+  Upamo sedaj, da je \(\floor f⁻¹(U) = f⁻¹(U')\).
 
-  Naj bo \(a ∈ α⁻¹(U)\), torej \(\max\set{x ∈ C}{x ≤ f(a)} ∈ U\).
-  Od tod sledi, da je \(f(a) ∈ U'\), torej je \(α⁻¹(U) ⊆ f⁻¹(U')\).
+  Naj bo \(a ∈ f⁻¹(U')\), torej \(l < f(a) < r\).
+  Iz \(f(a) < r\) sledi \(\floor f(a) < r\), torej \(\floor f(a) ≤ w\hat{1}\),
+  iz \(l < f(a)\) pa sledi, da je \(l ≤ \floor f(a)\).
 
-  Če je pa \(a ∈ f⁻¹(U')\), je pa \(l < f(a) < r\).
-  Iz \(f(a) < r\) sledi \(α(a) < r\), torej \(α(a) ≤ w\hat{1}\),
-  iz \(l < f(a)\) pa sledi, da je \(l ≤ α(a)\).
+  Če pa je \(a ∈ \floor f⁻¹(U)\), imamo \(\sup\set{x ∈ C}{x < f(a)} ∈ U\).
+  Iz \(w\hat{0} ≤ α(a)\) sledi \(w\hat{0} ≤ f(a)\),
+  iz \(α(a) ≤ w\hat{1}\) pa sledi, da je \(f(a) ≤ w\hat{1}\).
 
-  Iz tega dvojega lahko sedaj sklepamo, da je \(α⁻¹(U) = f⁻¹(U') ⧵ \{l\}\),
-  torej odprta množica, kar pa pomeni, da je \(α\) zvezna.
+  % Če pa je \(a ∈ f⁻¹(U')\), pa je \(l < f(a) < r\).
+  % Iz \(f(a) < r\) sledi \(\floor f(a) < r\), torej \(\floor f(a) ≤ w\hat{1}\),
+  % iz \(l < f(a)\) pa sledi, da je \(l ≤ \floor f(a)\).
+
+  % l here is wrong, i should fix U' (maybe i can)
+  % Iz tega dvojega lahko sedaj sklepamo, da je \(\floor f⁻¹(U) = f⁻¹(U') ⧵ f⁻¹[0,l]\),
+  Iz tega dvojega lahko sedaj sklepamo, da je
+  \(f⁻¹(U') ⊆ \floor f⁻¹(U) ⊆ f⁻¹(U') ∪ f⁻¹\{w\hat{0}\}\).
+  Denimo, da je \(\floor f(a) = w\hat0\).
+  Potem obstaja zaporedje \(xᵢ ↗ w\hat0\), za katero velja \(xᵢ < f(a)\)
+  Vendar je pa množica \(\left[ w\hat0, 1 \right]\) odprta, torej mora vsebovati
+  skoraj vsa števila \(xᵢ\). Ker velja \(xᵢ ≤ w\hat0\), je torej
+  \(xᵢ = w\hat{0}\) skoraj povsod, in velja \(f(a) > w\hat0\).
+
+  Sledi, da je \(\floor f⁻¹(U) ⊆ f⁻¹(U')\), torej sta ti dve množici enaki,
+  in je funkcija \(\floor f\) zvezna.
 \end{dokaz}
 
 \begin{posledica}
@@ -243,6 +261,7 @@
 %   podmnožica \(\c{A ∪ B} = \lpo α ∩ \lpo β\), kar je točno to, kar smo želeli.
 % \end{dokaz}
 
+% \lpo ~> \lpoR
 \begin{izrek}
   Če je prostor \(X\) lokalno \(T₆\), velja \(\lpo×\lpo ≤_I \lpoR\).
 \end{izrek}
