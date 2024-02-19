@@ -275,16 +275,15 @@
 %   podmnožica \(\c{A ∪ B} = \lpo α ∩ \lpo β\), kar je točno to, kar smo želeli.
 % \end{dokaz}
 
-% \lpo ~> \lpoR
 \begin{izrek}
-  Če je prostor \(X\) lokalno \(T₆\), velja \(\lpo×\lpo ≤_I \lpoR\).
+  Če je prostor \(X\) lokalno \(T₆\), velja \(\lpoR×\lpoR ≤_I \lpoR\).
 \end{izrek}
 
 \begin{dokaz}
-  Naj bo \(\cov X i\) \(T₆\) pokritje, \(U ⊆ X\), \(α,β : U → C\)
+  Naj bo \(\cov X i\) \(T₆\) pokritje, \(U ⊆ X\), \(x,y : U → ℝ\)
   in \(Uᵢ = U∩Xᵢ \covsymb U\).
 
-  Označimo \(A ≔ {\lpo\p{α}}ᶜ\) in \(B ≔ {\lpo\p{β}}ᶜ\) (pod \(Uᵢ\)).
+  Označimo \(A ≔ {\lpoR\p{x}}ᶜ\) in \(B ≔ {\lpoR\p{y}}ᶜ\) (pod \(Uᵢ\)).
   Ker je \(Uᵢ\) \(T₆\) obstaja funkcija \(fᵢ : Uᵢ → ℝ\), ki je \(0\) na
   \(A ∪ B\) in pozitivna sicer.
 
@@ -292,8 +291,12 @@
   Ker sta notranjosti množic \(A\) in \(B\) prazni, je prazna tudi notranjost \(A ∪ B\),
   torej velja \({fᵢ\res{Vᵢ} > 0}\).
   Ker je \(fᵢ\) pozitivna natanko na komplementu \(A ∪ B\) je torej \(Vᵢ\)
-  podmnožica \(\c{A ∪ B} = \lpo\p{α} ∩ \lpo\p{β}\), kar je točno to, kar smo želeli.
+  podmnožica \(\c{A ∪ B} = \lpoR\p{x} ∩ \lpoR\p{y}\), kar je točno to, kar smo želeli.
 \end{dokaz}
+
+\begin{posledica}
+  Nad lokalno \(T₆\) prostorom je \(\lpoR\) idempotenten.
+\end{posledica}
 
 \begin{posledica}
   Nad Cantorjevim prostorom je \(\lpo\) idempotenten.
