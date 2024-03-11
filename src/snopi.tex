@@ -82,29 +82,32 @@ Preden lahko definiramo snope, moramo nekaj povedati o družinah prerezov.
   jo pišemo z indeksom.
 \end{definicija}
 
-Če na okvir \(𝓛\) mislimo kot množico resničnostnih vrednosti, lahko rečemo, da je to simetrična in tranzitivna relacija na množici \(A\).
+Če na okvir \(𝓛\) mislimo kot množico resničnostnih vrednosti, lahko rečemo, da
+je to simetrična in tranzitivna relacija na množici \(A\).
 %TODO: jezik 𝓛-množic?
 
 \begin{definicija}
   \emph{Morfizem med \(𝓛\)-množicama} \(A\) in \(B\) je preslikava \(⟦- = f(-)⟧ : B×A → 𝓛\),
   za katero velja
-  \begin{align*}
-    ⟦b = b'⟧ ∧ ⟦b' = f(a)⟧ ≤ ⟦b = f(a)⟧\\
-    ⟦b = f(a)⟧ ∧ ⟦a = a'⟧ ≤ ⟦b = f(a')⟧\\
-    ⟦b = f(a)⟧ ∧ ⟦b' = f(a)⟧ ≤ ⟦b = b'⟧\\
-    ⟦a = a⟧ = \bigvee_{b ∈ B} ⟦b = f(a)⟧
-  \end{align*}
-  Na prvi dve pravili lahko gledamo kot na skladnost z relacijama na \(A\) in \(B\), na drugi dve pa kot na enoličnost in celovitost, zato pišemo morfizme tudi v bolj funkcijskem zapisu kot \(f : A \looparrowright B\).
+  \begin{align}
+    ⟦b = b'⟧ ∧ ⟦b' = f(a)⟧ ≤ ⟦b = f(a)⟧    \tag{M1}\label{M1}\\
+    ⟦b = f(a)⟧ ∧ ⟦a = a'⟧ ≤ ⟦b = f(a')⟧    \tag{M2}\label{M2}\\
+    ⟦b = f(a)⟧ ∧ ⟦b' = f(a)⟧ ≤ ⟦b = b'⟧    \tag{M3}\label{M3}\\
+    ⟦a = a⟧ = ⋁_{b ∈ B} ⟦b = f(a)⟧         \tag{M4}\label{M4}
+  \end{align}
+  Na prvi dve pravili lahko gledamo kot na skladnost z relacijama na \(A\) in
+  \(B\), na drugi dve pa kot na enoličnost in celovitost, zato pišemo morfizme
+  tudi v bolj funkcijskem zapisu kot \(f : A ↬ B\).
 
-  Če imamo morfizma \(A \oset f \looparrowright B \oset g \looparrowright C\),
-  je njun kompozitum \(gf : A \looparrowright C\) definiran kot
-  \[ ⟦c = gf(a)⟧ ≔ \bigvee_{b ∈ B} ⟦c = g(b)⟧∧⟦b = f(a)⟧\text. \]
+  Če imamo morfizma \(A \oset{f}{↬} B \oset{g}{↬} C\),
+  je njun kompozitum \(gf : A ↬ C\) definiran kot
+  \[ ⟦c = gf(a)⟧ ≔ ⋁_{b ∈ B} ⟦c = g(b)⟧∧⟦b = f(a)⟧\text. \]
 \end{definicija}
 
 Skupaj z identiteto \(⟦- = -⟧_A\) tvorijo \(𝓛\)-množice kategorijo, ki jo označimo \(\cat{Set}(𝓛)\).
 
 \begin{lema}
-  Naj bosta \(f, g : A \looparrowright B\) morfizma.
+  Naj bosta \(f, g : A ↬ B\) morfizma.
   Potem sta enaka natanko tedaj, ko velja
   \[ \for{a ∈ A, b ∈ B}{ ⟦b = f(a)⟧ ≤ ⟦b = g(a)⟧ }.\]
 \end{lema}
@@ -115,20 +118,23 @@ Skupaj z identiteto \(⟦- = -⟧_A\) tvorijo \(𝓛\)-množice kategorijo, ki j
   \begin{align*}
     ⟦b = g(a)⟧
     &= ⟦b = g(a)⟧ ∧ ⟦a = a⟧ = ⟦b = g(a)⟧ ∧ \bigvee_{b' ∈ B} ⟦b' = f(a)⟧\\
-    &= \bigvee_{b' ∈ B} ⟦b = g(a)⟧ ∧ ⟦b' = f(a)⟧ ∧ ⟦b' = g(a)⟧
-    &≤ \bigvee_{b' ∈ B} ⟦b = b'⟧ ∧ ⟦b' = f(a)⟧
-    &= ⟦b = 1_Bf(a)⟧ = ⟦b = f(a)⟧.
+    &= \bigvee_{b' ∈ B} ⟦b = g(a)⟧ ∧ ⟦b' = f(a)⟧ ∧ ⟦b' = g(a)⟧\\
+    &≤ \bigvee_{b' ∈ B} ⟦b = b'⟧ ∧ ⟦b' = f(a)⟧\\
+    &= ⟦b = 1_Bf(a)⟧ = ⟦b = f(a)⟧.\qedhere
   \end{align*}
 \end{dokaz}
 
-Če na zgornjo formulo gledamo kot neko trditev v jeziku množic in funkcij, bi se brala kot "če je \(f(a) = b\) je potem tudi \(g(a) = b\)", kar pa ponavadi res pomeni, da sta funkciji \(f\) in \(g\) enaki.
+Če na zgornjo formulo gledamo kot neko trditev v jeziku množic in funkcij, bi se
+brala kot "če je \(f(a) = b\) je potem tudi \(g(a) = b\)", kar pa ponavadi res
+pomeni, da sta funkciji \(f\) in \(g\) enaki.
 
-Na podoben način bi si želeli karakterizirati epimorfizme in monomorfizme, v kategoriji \(\cat{Set}(𝓛)\),
-in res jih lahko karakteriziramo kot surjekcije in injekcije v tem jeziku:
+Na podoben način bi si želeli karakterizirati epimorfizme in monomorfizme, v
+kategoriji \(\cat{Set}(𝓛)\), in res jih lahko karakteriziramo kot surjekcije in
+injekcije v tem jeziku:
 
 \begin{trditev}
-  Morfizem \(f : A \looparrowright B\) je epimorfizem, če velja
-  \[ \for{b ∈ B}{ ⟦b = b⟧ = \bigvee_{a ∈ A} ⟦b = f(a)⟧ }\text, \]
+  Morfizem \(f : A ↬ B\) je epimorfizem, če velja
+  \[ \for{b ∈ B}{ ⟦b = b⟧ = ⋁_{a ∈ A} ⟦b = f(a)⟧ }\text, \]
   in monomorfizem, če velja
   \[ \for{a,a' ∈ A, b ∈ B}{ ⟦b = f(a)⟧ ∧ ⟦b = f(a')⟧ ≤ ⟦a = a'⟧}\text. \]
 \end{trditev}
@@ -154,9 +160,9 @@ Z uporabo gornje karakterizacije monomorfizmov, lahko karakteriziramo tudi podob
   Obstaja ekvivalenca med delnima ureditvima \(𝓛\)-podmnožic \(A\) in podobjektov \(A\).
 \end{trditev}
 \begin{proof}
-  Naj bo \(m : S \looprightarrow A\) monomorfizem \(𝓛\)-množic.
+  Naj bo \(m : S ↬ A\) monomorfizem \(𝓛\)-množic.
   Potem definiramo preslikavo \( ⟦- ∈ S⟧ : A → 𝓛 \) s predpisom
-  \(a ↦ \bigvee_{s ∈ S} ⟦a = m(s)⟧\).
+  \(a ↦ ⋁_{s ∈ S} ⟦a = m(s)⟧\).
 
   %TODO: complete proof
 \end{proof}
@@ -175,19 +181,20 @@ Podobno bomo storili za \(𝓛\)-množice.
 \end{definicija}
 
 \begin{lema}
-  Za vsak \(m ∈ A\) lahko tvorimo enojec \(\sigma_m : A → 𝓛\), s predpisom
-  \(a ↦ ⟦a = m⟧\). Množico enojcev \(A\) označimo s \(\sigma(A)\).
+  Za vsak \(m ∈ A\) lahko tvorimo enojec \(σₘ : A → 𝓛\), s predpisom
+  \(a ↦ ⟦a = m⟧\). Množico enojcev \(A\) označimo s \(σ(A)\).
 \end{lema}
 
-Snopi so natanko določeni s svojimi enojci, tako da si poglejmo \(𝓛\)-množice, ki so prav tako določene s svojimi enojci.
+Snopi so natanko določeni s svojimi enojci, tako da si poglejmo \(𝓛\)-množice,
+ki so prav tako določene s svojimi enojci.
 
 \begin{definicija}
-  \(𝓛\)-množica \(A\) je \emph{polna}, kadar je preslikava \(m ↦ \sigma_m\) bijekcija.
+  \(𝓛\)-množica \(A\) je \emph{polna}, kadar je preslikava \(m ↦ σₘ\) bijekcija.
   Polno podkategorijo polnih \(𝓛\)-množic označimo s \(\cat{CSet}(𝓛)\).
 \end{definicija}
 
 \begin{izrek}
-  Množica \(\sigma(A)\), skupaj z relacijo \(⟨\rho, \tau⟩ ≔ \bigvee_{a ∈ A} \rho(a)∧\tau(a)\)
+  Množica \(σ(A)\), skupaj z relacijo \(⟨ρ, τ⟩ ≔ ⋁_{a ∈ A} ρ(a)∧τ(a)\)
   je \(𝓛\)-množica, ki je izomorfna \(A\).
 \end{izrek}
 \begin{dokaz}
