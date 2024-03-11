@@ -1,7 +1,19 @@
 \section{Interpretacija instance reducibility v toposu}
 
+\begin{trditev}
+  Nad vsakim okolišem \(X\) je \(\lem\) idempotenten.
+\end{trditev}
+\begin{dokaz}
+  Naj bosta \(U₀,U₁ ⊆ X\). Potem definiramo \(V ≔ (U₀∪¬U₀)∩(U₁∪¬U₁)\),
+  za katerega očitno velja \(X ⊩ \lem\p{V} ⇒ \lem²\p{U₀, U₁}\).
+\end{dokaz}
+
+\begin{opomba}
+  Ta trditev velja že konstruktivno, ampak je dokaz zgoraj elegantnejši.
+\end{opomba}
+
 \begin{izrek}
-  Naj bo \(X\) lokalno \(T₆\). Potem nad \(X\) velja redukcija \(\lem ≤_I \lpo\).
+  Naj bo \(X\) lokalno \(T₆\). Potem nad \(X\) velja redukcija \(\lem ≤_I \lpoR\).
 \end{izrek}
 \begin{proof}
   Denimo, da je \(X\) lokalno \(T₆\).
@@ -13,13 +25,13 @@
   Dokažimo sedaj, da velja redukcija.
   Naj bo \(U' ⊆ X\) poljubna odprta množica in \(p ∈ Ω(U')\).
   Dokazati želimo, da obstaja tako pokritje \(U'\), da na njem lokalno
-  obstajajo realna števila, za katera \(\lpo\) pomeni, da (lokalno) velja
+  obstajajo realna števila, za katera \(\lpoR\) pomeni, da (lokalno) velja
   \(p ∨ ¬p\).
 
   Naj bo \(Uᵢ' ≔ U'∩Xᵢ\) pokritje \(U'\) in \(Aᵢ ≔ \c{p ∨ ¬p} ∩ Uᵢ\),
   in \(xᵢ : Uᵢ' → ℝ\) \(T₆\) separacijska funckija \(Aᵢ\) na \(Uᵢ'\).
 
-  Predpostavimo sedaj, da je \(Uᵢ ⊆ Uᵢ'\) in da velja \(Uᵢ ⊩ \lpo{\p{xᵢ}}\).
+  Predpostavimo sedaj, da je \(Uᵢ ⊆ Uᵢ'\) in da velja \(Uᵢ ⊩ \lpoR{\p{xᵢ}}\).
   % To pomeni, da obstaja pokritje \(\b{Uᵢⱼ} ∈ \cov{Uᵢ}\), tako da za vsak element
   To pomeni, da obstaja pokritje \(\cov[i]{U}{j}\), tako da za vsak element
   pokritja velja \(xᵢ\res{Uᵢⱼ} ≤ 0\) ali \(xᵢ\res{Uᵢⱼ} > 0\).
@@ -34,6 +46,29 @@
   celotnem \(Uᵢ\). Sledi, da je množica \(Aᵢ∩Uᵢ\) prazna,
   in velja \(Uᵢ ⊩ \lem{\p{p}}\).
 \end{proof}
+
+\begin{posledica}
+  Če je prostor \(X\) lokalno \(T₆\), velja \(\lpoR×\lpoR ≤_I \lpoR\).
+\end{posledica}
+
+% \begin{dokaz}
+%   Naj bo \(\cov X i\) \(T₆\) pokritje, \(U ⊆ X\), \(x,y : U → ℝ\)
+%   in \(Uᵢ = U∩Xᵢ \covsymb U\).
+
+%   Označimo \(A ≔ {\lpoR\p{x}}ᶜ\) in \(B ≔ {\lpoR\p{y}}ᶜ\) (pod \(Uᵢ\)).
+%   Ker je \(Uᵢ\) \(T₆\) obstaja funkcija \(fᵢ : Uᵢ → ℝ\), ki je \(0\) na
+%   \(A ∪ B\) in pozitivna sicer.
+
+%   Naj bo \(Vᵢ ⊆ Uᵢ\) poljuben in predpostavimo, da velja \(Vᵢ ⊩ \lpoR\p{fᵢ}\).
+%   Ker sta notranjosti množic \(A\) in \(B\) prazni, je prazna tudi notranjost \(A ∪ B\),
+%   torej velja \({fᵢ\res{Vᵢ} > 0}\).
+%   Ker je \(fᵢ\) pozitivna natanko na komplementu \(A ∪ B\) je torej \(Vᵢ\)
+%   podmnožica \(\c{A ∪ B} = \lpoR\p{x} ∩ \lpoR\p{y}\), kar je točno to, kar smo želeli.
+% \end{dokaz}
+
+\begin{posledica}
+  Nad lokalno \(T₆\) prostorom je \(\lpoR\) idempotenten.
+\end{posledica}
 
 % \begin{izrek}
 %   %Let \(X\) be a topological space. Then \(X\) is locally \(T₆\) if and only if the
@@ -180,7 +215,6 @@
 \begin{trditev}
   Nad vsakim okolišem \(X\) velja \(\lpo ≤ \lpoR\).
 \end{trditev}
-
 \begin{dokaz}
   Naj bo \(U ⊆ X\), \(α : U → C\). Definirajmo \(x ≔ φ∘α\), kjer
   \(φ : C → ℝ\) slika
@@ -190,12 +224,10 @@
   Potem je \(φ(r) = 0 ⇔ r = 0\) in velja \(\lpo\p{α} ⇔ \lpoR\p{x}\).
 \end{dokaz}
 
-
 \begin{lema}
   Vsaka preslikava \(f : C → I\) inducira preslikavo \(\floor f : C → C\),
   s predpisom \(\floor f(a) ≔ \sup\set{x ∈ C}{x < f(a)}\).
 \end{lema}
-
 \begin{dokaz}
   % dokaži da maksimum obstaja (da je zaprta).
   Ker je \(C\) kompakten, je predpis dobro definiran, torej moramo preveriti
@@ -239,7 +271,6 @@
 \begin{lema}
   Nad Cantorjevim prostorom je \(\lpo\) ekvivalenten \(\lpoR\).
 \end{lema}
-
 \begin{dokaz}
   Vemo, da velja \(\lpo ≤_I \lpoR\).
 
@@ -254,49 +285,6 @@
 
   Sledi torej, da je \(\lpo\p{α} = \lpoR\p{f}\).
 \end{dokaz}
-
-% \begin{izrek}
-%   Nad Cantorjevim prostorom je \(\lpo\) idempotenten.
-% \end{izrek}
-
-% \begin{dokaz}
-%   Ker je \(\lpoR ≤_I \lpo\) moramo pokazati zgolj \(\lpo×\lpo ≤_I \lpoR\).
-
-%   Naj bodo \(U ⊆ C\), \(α,β : U → C\) in \(Uᵢ = U\) trivialno pokritje.
-
-%   Označimo \(A ≔ \c{\lpo α}\) in \(B ≔ \c{\lpo β}\).
-%   Ker je \(C\) metrizabilen obstaja funkcija \(f : U → ℝ\), ki je \(0\) na
-%   \(A ∪ B\) in \(> 0\) sicer.
-
-%   Naj bo \(V ⊆ U\) poljuben in predpostavimo, da velja \(V ⊩ \lpoR f\).
-%   Ker je notranjost \(A\) in \(B\) prazna, je prazna tudi notranjost \(A ∪ B\),
-%   torej velja \(f\res V > 0\).
-%   Ker je \(f\) pozitivna natanko na komplementu \(A ∪ B\) je torej \(V\)
-%   podmnožica \(\c{A ∪ B} = \lpo α ∩ \lpo β\), kar je točno to, kar smo želeli.
-% \end{dokaz}
-
-\begin{izrek}
-  Če je prostor \(X\) lokalno \(T₆\), velja \(\lpoR×\lpoR ≤_I \lpoR\).
-\end{izrek}
-
-\begin{dokaz}
-  Naj bo \(\cov X i\) \(T₆\) pokritje, \(U ⊆ X\), \(x,y : U → ℝ\)
-  in \(Uᵢ = U∩Xᵢ \covsymb U\).
-
-  Označimo \(A ≔ {\lpoR\p{x}}ᶜ\) in \(B ≔ {\lpoR\p{y}}ᶜ\) (pod \(Uᵢ\)).
-  Ker je \(Uᵢ\) \(T₆\) obstaja funkcija \(fᵢ : Uᵢ → ℝ\), ki je \(0\) na
-  \(A ∪ B\) in pozitivna sicer.
-
-  Naj bo \(Vᵢ ⊆ Uᵢ\) poljuben in predpostavimo, da velja \(Vᵢ ⊩ \lpoR\p{fᵢ}\).
-  Ker sta notranjosti množic \(A\) in \(B\) prazni, je prazna tudi notranjost \(A ∪ B\),
-  torej velja \({fᵢ\res{Vᵢ} > 0}\).
-  Ker je \(fᵢ\) pozitivna natanko na komplementu \(A ∪ B\) je torej \(Vᵢ\)
-  podmnožica \(\c{A ∪ B} = \lpoR\p{x} ∩ \lpoR\p{y}\), kar je točno to, kar smo želeli.
-\end{dokaz}
-
-\begin{posledica}
-  Nad lokalno \(T₆\) prostorom je \(\lpoR\) idempotenten.
-\end{posledica}
 
 \begin{posledica}
   Nad Cantorjevim prostorom je \(\lpo\) idempotenten.
