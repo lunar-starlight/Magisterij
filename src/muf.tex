@@ -218,9 +218,9 @@
   \hspace{-\leftmargin}#1}
 \makeatother
 
-\newcommand{\for}[2]{\forall#1.\;#2}
-\newcommand{\exist}[2]{\exists#1.\;#2}
-\newcommand{\existi}[2]{\exists!#1.\;#2}
+\newcommand{\for}[2]{{\forall#1.}\;#2}
+\newcommand{\exist}[2]{{\exists#1.}\;#2}
+\newcommand{\existi}[2]{{\exists!#1.}\;#2}
 
 \renewcommand{\check}{ \(\checkmark\)}
 
@@ -232,6 +232,16 @@
 \newcommand{\lpo}{\instance{LPO}}
 \newcommand{\lpoR}{\instance{LPO}_ℝ}
 \newcommand{\iac}{\instance{IAC}}
+
+\usepackage{tabularx}
+\newcommand{\catdef}[3][]{
+  \newline
+  #1
+  \begin{tabularx}{\linewidth}{l X}
+  \textbf{\textup{objekti}}  & {#2}\\
+  \textbf{\textup{morfizmi}} & {#3}
+  \end{tabularx}
+}
 
 %%% Local Variables:
 %%% TeX-master: "main"

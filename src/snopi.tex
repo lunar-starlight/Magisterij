@@ -72,8 +72,8 @@ Preden lahko definiramo snope, moramo nekaj povedati o družinah prerezov.
 \subsection{Prezentacije snopov}
 
 \begin{definicija}
-  \emph{\(𝓛\)-vrednotena množica} oziroma \emph{\(𝓛\)-množica} je množica \(A\),
-  skupaj s preslikavo, ki jo pišemo \(⟦- = -⟧ : A×A → 𝓛\), tako da velja
+  \emph{\(ℒ\)-vrednotena množica} oziroma \emph{\(ℒ\)-množica} je množica \(A\),
+  skupaj s preslikavo, ki jo pišemo \(⟦- = -⟧ : A×A → ℒ\), tako da velja
   \begin{align*}
     ⟦ a = b ⟧ ≤ ⟦ b = a ⟧\\
     ⟦ a = b ⟧ ∧ ⟦ b = c ⟧ ≤ ⟦ a = c ⟧
@@ -82,18 +82,18 @@ Preden lahko definiramo snope, moramo nekaj povedati o družinah prerezov.
   jo pišemo z indeksom.
 \end{definicija}
 
-Če na okvir \(𝓛\) mislimo kot množico resničnostnih vrednosti, lahko rečemo, da
+Če na okvir \(ℒ\) mislimo kot množico resničnostnih vrednosti, lahko rečemo, da
 je to simetrična in tranzitivna relacija na množici \(A\).
-%TODO: jezik 𝓛-množic?
+% TODO: jezik ℒ-množic?
 
 \begin{definicija}
-  \emph{Morfizem med \(𝓛\)-množicama} \(A\) in \(B\) je preslikava \(⟦- = f(-)⟧ : B×A → 𝓛\),
+  \emph{Morfizem med \(ℒ\)-množicama} \(A\) in \(B\) je preslikava \(⟦- = f(-)⟧ : B×A → ℒ\),
   za katero velja
-  \begin{align}
-    ⟦b = b'⟧ ∧ ⟦b' = f(a)⟧ ≤ ⟦b = f(a)⟧    \tag{M1}\label{M1}\\
-    ⟦b = f(a)⟧ ∧ ⟦a = a'⟧ ≤ ⟦b = f(a')⟧    \tag{M2}\label{M2}\\
-    ⟦b = f(a)⟧ ∧ ⟦b' = f(a)⟧ ≤ ⟦b = b'⟧    \tag{M3}\label{M3}\\
-    ⟦a = a⟧ = ⋁_{b ∈ B} ⟦b = f(a)⟧         \tag{M4}\label{M4}
+  \begin{align}% TODO: change
+    &⟦b = b'⟧ ∧ ⟦b' = f(a)⟧ ≤ ⟦b = f(a)⟧    \tag{M1}\label{M1}\\
+    &⟦b = f(a)⟧ ∧ ⟦a = a'⟧ ≤ ⟦b = f(a')⟧    \tag{M2}\label{M2}\\
+    &⟦b = f(a)⟧ ∧ ⟦b' = f(a)⟧ ≤ ⟦b = b'⟧    \tag{M3}\label{M3}\\
+    &⟦a = a⟧ = ⋁_{b ∈ B} ⟦b = f(a)⟧         \tag{M4}\label{M4}
   \end{align}
   Na prvi dve pravili lahko gledamo kot na skladnost z relacijama na \(A\) in
   \(B\), na drugi dve pa kot na enoličnost in celovitost, zato pišemo morfizme
@@ -104,7 +104,7 @@ je to simetrična in tranzitivna relacija na množici \(A\).
   \[ ⟦c = gf(a)⟧ ≔ ⋁_{b ∈ B} ⟦c = g(b)⟧∧⟦b = f(a)⟧\text. \]
 \end{definicija}
 
-Skupaj z identiteto \(⟦- = -⟧_A\) tvorijo \(𝓛\)-množice kategorijo, ki jo označimo \(\cat{Set}(𝓛)\).
+Skupaj z identiteto \(⟦- = -⟧_A\), tvorijo \(ℒ\)-množice kategorijo, ki jo označimo \(\cat{Set}(ℒ)\).
 
 \begin{lema}
   Naj bosta \(f, g : A ↬ B\) morfizma.
@@ -129,7 +129,7 @@ brala kot "če je \(f(a) = b\) je potem tudi \(g(a) = b\)", kar pa ponavadi res
 pomeni, da sta funkciji \(f\) in \(g\) enaki.
 
 Na podoben način bi si želeli karakterizirati epimorfizme in monomorfizme, v
-kategoriji \(\cat{Set}(𝓛)\), in res jih lahko karakteriziramo kot surjekcije in
+kategoriji \(\cat{Set}(ℒ)\), in res jih lahko karakteriziramo kot surjekcije in
 injekcije v tem jeziku:
 
 \begin{trditev}
@@ -139,7 +139,7 @@ injekcije v tem jeziku:
   \[ \for{a,a' ∈ A, b ∈ B}{ ⟦b = f(a)⟧ ∧ ⟦b = f(a')⟧ ≤ ⟦a = a'⟧}\text. \]
 \end{trditev}
 \begin{dokaz}
-  %TODO: dokaz
+  % TODO: dokaz
   long and arduous
 \end{dokaz}
 
@@ -148,65 +148,181 @@ injekcije v tem jeziku:
 Z uporabo gornje karakterizacije monomorfizmov, lahko karakteriziramo tudi podobjekte.
 
 \begin{definicija}
-  \(𝓛\)-podmnožica \(A\) je preslikava \( ⟦- ∈ S⟧ : A → 𝓛 \), za katero velja
+  \(ℒ\)-podmnožica \(A\) je preslikava \( ⟦- ∈ S⟧ : A → ℒ \), za katero velja
   \begin{align*}
-    ⟦a ∈ S⟧ ≤ ⟦a = a⟧\\
-    ⟦a = a'⟧ ∧ ⟦a' ∈ S⟧ ≤ ⟦a ∈ S⟧
+    &⟦a ∈ S⟧ ≤ ⟦a = a⟧\\
+    &⟦a = a'⟧ ∧ ⟦a' ∈ S⟧ ≤ ⟦a ∈ S⟧
   \end{align*}
   t.~j. je skladna z relacijo na \(A\).
 \end{definicija}
 
 \begin{trditev}
-  Obstaja ekvivalenca med delnima ureditvima \(𝓛\)-podmnožic \(A\) in podobjektov \(A\).
+  Obstaja ekvivalenca med delnima ureditvima \(ℒ\)-podmnožic \(A\) in podobjektov \(A\).
 \end{trditev}
 \begin{proof}
-  Naj bo \(m : S ↬ A\) monomorfizem \(𝓛\)-množic.
-  Potem definiramo preslikavo \( ⟦- ∈ S⟧ : A → 𝓛 \) s predpisom
+  Naj bo \(m : S ↬ A\) monomorfizem \(ℒ\)-množic.
+  Potem definiramo preslikavo \( ⟦- ∈ S⟧ : A → ℒ \) s predpisom
   \(a ↦ ⋁_{s ∈ S} ⟦a = m(s)⟧\).
 
-  %TODO: complete proof
+  % TODO: complete proof
 \end{proof}
 
-\subsubsection{Polne \texorpdfstring{\(𝓛\)}{𝓛}-množice}
+\subsubsection{Polne \texorpdfstring{\(ℒ\)}{ℒ}-množice}
 
-Naj bo \(F\) snop nad \(𝓛\). Potem lahko za \(m ∈ F(U)\) definiramo enojec
-\(⟦a ∈ ⟨m⟩⟧ ≔ ⟦a = m⟧\), kjer je \(a ∈ F(V), V ∈ 𝓛\).
+Naj bo \(F\) snop nad \(ℒ\). Potem lahko za \(m ∈ F(U)\) definiramo enojec
+\(⟦a ∈ ⟨m⟩⟧ ≔ ⟦a = m⟧\), kjer je \(a ∈ F(V), V ∈ ℒ\).
 Na enojcih lahko definiramo tudi \(⟦⟨m⟩ = ⟨n⟩⟧ ≔ ⟦m = n⟧\).
 Snop \(F\) lahko sedaj rekonstruiramo iz njegovih enojcev.
-Podobno bomo storili za \(𝓛\)-množice.
+Podobno bomo storili za \(ℒ\)-množice.
 
 \begin{definicija}
-  \emph{Enojec} na \(𝓛\)-množici \(A\) je \(𝓛\)-podmnožica \(S\), za katero velja
-  \(\for{a,b ∈ S}{⟦a ∈ S⟧ ∧ ⟦b ∈ S⟧ ≤ ⟦a = b⟧} \).
+  \emph{Enojec} na \(ℒ\)-množici \(A\) je \(ℒ\)-podmnožica \(S\), za katero velja
+  \[ \for{a,b ∈ S}{⟦a ∈ S⟧ ∧ ⟦b ∈ S⟧ ≤ ⟦a = b⟧}\text. \]
+\end{definicija}
+
+\begin{opomba}
+  Če razpišemo definicijo \(ℒ\)-podmnožic, dobimo da so enojci preslikave, ki poleg
+  gornjemu pogoju zadoščajo zgolj še drugi pogoj \(ℒ\)-podmnožic, torej
+  \[ \for{a,b ∈ A}{⟦a = b⟧ ∧ ⟦b ∈ S⟧ ≤ ⟦a ∈ S⟧}\text. \]
+\end{opomba}
+
+\begin{lema}
+  Za vsak \(m ∈ A\) lahko tvorimo enojec \(σₘ : A → ℒ\), s predpisom
+  \(a ↦ ⟦a = m⟧\). \(ℒ\)-množico enojcev \(A\) z relacijo
+  \(⟦ρ = τ⟧ ≔ ⋁_{a ∈ A} ρ(a)∧τ(a)\) označimo \(σ(A)\).
+\end{lema}
+\begin{dokaz}
+  Preslikava \(σₘ\) je res enojec, saj velja
+  \begin{align*}
+    σₘ(a)∧σₘ(b) &= ⟦a = m⟧∧⟦m = b⟧ ≤ ⟦a = b⟧\text{ in}\\
+    ⟦a = b⟧∧σₘ(b) &= ⟦a = b⟧∧⟦b = m⟧ ≤ ⟦a = m⟧ = σₘ(a)\text.
+  \end{align*}
+
+  Relacija je očitno simetrična, tako da si poglejmo le tranzitivnost:
+  \begin{align*}
+    ⟦ρ = τ⟧∧⟦τ = θ⟧
+    &= \p{⋁_{a ∈ A} ρ(a)∧τ(a)} ∧ \p{⋁_{a ∈ A} τ(a)∧θ(a)}\\
+    &= ⋁_{a,a' ∈ A} ρ(a)∧τ(a)∧τ(a')∧θ(a')\\
+    &≤ ⋁_{a,a' ∈ A} ρ(a)∧⟦a = a'⟧∧θ(a')\\
+    &≤ ⋁_{a ∈ A} ρ(a)∧θ(a) = ⟦ρ = θ⟧\text,
+  \end{align*}
+  kjer v drugi enakosti uporabimo, da je \(ℒ\) okvir.
+\end{dokaz}
+
+Snopi so natanko določeni s svojimi enojci, tako da si poglejmo \(ℒ\)-množice,
+ki so prav tako določene s svojimi enojci.
+
+\begin{lema}
+  Za \(m,n ∈ A\) in \(τ ∈ σ(A)\) veljajo naslednje enakosti:
+  \begin{enumerate}
+  \item \(σ_τ(σₘ) = ⟦σₘ = τ⟧ = τ(m)\)
+  \item \(⟦σₘ = σₙ⟧ = ⟦m = n⟧\)
+  \item \(σₘ(n) = σₙ(m)\)
+  \item \(⟦m = n⟧ = ⋁_{τ ∈ σ(A)} τ(m)∧τ(n)\)
+  \end{enumerate}
+\end{lema}
+\begin{dokaz}
+  Prvi enačaj velja po definiciji, tako da razpišemo zgolj drugega:
+  \begin{equation*}
+    ⟦σₘ = τ⟧ = ⋁_{a ∈ A} σₘ(a)∧τ(a) = ⋁_{a ∈ A} ⟦m = a⟧∧τ(a) = τ(m)
+  \end{equation*}
+  Enakost v drugi točki sledi iz \(⟦σₘ = σₙ⟧ = σₙ(m) = ⟦m = n⟧\),
+  tretja točka pa sledi iz druge po simetrčnosti relacije.
+
+  Oglejmo si še zadnjo točko. Neenakost \(≥\) očitno sledi iz aksiomov enojcev,
+  tako da moramo preveriti zgolj drugo smer:
+  \begin{equation*}
+    ⟦m = n⟧ = ⟦m = n⟧∧⟦n = m⟧ = σₘ(n)∧σₙ(m) ≤ ⋁_{τ ∈ σ(A)} τ(m)∧τ(n)\qedhere
+  \end{equation*}
+\end{dokaz}
+
+\begin{definicija}
+  \(ℒ\)-množica \(A\) je \emph{polna}, kadar je preslikava \(m ↦ σₘ\) bijekcija.
+  Polno podkategorijo polnih \(ℒ\)-množic označimo s \(\cat{CSet}(ℒ)\).
 \end{definicija}
 
 \begin{lema}
-  Za vsak \(m ∈ A\) lahko tvorimo enojec \(σₘ : A → 𝓛\), s predpisom
-  \(a ↦ ⟦a = m⟧\). Množico enojcev \(A\) označimo s \(σ(A)\).
+  \(ℒ\)-množica \(σ(A)\) je polna.
 \end{lema}
-
-Snopi so natanko določeni s svojimi enojci, tako da si poglejmo \(𝓛\)-množice,
-ki so prav tako določene s svojimi enojci.
-
-\begin{definicija}
-  \(𝓛\)-množica \(A\) je \emph{polna}, kadar je preslikava \(m ↦ σₘ\) bijekcija.
-  Polno podkategorijo polnih \(𝓛\)-množic označimo s \(\cat{CSet}(𝓛)\).
-\end{definicija}
-
-\begin{izrek}
-  Množica \(σ(A)\), skupaj z relacijo \(⟨ρ, τ⟩ ≔ ⋁_{a ∈ A} ρ(a)∧τ(a)\)
-  je \(𝓛\)-množica, ki je izomorfna \(A\).
-\end{izrek}
 \begin{dokaz}
-  %TODO: dokaz
+  Pokazati moramo, da je preslikava \(τ ↦ σ_τ\) bijekcija.
+  % TODO: reword
+  Injektivnost:
+  Denimo, da velja \(σ_τ = σ_ρ\). Potem velja
+  \begin{equation*}
+    τ(a) = σ_τ(σₐ) = σ_ρ(σₐ) = ρ(a)\text,
+  \end{equation*}
+  torej je preslikava injektivna.
+
+  Naj bo sedaj \(Σ ∈ σσ(A)\). Definirajmo \(τ(a) ≔ Σ(σₐ)\).
+  To je enojec, saj velja
+  \begin{align*}
+    τ(a)∧τ(b) &= Σ(σₐ)∧Σ(σ_b) ≤ ⟦σₐ = σ_b⟧ = ⟦a = b⟧\text{ in}\\
+    ⟦a = b⟧∧τ(b) &= ⟦a = b⟧∧Σ(σ_b) = ⟦σₐ = σ_b⟧∧Σ(σ_b) ≤ Σ(σₐ) = τ(a)\text.
+  \end{align*}
+
+  Pokažimo še, da je \(Σ = σ_τ\).
+  \begin{align*}
+    σ_τ(ρ) &= ⟦τ = ρ⟧ = ⋁_{a ∈ A} τ(a)∧ρ(a) = ⋁_{a ∈ A} Σ(σₐ)∧⟦ρ = σₐ⟧ ≤ Σ(ρ)\\
+    Σ(ρ)
+    &= ⟦ρ = ρ⟧∧Σ(ρ) = ⋁_{a ∈ A} ρ(a)∧ρ(a)∧Σ(ρ)\\
+    &= ⋁_{a ∈ A} ρ(a)∧⟦ρ = σₐ⟧∧Σ(ρ) ≤ ⋁_{a ∈ A} ρ(a)∧Σ(σₐ)\\
+    &= ⋁_{a ∈ A} ρ(a)∧τ(a) = ⟦ρ = τ⟧ = σ_τ(ρ)
+  \end{align*}
+  Sledi, da za vsak enojec v \(σσ(A)\) obstaja enojec v \(σ(A)\), ki se vanj
+  slika, tako da je preslikava \(σ\) res bijekcija, in je \(σ(A)\) polna.
 \end{dokaz}
 
 \begin{trditev}
-  %TODO: morfizmi v polne 𝓛-množice so funkcije
+  Naj bo \(f : A ↬ B \) in \(B\) polna \(ℒ\)-množica. Tedaj obstaja preslikava
+  \(φ : A → B\), za katero velja \(⟦b = f(a)⟧ = ⟦b = φ(a)⟧\).
+  Poleg tega velja tudi \(⟦φ(a) = φ(a')⟧ ≥ ⟦a = a'⟧\), in enakost drži kadar je \(a = a'\).
 \end{trditev}
+\begin{dokaz}
+  Za vsak \(a ∈ A\) je \(b ↦ ⟦b = f(a)⟧\) enojec, torej po polnosti \(B\)
+  natanko določa en element \(B\), ki ga označimo \(φ(a)\). To definira
+  preslikavo \(φ\).
+\end{dokaz}
+\begin{posledica}
+  Kategorija polnih \(ℒ\)-množic je ekvivalentna kategoriji, katere
+  \catdef
+    {so polne \(ℒ\)-množice in}
+    {\(A → B\) so funkcije \(f : A → B\), ki zadoščajo sledečima pogojema:
+      \begin{itemize}
+      \item \(⟦a = a'⟧ ≤ ⟦f(a) = f(a')⟧\), in
+      \item \(⟦a = a⟧ = ⟦f(a) = f(a)⟧\).
+      \end{itemize}}
+    %\newline
+    %\begin{tabular}{l}
+    %  \(⟦a = a'⟧ ≤ ⟦f(a) = f(a')⟧\)\\
+    %  \(⟦a = a⟧ = ⟦f(a) = f(a)⟧\)
+    %\end{tabular}}
+\end{posledica}
 
 \begin{izrek}
-  Kategorija polnih \(𝓛\)-množic je ekvivalentna kategoriji snopov nad \(𝓛\).
+  \(ℒ\)-množica \(σ(A)\) je izomorfna \(A\).
+\end{izrek}
+\begin{dokaz}
+  Definirajmo preslikavi \(⟦τ = f(a)⟧ = τ(a)\) in \(⟦a = g(τ)⟧ = τ(a)\).
+  Očitno sta morfizma skladna z relacijama, tako da moramo preveriti zgolj
+  enoličnost in celovitost. Enoličnost sledi iz neenakosti
+  \(τ(a)∧ρ(a) ≤ ⟦τ = ρ⟧\) in \({τ(a)∧τ(b) ≤ ⟦a = b⟧}\).
+  Celovitost sledi iz enakosti
+  \[ ⟦a = a⟧ = ⟦σₐ = σₐ⟧ = ⋁_{τ ∈ σ(A)} ⟦σₐ = τ⟧ = ⋁_{τ ∈ σ(A)} τ(a)\text{ in} \]
+  \[ ⟦τ = τ⟧ = ⋁_{a ∈ A} τ(a)\text.\]
+
+  Preverimo, da sta oba kompozituma enaka identiteti:
+  \begin{align*}
+    ⟦τ = fg(ρ)⟧ &= ⋁_{a ∈ A} ⟦τ = f(a)⟧∧⟦a = g(ρ)⟧ = ⋁_{a ∈ A} τ(a)∧ρ(a) = ⟦τ = ρ⟧\\
+    ⟦a = gf(b)⟧ &= ⋁_{τ ∈ σ(A)} ⟦a = g(τ)⟧∧⟦τ = f(b)⟧ = ⋁_{τ ∈ σ(A)} τ(a)∧τ(b) = ⟦a = b⟧\qedhere
+  \end{align*}
+\end{dokaz}
+\begin{posledica}
+  Kategorija \(ℒ\)-množic je ekvivalentna kategoriji polnih \(ℒ\)-podmnožic.
+\end{posledica}
+
+\begin{izrek}
+  Kategorija polnih \(ℒ\)-množic je ekvivalentna kategoriji snopov nad \(ℒ\).
 \end{izrek}
 
 
