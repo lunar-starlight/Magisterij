@@ -299,7 +299,7 @@ ki so prav tako določene s svojimi enojci.
     %\end{tabular}}
 \end{posledica}
 
-\begin{izrek}
+\begin{izrek}\label{th:sigmaiso}
   \(ℒ\)-množica \(σ(A)\) je izomorfna \(A\).
 \end{izrek}
 \begin{dokaz}
@@ -321,11 +321,130 @@ ki so prav tako določene s svojimi enojci.
   Kategorija \(ℒ\)-množic je ekvivalentna kategoriji polnih \(ℒ\)-podmnožic.
 \end{posledica}
 
+\begin{lema}
+  Polne \(ℒ\)-množice imajo operator zožitve, t.~j. za vsak \(m ∈ A\) in
+  \(U ∈ ℒ\) obstaja \(m\res U ∈ A\), tako da velja \(⟦a = m\res U⟧ = ⟦a = m⟧∧U\).
+  V posebnem torej tudi velja \(‖m\res U‖ = ‖m‖∧U\) in \(m\res U \res V = m\res{U∧V}\).
+\end{lema}
+\begin{dokaz}
+  Tvorimo kar \(τ(a) = ⟦a = m⟧∧U\). To je enojec, saj
+  \begin{align*}
+    τ(a)∧τ(b) &= ⟦a = m⟧∧U∧⟦b = m⟧∧U ≤ ⟦a = b⟧∧U\text{ in}\\
+    ⟦a = b⟧∧τ(b) &= ⟦a = b⟧∧⟦b = m⟧∧U ≤ ⟦a = m⟧∧U = τ(a)\text.
+  \end{align*}
+  Ker je \(A\) polna, ta ustreza nekemu elementu, ki mu lahko rečemo
+  \(m\res U\), zanj pa očitno velja željena enakost
+  \begin{align*}
+    ⟦a = m\res U⟧ = ⟦σₐ = τ⟧ = τ(a) = ⟦a = m⟧∧U\text.\qedhere
+  \end{align*}
+\end{dokaz}
+\begin{posledica}
+  Za \(m ∈ A\) in \(U ∈ ℒ\) velja \(σₘ\res U(n) = σₘ(n)∧U\).
+\end{posledica}
+\begin{posledica}
+  Za \(τ ∈ σ(A)\) in \(U ∈ ℒ\) velja \(σ_τ\res U = σ_{τ\res U}\).
+\end{posledica}
+
+\begin{lema}
+  Polne \(ℒ\)-množice imajo lepljenje skladnih družin, t.~j. za vsako družino
+  \(mᵢ ∈ A\), za katero velja \(mᵢ\res{Uⱼ} = mⱼ\res{Uᵢ}\), kjer je \(Uᵢ ≔ ‖mᵢ‖\),
+  obstaja tak \(m ∈ A\), da je \(m\res{Uᵢ} = mᵢ\).
+  %\(mᵢ ∈ A\) za katero velja \(⟦mᵢ = mⱼ⟧ = ‖mᵢ‖∧‖mⱼ‖\) obstaja nek \(m ∈ A\),
+  %tako da je \(⟦m = mᵢ⟧ = ‖mᵢ‖\) in \(‖m‖ = ⋁ᵢ‖mᵢ‖\).
+\end{lema}
+\begin{dokaz}
+  Naj bodo \(mᵢ\) taki in tvorimo preslikavo \(τ(a) = ⋁ᵢ⟦a = mᵢ⟧\).
+  Iz skladnosti družine sledi, da velja
+  \[ ⟦a = mᵢ⟧∧Uⱼ = ⟦a = mᵢ\res{Uⱼ}⟧ = ⟦a = mⱼ\res{Uᵢ}⟧ = ⟦a = mⱼ⟧∧Uᵢ\text. \]
+  
+  Preslikava \(τ\) je enojec, saj velja
+  \begin{align*}
+    ⟦a = b⟧∧τ(b)
+    &= ⋁ᵢ⟦a = b⟧∧⟦b = mᵢ⟧ ≤ ⋁ᵢ⟦a = mᵢ⟧ = τ(a)\text{ in}\\
+    τ(a)∧τ(b)
+    &= ⋁ᵢⱼ⟦a = mᵢ⟧∧⟦b = mⱼ⟧\\
+    &= ⋁ᵢⱼ⟦a = mᵢ⟧∧Uᵢ∧⟦b = mⱼ⟧∧Uⱼ\\
+    &= ⋁ᵢⱼ⟦a = mᵢ⟧∧Uⱼ∧⟦b = mⱼ⟧∧Uᵢ\\
+    &= ⋁ᵢ⟦a = mᵢ⟧∧⟦b = mᵢ⟧ ≤ ⟦a = b⟧\text,
+  \end{align*}
+  torej ustreza nekemu \(m ∈ A\). Po zgornji lemi velja
+  \[ ⟦mᵢ = m\res{Uᵢ}⟧ = ⟦mᵢ = m⟧∧Uᵢ = σₘ(mᵢ)∧Uᵢ = ⋁ⱼ⟦mᵢ = mⱼ⟧∧Uᵢ = Uᵢ\text, \]
+  torej se ujemata na celotnem razponu in sta enaka.
+
+  Razpon \(m\) je \(‖m‖ = σₘ(m) = ⋁ᵢ⟦m = mᵢ⟧ = ⋁ᵢUᵢ\), kar mora veljati za vsako
+  amalgamacijo družine \(mᵢ\), tako da je \(m\) tudi enoličen.
+\end{dokaz}
+
+\begin{konstrukcija}
+  Naj bo \(A\) \(ℒ\)-množica. Potem ji lahko priredimo snop
+  \[ Θ(A)(U) = \set{τ ∈ σ(A)}{‖τ‖ = U}\text. \]
+  Morfizmu \(f : A ↬ B\) \(ℒ\)-množic priredimo preslikavo
+  \[ Θ(f)_U(τ)(b) ≔ ρ(b) = ⋁_{a ∈ A}⟦b = f(a)⟧∧τ(a)\text. \]
+  To je res enojec na \(B\), saj velja
+  \begin{align*}
+    ⟦b' = b⟧∧ρ(b)
+    &= ⋁_{a ∈ A}⟦b' = b⟧∧⟦b = f(a)⟧ ≤ ⋁_{a ∈ A}⟦b' = f(a)⟧ = ρ(b')\text{ in}\\
+    ρ(b)∧ρ(b')
+    &= ⋁_{a,a' ∈ A} ⟦b = f(a)⟧∧τ(a)∧τ(a')∧⟦b' = f(a')⟧\\
+    &≤ ⋁_{a,a' ∈ A} ⟦b = f(a)⟧∧⟦a = a'⟧∧⟦b' = f(a')⟧\\
+    &≤ ⋁_{a' ∈ A} ⟦b = f(a')⟧∧⟦b' = f(a')⟧ ≤ ⟦b = b'⟧\text.
+  \end{align*}
+  To definira funktor med kategorijama \(\cat{Set}(ℒ)\) in \(\cat{Sh}(ℒ)\).
+\end{konstrukcija}
+
+\begin{konstrukcija}
+  Naj bo \(P\) predsnop. Potem mu lahko priredimo \(ℒ\)-množico
+  \(Γ(P) ≔ ∑_{U ∈ ℒ} P(U)\) z relacijo
+  \[ ⟦\p{U, f} = \p{V, g}⟧ ≔ ⋁\set{W ∈ ℒ}{W≤U∧V \text{ in } f\res W = g\res W}\text. \]
+  % TODO: dokaži polnost
+  Morfizmu predsnopov \(α : P ⇒ Q\) priredimo preslikavo \(Γ(α)(U, f) ≔ α_U(f)\).
+  To definira funktor med kategorijama \(\cat{PSh}(ℒ)\) in \(\cat{Set}(ℒ)\).
+\end{konstrukcija}
+
+\begin{trditev}
+  Funktor \(Γ\) je levi adjunkt funktorju \(Θ\).
+\end{trditev}
+\begin{dokaz}
+  % Naj bo \(φ : Θ(A) → P\) morfizem predsnopov. Definirati želimo morfizem
+  % \mbox{\(ℒ\)-množic} \(A ↬ Γ(P)\).
+  % Elementoma \(a ∈ A\) z \(‖a‖ = U\) in \(\p{V, f} ∈ Γ(P)\) lahko priredimo
+  % \(⟦f = φ_U(σₐ)⟧\).
+  % To je očitno morfizem \(ℒ\)-množic.
+  
+  % Obratno, naj bo \(φ : A ↬ Γ(P)\) morfizem \(ℒ\)-množic.
+  % Tedaj elementu \(τ ∈ Θ(A)(U)\) priredimo element \(\).
+  % To spet očitno definira morfizem snopov, tako da sta funktorja \(Θ\) in \(Γ\)
+  % res adjungirana in definirata ekvivalenco željenih kategorij.
+  % % TODO: correct this detail
+  % Naj bo \(φ : P ⇒ Θ(A)\). Potem \(⟦a = f\p{U, p}⟧ ≔ φ_U(p)(a)\) definira
+  % morfizem \(ℒ\)-množic \(Γ(P) ↬ A\), saj velja \(φ_U(p)(a) = ⟦σₐ = φ_U(p)⟧\).
+ 
+  % Obratno, naj bo \(f : Γ(P) ↬ A\). Morfizem predsnopov \(φ : P ⇒ Θ(A)\)
+  % konstruiramo kot \(φ_U(p) ≔ ⟦- = f\p{U, p}⟧\), ki je enojec na \(A\).
+  % Razpon tega enojca je pa \(⋁_{a ∈ A} ⟦a = f\p{U, p}⟧ = ‖\p{U,p}‖ = U\).
+
+  % Ti prireditvi sta si očitno inverzni, tako da definirata adjunkcijo \(Γ ⊣ Θ\).
+  Koenota adjunkcije je izomorfizem iz izreka \ref{th:sigmaiso},
+  enota pa slika \(p ∈ P(U)\) v \(σ_{(U,p)}\). To je naravna
+  transformacija, saj \(σ\) \quot{komutira} z zožitvami.
+\end{dokaz}
+
 \begin{izrek}
   Kategorija polnih \(ℒ\)-množic je ekvivalentna kategoriji snopov nad \(ℒ\).
 \end{izrek}
+\begin{dokaz}
+  Če funktorja \(Γ\) in \(Θ\) zožimo na dani kategoriji, sta si spet
+  adjungirana, tako da moramo zgolj pokazati, da sta enota in koenota
+  izomorfizma.
 
+  Koenota je že izomorfizem po \ref{th:sigmaiso}, tako da moramo preveriti zgolj
+  enoto.
 
+  Naj bo \(F\) snop. Potem \(η_U : F(U) → ΘΓ(F)(U)\) slika \(f ↦ σ_{(U,f)}\).
+  Ker je \(F\) snop je \(ℒ\)-množica \(Γ(F)\) že polna, tako da so elementi
+  \(ΘΓ(F)(U)\) že natanko elementi \(Γ(F)\) z razponom \(U\), ki so pa natanko
+  elementi \(F(U)\), torej je tudi enota izomorfizem.
+\end{dokaz}
 
 %%% Local Variables:
 %%% TeX-master: "main"
