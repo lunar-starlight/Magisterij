@@ -119,8 +119,7 @@ Skupaj z identiteto \(⟦- = -⟧_A\), tvorijo \(ℒ\)-množice kategorijo, ki j
     ⟦b = g(a)⟧
     &= ⟦b = g(a)⟧ ∧ ⟦a = a⟧ = ⟦b = g(a)⟧ ∧ \bigvee_{b' ∈ B} ⟦b' = f(a)⟧\\
     &= \bigvee_{b' ∈ B} ⟦b = g(a)⟧ ∧ ⟦b' = f(a)⟧ ∧ ⟦b' = g(a)⟧\\
-    &≤ \bigvee_{b' ∈ B} ⟦b = b'⟧ ∧ ⟦b' = f(a)⟧\\
-    &= ⟦b = 1_Bf(a)⟧ = ⟦b = f(a)⟧.\qedhere
+    &≤ \bigvee_{b' ∈ B} ⟦b = b'⟧ ∧ ⟦b' = f(a)⟧ ≤ ⟦b = f(a)⟧.\qedhere
   \end{align*}
 \end{dokaz}
 
@@ -135,7 +134,7 @@ injekcije v tem jeziku:
 \begin{trditev}
   Morfizem \(f : A ↬ B\) je epimorfizem, če velja
   \[ \for{b ∈ B}{ ⟦b = b⟧ = ⋁_{a ∈ A} ⟦b = f(a)⟧ }\text, \]
-  in monomorfizem, če velja
+  in monomorfizem, če velja % TODO: A kvantificiram?
   \[ \for{a,a' ∈ A, b ∈ B}{ ⟦b = f(a)⟧ ∧ ⟦b = f(a')⟧ ≤ ⟦a = a'⟧}\text. \]
 \end{trditev}
 \begin{dokaz}
@@ -223,7 +222,7 @@ ki so prav tako določene s svojimi enojci.
 \end{lema}
 \begin{dokaz}
   Prvi enačaj velja po definiciji, tako da razpišemo zgolj drugega:
-  \begin{equation*}
+  \begin{equation*}% TODO: zadnja enakost lema?
     ⟦σₘ = τ⟧ = ⋁_{a ∈ A} σₘ(a)∧τ(a) = ⋁_{a ∈ A} ⟦m = a⟧∧τ(a) = τ(m)
   \end{equation*}
   Enakost v drugi točki sledi iz \(⟦σₘ = σₙ⟧ = σₙ(m) = ⟦m = n⟧\),
@@ -240,7 +239,9 @@ ki so prav tako določene s svojimi enojci.
   \(ℒ\)-množica \(A\) je \emph{polna}, kadar je preslikava \(m ↦ σₘ\) bijekcija.
   Polno podkategorijo polnih \(ℒ\)-množic označimo s \(\cat{CSet}(ℒ)\).
 \end{definicija}
-
+% NOTE: σ definira idempotentno monado. To mi avtomatsko da naslednjih par
+% rezultatov (specifično do izreka da so polne ℒ-množice refleksivna
+% podkategorija).
 \begin{lema}
   \(ℒ\)-množica \(σ(A)\) je polna.
 \end{lema}
@@ -253,7 +254,7 @@ ki so prav tako določene s svojimi enojci.
     τ(a) = σ_τ(σₐ) = σ_ρ(σₐ) = ρ(a)\text,
   \end{equation*}
   torej je preslikava injektivna.
-
+  % NOTE: to je inverz enote (in je množenje).
   Naj bo sedaj \(Σ ∈ σσ(A)\). Definirajmo \(τ(a) ≔ Σ(σₐ)\).
   To je enojec, saj velja
   \begin{align*}
@@ -264,6 +265,7 @@ ki so prav tako določene s svojimi enojci.
   Pokažimo še, da je \(Σ = σ_τ\).
   \begin{align*}
     σ_τ(ρ) &= ⟦τ = ρ⟧ = ⋁_{a ∈ A} τ(a)∧ρ(a) = ⋁_{a ∈ A} Σ(σₐ)∧⟦ρ = σₐ⟧ ≤ Σ(ρ)\\
+    % NOTE: Lema nam da že enakost zgoraj?
     Σ(ρ)
     &= ⟦ρ = ρ⟧∧Σ(ρ) = ⋁_{a ∈ A} ρ(a)∧ρ(a)∧Σ(ρ)\\
     &= ⋁_{a ∈ A} ρ(a)∧⟦ρ = σₐ⟧∧Σ(ρ) ≤ ⋁_{a ∈ A} ρ(a)∧Σ(σₐ)\\
@@ -282,6 +284,7 @@ ki so prav tako določene s svojimi enojci.
   Za vsak \(a ∈ A\) je \(b ↦ ⟦b = f(a)⟧\) enojec, torej po polnosti \(B\)
   natanko določa en element \(B\), ki ga označimo \(φ(a)\). To definira
   preslikavo \(φ\).
+  % TODO: neenakosti?
 \end{dokaz}
 \begin{posledica}
   Kategorija polnih \(ℒ\)-množic je ekvivalentna kategoriji, katere
@@ -303,6 +306,8 @@ ki so prav tako določene s svojimi enojci.
   \(ℒ\)-množica \(σ(A)\) je izomorfna \(A\).
 \end{izrek}
 \begin{dokaz}
+  % NOTE: f je enota monade σ, če je g njen inverz, kaj je njena povezava z
+  % množenjem? Plus lahko spustimo pol dokazov, da je f morfizem.
   Definirajmo preslikavi \(⟦τ = f(a)⟧ = τ(a)\) in \(⟦a = g(τ)⟧ = τ(a)\).
   Očitno sta morfizma skladna z relacijama, tako da moramo preveriti zgolj
   enoličnost in celovitost. Enoličnost sledi iz neenakosti
@@ -318,44 +323,44 @@ ki so prav tako določene s svojimi enojci.
   \end{align*}
 \end{dokaz}
 \begin{posledica}
-  Kategorija \(ℒ\)-množic je ekvivalentna kategoriji polnih \(ℒ\)-podmnožic.
+  Kategorija \(ℒ\)-množic je ekvivalentna kategoriji polnih \(ℒ\)-množic.
 \end{posledica}
 
 \begin{lema}
   Polne \(ℒ\)-množice imajo operator zožitve, t.~j. za vsak \(m ∈ A\) in
-  \(U ∈ ℒ\) obstaja \(m\res U ∈ A\), tako da velja \(⟦a = m\res U⟧ = ⟦a = m⟧∧U\).
-  V posebnem torej tudi velja \(‖m\res U‖ = ‖m‖∧U\) in \(m\res U \res V = m\res{U∧V}\).
+  \(U ∈ ℒ\) obstaja \(m{\res U} ∈ A\), tako da velja \(⟦a = m{\res U}⟧ = ⟦a = m⟧∧U\).
+  V posebnem torej tudi velja \(‖m{\res U}‖ = ‖m‖∧U\) in \(m{\res U\res V} = m{\res{U∧V}}\).
 \end{lema}
 \begin{dokaz}
   Tvorimo kar \(τ(a) = ⟦a = m⟧∧U\). To je enojec, saj
   \begin{align*}
-    τ(a)∧τ(b) &= ⟦a = m⟧∧U∧⟦b = m⟧∧U ≤ ⟦a = b⟧∧U\text{ in}\\
+    τ(a)∧τ(b) &= ⟦a = m⟧∧U∧⟦b = m⟧∧U ≤ ⟦a = b⟧\text{ in}\\
     ⟦a = b⟧∧τ(b) &= ⟦a = b⟧∧⟦b = m⟧∧U ≤ ⟦a = m⟧∧U = τ(a)\text.
   \end{align*}
   Ker je \(A\) polna, ta ustreza nekemu elementu, ki mu lahko rečemo
-  \(m\res U\), zanj pa očitno velja željena enakost
-  \begin{align*}
-    ⟦a = m\res U⟧ = ⟦σₐ = τ⟧ = τ(a) = ⟦a = m⟧∧U\text.\qedhere
-  \end{align*}
+  \(m{\res U}\), zanj pa očitno velja željena enakost
+  \begin{equation*}
+    ⟦a = m{\res U}⟧ = ⟦σₐ = τ⟧ = τ(a) = ⟦a = m⟧∧U\text. \qedhere
+  \end{equation*}
 \end{dokaz}
 \begin{posledica}
-  Za \(m ∈ A\) in \(U ∈ ℒ\) velja \(σₘ\res U(n) = σₘ(n)∧U\).
+  Za \(m ∈ A\) in \(U ∈ ℒ\) velja \(σₘ{\res U}(n) = σₘ(n)∧U\).
 \end{posledica}
 \begin{posledica}
-  Za \(τ ∈ σ(A)\) in \(U ∈ ℒ\) velja \(σ_τ\res U = σ_{τ\res U}\).
+  Za \(τ ∈ σ(A)\) in \(U ∈ ℒ\) velja \(σ_τ{\res U} = σ_{τ{\res U}}\).
 \end{posledica}
 
 \begin{lema}
   Polne \(ℒ\)-množice imajo lepljenje skladnih družin, t.~j. za vsako družino
-  \(mᵢ ∈ A\), za katero velja \(mᵢ\res{Uⱼ} = mⱼ\res{Uᵢ}\), kjer je \(Uᵢ ≔ ‖mᵢ‖\),
-  obstaja tak \(m ∈ A\), da je \(m\res{Uᵢ} = mᵢ\).
+  \(mᵢ ∈ A\), za katero velja \(mᵢ{\res{Uⱼ}} = mⱼ{\res{Uᵢ}}\), kjer je \(Uᵢ ≔ ‖mᵢ‖\),
+  obstaja tak \(m ∈ A\), da je \(m{\res{Uᵢ}} = mᵢ\).
   %\(mᵢ ∈ A\) za katero velja \(⟦mᵢ = mⱼ⟧ = ‖mᵢ‖∧‖mⱼ‖\) obstaja nek \(m ∈ A\),
   %tako da je \(⟦m = mᵢ⟧ = ‖mᵢ‖\) in \(‖m‖ = ⋁ᵢ‖mᵢ‖\).
 \end{lema}
 \begin{dokaz}
   Naj bodo \(mᵢ\) taki in tvorimo preslikavo \(τ(a) = ⋁ᵢ⟦a = mᵢ⟧\).
   Iz skladnosti družine sledi, da velja
-  \[ ⟦a = mᵢ⟧∧Uⱼ = ⟦a = mᵢ\res{Uⱼ}⟧ = ⟦a = mⱼ\res{Uᵢ}⟧ = ⟦a = mⱼ⟧∧Uᵢ\text. \]
+  \[ ⟦a = mᵢ⟧∧Uⱼ = ⟦a = mᵢ{\res{Uⱼ}}⟧ = ⟦a = mⱼ{\res{Uᵢ}}⟧ = ⟦a = mⱼ⟧∧Uᵢ\text. \]
   
   Preslikava \(τ\) je enojec, saj velja
   \begin{align*}
@@ -368,7 +373,7 @@ ki so prav tako določene s svojimi enojci.
     &= ⋁ᵢ⟦a = mᵢ⟧∧⟦b = mᵢ⟧ ≤ ⟦a = b⟧\text,
   \end{align*}
   torej ustreza nekemu \(m ∈ A\). Po zgornji lemi velja
-  \[ ⟦mᵢ = m\res{Uᵢ}⟧ = ⟦mᵢ = m⟧∧Uᵢ = σₘ(mᵢ)∧Uᵢ = ⋁ⱼ⟦mᵢ = mⱼ⟧∧Uᵢ = Uᵢ\text, \]
+  \[ ⟦mᵢ = m{\res{Uᵢ}}⟧ = ⟦mᵢ = m⟧∧Uᵢ = σₘ(mᵢ)∧Uᵢ = ⋁ⱼ⟦mᵢ = mⱼ⟧∧Uᵢ = Uᵢ\text, \]
   torej se ujemata na celotnem razponu in sta enaka.
 
   Razpon \(m\) je \(‖m‖ = σₘ(m) = ⋁ᵢ⟦m = mᵢ⟧ = ⋁ᵢUᵢ\), kar mora veljati za vsako
@@ -379,6 +384,8 @@ ki so prav tako določene s svojimi enojci.
   Naj bo \(A\) \(ℒ\)-množica. Potem ji lahko priredimo snop
   \[ Θ(A)(U) = \set{τ ∈ σ(A)}{‖τ‖ = U}\text. \]
   Morfizmu \(f : A ↬ B\) \(ℒ\)-množic priredimo preslikavo
+  % NOTE: to je morphism action σ, torej Θ je I∘σ, kjer I predstavlja renotation
+  % polne ℒ-množice v snop
   \[ Θ(f)_U(τ)(b) ≔ ρ(b) = ⋁_{a ∈ A}⟦b = f(a)⟧∧τ(a)\text. \]
   To je res enojec na \(B\), saj velja
   \begin{align*}
@@ -395,6 +402,8 @@ ki so prav tako določene s svojimi enojci.
 \begin{konstrukcija}
   Naj bo \(P\) predsnop. Potem mu lahko priredimo \(ℒ\)-množico
   \(Γ(P) ≔ ∑_{U ∈ ℒ} P(U)\) z relacijo
+  % NOTE: ta je pa zgolj renotation predsnopa v ℒ-množico, tako da je od
+  % adjunkcije samo σ.
   \[ ⟦\p{U, f} = \p{V, g}⟧ ≔ ⋁\set{W ∈ ℒ}{W≤U∧V \text{ in } f\res W = g\res W}\text. \]
   % TODO: dokaži polnost
   Morfizmu predsnopov \(α : P ⇒ Q\) priredimo preslikavo \(Γ(α)(U, f) ≔ α_U(f)\).
