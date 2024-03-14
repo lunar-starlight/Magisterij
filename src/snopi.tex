@@ -152,7 +152,7 @@ Z uporabo gornje karakterizacije monomorfizmov, lahko karakteriziramo tudi podob
     &⟦a ∈ S⟧ ≤ ⟦a = a⟧\\
     &⟦a = a'⟧ ∧ ⟦a' ∈ S⟧ ≤ ⟦a ∈ S⟧
   \end{align*}
-  t.~j. je skladna z relacijo na \(A\).
+  t.~j. je skladna z relacijo na \(A\). Pišemo tudi \(S ⊑ A\).
 \end{definicija}
 
 \begin{trditev}
@@ -166,8 +166,13 @@ Z uporabo gornje karakterizacije monomorfizmov, lahko karakteriziramo tudi podob
   % TODO: complete proof
 \end{proof}
 
+\begin{lema}
+  Za \(ℒ\)-podmnožico \(S ⊑ A\) velja \(⟦a = a'⟧∧⟦a' ∈ S⟧ = ⟦a ∈ S⟧∧⟦a = a'⟧\).
+\end{lema}
+
 \subsubsection{Polne \texorpdfstring{\(ℒ\)}{ℒ}-množice}
 
+% TODO: reword
 Naj bo \(F\) snop nad \(ℒ\). Potem lahko za \(m ∈ F(U)\) definiramo enojec
 \(⟦a ∈ ⟨m⟩⟧ ≔ ⟦a = m⟧\), kjer je \(a ∈ F(V), V ∈ ℒ\).
 Na enojcih lahko definiramo tudi \(⟦⟨m⟩ = ⟨n⟩⟧ ≔ ⟦m = n⟧\).
@@ -175,7 +180,7 @@ Snop \(F\) lahko sedaj rekonstruiramo iz njegovih enojcev.
 Podobno bomo storili za \(ℒ\)-množice.
 
 \begin{definicija}
-  \emph{Enojec} na \(ℒ\)-množici \(A\) je \(ℒ\)-podmnožica \(S\), za katero velja
+  \emph{Enojec} na \(ℒ\)-množici \(A\) je \(ℒ\)-podmnožica \(S ⊑ A\), za katero velja
   \[ \for{a,b ∈ S}{⟦a ∈ S⟧ ∧ ⟦b ∈ S⟧ ≤ ⟦a = b⟧}\text. \]
 \end{definicija}
 
@@ -211,11 +216,11 @@ Podobno bomo storili za \(ℒ\)-množice.
 Snopi so natanko določeni s svojimi enojci, tako da si poglejmo \(ℒ\)-množice,
 ki so prav tako določene s svojimi enojci.
 
-\begin{lema}
+\begin{lema}\label{lem:image}
   Vsak \(ℒ\)-morfizem \(f : A ↬ B\), \(a ∈ A\), in \(b ∈ B\) inducirajo
   \begin{enumerate}
-  \item \(ℒ\)-podmnožico \(f⁻¹(b) ⊆ A\), definirano z \(x ↦ ⟦b = f(x)⟧\) in
-  \item enojec \(f(a) ⊆ B\), definiran z \(y ↦ ⟦y = f(a)⟧\).
+  \item \(ℒ\)-podmnožico \(f⁻¹(b) ⊑ A\), definirano z \(x ↦ ⟦b = f(x)⟧\) in
+  \item enojec \(f(a) ⊑ B\), definiran z \(y ↦ ⟦y = f(a)⟧\).
   \end{enumerate}
 \end{lema}
 \begin{dokaz}
@@ -229,8 +234,8 @@ ki so prav tako določene s svojimi enojci.
   skladnosti morfizma z relacijo na ustrezni \(ℒ\)-množici.
 \end{dokaz}
 
-\begin{lema}
-  Za \(ℒ\)-podmnožico \(φ : A → ℒ\) velja \(φ(a) = ⋁_{x ∈ A} φ(x)∧⟦x = a⟧\).
+\begin{lema}\label{lem:subst}
+  Za \(ℒ\)-podmnožico \(φ : A → ℒ\) velja \({φ(a) = ⋁_{x ∈ A} φ(x)∧⟦x = a⟧}\).
   V posebnem za \(ℒ\)-morfizem \(f : A ↬ B\) velja \(⟦b = f(a)⟧ = ⋁_{x ∈ A} ⟦b = f(x)⟧∧⟦x = a⟧\).
 \end{lema}
 \begin{dokaz}
@@ -238,7 +243,7 @@ ki so prav tako določene s svojimi enojci.
   obratna neenakost pa sledi iz drugega aksioma \(ℒ\)-podmnožic.
 \end{dokaz}
 
-\begin{lema}
+\begin{lema}\label{lem:sigmaunit}
   Za \(m,n ∈ A\) in \(τ ∈ σ(A)\) veljajo naslednje enakosti:
   \begin{enumerate}
   \item \(σ_τ(σₘ) = ⟦σₘ = τ⟧ = τ(m)\)
@@ -249,11 +254,13 @@ ki so prav tako določene s svojimi enojci.
 \end{lema}
 \begin{dokaz}
   Prvi enačaj velja po definiciji, tako da razpišemo zgolj drugega:
-  \begin{equation*}% TODO: zadnja enakost lema?
-    ⟦σₘ = τ⟧ = ⋁_{a ∈ A} σₘ(a)∧τ(a) = ⋁_{a ∈ A} ⟦m = a⟧∧τ(a) = τ(m)
+  \begin{equation*}
+    ⟦σₘ = τ⟧ = ⋁_{a ∈ A} σₘ(a)∧τ(a) = ⋁_{a ∈ A} ⟦m = a⟧∧τ(a) = τ(m)\text,
   \end{equation*}
+  kjer smo za zadnjo enakost uporabili gornjo lemo na \(ℒ\)-podmnožici \(τ\).
+
   Enakost v drugi točki sledi iz \(⟦σₘ = σₙ⟧ = σₙ(m) = ⟦m = n⟧\),
-  tretja točka pa sledi iz druge po simetrčnosti relacije.
+  tretja točka pa sledi po definiciji iz simetrčnosti relacije.
 
   Oglejmo si še zadnjo točko. Neenakost \(≥\) očitno sledi iz aksiomov enojcev,
   tako da moramo preveriti zgolj drugo smer:
@@ -291,20 +298,18 @@ ki so prav tako določene s svojimi enojci.
 
   Pokažimo še, da je \(Σ = σ_τ\).
   \begin{align*}
-    σ_τ(ρ) &= ⟦τ = ρ⟧ = ⋁_{a ∈ A} τ(a)∧ρ(a) = ⋁_{a ∈ A} Σ(σₐ)∧⟦ρ = σₐ⟧ ≤ Σ(ρ)\\
-    % NOTE: Lema nam da že enakost zgoraj?
-    Σ(ρ)
-    &= ⟦ρ = ρ⟧∧Σ(ρ) = ⋁_{a ∈ A} ρ(a)∧ρ(a)∧Σ(ρ)\\
-    &= ⋁_{a ∈ A} ρ(a)∧⟦ρ = σₐ⟧∧Σ(ρ) ≤ ⋁_{a ∈ A} ρ(a)∧Σ(σₐ)\\
-    &= ⋁_{a ∈ A} ρ(a)∧τ(a) = ⟦ρ = τ⟧ = σ_τ(ρ)
+    σ_τ(ρ)
+    &= ⟦τ = ρ⟧ = ⋁_{a ∈ A} τ(a)∧ρ(a) = ⋁_{a ∈ A} Σ(σₐ)∧⟦ρ = σₐ⟧\\
+    &= ⋁_{a ∈ A} Σ(ρ)∧⟦ρ = σₐ⟧ = Σ(ρ)∧‖ρ‖ = Σ(ρ)\text,
   \end{align*}
-  Sledi, da za vsak enojec v \(σσ(A)\) obstaja enojec v \(σ(A)\), ki se vanj
-  slika, tako da je preslikava \(σ\) res bijekcija, in je \(σ(A)\) polna.
+  kjer za tretjo enakost uporabimo, da lahko pod enakostjo menjamo argumente \mbox{\(ℒ\)-podmnožicam}.
+  Sledi, da za vsak enojec v \(σσ(A)\) obstaja natanko en enojec v \(σ(A)\), ki
+  se vanj slika, tako da je preslikava \(σ\) res bijekcija, in je \(σ(A)\) polna.
 \end{dokaz}
 
 \begin{trditev}
   Naj bo \(f : A ↬ B \) in \(B\) polna \(ℒ\)-množica. Tedaj obstaja preslikava
-  \(φ : A → B\), za katero velja \(⟦b = f(a)⟧ = ⟦b = φ(a)⟧\).
+  \(φ : A → B\), za katero velja \(⟦b = f(a)⟧ = ⟦b = φ(a)⟧_B\).
   Poleg tega velja tudi \(⟦φ(a) = φ(a')⟧ ≥ ⟦a = a'⟧\), in enakost drži kadar je \(a = a'\).
 \end{trditev}
 \begin{dokaz}
@@ -400,7 +405,9 @@ ki so prav tako določene s svojimi enojci.
     &= ⋁ᵢ⟦a = mᵢ⟧∧⟦b = mᵢ⟧ ≤ ⟦a = b⟧\text,
   \end{align*}
   torej ustreza nekemu \(m ∈ A\). Po zgornji lemi velja
-  \[ ⟦mᵢ = m{\res{Uᵢ}}⟧ = ⟦mᵢ = m⟧∧Uᵢ = σₘ(mᵢ)∧Uᵢ = ⋁ⱼ⟦mᵢ = mⱼ⟧∧Uᵢ = Uᵢ\text, \]
+  \begin{equation*}
+    ⟦mᵢ = m{\res{Uᵢ}}⟧ = ⟦mᵢ = m⟧∧Uᵢ = σₘ(mᵢ)∧Uᵢ = \textstyle⋁\!ⱼ⟦mᵢ = mⱼ⟧∧Uᵢ = Uᵢ\text,
+  \end{equation*}
   torej se ujemata na celotnem razponu in sta enaka.
 
   Razpon \(m\) je \(‖m‖ = σₘ(m) = ⋁ᵢ⟦m = mᵢ⟧ = ⋁ᵢUᵢ\), kar mora veljati za vsako
