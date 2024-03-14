@@ -212,6 +212,33 @@ Snopi so natanko določeni s svojimi enojci, tako da si poglejmo \(ℒ\)-množic
 ki so prav tako določene s svojimi enojci.
 
 \begin{lema}
+  Vsak \(ℒ\)-morfizem \(f : A ↬ B\), \(a ∈ A\), in \(b ∈ B\) inducirajo
+  \begin{enumerate}
+  \item \(ℒ\)-podmnožico \(f⁻¹(b) ⊆ A\), definirano z \(x ↦ ⟦b = f(x)⟧\) in
+  \item enojec \(f(a) ⊆ B\), definiran z \(y ↦ ⟦y = f(a)⟧\).
+  \end{enumerate}
+\end{lema}
+\begin{dokaz}
+  % \begin{enumerate}
+  % \item Prvi aksiom drži, saj imamo \(⟦a ∈ f⁻¹(b)⟧ = ⟦b = f(a)⟧ ≤ ‖a‖\), drugi
+  %   %aksiom pa sledi iz drugega aksioma \(ℒ\)-morfizmov.
+  %   aksiom pa sledi iz aksioma \ref{M2}.
+  % \item Prvi aksiom sledi iz celovitosti, drugi pa podobno kot zgoraj iz \ref{M1}.\qedhere
+  % \end{enumerate}
+  V obeh primerih prvi aksiom drži zaradi celovitosti, drugi pa zaradi
+  skladnosti morfizma z relacijo na ustrezni \(ℒ\)-množici.
+\end{dokaz}
+
+\begin{lema}
+  Za \(ℒ\)-podmnožico \(φ : A → ℒ\) velja \(φ(a) = ⋁_{x ∈ A} φ(x)∧⟦x = a⟧\).
+  V posebnem za \(ℒ\)-morfizem \(f : A ↬ B\) velja \(⟦b = f(a)⟧ = ⋁_{x ∈ A} ⟦b = f(x)⟧∧⟦x = a⟧\).
+\end{lema}
+\begin{dokaz}
+  Ker je \({φ(a) = φ(a)∧⟦a = a⟧}\) velja \( φ(a) ≤ ⋁_{x ∈ A} φ(x)∧⟦x = a⟧\),
+  obratna neenakost pa sledi iz drugega aksioma \(ℒ\)-podmnožic.
+\end{dokaz}
+
+\begin{lema}
   Za \(m,n ∈ A\) in \(τ ∈ σ(A)\) veljajo naslednje enakosti:
   \begin{enumerate}
   \item \(σ_τ(σₘ) = ⟦σₘ = τ⟧ = τ(m)\)
