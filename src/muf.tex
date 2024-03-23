@@ -7,7 +7,9 @@
 }{
   \end{quote}
 }
-
+\DeclareFontFamily{U}{min}{}
+\DeclareFontShape{U}{min}{m}{n}{<-> udmj30}{}
+\newcommand\yo{\!\text{\usefont{U}{min}{m}{n}\symbol{'207}}\!}
 
 \renewcommand{\d}{\;\mathrm d}
 \renewcommand{\hat}{\widehat}
@@ -247,6 +249,8 @@
 
 \theoremstyle{definition}
 \newtheorem{konstrukcija}[definicija]{Konstrukcija}
+
+\renewcommand{\ln}{\mathcal{\mathrm{Ln}}}
 
 %%% Local Variables:
 %%% TeX-master: "main"

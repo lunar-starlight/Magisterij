@@ -71,6 +71,49 @@ Preden lahko definiramo snope, moramo nekaj povedati o družinah prerezov.
 
 \subsection{Prezentacije snopov}
 
+Naj bo \(F\) snop. Potem po lemi Yonede velja \(F(U) = \textrm{Nat}\p{\yo U, F}\), torej so
+elementi snopa natanko določeni z naravnimi transformacijami (v snop).
+Poleg tega pa za snopa \(F\) in \(G\) ter naravno transformacijo \(α : F ⇒ G\)
+med njima velja, da \(α\) komutira z zožitvami, torej, če je \(V ⊆ U\) in
+\(f ∈ F(U)\), velja \(α_V(f{\res V}) = α_U(f){\res V}\).
+To pa pomeni, da so vrednosti morfizma natanko določene z vrednostmi pri tako
+imenovanih globalnih lokalnih prerezih ozirmoa elementih.
+V mislih imamo na primer primer iz kompleksne analize, kjer gledamo snop
+kompleksnih logaritmov. Vemo, da globalen logaritem ne obstaja, vendar pa vseeno
+obstajajo loklani logaritmi, te imajo pa maksimalne analitične razširitve, ki
+bi jim lahko rekli \quot{globalni lokalni logaritmi}.
+
+Bolj natančno torej, Naj bo \(\ln\) množica parov \(\p{U, φ}\), kjer je
+\(U ⊆ ℂ\) in \(φ : U → ℂ\) lokalni logaritem, tako da ne obstaja nobena množica
+večja od \(U\), na katero lahko \(φ\) razširimo.
+Potem je vsak ellement snopa logaritmov zožitev nekega elementa \(\ln\), poleg
+tega pa so vsi elementi \(\ln\) paroma neskladni (sicer bi jih lahko zlepili in
+dobili strogo razširitev obeh, kar je v protislovju z maksimalnostjo elementov
+\(\ln\)).
+
+Naivno bi sedaj želeli snop logaritmov \quot{generirati} z elementi \(ln\),
+tako da bi vzeli \(V ↦ \set{φ{\res V}}{(U, φ) ∈ \ln \text{ in } V ⊆ U}\), in to
+v tem primeru res deluje, ampak v splošnem pa ne moremo tvoriti zožitev.
+Lahko vzamemo potem \(φ{\res V}\) kot formalni element, kjer pa spet nastane
+problem, da če se dva prereza ujemata na neki množici, morata biti njuni
+zožitvi na to množico enaki. To lahko popravimo tako da vpeljemo nekakšno
+relacijo na prerezih, ki nam pove ko kakšne mere se ujemata (oziroma nam da
+največjo odprto množico, kjer sta enaka). Pišemo jo lahko recimo \(⟦φ = ψ⟧\).
+Ta relacija bo gotovo simetrična, prav tako pa bo \quot{tranzitivna}, t.j. če se
+\(φ\) in \(ψ\) ujemata na \(U\), in \(ψ\) in \(ξ\) na \(V\), se \(φ\) in \(ξ\)
+gotovo ujemata vsaj na preseku \(U∩V\). Očitno pa ta relacija ni refleksivna, v
+smislu da je \(φ\) v relaciji s samim sabo zgolj na množici, na kateri je
+definiran. To pomeni, da lahko za \(\ln\) namesto parov \(\p{U, φ}\) vzamemo kar
+prereze same, saj lahko \(U\) dobimo iz \(⟦φ = φ⟧\). Tej množici pravimo
+\emph{razpon \(φ\)} in jo pišemo tudi \(‖φ‖\).
+
+%Ostane le še problem kako pravilno tvoriti kvocient iz te relacije, kar pa
+%upamo, da se ognemo z bolj strukturiranim pogledom.
+
+Zgoraj opisanem postopku se reče tudi konstrukcija toposa iz triposa (angl.
+tripos to topos construction) in je to tudi motivacijski primer za razvoj te
+konstrukcije. 
+
 \begin{definicija}
   \emph{\(ℒ\)-vrednotena množica} oziroma \emph{\(ℒ\)-množica} je množica \(A\),
   skupaj s preslikavo, ki jo pišemo \(⟦- = -⟧ : A×A → ℒ\), tako da velja
@@ -79,21 +122,47 @@ Preden lahko definiramo snope, moramo nekaj povedati o družinah prerezov.
     ⟦ a = b ⟧ ∧ ⟦ b = c ⟧ ≤ ⟦ a = c ⟧
   \end{align*}
   Če iz konteksta ni razvidno kateri množici pripada preslikava \(⟦- = -⟧\),
-  jo pišemo z indeksom.
+  jo pišemo z indeksom \(⟦- =_A -⟧\).
+
+  Kot zgoraj naj bo \(‖a‖ ≔ ⟦a = a⟧\) \emph{razpon \(a\)}.
 \end{definicija}
 
-Če na okvir \(ℒ\) mislimo kot množico resničnostnih vrednosti, lahko rečemo, da
-je to simetrična in tranzitivna relacija na množici \(A\).
-% TODO: jezik ℒ-množic?
+Če \(≤\) beremo kot implikacijo, zgornja aksioma zgledata zelo podobno aksiomoma
+simetričnosti in tranzitivnosti delno urejenih množic. Ker v intuicionistični
+logiki na okvirje gledamo kot resničnostne vrednosti, in zaradi tenzor-hom
+adjunkcije, lahko to podobnost reificiramo v tako imenovani jezik triposa.
+
+Ker je \(a∧b ≤ c\) natanko tedaj ko \(a ≤ b⇒c\) (ker je \(ℒ\) okvir),
+lahko \(a ≤ b\) interpretiramo kot \(⊤ = a⇒b\), kjer \(⊤\) predstavlja vrhnji
+element okvira, prav tako pa predstavlja \quot{resnico}.
+To pomeni, da res na \(a ≤ b\) lahko gledamo kot \quot{iz \(a\) sledi \(b\)}.
+
+Naslednji izziv je definirati preslikave med \(ℒ\)-množicami.
+Če pomislimo spet na snope, je preslikava iz \(F\) v \(G\) že določena z
+globalnimi lokalnimi elementi, vendar pa nam nič ne zagotavlja, da so njihove
+slike prav tako globali loklani elementi v \(G\), je pa gotovo zožitev nekega
+(potencialno neenoličnega) takega elementa.
+
+Če je \(f ∈ F'\) in \(α : F ⇒ G\), velja \(‖f‖ = ⋁_{g ∈ G'} ⟦g = α(f)⟧\),
+kjer z \(F'\) in \(G'\) označimo množici globalnih lokalnih elementov.
+Ta enačba nam torej predstavlja celovitost, pri enoličnosti pa moramo paziti.
+Kot rečeno, globalni lokalni element v \(G\) ni enolično določen, je pa enolično
+določena njegova (oziroma njihova) zožitev na razpon \(f\).
+Velja še več, če pogledamo primerjavi \(α(f)\) z dvema elementoma \(g\) in
+\(g'\), po tranzitivnosti relacije dobimo, da je presek teh dveh množic nujno
+vsebovan v \(⟦g = g'⟧\), torej na nobeni odprti množici ni \(α(f)\) enak dvema
+elementoma.
+
+Definirajmo torej morfizem \(ℒ\)-množic kot tako relacijo.
 
 \begin{definicija}
   \emph{Morfizem med \(ℒ\)-množicama} \(A\) in \(B\) je preslikava \(⟦- = f(-)⟧ : B×A → ℒ\),
   za katero velja
   \begin{align}% TODO: change
-    &⟦b = b'⟧ ∧ ⟦b' = f(a)⟧ ≤ ⟦b = f(a)⟧    \tag{M1}\label{M1}\\
-    &⟦b = f(a)⟧ ∧ ⟦a = a'⟧ ≤ ⟦b = f(a')⟧    \tag{M2}\label{M2}\\
-    &⟦b = f(a)⟧ ∧ ⟦b' = f(a)⟧ ≤ ⟦b = b'⟧    \tag{M3}\label{M3}\\
-    &⟦a = a⟧ = ⋁_{b ∈ B} ⟦b = f(a)⟧         \tag{M4}\label{M4}
+    &⟦b =_B b'⟧ ∧ ⟦b' = f(a)⟧ ≤ ⟦b = f(a)⟧    \tag{M1}\label{M1}\\
+    &⟦b = f(a')⟧ ∧ ⟦a' =_A a⟧ ≤ ⟦b = f(a)⟧    \tag{M2}\label{M2}\\
+    &⟦b = f(a)⟧ ∧ ⟦b' = f(a)⟧ ≤ ⟦b =_B b'⟧    \tag{M3}\label{M3}\\
+    &‖a‖ = ⋁_{b ∈ B} ⟦b = f(a)⟧               \tag{M4}\label{M4}
   \end{align}
   Na prvi dve pravili lahko gledamo kot na skladnost z relacijama na \(A\) in
   \(B\), na drugi dve pa kot na enoličnost in celovitost, zato pišemo morfizme
@@ -103,8 +172,20 @@ je to simetrična in tranzitivna relacija na množici \(A\).
   je njun kompozitum \(gf : A ↬ C\) definiran kot
   \[ ⟦c = gf(a)⟧ ≔ ⋁_{b ∈ B} ⟦c = g(b)⟧∧⟦b = f(a)⟧\text. \]
 \end{definicija}
+\begin{opomba}
+  Podobnost med oklepaji je namerna, je pa vseeno vredno poudariti, da izraz
+  \(⟦b = f(a)⟧\) ni povezan z izrazom \(⟦b =_B b'⟧\) nič več, kot lahko sklepamo
+  iz gornjih aksiomov. Drugače rečeno, kljub temu, da na \(⟦b = f(a)⟧\) želimo
+  gledati kot primerjavo slike \(a\) v \(ℒ\)-množici \(B\), se izraza vseeno
+  bistveno razlikujeta, namreč \(f(a)\) ni nujno noben element \(B\).
+\end{opomba}
 
-Skupaj z identiteto \(⟦- = -⟧_A\), tvorijo \(ℒ\)-množice kategorijo, ki jo označimo \(\cat{Set}(ℒ)\).
+V jeziku triposa lahko na \(⋁_{b ∈ B} φ(b)\) gledamo kot eksistenčni
+kvantifikator, torej \ref{M4} res pravi, da obstaja nek \(b\), ki je slika
+elementa \(a\), definicija kompozicije pa je potem natanko standardna
+kompozicija relacij.
+
+Skupaj z identiteto \(⟦- =_A -⟧\), tvorijo \(ℒ\)-množice kategorijo, ki jo označimo \(\cat{Set}(ℒ)\).
 
 \begin{lema}
   Naj bosta \(f, g : A ↬ B\) morfizma.
@@ -141,6 +222,40 @@ injekcije v tem jeziku:
   % TODO: dokaz
   long and arduous
 \end{dokaz}
+
+Sedaj se pa želimo vprašati, kaj so bijekcije v kategoriji \(\cat{Set}(ℒ)\).
+Že iz teorije množic vemo, da ima vsaka relacija dualno relacijo, ki se pa
+obnaša kot nekakšen inverz. Za morfizem \(f : A ↬ B\) lahko definiramo dual
+\(f⁻¹ : B ↬ A\) tako, da preprosto zamenjamo elementa v produktu.
+Kompozituma z dualom pa sta res identiteti.
+
+\begin{trditev}
+  Za \(f : A ↬ B\) je \(f∘f⁻¹ = \id = f⁻¹∘f\).
+\end{trditev}
+\begin{dokaz}
+  \begin{align*}
+    ⟦b' = ff⁻¹(b)⟧
+    &= ⋁_{a ∈ A} ⟦b' = f(a)⟧∧⟦a = f⁻¹(b)⟧\\
+    &= ⋁_{a ∈ A} ⟦b' = f(a)⟧∧⟦b = f(a)⟧ ≤ ⟦b' = b⟧\\
+    ⟦a' = f⁻¹f(a)⟧
+    &= ⋁_{b ∈ B} ⟦a' = f⁻¹(b)⟧∧⟦b = f(a)⟧\\
+    &= ⋁_{b ∈ V} ⟦a' = f⁻¹(b)⟧∧⟦a = f⁻¹(b)⟧ ≤ ⟦a' = a⟧\qedhere
+  \end{align*}
+\end{dokaz}
+
+Ta dokaz zgleda, kot da pravi, da je vsak morfizem izomorfizem, vendar to očitno
+ni res. In res, v zgornjem dokazu uporabimo, da je \(f⁻¹\) sploh morfizem
+\(ℒ\)-množic. Prvima dvema aksiomoma je že zadoščeno, druga dva sta pa
+ekvivalentna natanko injektivnosti in surjektivnosti \(f\).
+
+Iz gornjega sicer zgleda, kot da potrebujemo zgolj injektivnost \(f\), vendar pa
+morata biti tudi kompozituma \(ff⁻¹\) in \(f⁻¹f\) \(ℒ\)-morfizma, kjer se pa
+skriva uporaba preostalih aksiomov.
+
+Trditev se torej pravilno glasi tako:
+\begin{trditev}
+  Za \(f : A ↬ B\) je \(f⁻¹\) (morfizem in) inverz \(f\) natanko tedaj, ko je \(f\) bijektivna.
+\end{trditev}
 
 \subsubsection{Karakterizacija podobjektov}
 
@@ -340,19 +455,15 @@ ki so prav tako določene s svojimi enojci.
 \begin{dokaz}
   % NOTE: f je enota monade σ, če je g njen inverz, kaj je njena povezava z
   % množenjem? Plus lahko spustimo pol dokazov, da je f morfizem.
-  Definirajmo preslikavi \(⟦τ = f(a)⟧ = τ(a)\) in \(⟦a = g(τ)⟧ = τ(a)\).
-  Očitno sta morfizma skladna z relacijama, tako da moramo preveriti zgolj
+  Definirajmo preslikavo \(⟦τ = η(a)⟧ = τ(a)\).
+  Očitno je skladna z relacijama, tako da moramo preveriti zgolj
   enoličnost in celovitost. Enoličnost sledi iz neenakosti
-  \(τ(a)∧ρ(a) ≤ ⟦τ = ρ⟧\) in \({τ(a)∧τ(b) ≤ ⟦a = b⟧}\).
-  Celovitost sledi iz enakosti
-  \[ ⟦a = a⟧ = ⟦σₐ = σₐ⟧ = ⋁_{τ ∈ σ(A)} ⟦σₐ = τ⟧ = ⋁_{τ ∈ σ(A)} τ(a)\text{ in} \]
-  \[ ⟦τ = τ⟧ = ⋁_{a ∈ A} τ(a)\text.\]
-
-  Preverimo, da sta oba kompozituma enaka identiteti:
-  \begin{align*}
-    ⟦τ = fg(ρ)⟧ &= ⋁_{a ∈ A} ⟦τ = f(a)⟧∧⟦a = g(ρ)⟧ = ⋁_{a ∈ A} τ(a)∧ρ(a) = ⟦τ = ρ⟧\\
-    ⟦a = gf(b)⟧ &= ⋁_{τ ∈ σ(A)} ⟦a = g(τ)⟧∧⟦τ = f(b)⟧ = ⋁_{τ ∈ σ(A)} τ(a)∧τ(b) = ⟦a = b⟧\qedhere
-  \end{align*}
+  \(τ(a)∧ρ(a) ≤ ⟦τ = ρ⟧\), celovitost pa iz enakosti
+  \[ ⟦a = a⟧ = ⟦σₐ = σₐ⟧ = ⋁_{τ ∈ σ(A)} ⟦σₐ = τ⟧ = ⋁_{τ ∈ σ(A)} τ(a)\text. \]
+  
+  Preveriti moramo torej le še, da je bijekcija. Injektivna je očitno, saj to
+  sledi iz definicije enojca, surjektivnost pa sledi iz
+  \(⟦σₐ = η(a)⟧ = σₐ(a) = ‖a‖\).
 \end{dokaz}
 \begin{posledica}
   Kategorija \(ℒ\)-množic je ekvivalentna kategoriji polnih \(ℒ\)-množic.
