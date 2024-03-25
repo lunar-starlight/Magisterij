@@ -71,7 +71,7 @@ Preden lahko definiramo snope, moramo nekaj povedati o družinah prerezov.
 
 \subsection{Prezentacije snopov}
 
-Naj bo \(F\) snop. Potem po lemi Yonede velja \(F(U) = \textrm{Nat}\p{\yo U, F}\), torej so
+Naj bo \(F\) snop. Potem po lemi Yonede velja \(F(U) = \textrm{Nat}{\p{\yo U, F}}\), torej so
 elementi snopa natanko določeni z naravnimi transformacijami (v snop).
 Poleg tega pa za snopa \(F\) in \(G\) ter naravno transformacijo \(α : F ⇒ G\)
 med njima velja, da \(α\) komutira z zožitvami, torej, če je \(V ⊆ U\) in
@@ -83,7 +83,7 @@ kompleksnih logaritmov. Vemo, da globalen logaritem ne obstaja, vendar pa vseeno
 obstajajo loklani logaritmi, te imajo pa maksimalne analitične razširitve, ki
 bi jim lahko rekli \quot{globalni lokalni logaritmi}.
 
-Bolj natančno torej, Naj bo \(\ln\) množica parov \(\p{U, φ}\), kjer je
+Bolj natančno torej, naj bo \(\ln\) množica parov \(\p{U, φ}\), kjer je
 \(U ⊆ ℂ\) in \(φ : U → ℂ\) lokalni logaritem, tako da ne obstaja nobena množica
 večja od \(U\), na katero lahko \(φ\) razširimo.
 Potem je vsak ellement snopa logaritmov zožitev nekega elementa \(\ln\), poleg
@@ -91,7 +91,7 @@ tega pa so vsi elementi \(\ln\) paroma neskladni (sicer bi jih lahko zlepili in
 dobili strogo razširitev obeh, kar je v protislovju z maksimalnostjo elementov
 \(\ln\)).
 
-Naivno bi sedaj želeli snop logaritmov \quot{generirati} z elementi \(ln\),
+Naivno bi sedaj želeli snop logaritmov \quot{generirati} z elementi \(\ln\),
 tako da bi vzeli \(V ↦ \set{φ{\res V}}{(U, φ) ∈ \ln \text{ in } V ⊆ U}\), in to
 v tem primeru res deluje, ampak v splošnem pa ne moremo tvoriti zožitev.
 Lahko vzamemo potem \(φ{\res V}\) kot formalni element, kjer pa spet nastane
@@ -112,7 +112,7 @@ prereze same, saj lahko \(U\) dobimo iz \(⟦φ = φ⟧\). Tej množici pravimo
 
 Zgoraj opisanem postopku se reče tudi konstrukcija toposa iz triposa (angl.
 tripos to topos construction) in je to tudi motivacijski primer za razvoj te
-konstrukcije. 
+konstrukcije.
 
 \begin{definicija}
   \emph{\(ℒ\)-vrednotena množica} oziroma \emph{\(ℒ\)-množica} je množica \(A\),
@@ -177,10 +177,11 @@ Definirajmo torej morfizem \(ℒ\)-množic kot tako relacijo.
   \(⟦b = f(a)⟧\) ni povezan z izrazom \(⟦b =_B b'⟧\) nič več, kot lahko sklepamo
   iz gornjih aksiomov. Drugače rečeno, kljub temu, da na \(⟦b = f(a)⟧\) želimo
   gledati kot primerjavo slike \(a\) v \(ℒ\)-množici \(B\), se izraza vseeno
-  bistveno razlikujeta, namreč \(f(a)\) ni nujno noben element \(B\).
+  bistveno razlikujeta, namreč v \(B\) ne obstaja nujno kak element, ki bi mu
+  lahko rekli slika \(a\).
 \end{opomba}
 
-V jeziku triposa lahko na \(⋁_{b ∈ B} φ(b)\) gledamo kot eksistenčni
+Vseeno pa v jeziku triposa na \(⋁_{b ∈ B} φ(b)\) gledamo kot eksistenčni
 kvantifikator, torej \ref{M4} res pravi, da obstaja nek \(b\), ki je slika
 elementa \(a\), definicija kompozicije pa je potem natanko standardna
 kompozicija relacij.
@@ -261,6 +262,19 @@ Trditev se torej pravilno glasi tako:
 
 Z uporabo gornje karakterizacije monomorfizmov, lahko karakteriziramo tudi podobjekte.
 
+Denimo, da je \(S\) podsnop snopa \(F\). To pomeni, da je snop, in da za vsako odprto
+množico velja \(S(U) ⊆ F(U)\), in naj bo \(F'\) spet množica globalnih lokalnih
+elementov. Potem vsakemu elementu \(F'\) lahko priredimo največjo odprto
+množico, tako da je zožitev tega elementa v \(S\) (seveda bodo potem tudi vse
+manjše zožitve v \(S\)). Označimo to recimo z \(⟦f ∈ S⟧\), za \(f ∈ F'\).
+
+Ker je vsak element \(F\) zožitev nekega elementa \(F'\), lahko podsnop \(S\)
+rekonstruiramo kot \(S(U) = \set{f{\res U}}{f ∈ F' \text{ in } ⟦f ∈ S⟧ ⊇ U}\).
+
+% Gornjo konstrukcijo lahko natančno definiramo na \(ℒ\)-množicah:
+Sledi, da so podsnopi \(F\) natanko določene preslikave \(F'\) v \(ℒ\), kar pa
+lahko izrazimo z \(ℒ\)-množicami.
+
 \begin{definicija}
   \(ℒ\)-podmnožica \(A\) je preslikava \( ⟦- ∈ S⟧ : A → ℒ \), za katero velja
   \begin{align*}
@@ -269,43 +283,79 @@ Z uporabo gornje karakterizacije monomorfizmov, lahko karakteriziramo tudi podob
   \end{align*}
   t.~j. je skladna z relacijo na \(A\). Pišemo tudi \(S ⊑ A\).
 \end{definicija}
+\begin{lema}
+  Za \(ℒ\)-podmnožico \(S ⊑ A\) velja \(⟦a = a'⟧∧⟦a' ∈ S⟧ = ⟦a = a'⟧∧⟦a ∈ S⟧\).
+\end{lema}
 
 \begin{trditev}
   Obstaja ekvivalenca med delnima ureditvima \(ℒ\)-podmnožic \(A\) in podobjektov \(A\).
 \end{trditev}
 \begin{proof}
   Naj bo \(m : S ↬ A\) monomorfizem \(ℒ\)-množic.
-  Potem definiramo preslikavo \( ⟦- ∈ S⟧ : A → ℒ \) s predpisom
+  Potem definiramo preslikavo \( ⟦- ∈ m⟧ : A → ℒ \) s predpisom
   \(a ↦ ⋁_{s ∈ S} ⟦a = m(s)⟧\).
 
+  Ta preslikava definira \(ℒ\)-množico, saj velja
+  \begin{align*}
+    &⟦a ∈ m⟧ = ⋁_{s ∈ S} ⟦a = m(s)⟧ ≤ ⋁_{s ∈ S} ⟦a = a⟧ = ‖a‖\text{ in}\\
+    &⟦a = a'⟧∧⟦a' ∈ m⟧ = ⋁_{s ∈ S} ⟦a = a'⟧∧⟦a' = m(s)⟧ ≤ ⋁_{s ∈ S} ⟦a = m(s)⟧ = ⟦a ∈ m⟧\text.
+  \end{align*}
+
+  
   % TODO: complete proof
 \end{proof}
 
-\begin{lema}
-  Za \(ℒ\)-podmnožico \(S ⊑ A\) velja \(⟦a = a'⟧∧⟦a' ∈ S⟧ = ⟦a ∈ S⟧∧⟦a = a'⟧\).
-\end{lema}
 
 \subsubsection{Polne \texorpdfstring{\(ℒ\)}{ℒ}-množice}
 
-% TODO: reword
-Naj bo \(F\) snop nad \(ℒ\). Potem lahko za \(m ∈ F(U)\) definiramo enojec
-\(⟦a ∈ ⟨m⟩⟧ ≔ ⟦a = m⟧\), kjer je \(a ∈ F(V), V ∈ ℒ\).
-Na enojcih lahko definiramo tudi \(⟦⟨m⟩ = ⟨n⟩⟧ ≔ ⟦m = n⟧\).
-Snop \(F\) lahko sedaj rekonstruiramo iz njegovih enojcev.
-Podobno bomo storili za \(ℒ\)-množice.
+
+Prej smo že omenili, da lahko iz globalnih lokalnih elementov rekonstruiramo
+snop, vendar je ta konstrukcija komplicirana, poleg tega pa potem delamo z
+nekimi kvocienti, kar nikoli ni prijetno. Tako bi želeli, da bi naše
+\(ℒ\)-množice kar dopolnili še z vsemi ostalimi elementi snopa. Vemo, da imamo
+za to dovolj informacij, saj je vsak element zožitev enega od globalnih
+lokalnih, je pa vseeno izziv kako identificirati zožitve, ki se ujemajo.
+
+Trik, ki ga bomo uporabili smo že srečali pri motivaciji za definicijo
+\(ℒ\)-preslikav, namreč, da lahko element snopa \(f\) primerjamo z vsemi
+globalnimi lokalnimi elementi, torej da dobimo funkcijo iz \(ℒ\)-množice v okvir
+\(ℒ\). Ta konstrukcija v snopih enolično določa elemente, torej če sta
+\(f ∈ F(U)\) in \(g ∈ F(V)\), in se njune primerjave ujemata na vseh globalnih
+lokalnih elementih, se v posebnem tudi ujemata z neko razširitvijo \(f\) (ki jo
+označimo \(f'\)), torej velja \(f{\res V} = f'{\res{U∩V}} = g{\res U}\), kar pa
+pomeni, da sta \(f\) in \(g\) skladna. Potem pa nam vsaka primerjava definira
+skladno družino, ki jo lahko zlepimo v enoličen element snopa.
+
+Spomnimo se pa, da so take funkcije natanko podobjekti, in če je element
+podobjekta enolično določen, mu lahko pravimo enojec, oziroma podenojec, ker ta
+element ne obstaja nujno med globalnimi lokalnimi elementi. Vendar pa kljub
+temu, da so te podenojci lahko \quot{prazni}, imajo dovolj zanimivo strukturo,
+da iz njih lahko rekonstruiramo celoten snop.
+
+% % TODO: reword
+% Naj bo \(F\) snop nad \(ℒ\). Potem lahko za \(m ∈ F(U)\) definiramo enojec
+% \(⟦a ∈ ⟨m⟩⟧ ≔ ⟦a = m⟧\), kjer je \(a ∈ F(V), V ∈ ℒ\).
+% Na enojcih lahko definiramo tudi \(⟦⟨m⟩ = ⟨n⟩⟧ ≔ ⟦m = n⟧\).
+% Snop \(F\) lahko sedaj rekonstruiramo iz njegovih enojcev.
+% Podobno bomo storili za \(ℒ\)-množice.
 
 \begin{definicija}
-  \emph{Enojec} na \(ℒ\)-množici \(A\) je \(ℒ\)-podmnožica \(S ⊑ A\), za katero velja
+  \emph{(Pod)enojec} na \(ℒ\)-množici \(A\) je \(ℒ\)-podmnožica \(S ⊑ A\), za katero velja
   \[ \for{a,b ∈ S}{⟦a ∈ S⟧ ∧ ⟦b ∈ S⟧ ≤ ⟦a = b⟧}\text. \]
 \end{definicija}
-
 \begin{opomba}
   Če razpišemo definicijo \(ℒ\)-podmnožic, dobimo da so enojci preslikave, ki poleg
   gornjemu pogoju zadoščajo zgolj še drugi pogoj \(ℒ\)-podmnožic, torej
   \[ \for{a,b ∈ A}{⟦a = b⟧ ∧ ⟦b ∈ S⟧ ≤ ⟦a ∈ S⟧}\text. \]
 \end{opomba}
 
-\begin{lema}
+V jeziku triposa to res pravi, da ima podenojec kvečjemu en element.
+\begin{opomba}
+  V literaturi se tem preslikavam reče kar enojci, saj enolično določajo
+  elemente snopa.
+\end{opomba}
+
+\begin{lema}% TODO: refactor. this should be a definition or something.
   Za vsak \(m ∈ A\) lahko tvorimo enojec \(σₘ : A → ℒ\), s predpisom
   \(a ↦ ⟦a = m⟧\). \(ℒ\)-množico enojcev \(A\) z relacijo
   \(⟦ρ = τ⟧ ≔ ⋁_{a ∈ A} ρ(a)∧τ(a)\) označimo \(σ(A)\).
@@ -327,9 +377,6 @@ Podobno bomo storili za \(ℒ\)-množice.
   \end{align*}
   kjer v drugi enakosti uporabimo, da je \(ℒ\) okvir.
 \end{dokaz}
-
-Snopi so natanko določeni s svojimi enojci, tako da si poglejmo \(ℒ\)-množice,
-ki so prav tako določene s svojimi enojci.
 
 \begin{lema}\label{lem:image}
   Vsak \(ℒ\)-morfizem \(f : A ↬ B\), \(a ∈ A\), in \(b ∈ B\) inducirajo
@@ -384,9 +431,17 @@ ki so prav tako določene s svojimi enojci.
   \end{equation*}
 \end{dokaz}
 
+Kot smo rekli na začetku podrazdelka, nam vsak enojec na \(F'\) enolično določa
+element snopa \(F\). Prav tako pa enojci na \(F\) enolično določajo elemente
+\(F\). Če torej želimo dopolniti \(ℒ\)-množico do celega snopa, moramo vzeti
+njeno množico enojcev, oziroma bolj natančno, so polne \(ℒ\)-množice take, kjer
+nam enojci ne predstavljajo nobenih novih elementov. % nobenih drugih elementov
+                                % kot elementov \(ℒ\)-množice same.
+
 \begin{definicija}
-  \(ℒ\)-množica \(A\) je \emph{polna}, kadar je preslikava \(m ↦ σₘ\) bijekcija.
-  Polno podkategorijo polnih \(ℒ\)-množic označimo s \(\cat{CSet}(ℒ)\).
+  \(ℒ\)-množica \(A\) je \emph{polna}, kadar je preslikava množic \(m ↦ σₘ\)
+  bijekcija. Polno podkategorijo polnih \(ℒ\)-množic označimo s
+  \(\cat{CSet}(ℒ)\).
 \end{definicija}
 % NOTE: σ definira idempotentno monado. To mi avtomatsko da naslednjih par
 % rezultatov (specifično do izreka da so polne ℒ-množice refleksivna
