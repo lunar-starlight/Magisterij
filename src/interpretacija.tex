@@ -221,7 +221,7 @@
   \[ ∑_{i ∈ ℕ₊}\frac{2aᵢ}{3ⁱ} ∈ C\text{, } aᵢ ∈ 2
      \text{, v } ∑_{i ∈ ℕ₊}\frac{aᵢ}{2ⁱ}\text.\]
 
-  Potem je \(φ(r) = 0 ⇔ r = 0\) in velja \(\lpo\p{α} ⇔ \lpoR\p{x}\).
+  Potem je \(φ(r) = 0 ⇔ r = 0\) in velja \(\lpo{\p{α}} ⇔ \lpoR{\p{x}}\).
 \end{dokaz}
 
 \begin{lema}
@@ -289,6 +289,66 @@
 \begin{posledica}
   Nad Cantorjevim prostorom je \(\lpo\) idempotenten.
 \end{posledica}
+
+
+
+\begin{lema}
+  P-prostori so natanko prostori, v katerih velja \(\mathrm{AC}(ℕ,2)\).
+\end{lema}
+\begin{dokaz}
+  Trditev \(X ⊩ \mathrm{AC}(ℕ, 2)\) se razpiše v
+  \begin{gather*}
+    \for{U ⊆ X, P : U → 𝒪X^{ℕ×2}}
+    {U ⊩ \for{n ∈ ℕ}{\exist{ν ∈ 2}{P(n, ν)}}\\ ⇒ U ⊩ \exist{f : ℕ → 2}{\for{n ∈ ℕ}{P(n, f(n))}}}\text.
+  \end{gather*}
+  % ⇒ \exist{\cov{U}{i}, fᵢ : Uᵢ → 2^ℕ}{\for{n ∈ ℕ, i}{Uᵢ ⊩ P(n,
+  % fᵢ(n))}} } \]
+   
+  Naj bo najprej \(X\) P-prostor, in naj bodo \(U\) in \(P\) kot zgoraj.
+  Tedaj predpostavka pravi, da za vsak \(ℕ\) obstaja pokritje \(Uₙ₀, Uₙ₁ ⊆ U\),
+  tako da velja \(Uₙᵢ ⊩ P(n, i)\).
+
+  Iz teh parov lahko tvorimo množice \(U_α ≔ ⋂_{n ∈ ℕ}U_{n,α(n)}\), \(a ∈ 2^ℕ\),
+  ki pa so števni preseki odprtih množic, torej pod predpostavko tudi sami
+  odprti. Poleg tega pa tvorijo pokritje množice \(U\), in še več, velja
+  \(U_α ⊩ P(n, α(n))\), kar je pa natanko to, kar moramo pokazati.
+
+  V obratno smer naj velja \(X ⊩ \mathrm{AC}(ℕ,2)\), in naj bo \(Uₙ\) števno
+  pokritje \(U\).
+  Za vsak \(a ∈ ⋂ₙUₙ\) tvorimo množice \(Vₙ ≔ ⋃_{k ≠ n} Uₖ ⧵ \{a\}\) in
+  preslikavo
+  \[ P(x)(n,ν) ≔
+    \begin{cases}
+      Uₙ &, ν = 1\\
+      Vₙ &, ν = 0\text.
+    \end{cases}
+  \]
+  Ker je \(Uₙ ∪ Vₙ = Uₙ ∪ ⋃_{k ≠ n} Uₖ ⧵ \{a\} = ⋃ₙ Uₙ = U\) in po konstrukciji
+  veljata \(Uₙ ⊩ P(n, 1)\) in \(Vₙ ⊩ P(n, 0)\), lahko na \(P\) uporabimo dani
+  aksiom izbire. Tedaj dobimo pokritje \(Wᵢ ⊆ U\) in funkcije \(fᵢ : Wᵢ → 2^ℕ\),
+  tako da za vsak \(n ∈ ℕ\) velja \(Wᵢ ⊩ P(n, fᵢ(n))\).
+
+  Ampak tedaj mora biti \(Wᵢ ⊆ ⋂ₙ P(x)(n, fᵢ(x)(n))\) za vse \(x ∈ Wᵢ\).
+  Sedaj pa, ker je \(a ∈ U\) mora biti tudi element nekega \(Wᵢ\), saj je
+  pokritje, ampak \(a ∉ P(x)(n, 0)\) za noben \(x ∈ U\), torej je \(fᵢ\) nujno
+  identična \(1\), in \(a ∈ Wᵢ ⊆ ⋂ₙ Uₙ\). To pokaže, da ima vsak element preseka
+  neko odprto okolico, torej je presek odprt, kar pokaže, da je \(X\) P-prostor.
+\end{dokaz}
+
+\begin{izrek}
+  Aksiom izbire \(\mathrm{AC}(ℕ,2)\) ni potreben pogoj za ujemanje Cantorjevih
+  in Dedekindovih realnih števil.
+\end{izrek}
+\begin{dokaz}
+  Prostor naravnih števil s kokončno topologijo ima lastnost, da je vsaka
+  funkcija \(ℕ → ℝ\) konstantna. To velja tudi za odprte podmnožice, ker so
+  števno neskončne s kokončno topologijo, kar pa pomeni, da se v toposu snopov
+  nad \(ℕ\) s to topologijo realna števila ujemajo. Vendar je presek množic
+  \(\{0, n, n+1, …\} \) enak \(\{0\}\), ki pa ni odprta, torej ta prostor ni
+  P-prostor. Sledi, da \(ℕ~\not⊩ \mathrm{AC}(ℕ, 2)\), kar dokaže izrek.
+\end{dokaz}
+
+
 
 
 %%% Local Variables:

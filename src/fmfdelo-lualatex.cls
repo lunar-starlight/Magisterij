@@ -18,7 +18,8 @@
 \def\normalsize{}
 \RequirePackage{fontspec}
 \RequirePackage{stmaryrd}
-\RequirePackage{lualatex-math}
+% \RequirePackage{lualatex-math}
+\RequirePackage{mathtools}
 \RequirePackage{unicode-math}
 \RequirePackage{polyglossia}
 % \RequirePackage{doi}
@@ -131,6 +132,7 @@
 % NASTAVITEV FONTOV
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\setmainfont{Latin Modern Roman}
 % \setmainfont{TeX Gyre Pagella}
 % \setmathfont{TeX Gyre Pagella Math}
 \setmathfont{Latin Modern Math}
@@ -139,7 +141,38 @@
 \setmathfont{STIX Two Math-Regular}[range={"2102,"210D,"2115,"2119,"211A,"211D,"2124}]
 % \setmathfont{TeX Gyre Pagella Math}[range={8730}]
 % \setmathfont{Asana Math}[range={"007B,"007D}]  % {}
-\setmathfont{Asana Math}[range={8709, \setminus, "2216}]  % U+2205, emptyset
+\setmathfont{Asana Math}[range={8709, \setminus, "2216, "29F5}]  % U+2205, emptyset
+%\setmathfont{Asana Math}[range={"3088}] % U+3088, よ
+%\setmathfont{Source Han Sans JP}[range={"3088}, math-style=TeX] % U+3088, よ
+%\newfontfamily\cjkfont[Script=CJK]{Kochi Mincho}
+%\setmathfont[range={"3088}]{Source Han Sans JP}
+%%------ workaround ------
+%
+%%usage: \adjustmathfont{arg1}{arg2}{arg3}
+%%   where  arg1 is the beginning of the unicode range, e.g. "4E00
+%%          arg2 is the end of the unicode range, e.g. "9FFF
+%%          arg3 is the font number, e.g. "4
+%\newcounter{my@char}
+%\newcommand{\adjustmathfont}[3]{%
+%  \ifnumgreater{#1}{#2}{%
+%    \PackageWarning{}{No adjustment of math font since #1 is greater than #2.}
+%  }{
+%    \setcounter{my@char}{#1}
+%    \Umathcode\value{my@char}="0 #3 \value{my@char}
+%    \whileboolexpr{%
+%      test {\ifnumless{\value{my@char}}{#2}} 
+%    }{%
+%      \stepcounter{my@char}
+%      \Umathcode\value{my@char}="0 #3 \value{my@char}
+%    }
+%  }
+%}
+%\adjustmathfont{"3088}{"3088}{"10}
+
+\RequirePackage{luatexja}
+%\RequirePackage{luatexja-fontspec}
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

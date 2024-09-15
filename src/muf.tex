@@ -7,9 +7,6 @@
 }{
   \end{quote}
 }
-\DeclareFontFamily{U}{min}{}
-\DeclareFontShape{U}{min}{m}{n}{<-> udmj30}{}
-\newcommand\yo{\!\text{\usefont{U}{min}{m}{n}\symbol{'207}}\!}
 
 \renewcommand{\d}{\;\mathrm d}
 \renewcommand{\hat}{\widehat}
@@ -20,14 +17,16 @@
 \newcommand{\nin}{\not\in}
 \newcommand{\contradiction}{\,\,\lightning}
 
-\newcommand{\p}[1]{\left( {#1} \right)}
+% \newcommand{\p}[1]{\left( {#1} \right)}
+\DeclarePairedDelimiterX\parens[1]{(}{)}{#1}
+\def\p{\parens*}
 \newcommand{\cli}[1]{\left[ {#1} \right]}
 \newcommand{\floor}[1]{\left\lfloor {#1} \right\rfloor}
 \newcommand{\set}[2]{\left\{ #1 \mid #2 \right\}}
 \newcommand{\newfrac}[2]{{}^{#1}\!/_{\!#2}}
 \newcommand{\mb}[1]{\mathbf{#1}}
 \newcommand{\mf}[1]{\mathfrak{#1}}
-\newcommand{\mc}[1]{\mathcal{#1}}
+\renewcommand{\mc}[1]{\mathcal{#1}}
 \newcommand{\cat}[1]{\mathbf{#1}}
 \newcommand{\opcat}[1]{\left(\mathbf{#1}\right)^{op}}
 \newcommand{\op}[1]{{#1}^{op}}
@@ -43,7 +42,8 @@
 \DeclareMathOperator{\cl}{Cl}
 %\DeclareMathOperator{\cov}{Cov}
 \AtBeginDocument{
-  \def\c#1{\left( {#1} \right)^c}
+  %\def\c#1{\left( {#1} \right)^c}
+  \def\c#1{\p{#1}^c}
   \renewcommand{\b}[1]{\left\{ {#1} \right\}}
   \renewcommand{\O}[1]{\mathcal{O}{#1}}
 }
@@ -251,6 +251,8 @@
 \newtheorem{konstrukcija}[definicija]{Konstrukcija}
 
 \renewcommand{\ln}{\mathcal{\mathrm{Ln}}}
+
+\newcommand{\angl}[1]{(angl.~#1)}
 
 %%% Local Variables:
 %%% TeX-master: "main"
