@@ -3,6 +3,9 @@
 __latexindent_temp.*
 main.pdf
 *.xmpdata
+main-old.tex
+.build/
+fmfdelo-lualatex-old.cls
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
@@ -280,7 +283,3 @@ TSWLatexianTemp*
 
 # Makeindex log files
 *.lpz
-
-# custom
-presentation/kratka_predstavitev.pdf
-presentation/kratka_predstavitev.tex
