@@ -229,11 +229,16 @@
 
 \newcommand{\forces}[2]{#1\;⊩\;#2}
 
-\newcommand{\instance}[1]{\textnormal{\sffamily #1}}
+\newcommand{\instance}[1]{\textnormal{\sffamily #1}} % TODO: rename
 \newcommand{\lem}{\instance{LEM}}
 \newcommand{\lpo}{\instance{LPO}}
-\newcommand{\lpoR}{\instance{LPO}_ℝ}
+\newcommand{\alpo}{\instance{ALPO}}
+\newcommand{\lpoR}{\instance{LPO}_ℝ} % TODO: deprecate
 \newcommand{\iac}{\instance{IAC}}
+\newcommand{\cc}{\instance{CC}}
+\newcommand{\ccv}{\instance{CC}^∨}
+\newcommand{\Rd}{{ℝ}_{d}}
+\newcommand{\Rc}{{ℝ}_{c}}
 
 \usepackage{tabularx}
 \newcommand{\catdef}[3][]{
@@ -252,7 +257,7 @@
 
 \renewcommand{\ln}{\mathcal{\mathrm{Ln}}}
 
-\newcommand{\angl}[1]{(angl.~#1)}
+\newcommand{\angl}[1]{(angl.~#1)} % TODO: add english language
 
 %%% Local Variables:
 %%% TeX-master: "main"
