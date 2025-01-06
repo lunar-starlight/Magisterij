@@ -1,7 +1,60 @@
 \section{Topološki modeli}
 
-Naj \(X, Y, …\) označujejo okoliše.
+Teorija modelov morda zveni kot zelo abstraktna in filozofska zadeva (govora je
+o matematičnih svetovih), vendar je pa ideja sama blizu vsakemu matematiku, ki
+je dokončal drugi letnik dodiplomskega študija.
+Situacija je namreč zelo podobna teoriji grup. Struktura grupe je skupek
+aksiomov (tako kot jih ima konstruktivna logika ali pa teorija množic), medtem
+ko so pa grupe same natanko \emph{modeli} teh aksiomov, in na model logike
+mislimo na isti način.
 
+Seveda pa grupe niso edina struktura, za katero lahko izvedemo to analogijo.
+Lahko tudi gledamo modele monoidne, kolobarske, vektorske,~itd.~strukture, prav
+tako pa lahko gledamo modele topološke strukture ali pa modele izračunljivostne
+strukture (recimo turingove stroje).
+
+V logiki in teoriji množic, se pogosto sprašujemo, ali so kakšne trditve
+\emph{neodvisne} od aksiomov našega sistema. Na primer aksiom izbire je
+neodvisen od preostalih aksiomov teorije množic, hipoteza kontinuuma je
+neodvisna od teorije množic z izbiro,~itd. Neodvisnost je mogoče malce
+nedostopen pojem, še posebej za matematike, ki verjamejo v absolutno resnico.
+Namreč, kako lahko trditev ni niti resnična niti neresnična? Ampak bistvo je v
+tem, da trditev ima resničnostno vrednost \emph{v vseh modelih}, vendar če je ta
+resničnostna vrednost različna v različnih modelih, je trditvi ne moremo
+dodeliti, tako da bo bilo to res v vseh modelih! Ključno je namreč, da noben
+model logike ni \emph{odlikovan}, torej nimamo \quot{standardnega modela}.
+
+To se vse sliši nekoliko komplicirano, a nam je zares že intimno znano. V
+teoriji grup namreč vemo za \quot{komutativnost}, za katero vemo, da se je ne da
+dokazati iz aksiomov grupe, prav tako pa ne velja njena negacija. To pa vemo
+natanko zato, ker obstajajo in komutativne in nekomutativne grupe (oziroma
+modeli aksiomov grup). V teoriji grup prav tako nimamo \quot{standardne grupe},
+za katero velja natanko vse kar velja za vse grupe.
+
+V logiki takim stvarem pravimo \quot{neodvisne trditve}, v teoriji
+izračunljivosti tem pravimo \quot{neizračunljive funkcije}, v algebri in
+topologiji pa \quot{lastnosti algebraične strukture oz.~topološkega prostora}.
+
+Skratka, prehod med aksiomatskim sistemom in modeli nam je kot matematikom znan,
+v algebri smo bili z njim vzgojeni že od malega, a v logiki te sreče žal nismo
+imeli. Tako se moramo na stara leta pruičiti teh metod, ki so pa logikom brez
+dvoma enako pomembne kot so grupe algebrajikom, ali pa prostori topologom.
+
+Kot smo pa omenili v uvodu, pa obstajajo modeli logike, ki so zgrajeni iz
+topoloških prostorov. Tem pravimo topološki modeli, in vse logične trditve v tem
+modelu se prevedejo v topološke trditve o topološkem prostoru. Sledi naravno
+vprašanje, ali lahko vzpostavimo nekak slovar med neodvisnimi trditvami
+(t.~j.~klasičnimi principi v konstruktivni logiki) in topološkimi lastnostmi, ki
+so nam znane.
+
+Do tega se vrnemo kasneje, v naslednjem razdelku, za zdaj nas pa čaka malo
+teorije snopov, da lahko topološke modele sploh definiramo.
+
+\subsection{Snopi}
+
+
+
+%Naj \(X\), \(Y\), … označujejo okoliše, \(U\), \(V\), … pa njihove odprte podmnožice.
 
 
 \begin{definicija}
@@ -49,24 +102,57 @@ Preden lahko definiramo snope, moramo nekaj povedati o družinah prerezov.
   uniji družine in je z njo skladen.
 \end{definicija}
 
-\begin{opomba}
-  Če družina ni skladna očitno nima amalgamacije.
-\end{opomba}
-\begin{slogan}
-  Vsaka skladna družina prerezov v snopu ima enolično amalgamacijo.
-\end{slogan}
-\begin{slogan}
-  Predsnop je snop, kadar ima vsaka skladna družina prerezov enolično amalgamacijo.
-\end{slogan}
+% Naj \(X\), \(Y\), … označujejo okoliše, \(U\), \(V\), … pa njihove odprte podmnožice.
 
-\begin{definicija}
-  Preslikava med (pred)snopoma \(F\) in \(G\) je naravna transformacija med
-  njima kot funktorjema.
-\end{definicija}
+% \begin{definicija}
+%   \emph{Predsnop nad okolišem \(X\)} je funktor \(F : \op{\O{\p{X}}} → \setcat\).
+%   Elementom množic \(F(U)\) pravimo \emph{prerezi (pri U)}.
+% \end{definicija}
 
-\begin{definicija}
-  Kategoriji vseh snopov na \(X\), skupaj z morfizmi med njimi pravimo \(\sh X\).
-\end{definicija}
+% \begin{opomba}
+%   Predsnope lahko definiramo tudi nad poljubno kategorijo \(\cat C\).
+%   V tem primeru pišemo \(\psh{\cat C} ≔ \op{\cat C} → \setcat\), za predsnope nad okolišem
+%   \(X\) pa raje spustimo \(\mc{O}\) in pišemo kar \(\psh{X}\).
+% \end{opomba}
+
+% Preden lahko definiramo snope, moramo nekaj povedati o družinah prerezov.
+
+% \begin{definicija}
+%   Prereza \(s ∈ F(U)\) in \(t ∈ F(V)\) sta \emph{skladna}, ko velja \(s\res{V} = t\res{U}\).
+%   Družina prerezov \(sᵢ ∈ F(Uᵢ)\) je \emph{skladna}, ko so njeni elementi paroma
+%   skladni. Prerez je \emph{skladen} z družino, ko je paroma skladen z vsemi
+%   njenimi elementi.
+% \end{definicija}
+
+% \begin{definicija}
+%   \emph{Amalgamacija} (nujno skladne) družine prerezov je prerez, ki je
+%   definiran vsaj na uniji družine in je z njo skladen.
+% \end{definicija}
+% \begin{opomba}
+%   Če družina ni skladna očitno ne more imeti amalgamacije.
+% \end{opomba}
+
+% \begin{definicija}
+%   \emph{Snop nad okolišem} je predsnop, za katerega ima vsaka skladna
+%   družina prerezov enolično amalgamacijo.
+% \end{definicija}
+
+% %\begin{slogan}
+% %  Vsaka skladna družina prerezov v snopu ima enolično amalgamacijo.
+% %\end{slogan}
+% %\begin{slogan}
+% %  Predsnop je snop, kadar ima vsaka skladna družina prerezov enolično amalgamacijo.
+% %\end{slogan}
+
+% \begin{definicija}
+%   Morfizem med (pred)snopoma \(F\) in \(G\) je naravna transformacija med
+%   njima kot funktorjema.
+% \end{definicija}
+
+% \begin{definicija}
+%   Kategoriji vseh snopov na \(X\), skupaj z morfizmi med njimi
+%   pravimo~\(\sh{X}\), kategoriji predsnopov pa \(\psh X\).
+% \end{definicija}
 
 
 \subsection{Prezentacije snopov}
@@ -110,9 +196,9 @@ prereze same, saj lahko \(U\) dobimo iz \(⟦φ = φ⟧\). Tej množici pravimo
 %Ostane le še problem kako pravilno tvoriti kvocient iz te relacije, kar pa
 %upamo, da se ognemo z bolj strukturiranim pogledom.
 
-Zgoraj opisanem postopku se reče tudi konstrukcija toposa iz triposa
-\angl{tripos to topos construction} in je to tudi motivacijski primer za razvoj
-te konstrukcije.
+Zgoraj opisanem postopku se reče tudi konstrukcija toposa iz
+triposa~\angl{tripos to topos construction} in je to tudi motivacijski primer za
+razvoj te konstrukcije.
 
 \begin{definicija}
   \emph{\(ℒ\)-vrednotena množica} oziroma \emph{\(ℒ\)-množica} je množica \(A\),

@@ -1,5 +1,59 @@
 \section{Uvod}
 
+V konstruktivni matematiki poznamo več tako imenovanih \quot{nekonstruktivnih}
+oziroma \quot{klasičnih} principov, najbolj znan recimo princip izključene
+tretje možnosti in aksiom izbire, obravnavamo pa lahko tudi šibkejše verzije
+obeh. Ruski konstruktivisti so recimo priznavali princip Markova, ki pravi, da
+če zaporedje ničel in enk ni konstantno nič, mora potem nujno biti na nekem
+indeksu enka, pa čeprav ta princip ne velja \quot{konstruktivno}.
+
+Ruskemu konstruktivizmu bi torej lahko rekli kot ena interpretacija ali celo
+\emph{implementacija} konstruktivne logike. Temu se bolj tehnično reče
+\emph{model}, se pa tudi uporablja fraza \emph{matematični svet}, saj je model
+logike natanko svet, v katerem lahko delamo matematika z uporabo te logike.
+
+Matematične svetove pa lahko pogrupiramo v neke večje kategorije, ki pa bodo
+matematikom malo bolj znani. Nekateri so motivirani s teorijo množic, drugi z
+izračunljivostjo, torej na primer s Turingovimi stroji (sem recimo spada Ruski
+konstruktivizem), tretji z algebro, četrti pa s topologijo. V tem delu se
+osredotočimo na topološke modele. Natančno to pomeni, da za vsak topološki
+pogledamo model logike, ki pripada temu prostoru. Ideja sedaj je, da
+\quot{klasične} principe izrazimo v jeziku topološkega modela, to interpretiramo
+kot izjavo o topološkem prosoru samem, in tako dobimo slovar med
+\quot{klasičnimi} principi in topološkimi lastnostmi, kot na primer kompaktnost,
+separabilnost, \(Tₙ\) lastnostmi, in podobno.
+
+% TODO: check citations and only include the relevant ones, probably just the
+% thesis and follow up paper
+Močno se zgledujemo po delu Inga Blechschmidta~\cite{Blechschmidt17,
+  Blechschmidt18, Blechschmidt20, Blechschmidt22}, ki zgradi slovar med
+algebraično geometrijo in komutativno algebro v (Zariskijevem) modelu.
+
+To delo predpostavlja znanje teorije kategorij, se pa bo avtorica potrudila
+navesti točne citate na vse naprednejše kategorične definicije in izreke. Znanje
+teorije modelov ali teorije toposov ni nujno, je pa za globje razumevanje
+celostne slike verjetno potrebno. Zaželjena je osnovno poznavanje konstruktivne
+matematike, za kar priporočamo~\cite{Bauer16, Greenleaf20, Bishop85}.
+
+\subseciton{Notacija}
+
+Skozi delo uporabljamo več nestandardnih oznak, ki so navedene in razložene v
+spodnji tabeli.
+
+\begin{tabularx}{1.0\linewidth}{c|c}
+  \(よ\) & vložitev Yonede\\
+  \(f{\res U}\) & zožitev \(f\) na \(U\)\\
+  \(\Rd\) & realna števila konstruirana z Dedekindovimi rezi\\
+  \(\Rc\) & realna števila konstruirana kot kvocijen Cauchyjevih zaporedij\\
+  %\(\lem\) & princip izključene tretje možnosti, \\
+  \(\cov{U}{i}\) & pokritje monžice \(U\) z množico \(\{Uᵢ\}_{i∈I}\), kjer je
+                   \(I\) neka indeksna množica\\
+  \(\lightning\) & protislovje\\
+  \(\) & \\
+  \(\) & \\
+  \(\) & \\
+\end{tabularx}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "main"

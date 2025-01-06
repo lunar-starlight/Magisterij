@@ -19,8 +19,24 @@
 \end{izrek}
 \begin{proof}
   Denimo, da je \(X\) lokalno \(T₆\).
+  To pomeni, da imamo pokritje \(X\) s \(T₆\) prostori \(Xᵢ\).
+  Označimo funkcijo, ki jo dobimo iz pogoja \(T₆\) za zaprto množico \(A ⊆ Xᵢ\)
+  z \(N_A : Xᵢ → ℝ\). Zanjo velja, da je \(N_A(x) = 0\) natanko tedaj, ko je
+  \(x ∈ A\), brez škode za splošnost pa lahko tudi predpostavimo, da je
+  nenegativna.
+\def#1\c{\p{#1}^{c}}
+  Če želimo pokazati redukcijo iz \(\lem\) na \(\alpo\), mora za vse
+  \(V ⊆ U ⊆ X\) obstajati neko pokritje \(U\), in lokalno na njem zaprte množice
+  \(A\), tako da je \(\int{N_A^{-1}(\{0\})} ∪ N_A^{-1}((0, ∞)) ⊆ V ∪ U⧵V\).
+
+  Za pokritje vzamemo množice \(Uᵢ ≔ U ∩ Xᵢ\), za zaprte množice pa \(\p{V ∪ U⧵V}\c\) 
+\end{proof}
+
+% TODO: rewrite proof in better language (maybe)
+\begin{proof}
+  Denimo, da je \(X\) lokalno \(T₆\).
   Potem imamo pokritje s \(T₆\) prostori, t.j. za vsak \(Xᵢ\) iz pokritja in
-  vsako zaprto množico \(A ⊆ Xᵢ\), imamo zvezno funkcijo \(f : Xᵢ → ℝ\), tako
+  vsako zaprto množico \(A ⊆ Xᵢ\), imamo zvezno funkcijo \(f_A : Xᵢ → ℝ\), tako
   da je \(f_A(x) = 0\) natanko tedaj, ko je \(x ∈ A\). Poleg tega lahko
   zahtevamo, da je ta funkcija nenegativna.
 
@@ -228,6 +244,8 @@
   Potem je \(φ(r) = 0 ⇔ r = 0\) in velja \(\lpo{\p{α}} ⇔ \lpoR{\p{x}}\).
 \end{dokaz}
 
+% TODO: Ask Davorin if this is true. Alternatively, find structural lifting
+% property Andrej wanted
 \begin{lema}
   Vsaka preslikava \(f : C → I\) inducira preslikavo \(\floor f : C → C\),
   s predpisom \(\floor f(a) ≔ \sup\set{x ∈ C}{x < f(a)}\).

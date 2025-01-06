@@ -2,6 +2,54 @@
 
 \subsection{\(\cc\) in \(\ccv\) nad \(T₁\) prostori}
 
+% TODO: think if this just fits better in previous section anyways
+\begin{lema}\label{th:psp-has-cc}
+  Nad P-prostori velja \(\CC\).
+\end{lema}
+\begin{proof}
+  Trditev \(X ⊩ \AC{\p{ℕ, ℱ}}\) pravi, da če je \(P\) celovita relacija med \(ℕ\) in
+  \(ℱ\), potem obstaja funkcija \(f : ℕ → ℱ\), ki je podrelacija \(P\).
+
+  Naj bo torej \(P\) taka celovita relacija v \(\sh{X}\).
+  Relacija \(P\) je navzven zaporedje globalnih prerezov potenčnega snopa \(ℱ\).
+  To da je celovita pa pomeni, da imamo za vsak \(n ∈ ℕ\) indeksno množico
+  \(Iₙ\) in pokritje \(\{U_{n,i}\}_{i ∈ Iₙ}\), skupaj z lokalnimi prerezi
+  \({f_{n,i} ∈ ℱ{\p{U_{n,i}}}}\), tako da velja \( U_{n,i} ⊩ Pₙ{\p{f_{n,i}}}\).
+
+  Obstoj funkcije izbire pa pomeni, da mora obstajati pokritje \(\{Vⱼ\}ⱼ\) in
+  zaporedje prerezov \(f_{n,j} ∈ ℱ{\p{Vⱼ}}\), tako da velja \(Vⱼ ⊩ \for{n : ℕ}{Pₙ{\p{f_{n,j}}}}\).
+
+  Za odvisno funkcijo \(φ : ∏_{n ∈ ℕ} Iₙ\) definirajmo množico
+  \(U_φ ≔ ⋂_{n ∈ ℕ} U_{n,φ(n)}\), ki je števen presek odprtih množic torej po
+  predpostavki odprt. Množice \(U_φ\) pokrijejo prostor, saj je vsak \(x ∈ X\)
+  vsebovan v nekem \(U_{n, i}\) za vse \(n ∈ ℕ\) torej po aksiomu števne izbire
+  (v metateoriji) obstaja tudi funkcija \(φ\), tako da bo \(x ∈ U_{n, φ{n}}\),
+  torej v \(U_φ\).
+
+  Še več, za vse \(n\) in \(φ\) velja
+  \[ U_φ ⊆ U_{n,φ(n)} ⊩ Pₙ{\p{f_{n,φ(n)}}}\text. \]
+
+  To pa pomeni, da za obstoj funkcije izbire vzamemo krov \(\{U_φ\}_φ\) in
+  preslikavo \(φ ↦ \p{f_{n, φ(n)} ∈ ℱ{p{U_φ}}}ₙ\), ki zadošča želenemu pogoju,
+  kot smo pokazali zgoraj.
+\end{proof}
+\begin{opomba}
+  Gornji dokaz ključno uporabi askiom števne izbire v metateoriji.
+\end{opomba}
+
+Gornjo lemo lahko združimo z Lemo~\ref{th:t1-ccv-is-psp}, da dobimo
+\begin{trditev}
+  Nad \(R₀\) prostori je števna izbira ekvivalentna disjunktivni števni izbiri.
+\end{trditev}
+\begin{opomba}
+  V dokazu množica \(ℕ\) ni posebej odlikovana, razen da je enake kardinalnosti
+  kot tista, za katero je topologija zaprta za preseke, torej izrek lahko
+  posplošimo na izbiro poljubne kardinalnosti.
+
+  Splošnem aksiomu izbire pripadajo torej prostori Aleksandrova, kjer je presek
+  poljubne družine odprtih množic odprt.
+\end{opomba}
+
 
 %%% Local Variables:
 %%% mode: latex
