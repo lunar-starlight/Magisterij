@@ -53,112 +53,144 @@ teorije snopov, da lahko topološke modele sploh definiramo.
 \subsection{Snopi}
 
 
-
-%Naj \(X\), \(Y\), … označujejo okoliše, \(U\), \(V\), … pa njihove odprte podmnožice.
-
-
 \begin{definicija}
-  \emph{Predsnop nad okolišem \(X\)} je funktor \(F : \op{\O{\p{X}}} → \setcat\).
-  Elementom množic \(F(U)\) pravimo \emph{prerezi (pri U)}.
-\end{definicija}
+  \emph{Snop nad prostorom \(X\)} je sestavljen iz
+  \begin{itemize}
+    \item množic \emph{prerezov} \(F(U)\) za vsak \(U ∈ 𝒪X\),
+    \item preslikav \(ρ_V^U : F(U) → F(V)\), ki jim pravimo \emph{zožitve},
+  \end{itemize}
+  tako da velja
+  \begin{itemize}
+    \item Za vsako pokritje \(\cov{U}{i}\) in elementa \(s, t ∈ F(U)\), če je
+      \(s{\res{Uᵢ}} = t{\res{Uᵢ}}\) za vse \(i\), je tudi \(s = t\),
+    \item Za vsako pokritje \(\cov{U}{i}\) in elemente \(sᵢ ∈ F(Uᵢ)\), za katere velja
+      \({sᵢ{\res{Uᵢ∩Uⱼ}} = sⱼ{\res{Uᵢ∩Uⱼ}}}\) za vse \(i\) in \(j\), obstaja
+      element \(s ∈ F(U)\), tako da je \(s{\res{Uᵢ}} = sᵢ\) za vse \(i\).
+  \end{itemize}
 
+  Prvemu pogoju pravimo \emph{lokalnost}, drugemu pa \emph{lepljenje}.
+\end{definicija}
 \begin{opomba}
-  Predsnope lahko definiramo tudi nad poljubno kategorijo \(\cat C\).
-  V tem primeru pišemo \(\psh{\cat C} ≔ \op{\cat C} → \setcat\), za predsnope nad okolišem
-  \(X\) pa raje spustimo \(\mc{O}\) in pišemo kar \(\psh{X}\).
+  Gorjnemu objektu, ki ne nujno zadošča lepljenju ali lokalnosti, pravimo \emph{predsnop}.
+  Snop bi torej lahko definirali kot predsnop, ki zadošča lokalnosti in lepljenju.
 \end{opomba}
 
-Preden lahko definiramo snope, moramo nekaj povedati o družinah prerezov.
+Gornjo definicijo se da napisati tudi malo elegantneje. Poimenujmo najprej par konceptov.
 
 \begin{definicija}
-  Prereza \(s ∈ F(U)\) in \(t ∈ F(V)\) sta \emph{skladna}, ko velja \(s\res{V} = t\res{U}\).
+  Prereza \(s ∈ F(U)\) in \(t ∈ F(V)\) sta \emph{skladna}, ko velja \(s{\res{V}} = t(\res{U})\).
   Družina prerezov \(sᵢ ∈ F(Uᵢ)\) je \emph{skladna}, ko so njeni elementi paroma
   skladni. Prerez je \emph{skladen} z družino, ko je paroma skladen z vsemi
   njenimi elementi.
 \end{definicija}
 
 \begin{definicija}
-  \emph{Snop nad okolišem} je predsnop, za katerega velja:
-  \begin{enumerate}
-  \item Za vsako skladno družino prerezov \(sᵢ ∈ F(Uᵢ)\) obstaja enoličen prerez
-    \({s ∈ F\p{⋃ᵢUᵢ}}\), ki je skladen z družino.
-  \item Za vsako pokritje \(Uᵢ \circlearrowright U\) in skladno družino prerezov \(sᵢ ∈ F(Uᵢ)\) obstaja enoličen prerez
-    \(s ∈ F(U)\), ki je skladen z družino.
-  \item Za vsako skladno družino prerezov \(sᵢ\) na \(Uᵢ\) obstaja enoličen prerez
-    \(s\) na \(⋃ᵢUᵢ\), ki je skladen z družino.
-  % \item Za vsako skladno družino prerezov \(sᵢ : Uᵢ\) obstaja enoličen prerez
-  %   \(s : ⋃ᵢUᵢ\), ki je skladen z družino.
-  \item Za vsako skladno družino prerezov \(Uᵢ ⊩ sᵢ\) obstaja enoličen prerez
-    \({⋃ᵢUᵢ ⊩ s}\), ki je skladen z družino.
-  \item Za vsako skladno družino prerezov \(Uᵢ ⊩ sᵢ ∈ F\) obstaja enoličen prerez
-    \({⋃ᵢUᵢ ⊩ s ∈ F}\), ki je skladen z družino.
-  % \item Za vsak par prerezov \(s, t ∈ F(U)\), je \(s = t\) natanko tedaj, ko za
-  %   pokritje \(Uᵢ \circlearrowright U\) velja,
-  \end{enumerate}
+  Naj bo \(sᵢ ∈ F(Uᵢ)\) skladna družina prerezov. Potem je \emph{amalgamacija} te družine
+  tak prerez \(F\) pri \(⋃ᵢUᵢ\), ki je skladen s to družino.
 \end{definicija}
 
-\begin{definicija} %TODO: popravi ta vsaj unija biznis
-  \emph{Amalgamacija} družine prerezov je vsak prerez, ki je definiran vsaj na
-  uniji družine in je z njo skladen.
+Če zgolj vstavimo nove izraze, lahko lepljenje izrazimo kot:
+\begin{quotation}
+  Vsaka skladna družina prerezov ima amalgamacijo.
+\end{quotation}
+Izkaže pa se, da če zahtevamo še \emph{enoličnost} amalgamacije, dobimo lokalnost zastonj.
+Res, če je \(\cov{U}{i}\) pokritje je \(s\) amalgamacija družine zožitev na elemente pokritja.
+Torej, če se \(s\) in \(t\) ujemata na pokritju, sta njuni družini zožitev enaki, torej imata
+enake tudi amalgamacije. Sedaj pa, če predpostavimo, da so amalgamacije enolične, mora pa biti nujno \(s = t\).
+
+\begin{slogan}
+  Snop nad \(X\) je predsnop, v katerem ima vsaka skladna družina prerezov enolično amalgamacijo.
+\end{slogan}
+
+\begin{definicija}
+  \emph{Preslikava med snopoma \(F\) in \(G\)} je družina preslikav \({α_U : F(U) → G(U)}\),
+  tako da za vsaka \(V ⊆ U\) v \(𝒪X\) velja
+  \[ α_U{\p{s}}{\res{V}} = α_V{\p{s{\res{V}}}}\text. \]
 \end{definicija}
 
-% Naj \(X\), \(Y\), … označujejo okoliše, \(U\), \(V\), … pa njihove odprte podmnožice.
+Kdaj nas zanima obnašanje snopa okrog neke točke \(x ∈ X\).
 
-% \begin{definicija}
-%   \emph{Predsnop nad okolišem \(X\)} je funktor \(F : \op{\O{\p{X}}} → \setcat\).
-%   Elementom množic \(F(U)\) pravimo \emph{prerezi (pri U)}.
-% \end{definicija}
+\begin{definicija}
+  Na prereze snopa \(F\) uvedemo ekvivalenčno relacijo, tako da rečemo, da sta \(s ∈ F(U)\) in \(t ∈ F(V)\)
+  \emph{enaka pri \(x\)}, kadar obstaja neka okolica \(W \nbd x\), ki je vsebovana v \(U ∩ V\),
+  tako da je \(s{\res{W}} = t{\res{W}}\).
 
-% \begin{opomba}
-%   Predsnope lahko definiramo tudi nad poljubno kategorijo \(\cat C\).
-%   V tem primeru pišemo \(\psh{\cat C} ≔ \op{\cat C} → \setcat\), za predsnope nad okolišem
-%   \(X\) pa raje spustimo \(\mc{O}\) in pišemo kar \(\psh{X}\).
-% \end{opomba}
+  Množici ekvivalenčnih razredov prerezov snopa \(F\) pri \(x\) pravimo \emph{bilka \(F\) pri \(x\)}
+  \angl{stalk} (ozn.~\(Fₓ\)), elementom \(Fₓ\) pa \emph{kali pri \(x\)} \angl{germ}
+  (ozn.~\(\germ s x\) za \(s ∈ F(U \nbd x)\)).
+\end{definicija}
+\begin{opomba}
+  Kadar brez konteksta napišemo \(\germ s x\) predpostavimo, da je prerez \(s\) definiran na neki okolici \(x\).
+\end{opomba}
 
-% Preden lahko definiramo snope, moramo nekaj povedati o družinah prerezov.
+Za preslikavo med snopoma lahko pogledamo, kako se obnaša na okolici točke, tako da definiramo preslikavo med bilkama.
 
-% \begin{definicija}
-%   Prereza \(s ∈ F(U)\) in \(t ∈ F(V)\) sta \emph{skladna}, ko velja \(s\res{V} = t\res{U}\).
-%   Družina prerezov \(sᵢ ∈ F(Uᵢ)\) je \emph{skladna}, ko so njeni elementi paroma
-%   skladni. Prerez je \emph{skladen} z družino, ko je paroma skladen z vsemi
-%   njenimi elementi.
-% \end{definicija}
+\begin{konstrukcija}
+  Preslikavi med snopoma \(α : F ⇒ G\) lahko priredimo preslikavo \(αₓ : Fₓ → Gₓ\), definirano s predpisom
+  \(\germ s x ↦ \germ{\p{α_U{\p{s}}}} x\).
+\end{konstrukcija}
+\begin{dokaz}
+  Pokazati moramo, da če velja \(\germ s x = \germ t x\), je tudi njuna slika z \(αₓ\) enaka.
 
-% \begin{definicija}
-%   \emph{Amalgamacija} (nujno skladne) družine prerezov je prerez, ki je
-%   definiran vsaj na uniji družine in je z njo skladen.
-% \end{definicija}
-% \begin{opomba}
-%   Če družina ni skladna očitno ne more imeti amalgamacije.
-% \end{opomba}
+  Iz predpostavke sledi, da obstaja \(W \nbd x\), kjer se \(s\) in \(t\) ujemata.
+  Sledi, da je
+  \[ α_U{\p{s}}{\res{W}} = α_W{\p{s\res{W}}} = α_W{\p{t\res{W}}} = α_U{\p{t}}{\res{W}}, \]
+  kar pokaže, da gornja konstrukcija definira funkcijo.
+\end{dokaz}
+\begin{opomba}
+  Pisali bomo tudi \(αₓ(s)\) namesto \(αₓ{\p{\germ s x}}\).
+\end{opomba}
 
-% \begin{definicija}
-%   \emph{Snop nad okolišem} je predsnop, za katerega ima vsaka skladna
-%   družina prerezov enolično amalgamacijo.
-% \end{definicija}
+Lastnosti preslikav med snopoma so najpogosteje definirane tako, da rečemo, da veljajo za vse bilke.
 
-% %\begin{slogan}
-% %  Vsaka skladna družina prerezov v snopu ima enolično amalgamacijo.
-% %\end{slogan}
-% %\begin{slogan}
-% %  Predsnop je snop, kadar ima vsaka skladna družina prerezov enolično amalgamacijo.
-% %\end{slogan}
+\begin{definicija}
+  Preslikava med snopi je injektivna (oz.~surjektivna), kadar so vse preslikave bilk injektivne (oz.~surjektivne).
+\end{definicija}
 
-% \begin{definicija}
-%   Morfizem med (pred)snopoma \(F\) in \(G\) je naravna transformacija med
-%   njima kot funktorjema.
-% \end{definicija}
+\begin{lema}[Lokalnost na bilkah]\label{th:lokalnost-na-bilkah}
+  Naj bosta \(s, t ∈ F(U)\). Potem sta enaka natanko tedaj, ko so enake vse njune kali na elementih \(U\).
+\end{lema}
+\begin{dokaz}
+  Če so kali \(s\) in \(t\) enake v okolici vsakega \(x ∈ U\), potem te okolice tvorijo pokritje \(U\),
+  tako da se na vsakem elementu pokritja \(s\) in \(t\) ujemata.
+  Potem po lokalnosti snopa sledi, da sta \(s\) in \(t\) enaka tudi na celotnem \(U\).
+\end{dokaz}
 
-% \begin{definicija}
-%   Kategoriji vseh snopov na \(X\), skupaj z morfizmi med njimi
-%   pravimo~\(\sh{X}\), kategoriji predsnopov pa \(\psh X\).
-% \end{definicija}
+\begin{trditev}
+  Preslikava med snopi je injektivna natanko tedaj, ko so injektivne vse njene komponente \(α_U\).
+\end{trditev}
+\begin{dokaz}
+  Denimo, da so vse komponente \(α_U\) injektivne in naj bo \({αₓ{\p{s}} = αₓ{\p{t}}}\).
+  Tedaj obstaja \(W \nbd x\), tako da je \(α_W(s) = α_W(t)\), torej po injektivnosti \(α_W\)
+  je \(s = t\), kar dokaže injektivnost \(αₓ\). Ker je \(x\) poljuben sledi, da je \(α\) injektivna.
+
+  V obratno smer pa naj bodo \(αₓ\) injektivne in \(α_U(s) = α_U(t)\).
+  Za vsak \(x ∈ U\) sta potem tudi kali \(αₓ(s)\) in \(αₓ(t)\) enaki, torej sta po injektivnosti \(αₓ\)
+  tudi kali \(\germ s x\) in \(\germ t x\) enaki.
+  Sedaj iz Leme~\ref{th:lokalnost-na-bilkah} sledi, da sta tudi \(s\) in \(t\) enaka.
+\end{dokaz}
+
+
+Da lažje govorimo o kategoričnih aspektih snopov, jih sedaj definiramo še kategorično.
+
+\begin{definicija}
+  Predsnop nad \(X\) je funktor \(\op{\p{𝒪X}} → \setcat\), kjer gledamo na delno urejeno
+  množico \(𝒪X\) kot kategorijo, kjer so morfizmi vsebovanosti množic.
+
+  Snop nad \(X\) je predsnop, za katerega velja enoličnost in lepljenje.
+
+  Preslikava med (pred)snopoma je naravna transformacija med njima kot funktorjema.
+
+  Kategoriji predsnopov in snopov ter preslikav med njimi ozačimo s \(\psh{X}\) in \(\sh{X}\).
+\end{definicija}
+
+
 
 
 \subsection{Prezentacije snopov}
 
 Naj bo \(F\) snop. Potem po lemi Yonede velja \(F(U) = \textrm{Nat}{\p{よU, F}}\), torej so
-elementi snopa natanko določeni z naravnimi transformacijami (v snop).
+elementi snopa natanko določeni s preslikavami v snop.
 Poleg tega pa za snopa \(F\) in \(G\) ter naravno transformacijo \(α : F ⇒ G\)
 med njima velja, da \(α\) komutira z zožitvami, torej, če je \(V ⊆ U\) in
 \(f ∈ F(U)\), velja \(α_V(f{\res V}) = α_U(f){\res V}\).
