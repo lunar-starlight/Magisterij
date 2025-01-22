@@ -8,16 +8,12 @@
   \end{quote}
 }
 
-\renewcommand{\d}{\;\mathrm d}
 \renewcommand{\hat}{\widehat}
 \renewcommand{\tilde}{\widetilde}
 \let\oldbar\bar
 \renewcommand{\bar}{\overline}
-\newcommand{\subs}{\subseteq}
-\newcommand{\nin}{\not\in}
 \newcommand{\contradiction}{\,\,\lightning}
 
-% \newcommand{\p}[1]{\left( {#1} \right)}
 \DeclarePairedDelimiterX{\parens}[1]{(}{)}{#1}
 \def\p{\parens*}
 \newcommand{\cli}[1]{\left[ {#1} \right]}
@@ -42,6 +38,7 @@
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\codim}{codim}
 \DeclareMathOperator{\cl}{Cl}
+\DeclareMathOperator{\int}{Int}
 %\DeclareMathOperator{\cov}{Cov}
 \AtBeginDocument{
   %\def\c#1{\left( {#1} \right)^c}
@@ -77,9 +74,13 @@
   \hspace{-\leftmargin}#1}
 \makeatother
 
-\newcommand{\for}[2]{{\forall#1.}\;#2}
-\newcommand{\exist}[2]{{\exists#1.}\;#2}
-\newcommand{\existi}[2]{{\exists!#1.}\;#2}
+\newcommand{\defquantifier}[2]{%
+  \expandafter\newcommand\csname #1\endcsname[2]{{#2 ##1.}\;##2}%
+}
+\defquantifier{for}{\forall}
+\defquantifier{exist}{\exists}
+\defquantifier{unique}{\exists!}
+\defquantifier{eventually}{\nabla}
 
 \renewcommand{\check}{ \(\checkmark\)}
 
@@ -87,11 +88,23 @@
 
 \newcommand{\forces}[2]{#1\;⊩\;#2}
 
+\makeatletter
+\newcommand{\@definstance}[3]{%
+  \expandafter\NewDocumentCommand\csname #1\endcsname{s}{%
+    \IfBooleanTF##1%
+    {\textnormal{\sffamily #2}}%
+    {\textnormal{\sffamily #3}}%
+  }%
+}
+\newcommand{\definstance}[1]{\@definstance{#1}{\uppercase{#1}}{\lowercase{#1}}}
 \newcommand{\instance}[1]{\textnormal{\sffamily #1}} % TODO: rename
-\newcommand{\lem}{\instance{LEM}}
-\newcommand{\lpo}{\instance{LPO}}
-\newcommand{\alpo}{\instance{ALPO}}
-\newcommand{\lpoR}{\instance{LPO}_ℝ} % TODO: deprecate
+\definstance{lem}
+\definstance{lpo}
+\definstance{alpo}
+%\newcommand{\lem}{\instance{LEM}}
+% \newcommand{\lpo}{\instance{LPO}}
+% \newcommand{\alpo}{\instance{ALPO}}
+% \newcommand{\lpoR}{\instance{LPO}_ℝ} % TODO: deprecate
 \newcommand{\AC}{\instance{AC}}
 \newcommand{\IAC}{\instance{IAC}}
 \newcommand{\CC}{\instance{CC}}

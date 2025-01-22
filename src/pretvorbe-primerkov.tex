@@ -1,6 +1,6 @@
 \section{Interpretacija pretvorbe primerkov v topoloških modelih}
 
-\subsection{\(\lem ≤ \alpo\) in idempotenca \(\alpo\) nad lokalno \(T₆\) prostori}
+\subsection{\texorpdfstring{\(\lem* ≤ \alpo*\)}{LEM ≤ ALPO} in idempotenca \texopdfstring{\(\alpo*\)}{ALPO} nad lokalno \(T₆\) prostori}
 
 \begin{trditev}
   Nad vsakim okolišem \(X\) je \(\lem\) idempotenten.
@@ -15,7 +15,7 @@
 \end{opomba}
 
 \begin{izrek}
-  Naj bo \(X\) lokalno \(T₆\). Potem nad \(X\) velja redukcija \(\lem ≤_I \lpoR\).
+  Naj bo \(X\) lokalno \(T₆\). Potem nad \(X\) velja redukcija \(\lem* ≤ \alpo*\).
 \end{izrek}
 \begin{proof}
   Denimo, da je \(X\) lokalno \(T₆\).
@@ -24,141 +24,21 @@
   z \(N_A : Xᵢ → ℝ\). Zanjo velja, da je \(N_A(x) = 0\) natanko tedaj, ko je
   \(x ∈ A\), brez škode za splošnost pa lahko tudi predpostavimo, da je
   nenegativna.
-  Če želimo pokazati redukcijo iz \(\lem\) na \(\alpo\), mora za vse
-  \(V ⊆ U ⊆ X\) obstajati neko pokritje \(U\), in lokalno na njem zaprte množice
-  \(A\), tako da je \(\int{N_A^{-1}(\{0\})} ∪ N_A^{-1}((0, ∞)) ⊆ V ∪ U⧵V\).
+  Če želimo pretvoriti \(\lem*\) na \(\alpo*\), mora za vse
+  \(U ⊆ X\) veljati \(\eventually{x : ℝ}{⟦x ≤ 0⟧ ∪ ⟦x > 0⟧ ⊆ U ∪ ¬U}\).
+  Ker želimo uporabiti predpostavko, moramo podati take zaprte množice, da velja
+  \[ \eventually{A : 𝒜}{⟦N_A ≤ 0⟧ ∪ ⟦N_A > 0⟧ ⊆ U ∪ ¬U}\text. \label{eq:alpo_le_lem}\]
 
-  Za pokritje vzamemo množice \(Uᵢ ≔ U ∩ Xᵢ\), za zaprte množice pa \(\c{\p{V ∪ U⧵V}}\) 
+  Za pokritje vzamemo kar množice \(Xᵢ\), za zaprte množice pa \(A ≔ \c{\p{U ∪ ¬U}}\).
+  Za take množice velja, da je \(⟦N_{A} ≤ 0⟧ = \int Aᵢ\) in \(⟦N_{A} > 0⟧ = U ∪ ¬U\).
+  Ker je množica \(U ∪ ¬U\) gosta, je \(\int A = ∅\), tako da~\ref{eq:alpo_le_lem} očitno velja.
 \end{proof}
-
-% TODO: rewrite proof in better language (maybe)
-\begin{proof}
-  Denimo, da je \(X\) lokalno \(T₆\).
-  Potem imamo pokritje s \(T₆\) prostori, t.j. za vsak \(Xᵢ\) iz pokritja in
-  vsako zaprto množico \(A ⊆ Xᵢ\), imamo zvezno funkcijo \(f_A : Xᵢ → ℝ\), tako
-  da je \(f_A(x) = 0\) natanko tedaj, ko je \(x ∈ A\). Poleg tega lahko
-  zahtevamo, da je ta funkcija nenegativna.
-
-  Dokažimo sedaj, da velja redukcija.
-  Naj bo \(U' ⊆ X\) poljubna odprta množica in \(p ∈ Ω(U')\).
-  Dokazati želimo, da obstaja tako pokritje \(U'\), da na njem lokalno
-  obstajajo realna števila, za katera \(\lpoR\) pomeni, da (lokalno) velja
-  \(p ∨ ¬p\).
-
-  Naj bo \(Uᵢ' ≔ U'∩Xᵢ\) pokritje \(U'\) in \(Aᵢ ≔ \c{p ∨ ¬p} ∩ Uᵢ\),
-  in \(xᵢ : Uᵢ' → ℝ\) \(T₆\) separacijska funckija \(Aᵢ\) na \(Uᵢ'\).
-
-  Predpostavimo sedaj, da je \(Uᵢ ⊆ Uᵢ'\) in da velja \(Uᵢ ⊩ \lpoR{\p{xᵢ}}\).
-  % To pomeni, da obstaja pokritje \(\b{Uᵢⱼ} ∈ \cov{Uᵢ}\), tako da za vsak element
-  To pomeni, da obstaja pokritje \(\cov[i]{U}{j}\), tako da za vsak element
-  pokritja velja \(xᵢ\res{Uᵢⱼ} ≤ 0\) ali \(xᵢ\res{Uᵢⱼ} > 0\).
-
-  Ker je \(xᵢ\) nenegativna, je \(xᵢ ≤ 0\) natanko tedaj, ko je \(xᵢ = 0\), torej
-  po definiciji zgolj na množici \(Aᵢ\).
-  Od tod sledi, da je \(xᵢ\res{Uᵢⱼ} ≤ 0\) zgolj v primeru, ko je \(Uᵢⱼ ⊆ Aᵢ\).
-  Vendar pa ima \(Aᵢ\) prazno notranjost, tako da je tak \(Uᵢⱼ\) nujno prazen.
-
-  Ostane le še drugi primer, torej \(xᵢ\res{Uᵢⱼ} > 0\).
-  Ker množice \(Uᵢⱼ\) tvorijo pokritje \(Uᵢ\), je potem tudi \(xᵢ > 0\) na
-  celotnem \(Uᵢ\). Sledi, da je množica \(Aᵢ∩Uᵢ\) prazna,
-  in velja \(Uᵢ ⊩ \lem{\p{p}}\).
-\end{proof}
-
 \begin{posledica}
-  Če je prostor \(X\) lokalno \(T₆\), velja \(\lpoR×\lpoR ≤_I \lpoR\).
+  Če je prostor \(X\) lokalno \(T₆\), velja \(\alpo*×\alpo* ≤ \alpo*\).
 \end{posledica}
-
-% \begin{dokaz}
-%   Naj bo \(\cov X i\) \(T₆\) pokritje, \(U ⊆ X\), \(x,y : U → ℝ\)
-%   in \(Uᵢ = U∩Xᵢ \covsymb U\).
-
-%   Označimo \(A ≔ {\lpoR\p{x}}ᶜ\) in \(B ≔ {\lpoR\p{y}}ᶜ\) (pod \(Uᵢ\)).
-%   Ker je \(Uᵢ\) \(T₆\) obstaja funkcija \(fᵢ : Uᵢ → ℝ\), ki je \(0\) na
-%   \(A ∪ B\) in pozitivna sicer.
-
-%   Naj bo \(Vᵢ ⊆ Uᵢ\) poljuben in predpostavimo, da velja \(Vᵢ ⊩ \lpoR\p{fᵢ}\).
-%   Ker sta notranjosti množic \(A\) in \(B\) prazni, je prazna tudi notranjost \(A ∪ B\),
-%   torej velja \({fᵢ\res{Vᵢ} > 0}\).
-%   Ker je \(fᵢ\) pozitivna natanko na komplementu \(A ∪ B\) je torej \(Vᵢ\)
-%   podmnožica \(\c{A ∪ B} = \lpoR\p{x} ∩ \lpoR\p{y}\), kar je točno to, kar smo želeli.
-% \end{dokaz}
-
 \begin{posledica}
-  Nad lokalno \(T₆\) prostorom je \(\lpoR\) idempotenten.
+  Nad lokalno \(T₆\) prostorom je \(\alpo*\) idempotenten.
 \end{posledica}
-
-% \begin{izrek}
-%   %Let \(X\) be a topological space. Then \(X\) is locally \(T₆\) if and only if the
-%   %reduction \(\lem ≤_I \lpo\) holds.
-%   Naj bo \(X\) topološki prostor. Tedaj je \(X\) lokalno \(T₆\) natanko tedaj,
-%   ko nad \(X\) velja redukcija \(\lem ≤_I \lpo\).
-% \end{izrek}
-% \begin{proof}
-%   \begin{enumerate}
-%   \item[\((⇒)\)]
-%     Denimo, da je \(X\) lokalno \(T₆\).
-%     Potem imamo pokritje s \(T₆\) prostori, t.j. za vsak \(Xᵢ\) iz pokritja in
-%     vsako zaprto množico \(A ⊆ Xᵢ\), imamo zvezno funkcijo \(f : Xᵢ → ℝ\), tako
-%     da je \(f_A(x) = 0\) natanko tedaj, ko je \(x ∈ A\). Poleg tega lahko
-%     zahtevamo, da je ta funkcija nenegativna.
-
-%     %Potem imamo, za vsako zaprto množico \(A ⊆ X\), zvezno funkcijo
-%     %\(f_A : X → ℝ\), tako da je \(f_A(x) = 0\) natanko tedaj, ko je \(x ∈ A\).
-%     %Poleg tega lahko zahtevamo, da je ta funkcija nenegativna.
-
-%     Dokažimo sedaj, da velja redukcija.
-%     Naj bo \(U' ⊆ X\) poljubna odprta množica in \(p ∈ Ω(U')\).
-%     Dokazati želimo, da obstaja tako pokritje \(U'\), da na njem lokalno
-%     obstajajo realna števila, za katera \(\lpo\) pomeni, da (lokalno) velja
-%     \(p ∨ ¬p\).
-
-%     Naj bo \(Uᵢ' ≔ U'∩Xᵢ\) pokritje \(U'\) in \(Aᵢ ≔ \c{p ∨ ¬p} ∩ Uᵢ\),
-%     in \(xᵢ : Uᵢ' → ℝ\) \(T₆\) separacijska funckija \(Aᵢ\) na \(Uᵢ'\).
-
-%     %Izkaže se, da lahko za pokritje vzamemo kar celoten \(U'\), za realno število
-%     %pa vzemimo \(x ≔ f_A\) funkcija, ki jo dobimo iz \(T₆\) lastnosti.
-
-%     Predpostavimo sedaj, da je \(Uᵢ ⊆ Uᵢ'\) in da velja \(Uᵢ ⊩ \lpo{\p{xᵢ}}\).
-%     % To pomeni, da obstaja pokritje \(\b{Uᵢⱼ} ∈ \cov{Uᵢ}\), tako da za vsak element
-%     To pomeni, da obstaja pokritje \(\cov[i]{U}{j}\), tako da za vsak element
-%     pokritja velja \(xᵢ\res{Uᵢⱼ} ≤ 0\) ali \(xᵢ\res{Uᵢⱼ} > 0\).
-
-%     Ker je \(xᵢ\) nenegativna, je \(xᵢ ≤ 0\) natanko tedaj, ko je \(xᵢ = 0\), torej
-%     po definiciji zgolj na množici \(Aᵢ\).
-%     Od tod sledi, da je \(xᵢ\res{Uᵢⱼ} ≤ 0\) zgolj v primeru, ko je \(Uᵢⱼ ⊆ Aᵢ\).
-%     Vendar pa ima \(Aᵢ\) prazno notranjost, tako da je tak \(Uᵢⱼ\) nujno prazen.
-
-%     Ostane le še drugi primer, torej \(xᵢ\res{Uᵢⱼ} > 0\).
-%     Ker množice \(Uᵢⱼ\) tvorijo pokritje \(Uᵢ\), je potem tudi \(xᵢ > 0\) na
-%     celotnem \(Uᵢ\). Sledi, da je množica \(Aᵢ∩Uᵢ\) prazna,
-%     in velja \(Uᵢ ⊩ \lem{\p{p}}\).
-%   \item[\((⇐)\)]
-%     V obratno smer pa predpostavimo, da obstaja redukcja iz \(\lem\) na \(\lpo\).
-
-%     % To pomeni, da za vsako odprto množico \(U ⊆ X\) in \(p ∈ Ω(U)\) obstaja tako
-%     % pokritje \(\b{Uᵢ} ∈ \cov{Uᵢ}\) in realna števila \(xᵢ : Uᵢ → ℝ\),
-%     % da lokalno
-
-%     Trditev bomo dokazali v dveh korakih. Najprej, naj bo \(A ⊆ X\) zaprta
-%     množica s prazno notranjostjo.
-
-%     Tedaj na \(U ≔ X\) in \(p = Aᶜ\) uporabimo redukcijo \(\lem ≤_I \lpo\).
-%     % To pomeni, da dobimo pokritje \(\b{Xᵢ} ∈ \cov{X}\) in realna števila
-%     To pomeni, da dobimo pokritje \(\cov{X}{i}\) in realna števila
-%     \(xᵢ : Xᵢ → ℝ\), tako da za vsak \(i\) in \(Uᵢ ⊆ Xᵢ\) velja
-%     % \(\exists{\b{Uᵢⱼ} ∈ \cov{\p{Uᵢ}}}{∀_j xᵢ\res{Uᵢⱼ} ≤ 0 ∨ xᵢ\res{Uᵢⱼ} > 0} ⇒ Uᵢ ⊩ \lem{\p{p}}\).
-%     \(\exists{\cov[i]{U}{j}}{∀_j xᵢ\res{Uᵢⱼ} ≤ 0 ∨ xᵢ\res{Uᵢⱼ} > 0} ⇒ Uᵢ ⊩ \lem{\p{p}}\).
-
-%     Ker ima \(A\) prazno notranjost, je \(p ∨ ¬p = p\), torej je
-%     \(Uᵢ ⊩ \lem{\p{p}}\) ekvivalentno \(Uᵢ ⊆ p\).
-
-%     Brez škode za splošnost lahko vzamemo \(Uᵢ = Xᵢ\) in
-%     \(\b{Uᵢⱼ} = \b{Vᵢ,Vᵢ'}\), tako da \(xᵢ\res{Vᵢ} ≤ 0 ∨ xᵢ\res{Vᵢ'} > 0 ⇒ Xᵢ ⊆ p\).
-
-%     Dokazati želimo, da je
-
-%   \end{enumerate}
-% \end{proof}
 
 
 % \begin{izrek}
@@ -229,10 +109,10 @@
 %   \end{enumerate}
 % \end{proof}
 
-\subsection{Idempotenca \(\lpo\) nad Cantorjevim prostorm}
+\subsection{Idempotenca \texorpdfstring{\(\lpo*\)}{LPO} nad Cantorjevim prostorm}
 
 \begin{trditev}
-  Nad vsakim okolišem \(X\) velja \(\lpo ≤ \lpoR\).
+  Nad vsakim okolišem \(X\) velja \(\lpo* ≤ \alpo*\).
 \end{trditev}
 \begin{dokaz}
   Naj bo \(U ⊆ X\), \(α : U → C\). Definirajmo \(x ≔ φ∘α\), kjer
@@ -240,7 +120,7 @@
   \[ ∑_{i ∈ ℕ₊}\frac{2aᵢ}{3ⁱ} ∈ C\text{, } aᵢ ∈ 2
      \text{, v } ∑_{i ∈ ℕ₊}\frac{aᵢ}{2ⁱ}\text.\]
 
-  Potem je \(φ(r) = 0 ⇔ r = 0\) in velja \(\lpo{\p{α}} ⇔ \lpoR{\p{x}}\).
+  Potem je \(φ(r) = 0 ⇔ r = 0\) in velja \(\lpo{\p{α}} ⇔ \alpo{\p{x}}\).
 \end{dokaz}
 
 % TODO: Ask Davorin if this is true. Alternatively, find structural lifting
@@ -284,16 +164,15 @@
   Sledi, da je \(\floor f⁻¹(U) ⊆ f⁻¹(U')\), torej sta ti dve množici enaki,
   in je funkcija \(\floor f\) zvezna.
 \end{dokaz}
-
 \begin{posledica}
   V zgornji lemi lahko domeno zamenjamo s poljubno odprto množico.
 \end{posledica}
 
 \begin{lema}
-  Nad Cantorjevim prostorom je \(\lpo\) ekvivalenten \(\lpoR\).
+  Nad Cantorjevim prostorom je \(\lpo*\) ekvivalenten \(\alpo*\).
 \end{lema}
 \begin{dokaz}
-  Vemo, da velja \(\lpo ≤_I \lpoR\).
+  Vemo, da velja \(\lpo* ≤ \alpo*\).
 
   Pokažimo sedaj, da velja tudi obrat.
   Naj bo \(U ⊆ C\), \(f : U → ℝ\).
@@ -304,11 +183,10 @@
   Obratno pa, če je \(α(x) = 0\) pomeni, da imamo za vsak \(a ≠ 0\)
   neenakost \(f(x) < a\), torej \(f(x) = 0\).
 
-  Sledi torej, da je \(\lpo\p{α} = \lpoR\p{f}\).
+  Sledi torej, da je \(\lpo\p{α} = \alpo\p{f}\).
 \end{dokaz}
-
 \begin{posledica}
-  Nad Cantorjevim prostorom je \(\lpo\) idempotenten.
+  Nad Cantorjevim prostorom je \(\lpo*\) idempotenten.
 \end{posledica}
 
 
