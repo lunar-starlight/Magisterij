@@ -38,13 +38,13 @@
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\codim}{codim}
 \DeclareMathOperator{\cl}{Cl}
-\DeclareMathOperator{\int}{Int}
 %\DeclareMathOperator{\cov}{Cov}
 \AtBeginDocument{
   %\def\c#1{\left( {#1} \right)^c}
   \def\c#1{\p{#1}^c}
   \renewcommand{\b}[1]{\left\{ {#1} \right\}}
   \renewcommand{\O}[1]{\mathcal{O}{#1}}
+  \renewcommand{\int}{\textrm{Int}}
 }
 
 \usepackage{graphicx}
@@ -64,9 +64,7 @@
   \mathrel{\mathop{#3}\limits^{
     \vbox to#1{\kern-2\ex@
     \hbox{$\scriptstyle#2$}\vss}}}}
-\makeatother
 
-\makeatletter
 \newcommand{\listintertext}{\@ifstar\listintertext@\listintertext@@}
 \newcommand{\listintertext@}[1]{% \listintertext*{#1}
   \hspace*{-\@totalleftmargin}#1}
@@ -85,32 +83,33 @@
 \renewcommand{\check}{ \(\checkmark\)}
 
 \newcommand{\germ}[2]{\textrm{germ}_{#2}#1}
-
+%\usepackage{xparse}
 \newcommand{\forces}[2]{#1\;⊩\;#2}
-
 \makeatletter
-\newcommand{\@definstance}[3]{%
-  \expandafter\NewDocumentCommand\csname #1\endcsname{s}{%
+\NewDocumentCommand{\@definstance}{mmm}{%
+  \ExpandArgs{c}\NewDocumentCommand{#1}{s}{%
     \IfBooleanTF##1%
     {\textnormal{\sffamily #2}}%
     {\textnormal{\sffamily #3}}%
   }%
+  \AtEndPreamble{%
+    \pdfstringdefDisableCommands{%
+      \expandafter\def\csname #1\endcsname*{#2}%
+    }%
+  }%
 }
-\newcommand{\definstance}[1]{\@definstance{#1}{\uppercase{#1}}{\lowercase{#1}}}
+\newcommand{\definstance}[1]{\@definstance{#1}{\MakeUppercase{#1}}{\MakeLowercase{#1}}}
+\makeatother
 \newcommand{\instance}[1]{\textnormal{\sffamily #1}} % TODO: rename
 \definstance{lem}
 \definstance{lpo}
 \definstance{alpo}
-%\newcommand{\lem}{\instance{LEM}}
-% \newcommand{\lpo}{\instance{LPO}}
-% \newcommand{\alpo}{\instance{ALPO}}
-% \newcommand{\lpoR}{\instance{LPO}_ℝ} % TODO: deprecate
 \newcommand{\AC}{\instance{AC}}
 \newcommand{\IAC}{\instance{IAC}}
 \newcommand{\CC}{\instance{CC}}
 \newcommand{\CCv}{\instance{CC}^∨}
-\newcommand{\Rd}{{ℝ}_{d}}
-\newcommand{\Rc}{{ℝ}_{c}}
+\def\Rd{ℝ_d}
+\def\Rc{ℝ_c}
 
 \usepackage{tabularx}
 \newcommand{\catdef}[3][]{
