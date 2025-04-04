@@ -1,5 +1,7 @@
 \section{Interpretacija pretvorbe primerkov v topoloških modelih}
 
+\subsection{Pretvorba primerkov}
+
 \subsection{\(\lem* ≤ \alpo*\) in idempotenca \alpo* nad lokalno \(T₆\) prostori}
 
 \begin{trditev}
@@ -8,6 +10,12 @@
 \begin{dokaz}
   Naj bosta \(U₀,U₁ ⊆ X\). Potem definiramo \(V ≔ (U₀∪¬U₀)∩(U₁∪¬U₁)\),
   za katerega očitno velja \(X ⊩ \lem\p{V} ⇒ \lem²\p{U₀, U₁}\).
+\end{dokaz}
+\begin{dokaz}
+  Naj bosta \(p\) in \(q\) resničnostni vrednosti.
+  Potem definiramo \(r ≔ \lem²{\p{p, q}}\).
+  Ker \(\lem ⁿ\) slika v goste resničnostne vrednosti, je \(\lem{\p r} = r\), tako da
+  je \[\lem{\p r} = r = \lem²{\p{p, q}}\text.\qedhere\]
 \end{dokaz}
 
 \begin{opomba}
