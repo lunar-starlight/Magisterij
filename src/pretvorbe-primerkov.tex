@@ -2,7 +2,7 @@
 
 \subsection{Pretvorba primerkov}
 
-\subsection{\(\lem* ≤ \alpo*\) in idempotenca \alpo* nad lokalno \(T₆\) prostori}
+\subsection{Idempotenca \alpo* nad lokalno \(T₆\) prostori}
 
 \begin{trditev}
   Nad vsakim okolišem \(X\) je \(\lem*\) idempotenten.
@@ -14,35 +14,33 @@
   je \[\lem{\p r} = r = \lem²{\p{p, q}}\text.\qedhere\]
 \end{dokaz}
 
+Spomnimo se na Trditev~\ref{th:lT6-have-AKS}:
+% TODO: set number
+\begin{trditev}\label{th:lT6-have-AKS}
+  Nad lokalno \(T₆\) prostori velja analitična Kripkejeva shema.
+\end{trditev}
+
 % TODO: Faktoriziraj čez AKS ⇒ LEM ≤ ALPO
 \begin{izrek}
   Naj bo \(X\) lokalno \(T₆\). Potem nad \(X\) velja redukcija \(\lem* ≤ \alpo*\).
 \end{izrek}
 \begin{proof}
-  Ker dokazujemo resnico v topološkem modelu brez škode za splošnost
-  predpostavimo, da je prostor \(T₆\).
-  To pomeni da za vsako odprto množico \(U\) obstaja nenegativna funkcija
-  \(P_U : X → ℝ\), tako da velja \(P_U > 0 ⇔ U\).
-  %Denimo, da je \(X\) lokalno \(T₆\).
-  %To pomeni, da imamo pokritje \(X\) s \(T₆\) prostori \(Xᵢ\).
-  %To pomeni, da za vsak \(A ∈ 𝒜X\) velja \(\eventually{x : ℝ}{x ≠ 0 ⇔ \c A }\).
-  %Ker lahko vedno vzamemo absolutno vrednost \(x\) lahko dodatno predpostavimo,
-  %da je ta \(x\) nenegativen. Potem je pa \(x ≠ 0\) ekvivalentno \(x > 0\).
-  % Označimo funkcijo, ki jo dobimo iz pogoja \(T₆\) za zaprto množico \(A\)
-  % z \(N_A : Xᵢ → ℝ\). Zanjo velja, da je \(N_A(x) = 0\) natanko tedaj, ko je
-  % \(x ∈ A\), brez škode za splošnost pa lahko tudi predpostavimo, da je
-  % nenegativna.
-  Če želimo pretvoriti \(\lem*\) na \(\alpo*\), mora za vse
-  \(U ⊆ X\) veljati \(\eventually{x : ℝ}{x ≤ 0 ∨ x > 0 ⇒ U ∪ ¬U}\).
-  % Ker želimo uporabiti predpostavko, iščemo take zaprte množice, da velja
-  % \[ \eventually{A : 𝒜X}{⟦N_A ≤ 0⟧ ∪ ⟦N_A > 0⟧ ⊆ U ∪ ¬U}\text. \label{eq:alpo_le_lem}\]
-  Uporabimo predpostavko na \(U ∪ ¬U\), torej nam ostane pokazati, da
-  velja \({P_U ≤ 0 ∨ P_U > 0 ⇒ P_U > 0}\).
-  Ker je \(⟦P_U ≤ 0⟧ = ¬{\p{U ∪ ¬ U}} = ∅\), velja \(¬\p{x ≤ 0}\), kar dokaže trditev.
-  %
-  % Za pokritje vzamemo kar množice \(Xᵢ\), za zaprte množice pa \(A ≔ Xᵢ⧵\p{U ∪ ¬U}\).
-  % Za take množice velja, da je \(⟦N_A ≤ 0⟧ = \int A\) in \(⟦N_A > 0⟧ = U ∪ ¬U\).
-  % Ker je množica \(U ∪ ¬U\) gosta, je \(\int A = ∅\), tako da~\ref{eq:alpo_le_lem} očitno velja.
+  % TODO: reword kot 'ALPO je LEM za Ω_ℝ in AKS je Ω_ℝ = Ω'?
+  Ker vemo, da nad \(X\) velja analitična Kripkejeva shema, zadošča
+  konstruktivno pokazati, da velja \(\lem* ≤ \alpo*\).
+  Po predpostavki, je vsaka resničnostna vrednost \(p\) oblike \(x > 0\) za nek
+  \(x : ℝ\). Tedaj pa velja
+  \[ \lem{\p p} = p ∨ ¬ p = x > 0 ∨ ¬\p{x > 0} = \alpo{\p x}\text, \]
+  torej za vsak \(p : Ω\) obstaja \(x : ℝ\), da je \(\alpo{\p x} ⇒ \lem{\p p}\).
+  % Ker dokazujemo resnico v topološkem modelu brez škode za splošnost
+  % predpostavimo, da je prostor \(T₆\).
+  % To pomeni da za vsako odprto množico \(U\) obstaja nenegativna funkcija
+  % \(P_U : X → ℝ\), tako da velja \(P_U > 0 ⇔ U\).
+  % Če želimo pretvoriti \(\lem*\) na \(\alpo*\), mora za vse
+  % \(U ⊆ X\) veljati \(\eventually{x : ℝ}{x ≤ 0 ∨ x > 0 ⇒ U ∪ ¬U}\).
+  % Uporabimo predpostavko na \(U ∪ ¬U\), torej nam ostane pokazati, da
+  % velja \({P_U ≤ 0 ∨ P_U > 0 ⇒ P_U > 0}\).
+  % Ker je \(⟦P_U ≤ 0⟧ = ¬{\p{U ∪ ¬ U}} = ∅\), velja \(¬\p{x ≤ 0}\), kar dokaže trditev.
 \end{proof}
 \begin{posledica}
   Če je prostor \(X\) lokalno \(T₆\), velja \(\alpo*×\alpo* ≤ \alpo*\).
@@ -106,7 +104,7 @@
 \end{posledica}
 \begin{opomba}
   V tem podrazdelku bi lahko namesto Cantorjevega prostora zares vzeli
-  katerikoli kompakten nič dimenzionalen prostor.
+  katerikoli kompakten nič dimenzionalen prostor (z drugimi besedami, Stoneov prostor).
 \end{opomba}
 
 
