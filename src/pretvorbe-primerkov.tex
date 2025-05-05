@@ -8,38 +8,41 @@
   Nad vsakim okolišem \(X\) je \(\lem*\) idempotenten.
 \end{trditev}
 \begin{dokaz}
-  Naj bosta \(U₀,U₁ ⊆ X\). Potem definiramo \(V ≔ (U₀∪¬U₀)∩(U₁∪¬U₁)\),
-  za katerega očitno velja \(X ⊩ \lem\p{V} ⇒ \lem²\p{U₀, U₁}\).
-\end{dokaz}
-\begin{dokaz}
   Naj bosta \(p\) in \(q\) resničnostni vrednosti.
   Potem definiramo \(r ≔ \lem²{\p{p, q}}\).
   Ker \(\lem ⁿ\) slika v goste resničnostne vrednosti, je \(\lem{\p r} = r\), tako da
   je \[\lem{\p r} = r = \lem²{\p{p, q}}\text.\qedhere\]
 \end{dokaz}
 
-\begin{opomba}
-  Ta trditev velja že konstruktivno, ampak je dokaz zgoraj elegantnejši.
-\end{opomba}
-
+% TODO: Faktoriziraj čez AKS ⇒ LEM ≤ ALPO
 \begin{izrek}
   Naj bo \(X\) lokalno \(T₆\). Potem nad \(X\) velja redukcija \(\lem* ≤ \alpo*\).
 \end{izrek}
 \begin{proof}
-  Denimo, da je \(X\) lokalno \(T₆\).
-  To pomeni, da imamo pokritje \(X\) s \(T₆\) prostori \(Xᵢ\).
-  Označimo funkcijo, ki jo dobimo iz pogoja \(T₆\) za zaprto množico \(A ⊆ Xᵢ\)
-  z \(N_A : Xᵢ → ℝ\). Zanjo velja, da je \(N_A(x) = 0\) natanko tedaj, ko je
-  \(x ∈ A\), brez škode za splošnost pa lahko tudi predpostavimo, da je
-  nenegativna.
+  Ker dokazujemo resnico v topološkem modelu brez škode za splošnost
+  predpostavimo, da je prostor \(T₆\).
+  To pomeni da za vsako odprto množico \(U\) obstaja nenegativna funkcija
+  \(P_U : X → ℝ\), tako da velja \(P_U > 0 ⇔ U\).
+  %Denimo, da je \(X\) lokalno \(T₆\).
+  %To pomeni, da imamo pokritje \(X\) s \(T₆\) prostori \(Xᵢ\).
+  %To pomeni, da za vsak \(A ∈ 𝒜X\) velja \(\eventually{x : ℝ}{x ≠ 0 ⇔ \c A }\).
+  %Ker lahko vedno vzamemo absolutno vrednost \(x\) lahko dodatno predpostavimo,
+  %da je ta \(x\) nenegativen. Potem je pa \(x ≠ 0\) ekvivalentno \(x > 0\).
+  % Označimo funkcijo, ki jo dobimo iz pogoja \(T₆\) za zaprto množico \(A\)
+  % z \(N_A : Xᵢ → ℝ\). Zanjo velja, da je \(N_A(x) = 0\) natanko tedaj, ko je
+  % \(x ∈ A\), brez škode za splošnost pa lahko tudi predpostavimo, da je
+  % nenegativna.
   Če želimo pretvoriti \(\lem*\) na \(\alpo*\), mora za vse
-  \(U ⊆ X\) veljati \(\eventually{x : ℝ}{⟦x ≤ 0⟧ ∪ ⟦x > 0⟧ ⊆ U ∪ ¬U}\).
-  Ker želimo uporabiti predpostavko, moramo podati take zaprte množice, da velja
-  \[ \eventually{A : 𝒜}{⟦N_A ≤ 0⟧ ∪ ⟦N_A > 0⟧ ⊆ U ∪ ¬U}\text. \label{eq:alpo_le_lem}\]
-
-  Za pokritje vzamemo kar množice \(Xᵢ\), za zaprte množice pa \(A ≔ \c{\p{U ∪ ¬U}}\).
-  Za take množice velja, da je \(⟦N_{A} ≤ 0⟧ = \int Aᵢ\) in \(⟦N_{A} > 0⟧ = U ∪ ¬U\).
-  Ker je množica \(U ∪ ¬U\) gosta, je \(\int A = ∅\), tako da~\ref{eq:alpo_le_lem} očitno velja.
+  \(U ⊆ X\) veljati \(\eventually{x : ℝ}{x ≤ 0 ∨ x > 0 ⇒ U ∪ ¬U}\).
+  % Ker želimo uporabiti predpostavko, iščemo take zaprte množice, da velja
+  % \[ \eventually{A : 𝒜X}{⟦N_A ≤ 0⟧ ∪ ⟦N_A > 0⟧ ⊆ U ∪ ¬U}\text. \label{eq:alpo_le_lem}\]
+  Uporabimo predpostavko na \(U ∪ ¬U\), torej nam ostane pokazati, da
+  velja \({P_U ≤ 0 ∨ P_U > 0 ⇒ P_U > 0}\).
+  Ker je \(⟦P_U ≤ 0⟧ = ¬{\p{U ∪ ¬ U}} = ∅\), velja \(¬\p{x ≤ 0}\), kar dokaže trditev.
+  %
+  % Za pokritje vzamemo kar množice \(Xᵢ\), za zaprte množice pa \(A ≔ Xᵢ⧵\p{U ∪ ¬U}\).
+  % Za take množice velja, da je \(⟦N_A ≤ 0⟧ = \int A\) in \(⟦N_A > 0⟧ = U ∪ ¬U\).
+  % Ker je množica \(U ∪ ¬U\) gosta, je \(\int A = ∅\), tako da~\ref{eq:alpo_le_lem} očitno velja.
 \end{proof}
 \begin{posledica}
   Če je prostor \(X\) lokalno \(T₆\), velja \(\alpo*×\alpo* ≤ \alpo*\).
@@ -48,73 +51,6 @@
   Nad lokalno \(T₆\) prostorom je \(\alpo*\) idempotenten.
 \end{posledica}
 
-% \begin{izrek}
-%   %Let \(X\) be a topological space. Then \(X\) is locally \(T₆\) if and only if the
-%   %reduction \(\lem ≤_I \lpo\) holds.
-%   Naj bo \(X\) topološki prostor. Tedaj je \(X\) lokalno \(T₆\) natanko tedaj,
-%   ko nad \(X\) velja funkcijska redukcija \(\lem ≤_{FI} \lpo\).
-% \end{izrek}
-% \begin{proof}
-%   \begin{enumerate}
-%   \item[\((⇒)\)]
-%     Denimo, da je \(X\) lokalno \(T₆\).
-%     Potem imamo pokritje s \(T₆\) prostori, t.j. za vsak \(Xᵢ\) iz pokritja in
-%     vsako zaprto množico \(A ⊆ Xᵢ\), imamo zvezno funkcijo \(f : Xᵢ → ℝ\), tako
-%     da je \(f_A(x) = 0\) natanko tedaj, ko je \(x ∈ A\). Poleg tega lahko
-%     zahtevamo, da je ta funkcija nenegativna.
-
-%     %Potem imamo, za vsako zaprto množico \(A ⊆ X\), zvezno funkcijo
-%     %\(f_A : X → ℝ\), tako da je \(f_A(x) = 0\) natanko tedaj, ko je \(x ∈ A\).
-%     %Poleg tega lahko zahtevamo, da je ta funkcija nenegativna.
-
-%     Po aksiomu o izbiri dobimo preslikavo \(Cl(Xᵢ) → \p{Xᵢ → ℝ}\).
-%     Če jo preuredimo in uporabimo vložitev \(Ω(Xᵢ) \hookrightarrow Cl(Xᵢ)\),
-%     ki \(p\) slika v \(\c{p ∪ ¬p}\), dobimo preslikavo \(Fᵢ: Xᵢ → \p{Ω(Xᵢ) → ℝ}\).
-
-%     Dokažimo sedaj, da velja redukcija.
-%     Vzamimo množice \(Uᵢ = Xᵢ\) in \(fᵢ = Fᵢ\).
-
-%     Naj bo sedaj \(U ⊆ Xᵢ\), \(p ∈ Ω(U)\), \(A ≔ \c{p ∪ ¬p}\), \(x ≔ fᵢ(p)\) in predpostavimo,
-%     da velja \(Xᵢ ⊩ \lpo{\p{x}}\)
-
-%     % To pomeni, da obstaja pokritje \(\b{Uᵢ} ∈ \cov{U}\), tako da za vsak element
-%     To pomeni, da obstaja pokritje \(\cov{U}i\), tako da za vsak element
-%     pokritja velja \(x\res{Uᵢ} ≤ 0\) ali \(x\res{Uᵢ} > 0\).
-
-%     Ker je \(x\) nenegativen, je \(x ≤ 0\) natanko tedaj, ko je \(x = 0\), torej
-%     po definiciji zgolj na množici \(A\).
-%     Od tod sledi, da je \(x\res{Uᵢ} ≤ 0\) zgolj v primeru, ko je \(Uᵢ ⊆ A\).
-%     Vendar pa ima \(A\) prazno notranjost, tako da je tak \(Uᵢ\) nujno prazen.
-
-%     Ostane le še drugi primer, torej \(x\res{Uᵢ} > 0\).
-%     Ker množice \(Uᵢ\) tvorijo pokritje \(U\), je potem tudi \(x > 0\) na
-%     celotnem \(U\). Sledi, da je množica \(A∩U\) prazna,
-%     in velja \(U ⊩ \lem{\p{p}}\).
-%   \item[\((⇐)\)]
-%     V obratno smer pa predpostavimo, da obstaja redukcja iz \(\lem\) na \(\lpo\).
-
-%     To pomeni, da obstaja pokritje \(Xᵢ \circlearrowright X\)
-%     in preslikave \(Fᵢ: Xᵢ → \p{Ω(Xᵢ) → ℝ}\), za katere velja
-%     \[Xᵢ ⊩ \for{p∈Ω}{\lpo{\p{Fᵢ(p)}} ⇒ \lem{\p{p}}}\text.\label{eq:lemlpo}\]
-
-%     Trditev bomo dokazali v dveh korakih. Najprej, naj bo \(A ⊆ Xᵢ\) zaprta
-%     množica s prazno notranjostjo.
-
-%     Tedaj na \(U ≔ Xᵢ\) in \(p = Aᶜ\) uporabimo \ref{eq:lemlpo}.
-%     To pomeni, da dobimo implikacijo \(U⊩\lpo{\p{Fᵢ(p)}} ⇒ U⊩\lem{\p{p}}\).
-
-%     Naj bo \(f≔Fᵢ(p)\). Potem, če obstaja pokritje \(Uᵢ \circlearrowright U\),
-%     tako da za vsak \(i\) velja \(f\res{Uᵢ} ≤ 0\) ali \(f\res{Uᵢ} > 0\),
-%     potem velja tudi \(U ⊆ p ∪ ¬p = p\), oziroma \(A ⊆ Uᶜ\).
-
-%     Če tako pokritje obstaja, ga lahko združimo v dve množici, eno, na kateri je
-%     \(f\) nepozitiven (torej ker je nenegativen kar \(0\)), in eno, na kateri je pozitiven.
-%     Naj bosta torej \(U₀ in Uₚ\) ti dve (odprti) množici.
-
-%     Vednar je pa \(U₀ = f⁻¹{0}\), torej zaprta.
-
-%   \end{enumerate}
-% \end{proof}
 
 \subsection{Idempotenca \lpo* nad Cantorjevim prostorm}
 
@@ -122,55 +58,35 @@
   Nad vsakim okolišem \(X\) velja \(\lpo* ≤ \alpo*\).
 \end{trditev}
 \begin{dokaz}
-  Naj bo \(U ⊆ X\), \(α : U → C\). Definirajmo \(x ≔ φ∘α\), kjer
-  \(φ : C → ℝ\) slika
-  \[ ∑_{i ∈ ℕ₊}\frac{2aᵢ}{3ⁱ} ∈ C\text{, } aᵢ ∈ 2
-     \text{, v } ∑_{i ∈ ℕ₊}\frac{aᵢ}{2ⁱ}\text.\]
+  Naj bo \(φ : 2^ℕ → ℝ\) definirana s predpisom
+  \[α ↦ \lim_{n→∞}2^{-\min\set{k ∈ ℕ}{αₖ = 1 ∨ k = n}}\text.\]
+  Denimo, da je \(α ∈ 2^ℕ\) in uporabimo \(\alpo*\) na \(φ(α)\).
 
-  Potem je \(φ(r) = 0 ⇔ r = 0\) in velja \(\lpo{\p{α}} ⇔ \alpo{\p{x}}\).
+  Če velja \(φ(α) ≤ 0\) vemo, da \(α\) ne more imeti enice na nobenem mestu.
+
+  Alternativno, če je \(φ(α) > 0\), pa je tudi \(φ(α) > 2^{-n}\) za nek \(n\).
+  Sledi, da mora imeti \(α\) na enem izmed prvih \(n\) mest enico.
 \end{dokaz}
 
-% TODO: Ask Davorin if this is true. Alternatively, find structural lifting
-% property Andrej wanted
+% Joint with prof. Bauer
 \begin{lema}
-  Vsaka preslikava \(f : C → I\) inducira preslikavo \(\floor f : C → C\),
-  s predpisom \(\floor f(a) ≔ \sup\set{x ∈ C}{x < f(a)}\).
+  Za vsako funkcijo \(f : C → ℝ\) obstaja funkcija \(\hat f : C → C\), za katero
+  velja \(C ⊩ \hat f \apart 0 ⇔ f > 0\).
 \end{lema}
-\begin{dokaz}
-  % dokaži da maksimum obstaja (da je zaprta).
-  Ker je \(C\) kompakten, je predpis dobro definiran, torej moramo preveriti
-  zgolj zveznost. Naj bo \(U=w\) bazična odprta množica.
-
-  %Naj bodo \(l ≔ (w-1)\hat{1}\), \(r ≔ (w+1)\hat{0}\), in \(U' ≔ \p{l, r}\).
-  Naj bodo \(l ≔ w\hat{0}\), \(r ≔ (w+1)\hat{0}\), in \(U' ≔ \p{l, r}\).
-  Potem je \(U ⊆ \cli{w\hat{0}, w\hat{1}} ⊆ U' ∪ \{l\}\).
-  Upamo sedaj, da je \(\floor f⁻¹(U) = f⁻¹(U')\).
-
-  Naj bo \(a ∈ f⁻¹(U')\), torej \(l < f(a) < r\).
-  Iz \(f(a) < r\) sledi \(\floor f(a) < r\), torej \(\floor f(a) ≤ w\hat{1}\),
-  iz \(l < f(a)\) pa sledi, da je \(l ≤ \floor f(a)\).
-
-  Če pa je \(a ∈ \floor f⁻¹(U)\), imamo \(\sup\set{x ∈ C}{x < f(a)} ∈ U\).
-  Iz \(w\hat{0} ≤ α(a)\) sledi \(w\hat{0} ≤ f(a)\),
-  iz \(α(a) ≤ w\hat{1}\) pa sledi, da je \(f(a) ≤ w\hat{1}\).
-
-  % Če pa je \(a ∈ f⁻¹(U')\), pa je \(l < f(a) < r\).
-  % Iz \(f(a) < r\) sledi \(\floor f(a) < r\), torej \(\floor f(a) ≤ w\hat{1}\),
-  % iz \(l < f(a)\) pa sledi, da je \(l ≤ \floor f(a)\).
-
-  % l here is wrong, i should fix U' (maybe i can)
-  % Iz tega dvojega lahko sedaj sklepamo, da je \(\floor f⁻¹(U) = f⁻¹(U') ⧵ f⁻¹[0,l]\),
-  Iz tega dvojega lahko sedaj sklepamo, da je
-  \(f⁻¹(U') ⊆ \floor f⁻¹(U) ⊆ f⁻¹(U') ∪ f⁻¹\{w\hat{0}\}\).
-  Denimo, da je \(\floor f(a) = w\hat0\).
-  Potem obstaja zaporedje \(xᵢ ↗ w\hat0\), za katero velja \(xᵢ < f(a)\)
-  Vendar je pa množica \(\left[ w\hat0, 1 \right]\) odprta, torej mora vsebovati
-  skoraj vsa števila \(xᵢ\). Ker velja \(xᵢ ≤ w\hat0\), je torej
-  \(xᵢ = w\hat{0}\) skoraj povsod, in velja \(f(a) > w\hat0\).
-
-  Sledi, da je \(\floor f⁻¹(U) ⊆ f⁻¹(U')\), torej sta ti dve množici enaki,
-  in je funkcija \(\floor f\) zvezna.
-\end{dokaz}
+\begin{proof}
+  Naj bo \(U := ⟦f > 0⟧\). Potem obstaja števna particija \(U = ⋃ₖVₖ\) z
+  bazičnimi odprtimi. Ker so te kompaktne, za vsak \(k\) velja
+  \(\exist{i ∈ ℕ}{f{\res{Vₖ}} > 2⁻ⁱ}\). Po aksiomu izbire torej obstaja funkcija
+  izbire \(m : ℕ → ℕ\), da velja \(f{\res{Vₖ}} > 2⁻ᵐ⁽ᵏ⁾\). Potem pa definiramo
+  \[ C ⊩ \hat fᵢ ≔
+    \begin{cases}
+      1;& \exist{k : ℕ}{Vₖ ∧ i = m(k)}\\
+      0;& \text{sicer.}
+    \end{cases}\]
+  Potem pa velja
+  \[ \hat f \apart 0 ⇔ \exist{i : ℕ}{\exist{k : ℕ}{Vₖ ∧ i = m(k)}} ⇔ \exist{k : ℕ}{Vₖ} ⇔ U\text, \]
+  torej je \(C ⊩ \hat f \apart 0 ⇔ f > 0\).
+\end{proof}
 \begin{posledica}
   V zgornji lemi lahko domeno zamenjamo s poljubno odprto množico.
 \end{posledica}
@@ -179,23 +95,19 @@
   Nad Cantorjevim prostorom je \(\lpo*\) ekvivalenten \(\alpo*\).
 \end{lema}
 \begin{dokaz}
-  Vemo, da velja \(\lpo* ≤ \alpo*\).
-
-  Pokažimo sedaj, da velja tudi obrat.
-  Naj bo \(U ⊆ C\), \(f : U → ℝ\).
-  Brez škode za splošnost, lahko \(f\) popravimo do preslikave \(U → I\).
-  Vzamemo trivialno pokritje in naj bo \(α ≔ \floor f\).
-
-  Potem je očitno \(α ≤ f\), torej \(f(x) = 0 ⇒ α(x) = 0\).
-  Obratno pa, če je \(α(x) = 0\) pomeni, da imamo za vsak \(a ≠ 0\)
-  neenakost \(f(x) < a\), torej \(f(x) = 0\).
-
-  Sledi torej, da je \(\lpo{\p{α}} = \alpo{\p{f}}\).
+  Vemo že, da velja \(\lpo* ≤ \alpo*\) tako da moramo pokazati zgolj obratno redukcijo.
+  Naj bo \(U ⊩ x : ℝ\). Potem iz gornje leme dobimo \(U ⊩ \hat x : C\), za
+  katerega velja \(\hat x \apart 0 ⇔ x > 0\).
+  Kontrapizitivna oblika te ekvivalence pa pravi ravno, da je \(\hat x = 0 ⇔ x ≤ 0\),
+  torej res velja \(\lpo{\p{\hat f}} ⇔ \alpo{\p{f}}\).
 \end{dokaz}
 \begin{posledica}
   Nad Cantorjevim prostorom je \(\lpo*\) idempotenten.
 \end{posledica}
-
+\begin{opomba}
+  V tem podrazdelku bi lahko namesto Cantorjevega prostora zares vzeli
+  katerikoli kompakten nič dimenzionalen prostor.
+\end{opomba}
 
 
 

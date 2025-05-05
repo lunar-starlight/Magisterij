@@ -50,195 +50,230 @@ so nam znane.
 Do tega se vrnemo kasneje, v naslednjem razdelku, za zdaj nas pa čaka malo
 teorije snopov, da lahko topološke modele sploh definiramo.
 
-\subsection{Snopi}
+TODO: rewrite
+
+% \subsection{Snopi}
 
 
-\begin{definicija}
-  \emph{Snop nad prostorom \(X\)} je sestavljen iz
-  \begin{itemize}
-    \item množic \emph{prerezov} \(F(U)\) za vsak \(U ∈ 𝒪X\),
-    \item preslikav \(ρ_V^U : F(U) → F(V)\), ki jim pravimo \emph{zožitve},
-  \end{itemize}
-  tako da velja
-  \begin{itemize}
-    \item Za vsako pokritje \(\cov{U}{i}\) in elementa \(s, t ∈ F(U)\), če je
-      \(s{\res{Uᵢ}} = t{\res{Uᵢ}}\) za vse \(i\), je tudi \(s = t\),
-    \item Za vsako pokritje \(\cov{U}{i}\) in elemente \(sᵢ ∈ F(Uᵢ)\), za katere velja
-      \({sᵢ{\res{Uᵢ∩Uⱼ}} = sⱼ{\res{Uᵢ∩Uⱼ}}}\) za vse \(i\) in \(j\), obstaja
-      element \(s ∈ F(U)\), tako da je \(s{\res{Uᵢ}} = sᵢ\) za vse \(i\).
-  \end{itemize}
+% \begin{definicija}
+%   \emph{Snop nad prostorom \(X\)} je sestavljen iz
+%   \begin{itemize}
+%     \item množic \emph{prerezov} \(F(U)\) za vsak \(U ∈ 𝒪X\),
+%     \item preslikav \(ρ_V^U : F(U) → F(V)\), ki jim pravimo \emph{zožitve},
+%   \end{itemize}
+%   tako da velja
+%   \begin{itemize}
+%     \item Za vsako pokritje \(\cov{U}{i}\) in elementa \(s, t ∈ F(U)\), če je
+%       \(s{\res{Uᵢ}} = t{\res{Uᵢ}}\) za vse \(i\), je tudi \(s = t\),
+%     \item Za vsako pokritje \(\cov{U}{i}\) in elemente \(sᵢ ∈ F(Uᵢ)\), za katere velja
+%       \({sᵢ{\res{Uᵢ∩Uⱼ}} = sⱼ{\res{Uᵢ∩Uⱼ}}}\) za vse \(i\) in \(j\), obstaja
+%       element \(s ∈ F(U)\), tako da je \(s{\res{Uᵢ}} = sᵢ\) za vse \(i\).
+%   \end{itemize}
 
-  Prvemu pogoju pravimo \emph{lokalnost}, drugemu pa \emph{lepljenje}.
-\end{definicija}
-\begin{opomba}
-  Gorjnemu objektu, ki ne nujno zadošča lepljenju ali lokalnosti, pravimo \emph{predsnop}.
-  Snop bi torej lahko definirali kot predsnop, ki zadošča lokalnosti in lepljenju.
-\end{opomba}
+%   Prvemu pogoju pravimo \emph{lokalnost}, drugemu pa \emph{lepljenje}.
+% \end{definicija}
+% \begin{opomba}
+%   Gorjnemu objektu, ki ne nujno zadošča lepljenju ali lokalnosti, pravimo \emph{predsnop}.
+%   Snop bi torej lahko definirali kot predsnop, ki zadošča lokalnosti in lepljenju.
+% \end{opomba}
 
-Gornjo definicijo se da napisati tudi malo elegantneje. Poimenujmo najprej par konceptov.
+% Gornjo definicijo se da napisati tudi malo elegantneje. Poimenujmo najprej par konceptov.
 
-\begin{definicija}
-  Prereza \(s ∈ F(U)\) in \(t ∈ F(V)\) sta \emph{skladna}, ko velja \(s{\res{V}} = t(\res{U})\).
-  Družina prerezov \(sᵢ ∈ F(Uᵢ)\) je \emph{skladna}, ko so njeni elementi paroma
-  skladni. Prerez je \emph{skladen} z družino, ko je paroma skladen z vsemi
-  njenimi elementi.
-\end{definicija}
+% \begin{definicija}
+%   Prereza \(s ∈ F(U)\) in \(t ∈ F(V)\) sta \emph{skladna}, ko velja \(s{\res{V}} = t(\res{U})\).
+%   Družina prerezov \(sᵢ ∈ F(Uᵢ)\) je \emph{skladna}, ko so njeni elementi paroma
+%   skladni. Prerez je \emph{skladen} z družino, ko je paroma skladen z vsemi
+%   njenimi elementi.
+% \end{definicija}
 
-\begin{definicija}
-  Naj bo \(sᵢ ∈ F(Uᵢ)\) skladna družina prerezov. Potem je \emph{amalgamacija} te družine
-  tak prerez \(F\) pri \(⋃ᵢUᵢ\), ki je skladen s to družino.
-\end{definicija}
+% \begin{definicija}
+%   Naj bo \(sᵢ ∈ F(Uᵢ)\) skladna družina prerezov. Potem je \emph{amalgamacija} te družine
+%   tak prerez \(F\) pri \(⋃ᵢUᵢ\), ki je skladen s to družino.
+% \end{definicija}
 
-Če zgolj vstavimo nove izraze, lahko lepljenje izrazimo kot:
-\begin{quotation}
-  Vsaka skladna družina prerezov ima amalgamacijo.
-\end{quotation}
-Izkaže pa se, da če zahtevamo še \emph{enoličnost} amalgamacije, dobimo lokalnost zastonj.
-Res, če je \(\cov{U}{i}\) pokritje je \(s\) amalgamacija družine zožitev na elemente pokritja.
-Torej, če se \(s\) in \(t\) ujemata na pokritju, sta njuni družini zožitev enaki, torej imata
-enake tudi amalgamacije. Sedaj pa, če predpostavimo, da so amalgamacije enolične, mora pa biti nujno \(s = t\).
+% Če zgolj vstavimo nove izraze, lahko lepljenje izrazimo kot:
+% \begin{quotation}
+%   Vsaka skladna družina prerezov ima amalgamacijo.
+% \end{quotation}
+% Izkaže pa se, da če zahtevamo še \emph{enoličnost} amalgamacije, dobimo lokalnost zastonj.
+% Res, če je \(\cov{U}{i}\) pokritje je \(s\) amalgamacija družine zožitev na elemente pokritja.
+% Torej, če se \(s\) in \(t\) ujemata na pokritju, sta njuni družini zožitev enaki, torej imata
+% enake tudi amalgamacije. Sedaj pa, če predpostavimo, da so amalgamacije enolične, mora pa biti nujno \(s = t\).
 
-\begin{slogan}
-  Snop nad \(X\) je predsnop, v katerem ima vsaka skladna družina prerezov enolično amalgamacijo.
-\end{slogan}
+% \begin{slogan}
+%   Snop nad \(X\) je predsnop, v katerem ima vsaka skladna družina prerezov enolično amalgamacijo.
+% \end{slogan}
 
-\begin{definicija}
-  \emph{Preslikava med snopoma \(F\) in \(G\)} je družina preslikav \({α_U : F(U) → G(U)}\),
-  tako da za vsaka \(V ⊆ U\) v \(𝒪X\) velja
-  \[ α_U{\p{s}}{\res{V}} = α_V{\p{s{\res{V}}}}\text. \]
-\end{definicija}
+% \begin{definicija}
+%   \emph{Preslikava med snopoma \(F\) in \(G\)} je družina preslikav \({α_U : F(U) → G(U)}\),
+%   tako da za vsaka \(V ⊆ U\) v \(𝒪X\) velja
+%   \[ α_U{\p{s}}{\res{V}} = α_V{\p{s{\res{V}}}}\text. \]
+% \end{definicija}
 
-Kdaj nas zanima obnašanje snopa okrog neke točke \(x ∈ X\).
+% Kdaj nas zanima obnašanje snopa okrog neke točke \(x ∈ X\).
 
-\begin{definicija}
-  Na prereze snopa \(F\) uvedemo ekvivalenčno relacijo, tako da rečemo, da sta \(s ∈ F(U)\) in \(t ∈ F(V)\)
-  \emph{enaka pri \(x\)}, kadar obstaja neka okolica \(W \nbd x\), ki je vsebovana v \(U ∩ V\),
-  tako da je \(s{\res{W}} = t{\res{W}}\).
+% \begin{definicija}
+%   Na prereze snopa \(F\) uvedemo ekvivalenčno relacijo, tako da rečemo, da sta \(s ∈ F(U)\) in \(t ∈ F(V)\)
+%   \emph{enaka pri \(x\)}, kadar obstaja neka okolica \(W \nbd x\), ki je vsebovana v \(U ∩ V\),
+%   tako da je \(s{\res{W}} = t{\res{W}}\).
 
-  Množici ekvivalenčnih razredov prerezov snopa \(F\) pri \(x\) pravimo \emph{bilka \(F\) pri \(x\)}
-  \angl{stalk} (ozn.~\(Fₓ\)), elementom \(Fₓ\) pa \emph{kali pri \(x\)} \angl{germ}
-  (ozn.~\(\germ s x\) za \(s ∈ F(U \nbd x)\)).
-\end{definicija}
-\begin{opomba}
-  Kadar brez konteksta napišemo \(\germ s x\) predpostavimo, da je prerez \(s\) definiran na neki okolici \(x\).
-\end{opomba}
+%   Množici ekvivalenčnih razredov prerezov snopa \(F\) pri \(x\) pravimo \emph{bilka \(F\) pri \(x\)}
+%   \angl{stalk} (ozn.~\(Fₓ\)), elementom \(Fₓ\) pa \emph{kali pri \(x\)} \angl{germ}
+%   (ozn.~\(\germ s x\) za \(s ∈ F(U \nbd x)\)).
+% \end{definicija}
+% \begin{opomba}
+%   Kadar brez konteksta napišemo \(\germ s x\) predpostavimo, da je prerez \(s\) definiran na neki okolici \(x\).
+% \end{opomba}
 
-Za preslikavo med snopoma lahko pogledamo, kako se obnaša na okolici točke, tako da definiramo preslikavo med bilkama.
+% Za preslikavo med snopoma lahko pogledamo, kako se obnaša na okolici točke, tako da definiramo preslikavo med bilkama.
 
-\begin{konstrukcija}
-  Preslikavi med snopoma \(α : F ⇒ G\) lahko priredimo preslikavo \(αₓ : Fₓ → Gₓ\), definirano s predpisom
-  \(\germ s x ↦ \germ{\p{α_U{\p{s}}}} x\).
-\end{konstrukcija}
-\begin{dokaz}
-  Pokazati moramo, da če velja \(\germ s x = \germ t x\), je tudi njuna slika z \(αₓ\) enaka.
+% \begin{konstrukcija}
+%   Preslikavi med snopoma \(α : F ⇒ G\) lahko priredimo preslikavo \(αₓ : Fₓ → Gₓ\), definirano s predpisom
+%   \(\germ s x ↦ \germ{\p{α_U{\p{s}}}} x\).
+% \end{konstrukcija}
+% \begin{dokaz}
+%   Pokazati moramo, da če velja \(\germ s x = \germ t x\), je tudi njuna slika z \(αₓ\) enaka.
 
-  Iz predpostavke sledi, da obstaja \(W \nbd x\), kjer se \(s\) in \(t\) ujemata.
-  Sledi, da je
-  \[ α_U{\p{s}}{\res{W}} = α_W{\p{s\res{W}}} = α_W{\p{t\res{W}}} = α_U{\p{t}}{\res{W}}, \]
-  kar pokaže, da gornja konstrukcija definira funkcijo.
-\end{dokaz}
-\begin{opomba}
-  Pisali bomo tudi \(αₓ(s)\) namesto \(αₓ{\p{\germ s x}}\).
-\end{opomba}
+%   Iz predpostavke sledi, da obstaja \(W \nbd x\), kjer se \(s\) in \(t\) ujemata.
+%   Sledi, da je
+%   \[ α_U{\p{s}}{\res{W}} = α_W{\p{s\res{W}}} = α_W{\p{t\res{W}}} = α_U{\p{t}}{\res{W}}, \]
+%   kar pokaže, da gornja konstrukcija definira funkcijo.
+% \end{dokaz}
+% \begin{opomba}
+%   Pisali bomo tudi \(αₓ(s)\) namesto \(αₓ{\p{\germ s x}}\).
+% \end{opomba}
 
-Lastnosti preslikav med snopoma so najpogosteje definirane tako, da rečemo, da veljajo za vse bilke.
+% Lastnosti preslikav med snopoma so najpogosteje definirane tako, da rečemo, da veljajo za vse bilke.
 
-\begin{definicija}
-  Preslikava med snopi je injektivna (oz.~surjektivna), kadar so vse preslikave bilk injektivne (oz.~surjektivne).
-\end{definicija}
+% \begin{definicija}
+%   Preslikava med snopi je injektivna (oz.~surjektivna), kadar so vse preslikave bilk injektivne (oz.~surjektivne).
+% \end{definicija}
 
-\begin{lema}[Lokalnost na bilkah]\label{th:lokalnost-na-bilkah}
-  Naj bosta \(s, t ∈ F(U)\). Potem sta enaka natanko tedaj, ko so enake vse njune kali na elementih \(U\).
-\end{lema}
-\begin{dokaz}
-  Če so kali \(s\) in \(t\) enake v okolici vsakega \(x ∈ U\), potem te okolice tvorijo pokritje \(U\),
-  tako da se na vsakem elementu pokritja \(s\) in \(t\) ujemata.
-  Potem po lokalnosti snopa sledi, da sta \(s\) in \(t\) enaka tudi na celotnem \(U\).
-\end{dokaz}
+% \begin{lema}[Lokalnost na bilkah]\label{th:lokalnost-na-bilkah}
+%   Naj bosta \(s, t ∈ F(U)\). Potem sta enaka natanko tedaj, ko so enake vse njune kali na elementih \(U\).
+% \end{lema}
+% \begin{dokaz}
+%   Če so kali \(s\) in \(t\) enake v okolici vsakega \(x ∈ U\), potem te okolice tvorijo pokritje \(U\),
+%   tako da se na vsakem elementu pokritja \(s\) in \(t\) ujemata.
+%   Potem po lokalnosti snopa sledi, da sta \(s\) in \(t\) enaka tudi na celotnem \(U\).
+% \end{dokaz}
 
-\begin{trditev}
-  Preslikava med snopi je injektivna natanko tedaj, ko so injektivne vse njene komponente \(α_U\).
-\end{trditev}
-\begin{dokaz}
-  Denimo, da so vse komponente \(α_U\) injektivne in naj bo \({αₓ{\p{s}} = αₓ{\p{t}}}\).
-  Tedaj obstaja \(W \nbd x\), tako da je \(α_W(s) = α_W(t)\), torej po injektivnosti \(α_W\)
-  je \(s = t\), kar dokaže injektivnost \(αₓ\). Ker je \(x\) poljuben sledi, da je \(α\) injektivna.
+% \begin{trditev}
+%   Preslikava med snopi je injektivna natanko tedaj, ko so injektivne vse njene komponente \(α_U\).
+% \end{trditev}
+% \begin{dokaz}
+%   Denimo, da so vse komponente \(α_U\) injektivne in naj bo \({αₓ{\p{s}} = αₓ{\p{t}}}\).
+%   Tedaj obstaja \(W \nbd x\), tako da je \(α_W(s) = α_W(t)\), torej po injektivnosti \(α_W\)
+%   je \(s = t\), kar dokaže injektivnost \(αₓ\). Ker je \(x\) poljuben sledi, da je \(α\) injektivna.
 
-  V obratno smer pa naj bodo \(αₓ\) injektivne in \(α_U(s) = α_U(t)\).
-  Za vsak \(x ∈ U\) sta potem tudi kali \(αₓ(s)\) in \(αₓ(t)\) enaki, torej sta po injektivnosti \(αₓ\)
-  tudi kali \(\germ s x\) in \(\germ t x\) enaki.
-  Sedaj iz Leme~\ref{th:lokalnost-na-bilkah} sledi, da sta tudi \(s\) in \(t\) enaka.
-\end{dokaz}
-\begin{opomba}
-  Gornja trditev ne velja za surjektivnost. Denimo, da je \(X\) punktirana kompleksna ravninva,
-  \(F\) snop meromorfnih funkcij na \(X\), in \(G\) snop nikjer ničelnih meromorfnih funkcij na \(X\).
+%   V obratno smer pa naj bodo \(αₓ\) injektivne in \(α_U(s) = α_U(t)\).
+%   Za vsak \(x ∈ U\) sta potem tudi kali \(αₓ(s)\) in \(αₓ(t)\) enaki, torej sta po injektivnosti \(αₓ\)
+%   tudi kali \(\germ s x\) in \(\germ t x\) enaki.
+%   Sedaj iz Leme~\ref{th:lokalnost-na-bilkah} sledi, da sta tudi \(s\) in \(t\) enaka.
+% \end{dokaz}
+% \begin{opomba}
+%   Gornja trditev ne velja za surjektivnost. Denimo, da je \(X\) punktirana kompleksna ravninva,
+%   \(F\) snop meromorfnih funkcij na \(X\), in \(G\) snop nikjer ničelnih meromorfnih funkcij na \(X\).
 
-  Definirajmo preslikavo \(\exp : F ⇒ G\) s postkompozicijo z eksponentno preslikavo.
+%   Definirajmo preslikavo \(\exp : F ⇒ G\) s postkompozicijo z eksponentno preslikavo.
 
-  Tedaj je \(\exp\) surjektivna, saj logarimi obstajajo lokalno, a vseeno komponenta \(\exp_X\)
-  ni surjektivna, ker ne obstaja taka preslikava \(f : X → ℂ\), da je \(\exp ∘ f = \id\).
-\end{opomba}
+%   Tedaj je \(\exp\) surjektivna, saj logarimi obstajajo lokalno, a vseeno komponenta \(\exp_X\)
+%   ni surjektivna, ker ne obstaja taka preslikava \(f : X → ℂ\), da je \(\exp ∘ f = \id\).
+% \end{opomba}
 
-Da lažje govorimo o kategoričnih aspektih snopov, jih sedaj definiramo še kategorično.
+% Da lažje govorimo o kategoričnih aspektih snopov, jih sedaj definiramo še kategorično.
 
-\begin{definicija}
-  Predsnop nad \(X\) je funktor \(\op{\p{𝒪X}} → \setcat\), kjer gledamo na delno urejeno
-  množico \(𝒪X\) kot kategorijo, kjer so morfizmi vsebovanosti množic.
+% \begin{definicija}
+%   Predsnop nad \(X\) je funktor \(\op{\p{𝒪X}} → \setcat\), kjer gledamo na delno urejeno
+%   množico \(𝒪X\) kot kategorijo, kjer so morfizmi vsebovanosti množic.
 
-  Snop nad \(X\) je predsnop, za katerega velja enoličnost in lepljenje.
+%   Snop nad \(X\) je predsnop, za katerega velja enoličnost in lepljenje.
 
-  Preslikava med (pred)snopoma je naravna transformacija med njima kot funktorjema.
+%   Preslikava med (pred)snopoma je naravna transformacija med njima kot funktorjema.
 
-  Kategoriji predsnopov in snopov ter preslikav med njimi ozačimo s \(\psh{X}\) in \(\sh{X}\).
-\end{definicija}
-
-
+%   Kategoriji predsnopov in snopov ter preslikav med njimi ozačimo s \(\psh{X}\) in \(\sh{X}\).
+% \end{definicija}
 
 
-\subsection{Prezentacije snopov}
+Oglejmo si najprej primer zveznih funkcij iz \(X\) v \(ℝ\).
+Zanje se vedno lahko vprašamo, če so pozitivne, negativne, ali so gladke,
+ipd.~vendar nas pogosto zanima tudi \emph{kje} za določeno funkcijo neka
+lastnost velja. Recimo preprosto, da je \(f : ℝ → ℝ\) identiteta. Tedaj je
+pozitivna na \((0,∞)\), negativna na \((-∞,0)\), gladka pa na celem \(ℝ\).
+Klasično je pozitivnost funkcije resničnostna vrednost. Z drugimi besedami,
+pozitivnost je predikat na (zveznih) realnih funkcijah. Mi pa zares želimo
+opredeliti, kje ta lastnost velja, ne zgolj če velja na celem prostoru.
+Želimo torej, da ima ``prava'' pozitivnost vrednosti v podmnožicah prostora
+\(X\), in da bo imela topologija \(X\) kaj vpliva naj bodo to zgolj odprte
+podmnožice.
 
-Naj bo \(F\) snop. Potem po lemi Yonede velja \(F(U) = \textrm{Nat}{\p{よU, F}}\), torej so
-elementi snopa natanko določeni s preslikavami v snop.
-Poleg tega pa za snopa \(F\) in \(G\) ter naravno transformacijo \(α : F ⇒ G\)
-med njima velja, da \(α\) komutira z zožitvami, torej, če je \(V ⊆ U\) in
-\(f ∈ F(U)\), velja \(α_V(f{\res V}) = α_U(f){\res V}\).
-To pa pomeni, da so vrednosti morfizma natanko določene z vrednostmi pri tako
-imenovanih globalnih lokalnih prerezih ozirmoa elementih.
-V mislih imamo na primer primer iz kompleksne analize, kjer gledamo snop
-kompleksnih logaritmov. Vemo, da globalen logaritem ne obstaja, vendar pa vseeno
-obstajajo loklani logaritmi, te imajo pa maksimalne analitične razširitve, ki
-bi jim lahko rekli \quot{globalni lokalni logaritmi}.
+Želimo pa tudi obravnavati funkcije, ki niso definirane na celotni domeni, na
+primer \(x ↦ x⁻¹\). Tako naš primer razširimo na množico vseh funkcij \(U → ℝ\),
+kjer je \(U ∈ 𝒪X\), in označimo množico vseh teh funkcij z \(R\). Potem pa za
+\(f ∈ R\) definiramo \emph{definicijsko območje} oziroma \emph{razpon} kot
+domeno funkcije \(f\), in ga označimo \(‖f‖\).
+Na to množico lahko sedaj uvedemo predikat enakosti, ki seveda meri, na kateri
+množici se dve funkciji ujemata, na očiten način:
+\[ ⟦f = g⟧ = \int\set{t ∈ ‖f‖∩‖g‖}{f(t) = g(t)}\text. \]
 
-Bolj natančno torej, naj bo \(\ln\) množica parov \(\p{U, φ}\), kjer je
-\(U ⊆ ℂ\) in \(φ : U → ℂ\) lokalni logaritem, tako da ne obstaja nobena množica
-večja od \(U\), na katero lahko \(φ\) razširimo.
-Potem je vsak ellement snopa logaritmov zožitev nekega elementa \(\ln\), poleg
-tega pa so vsi elementi \(\ln\) paroma neskladni (sicer bi jih lahko zlepili in
-dobili strogo razširitev obeh, kar je v protislovju z maksimalnostjo elementov
-\(\ln\)).
+Ni naključje, da preslikavam \(R → 𝒪X\) pravimo predikati, saj se da pokazati,
+da za vsako polno Heytingovo algebro (kar \(𝒪X\) je) obstaja nek model
+konstruktivne matematike, tako da so resničnostne vrednosti natanko odprte
+množice \(X\). V tem smislu \(⟦f = g⟧\) predstavlja kar enakost med funkcijami,
+\(‖f‖\) je pa predikat obstoja elementa \(‖f‖ = \exist{f : R}{⊤}\). Velja tudi
+enakost \(‖f‖ = ⟦f = f⟧\), torej zares predikata \(‖-‖\) ne potrebujemo.
 
-Naivno bi sedaj želeli snop logaritmov \quot{generirati} z elementi \(\ln\),
-tako da bi vzeli \(V ↦ \set{φ{\res V}}{(U, φ) ∈ \ln \text{ in } V ⊆ U}\), in to
-v tem primeru res deluje, ampak v splošnem pa ne moremo tvoriti zožitev.
-Lahko vzamemo potem \(φ{\res V}\) kot formalni element, kjer pa spet nastane
-problem, da če se dva prereza ujemata na neki množici, morata biti njuni
-zožitvi na to množico enaki. To lahko popravimo tako da vpeljemo nekakšno
-relacijo na prerezih, ki nam pove ko kakšne mere se ujemata (oziroma nam da
-največjo odprto množico, kjer sta enaka). Pišemo jo lahko recimo \(⟦φ = ψ⟧\).
-Ta relacija bo gotovo simetrična, prav tako pa bo \quot{tranzitivna}, t.j. če se
-\(φ\) in \(ψ\) ujemata na \(U\), in \(ψ\) in \(ξ\) na \(V\), se \(φ\) in \(ξ\)
-gotovo ujemata vsaj na preseku \(U∩V\). Očitno pa ta relacija ni refleksivna, v
-smislu da je \(φ\) v relaciji s samim sabo zgolj na množici, na kateri je
-definiran. To pomeni, da lahko za \(\ln\) namesto parov \(\p{U, φ}\) vzamemo kar
-prereze same, saj lahko \(U\) dobimo iz \(⟦φ = φ⟧\). Tej množici pravimo
-\emph{razpon \(φ\)} in jo pišemo tudi \(‖φ‖\).
+V splošnem, množicam kot so \(R\), torej takim, da imajo definirano enakost z
+vrednostmi v \(𝒪X\) pravimo \emph{Heytingovo vrednotene množice},
+\emph{\(𝒪X\) vrednotene množice}, ali na kratko \emph{\(𝒪X\)-množice}.
 
-%Ostane le še problem kako pravilno tvoriti kvocient iz te relacije, kar pa
-%upamo, da se ognemo z bolj strukturiranim pogledom.
 
-Zgoraj opisanem postopku se reče tudi konstrukcija toposa iz
-triposa~\angl{tripos to topos construction} in je to tudi motivacijski primer za
-razvoj te konstrukcije.
+\subsection{Heytingovo vrednotene množice}
+
+
+% Naj bo \(F\) snop. Potem po lemi Yonede velja \(F(U) = \textrm{Nat}{\p{よU, F}}\), torej so
+% elementi snopa natanko določeni s preslikavami v snop.
+% Poleg tega pa za snopa \(F\) in \(G\) ter naravno transformacijo \(α : F ⇒ G\)
+% med njima velja, da \(α\) komutira z zožitvami, torej, če je \(V ⊆ U\) in
+% \(f ∈ F(U)\), velja \(α_V(f{\res V}) = α_U(f){\res V}\).
+% To pa pomeni, da so vrednosti morfizma natanko določene z vrednostmi pri tako
+% imenovanih globalnih lokalnih prerezih ozirmoa elementih.
+% V mislih imamo na primer primer iz kompleksne analize, kjer gledamo snop
+% kompleksnih logaritmov. Vemo, da globalen logaritem ne obstaja, vendar pa vseeno
+% obstajajo loklani logaritmi, te imajo pa maksimalne analitične razširitve, ki
+% bi jim lahko rekli \quot{globalni lokalni logaritmi}.
+
+% Bolj natančno torej, naj bo \(\ln\) množica parov \(\p{U, φ}\), kjer je
+% \(U ⊆ ℂ\) in \(φ : U → ℂ\) lokalni logaritem, tako da ne obstaja nobena množica
+% večja od \(U\), na katero lahko \(φ\) razširimo.
+% Potem je vsak ellement snopa logaritmov zožitev nekega elementa \(\ln\), poleg
+% tega pa so vsi elementi \(\ln\) paroma neskladni (sicer bi jih lahko zlepili in
+% dobili strogo razširitev obeh, kar je v protislovju z maksimalnostjo elementov
+% \(\ln\)).
+
+% Naivno bi sedaj želeli snop logaritmov \quot{generirati} z elementi \(\ln\),
+% tako da bi vzeli \(V ↦ \set{φ{\res V}}{(U, φ) ∈ \ln \text{ in } V ⊆ U}\), in to
+% v tem primeru res deluje, ampak v splošnem pa ne moremo tvoriti zožitev.
+% Lahko vzamemo potem \(φ{\res V}\) kot formalni element, kjer pa spet nastane
+% problem, da če se dva prereza ujemata na neki množici, morata biti njuni
+% zožitvi na to množico enaki. To lahko popravimo tako da vpeljemo nekakšno
+% relacijo na prerezih, ki nam pove ko kakšne mere se ujemata (oziroma nam da
+% največjo odprto množico, kjer sta enaka). Pišemo jo lahko recimo \(⟦φ = ψ⟧\).
+% Ta relacija bo gotovo simetrična, prav tako pa bo \quot{tranzitivna}, t.j. če se
+% \(φ\) in \(ψ\) ujemata na \(U\), in \(ψ\) in \(ξ\) na \(V\), se \(φ\) in \(ξ\)
+% gotovo ujemata vsaj na preseku \(U∩V\). Očitno pa ta relacija ni refleksivna, v
+% smislu da je \(φ\) v relaciji s samim sabo zgolj na množici, na kateri je
+% definiran. To pomeni, da lahko za \(\ln\) namesto parov \(\p{U, φ}\) vzamemo kar
+% prereze same, saj lahko \(U\) dobimo iz \(⟦φ = φ⟧\). Tej množici pravimo
+% \emph{razpon \(φ\)} in jo pišemo tudi \(‖φ‖\).
+
+% %Ostane le še problem kako pravilno tvoriti kvocient iz te relacije, kar pa
+% %upamo, da se ognemo z bolj strukturiranim pogledom.
+
+% Zgoraj opisanem postopku se reče tudi konstrukcija toposa iz
+% triposa~\angl{tripos to topos construction} in je to tudi motivacijski primer za
+% razvoj te konstrukcije.
+
 
 \begin{definicija}
   \emph{\(ℒ\)-vrednotena množica} oziroma \emph{\(ℒ\)-množica} je množica \(A\),
@@ -264,22 +299,31 @@ element okvira, prav tako pa predstavlja \quot{resnico}.
 To pomeni, da res na \(a ≤ b\) lahko gledamo kot \quot{iz \(a\) sledi \(b\)}.
 
 Naslednji izziv je definirati preslikave med \(ℒ\)-množicami.
-Če pomislimo spet na snope, je preslikava iz \(F\) v \(G\) že določena z
-globalnimi lokalnimi elementi, vendar pa nam nič ne zagotavlja, da so njihove
-slike prav tako globali loklani elementi v \(G\), je pa gotovo zožitev nekega
-(potencialno neenoličnega) takega elementa.
+Problem je, da elementi kodomene ne nujno zares obstajajo kot elementi množice
+same. Na primer, naj bo \(ℒ\) diskretna topologija na dveh elementih, \(A\) naj
+ima en element (\(a\)) definiran povsod, \(B\) pa dva elementa (\(b₀\) in
+\(b₁\)) definirana v vsaki od točk prostora. Sedaj pa želimo definirati
+preslikavo, ki \(a\) slika v \(b₀\) na točki \(0\) in \(b₁\) na točki ena (kar
+je možno v internem jeziku), pa naletimo na težavo, ker take funkcije ne moramo
+izraziti kot dejansko funkcijo \(A → B\). Tako moramo preslikave izraziti kot
+funkcijske relacije (v internem jeziku), kar tudi storimo.
 
-Če je \(f ∈ F'\) in \(α : F ⇒ G\), velja \(‖f‖ = ⋁_{g ∈ G'} ⟦g = α(f)⟧\),
-kjer z \(F'\) in \(G'\) označimo množici globalnih lokalnih elementov.
-Ta enačba nam torej predstavlja celovitost, pri enoličnosti pa moramo paziti.
-Kot rečeno, globalni lokalni element v \(G\) ni enolično določen, je pa enolično
-določena njegova (oziroma njihova) zožitev na razpon \(f\).
-Velja še več, če pogledamo primerjavi \(α(f)\) z dvema elementoma \(g\) in
-\(g'\), po tranzitivnosti relacije dobimo, da je presek teh dveh množic nujno
-vsebovan v \(⟦g = g'⟧\), torej na nobeni odprti množici ni \(α(f)\) enak dvema
-elementoma.
+% Če pomislimo spet na snope, je preslikava iz \(F\) v \(G\) že določena z
+% globalnimi lokalnimi elementi, vendar pa nam nič ne zagotavlja, da so njihove
+% slike prav tako globali loklani elementi v \(G\), je pa gotovo zožitev nekega
+% (potencialno neenoličnega) takega elementa.
 
-Definirajmo torej morfizem \(ℒ\)-množic kot tako relacijo.
+% Če je \(f ∈ F'\) in \(α : F ⇒ G\), velja \(‖f‖ = ⋁_{g ∈ G'} ⟦g = α(f)⟧\),
+% kjer z \(F'\) in \(G'\) označimo množici globalnih lokalnih elementov.
+% Ta enačba nam torej predstavlja celovitost, pri enoličnosti pa moramo paziti.
+% Kot rečeno, globalni lokalni element v \(G\) ni enolično določen, je pa enolično
+% določena njegova (oziroma njihova) zožitev na razpon \(f\).
+% Velja še več, če pogledamo primerjavi \(α(f)\) z dvema elementoma \(g\) in
+% \(g'\), po tranzitivnosti relacije dobimo, da je presek teh dveh množic nujno
+% vsebovan v \(⟦g = g'⟧\), torej na nobeni odprti množici ni \(α(f)\) enak dvema
+% elementoma.
+
+% Definirajmo torej morfizem \(ℒ\)-množic kot tako relacijo.
 
 \begin{definicija}
   \emph{Morfizem med \(ℒ\)-množicama} \(A\) in \(B\) je preslikava \(⟦- = f(-)⟧ : B×A → ℒ\),

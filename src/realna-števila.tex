@@ -1,45 +1,117 @@
 \section{Dedekindova in Cauchyjeva realna števila v topoloških modelih}
 
-\subsection{\(\Rd\ = \Rc\) in \(\CCv\)}
+
+Najprej si oglejmo klasičen dokaz ekvivalence Dedekindovih in Cauchyjevih
+realnih števil.
+\begin{izrek}[Klasični]
+  Pokazati je zgolj potrebno, da ima vsak Dedekindov rez pripadajoče Cauchyjevo
+  zaporedje.
+  Naj bo \(\p{L, U}\) obojestranski dedekindov rez. Cauchyjevo zaporedje lahko
+  podamo kot zaporedje hitro padajočih racionalnih intervalov.
+
+  Naj bosta \(p₀ ∈ L\) in \(q₀ ∈ U\) racionalni števili.
+  Potem pa na \(n\)-tem koraku definiramo
+  \[ a ≔ \frac{2pₙ + qₙ}{3}\text,\quad b ≔ \frac{pₙ + 2qₙ}{3}\text{, in}\quad
+     \p{pₙ₊₁, qₙ₊₁} ≔ \begin{cases}
+       \p{a, qₙ} ;& a ∈ L\\
+       \p{pₙ, b} ;& b ∈ U\text.
+     \end{cases}
+  \]
+  Te intervali hitro konvergirajo proti \(\p{L, U}\), torej je to želeno
+  Cauchyjevo število.
+\end{izrek}
+
+Gornji izrek naredi števno mnogo odločitev, ko se odločamo, če velja \(a ∈ L\)
+ali \(b ∈ U\) (oziroma ali velja \(a < x\) ali \(x < b\)), torej dokaz ni
+konstruktiven.
+Znana sta dva nekonstruktivna principa, ki sta zadostna za gornji odkaz in sta
+šibkejša od izključene tretje možnosti. To sta \(\alpo*\) ter \(\CCv\).
+Če velja \(\alpo*\) je potem \(a < x\) odločljivo, torej lahko vnaprej popravimo
+drugi primer na \(x < b ∧ ¬\p{a < x}\).
+
+Če pa imamo na voljo \(\CCv\) pa preprosto lahko naredimo števno mnogo
+% TODO: prevod tega, nujno
+odločitev. Zares potrebujemo tu zgolj \[\CCv\] za ``realne'' odločitve, kar je
+pa tudi posledica \(\alpo*\).
+
+Čeprav je iz tega očitno, da niti \(\alpo*\) niti \(\CCv\) nista potrebna za
+\(\Rd\ = \Rc\), jih vseeno poskusimo strogo ločiti.
+
+\subsection{\(\Rd{} = \Rc\) in \(\CCv\)}
 
 \begin{definicija}
   \emph{P-prostori} so prostori, za katere velja, da je števen presek odprtih
   množic odprt.
 \end{definicija}
 
+% TODO: Factor this theorem into CCᵛ ⇔ G.T. closed under ctbl int and
+% T₁ ∧ G.T. closed under ctbl int ⇒ P-space
 \begin{lema}\label{th:t1-ccv-is-psp}
-  Če nad \(T₁\) prostorom velja \(\CCv\), je P-prostor.
+  Če nad \(T₁\) prostorom velja \(\CCv\), je prostor P-prostor.
 \end{lema}
 \begin{proof}
-  Naj torej velja \(X ⊩ \CCv\) in naj bo \(Uₙ\) števno pokritje \(U\).
-  Za vsak \(a ∈ ⋂ₙUₙ\) tvorimo množice \(Vₙ ≔ ⋃_{k ≠ n} Uₖ ⧵ \{a\}\) in
-  preslikavo
-  \[ Pₐ(x)(n,ν) ≔
-    \begin{cases}
-      Uₙ &, ν = 1\\
-      Vₙ &, ν = 0\text.
-    \end{cases}
+  Naj torej velja \(X ⊩ \CCv\) in naj bo \(\{Uₙ\} ⊆ 𝒪X\) števna družina ter
+  \(a ∈ ⋂ₙ Uₙ\) poljubna točka. Dokazati želimo, da ta točka leži v notranjosti
+  preseka, kar bo pokazalo, da je odprt. Definirajmo interno relacijo \(R\) med
+  \(ℕ\) in \(2\) s predpisom
+  %\(X ⊩ R(n, b) ⇔ (b = 1 ∧ Uₙ) ∨ (b = 0 ∧ !a)\).
+  \[
+  R(n, b) ⇔
+  \begin{cases}
+    Uₙ &; b = 1\\
+    !a &; b = 0\text.
+  \end{cases}
   \]
-  Ker je \(Pₐ\) konstanten v \(x\) pišemo kar \(Pₐ = Pₐ(x)\).
+  Ker so v \(T₁\) prostorih točke zaprte, je \(!a = X⧵\{a\}\).
+  % preslikavo
+  %\[ Pₐ(x)(n,ν) ≔
+  %  \begin{cases}
+  %    Uₙ &, ν = 1\\
+  %    Vₙ &, ν = 0\text.
+  %  \end{cases}
+  %\]
+  %Ker je \(Pₐ\) konstanten v \(x\) pišemo kar \(Pₐ ≔ Pₐ(x)\).
 
-  Ker je \(Uₙ ∪ Vₙ = Uₙ ∪ ⋃_{k ≠ n} Uₖ ⧵ \{a\} = ⋃ₙ Uₙ = U\) in po konstrukciji
-  veljata \(Uₙ ⊩ P(n, 1)\) in \(Vₙ ⊩ Pₐ(n, 0)\), lahko na \(Pₐ\) uporabimo dani
-  aksiom izbire. Tedaj dobimo pokritje \(Wᵢ ⊆ U\) in funkcije \(fᵢ : Wᵢ → 2^ℕ\),
-  tako da za vsak \(n ∈ ℕ\) velja \(Wᵢ ⊩ Pₐ{\p{n, fᵢ(n)}}\).
+  %Ker je \(Uₙ ∪ Vₙ = Uₙ ∪ ⋃_{k ≠ n} Uₖ ⧵ \{a\} = ⋃ₙ Uₙ = U\) in po konstrukciji
+  %Ker je \(Uₙ ∪ Vₙ = U\) in po konstrukciji veljata \(Uₙ ⊩ P(n, 1)\) in
+  %\(Vₙ ⊩ Pₐ(n, 0)\), je \(Pₐ\) na \(U\) celovita, torej lahko na \(Pₐ\) uporabimo
+  %dani aksiom izbire. Tedaj dobimo pokritje \(Wᵢ ⊆ U\) in funkcije \(fᵢ : Wᵢ → 2^ℕ\),
+  %tako da za vsak \(n ∈ ℕ\) velja \(Wᵢ ⊩ Pₐ(n, fᵢ(n))\).
+  Ker je \(Uₙ∪{!a} = Uₙ∪(X⧵\{a\}) = X\), je ta relacija celovita, torej lahko na
+  njej uporabimo dani aksiom izbire. Tako v okolici \(W\nbd a\) dobimo funkcijo
+  \({W ⊩ f : ℕ → 2}\), za katero velja \(W ⊩ \for{n : ℕ}{R(n, f(n))}\).
 
-  Ampak tedaj mora biti \(Wᵢ ⊆ ⋂ₙ Pₐ{\p{n, fᵢ(x)(n)}}\) za vse \(x ∈ Wᵢ\).
-  Sedaj pa, ker je \(a ∈ U\) mora biti tudi element nekega \(Wᵢ\), saj je le to
-  pokritje, ampak \(a\) ni element \(Pₐ(n, 0)\) za noben \(n ∈ ℕ\), torej je
-  \(fᵢ\) nujno identična \(1\), in \(a ∈ Wᵢ ⊆ ⋂ₙ Uₙ\). To pokaže, da ima vsak
-  element preseka neko odprto okolico, torej je presek odprt, kar pokaže, da je
-  \(X\) P-prostor.
+  Ker je pa to geometrijska implikacija, pa velja tudi \(a ⊩ \for{n : ℕ}{R(n, f(n))}\).
+  Vendar pa za noben \(n\) ne velja \(a ⊩{!a} (= R(n, 0))\), torej je \(f = 1\).
+  Potem pa velja \(a ∈ W ⊆ ⋂ₙ ⟦R(n, f(n))⟧ = ⋂ₙ ⟦R(n, 1)⟧ = ⋂ₙ Uₙ\).
+  % Ampak tedaj mora biti \(Wᵢ ⊆ ⋂ₙ Pₐ{\p{n, fᵢ(x)(n)}}\) za vse \(x ∈ Wᵢ\).
+  % Sedaj pa, ker je \(a ∈ U\) mora biti tudi element nekega \(Wᵢ\), saj je le to
+  % pokritje, ampak \(a\) ni element \(Pₐ(n, 0)\) za noben \(n ∈ ℕ\), torej je
+  % \(fᵢ\) nujno identična \(1\), in \(a ∈ Wᵢ ⊆ ⋂ₙ Uₙ\). To pokaže, da ima vsak
+  % element preseka neko odprto okolico, torej je presek odprt, kar pokaže, da je
+  % \(X\) P-prostor.
+  % Ampak tedaj mora biti \(W ⊆ ⋂ₙ ⟦n R f(n)⟧\). Ker je \(a ∈ W\) je \(a\)
+  % tudi element \(⟦n R f(n)⟧\) za vse \(n\). Sedaj pa, ker \(a\) ni element
+  % \(⟦n R 0⟧\) za noben \(n\), je \(f = 1\) in je \(a ∈ W ⊆ ⋂ₙ Uₙ\). To pokaže,
+  % da je presek odprt, kar pomeni, da je \(X\) P-prostor.
 \end{proof}
-\begin{opomba}
-  Gornji dokaz deluje tudi za \(R₀\) prostore, saj lahko \(Vₙ\) definiramo z
-  zaprtjem točke \(a\), in potrebujemo zgolj, da je to vsebovano v vsaki okolici
-  točke \(a\), kar je pa natanko ekvivalentno pogoju \(R₀\). Za občutek, \(T₁\)
-  prostori so natanko \(T₀\) in \(R₀\) prostori.
-\end{opomba}
+% \begin{proof}
+%   Naj je \(Uₙ\) števno pokritje \(U\) in \(a ∈ ⋂ₙ Uₙ\). Dokazujemo, da obstaja
+%   odprta okolica \(a\), ki je vsebovana v preseku.
+%   Konstruirajmo množice \(Vₙ ≔ ⋃_{k ≠ n} Uₖ ⧵ \{a\}\) in pokritja \(Cₙ ≔ ↓{\{Uₙ, Vₙ\}}\).
+%   Po predpostavki je tudi presek \(C ≔ ⋂ₙ Cₙ\) pokritje, torej za nek \(W ∈ C\)
+%   velja \(a ∈ W\). Potem pa za vse \(n\) velja \(W ∈ Cₙ\), torej imamo \(W ⊆ Uₙ\)
+%   ali \(W ⊆ Vₙ\).
+
+%   Ker je pa \(a ∈ W\) in \(a ∉ Vₙ\), je potem nujno \(W ⊆ Uₙ\), torej dobimo
+%   \(a ∈ W ⊆ ⋂ₙ Uₙ\), kar je natanko kar smo želeli.
+% \end{proof}
+%\begin{opomba}
+%  Gornji dokaz deluje tudi za \(R₀\) prostore, saj lahko \(Vₙ\) definiramo z
+%  zaprtjem točke \(a\), in potrebujemo zgolj, da je to vsebovano v vsaki okolici
+%  točke \(a\), kar je pa natanko ekvivalentno pogoju \(R₀\). Za občutek, \(T₁\)
+%  prostori so natanko \(T₀\) in \(R₀\) prostori.
+%\end{opomba}
 
 \begin{izrek}
   Aksiom disjunktivne števne izbire \(\CCv\) ni potreben pogoj za ujemanje
@@ -48,16 +120,74 @@
 \begin{dokaz}
   Prostor naravnih števil s kokončno topologijo ima lastnost, da je vsaka
   funkcija \(ℕ → ℝ\) konstantna. To velja tudi za (neprazne) odprte podmnožice,
-  ker so števno neskončne s kokončno topologijo, kar pa pomeni, da se v toposu
-  snopov nad \(ℕ\) s to topologijo realna števila ujemajo. Vendar je presek
-  množic \(\{0, n, n+1, …\} \) enak \(\{0\}\), ki pa ni odprta, torej ta prostor
-  ni P-prostor. Sledi, da \({ℕ^{\text{cof}}~\not⊩ \mathrm{AC}(ℕ, 2)}\), kar
-  dokaže izrek.
+  ker so števno neskončne s kokončno topologijo, kar pa pomeni, da se, v toposu
+  snopov nad \(ℕ\) s to topologijo, Dedekindova in Cauchyjeva realna števila
+  ujemajo. Vendar pa je presek množic \(\{0, n, n+1, …\} \) enak \(\{0\}\), ki
+  ni odprta, torej ta prostor ni P-prostor. Ker je ta prostor \(T₁\), po
+  zgornjem izreku sledi, da ne validira \(\CCv\).
 \end{dokaz}
 
 
-\subsection{\(\Rd\ = \Rc\) in \alpo*}
+\subsection{\(\Rd{} = \Rc\) in \alpo*}
+
+Primer podan zgoraj pa vseeno zadošča principu \(\alpo*\), ki konstruktivno
+implicira ujemanje Cantorjevih in Dedekindovih realnih
+števil~\cite{Birchfield24}.
+
+% TODO: a je to X l. pov ⇒ LPO? Ja, should be
+Izkaže se, da za lokalno povezane prostore to tudi pričakujemo.
+\begin{izrek}
+  Če je \(X\) lokalno povezan in velja \(X ⊩ \Rd\ = \Rc\), potem velja \(X ⊩ \alpo*\).
+\end{izrek}
+\begin{proof}
+  Ker je \(X\) lokalno povezan so Cauchyjeva realna števila natanko lokalno
+  konstante preslikave v \(ℝ\). Denimo torej, da so vse preslikave v \(ℝ\)
+  lokalno konstantne in naj bo \(U ⊩ x : \Rd\).
+
+  Tedaj po predpostavki vemo, da je \(x\) lokalno konstanten, kar pomeni, da je
+  lokalno enak eksternemu realnemu številu. Ampak za ta pa znamo odločiti
+  \(\alpo*\), torej velja \(\eventually{V ⊆ U}{x ≤ 0 ∨ x > 0}\), kar smo tudi
+  želeli dokazati.
+\end{proof}
+
+To pomeni, da če želimo ločiti \(\Rd = \Rc\) in \(\alpo*\) potrebujemo prostor,
+ki ni lokalno povezan. Avtorica meni, da je Fortov prostor na števno neskončni
+množici dober kandidat, a ji ni uspelo preveriti detajlov. Vseeno, se je pa
+zadostno prepričala, da niti \(\alpo*\) niti \(\CCv\) nad tem prostorom ne
+držita.
+
 \subsection{Analitična Kripkejeva shema in lokalno \(T₆\) prostori}
+
+\begin{definicija}[Kripkejeva shema]
+  Kripkejeva shema je sledeči princip
+  \[ \for{p : Ω}{\exist{α : 2^ℕ}{p ⇔ a \apart 0}}\text. \]
+\end{definicija}
+\begin{definicija}[Analitična Kripkejeva shema]
+  Analitična Kripkejeva shema je sledeči princip
+  \[ \for{p : Ω}{\exist{x : ℝ}{p ⇔ x \apart 0}}\text. \]
+\end{definicija}
+
+\begin{trditev}
+  Nad lokalno \(T₆\) prostori velja analitična Kripkejeva shema.
+\end{trditev}
+\begin{proof}
+  Brez škode za splošnost lahko predpostavimo, da je prostor \(X\) \(T₆\).
+  Naj bo \(U ⊆ X\). Tedaj obstaja \(f : X → ℝ\), ki je \(0\) natanko na
+  komplementu \(U\). To pa pomeni, da je natanko na \(U\) različen od \(0\)
+  kar je pa točno to, kar zahtevamo za analitično Kripkejevo shemo.
+\end{proof}
+
+% TODO: res rabim prevod za to
+Fortov prostor zgoraj je \(T₆\), tako da v njemu ne velja niti šibkejša oblika
+\(\CCv\), ki je omejena na ``realne'' resničnostne vrednosti.
+Res, če še enkrat podrobno pogledamo dokaz enakosti, se potrebujemo števno
+mnogokrat odločiti za neenakosti z \emph{istim} realnim številom, \(\CCv\) pa
+govori o števno mnogo različnih realnih številih.
+Avtorica sumi, da je \(\Rd = \Rc\) ekvivalentno temu:
+\begin{quotation}
+  Naj bo \(p\) naraščajoče in \(q\) padajoče zaporedje, in naj bo \(\sup p ≤ \inf q\)
+  (tu morda \(=\)?), in naj bo \(x : ℝ\). Potem velja \(\for{n : ℕ}{pₙ < x ∨ x < qₙ}\).
+\end{quotation}
 
 
 %%% Local Variables:

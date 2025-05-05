@@ -19,7 +19,8 @@
 \newcommand{\cli}[1]{\left[ {#1} \right]}
 \newcommand{\floor}[1]{\left\lfloor {#1} \right\rfloor}
 \newcommand{\set}[2]{\left\{ #1 \mid #2 \right\}}
-\newcommand{\nbd}{\oset{\text{nbd}}{∈}}
+\newcommand{\apart}{\ensuremath{\mathrel{\#}}}
+\newcommand{\nbd}{\oset{\text{\clap{\tiny nbd}}}{∋}}
 \newcommand{\newfrac}[2]{{}^{#1}\!/_{\!#2}}
 \newcommand{\mb}[1]{\mathbf{#1}}
 \newcommand{\mf}[1]{\mathfrak{#1}}
@@ -41,7 +42,7 @@
 %\DeclareMathOperator{\cov}{Cov}
 \AtBeginDocument{
   %\def\c#1{\left( {#1} \right)^c}
-  \def\c#1{\p{#1}^c}
+  \def\c#1{{#1}^c}
   \renewcommand{\b}[1]{\left\{ {#1} \right\}}
   \renewcommand{\O}[1]{\mathcal{O}{#1}}
   \renewcommand{\int}{\textrm{Int}}
