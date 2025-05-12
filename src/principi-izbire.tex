@@ -1,5 +1,64 @@
 \section{Principi izbire}
 
+% TODO: A lahko to naredimo za poljuben \(X\)?
+\begin{trditev}
+  Če je \(X\) lokalno povezan, in nad \(X\) velja kateri koli princip izbire,
+  velja potem tudi v metateoriji.
+\end{trditev}
+\begin{proof}
+  Oglejmo si princip izbire \(\AC_Σ{\p{A, B}}\).
+  Potem za vsako celovito relacijo \(R : A×B → Σ\) imamo
+  \[ X ⊩ \for{a : \c A}{\exitst{b : \c B}{R(a, b)}}\text. \]
+  Potem pa po internem aksiomu izbire sčasoma obstaja interna funkcija
+  \(f : {\c B}^{\c A}\). Ker je prostor lokalo povezan, je to enako kot funkcija
+  \(f : \c{B^A}\), kar nam pa da eksterno funkcijo \(f : A → B\), za katero
+  potem velja \(\for{a ∈ A}{R(a, f(a)}\).
+\end{proof}
+
+Ta izrek nam pove, da zaes v preveč konstruktivni matematiki niti ne moremo
+pričakovati, da se bo zgodilo kaj zanimivega. Skoraj noben topološki model ne bo
+validiral principov izbire, kar pa pomeni, da bodisi ne bomo mogli najti pametne
+topološke karakterizacije, bodisi pa ne bomo mogli pokazati, da topološki
+prostor s tako lastostko sploh obstaja.
+
+% % TODO: cite whatever talk he gave
+% Spodnji rezultat je odkril Alex Simpson, dokaz v primeru topoloških modelov je
+% pa originalen.
+% % TODO: A meta-choice sledi iz internega choice? ja za l. pov. prostore, a se da
+% % še kej rečt?
+% \begin{izrek}
+%   Nad \(X\) velja \(\AC_Σ{\p{\uline A, ℱ}}\) natanko tedaj, ko je
+%   Grothendieckova topologija \(X\) zaprta za \(A\)-mnoge preseke \(Σ\)-krovov.
+% \end{izrek}
+% \begin{proof}
+%   \begin{itemize}
+%   \item[\(\p ⇐\)]
+%     Naj bo \(X ⊩ P : \uline A × ℱ → Σ\) celovita relacija.
+%     To pomeni, da za vsak \(a ∈ A\) obstaja \(Σ\)-krov \(Cₐ\), tako da za vsak
+%     element \(U ∈ Cₐ\) obstaja tak \(f_{a, U} ∈ ℱ(U)\), da velja
+%     \(U ⊩ P(a, f_{a, U})\).
+
+%     Po predpostavki sedaj vemo, da je \(C ≔ ⋂_{a ∈ A} Cₐ\) tudi \(Σ\)-krov.
+%     Sedaj pa, za vsak \(U ∈ C\) velja, da je vsebovan v vsakem \(Cₐ\), tako da
+%     za vsak \(a ∈ A\) obstaja \(f_{a, U}\), da velja \(U ⊩ P(a, f_{a, U})\).
+%     Tedaj pa je preslikava \(a ↦ f_{a, U}\) ravno želena funkcija izbire.
+%   \item[\(\p ⇒\)]
+%     Naj bodo \(Cₐ\) \(Σ\)-krovi in \(C ≔ ⋂_{a ∈ A} Cₐ\). Pokazali bomo, da
+%     vsebuje \(Σ\)-krov, kar bo pokazalo, da je tudi sam \(Σ\)-krov.
+%     Definiramo relacijo med \(\uline A\) in \(\uline Σ\) s predpisom
+%     \(\X ⊩ P(α, U) ⇔ \p{U ∈ Cₐ} ∧ U\).
+
+%     To je celovita relacija, saj \(Cₐ\) pokrivajo prostor, torej lahko uporabimo
+%     dani aksiom izbire. To pa pomeni, da za vsak \(x ∈ X\), sčasoma na \(U \nbd x\)
+%     obstaja \(f : {\ulineΣ}^{\uline A}(U)\), za katerega za vse \(a ∈ A\) velja
+%     \(U ⊩ P(a, f(a))\), oziroma \(U ⊩ f(a) ∈ Cₐ\) in \(U ⊩ f(a)\).
+%     To pa pomeni, da velja \(x ⊩ f(a)\), torej \(x ∈ f(x, a) ∈ Cₐ\).
+%     Ker je \(a\) poljuben je torej \(x\) vsebovan v 
+    
+    
+    
+%   \end{itemize}
+% \end{proof}
 
 \subsection{Števna izbira in P-prostori}
 
@@ -8,7 +67,7 @@
   množic odprt.
 \end{definicija}
 
-% TODO: factor this through GT(X) σ-closed
+% TODO: can we factor this through GT(X) σ-closed
 \begin{lema}\label{th:psp-has-cc}
   Nad P-prostori velja \(\CC\).
 \end{lema}
