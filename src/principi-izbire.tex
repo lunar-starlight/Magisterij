@@ -1,6 +1,6 @@
 \section{Principi izbire}
 
-% TODO: A lahko to naredimo za poljuben \(X\)?
+% NOTE: A lahko to naredimo za poljuben \(X\)?
 \begin{trditev}
   Če je \(X\) lokalno povezan, in nad \(X\) velja kateri koli princip izbire,
   velja potem tudi v metateoriji.
@@ -21,10 +21,10 @@ validiral principov izbire, kar pa pomeni, da bodisi ne bomo mogli najti pametne
 topološke karakterizacije, bodisi pa ne bomo mogli pokazati, da topološki
 prostor s tako lastostko sploh obstaja.
 
-% % TODO: cite whatever talk he gave
+% %TODO: cite whatever talk he gave
 % Spodnji rezultat je odkril Alex Simpson, dokaz v primeru topoloških modelov je
 % pa originalen.
-% % TODO: A meta-choice sledi iz internega choice? ja za l. pov. prostore, a se da
+% %TODO: A meta-choice sledi iz internega choice? ja za l. pov. prostore, a se da
 % % še kej rečt?
 % \begin{izrek}
 %   Nad \(X\) velja \(\AC_Σ{\p{\uline A, ℱ}}\) natanko tedaj, ko je
@@ -67,7 +67,7 @@ prostor s tako lastostko sploh obstaja.
   množic odprt.
 \end{definicija}
 
-% TODO: can we factor this through GT(X) σ-closed
+% NOTE: can we factor this through GT(X) σ-closed
 \begin{lema}\label{th:psp-has-cc}
   Nad P-prostori velja \(\CC\).
 \end{lema}
@@ -120,20 +120,6 @@ prostor s tako lastostko sploh obstaja.
   \end{cases}
   \]
   Ker so v \(T₁\) prostorih točke zaprte, je \(!a = X⧵\{a\}\).
-  % preslikavo
-  %\[ Pₐ(x)(n,ν) ≔
-  %  \begin{cases}
-  %    Uₙ &, ν = 1\\
-  %    Vₙ &, ν = 0\text.
-  %  \end{cases}
-  %\]
-  %Ker je \(Pₐ\) konstanten v \(x\) pišemo kar \(Pₐ ≔ Pₐ(x)\).
-
-  %Ker je \(Uₙ ∪ Vₙ = Uₙ ∪ ⋃_{k ≠ n} Uₖ ⧵ \{a\} = ⋃ₙ Uₙ = U\) in po konstrukciji
-  %Ker je \(Uₙ ∪ Vₙ = U\) in po konstrukciji veljata \(Uₙ ⊩ P(n, 1)\) in
-  %\(Vₙ ⊩ Pₐ(n, 0)\), je \(Pₐ\) na \(U\) celovita, torej lahko na \(Pₐ\) uporabimo
-  %dani aksiom izbire. Tedaj dobimo pokritje \(Wᵢ ⊆ U\) in funkcije \(fᵢ : Wᵢ → 2^ℕ\),
-  %tako da za vsak \(n ∈ ℕ\) velja \(Wᵢ ⊩ Pₐ(n, fᵢ(n))\).
   Ker je \(Uₙ∪{!a} = Uₙ∪(X⧵\{a\}) = X\), je ta relacija celovita, torej lahko na
   njej uporabimo dani aksiom izbire. Tako v okolici \(W\nbd a\) dobimo funkcijo
   \({W ⊩ f : ℕ → 2}\), za katero velja \(W ⊩ \for{n : ℕ}{R(n, f(n))}\).
@@ -141,16 +127,6 @@ prostor s tako lastostko sploh obstaja.
   Ker je pa to geometrijska implikacija, pa velja tudi \(a ⊩ \for{n : ℕ}{R(n, f(n))}\).
   Vendar pa za noben \(n\) ne velja \(a ⊩{!a} (= R(n, 0))\), torej je \(f = 1\).
   Potem pa velja \(a ∈ W ⊆ ⋂ₙ ⟦R(n, f(n))⟧ = ⋂ₙ ⟦R(n, 1)⟧ = ⋂ₙ Uₙ\).
-  % Ampak tedaj mora biti \(Wᵢ ⊆ ⋂ₙ Pₐ{\p{n, fᵢ(x)(n)}}\) za vse \(x ∈ Wᵢ\).
-  % Sedaj pa, ker je \(a ∈ U\) mora biti tudi element nekega \(Wᵢ\), saj je le to
-  % pokritje, ampak \(a\) ni element \(Pₐ(n, 0)\) za noben \(n ∈ ℕ\), torej je
-  % \(fᵢ\) nujno identična \(1\), in \(a ∈ Wᵢ ⊆ ⋂ₙ Uₙ\). To pokaže, da ima vsak
-  % element preseka neko odprto okolico, torej je presek odprt, kar pokaže, da je
-  % \(X\) P-prostor.
-  % Ampak tedaj mora biti \(W ⊆ ⋂ₙ ⟦n R f(n)⟧\). Ker je \(a ∈ W\) je \(a\)
-  % tudi element \(⟦n R f(n)⟧\) za vse \(n\). Sedaj pa, ker \(a\) ni element
-  % \(⟦n R 0⟧\) za noben \(n\), je \(f = 1\) in je \(a ∈ W ⊆ ⋂ₙ Uₙ\). To pokaže,
-  % da je presek odprt, kar pomeni, da je \(X\) P-prostor.
 \end{proof}
 % \begin{proof}
 %   Naj je \(Uₙ\) števno pokritje \(U\) in \(a ∈ ⋂ₙ Uₙ\). Dokazujemo, da obstaja
