@@ -1,234 +1,94 @@
 \section{Topološki modeli}
 
-Teorija modelov morda zveni kot zelo abstraktna in filozofska zadeva (govora je
-o matematičnih svetovih), vendar je pa ideja sama blizu vsakemu matematiku, ki
-je dokončal drugi letnik dodiplomskega študija.
-Situacija je namreč zelo podobna teoriji grup. Struktura grupe je skupek
-aksiomov (tako kot jih ima konstruktivna logika ali pa teorija množic), medtem
-ko so pa grupe same natanko \emph{modeli} teh aksiomov, in na model logike
-mislimo na isti način.
+% Teorija modelov morda zveni kot zelo abstraktna in filozofska zadeva (govora je
+% o matematičnih svetovih), vendar je pa ideja sama blizu vsakemu matematiku, ki
+% je dokončal drugi letnik dodiplomskega študija.
+% Situacija je namreč zelo podobna teoriji grup. Struktura grupe je skupek
+% aksiomov (tako kot jih ima konstruktivna logika ali pa teorija množic), medtem
+% ko so pa grupe same natanko \emph{modeli} teh aksiomov, in na model logike
+% mislimo na isti način.
 
-Seveda pa grupe niso edina struktura, za katero lahko izvedemo to analogijo.
-Lahko tudi gledamo modele monoidne, kolobarske, vektorske,~itd.~strukture, prav
-tako pa lahko gledamo modele topološke strukture ali pa modele izračunljivostne
-strukture (recimo turingove stroje).
+% Seveda pa grupe niso edina struktura, za katero lahko izvedemo to analogijo.
+% Lahko tudi gledamo modele monoidne, kolobarske, vektorske,~itd.~strukture, prav
+% tako pa lahko gledamo modele topološke strukture ali pa modele izračunljivostne
+% strukture (recimo turingove stroje).
 
-V logiki in teoriji množic, se pogosto sprašujemo, ali so kakšne trditve
-\emph{neodvisne} od aksiomov našega sistema. Na primer aksiom izbire je
-neodvisen od preostalih aksiomov teorije množic, hipoteza kontinuuma je
-neodvisna od teorije množic z izbiro,~itd. Neodvisnost je mogoče malce
-nedostopen pojem, še posebej za matematike, ki verjamejo v absolutno resnico.
-Namreč, kako lahko trditev ni niti resnična niti neresnična? Ampak bistvo je v
-tem, da trditev ima resničnostno vrednost \emph{v vseh modelih}, vendar če je ta
-resničnostna vrednost različna v različnih modelih, je trditvi ne moremo
-dodeliti, tako da bo bilo to res v vseh modelih! Ključno je namreč, da noben
-model logike ni \emph{odlikovan}, torej nimamo \quot{standardnega modela}.
+% V logiki in teoriji množic, se pogosto sprašujemo, ali so kakšne trditve
+% \emph{neodvisne} od aksiomov našega sistema. Na primer aksiom izbire je
+% neodvisen od preostalih aksiomov teorije množic, hipoteza kontinuuma je
+% neodvisna od teorije množic z izbiro,~itd. Neodvisnost je mogoče malce
+% nedostopen pojem, še posebej za matematike, ki verjamejo v absolutno resnico.
+% Namreč, kako lahko trditev ni niti resnična niti neresnična? Ampak bistvo je v
+% tem, da trditev ima resničnostno vrednost \emph{v vseh modelih}, vendar če je ta
+% resničnostna vrednost različna v različnih modelih, je trditvi ne moremo
+% dodeliti, tako da bo bilo to res v vseh modelih! Ključno je namreč, da noben
+% model logike ni \emph{odlikovan}, torej nimamo \quot{standardnega modela}.
 
-To se vse sliši nekoliko komplicirano, a nam je zares že intimno znano. V
-teoriji grup namreč vemo za \quot{komutativnost}, za katero vemo, da se je ne da
-dokazati iz aksiomov grupe, prav tako pa ne velja njena negacija. To pa vemo
-natanko zato, ker obstajajo in komutativne in nekomutativne grupe (oziroma
-modeli aksiomov grup). V teoriji grup prav tako nimamo \quot{standardne grupe},
-za katero velja natanko vse kar velja za vse grupe.
+% To se vse sliši nekoliko komplicirano, a nam je zares že intimno znano. V
+% teoriji grup namreč vemo za \quot{komutativnost}, za katero vemo, da se je ne da
+% dokazati iz aksiomov grupe, prav tako pa ne velja njena negacija. To pa vemo
+% natanko zato, ker obstajajo in komutativne in nekomutativne grupe (oziroma
+% modeli aksiomov grup). V teoriji grup prav tako nimamo \quot{standardne grupe},
+% za katero velja natanko vse kar velja za vse grupe.
 
-V logiki takim stvarem pravimo \quot{neodvisne trditve}, v teoriji
-izračunljivosti tem pravimo \quot{neizračunljive funkcije}, v algebri in
-topologiji pa \quot{lastnosti algebraične strukture oz.~topološkega prostora}.
+% V logiki takim stvarem pravimo \quot{neodvisne trditve}, v teoriji
+% izračunljivosti tem pravimo \quot{neizračunljive funkcije}, v algebri in
+% topologiji pa \quot{lastnosti algebraične strukture oz.~topološkega prostora}.
 
-Skratka, prehod med aksiomatskim sistemom in modeli nam je kot matematikom znan,
-v algebri smo bili z njim vzgojeni že od malega, a v logiki te sreče žal nismo
-imeli. Tako se moramo na stara leta pruičiti teh metod, ki so pa logikom brez
-dvoma enako pomembne kot so grupe algebrajikom, ali pa prostori topologom.
+% Skratka, prehod med aksiomatskim sistemom in modeli nam je kot matematikom znan,
+% v algebri smo bili z njim vzgojeni že od malega, a v logiki te sreče žal nismo
+% imeli. Tako se moramo na stara leta pruičiti teh metod, ki so pa logikom brez
+% dvoma enako pomembne kot so grupe algebrajikom, ali pa prostori topologom.
 
-Kot smo pa omenili v uvodu, pa obstajajo modeli logike, ki so zgrajeni iz
-topoloških prostorov. Tem pravimo topološki modeli, in vse logične trditve v tem
-modelu se prevedejo v topološke trditve o topološkem prostoru. Sledi naravno
-vprašanje, ali lahko vzpostavimo nekak slovar med neodvisnimi trditvami
-(t.~j.~klasičnimi principi v konstruktivni logiki) in topološkimi lastnostmi, ki
-so nam znane.
+% Kot smo pa omenili v uvodu, pa obstajajo modeli logike, ki so zgrajeni iz
+% topoloških prostorov. Tem pravimo topološki modeli, in vse logične trditve v tem
+% modelu se prevedejo v topološke trditve o topološkem prostoru. Sledi naravno
+% vprašanje, ali lahko vzpostavimo nekak slovar med neodvisnimi trditvami
+% (t.~j.~klasičnimi principi v konstruktivni logiki) in topološkimi lastnostmi, ki
+% so nam znane.
 
-Do tega se vrnemo kasneje, v naslednjem razdelku, za zdaj nas pa čaka malo
-teorije snopov, da lahko topološke modele sploh definiramo.
+% Do tega se vrnemo kasneje, v naslednjem razdelku, za zdaj nas pa čaka malo
+% teorije snopov, da lahko topološke modele sploh definiramo.
 
 TODO: rewrite
 
-% \subsection{Snopi}
+% Oglejmo si najprej primer zveznih funkcij iz \(X\) v \(ℝ\).
+% Zanje se vedno lahko vprašamo, če so pozitivne, negativne, ali so gladke,
+% ipd.~vendar nas pogosto zanima tudi \emph{kje} za določeno funkcijo neka
+% lastnost velja. Recimo preprosto, da je \(f : ℝ → ℝ\) identiteta. Tedaj je
+% pozitivna na \((0,∞)\), negativna na \((-∞,0)\), gladka pa na celem \(ℝ\).
+% Klasično je pozitivnost funkcije resničnostna vrednost. Z drugimi besedami,
+% pozitivnost je predikat na (zveznih) realnih funkcijah. Mi pa zares želimo
+% opredeliti, kje ta lastnost velja, ne zgolj če velja na celem prostoru.
+% Želimo torej, da ima ``prava'' pozitivnost vrednosti v podmnožicah prostora
+% \(X\), in da bo imela topologija \(X\) kaj vpliva naj bodo to zgolj odprte
+% podmnožice.
+
+% Želimo pa tudi obravnavati funkcije, ki niso definirane na celotni domeni, na
+% primer \(x ↦ x⁻¹\). Tako naš primer razširimo na množico vseh funkcij \(U → ℝ\),
+% kjer je \(U ∈ 𝒪X\), in označimo množico vseh teh funkcij z \(R\). Potem pa za
+% \(f ∈ R\) definiramo \emph{definicijsko območje} oziroma \emph{razpon} kot
+% domeno funkcije \(f\), in ga označimo \(‖f‖\).
+% Na to množico lahko sedaj uvedemo predikat enakosti, ki seveda meri, na kateri
+% množici se dve funkciji ujemata, na očiten način:
+% \[ ⟦f = g⟧ = \int\set{t ∈ ‖f‖∩‖g‖}{f(t) = g(t)}\text. \]
+
+% Ni naključje, da preslikavam \(R → 𝒪X\) pravimo predikati, saj se da pokazati,
+% da za vsako polno Heytingovo algebro (kar \(𝒪X\) je) obstaja nek model
+% konstruktivne matematike, tako da so resničnostne vrednosti natanko odprte
+% množice \(X\). V tem smislu \(⟦f = g⟧\) predstavlja kar enakost med funkcijami,
+% \(‖f‖\) je pa predikat obstoja elementa \(‖f‖ = \exist{f : R}{⊤}\). Velja tudi
+% enakost \(‖f‖ = ⟦f = f⟧\), torej zares predikata \(‖-‖\) ne potrebujemo.
+
+% V splošnem, množicam kot so \(R\), torej takim, da imajo definirano enakost z
+% vrednostmi v \(𝒪X\) pravimo \emph{Heytingovo vrednotene množice},
+% \emph{\(𝒪X\) vrednotene množice}, ali na kratko \emph{\(𝒪X\)-množice}.
+
+\subsection{Logika odprtih množic}
+% TODO: podrobno propozicijsko logiko topologije
 
 
-% \begin{definicija}
-%   \emph{Snop nad prostorom \(X\)} je sestavljen iz
-%   \begin{itemize}
-%     \item množic \emph{prerezov} \(F(U)\) za vsak \(U ∈ 𝒪X\),
-%     \item preslikav \(ρ_V^U : F(U) → F(V)\), ki jim pravimo \emph{zožitve},
-%   \end{itemize}
-%   tako da velja
-%   \begin{itemize}
-%     \item Za vsako pokritje \(\cov{U}{i}\) in elementa \(s, t ∈ F(U)\), če je
-%       \(s{\res{Uᵢ}} = t{\res{Uᵢ}}\) za vse \(i\), je tudi \(s = t\),
-%     \item Za vsako pokritje \(\cov{U}{i}\) in elemente \(sᵢ ∈ F(Uᵢ)\), za katere velja
-%       \({sᵢ{\res{Uᵢ∩Uⱼ}} = sⱼ{\res{Uᵢ∩Uⱼ}}}\) za vse \(i\) in \(j\), obstaja
-%       element \(s ∈ F(U)\), tako da je \(s{\res{Uᵢ}} = sᵢ\) za vse \(i\).
-%   \end{itemize}
-
-%   Prvemu pogoju pravimo \emph{lokalnost}, drugemu pa \emph{lepljenje}.
-% \end{definicija}
-% \begin{opomba}
-%   Gorjnemu objektu, ki ne nujno zadošča lepljenju ali lokalnosti, pravimo \emph{predsnop}.
-%   Snop bi torej lahko definirali kot predsnop, ki zadošča lokalnosti in lepljenju.
-% \end{opomba}
-
-% Gornjo definicijo se da napisati tudi malo elegantneje. Poimenujmo najprej par konceptov.
-
-% \begin{definicija}
-%   Prereza \(s ∈ F(U)\) in \(t ∈ F(V)\) sta \emph{skladna}, ko velja \(s{\res{V}} = t(\res{U})\).
-%   Družina prerezov \(sᵢ ∈ F(Uᵢ)\) je \emph{skladna}, ko so njeni elementi paroma
-%   skladni. Prerez je \emph{skladen} z družino, ko je paroma skladen z vsemi
-%   njenimi elementi.
-% \end{definicija}
-
-% \begin{definicija}
-%   Naj bo \(sᵢ ∈ F(Uᵢ)\) skladna družina prerezov. Potem je \emph{amalgamacija} te družine
-%   tak prerez \(F\) pri \(⋃ᵢUᵢ\), ki je skladen s to družino.
-% \end{definicija}
-
-% Če zgolj vstavimo nove izraze, lahko lepljenje izrazimo kot:
-% \begin{quotation}
-%   Vsaka skladna družina prerezov ima amalgamacijo.
-% \end{quotation}
-% Izkaže pa se, da če zahtevamo še \emph{enoličnost} amalgamacije, dobimo lokalnost zastonj.
-% Res, če je \(\cov{U}{i}\) pokritje je \(s\) amalgamacija družine zožitev na elemente pokritja.
-% Torej, če se \(s\) in \(t\) ujemata na pokritju, sta njuni družini zožitev enaki, torej imata
-% enake tudi amalgamacije. Sedaj pa, če predpostavimo, da so amalgamacije enolične, mora pa biti nujno \(s = t\).
-
-% \begin{slogan}
-%   Snop nad \(X\) je predsnop, v katerem ima vsaka skladna družina prerezov enolično amalgamacijo.
-% \end{slogan}
-
-% \begin{definicija}
-%   \emph{Preslikava med snopoma \(F\) in \(G\)} je družina preslikav \({α_U : F(U) → G(U)}\),
-%   tako da za vsaka \(V ⊆ U\) v \(𝒪X\) velja
-%   \[ α_U{\p{s}}{\res{V}} = α_V{\p{s{\res{V}}}}\text. \]
-% \end{definicija}
-
-% Kdaj nas zanima obnašanje snopa okrog neke točke \(x ∈ X\).
-
-% \begin{definicija}
-%   Na prereze snopa \(F\) uvedemo ekvivalenčno relacijo, tako da rečemo, da sta \(s ∈ F(U)\) in \(t ∈ F(V)\)
-%   \emph{enaka pri \(x\)}, kadar obstaja neka okolica \(W \nbd x\), ki je vsebovana v \(U ∩ V\),
-%   tako da je \(s{\res{W}} = t{\res{W}}\).
-
-%   Množici ekvivalenčnih razredov prerezov snopa \(F\) pri \(x\) pravimo \emph{bilka \(F\) pri \(x\)}
-%   \angl{stalk} (ozn.~\(Fₓ\)), elementom \(Fₓ\) pa \emph{kali pri \(x\)} \angl{germ}
-%   (ozn.~\(\germ s x\) za \(s ∈ F(U \nbd x)\)).
-% \end{definicija}
-% \begin{opomba}
-%   Kadar brez konteksta napišemo \(\germ s x\) predpostavimo, da je prerez \(s\) definiran na neki okolici \(x\).
-% \end{opomba}
-
-% Za preslikavo med snopoma lahko pogledamo, kako se obnaša na okolici točke, tako da definiramo preslikavo med bilkama.
-
-% \begin{konstrukcija}
-%   Preslikavi med snopoma \(α : F ⇒ G\) lahko priredimo preslikavo \(αₓ : Fₓ → Gₓ\), definirano s predpisom
-%   \(\germ s x ↦ \germ{\p{α_U{\p{s}}}} x\).
-% \end{konstrukcija}
-% \begin{dokaz}
-%   Pokazati moramo, da če velja \(\germ s x = \germ t x\), je tudi njuna slika z \(αₓ\) enaka.
-
-%   Iz predpostavke sledi, da obstaja \(W \nbd x\), kjer se \(s\) in \(t\) ujemata.
-%   Sledi, da je
-%   \[ α_U{\p{s}}{\res{W}} = α_W{\p{s\res{W}}} = α_W{\p{t\res{W}}} = α_U{\p{t}}{\res{W}}, \]
-%   kar pokaže, da gornja konstrukcija definira funkcijo.
-% \end{dokaz}
-% \begin{opomba}
-%   Pisali bomo tudi \(αₓ(s)\) namesto \(αₓ{\p{\germ s x}}\).
-% \end{opomba}
-
-% Lastnosti preslikav med snopoma so najpogosteje definirane tako, da rečemo, da veljajo za vse bilke.
-
-% \begin{definicija}
-%   Preslikava med snopi je injektivna (oz.~surjektivna), kadar so vse preslikave bilk injektivne (oz.~surjektivne).
-% \end{definicija}
-
-% \begin{lema}[Lokalnost na bilkah]\label{th:lokalnost-na-bilkah}
-%   Naj bosta \(s, t ∈ F(U)\). Potem sta enaka natanko tedaj, ko so enake vse njune kali na elementih \(U\).
-% \end{lema}
-% \begin{dokaz}
-%   Če so kali \(s\) in \(t\) enake v okolici vsakega \(x ∈ U\), potem te okolice tvorijo pokritje \(U\),
-%   tako da se na vsakem elementu pokritja \(s\) in \(t\) ujemata.
-%   Potem po lokalnosti snopa sledi, da sta \(s\) in \(t\) enaka tudi na celotnem \(U\).
-% \end{dokaz}
-
-% \begin{trditev}
-%   Preslikava med snopi je injektivna natanko tedaj, ko so injektivne vse njene komponente \(α_U\).
-% \end{trditev}
-% \begin{dokaz}
-%   Denimo, da so vse komponente \(α_U\) injektivne in naj bo \({αₓ{\p{s}} = αₓ{\p{t}}}\).
-%   Tedaj obstaja \(W \nbd x\), tako da je \(α_W(s) = α_W(t)\), torej po injektivnosti \(α_W\)
-%   je \(s = t\), kar dokaže injektivnost \(αₓ\). Ker je \(x\) poljuben sledi, da je \(α\) injektivna.
-
-%   V obratno smer pa naj bodo \(αₓ\) injektivne in \(α_U(s) = α_U(t)\).
-%   Za vsak \(x ∈ U\) sta potem tudi kali \(αₓ(s)\) in \(αₓ(t)\) enaki, torej sta po injektivnosti \(αₓ\)
-%   tudi kali \(\germ s x\) in \(\germ t x\) enaki.
-%   Sedaj iz Leme~\ref{th:lokalnost-na-bilkah} sledi, da sta tudi \(s\) in \(t\) enaka.
-% \end{dokaz}
-% \begin{opomba}
-%   Gornja trditev ne velja za surjektivnost. Denimo, da je \(X\) punktirana kompleksna ravninva,
-%   \(F\) snop meromorfnih funkcij na \(X\), in \(G\) snop nikjer ničelnih meromorfnih funkcij na \(X\).
-
-%   Definirajmo preslikavo \(\exp : F ⇒ G\) s postkompozicijo z eksponentno preslikavo.
-
-%   Tedaj je \(\exp\) surjektivna, saj logarimi obstajajo lokalno, a vseeno komponenta \(\exp_X\)
-%   ni surjektivna, ker ne obstaja taka preslikava \(f : X → ℂ\), da je \(\exp ∘ f = \id\).
-% \end{opomba}
-
-% Da lažje govorimo o kategoričnih aspektih snopov, jih sedaj definiramo še kategorično.
-
-% \begin{definicija}
-%   Predsnop nad \(X\) je funktor \(\op{\p{𝒪X}} → \setcat\), kjer gledamo na delno urejeno
-%   množico \(𝒪X\) kot kategorijo, kjer so morfizmi vsebovanosti množic.
-
-%   Snop nad \(X\) je predsnop, za katerega velja enoličnost in lepljenje.
-
-%   Preslikava med (pred)snopoma je naravna transformacija med njima kot funktorjema.
-
-%   Kategoriji predsnopov in snopov ter preslikav med njimi ozačimo s \(\psh{X}\) in \(\sh{X}\).
-% \end{definicija}
-
-
-Oglejmo si najprej primer zveznih funkcij iz \(X\) v \(ℝ\).
-Zanje se vedno lahko vprašamo, če so pozitivne, negativne, ali so gladke,
-ipd.~vendar nas pogosto zanima tudi \emph{kje} za določeno funkcijo neka
-lastnost velja. Recimo preprosto, da je \(f : ℝ → ℝ\) identiteta. Tedaj je
-pozitivna na \((0,∞)\), negativna na \((-∞,0)\), gladka pa na celem \(ℝ\).
-Klasično je pozitivnost funkcije resničnostna vrednost. Z drugimi besedami,
-pozitivnost je predikat na (zveznih) realnih funkcijah. Mi pa zares želimo
-opredeliti, kje ta lastnost velja, ne zgolj če velja na celem prostoru.
-Želimo torej, da ima ``prava'' pozitivnost vrednosti v podmnožicah prostora
-\(X\), in da bo imela topologija \(X\) kaj vpliva naj bodo to zgolj odprte
-podmnožice.
-
-Želimo pa tudi obravnavati funkcije, ki niso definirane na celotni domeni, na
-primer \(x ↦ x⁻¹\). Tako naš primer razširimo na množico vseh funkcij \(U → ℝ\),
-kjer je \(U ∈ 𝒪X\), in označimo množico vseh teh funkcij z \(R\). Potem pa za
-\(f ∈ R\) definiramo \emph{definicijsko območje} oziroma \emph{razpon} kot
-domeno funkcije \(f\), in ga označimo \(‖f‖\).
-Na to množico lahko sedaj uvedemo predikat enakosti, ki seveda meri, na kateri
-množici se dve funkciji ujemata, na očiten način:
-\[ ⟦f = g⟧ = \int\set{t ∈ ‖f‖∩‖g‖}{f(t) = g(t)}\text. \]
-
-Ni naključje, da preslikavam \(R → 𝒪X\) pravimo predikati, saj se da pokazati,
-da za vsako polno Heytingovo algebro (kar \(𝒪X\) je) obstaja nek model
-konstruktivne matematike, tako da so resničnostne vrednosti natanko odprte
-množice \(X\). V tem smislu \(⟦f = g⟧\) predstavlja kar enakost med funkcijami,
-\(‖f‖\) je pa predikat obstoja elementa \(‖f‖ = \exist{f : R}{⊤}\). Velja tudi
-enakost \(‖f‖ = ⟦f = f⟧\), torej zares predikata \(‖-‖\) ne potrebujemo.
-
-V splošnem, množicam kot so \(R\), torej takim, da imajo definirano enakost z
-vrednostmi v \(𝒪X\) pravimo \emph{Heytingovo vrednotene množice},
-\emph{\(𝒪X\) vrednotene množice}, ali na kratko \emph{\(𝒪X\)-množice}.
-
-
-\subsection{Heytingovo vrednotene množice}
+\subsection{Heytingovo-vrednotene množice}
 
 
 % Naj bo \(F\) snop. Potem po lemi Yonede velja \(F(U) = \textrm{Nat}{\p{よU, F}}\), torej so
@@ -274,13 +134,37 @@ vrednostmi v \(𝒪X\) pravimo \emph{Heytingovo vrednotene množice},
 % triposa~\angl{tripos to topos construction} in je to tudi motivacijski primer za
 % razvoj te konstrukcije.
 
+Oglejmo si spet primer naravnih števil nad nekim prostorom \(X\). To bodo zvezne
+preslikave iz odprtih podmnožic \(X\) v \(ℕ\).
+Najprej, lahko vsaki taki preslikavi dodelimo ``resničnostno vrednost obstoja'',
+oziroma \emph{razpon}, ki bo kar njena domena. To označimo z \(‖-‖\). Če je
+\(n : U → ℕ\), potem \(n\) obstaja zgolj na \(U\), saj izven \(U\) nima
+vrednosti. Različni taki naravni števili lahko tudi primerjamo, tako da
+preprosto pogledamo množico, na kateri sta enaki: \(⟦n = m⟧ = \set{t ∈ X}{n(t) = m(t)}\),
+kjer seveda pazimo, da \(t\) jemljemo zgolj iz razpona obeh števil.
+Načeloma bi morali vzeti notranjost te množice, saj morajo biti resničnostne
+vrednosti odprte, ampak v tem primeru, ker so funkcije lokalno konstantne, bo ta
+množica odprta. Potem pa se izkaže, da če velja enakost \(⟦n = n⟧ = \dom(n)\),
+tako da če znamo primerjati vsa števila, lahko izpeljemo tudi razpon, kar bomo
+tudi vzeli kot osnovni gradnik naših modelov.
 
+
+Naj bo \(\p{X, ℒ}\) topološki prostor.
+Implikacijo \(U ⇒ V\) definiramo kot \(⋃\set{W ∈ ℒ}{W ∩ U ⊆ V}\). Tako potem
+velja \(\p{U⇒V}∩U ⊆ V\). 
+% Ker je \(ℒ\) podmnožica potenčne množic
+% je potem tudi mreža, izkaže pa se, da iz topoloških aksiomov sledi, da je celo
+% polna Heytingova algebra, zato bomo uporabljali simbole \(∧\),\(∨\), in \(≤\)
+% namesto \(∩\), \(∪\), in \(⊆\), kot smo vajeni ko na topologijo gledamo kot
+% množice.
+
+% TODO: name?
 \begin{definicija}
   \emph{\(ℒ\)-vrednotena množica} oziroma \emph{\(ℒ\)-množica} je množica \(A\),
   skupaj s preslikavo, ki jo pišemo \(⟦- = -⟧ : A×A → ℒ\), tako da velja
   \begin{align*}
-    ⟦ a = b ⟧ ≤ ⟦ b = a ⟧\\
-    ⟦ a = b ⟧ ∧ ⟦ b = c ⟧ ≤ ⟦ a = c ⟧
+    ⟦ a = b ⟧ ⊆ ⟦ b = a ⟧\\
+    ⟦ a = b ⟧ ∩ ⟦ b = c ⟧ ⊆ ⟦ a = c ⟧
   \end{align*}
   Če iz konteksta ni razvidno kateri množici pripada preslikava \(⟦- = -⟧\),
   jo pišemo z indeksom \(⟦- =_A -⟧\).
@@ -288,7 +172,7 @@ vrednostmi v \(𝒪X\) pravimo \emph{Heytingovo vrednotene množice},
   Kot zgoraj naj bo \(‖a‖ ≔ ⟦a = a⟧\) \emph{razpon \(a\)}.
 \end{definicija}
 
-Če \(≤\) beremo kot implikacijo, zgornja aksioma zgledata zelo podobno aksiomoma
+Če \(⊆\) beremo kot implikacijo, zgornja aksioma zgledata zelo podobno aksiomoma
 simetričnosti in tranzitivnosti delno urejenih množic. Ker v intuicionistični
 logiki na okvirje gledamo kot resničnostne vrednosti, in zaradi tenzor-hom
 adjunkcije, lahko to podobnost reificiramo v tako imenovani jezik triposa.
