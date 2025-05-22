@@ -87,52 +87,140 @@ TODO: rewrite
 \subsection{Logika odprtih množic}
 % TODO: podrobno propozicijsko logiko topologije
 
+Naj bo \(X\) topološki prostor. Podrobno si oglejmo kako logične operacije
+delujejo v logiki odprtih množic.
+
+Če odprto množico \(U ⊆ X\) interpretiramo kot ``resnično na \(U\)'', potem je
+resnica kar ``renično povsod'', oziroma \(X\). Neresnica bi potem lahko bila
+katera koli množica, ki ni \(X\), ampak raje vzamemo za neresnico \emph{strožji}
+pogoj, ki pravi ``resnično nikjer'', torej prazna množica. To nam tudi namigne,
+da princip izključene tretje možnosti v tej logiki ne bo veljal.
+
+Oglejmo si sedaj kako logične operacije delajo za pozitivnost realnih funkcij.
+Situacija v splošnem bo potem popolnoma enaka, ampak je na tem primeru
+geometrijska slika malo bolj jasna. Naj bosta \(f\) in \(g\) funkciji \(X → ℝ\)
+in \(U ≔ ⟦f > 0⟧\), torej množica kjer je \(f\) pozitivna, in podobno \(V ≔ ⟦g > 0⟧\).
+
+V tem kontekstu je potem \(f > 0 = ⊤\) ko je \(U = X\), oziroma, ko \(f\)
+pozitivna povsod, in \(f > 0 = ⊥\), ko je \(U = ∅\), oziroma, ko \(f\) ni
+pozitivna nikjer.
+
+Konjunkcijo \(U ∧ V\) potem beremo kot ``funkciji \(f\) in \(g\) sta obe
+pozitivni'', kar je res natanko na preseku množic \(U\) in \(V\). Podobno je
+disjunkcija \(U ∨ V\) natanko unija \(U\) in \(V\).
+Za negacijo moramo malo razmisliti. Izraz \(f > 0\) lahko preprosto negiramo, in
+dobimo pogoj \(f ≤ 0\), ampak množica \(x ∈ X\) za katere to drži tudi ni odprta
+(in je natanko komplement \(U\), kar bi bil drugi kandidat za negacijo \(U\)).
+Ampak lahko pa vzamemo njeno notranjost, torej ``največjo odprto množico, na
+kateri \(f > 0\) ne velja''. Temu se potem reče tudi ``zunanjost množice
+\(U\)'', označeno \(\ext{U}\), iz angleško ``\foreignlanguage{english}{exterior}''.
+
+Implikcije med množicama v običajni matematiki ponavadi ne vidimo, tako da nam
+tudi naša geometrijska slika ne bo veliko pomagala. Implikacija med množicama
+\(A, B ⊆ X\) se definira dokaj intuitivno kot \(\set{x ∈ X}{x ∈ A ⇒ x ∈ B}\).
+V klasični metateoriji je potem ta množica kar enaka \(B ∪ Aᶜ\). Res,
+implikacija zgoraj je natanko \(x ∈ B ∨ x ∉ A\), oziroma \(x ∈ B ∪ Aᶜ\). Ampak
+ta množica za \(U\) in \(V\) ni nujno odprta, tako da moramo spet vzeti njeno
+notranjost, torej \(U ⇒ V\) je \(\int{\p{V ∪ Uᶜ}}\).
+Implikacijo bi lahko tudi definirali drugače, saj se izkaže, da je natanko
+karakterizirana z naslednjo lemo.
+\begin{lema}
+  Za vsak \(W ∈ 𝒪X\) je \(W ⊆ U ⇒ V\) natanko tedaj, ko je \(W ∩ U ⊆ V\).
+\end{lema}
+\begin{proof}
+  Najprej preoblikujmo desno vsebovanost, saj lahko rečemo da že na nivoju
+  množic, velja, da je \(W ∩ U ⊆ V\) natanko tedaj, ko je \(W ⊆ V ∪ Uᶜ\).
+  Potem je pa po definiciji \(U ⇒ V\) največja odprta podmnožica \(V ∪ Uᶜ\),
+  tako da bo gornja ekvivalenca očitno veljala, v eno smer ker je
+  \(U ⇒ V ⊆ V ∪ Uᶜ\), v drugo smer pa ker je to največja taka množica.
+\end{proof}
+
+V klasični matematiki se pogosto reče, da je implikacija \(U ⇒ V\) kar
+definirana kot \(V ∨ ¬U\), torej \(V ∪ \int{\p{Uᶜ}}\), ampak to v tem primeru ne
+drži, kar vemo tudi iz konstruktivne matematike. Res, pokažemo lahko, da če
+velja \(U ⇒ V = V ∨ ¬U\), velja princip izključene tretje možnosti. Očitno si za
+implikacijo želimo, da velja \(U ⇒ U\) za vse \(U\). Ampak če velja gornja
+enakost, bi to pomenilo, da velja \(U ∨ ¬U\) za vse \(U\), kar je pa natanko
+princip izključene tretje možnosti. Naj bo recimo \(X\) prostor Sierpinskijeva,
+torej prostor z dvema točkama \(0\) in \(1\), kjer je zgolj točka \(1\) odprta.
+Potem je pa za \(U ≔ \{1\}\) \(¬U = ∅\), torej \(U ∨ ¬U = U ≠ X\). Torej logika
+tega prostora ni klasična, in tam gornja enakost ne velja.
+
+% Konjunkcijo \(U ∧ V\) ``resnično na \(U\) in \(V\)'', torej je natanko \(U ∩ V\).
+% Podobno je disjunkcija \(U ∨ V\) potem \(U ∪ V\). Pri negaciji moramo malo
+% razmisliti. Naivno bi za ``negacijo množice'' vzeli komplement, a ta ni nujno
+% odprt, zato vzamemo njegovo notranjost. Temu se potem reče tudi zunanjost
+% množice, označeno \(¬U = \ext{U} = \int{\p{Uᶜ}}\). Očitno sta \(⊤\) in \(⊥\)
+% natanko \(X\) in \(∅\). Ostane še implikacija.
+
+
+% Iz konstruktivne matematike vemo,
+% da je resničnostna vrednost \(U ⇒ V\) je natanko tista, za katero velja, da je
+% \(W ⊆ U ⇒ V\) natanko tedaj ko \(W ∩ U ⊆ V\). To pa pomeni, da je
+% \(U ⇒ V ≔ ⋃\set{W ⊆ X}{W ∩ U ⊆ V}\).
+% To je malo v nasprotju s klasično definicijo, kjer se pogosto reče, da je
+% \(U ⇒ V = V ∨ ¬U\). Ampak to se ne bo lepo obnašalo že za zelo preproste
+% prostore, na primer prostor Sierpinskijeva. Pričakovali bi, da \(U ⇒ U\) vedno
+% velja, torej da je \(U ⇒ U = X\). A vendar, če bi veljala tista klasična
+% enakost, bi za \(U = \{1\}\) dobili \(\{1\} ∨ ¬\{1\}\). Ampak \(¬\{1\} = ∅\),
+% torej bi bilo \(\{1\} ⇒ \{1\} = \{1\}\), kar pa ni zaželeno.
+
+% Lahko pa vseeno rečemo, da je \(U ⇒ V = \int{\p{V ∪ Uᶜ}}\). Res,
+% \(W ∩ U ⊆ V\) natnako tedaj ko velja \(W ⊆ V ∪ Uᶜ\), torej je tista unija zgoraj
+% natanko notranjost \(V ∪ Uᶜ\).
+Torej imamo sledeči slovar:
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\begin{table}[h]
+  \centering
+  \begin{tabularx}{0.5\textwidth}{@{} *{2}{C} @{}}
+    Logika    & Topologija\\
+    \midrule
+    \(⊤\)     & \(X\)\\
+    \(⊥\)     & \(∅\)\\
+    \(U ∧ V\) & \(U ∩ V\)\\
+    \(U ∨ V\) & \(U ∪ V\)\\
+    \(¬U\)    & \(\ext{U}\)\\
+    \(U ⇒ V\) & \(\int{\p{V ∪ Uᶜ}}\)
+  \end{tabularx}
+  
+  \caption{Slovar za logiko odprtih množic}
+  \label{tab:logic-opens-dict}
+\end{table}
+V nadaljevanju bomo raje pisali logične simbole, razen kjer govorimo konkretno o
+operacijah na točkah prostora. Glavni razlog za to je, da se želimo zanašati na
+intuicijo iz logike, kar bo pomagalo pri razumevanju motivacije večine
+definicij. Imamo pa še skrivni razlog za to, ki ga bomo razkrili kasneje.
+To tudi pomeni, da bomo namesto \(⊆\) pisali \(≤\).
+
+\begin{opomba}
+  Ker je \(W∧U ≤ V\) natanko tedaj ko \(W ≤ U⇒V\), je \(U ≤ V\) natanko tedaj,
+  ko velja \(⊤ = U⇒V\), torej ko je \(U⇒V\) \quot{res}. To pa pomeni, da na
+  \(U ≤ V\) lahko gledamo kot \quot{iz \(U\) sledi \(V\)}.
+\end{opomba}
+
+S tem smo vsakemu prostoru priredili propozicijsko logiko, sedaj bi pa želeli
+to logiko obogatiti do logike prvega (in nato višjega) reda.
+
+Do neke mere lahko tudi povemo, kaj so kvantifikatorji v tej logiki, le da lahko
+kvantificiramo zgolj po resničnostnih vrednostih.
+Naj bo \(P : 𝒪X → 𝒪X\). Potem se kvantifikatorji interpretirajo kot neskončne
+unije in preseki. Seveda pa topologija ni zaprta za poljubne preseke, tako da
+moramo tam vzeti notranjost preseka.
+\begin{align*}
+  \exist{p : Ω}{P(p)} &≔ ⋃_{U ∈ 𝒪X}P(U)\\
+  \for{p : Ω}{P(p)}   &≔ \int{\p{⋂_{U ∈ 𝒪X}P(U)}}
+\end{align*}
+Zares bi lahko rekli tudi malo več, če je \(A\) poljubna množica in \(P : A → 𝒪X\) 
+lahko definiramo \(\exist{a : A}{P(a)}\) kot \(⋃_{a ∈ A}P(a)\). Tu v bistvu
+množico v našo logiko vložimo kot diskreten prostor, kar dela dobro za na primer
+množico naravnih števil, se pa izkaže, da za recimo realna števila ne deluje.
+Res, realna števila (v večini logik) ne bodo diskreten prostor! Si bomo pa
+vseeno podrobneje pogledali kdaj točno so.
+
 
 \subsection{Heytingovo-vrednotene množice}
 
-
-% Naj bo \(F\) snop. Potem po lemi Yonede velja \(F(U) = \textrm{Nat}{\p{よU, F}}\), torej so
-% elementi snopa natanko določeni s preslikavami v snop.
-% Poleg tega pa za snopa \(F\) in \(G\) ter naravno transformacijo \(α : F ⇒ G\)
-% med njima velja, da \(α\) komutira z zožitvami, torej, če je \(V ⊆ U\) in
-% \(f ∈ F(U)\), velja \(α_V(f{\res V}) = α_U(f){\res V}\).
-% To pa pomeni, da so vrednosti morfizma natanko določene z vrednostmi pri tako
-% imenovanih globalnih lokalnih prerezih ozirmoa elementih.
-% V mislih imamo na primer primer iz kompleksne analize, kjer gledamo snop
-% kompleksnih logaritmov. Vemo, da globalen logaritem ne obstaja, vendar pa vseeno
-% obstajajo loklani logaritmi, te imajo pa maksimalne analitične razširitve, ki
-% bi jim lahko rekli \quot{globalni lokalni logaritmi}.
-
-% Bolj natančno torej, naj bo \(\ln\) množica parov \(\p{U, φ}\), kjer je
-% \(U ⊆ ℂ\) in \(φ : U → ℂ\) lokalni logaritem, tako da ne obstaja nobena množica
-% večja od \(U\), na katero lahko \(φ\) razširimo.
-% Potem je vsak ellement snopa logaritmov zožitev nekega elementa \(\ln\), poleg
-% tega pa so vsi elementi \(\ln\) paroma neskladni (sicer bi jih lahko zlepili in
-% dobili strogo razširitev obeh, kar je v protislovju z maksimalnostjo elementov
-% \(\ln\)).
-
-% Naivno bi sedaj želeli snop logaritmov \quot{generirati} z elementi \(\ln\),
-% tako da bi vzeli \(V ↦ \set{φ{\res V}}{(U, φ) ∈ \ln \text{ in } V ⊆ U}\), in to
-% v tem primeru res deluje, ampak v splošnem pa ne moremo tvoriti zožitev.
-% Lahko vzamemo potem \(φ{\res V}\) kot formalni element, kjer pa spet nastane
-% problem, da če se dva prereza ujemata na neki množici, morata biti njuni
-% zožitvi na to množico enaki. To lahko popravimo tako da vpeljemo nekakšno
-% relacijo na prerezih, ki nam pove ko kakšne mere se ujemata (oziroma nam da
-% največjo odprto množico, kjer sta enaka). Pišemo jo lahko recimo \(⟦φ = ψ⟧\).
-% Ta relacija bo gotovo simetrična, prav tako pa bo \quot{tranzitivna}, t.j. če se
-% \(φ\) in \(ψ\) ujemata na \(U\), in \(ψ\) in \(ξ\) na \(V\), se \(φ\) in \(ξ\)
-% gotovo ujemata vsaj na preseku \(U∩V\). Očitno pa ta relacija ni refleksivna, v
-% smislu da je \(φ\) v relaciji s samim sabo zgolj na množici, na kateri je
-% definiran. To pomeni, da lahko za \(\ln\) namesto parov \(\p{U, φ}\) vzamemo kar
-% prereze same, saj lahko \(U\) dobimo iz \(⟦φ = φ⟧\). Tej množici pravimo
-% \emph{razpon \(φ\)} in jo pišemo tudi \(‖φ‖\).
-
-% %Ostane le še problem kako pravilno tvoriti kvocient iz te relacije, kar pa
-% %upamo, da se ognemo z bolj strukturiranim pogledom.
-
-% Zgoraj opisanem postopku se reče tudi konstrukcija toposa iz
-% triposa~\angl{tripos to topos construction} in je to tudi motivacijski primer za
-% razvoj te konstrukcije.
+Naj bo \(\p{X, ℒ}\) topološki prostor.
 
 Oglejmo si spet primer naravnih števil nad nekim prostorom \(X\). To bodo zvezne
 preslikave iz odprtih podmnožic \(X\) v \(ℕ\).
@@ -146,25 +234,15 @@ Načeloma bi morali vzeti notranjost te množice, saj morajo biti resničnostne
 vrednosti odprte, ampak v tem primeru, ker so funkcije lokalno konstantne, bo ta
 množica odprta. Potem pa se izkaže, da če velja enakost \(⟦n = n⟧ = \dom(n)\),
 tako da če znamo primerjati vsa števila, lahko izpeljemo tudi razpon, kar bomo
-tudi vzeli kot osnovni gradnik naših modelov.
-
-
-Naj bo \(\p{X, ℒ}\) topološki prostor.
-Implikacijo \(U ⇒ V\) definiramo kot \(⋃\set{W ∈ ℒ}{W ∩ U ⊆ V}\). Tako potem
-velja \(\p{U⇒V}∩U ⊆ V\). 
-% Ker je \(ℒ\) podmnožica potenčne množic
-% je potem tudi mreža, izkaže pa se, da iz topoloških aksiomov sledi, da je celo
-% polna Heytingova algebra, zato bomo uporabljali simbole \(∧\),\(∨\), in \(≤\)
-% namesto \(∩\), \(∪\), in \(⊆\), kot smo vajeni ko na topologijo gledamo kot
-% množice.
+tudi vzeli kot osnovni gradnik naših objektov.
 
 % TODO: name?
 \begin{definicija}
   \emph{\(ℒ\)-vrednotena množica} oziroma \emph{\(ℒ\)-množica} je množica \(A\),
   skupaj s preslikavo, ki jo pišemo \(⟦- = -⟧ : A×A → ℒ\), tako da velja
   \begin{align*}
-    ⟦ a = b ⟧ ⊆ ⟦ b = a ⟧\\
-    ⟦ a = b ⟧ ∩ ⟦ b = c ⟧ ⊆ ⟦ a = c ⟧
+    ⟦ a = b ⟧ ≤ ⟦ b = a ⟧\\
+    ⟦ a = b ⟧ ∧ ⟦ b = c ⟧ ≤ ⟦ a = c ⟧
   \end{align*}
   Če iz konteksta ni razvidno kateri množici pripada preslikava \(⟦- = -⟧\),
   jo pišemo z indeksom \(⟦- =_A -⟧\).
@@ -172,42 +250,61 @@ velja \(\p{U⇒V}∩U ⊆ V\).
   Kot zgoraj naj bo \(‖a‖ ≔ ⟦a = a⟧\) \emph{razpon \(a\)}.
 \end{definicija}
 
-Če \(⊆\) beremo kot implikacijo, zgornja aksioma zgledata zelo podobno aksiomoma
-simetričnosti in tranzitivnosti delno urejenih množic. Ker v intuicionistični
-logiki na okvirje gledamo kot resničnostne vrednosti, in zaradi tenzor-hom
-adjunkcije, lahko to podobnost reificiramo v tako imenovani jezik triposa.
+Če \(≤\) beremo kot logično implikacijo, zgornja aksioma zgledata zelo podobno
+aksiomoma simetričnosti in tranzitivnosti delno urejenih množic, tako da bi
+lahko rekli, da so \(ℒ\)-množice natanko množice opremljene z (interno) delno
+ekvivalenčno relacijo.
 
-Ker je \(a∧b ≤ c\) natanko tedaj ko \(a ≤ b⇒c\) (ker je \(ℒ\) okvir),
-lahko \(a ≤ b\) interpretiramo kot \(⊤ = a⇒b\), kjer \(⊤\) predstavlja vrhnji
-element okvira, prav tako pa predstavlja \quot{resnico}.
-To pomeni, da res na \(a ≤ b\) lahko gledamo kot \quot{iz \(a\) sledi \(b\)}.
+\begin{primer}
+  Na \(\set{f : U → ℕ}{U ∈ ℒ}\) lahko definiramo preslikavo
+  \(⟦n = m⟧ = \set{t ∈ X}{n(t) = m(t)}\). To je \(ℒ\)-množica, ki jo bomo
+  označili z \(𝒩\).
+\end{primer}
 
-Naslednji izziv je definirati preslikave med \(ℒ\)-množicami.
-Problem je, da elementi kodomene ne nujno zares obstajajo kot elementi množice
-same. Na primer, naj bo \(ℒ\) diskretna topologija na dveh elementih, \(A\) naj
-ima en element (\(a\)) definiran povsod, \(B\) pa dva elementa (\(b₀\) in
-\(b₁\)) definirana v vsaki od točk prostora. Sedaj pa želimo definirati
-preslikavo, ki \(a\) slika v \(b₀\) na točki \(0\) in \(b₁\) na točki ena (kar
-je možno v internem jeziku), pa naletimo na težavo, ker take funkcije ne moramo
-izraziti kot dejansko funkcijo \(A → B\). Tako moramo preslikave izraziti kot
-funkcijske relacije (v internem jeziku), kar tudi storimo.
+Je pa ta struktura bistveno bolj splošna kot ``množica preslikav z enakostjo po
+točkah''.
 
-% Če pomislimo spet na snope, je preslikava iz \(F\) v \(G\) že določena z
-% globalnimi lokalnimi elementi, vendar pa nam nič ne zagotavlja, da so njihove
-% slike prav tako globali loklani elementi v \(G\), je pa gotovo zožitev nekega
-% (potencialno neenoličnega) takega elementa.
+\begin{primer}
+  Množica \(ℕ\) skupaj z enakostjo definirano kot
+  \[ ⟦n = m⟧ ≔ \begin{cases} X &; n = m\\ ∅ &; n ≠ m \end{cases} \]
+  je \(ℒ\)-množica. To bomo označevali z \(Δℕ\).
+\end{primer}
 
-% Če je \(f ∈ F'\) in \(α : F ⇒ G\), velja \(‖f‖ = ⋁_{g ∈ G'} ⟦g = α(f)⟧\),
-% kjer z \(F'\) in \(G'\) označimo množici globalnih lokalnih elementov.
-% Ta enačba nam torej predstavlja celovitost, pri enoličnosti pa moramo paziti.
-% Kot rečeno, globalni lokalni element v \(G\) ni enolično določen, je pa enolično
-% določena njegova (oziroma njihova) zožitev na razpon \(f\).
-% Velja še več, če pogledamo primerjavi \(α(f)\) z dvema elementoma \(g\) in
-% \(g'\), po tranzitivnosti relacije dobimo, da je presek teh dveh množic nujno
-% vsebovan v \(⟦g = g'⟧\), torej na nobeni odprti množici ni \(α(f)\) enak dvema
-% elementoma.
+V tem primeru elementi množice očitno niso zvezne funkcije iz prostora.
+To je zato, ker imajo zvezne funkcije še dve pomembni lastnosti, ki jih v
+strukturi sami ne zajamemo.
+Prvič, funkcije lahko zožamo. To preprosto pomeni, da če vrednost obstaja na
+neki odprti množici, potem obstaja tudi na vsaki manjši odprti množici.
+Drugič, če imamo družino zveznih funkcij, ki se paroma ujemajo na presekih
+njihovih domen, jih lahko enolično zlepimo v zvezno funkcijo, definirano na
+uniji njihovih domen. V primeru funkcij v naravna števila je ta lastnost zelo
+zanimiva, saj je vsaka lokalno konstantna funkcija tak zlepek konstantnih
+funkcij. Potem pa če to združimo še z zožitvami, lahko rečemo, da je vsaka
+funkcija \(U → ℕ\) zlepek zožitev konstantnih funkcij \(X → ℕ\).
+Tako lahko na nek način rečemo, da so zvezne funkcije v naravna števila
+``generirane'' z množico naravnih števil samo.
+To pa zares pomeni, da je \(𝒩\) nekakšna \emph{napolnitev} \(ℒ\)-množice \(Δℕ\).
 
-% Definirajmo torej morfizem \(ℒ\)-množic kot tako relacijo.
+Torej ne bomo zahtevali, da so naši objekti zaprti za zožitve in lepljenje, saj
+jih lahko vedno napolnimo. Izkaže pa se, da nam to ustvari nekaj težav pri
+definiciji funkcij. Želeli bi recimo, da je operacija zožitve preslikava, ampak
+če \(ℒ\)-množice niso zaprte za zožitve, slike elementov preprosto ne nujno
+obstajajo.
+
+\begin{primer}
+  Na primer, naj bo \(\p{2, 𝒫2}\) diskreten prostor na dveh točkah.
+  \(𝒫2\)-množica \(A\) naj ima en element \(a\) definiran povsod,
+  \(B\) pa dva elementa, \(b₀\) in \(b₁\), definirana v vsaki od točk prostora.
+  Sedaj pa želimo definirati preslikavo, ki \(a\) slika v \(b₀\) na točki \(0\)
+  in \(b₁\) na točki ena, pa naletimo natežavo, ker take funkcije ne moramo
+  izraziti kot dejanska funkcija \(A → B\).
+  Lahko pa definiramo relacijo, za katero za \(i ∈ 2\) velja \(R(a, bᵢ) ⇔ \{i\}\).
+  Ta relacija je funkcijska, saj je \(2 = \{0\}∪\{1\} = R(a, b₀) ∨ R(a, b₁)\) in
+  \(R(a, b) ∧ R(a, b') = ⟦b = b'⟧\).
+\end{primer}
+
+To nam da idejo, da lahko preslikave definiramo kot funkcijske relacije, seveda
+spet vrednostene v logiki odprtih množic.
 
 \begin{definicija}
   \emph{Morfizem med \(ℒ\)-množicama} \(A\) in \(B\) je preslikava \(⟦- = f(-)⟧ : B×A → ℒ\),
@@ -218,13 +315,9 @@ funkcijske relacije (v internem jeziku), kar tudi storimo.
     &⟦b = f(a)⟧ ∧ ⟦b' = f(a)⟧ ≤ ⟦b =_B b'⟧    \tag{M3}\label{M3}\\
     &‖a‖ = ⋁_{b ∈ B} ⟦b = f(a)⟧               \tag{M4}\label{M4}
   \end{align}
-  Na prvi dve pravili lahko gledamo kot na skladnost z relacijama na \(A\) in
-  \(B\), na drugi dve pa kot na enoličnost in celovitost, zato pišemo morfizme
-  tudi v bolj funkcijskem zapisu kot \(f : A ↬ B\).
-
-  Če imamo morfizma \(A \oset{f}{↬} B \oset{g}{↬} C\),
-  je njun kompozitum \(gf : A ↬ C\) definiran kot
-  \[ ⟦c = gf(a)⟧ ≔ ⋁_{b ∈ B} ⟦c = g(b)⟧∧⟦b = f(a)⟧\text. \]
+  Na prvi dve pravili gledamo kot na skladnost z relacijama na \(A\) in \(B\),
+  na drugi dve sta pa enoličnost in celovitost, zato morfizme vseeno pišemo v
+  funkcijskem zapisu kot \(f : A ↬ B\).
 \end{definicija}
 \begin{opomba}
   Podobnost med oklepaji je namerna, je pa vseeno vredno poudariti, da izraz
@@ -234,22 +327,37 @@ funkcijske relacije (v internem jeziku), kar tudi storimo.
   bistveno razlikujeta, namreč v \(B\) ne obstaja nujno kak element, ki bi mu
   lahko rekli slika \(a\).
 \end{opomba}
-
 Vseeno pa v jeziku triposa na \(⋁_{b ∈ B} φ(b)\) gledamo kot eksistenčni
 kvantifikator, torej \ref{M4} res pravi, da obstaja nek \(b\), ki je slika
 elementa \(a\), definicija kompozicije pa je potem natanko standardna
 kompozicija relacij.
 
-Skupaj z identiteto \(⟦- =_A -⟧\), tvorijo \(ℒ\)-množice kategorijo, ki jo označimo \(\cat{Set}(ℒ)\).
+% Skupaj z identiteto \(⟦- =_A -⟧\), tvorijo \(ℒ\)-množice kategorijo, ki jo označimo \(\cat{Set}(ℒ)\).
+
+\begin{konstrukcija}
+  Če imamo morfizma \(A \oset{f}{↬} B \oset{g}{↬} C\), je njun kompozitum
+  \(gf : A ↬ C\) definiran kot
+  \[ ⟦c = gf(a)⟧ ≔ ⋁_{b ∈ B} ⟦c = g(b)⟧∧⟦b = f(a)⟧\text. \]
+\end{konstrukcija}
+\begin{proof}
+  Pokazati moramo, da je tako definiran kompozitum res morfizem.
+  % TODO: končaj
+\end{proof}
+
+\begin{konstrukcija}
+  Identiteta na \(A\) je kar \(⟦- =_A -⟧\).
+\end{konstrukcija}
+\begin{proof}
+  % TODO: končaj
+\end{proof}
 
 \begin{lema}
-  Naj bosta \(f, g : A ↬ B\) morfizma.
-  Potem sta enaka natanko tedaj, ko velja
+  Naj bosta \(f, g : A ↬ B\) morfizma. Potem sta enaka natanko tedaj, ko velja
   \[ \for{a ∈ A, b ∈ B}{ ⟦b = f(a)⟧ ≤ ⟦b = g(a)⟧ }.\]
 \end{lema}
 \begin{dokaz}
-  V eno smer je trditev očitna, tako da predpostavimo,
-  da za vsaka \(a\) in \(b\) velja \(⟦b = f(a)⟧ ≤ ⟦b = g(a)⟧\).
+  V eno smer je trditev očitna, tako da predpostavimo, da za vsaka \(a\) in
+  \(b\) velja \(⟦b = f(a)⟧ ≤ ⟦b = g(a)⟧\).
   Dokazati moramo torej, da velja tudi druga neenakost.
   \begin{align*}
     ⟦b = g(a)⟧
@@ -315,19 +423,7 @@ Trditev se torej pravilno glasi tako:
 \subsubsection{Karakterizacija podobjektov}
 
 Z uporabo gornje karakterizacije monomorfizmov, lahko karakteriziramo tudi podobjekte.
-
-Denimo, da je \(S\) podsnop snopa \(F\). To pomeni, da je snop, in da za vsako odprto
-množico velja \(S(U) ⊆ F(U)\), in naj bo \(F'\) spet množica globalnih lokalnih
-elementov. Potem vsakemu elementu \(F'\) lahko priredimo največjo odprto
-množico, tako da je zožitev tega elementa v \(S\) (seveda bodo potem tudi vse
-manjše zožitve v \(S\)). Označimo to recimo z \(⟦f ∈ S⟧\), za \(f ∈ F'\).
-
-Ker je vsak element \(F\) zožitev nekega elementa \(F'\), lahko podsnop \(S\)
-rekonstruiramo kot \(S(U) = \set{f{\res U}}{f ∈ F' \text{ in } ⟦f ∈ S⟧ ⊇ U}\).
-
-% Gornjo konstrukcijo lahko natančno definiramo na \(ℒ\)-množicah:
-Sledi, da so podsnopi \(F\) natanko določene preslikave \(F'\) v \(ℒ\), kar pa
-lahko izrazimo z \(ℒ\)-množicami.
+Kot vemo, so podobjekti natanko (ekvivalenčni razredi) monomorfizmov
 
 \begin{definicija}
   \(ℒ\)-podmnožica \(A\) je preslikava \( ⟦- ∈ S⟧ : A → ℒ \), za katero velja
