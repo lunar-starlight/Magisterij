@@ -1,0 +1,403 @@
+\documentclass[handout]{beamer}
+%\documentclass{beamer}
+
+% \usetheme{boxes} % see http://www.deic.uab.es/~iblanes/beamer_gallery/ for lots of examples
+\usetheme{metropolis}
+\usecolortheme{rose}
+% \useinnertheme{circles}
+% \useoutertheme{split}
+% \setbeamertemplate{blocks}[rounded][shadow=true]
+
+\setbeamertemplate{navigation symbols}{} % remove navigation symbols
+\setbeamertemplate{footline}{} % remove title, too long
+
+% %next set colors - not needed
+% \setbeamercolor{title}{fg=black!70!black}
+% \setbeamercolor{frametitle}{fg=blue!70!black}
+% \setbeamercolor{framesubtitle}{fg=green!30!black}
+% \setbeamercolor{author}{fg=red!70!black}
+% \setbeamercolor{institute}{fg=green!30!black}
+% \setbeamercolor{date}{fg=blue!50!black}
+
+% \usepackage[T1]{fontenc}        % kodiranje znakov v .pdf
+% \usepackage[utf8]{inputenc}     % kodiranje znakov v .tex
+% \usepackage[slovene]{babel}     % nastavimo slovenščino
+% \usepackage{stmaryrd}
+
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\usepackage{enumerate}
+
+\usepackage{graphicx}
+
+% \setmainfont{Latin Modern Sans}
+\setmathfont{Latin Modern Math}
+\setmathfont{Asana Math}[range={scr}]
+\setmathfont{STIX Two Math-Regular}[range={bb}]
+\setmathfont{Asana Math}[range={8709}]  % U+2205, emptyset
+\setmathfont{Asana Math}[range={10631, 10632}]  % U+2987, U+2988, bb parenthesis
+
+\usepackage{ulem}
+\renewcommand{\ULdepth}{1.8pt}
+\newcommand{\ul}[1]{\uline{#1}}
+
+\theoremstyle{theorem}
+\newtheorem{izrek}{Izrek}
+\newtheorem{trditev}{Trditev}
+\newtheorem{lema}{Lema}
+\newtheorem*{posledica}{Posledica}
+
+\theoremstyle{definition}
+\newtheorem{definicija}{Definicija}
+
+\newtheorem*{primer}{Primer}
+\newtheorem*{primer*}{Primer}
+\newtheorem*{primeri}{Primeri}
+
+\theoremstyle{remark}
+\newtheorem*{opomba}{Opomba}
+
+% \beamertemplatetransparentcovereddynamic
+
+\title{Principi odločitve in izbire v topoloških modelih}
+\author{Luna Strah}
+\institute{Univerza v Ljubljani, Fakulteta za matematiko in fiziko}
+\date{19.~5.~2025}
+
+% \newcommand{\vphi}{\phi}
+\renewcommand{\phi}{\varphi}
+\newcommand{\eps}{\varepsilon}
+\renewcommand{\hat}{\widehat}
+\renewcommand{\tilde}{\widetilde}
+% \newcommand{\oldbar}{\bar}
+% \renewcommand{\bar}{\overline}
+\newcommand{\subs}{\subseteq}
+\newcommand{\nin}{\not\in}
+
+\newcommand{\p}[1]{\left( {#1} \right)}
+\renewcommand{\b}[1]{\left[ {#1} \right]}
+\newcommand{\set}[2]{\left\{ #1 \mid #2 \right\}}
+\newcommand{\newfrac}[2]{{}^{#1}\!/_{\!#2}}
+\newcommand{\smallfrac}[2]{{\textstyle\frac{#1}{#2}}}
+\newcommand{\im}[1]{\mathrm{im}{\p{#1}}}
+\newcommand{\mb}[1]{\mathbb{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\id}{\mathrm{id}}
+
+\def\bN{\mb{N}}
+\def\bR{\mb{R}}
+\def\subq{\subseteq}
+\def\forces{\Vdash}
+\def\phi{\varphi}
+
+\makeatletter
+\NewDocumentCommand{\@definstance}{mmm}{%
+  \ExpandArgs{c}\NewDocumentCommand{#1}{s}{%
+    \IfBooleanTF##1%
+    {\textnormal{\sffamily #2}}%
+    {\textnormal{\sffamily #3}}%
+  }%
+  \AtEndPreamble{%
+    \pdfstringdefDisableCommands{%
+      \expandafter\def\csname #1\endcsname*{#2}%
+    }%
+  }%
+}
+\newcommand{\definstance}[1]{\@definstance{#1}{\MakeUppercase{#1}}{\MakeLowercase{#1}}}
+\makeatother
+\newcommand{\instance}[1]{\textnormal{\sffamily #1}} % TODO: rename
+\definstance{lem}
+\definstance{lpo}
+\definstance{alpo}
+\definstance{aks}
+\newcommand{\AC}{\instance{AC}}
+\newcommand{\IAC}{\instance{IAC}}
+\newcommand{\CC}{\instance{CC}}
+\newcommand{\CCv}{\instance{CC}^∨}
+\def\Rd{\bR_d}
+\def\Rc{\bR_c}
+\DeclareMathOperator{\dom}{dom}
+%\DeclareMathOperator{\cov}{Cov}
+\AtBeginDocument{
+  %\def\c#1{\left( {#1} \right)^c}
+  %\def\c#1{{#1}^c}
+  \def\c{\uline}
+  \renewcommand{\b}[1]{\left\{ {#1} \right\}}
+  \renewcommand{\O}[1]{\mathcal{O}{#1}}
+  \renewcommand{\int}{\textrm{Int}}
+  \newcommand{\ext}{\textrm{Ext}}
+}
+\newcommand{\defquantifier}[2]{%
+  \expandafter\newcommand\csname #1\endcsname[2]{{#2 ##1.}\;##2}%
+}
+\defquantifier{for}{\forall}
+\defquantifier{exist}{\exists}
+\defquantifier{unique}{\exists!}
+\defquantifier{eventually}{\nabla}
+
+
+\newcommand{\sem}[1]{⟦ #1 ⟧}
+% \newcommand{\brsem}[1]{⟬ #1 ⟭}
+% \newcommand{\brsem}[1]{⦅ #1 ⦆}
+\newcommand{\brsem}[1]{⦇ #1 ⦈}
+
+\newcommand{\airquotes}[1]{"#1"}
+
+
+% \setbeameroption{hide notes} % Only slides
+% \setbeameroption{show only notes} % Only notes
+% \setbeameroption{show notes} % Both
+\setbeameroption{show notes on second screen=right} % Both
+
+\usepackage{hyperref}
+\hypersetup{pdfpagemode=FullScreen}
+
+
+\begin{document}
+%%%%%
+\frame{
+  \titlepage
+  
+  \note{
+    Dober dan, ime mi je Luna, dans vam bom predstavljala mojo magistrsko
+    nalogo, ki ma zaenkrat naslov ``Nekonstruktivni principi v topoloških
+    modelih'', ampak mi ni čist všeč, tko da.
+
+    Zdej, kaj je zgodba tuki, mal mi boste mogl na besedo verjet, ampak glavno
+    je, da za vsak topološki prostor lahko skonstruiramo matematični svet (tem
+    se potem reče topološki modeli), kjer so resničnostne vrednosti natanko
+    odprte množice prostora. To je recimo praktično, če želimo gledati recimo
+    pozitivnost realne funkcije. Namesto, da se vprašamo, če je funkcija
+    pozitivna, se vprašamo \emph{kje} je funkcija pozitivna, kar je mogoče
+    zanimivo, oziroma js trdim, da je.
+  }
+}
+\frame{
+  \titlepage
+  
+  \note{
+    Zdej mamo pa na eni strani prostore, na drugi pa topološke modele. In
+    nekak za prostore kot celota mamo neke lastnosti, recimo \(T₁\), \(T₂\),
+    \(T₆\), lokalna povezanost, kompaktnost, svašta.
+    Na drugi strani mamo pa modele logike, ki se izkaže, da ponavadi ni
+    klasična. To pomeni, da recimo izključena tretja možnost ali pa aksiom
+    izbire ne nujno držjo. Ampak tako kot za prostore, eni bojo mel, drugi pa
+    ne. In zdaj se lahko vprašamo, a se katere topološke lastnosti da smiselno
+    izražat z nekonstruktivnimi principi v konstruktivni logiki, preko te
+    konstrukcije topoloških modelov.
+  }
+}
+%%%%%
+
+\begin{frame}
+  \frametitle{Logika odprtih množic}
+
+  \begin{align*}
+    &⊤&&     X\\
+    &⊥&&     ∅\\
+    \uncover<2->{
+    &U ∧ V&& U ∩ V\\
+    &U ∨ V&& U ∪ V\\
+    }
+    \uncover<3->{
+    &¬U&&    \int{\p{Uᶜ}}\\
+    }
+    \uncover<4->{
+    &U ⇒ V&& \int{\p{V ∪ Uᶜ}} = ⋃\set{W ⊆ X}{W ∩ U ⊆ V}\\
+    &U ⇔ V&& \int{\p{\p{V∩U} ∪ \p{V∪U}ᶜ}}
+    }
+  \end{align*}
+  
+  \note{
+    Zdej, prvo vprašanje je, kako zgledajo odprte množice kot resničnostne
+    vrednosti. Očitno če je neki res povsod je res, tako da resnica bo cel
+    prostor. Obratno, neresnica bo prazna množica, torej da nikjer ni res.
+    
+    Naprej, recimo, da imamo dve funkciji, ena je pozitivna na \(U\), druga
+    je pozitivna na \(V\), pol sta obe pozitivni na preseku \(U ∩ V\).
+    Tako da konjunkcija bo presek. Podobno je disjunkcija unija.
+    
+    Negacija je prva neočitna, ker ne mormo vzet samo komplementa, ampak lahko
+    pa vzamemo notranjost komplementa, oziroma zunanjost množice.
+    
+    % TODO: implikacija
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{Logika odprtih množic}
+
+  \begin{align*}
+    &⊤&&     X\\
+    &⊥&&     ∅\\
+    &U ∧ V&& U ∩ V\\
+    &U ∨ V&& U ∪ V\\
+    &¬U&&    \int{\p{Uᶜ}}\\
+    &U ⇒ V&& \int{\p{V ∪ Uᶜ}} = ⋃\set{W ⊆ X}{W ∩ U ⊆ V}\\
+    &U ⇔ V&& \int{\p{\p{V∩U} ∪ \p{V∪U}ᶜ}}
+  \end{align*}
+
+  \note{
+    % TODO: tabla, LEM in DeMorgan?
+
+    Izključeno tretjo možnost in DeMorganov zakon se da povedati zgolj z neko
+    formulo o resničnostnih vrednostih, zato smo lahko naredili to
+    karakterizacijo, ampak temu ni nujno vedno res. Obstajajo nekonstruktivni
+    principi, ki govorijo recimo o neskončnih zaporedjih, ali pa realnih
+    številih. Prav tako poznamo topološke lastnosti, ki govorijo o več kot le
+    odprtih množicah, na primer \(T₆\) lastnost, ki pravi, da je vsaka zaprta
+    množica natanko ničelna množica neke realne funkcije, in še druge. 
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{Objekti}
+
+  
+  
+  \note{
+    Objekte v topoloških modelih se da konstruirat na veliko načinov, lahko so
+    snopi, étale prostori, ali pa Heytingovo vrednotene množice. Jaz v delu
+    uporabljam slednjo od teh, je pa bolj praktično rečt snopi. So pa te
+    konstrukcije v vsakem primeru precej komplicirane, tako da se mi zdi da nima
+    smisla, da katerokoli točno razpišem, tako da mi boste morali malo verjeti
+    na besedo.
+
+    Sicer je pa naša zgodba itak, da se stvari spreminjajo vzdolž topološkega
+    prostora, tako da bi tudi želeli da se elementi spreminjajo vzdolž prostora.
+    Tako da kar rečemo, da na vsaki točki prostora definiramo vrednost elementa,
+    to je pa ubistvu kar funkcija iz prostora nekam (še ne vemo točno kam). Edino
+    kar moramo paziti je, da je ta funkcija dovolj lepa (beri zvezna).
+    In to dejansko večinoma dela, je pa kar dosti dela to dejansko preveriti,
+    tko da ja, mi morte verjet :)
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{Objekti}
+
+  \(A\) množica, \(T\) topološki prostor
+  \pause
+  \[ T_X ≔ \set{f : U → T}{U ∈ 𝒪(X)} \]
+  \pause
+  \[ ℝ_X ≔ \set{f : U → ℝ}{U ∈ 𝒪(X)} = ⋃_{U ∈ 𝒪(X)}𝒞(U)\]
+  Nad realnimi števili je torej \(\id : ℝ → ℝ\) realno število.
+  \pause
+  \[ \c A ≔ \set{f : U → A}{U ∈ 𝒪(X)} \]
+  \[ \c ℕ ≔ \set{f : U → ℕ}{U ∈ 𝒪(X)} \]
+
+  
+  
+  \note{
+    Če malo fiksiramo oznake, naj bo …
+
+    Najprej vložimo prostor \(T\), ker je še najbolj očitno kako se to naredi.
+    Lahko bi vzeli kar zvezne funkcije iz \(X\) v \(T\). To bi delalo, ampak
+    spomnimo se, da so naše resničnostne vrednosti odprte podmnožice \(X\).
+    In obstoj elementa ima resničnostno vrednost, tako da je smiselno, da
+    dovoljujemo tako imenovane delne elemente, torej elemente, ki niso
+    definirani na celem \(X\). To pa pomeni, da je množica…
+
+    Realna števila so potem kar realne funkcije, in recimo če je \(X = ℝ\) je
+    identiteta neko realno število (reče se mu generični element).
+
+    Za splošne množice pa vzamemo kar isto stvar. Ampak zdaj je vprašanje,
+    kakšne funkcije vzamemo. Izkaže se da kar zvezne, kjer \(A\) opremimo z
+    diskretno topologijo.
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{Kvantifikatorji}
+
+  \begin{align*}
+    \uncover<2->{U ≤ }\for{y : Y}{P(y)} &≔
+    \uncover<2->{U ≤ }⋀_{y ∈ Y} P(y)\\
+    \uncover<2->{&⇔ \for{y ∈ Y}{\dom{y} ≤ U ⇒ \dom{y} ≤ P(y)}}\\
+    % TODO: add pause
+    \uncover<2->{U ≤ }\exist{y : Y}{P(y)} &≔
+    \uncover<2->{U ≤ }⋁_{y ∈ Y} P(y)\\
+    \uncover<2->{&⇔ \eventually{V ≤ U}{\exist{y ∈ Y}{\dom{y} = V ∧ \dom{y} ≤ P(y)}}}
+  \end{align*}
+
+  \note{
+
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{Realna števila}
+
+  \begin{trditev}
+    Nad \(X\) drži \(\alpo*\) natanko tedaj, ko so ničelne množice funkcij
+    \(U → ℝ\) odprte.
+  \end{trditev}
+
+  \pause
+  
+  \begin{trditev}
+    Če je \(X\) (lokalno) \(T₆\), nad njem drži \(\aks*\).
+  \end{trditev}
+
+  \pause
+
+  \begin{trditev}
+    Če je prostor lokalno povezan in nad njem velja \(\Rd = \Rc\), velja tudi \(\alpo*\).
+  \end{trditev}
+
+  \note{
+    \begin{align*}
+      \alpo* &≔ \for{x : ℝ}{x > 0 ∨ x ≤ 0} = \for{x : ℝ}{x > 0 ∨ x = 0 ∨ x < 0}\\
+      \aks*  &≔ \for{U : 𝒪(X)}{\exist{x : ℝ}{U ⇔ x > 0}}
+    \end{align*}
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{Ne}
+
+  Verjetno \(\{0\}∪\set{2⁻ⁿ}{n ∈ ℕ}\) dela.
+
+  \note{
+    Tam sem se prepričala, a ne dokazala, da \(\alpo*\) in \(\CCv\) ne držita, pa
+    vseeno \(\Rd = \Rc\).
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{Izbira?}
+
+  \begin{izrek}
+    Nad \(T₁\) prostori velja števna izbira natanko tedaj, ko je topologija zaprta
+    za števne preseke.
+  \end{izrek}
+
+  \pause
+  
+  \begin{izrek}
+    Nad \(T₁\) prostori velja števna izbira natanko tedaj, ko velja \(\AC{\p{ℕ, 2}}\).
+  \end{izrek}
+
+  \pause
+
+  \begin{trditev}[Hendtlass, Lubarsky 2016]
+    Če je prostor ultraparakompakten, nad njem velja odvisna izbira.
+  \end{trditev}
+
+  \note{
+    Tu števnost ni važna.
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{}
+
+  Vprašanja?
+
+  \note{
+  }
+\end{frame}
+
+
+\end{document}
