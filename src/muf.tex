@@ -39,15 +39,18 @@
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\codim}{codim}
 \DeclareMathOperator{\cl}{Cl}
+\DeclareMathOperator{\ext}{Ext}
+\DeclareMathOperator{\dom}{dom}
 %\DeclareMathOperator{\cov}{Cov}
 \AtBeginDocument{
   %\def\c#1{\left( {#1} \right)^c}
   %\def\c#1{{#1}^c}
   \def\c{\uline}
   \renewcommand{\b}[1]{\left\{ {#1} \right\}}
+  \renewcommand{\i}[1]{\left⟦ {#1} \right⟧}
+  \renewcommand{\s}[1]{\left\{ {#1} \right\}}
   \renewcommand{\O}[1]{\mathcal{O}{#1}}
   \renewcommand{\int}{\textrm{Int}}
-  \newcommand{\ext}{\textrm{Ext}}
 }
 
 \usepackage{graphicx}
@@ -118,13 +121,13 @@
 \newcommand{\catdef}[3][]{
   \newline
   #1
-  \begin{tabularx}{\linewidth}{l X}
+  \begin{tabularx}{0.9\linewidth}{l X}
   \textbf{\textup{objekti}}  & {#2}\\
   \textbf{\textup{morfizmi}} & {#3}
   \end{tabularx}
 }
 
-\newcommand{\quot}[1]{#1}
+\newcommand{\quot}[1]{``#1''}
 
 \theoremstyle{definition}
 \newtheorem{konstrukcija}[definicija]{Konstrukcija}
