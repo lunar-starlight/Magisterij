@@ -50,7 +50,7 @@
 % Do tega se vrnemo kasneje, v naslednjem razdelku, za zdaj nas pa čaka malo
 % teorije snopov, da lahko topološke modele sploh definiramo.
 
-TODO: rewrite
+% TODO: rewrite
 
 % Oglejmo si najprej primer zveznih funkcij iz \(X\) v \(ℝ\).
 % Zanje se vedno lahko vprašamo, če so pozitivne, negativne, ali so gladke,
@@ -84,8 +84,12 @@ TODO: rewrite
 % vrednostmi v \(𝒪X\) pravimo \emph{Heytingovo vrednotene množice},
 % \emph{\(𝒪X\) vrednotene množice}, ali na kratko \emph{\(𝒪X\)-množice}.
 
+V tem razdelku najprej podrobno opišemo, kako interpretiramo logiko odprtih
+množic v topološkem prostoru samem. Kasneje potem to logiko razširimo do logike
+višjega reda.
+
+
 \subsection{Logika odprtih množic}
-% TODO: podrobno propozicijsko logiko topologije
 
 Naj bo \(X\) topološki prostor. Podrobno si oglejmo kako logične operacije
 delujejo v logiki odprtih množic.
@@ -103,7 +107,12 @@ in \(U ≔ ⟦f > 0⟧\), torej množica kjer je \(f\) pozitivna, in podobno \(V
 
 V tem kontekstu je potem \(f > 0 = ⊤\) ko je \(U = X\), oziroma, ko \(f\)
 pozitivna povsod, in \(f > 0 = ⊥\), ko je \(U = ∅\), oziroma, ko \(f\) ni
-pozitivna nikjer.
+pozitivna nikjer. Ubistvu si želimo, da \(f > 0 = ⊥\) velja natanko tedaj, ko
+negacija neenakosti, torej \(f ≤ 0\), velja na celem prostoru. Zato torej tudi
+vzamemo kot neresnico prazno množico, in ne poljubno množico različno od \(X\),
+saj nam to da najbolj uporabno interpretacijo logičnih formul. Prav tako nam
+omogoča, da ločimo med funkcijami, ki niso pozitivne, in med nepozitivnimi
+funkcijami, kar je v analizi dokaj pomembna razlika.
 
 Konjunkcijo \(U ∧ V\) potem beremo kot ``funkciji \(f\) in \(g\) sta obe
 pozitivni'', kar je res natanko na preseku množic \(U\) in \(V\). Podobno je
@@ -143,32 +152,9 @@ implikacijo želimo, da velja \(U ⇒ U\) za vse \(U\). Ampak če velja gornja
 enakost, bi to pomenilo, da velja \(U ∨ ¬U\) za vse \(U\), kar je pa natanko
 princip izključene tretje možnosti. Naj bo recimo \(X\) prostor Sierpinskijeva,
 torej prostor z dvema točkama \(0\) in \(1\), kjer je zgolj točka \(1\) odprta.
-Potem je pa za \(U ≔ \{1\}\) \(¬U = ∅\), torej \(U ∨ ¬U = U ≠ X\). Torej logika
-tega prostora ni klasična, in tam gornja enakost ne velja.
-
-% Konjunkcijo \(U ∧ V\) ``resnično na \(U\) in \(V\)'', torej je natanko \(U ∩ V\).
-% Podobno je disjunkcija \(U ∨ V\) potem \(U ∪ V\). Pri negaciji moramo malo
-% razmisliti. Naivno bi za ``negacijo množice'' vzeli komplement, a ta ni nujno
-% odprt, zato vzamemo njegovo notranjost. Temu se potem reče tudi zunanjost
-% množice, označeno \(¬U = \ext{U} = \int{\p{Uᶜ}}\). Očitno sta \(⊤\) in \(⊥\)
-% natanko \(X\) in \(∅\). Ostane še implikacija.
-
-
-% Iz konstruktivne matematike vemo,
-% da je resničnostna vrednost \(U ⇒ V\) je natanko tista, za katero velja, da je
-% \(W ⊆ U ⇒ V\) natanko tedaj ko \(W ∩ U ⊆ V\). To pa pomeni, da je
-% \(U ⇒ V ≔ ⋃\set{W ⊆ X}{W ∩ U ⊆ V}\).
-% To je malo v nasprotju s klasično definicijo, kjer se pogosto reče, da je
-% \(U ⇒ V = V ∨ ¬U\). Ampak to se ne bo lepo obnašalo že za zelo preproste
-% prostore, na primer prostor Sierpinskijeva. Pričakovali bi, da \(U ⇒ U\) vedno
-% velja, torej da je \(U ⇒ U = X\). A vendar, če bi veljala tista klasična
-% enakost, bi za \(U = \{1\}\) dobili \(\{1\} ∨ ¬\{1\}\). Ampak \(¬\{1\} = ∅\),
-% torej bi bilo \(\{1\} ⇒ \{1\} = \{1\}\), kar pa ni zaželeno.
-
-% Lahko pa vseeno rečemo, da je \(U ⇒ V = \int{\p{V ∪ Uᶜ}}\). Res,
-% \(W ∩ U ⊆ V\) natnako tedaj ko velja \(W ⊆ V ∪ Uᶜ\), torej je tista unija zgoraj
-% natanko notranjost \(V ∪ Uᶜ\).
-Torej imamo sledeči slovar:
+Potem je pa negacija \(U ≔ \{1\}\) prazna množica, in je \(U ∨ ¬U = U ≠ X\).
+Logika tega prostora torej ni klasična, in tam gornja enakost ne velja.
+Imamo torej sledeči slovar:
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 \begin{table}[h]
   \centering
@@ -186,6 +172,7 @@ Torej imamo sledeči slovar:
   \caption{Slovar za logiko odprtih množic}
   \label{tab:logic-opens-dict}
 \end{table}
+
 V nadaljevanju bomo raje pisali logične simbole, razen kjer govorimo konkretno o
 operacijah na točkah prostora. Glavni razlog za to je, da se želimo zanašati na
 intuicijo iz logike, kar bo pomagalo pri razumevanju motivacije večine
@@ -200,27 +187,63 @@ To tudi pomeni, da bomo namesto \(⊆\) pisali \(≤\).
 
 S tem smo vsakemu prostoru priredili propozicijsko logiko, sedaj bi pa želeli
 to logiko obogatiti do logike prvega (in nato višjega) reda.
-
 Do neke mere lahko tudi povemo, kaj so kvantifikatorji v tej logiki, le da lahko
 kvantificiramo zgolj po resničnostnih vrednostih.
-Naj bo \(P : 𝒪X → 𝒪X\). Potem se kvantifikatorji interpretirajo kot neskončne
-unije in preseki. Seveda pa topologija ni zaprta za poljubne preseke, tako da
-moramo tam vzeti notranjost preseka.
+Naj bo \(P\) predikat na \(𝒪X\). Izkaže se, da lahko te interpretiramo kot
+funkcije tipa \(𝒪X → 𝒪X\).
+Najprej, če želimo najti, na kateri množici je \(P\) res za vse \(U ∈ 𝒪X\),
+moramo najti največjo odprto množico, ki je vsebovana v vsakem \(P(U)\), kar je
+natanko notranjost preseka teh množic.
+Obstoj je malo bolj kompliciran. Eventuelno bomo želeli, da velja na primer
+\(U₀ ∨ U₁ = \exist{i∈2}{Uᵢ}\), kakor tudi velja v navadni logiki.
+Ampak denimo, da je \(X = ℝ\), \(U₀ = \p{-∞, 1}\), in \(U₁ = \p{0, ∞}\).
+Potem je \(U₀ ∨ U₁ = ℝ\), ampak ne obstaja noben \(i\), da bi bil \(Uᵢ = ℝ\).
+Rešitev na to dilemo je, da je prava interpretacija obstoja kar unija vrednosti
+\(Uᵢ\) pri vseh možnih vrednostih \(i\).
+
 \begin{align*}
-  \exist{p : Ω}{P(p)} &≔ ⋃_{U ∈ 𝒪X}P(U)\\
-  \for{p : Ω}{P(p)}   &≔ \int{\p{⋂_{U ∈ 𝒪X}P(U)}}
+  \for{p : Ω}{P(p)}   &≔ \int{\parens[\bigg]{⋂_{U ∈ 𝒪X}P(U)}}\\
+  \exist{p : Ω}{P(p)} &≔ ⋃_{U ∈ 𝒪X}P(U)
 \end{align*}
-Zares bi lahko rekli tudi malo več, če je \(A\) poljubna množica in \(P : A → 𝒪X\) 
-lahko definiramo \(\exist{a : A}{P(a)}\) kot \(⋃_{a ∈ A}P(a)\). Tu v bistvu
-množico v našo logiko vložimo kot diskreten prostor, kar dela dobro za na primer
-množico naravnih števil, se pa izkaže, da za recimo realna števila ne deluje.
-Res, realna števila (v večini logik) ne bodo diskreten prostor! Si bomo pa
-vseeno podrobneje pogledali kdaj točno so.
+% Zares bi lahko rekli tudi malo več. Če je \(A\) poljubna množica in \(P\)
+% podobno kot zgoraj tipa \(A → 𝒪X\), lahko definiramo \(\for{a : \c A}{P(a)}\)
+% kot \(\int{\p{⋂_{a ∈ A}P(a)}}\). Tu v bistvu množico \(A\) v našo logiko vložimo
+% kot diskreten prostor (označen \(\c A\)), kar dela dobro za na primer množico
+% naravnih števil, se pa izkaže, da za recimo realna števila ne deluje. Res,
+% realna števila (v večini logik) ne bodo diskreten prostor! Si bomo pa vseeno
+% podrobneje pogledali kdaj točno so, saj se izkaže, da ima to zanimive posledice.
+
+Na tej točki smo že definirali dovolj logike, da karakteriziramo dva znana
+principa: princip izključene tretje možnosti in DeMorganov zakon.
+\begin{trditev}
+  Nad topološkim prostorom velja princip izključene tretje možnosti natanko
+  tedaj, ko je prostor \emph{particijski}, t.~j.~vsaka odprta množica je zaprta.
+\end{trditev}
+\begin{proof}
+  Princip izključene tretje možnosti pravi, da velja formula
+  \(\for{p : Ω}{p ∨ ¬p}\). Če to interpretiramo v logiki odprtih množic, dobimo
+  pogoj, da mora za vsako odprto množico veljati, da je
+  \(X = U ∨ ¬U = U ∪ \int{\p{Uᶜ}}\).
+
+  Ampak opazimo, da bo \(U ∪ A\) enako celemu prostoru, mora biti \(A\) nujno
+  enak komplementu \(U\). Tedaj pa mora veljati, da je \(Uᶜ = \int{\p{Uᶜ}}\),
+  torej da je množica \(Uᶜ\) odprta, kar je pa natanko tedaj, ko je množica
+  \(U\) zaprta.
+\end{proof}
+
+\begin{trditev}
+  Nad topološkim prostorom velja DeMorganov zakon natanko tedaj, ko je prostor
+  \emph{ekstremalno nepovezan}, torej, da je zaprtje vsake (odprte) množice odprto.
+\end{trditev}
+\begin{proof}
+  DeMorganov zakon je ekvivalenten trditvi \(\for{p : Ω}{¬p ∨ ¬¬p}\), kar pa
+  prav tako kot v gornjem dokazu pravi, da so vse zunanjosti množic zaprte.
+  To pa pomeni, da so njihovi komplementi, torej zaprtja množic odprta, kar je
+  natanko kar smo želeli.
+\end{proof}
 
 
 \subsection{Heytingovo-vrednotene množice}
-
-Naj bo \(\p{X, ℒ}\) topološki prostor.
 
 Oglejmo si spet primer naravnih števil nad nekim prostorom \(X\). To bodo zvezne
 preslikave iz odprtih podmnožic \(X\) v \(ℕ\).
@@ -236,8 +259,12 @@ množica odprta. Potem pa se izkaže, da če velja enakost \(⟦n = n⟧ = \dom(
 tako da če znamo primerjati vsa števila, lahko izpeljemo tudi razpon, kar bomo
 tudi vzeli kot osnovni gradnik naših objektov.
 
-% TODO: name?
+Označimo z \(ℒ\) topologijo prostora \(X\).
 \begin{definicija}
+  TODO: a naj bo ime \(ℒ\)-množice, ali dam kaj drugega? \(X\)-množice nočem
+  zares, \(𝒪X\)-množice je malo nereodno, še posebej če nikjer nimam nobene
+  točke in sight.
+
   \emph{\(ℒ\)-vrednotena množica} oziroma \emph{\(ℒ\)-množica} je množica \(A\),
   skupaj s preslikavo, ki jo pišemo \(⟦- = -⟧ : A×A → ℒ\), tako da velja
   \begin{align*}
@@ -251,8 +278,8 @@ tudi vzeli kot osnovni gradnik naših objektov.
 \end{definicija}
 
 Če \(≤\) beremo kot logično implikacijo, zgornja aksioma zgledata zelo podobno
-aksiomoma simetričnosti in tranzitivnosti delno urejenih množic, tako da bi
-lahko rekli, da so \(ℒ\)-množice natanko množice opremljene z (interno) delno
+aksiomoma simetričnosti in tranzitivnosti relacije \(=\), tako da bi lahko
+rekli, da so \(ℒ\)-množice natanko množice opremljene z (interno) delno
 ekvivalenčno relacijo.
 
 \begin{primer}
@@ -267,7 +294,7 @@ točkah''.
 \begin{primer}
   Množica \(ℕ\) skupaj z enakostjo definirano kot
   \[ ⟦n = m⟧ ≔ \begin{cases} X &; n = m\\ ∅ &; n ≠ m \end{cases} \]
-  je \(ℒ\)-množica. To bomo označevali z \(Δℕ\).
+  je \(ℒ\)-množica. To bomo označevali z \(\c ℕ\).
 \end{primer}
 
 V tem primeru elementi množice očitno niso zvezne funkcije iz prostora.
@@ -309,7 +336,7 @@ spet vrednostene v logiki odprtih množic.
 \begin{definicija}
   \emph{Morfizem med \(ℒ\)-množicama} \(A\) in \(B\) je preslikava \(⟦- = f(-)⟧ : B×A → ℒ\),
   za katero velja
-  \begin{align}% TODO: change
+  \begin{align}% TODO: change?
     &⟦b =_B b'⟧ ∧ ⟦b' = f(a)⟧ ≤ ⟦b = f(a)⟧    \tag{M1}\label{M1}\\
     &⟦b = f(a')⟧ ∧ ⟦a' =_A a⟧ ≤ ⟦b = f(a)⟧    \tag{M2}\label{M2}\\
     &⟦b = f(a)⟧ ∧ ⟦b' = f(a)⟧ ≤ ⟦b =_B b'⟧    \tag{M3}\label{M3}\\
@@ -327,7 +354,7 @@ spet vrednostene v logiki odprtih množic.
   bistveno razlikujeta, namreč v \(B\) ne obstaja nujno kak element, ki bi mu
   lahko rekli slika \(a\).
 \end{opomba}
-Vseeno pa v jeziku triposa na \(⋁_{b ∈ B} φ(b)\) gledamo kot eksistenčni
+Vseeno pa v internem jeziku na \(⋁_{b ∈ B} φ(b)\) gledamo kot eksistenčni
 kvantifikator, torej \ref{M4} res pravi, da obstaja nek \(b\), ki je slika
 elementa \(a\), definicija kompozicije pa je potem natanko standardna
 kompozicija relacij.
@@ -336,19 +363,19 @@ kompozicija relacij.
 
 \begin{konstrukcija}
   Če imamo morfizma \(A \oset{f}{↬} B \oset{g}{↬} C\), je njun kompozitum
-  \(gf : A ↬ C\) definiran kot
-  \[ ⟦c = gf(a)⟧ ≔ ⋁_{b ∈ B} ⟦c = g(b)⟧∧⟦b = f(a)⟧\text. \]
+  \(g∘f : A ↬ C\) definiran kot
+  \[ ⟦c = g∘f(a)⟧ ≔ ⋁_{b ∈ B} ⟦c = g(b)⟧∧⟦b = f(a)⟧\text. \]
 \end{konstrukcija}
 \begin{proof}
   Pokazati moramo, da je tako definiran kompozitum res morfizem.
-  % TODO: končaj
+  TODO: končaj
 \end{proof}
 
 \begin{konstrukcija}
   Identiteta na \(A\) je kar \(⟦- =_A -⟧\).
 \end{konstrukcija}
 \begin{proof}
-  % TODO: končaj
+  TODO: končaj
 \end{proof}
 
 \begin{lema}
@@ -367,18 +394,19 @@ kompozicija relacij.
   \end{align*}
 \end{dokaz}
 
-Če na zgornjo formulo gledamo kot neko trditev v jeziku množic in funkcij, bi se
-brala kot "če je \(f(a) = b\) je potem tudi \(g(a) = b\)", kar pa ponavadi res
-pomeni, da sta funkciji \(f\) in \(g\) enaki.
+Če na zgornjo formulo gledamo kot trditev v internem jeziku, bi se brala kot "če
+je \(f(a) = b\) je potem tudi \(g(a) = b\)", kar pa ponavadi res pomeni, da sta
+funkciji \(f\) in \(g\) enaki.
 
-Na podoben način bi si želeli karakterizirati epimorfizme in monomorfizme, v
+Na podoben način bi si želeli karakterizirati epimorfizme in monomorfizme v
 kategoriji \(\cat{Set}(ℒ)\), in res jih lahko karakteriziramo kot surjekcije in
 injekcije v tem jeziku:
 
+TODO: spremeni to v definicijo, pokaži da je injektivnost ⇒ mono?
 \begin{trditev}
   Morfizem \(f : A ↬ B\) je epimorfizem, če velja
   \[ \for{b ∈ B}{ ⟦b = b⟧ = ⋁_{a ∈ A} ⟦b = f(a)⟧ }\text, \]
-  in monomorfizem, če velja % TODO: A kvantificiram?
+  in monomorfizem, če velja % NOTE: A kvantificiram?
   \[ \for{a,a' ∈ A, b ∈ B}{ ⟦b = f(a)⟧ ∧ ⟦b = f(a')⟧ ≤ ⟦a = a'⟧}\text. \]
 \end{trditev}
 \begin{dokaz}
@@ -421,6 +449,7 @@ Trditev se torej pravilno glasi tako:
 \end{trditev}
 
 \subsubsection{Karakterizacija podobjektov}
+NOTE: a je to svoj podrazdelek? zlo kratko je
 
 Z uporabo gornje karakterizacije monomorfizmov, lahko karakteriziramo tudi podobjekte.
 Kot vemo, so podobjekti natanko (ekvivalenčni razredi) monomorfizmov
@@ -452,8 +481,29 @@ Kot vemo, so podobjekti natanko (ekvivalenčni razredi) monomorfizmov
   \end{align*}
 
   
-  % TODO: complete proof
+  TODO: končaj dokaz
 \end{proof}
+
+
+TODO: primeri konstrukcij: produkt, potenčna \(ℒ\)-množica, vsota?, še kaj? Če
+rata tudi odvisna vsota ali produkt.
+
+\subsubsection{Interni jezik}
+
+Oglejmo si ta interni jezik bolj natančno. Uvedimo končno oznako za
+interpretacijo logičnih formul kot odprte množice, t.~j.~za formulo \(φ\)
+označimo njeno interpretacijo kot \(⟦φ⟧\). Ta je namerno enaka gornjima dvema,
+saj bomo videli, da sta zares to sestavna dela interpretacije v splošnem.
+Enakost lahko interpretiramo kar kot enakost v \(ℒ\)-množici, torej
+\(⟦x = y⟧ = ⟦x = y⟧\). Za morfizme moramo narediti nekaj čudnega, ker kot rečeno
+``\(f(a)\)'' ne zares obstaja. Naj bo \(f : A ↬ B\) morfizem in \(φ\) formula s
+prosto spremenljivko tipa \(B\), potem naj bo
+\(⟦φ(f(a))⟧ = ⋁_{b ∈ B}⟦b = f(a)⟧∧⟦φ(b)⟧\). Tako se potem \(b = f(a)\)
+interpretira kot \(⋁_{b' ∈ B}⟦b' = f(a)⟧∧⟦b = b'⟧\), kar je pa enako
+\(⟦b = f(a)⟧\), tako da smo res poenotili gornja dva zapisa.
+
+TODO: končaj ostalo
+
 
 
 \subsubsection{Polne \(ℒ\)-množice}
@@ -466,21 +516,22 @@ nekimi kvocienti, kar nikoli ni prijetno. Tako bi želeli, da bi naše
 za to dovolj informacij, saj je vsak element zožitev enega od globalnih
 lokalnih, je pa vseeno izziv kako identificirati zožitve, ki se ujemajo.
 
-Trik, ki ga bomo uporabili smo že srečali pri motivaciji za definicijo
-\(ℒ\)-preslikav, namreč, da lahko element snopa \(f\) primerjamo z vsemi
-globalnimi lokalnimi elementi, torej da dobimo funkcijo iz \(ℒ\)-množice v okvir
-\(ℒ\). Ta konstrukcija v snopih enolično določa elemente, torej če sta
-\(f ∈ F(U)\) in \(g ∈ F(V)\), in se njune primerjave ujemata na vseh globalnih
-lokalnih elementih, se v posebnem tudi ujemata z neko razširitvijo \(f\) (ki jo
-označimo \(f'\)), torej velja \(f{\res V} = f'{\res{U∩V}} = g{\res U}\), kar pa
-pomeni, da sta \(f\) in \(g\) skladna. Potem pa nam vsaka primerjava definira
-skladno družino, ki jo lahko zlepimo v enoličen element snopa.
+% TODO: reword
+% Trik, ki ga bomo uporabili smo že srečali pri motivaciji za definicijo
+% \(ℒ\)-preslikav, namreč, da lahko element snopa \(f\) primerjamo z vsemi
+% globalnimi lokalnimi elementi, torej da dobimo funkcijo iz \(ℒ\)-množice v okvir
+% \(ℒ\). Ta konstrukcija v snopih enolično določa elemente, torej če sta
+% \(f ∈ F(U)\) in \(g ∈ F(V)\), in se njune primerjave ujemata na vseh globalnih
+% lokalnih elementih, se v posebnem tudi ujemata z neko razširitvijo \(f\) (ki jo
+% označimo \(f'\)), torej velja \(f{\res V} = f'{\res{U∩V}} = g{\res U}\), kar pa
+% pomeni, da sta \(f\) in \(g\) skladna. Potem pa nam vsaka primerjava definira
+% skladno družino, ki jo lahko zlepimo v enoličen element snopa.
 
-Spomnimo se pa, da so take funkcije natanko podobjekti, in če je element
-podobjekta enolično določen, mu lahko pravimo enojec, oziroma podenojec, ker ta
-element ne obstaja nujno med globalnimi lokalnimi elementi. Vendar pa kljub
-temu, da so te podenojci lahko \quot{prazni}, imajo dovolj zanimivo strukturo,
-da iz njih lahko rekonstruiramo celoten snop.
+% Spomnimo se pa, da so take funkcije natanko podobjekti, in če je element
+% podobjekta enolično določen, mu lahko pravimo enojec, oziroma podenojec, ker ta
+% element ne obstaja nujno med globalnimi lokalnimi elementi. Vendar pa kljub
+% temu, da so te podenojci lahko \quot{prazni}, imajo dovolj zanimivo strukturo,
+% da iz njih lahko rekonstruiramo celoten snop.
 
 % % TODO: reword
 % Naj bo \(F\) snop nad \(ℒ\). Potem lahko za \(m ∈ F(U)\) definiramo enojec
@@ -499,24 +550,29 @@ da iz njih lahko rekonstruiramo celoten snop.
   \[ \for{a,b ∈ A}{⟦a = b⟧ ∧ ⟦b ∈ S⟧ ≤ ⟦a ∈ S⟧}\text. \]
 \end{opomba}
 
-V jeziku triposa to res pravi, da ima podenojec kvečjemu en element.
+V internem jeziku to res pravi, da ima podenojec kvečjemu en element.
 \begin{opomba}
   V literaturi se tem preslikavam reče kar enojci, saj enolično določajo
-  elemente snopa.
+  delno definirane elemente, in se bomo tega držali tudi mi. Poleg tega se za
+  enojce ponavadi uporablja grške črke \(σ\), \(ρ\), in \(τ\).
 \end{opomba}
 
-\begin{lema}% TODO: refactor. this should be a definition or something.
-  Za vsak \(m ∈ A\) lahko tvorimo enojec \(σₘ : A → ℒ\), s predpisom
-  \(a ↦ ⟦a = m⟧\). \(ℒ\)-množico enojcev \(A\) z relacijo
-  \(⟦ρ = τ⟧ ≔ ⋁_{a ∈ A} ρ(a)∧τ(a)\) označimo \(σ(A)\).
-\end{lema}
+\begin{konstrukcija}
+  Za vsak \(m ∈ A\) lahko tvorimo enojec \(\s m : A → ℒ\), s predpisom
+  \(a ↦ ⟦a = m⟧\).
+\end{konstrukcija}
 \begin{dokaz}
-  Preslikava \(σₘ\) je res enojec, saj velja
-  \begin{align*}
-    σₘ(a)∧σₘ(b) &= ⟦a = m⟧∧⟦m = b⟧ ≤ ⟦a = b⟧\text{ in}\\
-    ⟦a = b⟧∧σₘ(b) &= ⟦a = b⟧∧⟦b = m⟧ ≤ ⟦a = m⟧ = σₘ(a)\text.
-  \end{align*}
+  Preslikava \(\s m\) je res enojec, saj velja
+  \[ ⟦a ∈ \s m⟧∧⟦b ∈ \s m⟧ = ⟦a = m⟧∧⟦m = b⟧ ≤ ⟦a = b⟧ \]
+  in
+  \[ ⟦a = b⟧∧⟦b ∈ \s m⟧ = ⟦a = b⟧∧⟦b = m⟧ ≤ ⟦a = m⟧ = ⟦a ∈ \s m⟧\text.\qedhere \]
+\end{dokaz}
 
+\begin{konstrukcija}
+  Množico enojcev \(A\) z relacijo \(⟦ρ = τ⟧ ≔ ⋁_{a ∈ A} ρ(a)∧τ(a)\)
+  tvori \(ℒ\)-množico \(σ(A)\).
+\end{konstrukcija}
+\begin{proof}
   Relacija je očitno simetrična, tako da si poglejmo le tranzitivnost:
   \begin{align*}
     ⟦ρ = τ⟧∧⟦τ = θ⟧
@@ -526,132 +582,128 @@ V jeziku triposa to res pravi, da ima podenojec kvečjemu en element.
     &≤ ⋁_{a ∈ A} ρ(a)∧θ(a) = ⟦ρ = θ⟧\text,
   \end{align*}
   kjer v drugi enakosti uporabimo, da je \(ℒ\) okvir.
-\end{dokaz}
+\end{proof}
 
-\begin{lema}\label{lem:image}
-  Vsak \(ℒ\)-morfizem \(f : A ↬ B\), \(a ∈ A\), in \(b ∈ B\) inducirajo
+\begin{konstrukcija}\label{lem:image}
+  Vsakemu \(ℒ\)-morfizmu \(f : A ↬ B\), \(a ∈ A\), in \(b ∈ B\) lahko priredimo
   \begin{enumerate}
-  \item \(ℒ\)-podmnožico \(f⁻¹(b) ⊑ A\), definirano z \(x ↦ ⟦b = f(x)⟧\) in
-  \item enojec \(f(a) ⊑ B\), definiran z \(y ↦ ⟦y = f(a)⟧\).
+  \item \(ℒ\)-podmnožico \(f⁻¹(b) ⊑ A\), definirano z \(x ↦ ⟦b = f(x)⟧\),
+    imenovano \emph{praslika} in
+  \item enojec \(f(a) ⊑ B\), definiran z \(y ↦ ⟦y = f(a)⟧\), imenovan \emph{slika}.
   \end{enumerate}
-\end{lema}
+\end{konstrukcija}
 \begin{dokaz}
-  % \begin{enumerate}
-  % \item Prvi aksiom drži, saj imamo \(⟦a ∈ f⁻¹(b)⟧ = ⟦b = f(a)⟧ ≤ ‖a‖\), drugi
-  %   %aksiom pa sledi iz drugega aksioma \(ℒ\)-morfizmov.
-  %   aksiom pa sledi iz aksioma \ref{M2}.
-  % \item Prvi aksiom sledi iz celovitosti, drugi pa podobno kot zgoraj iz \ref{M1}.\qedhere
-  % \end{enumerate}
   V obeh primerih prvi aksiom drži zaradi celovitosti, drugi pa zaradi
   skladnosti morfizma z relacijo na ustrezni \(ℒ\)-množici.
 \end{dokaz}
 
+\begin{lema}\label{lem:swap}
+  Za \(ℒ\)-podmnožico \(φ : A → ℒ\) velja \({φ(a)∧⟦a = b⟧ = φ(b)∧⟦a = b⟧}\).
+\end{lema}
 \begin{lema}\label{lem:subst}
   Za \(ℒ\)-podmnožico \(φ : A → ℒ\) velja \({φ(a) = ⋁_{x ∈ A} φ(x)∧⟦x = a⟧}\).
   V posebnem za \(ℒ\)-morfizem \(f : A ↬ B\) velja \(⟦b = f(a)⟧ = ⋁_{x ∈ A} ⟦b = f(x)⟧∧⟦x = a⟧\).
 \end{lema}
 \begin{dokaz}
-  Ker je \({φ(a) = φ(a)∧⟦a = a⟧}\) velja \( φ(a) ≤ ⋁_{x ∈ A} φ(x)∧⟦x = a⟧\),
+  Ker je \({φ(a) = φ(a)∧⟦a = a⟧}\) velja \(φ(a) ≤ ⋁_{x ∈ A} φ(x)∧⟦x = a⟧\),
   obratna neenakost pa sledi iz drugega aksioma \(ℒ\)-podmnožic.
 \end{dokaz}
 
-\begin{lema}\label{lem:sigmaunit}
+\begin{lema}\label{lem:singunit}
   Za \(m,n ∈ A\) in \(τ ∈ σ(A)\) veljajo naslednje enakosti:
   \begin{enumerate}
-  \item \(σ_τ(σₘ) = ⟦σₘ = τ⟧ = τ(m)\)
-  \item \(⟦σₘ = σₙ⟧ = ⟦m = n⟧\)
-  \item \(σₘ(n) = σₙ(m)\)
+  \item \(⟦\s m ∈ \s τ⟧ = ⟦\s m = τ⟧ = τ(m)\)
+  \item \(⟦\s m = \s n⟧ = ⟦m = n⟧\)
+  \item \(⟦n ∈ \s m⟧ = ⟦m ∈ \s n⟧\)
   \item \(⟦m = n⟧ = ⋁_{τ ∈ σ(A)} τ(m)∧τ(n)\)
   \end{enumerate}
 \end{lema}
 \begin{dokaz}
   Prvi enačaj velja po definiciji, tako da razpišemo zgolj drugega:
   \begin{equation*}
-    ⟦σₘ = τ⟧ = ⋁_{a ∈ A} σₘ(a)∧τ(a) = ⋁_{a ∈ A} ⟦m = a⟧∧τ(a) = τ(m)\text,
+    ⟦\s m = τ⟧ = ⋁_{a ∈ A} ⟦a ∈ \s m⟧∧τ(a) = ⋁_{a ∈ A} ⟦m = a⟧∧τ(a) = τ(m)\text,
   \end{equation*}
   kjer smo za zadnjo enakost uporabili gornjo lemo na \(ℒ\)-podmnožici \(τ\).
 
-  Enakost v drugi točki sledi iz \(⟦σₘ = σₙ⟧ = σₙ(m) = ⟦m = n⟧\),
+  Enakost v drugi točki sledi iz \(\i{\s m = \s n} = ⟦m ∈ \s n⟧ = ⟦m = n⟧\),
   tretja točka pa sledi po definiciji iz simetrčnosti relacije.
 
   Oglejmo si še zadnjo točko. Neenakost \(≥\) očitno sledi iz aksiomov enojcev,
   tako da moramo preveriti zgolj drugo smer:
   \begin{equation*}
-    ⟦m = n⟧ = ⟦m = n⟧∧⟦n = m⟧ = σₘ(n)∧σₙ(m) ≤ ⋁_{τ ∈ σ(A)} τ(m)∧τ(n)\qedhere
+    ⟦m = n⟧ = ⟦m = m⟧∧⟦m = n⟧ = ⟦m ∈ \s m⟧∧⟦n ∈ \s m⟧ ≤ ⋁_{τ ∈ σ(A)} τ(m)∧τ(n)\text.\qedhere
   \end{equation*}
 \end{dokaz}
 
-Kot smo rekli na začetku podrazdelka, nam vsak enojec na \(F'\) enolično določa
-element snopa \(F\). Prav tako pa enojci na \(F\) enolično določajo elemente
-\(F\). Če torej želimo dopolniti \(ℒ\)-množico do celega snopa, moramo vzeti
-njeno množico enojcev, oziroma bolj natančno, so polne \(ℒ\)-množice take, kjer
-nam enojci ne predstavljajo nobenih novih elementov. % nobenih drugih elementov
-                                % kot elementov \(ℒ\)-množice same.
+% TODO: rewrite
+% Kot smo rekli na začetku podrazdelka, nam vsak enojec na \(F'\) enolično določa
+% element snopa \(F\). Prav tako pa enojci na \(F\) enolično določajo elemente
+% \(F\). Če torej želimo dopolniti \(ℒ\)-množico do celega snopa, moramo vzeti
+% njeno množico enojcev, oziroma bolj natančno, so polne \(ℒ\)-množice take, kjer
+% nam enojci ne predstavljajo nobenih novih elementov. % nobenih drugih elementov
+%                                 % kot elementov \(ℒ\)-množice same.
 
 \begin{definicija}
-  \(ℒ\)-množica \(A\) je \emph{polna}, kadar je preslikava množic \(m ↦ σₘ\)
+  \(ℒ\)-množica \(A\) je \emph{polna}, kadar je preslikava množic \(m ↦ \s m\)
   bijekcija. Polno podkategorijo polnih \(ℒ\)-množic označimo s
   \(\cat{CSet}(ℒ)\).
 \end{definicija}
-% NOTE: σ definira idempotentno monado. To mi avtomatsko da naslednjih par
+% NOTE: {-} definira idempotentno monado. To mi avtomatsko da naslednjih par
 % rezultatov (specifično do izreka da so polne ℒ-množice refleksivna
 % podkategorija).
 \begin{lema}
   \(ℒ\)-množica \(σ(A)\) je polna.
 \end{lema}
 \begin{dokaz}
-  Pokazati moramo, da je preslikava \(τ ↦ σ_τ\) bijekcija.
+  Pokazati moramo, da je preslikava \(τ ↦ \s τ\) bijekcija.
   % TODO: reword
   Injektivnost:
-  Denimo, da velja \(σ_τ = σ_ρ\). Potem velja
+  Denimo, da velja \(\s τ = \s ρ\). Potem velja
   \begin{equation*}
-    τ(a) = σ_τ(σₐ) = σ_ρ(σₐ) = ρ(a)\text,
+    τ(a) = \i{\s a ∈ \s τ} = \i{\s a ∈ \s ρ} = ρ(a)\text,
   \end{equation*}
   torej je preslikava injektivna.
   % NOTE: to je inverz enote (in je množenje).
-  Naj bo sedaj \(Σ ∈ σσ(A)\). Definirajmo \(τ(a) ≔ Σ(σₐ)\).
+  Naj bo sedaj \(Σ ∈ σ(σ(A))\). Definirajmo \(τ(a) ≔ Σ(\s a)\).
   To je enojec, saj velja
   \begin{align*}
-    τ(a)∧τ(b) &= Σ(σₐ)∧Σ(σ_b) ≤ ⟦σₐ = σ_b⟧ = ⟦a = b⟧\text{ in}\\
-    ⟦a = b⟧∧τ(b) &= ⟦a = b⟧∧Σ(σ_b) = ⟦σₐ = σ_b⟧∧Σ(σ_b) ≤ Σ(σₐ) = τ(a)\text.
+    τ(a)∧τ(b) &= Σ(\s a)∧Σ(\s b) ≤ ⟦\s a = \s b⟧ = ⟦a = b⟧\text{ in}\\
+    ⟦a = b⟧∧τ(b) &= ⟦a = b⟧∧Σ(\s b) = ⟦\s a = \s b⟧∧Σ(\s b) ≤ Σ(\s a) = τ(a)\text.
   \end{align*}
 
-  Pokažimo še, da je \(Σ = σ_τ\).
+  Pokažimo še, da je \(Σ = \s τ\).
   \begin{align*}
-    σ_τ(ρ)
-    &= ⟦τ = ρ⟧ = ⋁_{a ∈ A} τ(a)∧ρ(a) = ⋁_{a ∈ A} Σ(σₐ)∧⟦ρ = σₐ⟧\\
-    &= ⋁_{a ∈ A} Σ(ρ)∧⟦ρ = σₐ⟧ = Σ(ρ)∧‖ρ‖ = Σ(ρ)\text,
+    \i{ρ ∈ \s τ}
+    &= ⟦τ = ρ⟧ = ⋁_{a ∈ A} τ(a)∧ρ(a) = ⋁_{a ∈ A} Σ(\s a)∧⟦ρ = \s a⟧\\
+    &= ⋁_{a ∈ A} Σ(ρ)∧⟦ρ = \s a⟧ = Σ(ρ)∧‖ρ‖ = Σ(ρ)\text,
   \end{align*}
-  kjer za tretjo enakost uporabimo, da lahko pod enakostjo menjamo argumente \mbox{\(ℒ\)-podmnožicam}.
-  Sledi, da za vsak enojec v \(σσ(A)\) obstaja natanko en enojec v \(σ(A)\), ki
-  se vanj slika, tako da je preslikava \(σ\) res bijekcija, in je \(σ(A)\) polna.
+  kjer za tretjo enakost uporabimo, da lahko pod enakostjo menjamo argumente
+  \mbox{\(ℒ\)-podmnožicam}. Sledi, da za vsak enojec v \(σ(σ(A))\) obstaja natanko
+  en enojec v \(σ(A)\), ki se vanj slika, tako da je preslikava \(σ\) res
+  bijekcija, in je \(σ(A)\) polna.
 \end{dokaz}
 
 \begin{trditev}
   Naj bo \(f : A ↬ B \) in \(B\) polna \(ℒ\)-množica. Tedaj obstaja preslikava
   \(φ : A → B\), za katero velja \(⟦b = f(a)⟧ = ⟦b =_B φ(a)⟧\).
-  Poleg tega velja tudi \(⟦φ(a) = φ(a')⟧ ≥ ⟦a = a'⟧\), in enakost drži kadar je \(a = a'\).
+  Poleg tega velja tudi \(⟦a = a'⟧ ≤ ⟦φ(a) = φ(a')⟧\), in enakost drži kadar je \(a = a'\).
 \end{trditev}
 \begin{dokaz}
   Za vsak \(a ∈ A\) je \(b ↦ ⟦b = f(a)⟧\) enojec, torej po polnosti \(B\)
   natanko določa en element \(B\), ki ga označimo \(φ(a)\). To definira
   preslikavo \(φ\).
-  % TODO: neenakosti?
+
+  TODO: neenakosti?
 \end{dokaz}
 \begin{posledica}
   Kategorija polnih \(ℒ\)-množic je ekvivalentna kategoriji, katere
   \catdef
     {so polne \(ℒ\)-množice in}
-    {\(A → B\) so funkcije \(f : A → B\), ki zadoščajo sledečima pogojema:
+    {so funkcije \(f : A → B\), ki zadoščajo sledečima pogojema:
       \begin{itemize}
       \item \(⟦a = a'⟧ ≤ ⟦f(a) = f(a')⟧\), in
       \item \(⟦a = a⟧ = ⟦f(a) = f(a)⟧\).
       \end{itemize}}
-    %\newline
-    %\begin{tabular}{l}
-    %  \(⟦a = a'⟧ ≤ ⟦f(a) = f(a')⟧\)\\
-    %  \(⟦a = a⟧ = ⟦f(a) = f(a)⟧\)
-    %\end{tabular}}
 \end{posledica}
 
 \begin{izrek}\label{th:sigmaiso}
@@ -660,15 +712,15 @@ nam enojci ne predstavljajo nobenih novih elementov. % nobenih drugih elementov
 \begin{dokaz}
   % NOTE: f je enota monade σ, če je g njen inverz, kaj je njena povezava z
   % množenjem? Plus lahko spustimo pol dokazov, da je f morfizem.
-  Definirajmo preslikavo \(⟦τ = η(a)⟧ = τ(a)\).
+  Definirajmo preslikavo \(⟦τ = η(a)⟧ ≔ τ(a)\).
   Očitno je skladna z relacijama, tako da moramo preveriti zgolj
   enoličnost in celovitost. Enoličnost sledi iz neenakosti
   \(τ(a)∧ρ(a) ≤ ⟦τ = ρ⟧\), celovitost pa iz enakosti
-  \[ ⟦a = a⟧ = ⟦σₐ = σₐ⟧ = ⋁_{τ ∈ σ(A)} ⟦σₐ = τ⟧ = ⋁_{τ ∈ σ(A)} τ(a)\text. \]
+  \[ ⟦a = a⟧ = ⟦\s a = \s a⟧ = ⋁_{τ ∈ σ(A)} ⟦\s a = τ⟧ = ⋁_{τ ∈ σ(A)} τ(a)\text. \]
   
   Preveriti moramo torej le še, da je bijekcija. Injektivna je očitno, saj to
   sledi iz definicije enojca, surjektivnost pa sledi iz
-  \(⟦σₐ = η(a)⟧ = σₐ(a) = ‖a‖\).
+  \(⟦\s a = η(a)⟧ = \i{a ∈ \s a} = ‖a‖\).
 \end{dokaz}
 \begin{posledica}
   Kategorija \(ℒ\)-množic je ekvivalentna kategoriji polnih \(ℒ\)-množic.
@@ -688,16 +740,17 @@ nam enojci ne predstavljajo nobenih novih elementov. % nobenih drugih elementov
   Ker je \(A\) polna, ta ustreza nekemu elementu, ki mu lahko rečemo
   \(m{\res U}\), zanj pa očitno velja željena enakost
   \begin{equation*}
-    ⟦a = m{\res U}⟧ = ⟦σₐ = τ⟧ = τ(a) = ⟦a = m⟧∧U\text. \qedhere
+    ⟦a = m{\res U}⟧ = ⟦\s a = τ⟧ = τ(a) = ⟦a = m⟧∧U\text. \qedhere
   \end{equation*}
 \end{dokaz}
 \begin{posledica}
-  Za \(m ∈ A\) in \(U ∈ ℒ\) velja \(σₘ{\res U}(n) = σₘ(n)∧U\).
+  Za \(m ∈ A\) in \(U ∈ ℒ\) velja \(\i{n ∈ {\s m}{\res U}} = \i{n ∈ \s m}∧U\).
 \end{posledica}
 \begin{posledica}
-  Za \(τ ∈ σ(A)\) in \(U ∈ ℒ\) velja \(σ_τ{\res U} = σ_{τ{\res U}}\).
+  Za \(τ ∈ σ(A)\) in \(U ∈ ℒ\) velja \({\s τ}{\res U} = \s{τ{\res U}}\).
 \end{posledica}
 
+TODO: enoličnost manjka v izreku in dokazu.
 \begin{lema}
   Polne \(ℒ\)-množice imajo lepljenje skladnih družin, t.~j. za vsako družino
   \(mᵢ ∈ A\), za katero velja \(mᵢ{\res{Uⱼ}} = mⱼ{\res{Uᵢ}}\), kjer je \(Uᵢ ≔ ‖mᵢ‖\),
@@ -722,88 +775,89 @@ nam enojci ne predstavljajo nobenih novih elementov. % nobenih drugih elementov
   \end{align*}
   torej ustreza nekemu \(m ∈ A\). Po zgornji lemi velja
   \begin{equation*}
-    ⟦mᵢ = m{\res{Uᵢ}}⟧ = ⟦mᵢ = m⟧∧Uᵢ = σₘ(mᵢ)∧Uᵢ = \textstyle⋁\!ⱼ⟦mᵢ = mⱼ⟧∧Uᵢ = Uᵢ\text,
+    ⟦mᵢ = m{\res{Uᵢ}}⟧ = ⟦mᵢ = m⟧∧Uᵢ = \i{mᵢ ∈ \s m}∧Uᵢ = \textstyle⋁\!ⱼ⟦mᵢ = mⱼ⟧∧Uᵢ = Uᵢ\text,
   \end{equation*}
   torej se ujemata na celotnem razponu in sta enaka.
 
-  Razpon \(m\) je \(‖m‖ = σₘ(m) = ⋁ᵢ⟦m = mᵢ⟧ = ⋁ᵢUᵢ\), kar mora veljati za vsako
+  Razpon \(m\) je \(‖m‖ = \i{m ∈ \s m} = ⋁ᵢ⟦m = mᵢ⟧ = ⋁ᵢUᵢ\), kar mora veljati za vsako
   amalgamacijo družine \(mᵢ\), tako da je \(m\) tudi enoličen.
+  NOTE: Kaj? To ni dokaz enoličnosti…
 \end{dokaz}
 
-\begin{konstrukcija}
-  Naj bo \(A\) \(ℒ\)-množica. Potem ji lahko priredimo snop
-  \[ Θ(A)(U) = \set{τ ∈ σ(A)}{‖τ‖ = U}\text. \]
-  Morfizmu \(f : A ↬ B\) \(ℒ\)-množic priredimo preslikavo
-  % NOTE: to je morphism action σ, torej Θ je I∘σ, kjer I predstavlja renotation
-  % polne ℒ-množice v snop
-  \[ Θ(f)_U(τ)(b) ≔ ρ(b) = ⋁_{a ∈ A}⟦b = f(a)⟧∧τ(a)\text. \]
-  To je res enojec na \(B\), saj velja
-  \begin{align*}
-    ⟦b' = b⟧∧ρ(b)
-    &= ⋁_{a ∈ A}⟦b' = b⟧∧⟦b = f(a)⟧ ≤ ⋁_{a ∈ A}⟦b' = f(a)⟧ = ρ(b')\text{ in}\\
-    ρ(b)∧ρ(b')
-    &= ⋁_{a,a' ∈ A} ⟦b = f(a)⟧∧τ(a)∧τ(a')∧⟦b' = f(a')⟧\\
-    &≤ ⋁_{a,a' ∈ A} ⟦b = f(a)⟧∧⟦a = a'⟧∧⟦b' = f(a')⟧\\
-    &≤ ⋁_{a' ∈ A} ⟦b = f(a')⟧∧⟦b' = f(a')⟧ ≤ ⟦b = b'⟧\text.
-  \end{align*}
-  To definira funktor med kategorijama \(\cat{Set}(ℒ)\) in \(\cat{Sh}(ℒ)\).
-\end{konstrukcija}
+% \begin{konstrukcija}
+%   Naj bo \(A\) \(ℒ\)-množica. Potem ji lahko priredimo snop
+%   \[ Θ(A)(U) = \set{τ ∈ σ(A)}{‖τ‖ = U}\text. \]
+%   Morfizmu \(f : A ↬ B\) \(ℒ\)-množic priredimo preslikavo
+%   % NOTE: to je morphism action σ, torej Θ je I∘σ, kjer I predstavlja renotation
+%   % polne ℒ-množice v snop
+%   \[ Θ(f)_U(τ)(b) ≔ ρ(b) = ⋁_{a ∈ A}⟦b = f(a)⟧∧τ(a)\text. \]
+%   To je res enojec na \(B\), saj velja
+%   \begin{align*}
+%     ⟦b' = b⟧∧ρ(b)
+%     &= ⋁_{a ∈ A}⟦b' = b⟧∧⟦b = f(a)⟧ ≤ ⋁_{a ∈ A}⟦b' = f(a)⟧ = ρ(b')\text{ in}\\
+%     ρ(b)∧ρ(b')
+%     &= ⋁_{a,a' ∈ A} ⟦b = f(a)⟧∧τ(a)∧τ(a')∧⟦b' = f(a')⟧\\
+%     &≤ ⋁_{a,a' ∈ A} ⟦b = f(a)⟧∧⟦a = a'⟧∧⟦b' = f(a')⟧\\
+%     &≤ ⋁_{a' ∈ A} ⟦b = f(a')⟧∧⟦b' = f(a')⟧ ≤ ⟦b = b'⟧\text.
+%   \end{align*}
+%   To definira funktor med kategorijama \(\cat{Set}(ℒ)\) in \(\cat{Sh}(ℒ)\).
+% \end{konstrukcija}
 
-\begin{konstrukcija}
-  Naj bo \(P\) predsnop. Potem mu lahko priredimo \(ℒ\)-množico
-  \(Γ(P) ≔ ∑_{U ∈ ℒ} P(U)\) z relacijo
-  % NOTE: ta je pa zgolj renotation predsnopa v ℒ-množico, tako da je od
-  % adjunkcije samo σ.
-  \[ ⟦\p{U, f} = \p{V, g}⟧ ≔ ⋁\set{W ∈ ℒ}{W≤U∧V \text{ in } f\res W = g\res W}\text. \]
-  % TODO: dokaži polnost
-  Morfizmu predsnopov \(α : P ⇒ Q\) priredimo preslikavo \(Γ(α)(U, f) ≔ α_U(f)\).
-  To definira funktor med kategorijama \(\cat{PSh}(ℒ)\) in \(\cat{Set}(ℒ)\).
-\end{konstrukcija}
+% \begin{konstrukcija}
+%   Naj bo \(P\) predsnop. Potem mu lahko priredimo \(ℒ\)-množico
+%   \(Γ(P) ≔ ∑_{U ∈ ℒ} P(U)\) z relacijo
+%   % NOTE: ta je pa zgolj renotation predsnopa v ℒ-množico, tako da je od
+%   % adjunkcije samo σ.
+%   \[ ⟦\p{U, f} = \p{V, g}⟧ ≔ ⋁\set{W ∈ ℒ}{W≤U∧V \text{ in } f\res W = g\res W}\text. \]
+%   % TODO: dokaži polnost
+%   Morfizmu predsnopov \(α : P ⇒ Q\) priredimo preslikavo \(Γ(α)(U, f) ≔ α_U(f)\).
+%   To definira funktor med kategorijama \(\cat{PSh}(ℒ)\) in \(\cat{Set}(ℒ)\).
+% \end{konstrukcija}
 
-\begin{trditev}
-  Funktor \(Γ\) je levi adjunkt funktorju \(Θ\).
-\end{trditev}
-\begin{dokaz}
-  % Naj bo \(φ : Θ(A) → P\) morfizem predsnopov. Definirati želimo morfizem
-  % \mbox{\(ℒ\)-množic} \(A ↬ Γ(P)\).
-  % Elementoma \(a ∈ A\) z \(‖a‖ = U\) in \(\p{V, f} ∈ Γ(P)\) lahko priredimo
-  % \(⟦f = φ_U(σₐ)⟧\).
-  % To je očitno morfizem \(ℒ\)-množic.
+% \begin{trditev}
+%   Funktor \(Γ\) je levi adjunkt funktorju \(Θ\).
+% \end{trditev}
+% \begin{dokaz}
+%   % Naj bo \(φ : Θ(A) → P\) morfizem predsnopov. Definirati želimo morfizem
+%   % \mbox{\(ℒ\)-množic} \(A ↬ Γ(P)\).
+%   % Elementoma \(a ∈ A\) z \(‖a‖ = U\) in \(\p{V, f} ∈ Γ(P)\) lahko priredimo
+%   % \(⟦f = φ_U(σₐ)⟧\).
+%   % To je očitno morfizem \(ℒ\)-množic.
   
-  % Obratno, naj bo \(φ : A ↬ Γ(P)\) morfizem \(ℒ\)-množic.
-  % Tedaj elementu \(τ ∈ Θ(A)(U)\) priredimo element \(\).
-  % To spet očitno definira morfizem snopov, tako da sta funktorja \(Θ\) in \(Γ\)
-  % res adjungirana in definirata ekvivalenco željenih kategorij.
-  % % TODO: correct this detail
-  % Naj bo \(φ : P ⇒ Θ(A)\). Potem \(⟦a = f\p{U, p}⟧ ≔ φ_U(p)(a)\) definira
-  % morfizem \(ℒ\)-množic \(Γ(P) ↬ A\), saj velja \(φ_U(p)(a) = ⟦σₐ = φ_U(p)⟧\).
+%   % Obratno, naj bo \(φ : A ↬ Γ(P)\) morfizem \(ℒ\)-množic.
+%   % Tedaj elementu \(τ ∈ Θ(A)(U)\) priredimo element \(\).
+%   % To spet očitno definira morfizem snopov, tako da sta funktorja \(Θ\) in \(Γ\)
+%   % res adjungirana in definirata ekvivalenco željenih kategorij.
+%   % % TODO: correct this detail
+%   % Naj bo \(φ : P ⇒ Θ(A)\). Potem \(⟦a = f\p{U, p}⟧ ≔ φ_U(p)(a)\) definira
+%   % morfizem \(ℒ\)-množic \(Γ(P) ↬ A\), saj velja \(φ_U(p)(a) = ⟦σₐ = φ_U(p)⟧\).
  
-  % Obratno, naj bo \(f : Γ(P) ↬ A\). Morfizem predsnopov \(φ : P ⇒ Θ(A)\)
-  % konstruiramo kot \(φ_U(p) ≔ ⟦- = f\p{U, p}⟧\), ki je enojec na \(A\).
-  % Razpon tega enojca je pa \(⋁_{a ∈ A} ⟦a = f\p{U, p}⟧ = ‖\p{U,p}‖ = U\).
+%   % Obratno, naj bo \(f : Γ(P) ↬ A\). Morfizem predsnopov \(φ : P ⇒ Θ(A)\)
+%   % konstruiramo kot \(φ_U(p) ≔ ⟦- = f\p{U, p}⟧\), ki je enojec na \(A\).
+%   % Razpon tega enojca je pa \(⋁_{a ∈ A} ⟦a = f\p{U, p}⟧ = ‖\p{U,p}‖ = U\).
 
-  % Ti prireditvi sta si očitno inverzni, tako da definirata adjunkcijo \(Γ ⊣ Θ\).
-  Koenota adjunkcije je izomorfizem iz izreka \ref{th:sigmaiso},
-  enota pa slika \(p ∈ P(U)\) v \(σ_{(U,p)}\). To je naravna
-  transformacija, saj \(σ\) \quot{komutira} z zožitvami.
-\end{dokaz}
+%   % Ti prireditvi sta si očitno inverzni, tako da definirata adjunkcijo \(Γ ⊣ Θ\).
+%   Koenota adjunkcije je izomorfizem iz izreka \ref{th:sigmaiso},
+%   enota pa slika \(p ∈ P(U)\) v \(σ_{(U,p)}\). To je naravna
+%   transformacija, saj \(σ\) \quot{komutira} z zožitvami.
+% \end{dokaz}
 
-\begin{izrek}
-  Kategorija polnih \(ℒ\)-množic je ekvivalentna kategoriji snopov nad \(ℒ\).
-\end{izrek}
-\begin{dokaz}
-  Če funktorja \(Γ\) in \(Θ\) zožimo na dani kategoriji, sta si spet
-  adjungirana, tako da moramo zgolj pokazati, da sta enota in koenota
-  izomorfizma.
+% \begin{izrek}
+%   Kategorija polnih \(ℒ\)-množic je ekvivalentna kategoriji snopov nad \(ℒ\).
+% \end{izrek}
+% \begin{dokaz}
+%   Če funktorja \(Γ\) in \(Θ\) zožimo na dani kategoriji, sta si spet
+%   adjungirana, tako da moramo zgolj pokazati, da sta enota in koenota
+%   izomorfizma.
 
-  Koenota je že izomorfizem po \ref{th:sigmaiso}, tako da moramo preveriti zgolj
-  enoto.
+%   Koenota je že izomorfizem po \ref{th:sigmaiso}, tako da moramo preveriti zgolj
+%   enoto.
 
-  Naj bo \(F\) snop. Potem \(η_U : F(U) → ΘΓ(F)(U)\) slika \(f ↦ σ_{(U,f)}\).
-  Ker je \(F\) snop je \(ℒ\)-množica \(Γ(F)\) že polna, tako da so elementi
-  \(ΘΓ(F)(U)\) že natanko elementi \(Γ(F)\) z razponom \(U\), ki so pa natanko
-  elementi \(F(U)\), torej je tudi enota izomorfizem.
-\end{dokaz}
+%   Naj bo \(F\) snop. Potem \(η_U : F(U) → ΘΓ(F)(U)\) slika \(f ↦ σ_{(U,f)}\).
+%   Ker je \(F\) snop je \(ℒ\)-množica \(Γ(F)\) že polna, tako da so elementi
+%   \(ΘΓ(F)(U)\) že natanko elementi \(Γ(F)\) z razponom \(U\), ki so pa natanko
+%   elementi \(F(U)\), torej je tudi enota izomorfizem.
+% \end{dokaz}
 
 %%% Local Variables:
 %%% TeX-master: "main"
