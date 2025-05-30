@@ -381,15 +381,6 @@ Oglejmo si ta interni jezik bolj natančno. Uvedimo končno oznako za
 interpretacijo logičnih formul kot odprte množice, t.~j.~za formulo \(φ\)
 označimo njeno interpretacijo kot \(⟦φ⟧\). Ta je namerno enaka gornjima dvema,
 saj bomo videli, da sta zares to sestavna dela interpretacije v splošnem.
-
-% Enakost lahko interpretiramo kar kot enakost v \(ℒ\)-množici, torej
-% \(⟦x = y⟧ = ⟦x = y⟧\). Za morfizme moramo narediti nekaj čudnega, ker kot rečeno
-% ``\(f(a)\)'' ne zares obstaja. Naj bo \(f : A ↬ B\) morfizem in \(φ\) formula s
-% prosto spremenljivko tipa \(B\), potem naj bo
-% \(⟦φ(f(a))⟧ = ⋁_{b ∈ B}⟦b = f(a)⟧∧⟦φ(b)⟧\). Tako se potem \(b = f(a)\)
-% interpretira kot \(⋁_{b' ∈ B}⟦b' = f(a)⟧∧⟦b = b'⟧\), kar je pa enako
-% \(⟦b = f(a)⟧\), tako da smo res poenotili gornja dva zapisa.
-
 Spomnimo se sedaj tabele za logiko odprtih množic, z novim zapisom:
 \begin{center}
   \begin{tabularx}{0.6\textwidth}{p{0.2\textwidth} X}
@@ -512,9 +503,8 @@ To nam da zanimivo posledico, da je veljavnost ekvivalentna lokalni veljavnosti.
   \(U ⊩ φ\) natanko tedaj ko \(\eventually{V ⊆ U}{V ⊩ φ}\).
 \end{posledica}
 
-TODO: morfizme je treba nekje not uštulit…
 \begin{trditev}
-  Veljavnost formule se potem lahko računa rekurzivno po spodnji tabeli:
+  Veljavnost formule se lahko računa po spodnji tabeli.
   \begin{table}[h]
     \centering
     \begin{tabularx}{0.9\textwidth}{p{0.25\textwidth}X}
@@ -530,10 +520,7 @@ TODO: morfizme je treba nekje not uštulit…
       \(U ⊩ \for{a : A}{φ(a)}\)   & ko za vsak \(a ∈ A\) velja \(U ∩ \e a ⊩ φ(a)\)\\
       \(U ⊩ \exist{a : A}{φ(a)}\) & ko
                                     \(\eventually{V ⊆ U}{\exist{a ∈ A}{V ⊆ \e a
-                                    \text{ in } V ⊩ φ(a) }}\)\\ 
-      \(U ⊩ τ = σ\)               & ko je \(U ⊆ \i{\i τ = \i σ}\)\\
-      \(U ⊩ \e τ\)                & ko je \(U ⊆ \e{\i τ}\)\\
-      \(U ⊩ R(τ)\)                & ko je \(U ⊆ R{\p{\i τ}}\), kjer je \(R : A → ℒ\)
+                                    \text{ in } V ⊩ φ(a) }}\)
     \end{tabularx}
 
     \caption{Veljavnost formul oziroma Kripke-Joyalova semantika}
@@ -551,8 +538,8 @@ TODO: morfizme je treba nekje not uštulit…
   veljal tudi na njihovi uniji, tako da če tako pokritje obstaja, bi ga vedno lahko
   zamenjali s pokritjem \(\{\i φ, \i ψ\}\).
 
-  Situacija z obstojem je popolnoma analogna, saj pogoj pravi, da množice
-  \(\i{\e a ∧ φ(a)}\) pokrivajo \(U\).
+  Situacija z obstojem je popolnoma analogna, saj pogoj na desni pravi natanko,
+  da množice \(\i{\e a ∧ φ(a)}\) pokrivajo \(U\).
 \end{proof}
 
 Kdaj bomo pa tudi želeli pisati formule s prostimi spremenljivkami, recimo
@@ -563,10 +550,9 @@ veljavnost teh formul tako tudi definirali.
   Formula \(φ\) s prostimi spremenljivkami tipov \(A₁\),…,\(Aₙ\) je
   \emph{(lokalno) veljavna na \(U\)} (pišemo \(U ⊩ φ\)), ko je za vse
   \(aᵢ ∈ Aᵢ\) formula \(φ(a₁,…,aₙ)\) veljavna na \(U\).
-
   Če želimo izraziti, da je formula veljavna na celem \(X\), bomo kot zgoraj
   pisali tudi \(⊢ φ\), oziroma če želimo izpostaviti katerega tipa so
-  spremenljivke kot \(x₁ : A₁,…,xₙ : Aₙ ⊢ φ\).
+  spremenljivke kot \({x₁ : A₁,…,xₙ : Aₙ ⊢ φ}\).
 \end{definicija}
 
 Ponovimo sedaj gornje definicije v internem jeziku.
@@ -580,7 +566,7 @@ Ponovimo sedaj gornje definicije v internem jeziku.
 \begin{definicija}
   \emph{Morfizem med \(ℒ\)-množicama} \(A\) in \(B\) je interna relacija, ki jo
   \(b = f(a)\), za \(a\) tipa \(A\) in \(b\) tipa \(B\), za katero velja
-  \begin{align}% TODO: change?
+  \begin{align}
     &⊢ b = f(a) ⇒ a = a ∧ b = b                \tag{M1}\label{M1}\\
     &⊢ b = b' ∧ b' = f(a') ∧ a' = a ⇒ b = f(a) \tag{M2}\label{M2}\\
     &⊢ b = f(a) ∧ b' = f(a) ⇒ b = b'           \tag{M3}\label{M3}\\
@@ -591,7 +577,6 @@ Ponovimo sedaj gornje definicije v internem jeziku.
 
 \subsubsection{Lastnosti morfizmov}
 
-NOTE: Za to dvoje rabim nek soundness verjetno…
 \begin{konstrukcija}
   Če imamo morfizma \(A \oset{f}{↬} B \oset{g}{↬} C\), je njun kompozitum
   \(g∘f : A ↬ C\) definiran kot
@@ -608,7 +593,7 @@ NOTE: Za to dvoje rabim nek soundness verjetno…
   Identiteta na \(A\) je kar \(⟦- =_A -⟧\).
 \end{konstrukcija}
 \begin{proof}[Konstruktiven]
-  Interno je identiteta na \(A\) res identitetna relacija, tako da vemo, da je
+  Interno je enakost na \(A\) identitetna relacija, tako da vemo, da je
   kompozitum z njo tudi identiteta.
 \end{proof}
 
@@ -617,13 +602,6 @@ NOTE: Za to dvoje rabim nek soundness verjetno…
   označimo z \(\cat{Set}(ℒ)\).
 \end{definicija}
 
-% \begin{definicija}
-%   Za vsako preslikavo \(R : B → ℒ\) in morfizem \(f : A ↬ B\), lahko definiramo
-%   \(R(f(a)) ≔ \exist{b : B}{b = f(a) ∧ R(b)}\).
-
-%   V posebnem je potem \(f(a) = g(a)\) ekvivalenten
-%   \(\exist{b : B}{b = f(a) ∧ b = g(a)}\)
-% \end{definicija}
 \begin{lema}
   Morfizma \(f\) in \(g : A ↬ B\) sta enaka natanko tedaj, ko velja 
   \[ ⊢ \for{a : A}{f(a) = g(a)}\text. \]
@@ -642,44 +620,18 @@ NOTE: Za to dvoje rabim nek soundness verjetno…
 \begin{lema}
   Naj bosta \(f, g : A ↬ B\) morfizma. Potem sta enaka natanko tedaj, ko velja
   \[ ⊢ b = f(a) ⇒ b = g(a) }.\]
-  %\[ \for{a ∈ A, b ∈ B}{ ⟦b = f(a)⟧ ≤ ⟦b = g(a)⟧ }.\]
 \end{lema}
-TODO: tle mi manjka da lahko z \(=\) dejansko substituiram v internem jeziku.
 \begin{dokaz}
   V eno smer je trditev očitna, tako da predpostavimo, da velja gornja
   implikacija. Dokazujemo, da za \(a ∈ A\) velja \(f(a) = g(a)\).
   Po predpostavki zadošča pokazati, da je \(f(a) = f(a)\), kar je pa očitno res.
-  % Pokazati moramo, da je ta implikacija
-  % ekvivalenca, tako da naj bo \(b = g(a)\) in dokazujemo \(b = f(a)\).
-  % Vrednost \(g(a) = f(a)\) je \(\exist{b' : B}{b' = g(a) ∧ b' = f(a)}\),
-  % in po predpostavki je enaka \(b = f(a)\), tako da moramo dokazati, da tak
-  % \(b'\) obstaja.
-  % Vemo, da velja \(b = g(a) ⇒ \e a\) in \(\e a ⇔ \exist{b : B}{b = f(a)}\).
-  % Prav tako po predpostavki velja \(b = f(a) ⇒ b = f(a) ∧ b = g(a)\). Tako
-  % lahko tvorimo verigo implikacij
-  % \begin{align*}
-  %   b = g(a)
-  %   &⇒ b = g(a) ∧ \exist{b' : B}{b' = g(a) ∧ b' = f(a)}\\
-  %   &⇒ \exist{b' : B}{b = g(a) ∧ b' = g(a) ∧ b' = f(a)}\\
-  %   &⇒ \exist{b' : B}{b = b' ∧ b' = f(a)}\\
-  %   &⇒ b = f(a)
-  % \end{align*}
-  % V eno smer je trditev očitna, tako da predpostavimo, da za vsaka \(a\) in
-  % \(b\) velja \(⟦b = f(a)⟧ ≤ ⟦b = g(a)⟧\).
-  % Dokazati moramo torej, da velja tudi druga neenakost.
-  % \begin{align*}
-  %   ⟦b = g(a)⟧
-  %   &= ⟦b = g(a)⟧ ∧ ⟦a = a⟧ = ⟦b = g(a)⟧ ∧ \bigvee_{b' ∈ B} ⟦b' = f(a)⟧\\
-  %   &= \bigvee_{b' ∈ B} ⟦b = g(a)⟧ ∧ ⟦b' = f(a)⟧ ∧ ⟦b' = g(a)⟧\\
-  %   &≤ \bigvee_{b' ∈ B} ⟦b = b'⟧ ∧ ⟦b' = f(a)⟧ ≤ ⟦b = f(a)⟧.\qedhere
-  % \end{align*}
 \end{dokaz}
 
 Na podoben način bi si želeli karakterizirati epimorfizme in monomorfizme v
 kategoriji \(\cat{Set}(ℒ)\), in res jih lahko karakteriziramo kot surjekcije in
 injekcije v tem jeziku:
 
-TODO: spremeni to v definicijo, pokaži da je inj/surj ⇒ mono/epi?
+TODO: spremenim to v definicijo, pokažem da je inj/surj ⇒ mono/epi?
 \begin{trditev}
   Morfizem \(f : A ↬ B\) je epimorfizem, če velja
   \[ ⊢ \for{b : B}{\exist{a ∈ A}{b = f(a)}}\text, \]
@@ -692,6 +644,9 @@ TODO: spremeni to v definicijo, pokaži da je inj/surj ⇒ mono/epi?
 
   NOTE: Za epimorfizme Borceux naredi nek kompliciran argument, a obstaja kaj
   boljšega v internem jeziku?
+
+  NOTE: Ah, sem ugotovila, on konstruira kojedro \(f\), in potem \(f\) izenači
+  obe vložitvi \(B → \coker{f}\), tako da sta enaki in je \(\coker f = B\).
 \end{dokaz}
 
 Sedaj se pa želimo vprašati, kaj so bijekcije \(ℒ\)-množic.
@@ -709,15 +664,10 @@ Kompozituma z dualom pa sta res identiteti.
   \(a = f⁻¹(b)\), oziroma \(f(a) = b\). Potem je pa \(b = b'\).
   Obratno, naj bo \(a' = f⁻¹(f(a))\). Potem za nek \(b : A\) velja \(a' = f⁻¹(b)\)
   in \(b = f(a)\), oziroma \(f⁻¹(b) = a\). Potem je pa \(a = a'\).
-  % \begin{align*}
-  %   ⟦b' = ff⁻¹(b)⟧
-  %   &= ⋁_{a ∈ A} ⟦b' = f(a)⟧∧⟦a = f⁻¹(b)⟧\\
-  %   &= ⋁_{a ∈ A} ⟦b' = f(a)⟧∧⟦b = f(a)⟧ ≤ ⟦b' = b⟧\\
-  %   ⟦a' = f⁻¹f(a)⟧
-  %   &= ⋁_{b ∈ B} ⟦a' = f⁻¹(b)⟧∧⟦b = f(a)⟧\\
-  %   &= ⋁_{b ∈ V} ⟦a' = f⁻¹(b)⟧∧⟦a = f⁻¹(b)⟧ ≤ ⟦a' = a⟧\qedhere
-  % \end{align*}
 \end{dokaz}
+
+
+NOTE: od tu naprej nisem čisto zadovoljna, tako da ni treba pregledati.
 
 
 \subsubsection{Karakterizacija podobjektov}
@@ -734,9 +684,7 @@ Kot vemo, so podobjekti natanko (ekvivalenčni razredi) monomorfizmov
   \end{align*}
   t.~j. je skladna z relacijo na \(A\). Pišemo tudi \(S ⊑ A\).
 \end{definicija}
-\begin{lema}
-  Za \(ℒ\)-podmnožico \(S ⊑ A\) velja \(⟦a = a'⟧∧⟦a' ∈ S⟧ = ⟦a = a'⟧∧⟦a ∈ S⟧\).
-\end{lema}
+Interni jezik razširimo z operacijo \(∈\) na očiten način.
 
 \begin{trditev}
   Obstaja ekvivalenca med delnima ureditvima \(ℒ\)-podmnožic \(A\) in podobjektov \(A\).
@@ -746,7 +694,7 @@ Kot vemo, so podobjekti natanko (ekvivalenčni razredi) monomorfizmov
   Potem definiramo preslikavo \( ⟦- ∈ m⟧ : A → ℒ \) s predpisom
   \(a ↦ ⋁_{s ∈ S} ⟦a = m(s)⟧\).
 
-  Ta preslikava definira \(ℒ\)-množico, saj velja
+  Ta preslikava definira \(ℒ\)-podmnožico, saj velja
   \begin{align*}
     &⟦a ∈ m⟧ = ⋁_{s ∈ S} ⟦a = m(s)⟧ ≤ ⋁_{s ∈ S} ⟦a = a⟧ = ‖a‖\text{ in}\\
     &⟦a = a'⟧∧⟦a' ∈ m⟧ = ⋁_{s ∈ S} ⟦a = a'⟧∧⟦a' = m(s)⟧ ≤ ⋁_{s ∈ S} ⟦a = m(s)⟧ = ⟦a ∈ m⟧\text.
@@ -762,6 +710,7 @@ rata tudi odvisna vsota ali produkt.
 
 
 \subsubsection{Polne \(ℒ\)-množice}
+
 
 Prej smo že omenili, da lahko iz globalnih lokalnih elementov rekonstruiramo
 snop, vendar je ta konstrukcija komplicirana, poleg tega pa potem delamo z
@@ -831,14 +780,6 @@ lokalnih, je pa vseeno izziv kako identificirati zožitve, ki se ujemajo.
   Naj bo \(ρ = τ\) in \(τ = θ\), torej obstajata \(a\) in \(a'\), da velja
   \(ρ(a)∧τ(a)\) in \(τ(a')∧θ(a')\). Ker je \(τ\) enojec je \(a = a'\), torej
   veljata \(ρ(a)\) in \(θ(a)\), kar pa po definiciji pomeni \(ρ = θ\).
-  % \begin{align*}
-  %   ⟦ρ = τ⟧∧⟦τ = θ⟧
-  %   &= \p{⋁_{a ∈ A} ρ(a)∧τ(a)} ∧ \p{⋁_{a ∈ A} τ(a)∧θ(a)}\\
-  %   &= ⋁_{a,a' ∈ A} ρ(a)∧τ(a)∧τ(a')∧θ(a')\\
-  %   &≤ ⋁_{a,a' ∈ A} ρ(a)∧⟦a = a'⟧∧θ(a')\\
-  %   &≤ ⋁_{a ∈ A} ρ(a)∧θ(a) = ⟦ρ = θ⟧\text,
-  % \end{align*}
-  % kjer v drugi enakosti uporabimo, da je \(ℒ\) okvir.
 \end{proof}
 
 \begin{konstrukcija}\label{lem:image}
@@ -989,7 +930,6 @@ lokalnih, je pa vseeno izziv kako identificirati zožitve, ki se ujemajo.
   Kategorija \(ℒ\)-množic je ekvivalentna kategoriji polnih \(ℒ\)-množic.
 \end{posledica}
 
-NOTE: A je to važno? no, sej to na začetku obljubim, ampak lahko tudi brez
 \begin{lema}
   Polne \(ℒ\)-množice imajo operator zožitve, t.~j. za vsak \(m ∈ A\) in
   \(U ∈ ℒ\) obstaja \(m{\res U} ∈ A\), tako da velja \(⟦a = m{\res U}⟧ = ⟦a = m⟧∧U\).
@@ -1048,80 +988,6 @@ TODO: enoličnost manjka v izreku in dokazu.
   NOTE: Kaj? To ni dokaz enoličnosti…
 \end{dokaz}
 
-% \begin{konstrukcija}
-%   Naj bo \(A\) \(ℒ\)-množica. Potem ji lahko priredimo snop
-%   \[ Θ(A)(U) = \set{τ ∈ σ(A)}{‖τ‖ = U}\text. \]
-%   Morfizmu \(f : A ↬ B\) \(ℒ\)-množic priredimo preslikavo
-%   % NOTE: to je morphism action σ, torej Θ je I∘σ, kjer I predstavlja renotation
-%   % polne ℒ-množice v snop
-%   \[ Θ(f)_U(τ)(b) ≔ ρ(b) = ⋁_{a ∈ A}⟦b = f(a)⟧∧τ(a)\text. \]
-%   To je res enojec na \(B\), saj velja
-%   \begin{align*}
-%     ⟦b' = b⟧∧ρ(b)
-%     &= ⋁_{a ∈ A}⟦b' = b⟧∧⟦b = f(a)⟧ ≤ ⋁_{a ∈ A}⟦b' = f(a)⟧ = ρ(b')\text{ in}\\
-%     ρ(b)∧ρ(b')
-%     &= ⋁_{a,a' ∈ A} ⟦b = f(a)⟧∧τ(a)∧τ(a')∧⟦b' = f(a')⟧\\
-%     &≤ ⋁_{a,a' ∈ A} ⟦b = f(a)⟧∧⟦a = a'⟧∧⟦b' = f(a')⟧\\
-%     &≤ ⋁_{a' ∈ A} ⟦b = f(a')⟧∧⟦b' = f(a')⟧ ≤ ⟦b = b'⟧\text.
-%   \end{align*}
-%   To definira funktor med kategorijama \(\cat{Set}(ℒ)\) in \(\cat{Sh}(ℒ)\).
-% \end{konstrukcija}
-
-% \begin{konstrukcija}
-%   Naj bo \(P\) predsnop. Potem mu lahko priredimo \(ℒ\)-množico
-%   \(Γ(P) ≔ ∑_{U ∈ ℒ} P(U)\) z relacijo
-%   % NOTE: ta je pa zgolj renotation predsnopa v ℒ-množico, tako da je od
-%   % adjunkcije samo σ.
-%   \[ ⟦\p{U, f} = \p{V, g}⟧ ≔ ⋁\set{W ∈ ℒ}{W≤U∧V \text{ in } f\res W = g\res W}\text. \]
-%   % TODO: dokaži polnost
-%   Morfizmu predsnopov \(α : P ⇒ Q\) priredimo preslikavo \(Γ(α)(U, f) ≔ α_U(f)\).
-%   To definira funktor med kategorijama \(\cat{PSh}(ℒ)\) in \(\cat{Set}(ℒ)\).
-% \end{konstrukcija}
-
-% \begin{trditev}
-%   Funktor \(Γ\) je levi adjunkt funktorju \(Θ\).
-% \end{trditev}
-% \begin{dokaz}
-%   % Naj bo \(φ : Θ(A) → P\) morfizem predsnopov. Definirati želimo morfizem
-%   % \mbox{\(ℒ\)-množic} \(A ↬ Γ(P)\).
-%   % Elementoma \(a ∈ A\) z \(‖a‖ = U\) in \(\p{V, f} ∈ Γ(P)\) lahko priredimo
-%   % \(⟦f = φ_U(σₐ)⟧\).
-%   % To je očitno morfizem \(ℒ\)-množic.
-  
-%   % Obratno, naj bo \(φ : A ↬ Γ(P)\) morfizem \(ℒ\)-množic.
-%   % Tedaj elementu \(τ ∈ Θ(A)(U)\) priredimo element \(\).
-%   % To spet očitno definira morfizem snopov, tako da sta funktorja \(Θ\) in \(Γ\)
-%   % res adjungirana in definirata ekvivalenco željenih kategorij.
-%   % % TODO: correct this detail
-%   % Naj bo \(φ : P ⇒ Θ(A)\). Potem \(⟦a = f\p{U, p}⟧ ≔ φ_U(p)(a)\) definira
-%   % morfizem \(ℒ\)-množic \(Γ(P) ↬ A\), saj velja \(φ_U(p)(a) = ⟦σₐ = φ_U(p)⟧\).
- 
-%   % Obratno, naj bo \(f : Γ(P) ↬ A\). Morfizem predsnopov \(φ : P ⇒ Θ(A)\)
-%   % konstruiramo kot \(φ_U(p) ≔ ⟦- = f\p{U, p}⟧\), ki je enojec na \(A\).
-%   % Razpon tega enojca je pa \(⋁_{a ∈ A} ⟦a = f\p{U, p}⟧ = ‖\p{U,p}‖ = U\).
-
-%   % Ti prireditvi sta si očitno inverzni, tako da definirata adjunkcijo \(Γ ⊣ Θ\).
-%   Koenota adjunkcije je izomorfizem iz izreka \ref{th:sigmaiso},
-%   enota pa slika \(p ∈ P(U)\) v \(σ_{(U,p)}\). To je naravna
-%   transformacija, saj \(σ\) \quot{komutira} z zožitvami.
-% \end{dokaz}
-
-% \begin{izrek}
-%   Kategorija polnih \(ℒ\)-množic je ekvivalentna kategoriji snopov nad \(ℒ\).
-% \end{izrek}
-% \begin{dokaz}
-%   Če funktorja \(Γ\) in \(Θ\) zožimo na dani kategoriji, sta si spet
-%   adjungirana, tako da moramo zgolj pokazati, da sta enota in koenota
-%   izomorfizma.
-
-%   Koenota je že izomorfizem po \ref{th:sigmaiso}, tako da moramo preveriti zgolj
-%   enoto.
-
-%   Naj bo \(F\) snop. Potem \(η_U : F(U) → ΘΓ(F)(U)\) slika \(f ↦ σ_{(U,f)}\).
-%   Ker je \(F\) snop je \(ℒ\)-množica \(Γ(F)\) že polna, tako da so elementi
-%   \(ΘΓ(F)(U)\) že natanko elementi \(Γ(F)\) z razponom \(U\), ki so pa natanko
-%   elementi \(F(U)\), torej je tudi enota izomorfizem.
-% \end{dokaz}
 
 %%% Local Variables:
 %%% TeX-master: "main"
