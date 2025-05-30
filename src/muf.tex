@@ -48,6 +48,7 @@
   \def\c{\uline}
   \renewcommand{\b}[1]{\left\{ {#1} \right\}}
   \renewcommand{\i}[1]{\left⟦ {#1} \right⟧}
+  \renewcommand{\e}[1]{\left‖ {#1} \right‖}
   \renewcommand{\s}[1]{\left\{ {#1} \right\}}
   \renewcommand{\O}[1]{\mathcal{O}{#1}}
   \renewcommand{\int}{\textrm{Int}}
@@ -84,6 +85,7 @@
 \defquantifier{for}{\forall}
 \defquantifier{exist}{\exists}
 \defquantifier{unique}{\exists!}
+\defquantifier{exact}{ι}
 \defquantifier{eventually}{\nabla}
 
 \renewcommand{\check}{ \(\checkmark\)}
@@ -117,6 +119,7 @@
 \def\Rd{ℝ_d}
 \def\Rc{ℝ_c}
 
+\newcolumntype{C}{>{\centering\arraybackslash}X}
 \usepackage{tabularx}
 \newcommand{\catdef}[3][]{
   \newline
@@ -134,7 +137,7 @@
 
 \renewcommand{\ln}{\mathcal{\mathrm{Ln}}}
 
-\newcommand{\angl}[1]{(angl.~#1)} % TODO: add english language
+\newcommand{\angl}[1]{(angl.~\otherlanguage{english}{#1})} % TODO: add english language
 
 %%% Local Variables:
 %%% TeX-master: "main"
