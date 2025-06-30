@@ -350,29 +350,27 @@ spet vrednostene v logiki odprtih množic.
 
 \begin{definicija}
   \emph{Morfizem med \(ℒ\)-množicama} \(A\) in \(B\) je preslikava
-  \(⟦- = f(-)⟧ : B×A → ℒ\), za katero velja
+  \(⟦- ~ f(-)⟧ : B×A → ℒ\), za katero velja
   \begin{align}% TODO: change?
-    &⟦b = f(a)⟧ ≤ ‖a‖ ∧ ‖b‖                             \tag{M1}\label{M1}\\
-    &⟦b =_B b'⟧ ∧ ⟦b = f(a')⟧ ∧ ⟦a' =_A a⟧ ≤ ⟦b = f(a)⟧ \tag{M2}\label{M2}\\
-    &⟦b = f(a)⟧ ∧ ⟦b' = f(a)⟧ ≤ ⟦b =_B b'⟧              \tag{M3}\label{M3}\\
-    &‖a‖ ≤ ⋁_{b ∈ B} ⟦b = f(a)⟧                         \tag{M4}\label{M4}
+    &⟦b ~ f(a)⟧ ≤ ‖a‖ ∧ ‖b‖                             \tag{M1}\label{M1}\\
+    &⟦b =_B b'⟧ ∧ ⟦b ~ f(a')⟧ ∧ ⟦a' =_A a⟧ ≤ ⟦b ~ f(a)⟧ \tag{M2}\label{M2}\\
+    &⟦b ~ f(a)⟧ ∧ ⟦b' ~ f(a)⟧ ≤ ⟦b =_B b'⟧              \tag{M3}\label{M3}\\
+    &‖a‖ ≤ ⋁_{b ∈ B} ⟦b ~ f(a)⟧                         \tag{M4}\label{M4}
   \end{align}
   Na prvi dve pravili gledamo kot na skladnost z relacijama na \(A\) in \(B\),
   na drugi dve sta pa enoličnost in celovitost, zato morfizme vseeno pišemo v
   funkcijskem zapisu kot \(f : A ↬ B\).
 \end{definicija}
 \begin{opomba}
-  Podobnost med oklepaji je namerna, je pa vseeno vredno poudariti, da izraz
-  \(⟦b = f(a)⟧\) ni povezan z izrazom \(⟦b =_B b'⟧\) nič več, kot lahko sklepamo
-  iz gornjih aksiomov. Drugače rečeno, kljub temu, da na \(⟦b = f(a)⟧\) želimo
-  gledati kot primerjavo slike \(a\) v \(ℒ\)-množici \(B\), se izraza vseeno
-  bistveno razlikujeta, namreč v \(B\) ne obstaja nujno kak element, ki bi mu
-  lahko rekli slika \(a\).
+  Na relacijo \(b ~ f(a)\) zares želimo gledati kot enaksot, ampak ne nujno
+  obstaja element \(ℒ\)-množice \(B\), ki bi predstavljal sliko \(f(a)\), moramo
+  biti pri tem previdni.
+  Bomo pa kasneje vseeno videli, da lahko pod določenimi pogoji na \(f(a)\)
+  gledamo kot na element \(ℒ\)-množice \(B\).
 \end{opomba}
-Vseeno pa v internem jeziku na \(⋁_{b ∈ B} φ(b)\) gledamo kot eksistenčni
+Vseeno pa bomo internem jeziku na \(⋁_{b ∈ B} φ(b)\) gledali kot eksistenčni
 kvantifikator, torej \ref{M4} res pravi, da obstaja nek \(b\), ki je slika
-elementa \(a\), definicija kompozicije pa je potem natanko standardna
-kompozicija relacij.
+elementa \(a\).
 
 
 \subsubsection{Interni jezik}
@@ -396,18 +394,20 @@ Torej, vse je enako kot prej, ampak sedaj lahko našemu jeziku dodamo še
 \(ℒ\)-množice. Najprej, interpretirajmo terme jezika, torej elemente
 \(ℒ\)-množic.
 
+TODO: uvest kaj so terms, \(α : A\), etc
+
 \begin{table}[h]
   \centering
   \begin{tabularx}{0.6\textwidth}{p{0.2\textwidth} X}
     \(\i{a}\)    & \(≔ a\), za \(a ∈ A\)\\
-    \(\i{f(τ)}\) & \(≔ f{\p{\i τ}}\), kjer je \(f : A → B\)
+    \(\i{f(α)}\) & \(≔ f{\p{\i α}}\), kjer je \(f : A → B\) in \(α : A\)
   \end{tabularx}
 
   \caption{Interpretacija termov v internem jeziku}
   \label{tab:int-term}
 \end{table}
-Za morfizme \(ℒ\)-množic ne moramo podati neposredne interpretacije, saj kot
-rečeno njihova vrednost ne obstaja, lahko pa definiramo kaj pomeni
+Vrednosti \(f(a)\) še ne moramo podati neposredne interpretacije, saj kot
+rečeno njihova vrednost ne obstaja, lahko pa bomo definirali kaj pomeni
 uporabiti morfizem kot argument neki logični formuli.
 
 \begin{table}[h]
@@ -423,6 +423,7 @@ uporabiti morfizem kot argument neki logični formuli.
     \(\i{\exist{a : A}{φ(a)}}\) & \(≔ ⋃_{a ∈ A}\i{\e a ∧ φ(a)}\)\\
     \(\i{τ = σ}\)               & \(≔ \i{\i τ = \i σ}\)\\
     \(\i{\e τ}\)                & \(≔ \e{\i τ}\)\\
+    \(\i{τ ~ f(σ)}\)            & \(≔ \i{\i τ ~ f(\i σ)}\)\\
     \(\i{R(τ)}\)                & \(≔ R{\p{\i τ}}\), kjer je \(R : A → ℒ\)
   \end{tabularx}
 
@@ -436,38 +437,6 @@ uporabiti morfizem kot argument neki logični formuli.
   Tega ne bom natančno definirala, ampak na kratko morajo spoštovati strukturo
   \(ℒ\)-množice \(A\).
 \end{opomba}
-
-TODO: kako to napisat? ni res trditev, ampak da loh to definiramo bi blo fajn
-prevert da je na nek način konsistentno.
-NOTE: mogoče je vredno kar rečt, da če dokazujemo propozicijo potem vemo, da
-obstaja \(b : B\), da je \(b = f(a)\), tako je \(f(a)\) pač element, dokler na
-koncu naredimo truncation.
-\begin{trditev}
-  Gornjo intepretacijo lahko razširimo še z morfizmi. Naj bo \(f : A ↬ B\),
-  \(φ\) formula s prosto spremenljivko tipa \(B\), in \(a ∈ A\).
-  Potem lahko \(\φ(f(a))\) interpretiramo kot \(\exist{b : B}{b = f(a)∧φ(b)}\).
-\end{trditev}
-\begin{proof}
-  Oglejmo si interpretacijo \(φ(f(a)) ∨ ψ(f(a))\). Po eni strani lahko to
-  interpretiramo kot \(\exist{b : B}{b = f(a) ∧ \p{φ(b) ∨ ψ(b)}}\), po drugi pa
-  kot \(\exist{b',b'' : B}{b' = f(a)∧φ(b') ∨ b'' = f(a)∧ψ(b'')}\).
-  Očitno prva interpretacija implicira drugo, tako da pokažimo, da velja tudi
-  obratna implikacija.
-
-  Naj bodo \(b'\) in \(b''\) kot zgoraj. Po aksiomih morfizmov obstaja tudi
-  \(b : B\) za katerega je \(b = f(a)\). Sedaj lahko disjunkcijo ločimo na primere.
-  Če velja \(b' = f(a)∧φ(b')\), potem lahko sklepamo \(b = f(a) = b'\). Potem pa
-  velja \(φ(b)\). Simetrično potem izpeljemo \(ψ(b)\) iz druge implikacije, tako
-  da res velja \(φ(b) ∨ ψ(b)\).
-
-  To pokaže, da ni važno, v katerem vrstnem redu vrednost \quot{\(f(a)\)}
-  potegnemo iz formule.
-
-  Dobro bi bilo še pokazati, da je potem interpretacija \(b = f(a)\) skladna z
-  dejansko definicijo \(f\) kot funkcije iz \(B×A → ℒ\).
-  Ampak po tem pravilu gornje interpretiramo kot
-  \(\exist{b' : B}{b = b' ∧ b' = f(a)}\). To je pa očitno enako \(b = f(a)\).
-\end{proof}
 
 \begin{definicija}
   Formula \(φ\) brez prostih spremenljivk je \emph{veljavna na \(U\)} (pišemo
@@ -565,24 +534,41 @@ Ponovimo sedaj gornje definicije v internem jeziku.
 \end{definicija}
 \begin{definicija}
   \emph{Morfizem med \(ℒ\)-množicama} \(A\) in \(B\) je interna relacija, ki jo
-  \(b = f(a)\), za \(a\) tipa \(A\) in \(b\) tipa \(B\), za katero velja
+  \(b ~ f(a)\), za \(a\) tipa \(A\) in \(b\) tipa \(B\), za katero velja
   \begin{align}
-    &⊢ b = f(a) ⇒ a = a ∧ b = b                \tag{M1}\label{M1}\\
-    &⊢ b = b' ∧ b' = f(a') ∧ a' = a ⇒ b = f(a) \tag{M2}\label{M2}\\
-    &⊢ b = f(a) ∧ b' = f(a) ⇒ b = b'           \tag{M3}\label{M3}\\
-    &⊢ \for{a : A}{\exist{b : B}{b = f(a)}}    \tag{M4}\label{M4}
+    &⊢ b ~ f(a) ⇒ a = a ∧ b = b                \tag{M1}\label{M1}\\
+    &⊢ b = b' ∧ b' ~ f(a') ∧ a' = a ⇒ b ~ f(a) \tag{M2}\label{M2}\\
+    &⊢ b ~ f(a) ∧ b' ~ f(a) ⇒ b = b'           \tag{M3}\label{M3}\\
+    &⊢ \for{a : A}{\exist{b : B}{b ~ f(a)}}    \tag{M4}\label{M4}
   \end{align}
 \end{definicija}
 
 
 \subsubsection{Lastnosti morfizmov}
 
+TODO: kako to napisat? ni res trditev, ampak da loh to definiramo bi blo fajn
+prevert da je na nek način konsistentno. Loh rečem tud da je sam za relacije, k
+pol vrstni red ni dvoumen.
+NOTE: mogoče je vredno kar rečt, da če dokazujemo propozicijo potem vemo, da
+obstaja \(b : B\), da je \(b ~ f(a)\), tako je \(f(a)\) pač element, dokler na
+koncu naredimo truncation.
+
+Ker na vrednost \(f(a)\) želimo misliti kot term tipa \(B\), bi bilo priročno,
+če lakho kako definiramo, kako se \(f(a)\) uporabi v formulah.
+\begin{definicija}
+  Naj bo \(f : A ↬ B\), \(R\) interna eniška relacija na \(B\), in \(a ∈ A\).
+  Potem lahko \(R(f(a))\) interpretiramo kot \(\exist{b : B}{b ~ f(a)∧R(b)}\).
+\end{definicija}
+\begin{opomba}
+  Na tej točki lahko torej 
+\end{opomba}
+
 \begin{konstrukcija}
   Če imamo morfizma \(A \oset{f}{↬} B \oset{g}{↬} C\), je njun kompozitum
   \(g∘f : A ↬ C\) definiran kot
-  \[ ⟦c = g∘f(a)⟧ ≔ ⋁_{b ∈ B} ⟦c = g(b)⟧∧⟦b = f(a)⟧\text. \]
+  \[ ⟦c ~ g∘f(a)⟧ ≔ ⋁_{b ∈ B} ⟦c ~ g(b)⟧∧⟦b ~ f(a)⟧\text. \]
   V internem jeziku je to natanko kompozitum relacij
-  \(\exist{b : B}{c = g(b) ∧ b = f(a)}\).
+  \(\exist{b : B}{c ~ g(b) ∧ b ~ f(a)}\).
 \end{konstrukcija}
 \begin{proof}[Konstruktiven]
   Vemo, da je kompozitum relacij relacija, in tudi kompozitum funkcijskih
@@ -602,52 +588,85 @@ Ponovimo sedaj gornje definicije v internem jeziku.
   označimo z \(\cat{Set}(ℒ)\).
 \end{definicija}
 
+% TODO: povemo kej o f(a) = g(a)
 \begin{lema}
   Morfizma \(f\) in \(g : A ↬ B\) sta enaka natanko tedaj, ko velja 
   \[ ⊢ \for{a : A}{f(a) = g(a)}\text. \]
 \end{lema}
 \begin{proof}
   Pokažemo zgolj zanimivo smer.
-  Predpostavimo torej, da velja gornja formula, in da je \(b = f(a)\), za neka
-  \(a\) in \(b\). Potem vemo, da velja vsaj \(\e a\), zaradi~\ref{M4}, to pa po
-  predpostavki pomeni, da velja \(f(a) = g(a)\). Če to enakost razpišemo,
-  dobimo da obstaja \(b' ∈ B\), tako da je \(b' = f(a)\) in \(b' = g(a)\).
-  Potem je pa \(b' = f(a) = b\), torej je \(b = b' = g(a)\). Ker je vloga \(f\)
-  in \(g\) simetrična, ter \(a\) in \(b\) poljubna, velja \(b = f(a)\) natanko
-  tedaj, ko velja \(b = g(a)\), torej sta \(f\) in \(g\) enaka.
+  Predpostavimo torej, da velja gornja formula, in da je \(b ~ f(a)\), za neka
+  \(a\) in \(b\). Potem po predpostavki vemo, da velja \(f(a) ~ g(a)\). Če to
+  enakost razpišemo, dobimo da obstaja \(b' ∈ B\), tako da je \(b' ~ f(a)\) in
+  \(b' ~ g(a)\). Potem je pa \(b = b'\), torej je \(b = b' ~ g(a)\). Ker je
+  vloga \(f\) in \(g\) simetrična, ter \(a\) in \(b\) poljubna, velja
+  \(b ~ f(a)\) natanko tedaj, ko velja \(b ~ g(a)\), torej sta \(f\) in \(g\)
+  enaka.
 \end{proof}
+\begin{opomba}
+  Ker je \(f(a) = g(a)\) ekvivalentno \(f(a) ~ g(a)\) zadošča pokazati zgolj
+  \[ ⊢ \for{a : A}{f(a) = g(a)}\text. \]
+\end{opomba}
 
-\begin{lema}
-  Naj bosta \(f, g : A ↬ B\) morfizma. Potem sta enaka natanko tedaj, ko velja
-  \[ ⊢ b = f(a) ⇒ b = g(a) }.\]
-\end{lema}
-\begin{dokaz}
-  V eno smer je trditev očitna, tako da predpostavimo, da velja gornja
-  implikacija. Dokazujemo, da za \(a ∈ A\) velja \(f(a) = g(a)\).
-  Po predpostavki zadošča pokazati, da je \(f(a) = f(a)\), kar je pa očitno res.
-\end{dokaz}
+% \begin{lema}
+%   Naj bosta \(f, g : A ↬ B\) morfizma. Potem sta enaka natanko tedaj, ko velja
+%   \[ ⊢ b ~ f(a) ⇒ b = g(a) }.\]
+% \end{lema}
+% \begin{dokaz}
+%   V eno smer je trditev očitna, tako da predpostavimo, da velja gornja
+%   implikacija. Dokazujemo, da za \(a ∈ A\) velja \(f(a) = g(a)\).
+%   Po predpostavki zadošča pokazati, da je \(f(a) = f(a)\), kar je pa očitno res.
+% \end{dokaz}
 
 Na podoben način bi si želeli karakterizirati epimorfizme in monomorfizme v
 kategoriji \(\cat{Set}(ℒ)\), in res jih lahko karakteriziramo kot surjekcije in
 injekcije v tem jeziku:
 
-TODO: spremenim to v definicijo, pokažem da je inj/surj ⇒ mono/epi?
-\begin{trditev}
-  Morfizem \(f : A ↬ B\) je epimorfizem, če velja
-  \[ ⊢ \for{b : B}{\exist{a ∈ A}{b = f(a)}}\text, \]
-  in monomorfizem, če velja
+\begin{definicija}
+  Morfizem \(f : A ↬ B\) je \emph{surjektiven}, ko velja
+  \[ ⊢ \for{b : B}{\exist{a ∈ A}{b ~ f(a)}}\text, \]
+  in \emph{injektiven}, ko velja
   \[ a, a' : A ⊢ f(a) = f(a') ⇒ a = a'\text. \]
+\end{definicija}
+\begin{trditev}
+  Surjekcije so natanko epimorfizmi v \(\cat{Set}{\p{ℒ}}\).
 \end{trditev}
 \begin{dokaz}
-  % TODO: dokaz
-  long and arduous
+  Naj bo \(f : A ↬ B\).
 
-  NOTE: Za epimorfizme Borceux naredi nek kompliciran argument, a obstaja kaj
-  boljšega v internem jeziku?
+  Denimo, da je \(f\) surjektiven, \(g, h : B ↬ C\), in \(g ∘ f = h ∘ f\).
+  Naj bo \(b : B\) in dokažimo \(g(b) ~ h(b)\).
+  Po surjektivnosti potem obstaja \(a : A\), da je \(b ~ f(a)\). Potem je pa
+  % TODO: refactor? tranzitivnost ~ nekje? also, nek ap in cong za ~?
+  \(g(b) ~ g(f(a)) = h(f(a)) ~ h(b)\).
+
+  Po drugi strani pa predpostavimo, da je \(f\) epimorfizem.
+  % TODO: dokaz
+
+  NOTE: Borceux naredi nek kompliciran argument, a obstaja kaj boljšega v
+  internem jeziku?
 
   NOTE: Ah, sem ugotovila, on konstruira kojedro \(f\), in potem \(f\) izenači
   obe vložitvi \(B → \coker{f}\), tako da sta enaki in je \(\coker f = B\).
 \end{dokaz}
+
+\begin{trditev}
+  Injekcije so natanko monomorfizmi v \(\cat{Set}{\p{ℒ}}\).
+\end{trditev}
+\begin{proof}
+  Naj bo \(f : B ↬ C\).
+
+  Denimo, da je \(f\) injektiven, \(g, h : A ↬ B\), in \(f ∘ g = f ∘ h\).
+  Naj bo \(a : A\) in dokažimo \(g(a) = h(a)\).
+  Vemo, da je \(f(g(a)) = f(h(a))\). Po injektivnosti to potem pomeni, da velja
+  \(g(a) = h(a)\), kar smo tudi želeli.
+
+  Obratno, naj bo \(f\) monomorfizem in \(a, a' : A\).
+  Denimo, da velja \(f(a) = f(a')\) in naj bosta \(g, h : \mb1 ↬ A\) definirana
+  s predpisoma \(g(*) ~ a\) ter \(h(*) ~ a'\). Potem pa velja tudi
+  \(f(g(*)) ~ f(a) = f(a') ~ f(h(*))\), torej je \(f∘g = f∘h\). Od tod pa sledi,
+  da je \(g = h\), torej velja \(a ~ g(*) = h(*) ~ a'\).
+\end{proof}
 
 Sedaj se pa želimo vprašati, kaj so bijekcije \(ℒ\)-množic.
 Že iz teorije množic vemo, da ima vsaka relacija dualno relacijo, ki se pa
