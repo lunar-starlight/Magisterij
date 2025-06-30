@@ -8,7 +8,7 @@
 \begin{proof}
   Oglejmo si princip izbire \(\AC_Σ{\p{A, B}}\).
   Potem za vsako celovito relacijo \(R : A×B → Σ\) imamo
-  \[ X ⊩ \for{a : \c A}{\exitst{b : \c B}{R(a, b)}}\text. \]
+  \[ X ⊩ \for{a : \c A}{\exist{b : \c B}{R(a, b)}}\text. \]
   Potem pa po internem aksiomu izbire sčasoma obstaja interna funkcija
   \(f : {\c B}^{\c A}\). Ker je prostor lokalo povezan, je to enako kot funkcija
   \(f : \c{B^A}\), kar nam pa da eksterno funkcijo \(f : A → B\), za katero
@@ -21,27 +21,38 @@ validiral principov izbire, kar pa pomeni, da bodisi ne bomo mogli najti pametne
 topološke karakterizacije, bodisi pa ne bomo mogli pokazati, da topološki
 prostor s tako lastostko sploh obstaja.
 
+\begin{opomba}
+  Zgoraj smo lokalno povezanost uporabili zgolj za enakost \({\c B}^{\c A} = \c{B^A}\),
+  tako da bi zadoščalo predpostaviti zgolj to (torej, za enaka \(A\) in \(B\)
+  kot se pojavita v aksiomu izbire). To bo tema tega razdelka.
+\end{opomba}
+
 % %TODO: cite whatever talk he gave
 % Spodnji rezultat je odkril Alex Simpson, dokaz v primeru topoloških modelov je
 % pa originalen.
-% %TODO: A meta-choice sledi iz internega choice? ja za l. pov. prostore, a se da
-% % še kej rečt?
 % \begin{izrek}
-%   Nad \(X\) velja \(\AC_Σ{\p{\uline A, ℱ}}\) natanko tedaj, ko je
-%   Grothendieckova topologija \(X\) zaprta za \(A\)-mnoge preseke \(Σ\)-krovov.
+%   Nad \(X\) velja \(\AC_Σ{\p{\c A, \c B}}\) in \({\c B}^{\c A} = \c{B^A}\)
+%   natanko tedaj, ko je Grothendieckova topologija \(X\) zaprta za \(A\)-mnoge
+%   preseke \(B\)-indeksiranih \(Σ\)-krovov.
 % \end{izrek}
 % \begin{proof}
 %   \begin{itemize}
 %   \item[\(\p ⇐\)]
-%     Naj bo \(X ⊩ P : \uline A × ℱ → Σ\) celovita relacija.
-%     To pomeni, da za vsak \(a ∈ A\) obstaja \(Σ\)-krov \(Cₐ\), tako da za vsak
-%     element \(U ∈ Cₐ\) obstaja tak \(f_{a, U} ∈ ℱ(U)\), da velja
-%     \(U ⊩ P(a, f_{a, U})\).
+%     Pokažimo prvo, da velja gornja enakost.
+%     Na stopnji \(U ∈ 𝒪X\) je \({\c B}^{\c A}\) navzven enak \(U×ΔA → ΔB\),
+%     objekt \(\c{B^A}\) pa \(U → Δ\p{B^A}\). Torej moramo pokazati, da vsaka
+%     zvezna funkcija \(f\) porodi zvezno funkcijo \(x ↦ (a ↦ f(x, a))\).
+    
+    
+%     Naj bo \(X ⊩ P : \c A × \c B → Σ\) celovita relacija.
+%     To pomeni, da za vsak \(a ∈ A\) obstaja \(B\)-indeksiran \(Σ\)-krov \(Cₐ\),
+%     tako da za vsak element \(U ∈ Cₐ\) obstaja tak \(b_{a, U} ∈ B(U)\), da velja
+%     \(U ⊩ P(a, b_{a, U})\).
 
 %     Po predpostavki sedaj vemo, da je \(C ≔ ⋂_{a ∈ A} Cₐ\) tudi \(Σ\)-krov.
 %     Sedaj pa, za vsak \(U ∈ C\) velja, da je vsebovan v vsakem \(Cₐ\), tako da
-%     za vsak \(a ∈ A\) obstaja \(f_{a, U}\), da velja \(U ⊩ P(a, f_{a, U})\).
-%     Tedaj pa je preslikava \(a ↦ f_{a, U}\) ravno želena funkcija izbire.
+%     za vsak \(a ∈ A\) obstaja \(b_{a, U}\), da velja \(U ⊩ P(a, b_{a, U})\).
+%     Tedaj pa je preslikava \(a ↦ b_{a, U}\) ravno želena funkcija izbire.
 %   \item[\(\p ⇒\)]
 %     Naj bodo \(Cₐ\) \(Σ\)-krovi in \(C ≔ ⋂_{a ∈ A} Cₐ\). Pokazali bomo, da
 %     vsebuje \(Σ\)-krov, kar bo pokazalo, da je tudi sam \(Σ\)-krov.
