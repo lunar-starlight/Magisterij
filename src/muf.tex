@@ -1,5 +1,7 @@
 % LTeX: enabled=false
 
+\usepackage[normalem]{ulem}
+
 \newpf{protislovje}{\lightning}
 \newenvironment{slogan}[1][Slogan]{
   \noindent\textbf{#1:}
@@ -46,10 +48,11 @@
   %\def\c#1{\left( {#1} \right)^c}
   %\def\c#1{{#1}^c}
   \def\c{\uline}
+  \newcommand{\g}[1]{\left\langle {#1} \right\rangle}
   \renewcommand{\b}[1]{\left\{ {#1} \right\}}
   \renewcommand{\i}[1]{\left⟦ {#1} \right⟧}
-  \renewcommand{\e}[1]{\left‖ {#1} \right‖}
-  \renewcommand{\s}[1]{\left\{ {#1} \right\}}
+  \newcommand{\e}[1]{\left‖ {#1} \right‖}
+  \newcommand{\s}[1]{\left\{ {#1} \right\}}
   \renewcommand{\O}[1]{\mathcal{O}{#1}}
   \renewcommand{\int}{\textrm{Int}}
 }
@@ -119,8 +122,8 @@
 \def\Rd{ℝ_d}
 \def\Rc{ℝ_c}
 
-\newcolumntype{C}{>{\centering\arraybackslash}X}
 \usepackage{tabularx}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
 \newcommand{\catdef}[3][]{
   \newline
   #1
@@ -134,6 +137,7 @@
 
 \theoremstyle{definition}
 \newtheorem{konstrukcija}[definicija]{Konstrukcija}
+\newtheorem{oznaka}[definicija]{oznaka}
 
 \renewcommand{\ln}{\mathcal{\mathrm{Ln}}}
 
