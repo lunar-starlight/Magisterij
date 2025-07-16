@@ -159,7 +159,7 @@ Imamo torej sledeči slovar:
   \centering
   \begin{tabularx}{0.5\textwidth}{@{} *{2}{C} @{}}
     Logika    & Topologija\\
-    \midrule
+    %\midrule
     \(⊤\)     & \(X\)\\
     \(⊥\)     & \(∅\)\\
     \(U ∧ V\) & \(U ∩ V\)\\
@@ -292,15 +292,15 @@ ekvivalenčno relacijo.
 
 \begin{primer}
   Na \(\set{f : U → ℕ}{U ∈ ℒ}\) lahko definiramo enakost
-  \(⟦n = m⟧ = \set{t ∈ X}{n(t) = m(t)}\). To je \(ℒ\)-množica, ki jo bomo
-  označili z \(𝒩\).
+  \[ ⟦n = m⟧ = \set{t ∈ X}{n(t) = m(t)}\text. \]
+  To je \(ℒ\)-množica, ki jo bomo označili z \(𝒩\).
 \end{primer}
 
 \begin{primer}
   Na \(\set{f : U → ℝ}{U ∈ ℒ}\) lahko definiramo enakost
-  \(⟦f = g⟧ = \int{\p{\set{t ∈ X}{f(t) = g(t)}}}\). To je \(ℒ\)-množica, ki jo
-  bomo označili z \(ℝ\), oziroma z \(ℝ_d\), saj se izkaže, da bo to objekt
-  dedekindovih realnih števil v internem svetu.
+  \[ ⟦f = g⟧ = \int{\p{\set{t ∈ X}{f(t) = g(t)}}}\text. \]
+  To je \(ℒ\)-množica, ki jo bomo označili z \(ℝ\), oziroma z \(ℝ_d\), saj se
+  izkaže, da je to objekt dedekindovih realnih števil v internem svetu.
 \end{primer}
 
 Je pa ta struktura bistveno bolj splošna kot ``množica preslikav z enakostjo po
@@ -308,7 +308,12 @@ točkah''.
 
 \begin{primer}
   Množica \(ℕ\) skupaj z enakostjo definirano kot
-  \[ ⟦n = m⟧ ≔ \begin{cases} X &; n = m\\ ∅ &; n ≠ m \end{cases} \]
+  \[ ⟦n = m⟧ ≔
+    \begin{cases}
+      X &; n = m\\
+      ∅ &; n ≠ m
+    \end{cases}
+  \]
   je \(ℒ\)-množica. To bomo označevali z \(\c ℕ\).
 \end{primer}
 
@@ -348,28 +353,43 @@ obstajajo.
 To nam da idejo, da lahko preslikave definiramo kot funkcijske relacije, seveda
 spet vrednostene v logiki odprtih množic.
 
+Definirajmo najprej, kaj pomeni, da je neka presliakva relacija med
+\(ℒ\)-množicami. Prav tako definirajmo kaj pomeni, da je operacija. Te porodijo
+poseben primer morfizmov, ki pa dejansko so funkcije med \(ℒ\)-množicami.
 \begin{definicija}
-  \emph{Morfizem med \(ℒ\)-množicama} \(A\) in \(B\) je preslikava
-  \(⟦- ~ f(-)⟧ : B×A → ℒ\), za katero velja
-  \begin{align}% TODO: change?
-    &⟦b ~ f(a)⟧ ≤ ‖a‖ ∧ ‖b‖                             \tag{M1}\label{M1}\\
-    &⟦b =_B b'⟧ ∧ ⟦b ~ f(a')⟧ ∧ ⟦a' =_A a⟧ ≤ ⟦b ~ f(a)⟧ \tag{M2}\label{M2}\\
-    &⟦b ~ f(a)⟧ ∧ ⟦b' ~ f(a)⟧ ≤ ⟦b =_B b'⟧              \tag{M3}\label{M3}\\
-    &‖a‖ ≤ ⋁_{b ∈ B} ⟦b ~ f(a)⟧                         \tag{M4}\label{M4}
+  Preslikava \(R : A₁×…×Aₙ → ℒ\) je \emph{(interna) relacija}, ko velja
+  \begin{align*}
+    \i{a₁ = a₁'} ∧ … ∧ \i{aₙ = aₙ'} ∧ R(a₁,…,aₙ) ≤ R(a₁',…,aₙ')\text{ in}\\
+    R(a₁,…,aₙ) ≤ \e{a₁}∧…∧\e{aₙ}\text.
+  \end{align*}
+
+  Preslikava \(f : A₁×…×Aₙ → B\) je \emph{(interna) operacija}, ko velja
+  \begin{align*}
+    \i{a₁ = a₁'} ∧ … ∧ \i{aₙ = aₙ'} ≤ f(a₁,…,aₙ) = f(a₁',…,aₙ')\text{ in}\\
+    f(a₁,…,aₙ) ≤ \e{a₁}∧…∧\e{aₙ}\text.
+  \end{align*}
+\end{definicija}
+
+\begin{definicija}
+  \emph{Morfizem med \(ℒ\)-množicama} \(A\) in \(B\) je relacija
+  \(⟦- \sim f(-)⟧ : B×A → ℒ\), za katero velja
+  \begin{align}
+    &⟦b \sim f(a)⟧ ∧ ⟦b' \sim f(a)⟧ ≤ ⟦b =_B b'⟧ \tag{enoličnost}\label{enoličnost}\\
+    &‖a‖ ≤ ⋁_{b ∈ B} ⟦b \sim f(a)⟧               \tag{celovitost}\label{celovitost}
   \end{align}
-  Na prvi dve pravili gledamo kot na skladnost z relacijama na \(A\) in \(B\),
+  Na prvi dve pravili gledamo kot na skladnost z enakostima na \(A\) in \(B\),
   na drugi dve sta pa enoličnost in celovitost, zato morfizme vseeno pišemo v
   funkcijskem zapisu kot \(f : A ↬ B\).
 \end{definicija}
 \begin{opomba}
-  Na relacijo \(b ~ f(a)\) zares želimo gledati kot enaksot, ampak ne nujno
+  Na relacijo \(b \sim f(a)\) zares želimo gledati kot enaksot, ampak ne nujno
   obstaja element \(ℒ\)-množice \(B\), ki bi predstavljal sliko \(f(a)\), moramo
   biti pri tem previdni.
   Bomo pa kasneje vseeno videli, da lahko pod določenimi pogoji na \(f(a)\)
   gledamo kot na element \(ℒ\)-množice \(B\).
 \end{opomba}
 Vseeno pa bomo internem jeziku na \(⋁_{b ∈ B} φ(b)\) gledali kot eksistenčni
-kvantifikator, torej \ref{M4} res pravi, da obstaja nek \(b\), ki je slika
+kvantifikator, torej \ref{celovitost} res pravi, da obstaja nek \(b\), ki je slika
 elementa \(a\).
 
 
@@ -394,48 +414,66 @@ Torej, vse je enako kot prej, ampak sedaj lahko našemu jeziku dodamo še
 \(ℒ\)-množice. Najprej, interpretirajmo terme jezika, torej elemente
 \(ℒ\)-množic.
 
-TODO: uvest kaj so terms, \(α : A\), etc
+V našem jeziku želimo graditi elemente \(ℒ\)-množic. Najosnovnejši način je, da
+vzamemo kar dobesedne elemente \(ℒ\)-množice \(A\). Poleg tega pa če imamo
+operacijo tipa \(A → B\), jo lahko uporabimo na nekem obstoječem termu tipa
+\(A\), da dobimo term tipa \(B\). Poleg tega pa se v izrazih lahko pojavljajo
+spremenljivke, recimo v kvantificiranih izrazih. Te interpretiramo kot
+spremenljivke v zunanjem svetu. Ker je naš jezik zelo osnoven, bo to vse, bomo
+pa kasneje uvedli polnomočen \(λ\) račun, kar nam bo olajšalo delo z jezikom,
+ampak ni nujno.
 
 \begin{table}[h]
   \centering
-  \begin{tabularx}{0.6\textwidth}{p{0.2\textwidth} X}
-    \(\i{a}\)    & \(≔ a\), za \(a ∈ A\)\\
-    \(\i{f(α)}\) & \(≔ f{\p{\i α}}\), kjer je \(f : A → B\) in \(α : A\)
+  \begin{tabularx}{0.7\textwidth}{p{0.2\textwidth}|X}
+    Termi tipa \(A\) & \(ℒ\)-množica \(A\)\\
+    \hline
+    \(a\)            & \(a\), za \(a ∈ A\)\\
+    \(x\)            & \(x\), kjer je \(x\) spremenljivka tipa \(A\)\\
+    \(f(α)\)         & \(f{\p{\i β}}\), kjer je \(f : B → A\) operacija in
+                       \(β : B\)
   \end{tabularx}
 
   \caption{Interpretacija termov v internem jeziku}
   \label{tab:int-term}
 \end{table}
-Vrednosti \(f(a)\) še ne moramo podati neposredne interpretacije, saj kot
-rečeno njihova vrednost ne obstaja, lahko pa bomo definirali kaj pomeni
-uporabiti morfizem kot argument neki logični formuli.
+
+Ko bomo kasneje pisali matematiko v internem jeziku, bomo uporabljali zapis
+\(τ : A\) namesto (do sklanjanja in besednega reda natančno) \quot{\(τ\) tipa \(A\)}.
+Na primer \quot{Naj bo \(x : A\)} se naj bere kot
+\quot{Naj bo \(x\) tipa \(A\)}.
 
 \begin{table}[h]
   \centering
-  \begin{tabularx}{0.6\textwidth}{p{0.2\textwidth}X}
-    \(\i ⊤\)                    & \(≔ X\)\\
-    \(\i ⊥\)                    & \(≔ ∅\)\\
-    \(\i{φ ∧ ψ}\)               & \(≔ \i φ ∩ \i ψ\)\\
-    \(\i{φ ∨ ψ}\)               & \(≔ \i φ ∪ \i ψ\)\\
-    \(\i{¬φ}\)                  & \(≔ \ext{\i φ}\)\\
-    \(\i{φ ⇒ ψ}\)               & \(≔ \int{\p{\i ψ ∪ {\i φ}ᶜ}}\)\\
-    \(\i{\for{a : A}{φ(a)}}\)   & \(≔ \int{\p{⋂_{a ∈ A}\i{\e a ⇒ φ(a)}}}\)\\
-    \(\i{\exist{a : A}{φ(a)}}\) & \(≔ ⋃_{a ∈ A}\i{\e a ∧ φ(a)}\)\\
-    \(\i{τ = σ}\)               & \(≔ \i{\i τ = \i σ}\)\\
-    \(\i{\e τ}\)                & \(≔ \e{\i τ}\)\\
-    \(\i{τ ~ f(σ)}\)            & \(≔ \i{\i τ ~ f(\i σ)}\)\\
-    \(\i{R(τ)}\)                & \(≔ R{\p{\i τ}}\), kjer je \(R : A → ℒ\)
+  \begin{tabularx}{0.7\textwidth}{p{0.2\textwidth}|C}
+    Interna logika          & Topologija\\
+    \hline
+    \(⊤\)                   & \(X\)\\
+    \(⊥\)                   & \(∅\)\\
+    \(φ ∧ ψ\)               & \(\i φ ∩ \i ψ\)\\
+    \(φ ∨ ψ\)               & \(\i φ ∪ \i ψ\)\\
+    \(¬φ\)                  & \(\ext{\i φ}\)\\
+    \(φ ⇒ ψ\)               & \(\int{\p{\i ψ ∪ {\i φ}ᶜ}}\)\\
+    \(\for{a : A}{φ(a)}\)   & \(\int{\p{⋂_{a ∈ A}\i{\e a ⇒ φ(a)}}}\)\\
+    \(\exist{a : A}{φ(a)}\) & \(⋃_{a ∈ A}\i{\e a ∧ φ(a)}\)\\
+    \(τ = σ\)               & \(\i{\i τ = \i σ}\)\\
+    %\(\i{\e τ}\)                & \(≔ \e{\i τ}\)\\
+    %\(\i{τ \sim f(σ)}\)         & \(≔ \i{\i τ \sim f(\i σ)}\)\\
+    \(R(τ)\)                & \(R{\p{\i τ}}\), kjer je \(R : A → ℒ\) relacija
   \end{tabularx}
 
   \caption{Interpretacija formul v internem jeziku}
   \label{tab:int-sent}
 \end{table}
-
 \begin{opomba}
-  Zgoraj interpretiramo izraze, ki vsebujejo funkcije \(f : A → B\) ali
-  \(R : A → ℒ\). Tu moramo paziti, saj morajo te funkcije biti dovolj lepe.
-  Tega ne bom natančno definirala, ampak na kratko morajo spoštovati strukturo
-  \(ℒ\)-množice \(A\).
+  Vsi \(ℒ\)-morfizmi so relacije, in jih v interni jezik dodamo kot relacijske
+  simbole. Prav tako je \(\e -\) relacija, saj velja
+  \(\i{a = a'}∧\e{a'} ≤ \e a\) in \(\e a ≤ \e a\), tako da tudi to dodamo kot
+  relacijski simbol.
+\end{opomba}
+\begin{opomba}    
+  Vredno je tudi omeniti, da so \(ℒ\)-enakosti tudi relacije, in da je njihova
+  interpretacija kot enakost in kot relacija enaka.
 \end{opomba}
 
 \begin{definicija}
@@ -482,7 +520,8 @@ To nam da zanimivo posledico, da je veljavnost ekvivalentna lokalni veljavnosti.
       \(U ⊩ φ ∧ ψ\)               & ko \(U ⊩ φ\) in \(U ⊩ ψ\)\\
       \(U ⊩ φ ∨ ψ\)               & ko
                                     \(\eventually{V ⊆ U}{V ⊩ φ\text{ ali }V ⊩ ψ}\)\\ 
-      \(U ⊩ φ ⇒ ψ\)               & ko za vsak \(V ⊆ U\) velja, da iz \(V ⊩ φ\)
+      \(U ⊩ φ ⇒ ψ\)               & ko velja \(U∩\i φ ≤ \i ψ\), ali
+                                  & ko za vsak \(V ⊆ U\) velja, da iz \(V ⊩ φ\)
                                     sledi \(V ⊩ ψ\)\\
       \(U ⊩ ¬φ\)                  & ko za vsak \(V ⊆ U\) velja, da iz \(V ⊩ φ\)
                                     sledi \(V = ∅\)\\
@@ -510,13 +549,20 @@ To nam da zanimivo posledico, da je veljavnost ekvivalentna lokalni veljavnosti.
   Situacija z obstojem je popolnoma analogna, saj pogoj na desni pravi natanko,
   da množice \(\i{\e a ∧ φ(a)}\) pokrivajo \(U\).
 \end{proof}
+\begin{opomba}
+  Pri implikaciji imamo dva načina, kako jo dokazati. Izkaže se, da je v
+  različnih primerih lažje uporabiti različne načine. Ponavadi, če sta izraza
+  \(φ\) in \(ψ\) dokaj preprosta, bo prvi način boljši, ampak če prevajamo kak
+  zahtevnejši izraz, je pa bolj praktično interpretirati implikacijo kot kar
+  implikacijo, in kasneje stvari poenostaviti.
+\end{opomba}
 
 Kdaj bomo pa tudi želeli pisati formule s prostimi spremenljivkami, recimo
 zgoraj v definicijah \(ℒ\)-množic in morfizmov. V teh primerih vedno želimo, da
 je formula veljavna na vseh možnih vrednostih teh spremenljivk, tako da bomo
 veljavnost teh formul tako tudi definirali.
 \begin{definicija}
-  Formula \(φ\) s prostimi spremenljivkami tipov \(A₁\),…,\(Aₙ\) je
+  Formula \(φ\) s prostimi spremenljivkami tipov \(A₁,…,Aₙ\) je
   \emph{(lokalno) veljavna na \(U\)} (pišemo \(U ⊩ φ\)), ko je za vse
   \(aᵢ ∈ Aᵢ\) formula \(φ(a₁,…,aₙ)\) veljavna na \(U\).
   Če želimo izraziti, da je formula veljavna na celem \(X\), bomo kot zgoraj
@@ -534,41 +580,74 @@ Ponovimo sedaj gornje definicije v internem jeziku.
 \end{definicija}
 \begin{definicija}
   \emph{Morfizem med \(ℒ\)-množicama} \(A\) in \(B\) je interna relacija, ki jo
-  \(b ~ f(a)\), za \(a\) tipa \(A\) in \(b\) tipa \(B\), za katero velja
+  pišemo \(b \sim f(a)\), za \(a\) tipa \(A\) in \(b\) tipa \(B\), za katero velja
   \begin{align}
-    &⊢ b ~ f(a) ⇒ a = a ∧ b = b                \tag{M1}\label{M1}\\
-    &⊢ b = b' ∧ b' ~ f(a') ∧ a' = a ⇒ b ~ f(a) \tag{M2}\label{M2}\\
-    &⊢ b ~ f(a) ∧ b' ~ f(a) ⇒ b = b'           \tag{M3}\label{M3}\\
-    &⊢ \for{a : A}{\exist{b : B}{b ~ f(a)}}    \tag{M4}\label{M4}
+    &⊢ b \sim f(a) ∧ b' \sim f(a) ⇒ b = b'     \tag{enoličnost}\label{enoličnost}\\
+    &⊢ \for{a : A}{\exist{b : B}{b \sim f(a)}} \tag{celovitost}\label{celovitost}
   \end{align}
 \end{definicija}
 
+\subsubsection{Interne relacije}
 
-\subsubsection{Lastnosti morfizmov}
 
-TODO: kako to napisat? ni res trditev, ampak da loh to definiramo bi blo fajn
-prevert da je na nek način konsistentno. Loh rečem tud da je sam za relacije, k
-pol vrstni red ni dvoumen.
-NOTE: mogoče je vredno kar rečt, da če dokazujemo propozicijo potem vemo, da
-obstaja \(b : B\), da je \(b ~ f(a)\), tako je \(f(a)\) pač element, dokler na
-koncu naredimo truncation.
+Z internim jezikom si lahko pomagamo pri konstruiranju relacij oziroma
+\(ℒ\)-morfizmov. Natančno to pomeni, da bomo formule s prostimi spremenljivkami
+interpretirali kot preslikave, ki pa bodo avtomatsko zadoščale pravilom relacij.
 
-Ker na vrednost \(f(a)\) želimo misliti kot term tipa \(B\), bi bilo priročno,
-če lakho kako definiramo, kako se \(f(a)\) uporabi v formulah.
-\begin{definicija}
-  Naj bo \(f : A ↬ B\), \(R\) interna eniška relacija na \(B\), in \(a ∈ A\).
-  Potem lahko \(R(f(a))\) interpretiramo kot \(\exist{b : B}{b ~ f(a)∧R(b)}\).
-\end{definicija}
+Najprej si olajšajmo delo, in definirajmo produkte \(ℒ\)-množic. Potem bomo
+lahko vse definirali za eno spremenljivko, saj lahko relacije na več
+spremenljivkah predstavimo kot eniško relacijo (ozioma predikat) na produktu.
+
+\begin{konstrukcija}
+  Naj bosta \(A\) in \(B\) \(ℒ\)-množici. Njun produkt je množica
+  \[ \set{(a, b) ∈ A×B}{\e a = \e b}, \]
+  enakost pa definiramo po točkah
+  \[ \i{\p{a, b} = \p{a', b'}} ≔ \i{a = a'} ∧ \i{b = b'}\text. \]
+\end{konstrukcija}
+\begin{proof}
+  Gornja enakost je očitno simetrična in tranzitivna, tako da tvori
+  \(ℒ\)-množico.
+\end{proof}
 \begin{opomba}
-  Na tej točki lahko torej 
+  Zgoraj za nosilec produkta vzamemo pare, ki so enako definirani. To storimo
+  zato, da bomo kasneje lahko definirali ustrezne projekcije iz produkta, saj
+  sicer te nebi bili \(ℒ\)-morfizmi.
 \end{opomba}
 
 \begin{konstrukcija}
-  Če imamo morfizma \(A \oset{f}{↬} B \oset{g}{↬} C\), je njun kompozitum
+  Naj bo \(φ\) formula s prosto spremenljivko \(x\) tipa \(A\). Potem preslikava
+  \(a ↦ \e a ∧ \i{φ(a)}\) definira interno relacijo na \(A\).
+\end{konstrukcija}
+\begin{dokaz}
+  Označimo preslikavo s \(\hat φ\).
+  Preslikava je očitno stroga. Prav tako je ekstenzionalna, saj velja
+  \begin{align*}
+    \i{a = a'} ∧ \hat φ(a')
+    &≤ \i{a = a'} ∧ \e a ∧ \i{φ(a')}\\
+    &≤ \e a' ∧ \i{a = a' ∧ φ(a')}\\
+    &≤ \e a' ∧ \i{φ(a')} = \hat φ(a)
+  \end{align*}
+\end{dokaz}
+\begin{opomba}
+  Če je formula \(φ\) že taka, da velja \(\i{φ(a)} ≤ \e a\) za vse \(a ∈ A\),
+  lahko preprosto pišemo \(\hat φ(a) ≔ \i{φ(a)}\).
+\end{opomba}
+
+\begin{primer}
+  Če je \(R\) relacija na \(A\), je \(\hat R = R\). Ker je \(R\) že sama po sebi
+  stroga, lahko uporabimo gornjo opombo, in pišemo \(\hat R(a) = \i{R(a)}\).
+  Ampak to je pa natanko \(R(a)\).
+\end{primer}
+
+TODO: nekje nek soundness
+
+NOTE: Mogoče je to prezgodej, a so dokazi tle ok za to stopnjo?
+\begin{konstrukcija}
+  Če imamo \(ℒ\)-morfizma \(A \oset{f}{↬} B \oset{g}{↬} C\), je njun kompozitum
   \(g∘f : A ↬ C\) definiran kot
-  \[ ⟦c ~ g∘f(a)⟧ ≔ ⋁_{b ∈ B} ⟦c ~ g(b)⟧∧⟦b ~ f(a)⟧\text. \]
+  \[ ⟦c \sim g∘f(a)⟧ ≔ ⋁_{b ∈ B} ⟦c \sim g(b)⟧∧⟦b \sim f(a)⟧\text. \]
   V internem jeziku je to natanko kompozitum relacij
-  \(\exist{b : B}{c ~ g(b) ∧ b ~ f(a)}\).
+  \(\exist{b : B}{c \sim g(b) ∧ b \sim f(a)}\).
 \end{konstrukcija}
 \begin{proof}[Konstruktiven]
   Vemo, da je kompozitum relacij relacija, in tudi kompozitum funkcijskih
@@ -588,148 +667,93 @@ Ker na vrednost \(f(a)\) želimo misliti kot term tipa \(B\), bi bilo priročno,
   označimo z \(\cat{Set}(ℒ)\).
 \end{definicija}
 
-% TODO: povemo kej o f(a) = g(a)
-\begin{lema}
-  Morfizma \(f\) in \(g : A ↬ B\) sta enaka natanko tedaj, ko velja 
-  \[ ⊢ \for{a : A}{f(a) = g(a)}\text. \]
-\end{lema}
-\begin{proof}
-  Pokažemo zgolj zanimivo smer.
-  Predpostavimo torej, da velja gornja formula, in da je \(b ~ f(a)\), za neka
-  \(a\) in \(b\). Potem po predpostavki vemo, da velja \(f(a) ~ g(a)\). Če to
-  enakost razpišemo, dobimo da obstaja \(b' ∈ B\), tako da je \(b' ~ f(a)\) in
-  \(b' ~ g(a)\). Potem je pa \(b = b'\), torej je \(b = b' ~ g(a)\). Ker je
-  vloga \(f\) in \(g\) simetrična, ter \(a\) in \(b\) poljubna, velja
-  \(b ~ f(a)\) natanko tedaj, ko velja \(b ~ g(a)\), torej sta \(f\) in \(g\)
-  enaka.
-\end{proof}
-\begin{opomba}
-  Ker je \(f(a) = g(a)\) ekvivalentno \(f(a) ~ g(a)\) zadošča pokazati zgolj
-  \[ ⊢ \for{a : A}{f(a) = g(a)}\text. \]
-\end{opomba}
-
-% \begin{lema}
-%   Naj bosta \(f, g : A ↬ B\) morfizma. Potem sta enaka natanko tedaj, ko velja
-%   \[ ⊢ b ~ f(a) ⇒ b = g(a) }.\]
-% \end{lema}
-% \begin{dokaz}
-%   V eno smer je trditev očitna, tako da predpostavimo, da velja gornja
-%   implikacija. Dokazujemo, da za \(a ∈ A\) velja \(f(a) = g(a)\).
-%   Po predpostavki zadošča pokazati, da je \(f(a) = f(a)\), kar je pa očitno res.
-% \end{dokaz}
-
-Na podoben način bi si želeli karakterizirati epimorfizme in monomorfizme v
-kategoriji \(\cat{Set}(ℒ)\), in res jih lahko karakteriziramo kot surjekcije in
-injekcije v tem jeziku:
-
-\begin{definicija}
-  Morfizem \(f : A ↬ B\) je \emph{surjektiven}, ko velja
-  \[ ⊢ \for{b : B}{\exist{a ∈ A}{b ~ f(a)}}\text, \]
-  in \emph{injektiven}, ko velja
-  \[ a, a' : A ⊢ f(a) = f(a') ⇒ a = a'\text. \]
-\end{definicija}
-\begin{trditev}
-  Surjekcije so natanko epimorfizmi v \(\cat{Set}{\p{ℒ}}\).
-\end{trditev}
-\begin{dokaz}
-  Naj bo \(f : A ↬ B\).
-
-  Denimo, da je \(f\) surjektiven, \(g, h : B ↬ C\), in \(g ∘ f = h ∘ f\).
-  Naj bo \(b : B\) in dokažimo \(g(b) ~ h(b)\).
-  Po surjektivnosti potem obstaja \(a : A\), da je \(b ~ f(a)\). Potem je pa
-  % TODO: refactor? tranzitivnost ~ nekje? also, nek ap in cong za ~?
-  \(g(b) ~ g(f(a)) = h(f(a)) ~ h(b)\).
-
-  Po drugi strani pa predpostavimo, da je \(f\) epimorfizem.
-  % TODO: dokaz
-
-  NOTE: Borceux naredi nek kompliciran argument, a obstaja kaj boljšega v
-  internem jeziku?
-
-  NOTE: Ah, sem ugotovila, on konstruira kojedro \(f\), in potem \(f\) izenači
-  obe vložitvi \(B → \coker{f}\), tako da sta enaki in je \(\coker f = B\).
-\end{dokaz}
-
-\begin{trditev}
-  Injekcije so natanko monomorfizmi v \(\cat{Set}{\p{ℒ}}\).
-\end{trditev}
-\begin{proof}
-  Naj bo \(f : B ↬ C\).
-
-  Denimo, da je \(f\) injektiven, \(g, h : A ↬ B\), in \(f ∘ g = f ∘ h\).
-  Naj bo \(a : A\) in dokažimo \(g(a) = h(a)\).
-  Vemo, da je \(f(g(a)) = f(h(a))\). Po injektivnosti to potem pomeni, da velja
-  \(g(a) = h(a)\), kar smo tudi želeli.
-
-  Obratno, naj bo \(f\) monomorfizem in \(a, a' : A\).
-  Denimo, da velja \(f(a) = f(a')\) in naj bosta \(g, h : \mb1 ↬ A\) definirana
-  s predpisoma \(g(*) ~ a\) ter \(h(*) ~ a'\). Potem pa velja tudi
-  \(f(g(*)) ~ f(a) = f(a') ~ f(h(*))\), torej je \(f∘g = f∘h\). Od tod pa sledi,
-  da je \(g = h\), torej velja \(a ~ g(*) = h(*) ~ a'\).
-\end{proof}
-
-Sedaj se pa želimo vprašati, kaj so bijekcije \(ℒ\)-množic.
-Že iz teorije množic vemo, da ima vsaka relacija dualno relacijo, ki se pa
-obnaša kot nekakšen inverz. Za morfizem \(f : A ↬ B\) lahko definiramo dual
-\(f⁻¹ : A×B → ℒ\) tako, da preprosto zamenjamo elementa v produktu.
-Kompozituma z dualom pa sta res identiteti.
-
-\begin{trditev}
-  Za \(f : A ↬ B\) je \(f⁻¹\) morfizem, natanko tedaj, ko je \(f\) bijektiven.
-  V tem primeru potem velja \(f∘f⁻¹ = \id = f⁻¹∘f\).
-\end{trditev}
-\begin{dokaz}
-  Naj bo \(b' = f(f⁻¹(b))\). Potem za nek \(a : A\) velja \(b' = f(a)\) in
-  \(a = f⁻¹(b)\), oziroma \(f(a) = b\). Potem je pa \(b = b'\).
-  Obratno, naj bo \(a' = f⁻¹(f(a))\). Potem za nek \(b : A\) velja \(a' = f⁻¹(b)\)
-  in \(b = f(a)\), oziroma \(f⁻¹(b) = a\). Potem je pa \(a = a'\).
-\end{dokaz}
-
-
-NOTE: od tu naprej nisem čisto zadovoljna, tako da ni treba pregledati.
-
-
-\subsubsection{Karakterizacija podobjektov}
-NOTE: a je to svoj podrazdelek? zlo kratko je
-
-Z uporabo gornje karakterizacije monomorfizmov, lahko karakteriziramo tudi podobjekte.
 Kot vemo, so podobjekti natanko (ekvivalenčni razredi) monomorfizmov
-
-\begin{definicija}
-  \(ℒ\)-podmnožica \(A\) je preslikava \( ⟦- ∈ S⟧ : A → ℒ \), za katero velja
-  \begin{align*}
-    &⟦a ∈ S⟧ ≤ ⟦a = a⟧\\
-    &⟦a = a'⟧ ∧ ⟦a' ∈ S⟧ ≤ ⟦a ∈ S⟧
-  \end{align*}
-  t.~j. je skladna z relacijo na \(A\). Pišemo tudi \(S ⊑ A\).
+\begin{definicija}\label{def:subset}
+  Eniškim relacijam na \(A\) pravimo \emph{\(ℒ\)-podmnožice \(A\)} in označimo
+  \(S ⊑ A\). Za \(a ∈ A\) in \(S ⊑ A\) bomo namesto \(S(a)\) pisali \(a ∈ S\).
+  Interni jezik razširimo z \(∈\) na očiten način.
+  %z enakostjo definirano kot \(⊢ \for{a : A}{P(a) ⇔ Q(a)}\).
+  % ekvivalenčnih razredov monomorfizmov
+  % s kodomeno \(A\), kjer sta monomorfizma \(s : S ↬ A\) in \(t : T ↬ A\) v
+  % relaciji natanko tedaj, ko obstaja izomorfizem \(i : S ↬ T\), da je
+  % \(t ∘ i = s\). 
 \end{definicija}
-Interni jezik razširimo z operacijo \(∈\) na očiten način.
 
+\begin{konstrukcija}
+  TODO: a rečem mreža al delna ureditev?
+
+  \(ℒ\)-podmnožice tvorijo mrežo z ureditvijo
+  \[ S ⊑ T :⇔\ ⊢ \for{a : A}{a ∈ S ⇒ a ∈ T}\text. \]
+\end{konstrukcija}
+
+\begin{definicija}\label{notation:setbuilder}
+  Naj bo \(φ\) formula s prosto spremenljivko \(x : A\). Potem predikat
+  \[ {a ↦ \e a ∧ \i{φ(a)}} \]
+  določa \(ℒ\)-podmnožico \(A\), ki jo označimo z \(\set{x : A}{φ}\).
+\end{definicija}
+
+\begin{definicija}\label{notation:image}
+  Vsakemu \(ℒ\)-morfizmu \(f : A ↬ B\) in \(ℒ\)-podmnožicama \(S ⊑ A\), in \(T ⊑ B\) lahko priredimo
+  \begin{enumerate}
+  \item \(ℒ\)-podmnožico \(f[S] ⊑ B\), definirano kot
+    \(\set{y : B}{\exist{a ∈ S}{y \sim f(a)}}\), imenovano \emph{slika} in
+  \item \(ℒ\)-podmnožico \(f⁻¹[T] ⊑ A\), definirano kot
+    \(\set{x : A}{\exist{b ∈ T}{b \sim f(x)}}\), imenovano \emph{praslika}.
+  \end{enumerate}
+\end{definicija}
+
+\begin{primer}
+  Za \(a ∈ A\) lahko tvorimo \(\s a ≔ \set{x : A}{x = a}\). Tej \(ℒ\)-podmnožici
+  bomo pravili \emph{enojec}.
+
+  Za enojce lahko poenostavimo zapis za sliko in prasliko,
+  \[ f[a] ≔ f[\s a] = \set{y : B}{y \sim f(a)} \text{ in}\]
+  \[ f⁻¹[b] ≔ f⁻¹[\s b] = \set{x : A}{b \sim f(x)} \text,\]
+  kot smo vajeni.
+\end{primer}
+
+Iz vsake \(ℒ\)-podmnožice lahko tudi zgradimo dejansko \(ℒ\)-množico, ki se
+vloži v svojo nadmnožico.
+\begin{primer}
+  Naj bo \(P ⊑ A\). Tvorimo \(ℒ\)-množico \(A/P\) z nosilcem \(A\) in enakostjo
+  \(\i{a = a'} ≔ \i{a =_A a'}∧P(a)\). Zaradi preglednosti posebej označimo
+  le enakost na \(A\).
+
+  To je simetrično, saj je \(P\) ekstenzionalen. Tranzitivnost je malo bolj
+  zanimiva. Očitno iz \(\i{a = a'}∧\i{a' = a''}\) sledi
+  \(\i{a=_A a''}∧P(a)∧P(a')\) in, ker smo imeli \(\i{a = a'}∧P(a')\), lahko prej
+  tisti \(P(a')\) spremenimo v \(P(a)\), tako da sledi \(\i{a =_A a''}∧P(a)\).
+
+  Poleg tega je identitetna relacija med \(A/P\) in \(A\), torej preslikava
+  \(\p{a, a'} ↦ \i{a =_A a'}\), monomorfizem. To sledi iz dejstva, da če je
+  \(f : B ↬ A/P\), je \(\i{a \sim \id∘f(b)} = \i{a \sim f(b)}\).
+\end{primer}
+
+TODO: standardno so podobjekti bla bla bla, to je isto, we good
 \begin{trditev}
-  Obstaja ekvivalenca med delnima ureditvima \(ℒ\)-podmnožic \(A\) in podobjektov \(A\).
+  Delni ureditvi \(ℒ\)-podmnožic \(A\) in podobjektov \(A\) sta si ekvivalentni.
 \end{trditev}
 \begin{proof}
-  Naj bo \(m : S ↬ A\) monomorfizem \(ℒ\)-množic.
-  Potem definiramo preslikavo \( ⟦- ∈ m⟧ : A → ℒ \) s predpisom
-  \(a ↦ ⋁_{s ∈ S} ⟦a = m(s)⟧\).
+  Naj bo \(m : S ↬ A\) monomorfizem \(ℒ\)-množic. Tej lahko priredimo sliko
+  \(m[S]\). Ta prireditev ohranja neenakost, tako da je injektivna in dobro
+  definirana na množici ekvivalenčnih razredov.
 
-  Ta preslikava definira \(ℒ\)-podmnožico, saj velja
-  \begin{align*}
-    &⟦a ∈ m⟧ = ⋁_{s ∈ S} ⟦a = m(s)⟧ ≤ ⋁_{s ∈ S} ⟦a = a⟧ = ‖a‖\text{ in}\\
-    &⟦a = a'⟧∧⟦a' ∈ m⟧ = ⋁_{s ∈ S} ⟦a = a'⟧∧⟦a' = m(s)⟧ ≤ ⋁_{s ∈ S} ⟦a = m(s)⟧ = ⟦a ∈ m⟧\text.
-  \end{align*}
-
+  Obratno, lahko vsaki \(ℒ\)-podmnožici \(P ⊑ A\) priredimo \(ℒ\)-množico
+  \(A/P\). Ta se v \(A\) slika z identiteto, ki je po gornjem monomorfizem.
   
-  TODO: končaj dokaz
-\end{proof}
+  Preverimo, da sta si ti operaciji inverzni.
+  Če začnemo z \(m : S ↬ A\), se \(m\) zoži na \(S ↬ A/m[S]\). Prav tako je ta
+  preslikava surjektivna, saj za vsak \(a : A/m[S]\) vemo, da ima razpon
+  \(\e a ∧ a ∈ m[S]\), torej obstaja nek \(s : S\), da je \(a \sim m(s)\).
 
+  Obratno, če je \(P ⊑ A\) je \(a ∈ \id[A/P]\) natanko tedaj, ko velja \(a ∈ P\).
+\end{proof}
 
 TODO: primeri konstrukcij: produkt, potenčna \(ℒ\)-množica, vsota?, še kaj? Če
 rata tudi odvisna vsota ali produkt.
 
 
 \subsubsection{Polne \(ℒ\)-množice}
-
 
 Prej smo že omenili, da lahko iz globalnih lokalnih elementov rekonstruiramo
 snop, vendar je ta konstrukcija komplicirana, poleg tega pa potem delamo z
@@ -764,7 +788,7 @@ lokalnih, je pa vseeno izziv kako identificirati zožitve, ki se ujemajo.
 
 \begin{definicija}
   \emph{(Pod)enojec} na \(ℒ\)-množici \(A\) je \(ℒ\)-podmnožica \(σ ⊑ A\), za katero velja
-  \[ ⊢ a ∈ σ ∧ b ∈ σ ⇒ a = b}\text. \]
+  \[ ⊢ a ∈ σ ∧ b ∈ σ ⇒ a = b\text. \]
 \end{definicija}
 \begin{opomba}
   V literaturi se tem preslikavam reče kar enojci, saj enolično določajo
@@ -778,87 +802,60 @@ lokalnih, je pa vseeno izziv kako identificirati zožitve, ki se ujemajo.
 \end{opomba}
 
 \begin{konstrukcija}
-  Za vsak \(m ∈ A\) lahko tvorimo enojec \(\s m : A → ℒ\), s predpisom
-  \(a ↦ ⟦a = m⟧\).
+  Za vsak \(a ∈ A\) lahko tvorimo enojec \(\s a ≔ \set{x : A}{x = a}\).
 \end{konstrukcija}
 \begin{dokaz}
-  Preslikava \(\s m\) je res enojec, saj velja
-  Po definiciji iz \(a ∈ \s m\) sledi \(a = m\).
-  Iz \(a ∈ \s m\) in \(b ∈ \s m\) potem sledi \(a = m = b\).
-  Za drugi pogoj, če je \(a = b\) in \(b ∈ \s m\), torej \(b = m\), sledi
-  \(a = m\) oziroma \(a ∈ \s m\).
+  \(ℒ\)-podmnožica \(\s a\) je res enojec, saj če imamo \(x,y ∈ \s a\) je
+  \(x = a\) in \(y = a\), torej je \(x = y\).
 \end{dokaz}
 
 \begin{konstrukcija}
-  Množico enojcev \(A\) z relacijo \(ρ = τ ≔ \exist{a : A}{ρ(a)∧τ(a)}\)
-  tvori \(ℒ\)-množico \(σ(A)\).
+  Množica enojcev \(A\) z relacijo \(σ = τ ≔ \exist{x : A}{x ∈ σ ∧ x ∈ τ}\)
+  tvori \(ℒ\)-množico \(\g A\).
 \end{konstrukcija}
 \begin{proof}
   Gornje očitno definira relacijo, saj je definirana v internem jeziku.
   Poleg tega je očitno simetrična, tako da si poglejmo le tranzitivnost.
-  Naj bo \(ρ = τ\) in \(τ = θ\), torej obstajata \(a\) in \(a'\), da velja
-  \(ρ(a)∧τ(a)\) in \(τ(a')∧θ(a')\). Ker je \(τ\) enojec je \(a = a'\), torej
-  veljata \(ρ(a)\) in \(θ(a)\), kar pa po definiciji pomeni \(ρ = θ\).
+  Naj bo \(σ = τ\) in \(τ = ρ\), torej obstajata \(x\) in \(y\), da velja
+  \(x ∈ σ ∧ x ∈ τ\) in \(y ∈ τ ∧ y ∈ ρ\). Ker je \(τ\) enojec je \(x = y\),
+  torej velja \(x ∈ σ\) in \(x ∈ ρ\), kar pa po definiciji pomeni \(σ = ρ\).
 \end{proof}
 
-\begin{konstrukcija}\label{lem:image}
-  Vsakemu \(ℒ\)-morfizmu \(f : A ↬ B\), \(a ∈ A\), in \(b ∈ B\) lahko priredimo
-  \begin{enumerate}
-  \item \(ℒ\)-podmnožico \(f⁻¹(b) ⊑ A\), definirano z \(x ↦ ⟦b = f(x)⟧\),
-    imenovano \emph{praslika} in
-  \item enojec \(f(a) ⊑ B\), definiran z \(y ↦ ⟦y = f(a)⟧\), imenovan \emph{slika}.
-  \end{enumerate}
-\end{konstrukcija}
-\begin{dokaz}
-  V obeh primerih prvi aksiom drži zaradi celovitosti, drugi pa zaradi
-  skladnosti morfizma z relacijo na ustrezni \(ℒ\)-množici.
-\end{dokaz}
-
-% \begin{lema}\label{lem:swap}
-%   Za \(ℒ\)-podmnožico \(φ : A → ℒ\) velja \({φ(a)∧⟦a = b⟧ = φ(b)∧⟦a = b⟧}\).
-% \end{lema}
-% \begin{lema}\label{lem:subst}
-%   Za \(ℒ\)-podmnožico \(φ : A → ℒ\) velja \({φ(a) = ⋁_{x ∈ A} φ(x)∧⟦x = a⟧}\).
-%   V posebnem za \(ℒ\)-morfizem \(f : A ↬ B\) velja \(⟦b = f(a)⟧ = ⋁_{x ∈ A} ⟦b = f(x)⟧∧⟦x = a⟧\).
-% \end{lema}
-% \begin{dokaz}
-%   Ker je \({φ(a) = φ(a)∧⟦a = a⟧}\) velja \(φ(a) ≤ ⋁_{x ∈ A} φ(x)∧⟦x = a⟧\),
-%   obratna neenakost pa sledi iz drugega aksioma \(ℒ\)-podmnožic.
-% \end{dokaz}
-
 \begin{lema}\label{lem:singunit}
-  Za \(m,n ∈ A\) in \(τ ∈ σ(A)\) veljajo naslednje ekvivalence:
+  Za \(a,b ∈ A\) in \(σ ∈ \g A\) veljajo naslednje ekvivalence:
   \begin{enumerate}
-  \item \(⊢ \s m = τ ⇔ τ(m)\)
-  \item \(⊢ \s m = \s n ⇔ m = n\)
-  % \item \(⊢ n ∈ \s m ⇔ m ∈ \s n\)
-  \item \(⊢ m = n ⇔ \exist{τ : σ(A)}{τ(m)∧τ(n)}\)
+  \item \(⊢ \s a = σ ⇔ a ∈ σ\)
+  \item \(⊢ \s a = \s b ⇔ a = b\)
+  \item \(⊢ a = b ⇔ \exist{σ : \g A}{a ∈ σ ∧ b ∈ σ}\)
   \end{enumerate}
 \end{lema}
 \begin{dokaz}
   \begin{enumerate}
-  \item Če razpišemo definicijo \(\s m = τ\) dobimo, da obstaja \(a : A\), za
-    katerega velja \(a ∈ \s m\) in \(τ(a)\). To je pa natanko \(a = m ∧ τ(a)\)
-    kar je ekvivalentno \(τ(m)\).
-  \item Po prvi točki je \(\s m = \s n\) natanko \(m ∈ \s n\), torej \(m = n\).
-  \item V zadnji točki, če je \(m = n\) potem \(\s m\) očitno zadošča desni
-    strani. Obratno, če za nek \(τ\) velja \(τ(m)∧τ(n)\), potem po definiciji
-    enojca velja \(m = n\).
+  \item Če velja \(\s a = σ\), je potem \(a ∈ \s a = σ\). Obratno, če je
+    \(a ∈ σ\) potem obstaja \(a' : A\) (namreč \(a\)), da je \(a = a'\) in
+    \(a' ∈ σ\), torej je po definiciji \(\s a = σ\).
+  \item Po prvi točki je \(\s a = \s b\) natanko \(a ∈ \s b\), torej \(a = b\).
+  \item Če je \(a = b\) potem \(\s a\) očitno zadošča desni strani. Obratno, če
+    za nek \(σ\) velja \(a ∈ σ ∧ b ∈ σ\), pa po definiciji enojca velja
+    \(a = b\).\qedhere
   \end{enumerate}
-  % Prvi enačaj velja po definiciji, tako da razpišemo zgolj drugega:
-  % \begin{equation*}
-  %   ⟦\s m = τ⟧ = ⋁_{a ∈ A} ⟦a ∈ \s m⟧∧τ(a) = ⋁_{a ∈ A} ⟦m = a⟧∧τ(a) = τ(m)\text,
-  % \end{equation*}
-  % kjer smo za zadnjo enakost uporabili gornjo lemo na \(ℒ\)-podmnožici \(τ\).
-
-  % Enakost v drugi točki sledi iz \(\i{\s m = \s n} = ⟦m ∈ \s n⟧ = ⟦m = n⟧\).
-
-  % Oglejmo si še zadnjo točko. Neenakost \(≥\) očitno sledi iz aksiomov enojcev,
-  % tako da moramo preveriti zgolj drugo smer:
-  % \begin{equation*}
-  %   ⟦m = n⟧ = ⟦m = m⟧∧⟦m = n⟧ = ⟦m ∈ \s m⟧∧⟦n ∈ \s m⟧ ≤ ⋁_{τ ∈ σ(A)} τ(m)∧τ(n)\text.\qedhere
-  % \end{equation*}
 \end{dokaz}
+
+Utemeljimo rabo besede \quot{enojec}.
+\begin{trditev}
+  Za vsako \(ℒ\)-množico \(A\) velja
+  \[ ⊢ \for{σ : \g A}{\exist{a : A}{a ∈ σ}}\text. \]
+\end{trditev}
+\begin{proof}
+  Če razpišemo gornje dobimo \(\e σ ≤ \i{\exist{a : A}{a ∈ σ}}\). Ampak \(\e σ\)
+  je pa natanko \(\exist{a : A}{a ∈ σ ∧ a ∈ σ}\), torej je neenakosti zadoščeno.
+\end{proof}
+\begin{posledica}
+  Velja \(\for{σ : \g A}{\exist{a : A}{σ = \s a}}\), torej so interno vsi
+  enojci oblike \(\s a\), za nek \(a\).
+\end{posledica}
+TODO: kasneje napiši, da zaradi tega dobimo izomorfizem, in da zato lahko
+menjamo med \(A\) in \(\g A\).
 
 % TODO: rewrite
 % Kot smo rekli na začetku podrazdelka, nam vsak enojec na \(F'\) enolično določa
@@ -869,43 +866,83 @@ lokalnih, je pa vseeno izziv kako identificirati zožitve, ki se ujemajo.
 %                                 % kot elementov \(ℒ\)-množice same.
 
 \begin{definicija}
-  \(ℒ\)-množica \(A\) je \emph{polna}, kadar je preslikava množic \(m ↦ \s m\)
+  \(ℒ\)-množica \(A\) je \emph{polna}, kadar je preslikava množic \(a ↦ \s a\)
   bijekcija. Polno podkategorijo polnih \(ℒ\)-množic označimo s
   \(\cat{CSet}(ℒ)\).
 \end{definicija}
-% NOTE: {-} definira idempotentno monado. To mi avtomatsko da naslednjih par
+
+\begin{lema}
+  Polne \(ℒ\)-množice imajo operator zožitve, t.~j. za vsak \(a ∈ A\) in
+  \(U ∈ ℒ\) obstaja \(a{\res U} ∈ A\), tako da velja \(⟦a{\res U} = b⟧ = ⟦a = b⟧∧U\).
+  V posebnem torej tudi velja \(‖a{\res U}‖ = ‖a‖∧U\) in \(a{\res U\res V} = a{\res{U∧V}}\).
+\end{lema}
+\begin{dokaz}
+  Tvorimo kar \(τ = \set{b : A}{a = b ∧ U}\). To je enojec, saj
+  \[
+    x∈τ ∧ y∈τ ⇔ a = x ∧ U ∧ a = y ∧ U ⇒ x = y\text.
+  \]
+  Ker je \(A\) polna, ta ustreza nekemu elementu \(\g A\), ki mu lahko rečemo
+  \(m{\res U}\), zanj pa očitno velja željena enakost
+  \begin{equation*}
+    ⟦a{\res U} = b⟧ = ⟦τ = \s b⟧ = \i{b ∈ τ} = ⟦a = b⟧∧U\text. \qedhere
+  \end{equation*}
+\end{dokaz}
+\begin{posledica}
+  Za \(a ∈ A\) in \(U ∈ ℒ\) velja \(\i{b ∈ {\s a}{\res U}} = \i{b ∈ \s a}∧U\).
+\end{posledica}
+\begin{posledica}
+  Za \(σ ∈ \g A\) in \(U ∈ ℒ\) velja \({\s σ}{\res U} = \s{σ{\res U}}\).
+\end{posledica}
+
+\begin{lema}
+  Polne \(ℒ\)-množice imajo lastnost lepljenja skladnih družin, t.~j. za vsako
+  družino \(aᵢ ∈ A\), za katero velja \(Uᵢ∧Uⱼ ⊩ aᵢ = aⱼ\), kjer je \(Uᵢ ≔ ‖aᵢ‖\),
+  obstaja enoličen tak \(a ∈ A\), da velja \(Uᵢ ⊩ a = aᵢ\).
+  %\(mᵢ ∈ A\) za katero velja \(⟦mᵢ = mⱼ⟧ = ‖mᵢ‖∧‖mⱼ‖\) obstaja nek \(m ∈ A\),
+  %tako da je \(⟦m = mᵢ⟧ = ‖mᵢ‖\) in \(‖m‖ = ⋁ᵢ‖mᵢ‖\).
+\end{lema}
+\begin{dokaz}
+  Naj bodo \(aᵢ\) taki in tvorimo \(τ ≔ \set{a : A}{\exist{i : \c I}{a = aᵢ}}\).
+
+  \(ℒ\)-podmnožica \(τ\) je enojec, saj če sta \(a,b ∈ τ\) je \(a = aᵢ\) in
+  \(b = aⱼ\), za neka \(i,j ∈ I\). Potem smo pa na \(Uᵢ ∧ Uⱼ\), torej imamo
+  \(aᵢ = aⱼ\). Sledi, da sta \(a\) in \(b\) enaka.
+
+  Ker je enojec ustreza nekemu \(a : A\).
+  Za ta \(a\) pa potem velja \(a = aᵢ ⇔ aⱼ = aᵢ\), kar je pa res.
+  Prav tako, če je \(b\) neka druga amalgamacija družine, velja
+  \(Uᵢ ⊩ b = aᵢ = a\).
+\end{dokaz}
+
+TODO: Insert examples
+
+
+% NOTE: Σ(-) definira idempotentno monado. To mi avtomatsko da naslednjih par
 % rezultatov (specifično do izreka da so polne ℒ-množice refleksivna
 % podkategorija).
 \begin{lema}
-  \(ℒ\)-množica \(σ(A)\) je polna.
+  \(ℒ\)-množica \(\g A\) je polna.
 \end{lema}
 \begin{dokaz}
-  Pokazati moramo, da je preslikava \(τ ↦ \s τ\) bijekcija.
+  Pokazati moramo, da je preslikava \(σ ↦ \s σ\) bijekcija.
   Injektivnost sledi neposredno iz druge točke gornje leme.
   % NOTE: to je inverz enote (in je množenje).
-  Naj bo potem \(Σ ∈ σ(σ(A))\). Definirajmo \(τ(a) ≔ Σ(\s a)\).
+  Naj bo potem \(Σ ∈ \g{\g A}\). Definirajmo \(τ ≔ \set{a : A}{\s a ∈ Σ}\).
   To je enojec, saj velja
-  \begin{align*}
-    τ(a)∧τ(b) &= Σ(\s a)∧Σ(\s b) ≤ ⟦\s a = \s b⟧ ≤ ⟦a = b⟧\text{ in}\\
-    ⟦a = b⟧∧τ(b) &= ⟦a = b⟧∧Σ(\s b) = ⟦\s a = \s b⟧∧Σ(\s b) ≤ Σ(\s a) = τ(a)\text.
-  \end{align*}
+  \[
+    a∈τ ∧ b∈τ ⇔ \s a ∈ Σ ∧ \s b ∈ Σ ⇒ \s a = \s b ⇔ a = b\text.
+  \]
 
   Pokažimo še, da je \(Σ = \s τ\).
-  Naj bo \(ρ ∈ \s τ\), torej \(τ = ρ\). Potem imamo \(τ(a)\) in \(ρ(a)\) za nek
-  \(a : A\). Po definiciji in gornji lemi imamo torej \(Σ(\s a)\) in
-  \(ρ = \s a\), torej \(Σ(ρ)\). To pa po lemi pomeni, da je \(Σ = \s τ\).
-  % \begin{align*}
-  %   \i{ρ ∈ \s τ}
-  %   &= ⟦τ = ρ⟧ = ⋁_{a ∈ A} τ(a)∧ρ(a) = ⋁_{a ∈ A} Σ(\s a)∧⟦ρ = \s a⟧\\
-  %   &= ⋁_{a ∈ A} Σ(ρ)∧⟦ρ = \s a⟧ = Σ(ρ)∧‖ρ‖ = Σ(ρ)\text,
-  % \end{align*}
-  % kjer za tretjo enakost uporabimo, da lahko pod enakostjo menjamo argumente
-  % \mbox{\(ℒ\)-podmnožicam}.
-  Sledi, da za vsak enojec v \(σ(σ(A))\) obstaja natanko
-  en enojec v \(σ(A)\), ki se vanj slika, tako da je preslikava \(σ\) res
-  bijekcija, in je \(σ(A)\) polna.
+  Pokažimo, da je \(τ ∈ Σ\). Obstaja nek \(a : A\), da je \(a ∈ τ\), torej
+  \(\s a = τ\). Potem je pa \(\s a ∈ Σ\), torej je \(Σ\) res enak \(\s τ\).
+  
+  Sledi, da za vsak enojec v \(\g{\g A}\) obstaja natanko en enojec v \(\g A\),
+  ki se vanj slika, tako da je preslikava \(\g -\) res bijekcija, in je \(\g A\)
+  polna.
 \end{dokaz}
 
+TODO: to lahko pride kasneje…
 \begin{trditev}
   Naj bo \(f : A ↬ B \) in \(B\) polna \(ℒ\)-množica. Tedaj obstaja preslikava
   \(φ : A → B\), za katero velja \(⟦b = f(a)⟧ = ⟦b =_B φ(a)⟧\).
@@ -930,81 +967,141 @@ lokalnih, je pa vseeno izziv kako identificirati zožitve, ki se ujemajo.
 \end{posledica}
 
 \begin{izrek}\label{th:sigmaiso}
-  \(ℒ\)-množica \(σ(A)\) je izomorfna \(A\).
+  \(ℒ\)-množica \(\g A\) je izomorfna \(A\).
 \end{izrek}
 \begin{dokaz}
-  % NOTE: f je enota monade σ, če je g njen inverz, kaj je njena povezava z
-  % množenjem? Plus lahko spustimo pol dokazov, da je f morfizem.
-  Definirajmo preslikavo \(⟦τ = η(a)⟧ ≔ τ(a)\).
+  % NOTE: η je enota monade σ, če je g njen inverz, kaj je njena povezava z
+  % množenjem? Plus lahko spustimo pol dokazov, da je η morfizem.
+  Definirajmo preslikavo \(⟦σ \sim η(a)⟧ ≔ \i{a ∈ σ}\).
   Očitno je skladna z relacijama, tako da moramo preveriti zgolj
-  enoličnost in celovitost. Enoličnost sledi iz neenakosti
-  \(τ(a)∧ρ(a) ≤ ⟦τ = ρ⟧\), celovitost pa iz enakosti
-  \[ ⟦a = a⟧ = ⟦\s a = \s a⟧ = ⋁_{τ ∈ σ(A)} ⟦\s a = τ⟧ = ⋁_{τ ∈ σ(A)} τ(a)\text. \]
+  enoličnost in celovitost.
+  Enoličnost sledi iz implikacije \(a∈σ ∧ a∈τ ⇒ σ = τ\), ostanea le celovitost.
+  Naj bo \(a : A\). Potem velja \(a ∈ \s a\), torej \(\s a \sim η(a)\).
   
   Preveriti moramo torej le še, da je bijekcija. Injektivna je očitno, saj to
   sledi iz definicije enojca, surjektivnost pa sledi iz
-  \(⟦\s a = η(a)⟧ = \i{a ∈ \s a} = ‖a‖\).
+  \(⟦\s a \sim η(a)⟧ = \i{a ∈ \s a} = ‖a‖\).
 \end{dokaz}
 \begin{posledica}
   Kategorija \(ℒ\)-množic je ekvivalentna kategoriji polnih \(ℒ\)-množic.
 \end{posledica}
 
+
+\subsubsection{Lastnosti morfizmov}
+
+TODO: kako to napisat? ni res trditev, ampak da loh to definiramo bi blo fajn
+prevert da je na nek način konsistentno. Loh rečem tud da je sam za relacije, k
+pol vrstni red ni dvoumen.
+NOTE: mogoče je vredno kar rečt, da če dokazujemo propozicijo potem vemo, da
+obstaja \(b : B\), da je \(b \sim f(a)\), tako je \(f(a)\) pač element, dokler na
+koncu naredimo truncation.
+
+Ker na vrednost \(f(a)\) želimo misliti kot term tipa \(B\), bi bilo priročno,
+če lakho kako definiramo, kako se \(f(a)\) uporabi v formulah.
+\begin{definicija}
+  Naj bo \(f : A ↬ B\), \(R\) interna eniška relacija na \(B\), in \(a ∈ A\).
+  Potem lahko \(R(f(a))\) interpretiramo kot \(\exist{b : B}{b \sim f(a)∧R(b)}\).
+\end{definicija}
+\begin{opomba}
+  Na tej točki lahko torej 
+\end{opomba}
+
+
+% TODO: povemo kej o f(a) = g(a)
 \begin{lema}
-  Polne \(ℒ\)-množice imajo operator zožitve, t.~j. za vsak \(m ∈ A\) in
-  \(U ∈ ℒ\) obstaja \(m{\res U} ∈ A\), tako da velja \(⟦a = m{\res U}⟧ = ⟦a = m⟧∧U\).
-  V posebnem torej tudi velja \(‖m{\res U}‖ = ‖m‖∧U\) in \(m{\res U\res V} = m{\res{U∧V}}\).
+  Morfizma \(f\) in \(g : A ↬ B\) sta enaka natanko tedaj, ko velja 
+  \[ ⊢ \for{a : A}{f(a) = g(a)}\text. \]
 \end{lema}
+\begin{proof}
+  Pokažemo zgolj zanimivo smer.
+  Predpostavimo torej, da velja gornja formula, in da je \(b \sim f(a)\), za neka
+  \(a\) in \(b\). Potem po predpostavki vemo, da velja \(f(a) \sim g(a)\). Če to
+  enakost razpišemo, dobimo da obstaja \(b' ∈ B\), tako da je \(b' \sim f(a)\) in
+  \(b' \sim g(a)\). Potem je pa \(b = b'\), torej je \(b = b' \sim g(a)\). Ker je
+  vloga \(f\) in \(g\) simetrična, ter \(a\) in \(b\) poljubna, velja
+  \(b \sim f(a)\) natanko tedaj, ko velja \(b \sim g(a)\), torej sta \(f\) in \(g\)
+  enaka.
+\end{proof}
+\begin{opomba}
+  Ker je \(f(a) = g(a)\) ekvivalentno \(f(a) \sim g(a)\) zadošča pokazati zgolj
+  \[ ⊢ \for{a : A}{f(a) = g(a)}\text. \]
+\end{opomba}
+
+% \begin{lema}
+%   Naj bosta \(f, g : A ↬ B\) morfizma. Potem sta enaka natanko tedaj, ko velja
+%   \[ ⊢ b \sim f(a) ⇒ b = g(a) }.\]
+% \end{lema}
+% \begin{dokaz}
+%   V eno smer je trditev očitna, tako da predpostavimo, da velja gornja
+%   implikacija. Dokazujemo, da za \(a ∈ A\) velja \(f(a) = g(a)\).
+%   Po predpostavki zadošča pokazati, da je \(f(a) = f(a)\), kar je pa očitno res.
+% \end{dokaz}
+
+Na podoben način bi si želeli karakterizirati epimorfizme in monomorfizme v
+kategoriji \(\cat{Set}(ℒ)\), in res jih lahko karakteriziramo kot surjekcije in
+injekcije v tem jeziku:
+
+\begin{definicija}
+  Morfizem \(f : A ↬ B\) je \emph{surjektiven}, ko velja
+  \[ ⊢ \for{b : B}{\exist{a ∈ A}{b \sim f(a)}}\text, \]
+  in \emph{injektiven}, ko velja
+  \[ a, a' : A ⊢ f(a) = f(a') ⇒ a = a'\text. \]
+\end{definicija}
+\begin{trditev}
+  Surjekcije so natanko epimorfizmi v \(\cat{Set}{\p{ℒ}}\).
+\end{trditev}
 \begin{dokaz}
-  Tvorimo kar \(τ(a) = ⟦a = m⟧∧U\). To je enojec, saj
-  \begin{align*}
-    τ(a)∧τ(b) &= ⟦a = m⟧∧U∧⟦b = m⟧∧U ≤ ⟦a = b⟧\text{ in}\\
-    ⟦a = b⟧∧τ(b) &= ⟦a = b⟧∧⟦b = m⟧∧U ≤ ⟦a = m⟧∧U = τ(a)\text.
-  \end{align*}
-  Ker je \(A\) polna, ta ustreza nekemu elementu, ki mu lahko rečemo
-  \(m{\res U}\), zanj pa očitno velja željena enakost
-  \begin{equation*}
-    ⟦a = m{\res U}⟧ = ⟦\s a = τ⟧ = τ(a) = ⟦a = m⟧∧U\text. \qedhere
-  \end{equation*}
+  Naj bo \(f : A ↬ B\).
+
+  Denimo, da je \(f\) surjektiven, \(g, h : B ↬ C\), in \(g ∘ f = h ∘ f\).
+  Naj bo \(b : B\) in dokažimo \(g(b) \sim h(b)\).
+  Po surjektivnosti potem obstaja \(a : A\), da je \(b \sim f(a)\). Potem je pa
+  % TODO: refactor? tranzitivnost ~ nekje? also, nek ap in cong za ~?
+  \(g(b) \sim g(f(a)) = h(f(a)) \sim h(b)\).
+
+  Po drugi strani pa predpostavimo, da je \(f\) epimorfizem.
+  % TODO: dokaz
+
+  NOTE: Borceux naredi nek kompliciran argument, a obstaja kaj boljšega v
+  internem jeziku?
+
+  NOTE: Ah, sem ugotovila, on konstruira kojedro \(f\), in potem \(f\) izenači
+  obe vložitvi \(B → \coker{f}\), tako da sta enaki in je \(\coker f = B\).
 \end{dokaz}
-\begin{posledica}
-  Za \(m ∈ A\) in \(U ∈ ℒ\) velja \(\i{n ∈ {\s m}{\res U}} = \i{n ∈ \s m}∧U\).
-\end{posledica}
-\begin{posledica}
-  Za \(τ ∈ σ(A)\) in \(U ∈ ℒ\) velja \({\s τ}{\res U} = \s{τ{\res U}}\).
-\end{posledica}
 
-TODO: enoličnost manjka v izreku in dokazu.
-\begin{lema}
-  Polne \(ℒ\)-množice imajo lepljenje skladnih družin, t.~j. za vsako družino
-  \(mᵢ ∈ A\), za katero velja \(mᵢ{\res{Uⱼ}} = mⱼ{\res{Uᵢ}}\), kjer je \(Uᵢ ≔ ‖mᵢ‖\),
-  obstaja tak \(m ∈ A\), da je \(m{\res{Uᵢ}} = mᵢ\).
-  %\(mᵢ ∈ A\) za katero velja \(⟦mᵢ = mⱼ⟧ = ‖mᵢ‖∧‖mⱼ‖\) obstaja nek \(m ∈ A\),
-  %tako da je \(⟦m = mᵢ⟧ = ‖mᵢ‖\) in \(‖m‖ = ⋁ᵢ‖mᵢ‖\).
-\end{lema}
+\begin{trditev}
+  Injekcije so natanko monomorfizmi v \(\cat{Set}{\p{ℒ}}\).
+\end{trditev}
+\begin{proof}
+  Naj bo \(f : B ↬ C\).
+
+  Denimo, da je \(f\) injektiven, \(g, h : A ↬ B\), in \(f ∘ g = f ∘ h\).
+  Naj bo \(a : A\) in dokažimo \(g(a) = h(a)\).
+  Vemo, da je \(f(g(a)) = f(h(a))\). Po injektivnosti to potem pomeni, da velja
+  \(g(a) = h(a)\), kar smo tudi želeli.
+
+  Obratno, naj bo \(f\) monomorfizem in \(a, a' : A\).
+  Denimo, da velja \(f(a) = f(a')\) in naj bosta \(g, h : \mb1 ↬ A\) definirana
+  s predpisoma \(g(*) \sim a\) ter \(h(*) \sim a'\). Potem pa velja tudi
+  \(f(g(*)) \sim f(a) = f(a') \sim f(h(*))\), torej je \(f∘g = f∘h\). Od tod pa sledi,
+  da je \(g = h\), torej velja \(a \sim g(*) = h(*) \sim a'\).
+\end{proof}
+
+Sedaj se pa želimo vprašati, kaj so bijekcije \(ℒ\)-množic.
+Že iz teorije množic vemo, da ima vsaka relacija dualno relacijo, ki se pa
+obnaša kot nekakšen inverz. Za morfizem \(f : A ↬ B\) lahko definiramo dual
+\(f⁻¹ : A×B → ℒ\) tako, da preprosto zamenjamo elementa v produktu.
+Kompozituma z dualom pa sta res identiteti.
+
+\begin{trditev}
+  Za \(f : A ↬ B\) je \(f⁻¹\) morfizem, natanko tedaj, ko je \(f\) bijektiven.
+  V tem primeru potem velja \(f∘f⁻¹ = \id = f⁻¹∘f\).
+\end{trditev}
 \begin{dokaz}
-  Naj bodo \(mᵢ\) taki in tvorimo preslikavo \(τ(a) = ⋁ᵢ⟦a = mᵢ⟧\).
-  Iz skladnosti družine sledi, da velja
-  \[ ⟦a = mᵢ⟧∧Uⱼ = ⟦a = mᵢ{\res{Uⱼ}}⟧ = ⟦a = mⱼ{\res{Uᵢ}}⟧ = ⟦a = mⱼ⟧∧Uᵢ\text. \]
-  
-  Preslikava \(τ\) je enojec, saj velja
-  \begin{align*}
-    ⟦a = b⟧∧τ(b)
-    &= ⋁ᵢ⟦a = b⟧∧⟦b = mᵢ⟧ ≤ ⋁ᵢ⟦a = mᵢ⟧ = τ(a)\text{ in}\\
-    τ(a)∧τ(b)
-    &= ⋁ᵢⱼ⟦a = mᵢ⟧∧⟦b = mⱼ⟧\\
-    &= ⋁ᵢⱼ⟦a = mᵢ⟧∧Uᵢ∧⟦b = mⱼ⟧∧Uⱼ\\
-    &= ⋁ᵢⱼ⟦a = mᵢ⟧∧Uⱼ∧⟦b = mⱼ⟧∧Uᵢ\\
-    &= ⋁ᵢ⟦a = mᵢ⟧∧⟦b = mᵢ⟧ ≤ ⟦a = b⟧\text,
-  \end{align*}
-  torej ustreza nekemu \(m ∈ A\). Po zgornji lemi velja
-  \begin{equation*}
-    ⟦mᵢ = m{\res{Uᵢ}}⟧ = ⟦mᵢ = m⟧∧Uᵢ = \i{mᵢ ∈ \s m}∧Uᵢ = \textstyle⋁\!ⱼ⟦mᵢ = mⱼ⟧∧Uᵢ = Uᵢ\text,
-  \end{equation*}
-  torej se ujemata na celotnem razponu in sta enaka.
-
-  Razpon \(m\) je \(‖m‖ = \i{m ∈ \s m} = ⋁ᵢ⟦m = mᵢ⟧ = ⋁ᵢUᵢ\), kar mora veljati za vsako
-  amalgamacijo družine \(mᵢ\), tako da je \(m\) tudi enoličen.
-  NOTE: Kaj? To ni dokaz enoličnosti…
+  Naj bo \(b' = f(f⁻¹(b))\). Potem za nek \(a : A\) velja \(b' = f(a)\) in
+  \(a = f⁻¹(b)\), oziroma \(f(a) = b\). Potem je pa \(b = b'\).
+  Obratno, naj bo \(a' = f⁻¹(f(a))\). Potem za nek \(b : A\) velja \(a' = f⁻¹(b)\)
+  in \(b = f(a)\), oziroma \(f⁻¹(b) = a\). Potem je pa \(a = a'\).
 \end{dokaz}
 
 
