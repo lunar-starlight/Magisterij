@@ -306,6 +306,17 @@ ekvivalenčno relacijo.
 Je pa ta struktura bistveno bolj splošna kot ``množica preslikav z enakostjo po
 točkah''.
 
+\begin{konstrukcija}
+  Množica \(∅\) je \(ℒ\)-množica.
+  Množica \(\{*\}\) z enakostjo \(\i{*,*} = X\) je \(ℒ\)-množica, ki jo označimo
+  \(\mb 1\). Pravimo jima \emph{prazna \(ℒ\)-množica} in \emph{\(ℒ\)-množica z
+    enim elementom}.
+\end{konstrukcija}
+\begin{dokaz}
+  Očitno je enakost na \(\{*\}\) simetrična in tranzitivna. Prav tako ima
+  množica \(∅\) zgolj eno možno enakost, ki na prazno zadošča pogojema.
+\end{dokaz}
+
 \begin{primer}
   Množica \(ℕ\) skupaj z enakostjo definirano kot
   \[ ⟦n = m⟧ ≔
@@ -316,6 +327,19 @@ točkah''.
   \]
   je \(ℒ\)-množica. To bomo označevali z \(\c ℕ\).
 \end{primer}
+To je instanca bolj splošne konstrukcije \emph{konstantnih \(ℒ\)-množic}.
+\begin{konstrukcija}
+  Naj bo \(A\) množica in enakost na njej definirana kot zgoraj, torej
+  \(\i{a = b} ≔ ⋃\set{X}{a = b}\). To je \(ℒ\)-množica, ki jo označimo \(\c A\).
+\end{konstrukcija}
+\begin{dokaz}
+  Množica \(\i{a = b}\) bo \(X\) natanko tedaj, ko je \(\i{b = a} = X\), tako da
+  je enakost simetrična.
+
+  Če je \(\i{a = b} ∧ \i{b = c} = X\), vemo, da je \(a = b = c\), torej je
+  \(\i{a = c} = X\). Če pa je ta presek prazen, bo pa gotovo manjši od česarkoli
+  na desni strani.
+\end{dokaz}
 
 V tem primeru elementi množice očitno niso zvezne funkcije iz prostora.
 To je zato, ker imajo zvezne funkcije še dve pomembni lastnosti, ki jih v
@@ -330,7 +354,7 @@ funkcij. Potem pa če to združimo še z zožitvami, lahko rečemo, da je vsaka
 funkcija \(U → ℕ\) zlepek zožitev konstantnih funkcij \(X → ℕ\).
 Tako lahko na nek način rečemo, da so zvezne funkcije v naravna števila
 ``generirane'' z množico naravnih števil samo.
-To pa zares pomeni, da je \(𝒩\) nekakšna \emph{napolnitev} \(ℒ\)-množice \(Δℕ\).
+To pa zares pomeni, da je \(𝒩\) nekakšna \emph{napolnitev} \(ℒ\)-množice \(\c ℕ\).
 
 Torej ne bomo zahtevali, da so naši objekti zaprti za zožitve in lepljenje, saj
 jih lahko vedno napolnimo. Izkaže pa se, da nam to ustvari nekaj težav pri
@@ -476,7 +500,7 @@ Na primer \quot{Naj bo \(x : A\)} se naj bere kot
   interpretacija kot enakost in kot relacija enaka.
 \end{opomba}
 
-\begin{definicija}
+\begin{definicija}\label{def:valid}
   Formula \(φ\) brez prostih spremenljivk je \emph{veljavna na \(U\)} (pišemo
   \(U ⊩ φ\)), ko je \(\i φ ≥ U\).
 
@@ -484,7 +508,7 @@ Na primer \quot{Naj bo \(x : A\)} se naj bere kot
   tudi kot \(⊢ φ\).
 \end{definicija}
 
-\begin{trditev}
+\begin{trditev}\label{th:valid-res}
   Veljavnost lakho zožimo, torej če velja \(U ⊩ φ\) in je \(V ⊆ U\), velja tudi
   \(V ⊩ φ\).
 \end{trditev}
@@ -492,7 +516,7 @@ Na primer \quot{Naj bo \(x : A\)} se naj bere kot
   Po definiciji \(V ⊆ U ⊆ \i φ\).
 \end{proof}
 
-\begin{trditev}
+\begin{trditev}\label{th:valid-glue}
   Veljavnost lahko lepimo, torej če je \(C\) pokritje \(U\), in za vsak
   \(V ∈ C\) velja \(V ⊩ φ\), velja tudi \(U ⊩ φ\).
 \end{trditev}
@@ -506,7 +530,7 @@ To nam da zanimivo posledico, da je veljavnost ekvivalentna lokalni veljavnosti.
   (pišemo \(\eventually{V ⊆ U}{P(V)}\)), ko obstaja pokritje \(C\) množice
   \(U\), tako da za vsak element pokritja velja \(P(V)\).
 \end{definicija}
-\begin{posledica}
+\begin{posledica}\label{th:valid-local}
   \(U ⊩ φ\) natanko tedaj ko \(\eventually{V ⊆ U}{V ⊩ φ}\).
 \end{posledica}
 
@@ -570,6 +594,7 @@ veljavnost teh formul tako tudi definirali.
   spremenljivke kot \({x₁ : A₁,…,xₙ : Aₙ ⊢ φ}\).
 \end{definicija}
 
+TODO: numbering
 Ponovimo sedaj gornje definicije v internem jeziku.
 \begin{definicija}
   \emph{\(ℒ\)-množica} je množica \(A\) z interno relacijo \(=\), tako da velja
@@ -587,8 +612,8 @@ Ponovimo sedaj gornje definicije v internem jeziku.
   \end{align}
 \end{definicija}
 
-\subsubsection{Interne relacije}
 
+\subsubsection{Interne relacije}
 
 Z internim jezikom si lahko pomagamo pri konstruiranju relacij oziroma
 \(ℒ\)-morfizmov. Natančno to pomeni, da bomo formule s prostimi spremenljivkami
@@ -598,7 +623,7 @@ Najprej si olajšajmo delo, in definirajmo produkte \(ℒ\)-množic. Potem bomo
 lahko vse definirali za eno spremenljivko, saj lahko relacije na več
 spremenljivkah predstavimo kot eniško relacijo (ozioma predikat) na produktu.
 
-\begin{konstrukcija}
+\begin{konstrukcija}\label{cons:prod}
   Naj bosta \(A\) in \(B\) \(ℒ\)-množici. Njun produkt je množica
   \[ \set{(a, b) ∈ A×B}{\e a = \e b}, \]
   enakost pa definiramo po točkah
@@ -614,7 +639,7 @@ spremenljivkah predstavimo kot eniško relacijo (ozioma predikat) na produktu.
   sicer te nebi bili \(ℒ\)-morfizmi.
 \end{opomba}
 
-\begin{konstrukcija}
+\begin{konstrukcija}\label{cons:rel-from-formula}
   Naj bo \(φ\) formula s prosto spremenljivko \(x\) tipa \(A\). Potem preslikava
   \(a ↦ \e a ∧ \i{φ(a)}\) definira interno relacijo na \(A\).
 \end{konstrukcija}
@@ -679,7 +704,7 @@ Kot vemo, so podobjekti natanko (ekvivalenčni razredi) monomorfizmov
   % \(t ∘ i = s\). 
 \end{definicija}
 
-\begin{konstrukcija}
+\begin{konstrukcija}\label{cons:ℒ-sub-lattice}
   TODO: a rečem mreža al delna ureditev?
 
   \(ℒ\)-podmnožice tvorijo mrežo z ureditvijo
@@ -702,7 +727,7 @@ Kot vemo, so podobjekti natanko (ekvivalenčni razredi) monomorfizmov
   \end{enumerate}
 \end{definicija}
 
-\begin{primer}
+\begin{primer}\label{cons:sing}\label{notation:sing-image}
   Za \(a ∈ A\) lahko tvorimo \(\s a ≔ \set{x : A}{x = a}\). Tej \(ℒ\)-podmnožici
   bomo pravili \emph{enojec}.
 
@@ -714,23 +739,26 @@ Kot vemo, so podobjekti natanko (ekvivalenčni razredi) monomorfizmov
 
 Iz vsake \(ℒ\)-podmnožice lahko tudi zgradimo dejansko \(ℒ\)-množico, ki se
 vloži v svojo nadmnožico.
-\begin{primer}
-  Naj bo \(P ⊑ A\). Tvorimo \(ℒ\)-množico \(A/P\) z nosilcem \(A\) in enakostjo
-  \(\i{a = a'} ≔ \i{a =_A a'}∧P(a)\). Zaradi preglednosti posebej označimo
-  le enakost na \(A\).
+\begin{konstrukcija}\label{cons:ℒset-from-ℒsub}
+  Naj bo \(P ⊑ A\). Tvorimo \(ℒ\)-množico \(\hat P\) z nosilcem \(A\) in enakostjo
+  \(\i{a = a'} ≔ \i{a =_A a'}∧P(a)\). Ta se z identiteto vloži v \(A\).
+\end{konstrukcija}
+\begin{dokaz}
+  Zaradi preglednosti posebej označimo le enakost na \(A\).
 
-  To je simetrično, saj je \(P\) ekstenzionalen. Tranzitivnost je malo bolj
-  zanimiva. Očitno iz \(\i{a = a'}∧\i{a' = a''}\) sledi
-  \(\i{a=_A a''}∧P(a)∧P(a')\) in, ker smo imeli \(\i{a = a'}∧P(a')\), lahko prej
-  tisti \(P(a')\) spremenimo v \(P(a)\), tako da sledi \(\i{a =_A a''}∧P(a)\).
+  Enakost na \(\hat P\) je simetrična, saj je \(P\) ekstenzionalen.
+  Tranzitivnost je malo bolj zanimiva. Očitno iz \(\i{a = a'}∧\i{a' = a''}\)
+  sledi \(\i{a=_A a''}∧P(a)∧P(a')\) in, ker smo imeli \(\i{a = a'}∧P(a')\),
+  lahko prej tisti \(P(a')\) spremenimo v \(P(a)\), tako da sledi
+  \(\i{a =_A a''}∧P(a)\).
 
-  Poleg tega je identitetna relacija med \(A/P\) in \(A\), torej preslikava
+  Poleg tega je identitetna relacija med \(\hat P\) in \(A\), torej preslikava
   \(\p{a, a'} ↦ \i{a =_A a'}\), monomorfizem. To sledi iz dejstva, da če je
-  \(f : B ↬ A/P\), je \(\i{a \sim \id∘f(b)} = \i{a \sim f(b)}\).
-\end{primer}
+  \(f : B ↬ \hat P\), je \(\i{a \sim \id∘f(b)} = \i{a \sim f(b)}\).
+\end{dokaz}
 
 TODO: standardno so podobjekti bla bla bla, to je isto, we good
-\begin{trditev}
+\begin{trditev}\label{th:ℒsub-is-sub}
   Delni ureditvi \(ℒ\)-podmnožic \(A\) in podobjektov \(A\) sta si ekvivalentni.
 \end{trditev}
 \begin{proof}
@@ -739,18 +767,38 @@ TODO: standardno so podobjekti bla bla bla, to je isto, we good
   definirana na množici ekvivalenčnih razredov.
 
   Obratno, lahko vsaki \(ℒ\)-podmnožici \(P ⊑ A\) priredimo \(ℒ\)-množico
-  \(A/P\). Ta se v \(A\) slika z identiteto, ki je po gornjem monomorfizem.
+  \(\hat P\). Ta se v \(A\) slika z identiteto, ki je po gornjem monomorfizem.
   
   Preverimo, da sta si ti operaciji inverzni.
   Če začnemo z \(m : S ↬ A\), se \(m\) zoži na \(S ↬ A/m[S]\). Prav tako je ta
   preslikava surjektivna, saj za vsak \(a : A/m[S]\) vemo, da ima razpon
   \(\e a ∧ a ∈ m[S]\), torej obstaja nek \(s : S\), da je \(a \sim m(s)\).
 
-  Obratno, če je \(P ⊑ A\) je \(a ∈ \id[A/P]\) natanko tedaj, ko velja \(a ∈ P\).
+  Obratno, če je \(P ⊑ A\) je \(a ∈ \id[\hat P]\) natanko tedaj, ko velja \(a ∈ P\).
 \end{proof}
 
-TODO: primeri konstrukcij: produkt, potenčna \(ℒ\)-množica, vsota?, še kaj? Če
-rata tudi odvisna vsota ali produkt.
+\begin{konstrukcija}\label{cons:quot}
+  Naj bo \(R\) ekvivalenčna relacija na \(A×A\). Potem množica \(A\), kjer za
+  enakost vzamemo \(R\), tvori \(ℒ\)-množico, ki ji pravimo
+  \emph{kvocient \(A\) po \{R\}} in jo označimo \(\frac A R\).
+
+  Identiteta na \(A\) potem definira kvocientno preslikavo \(q : A ↬ \frac A R\).
+\end{konstrukcija}
+\begin{dokaz}
+  Enakost bo očitno simetrična in tranzitivna, tako da rabimo preveriti samo, da
+  identiteta res definira ustrezno preslikavo.
+
+  Najprej pokažimo, da velja \(⊢ a = a' ⇒ R(a, a')\). Ker je preslikava
+  refleksivna, to pomeni, da velja \(⊢ \e a ⇒ R(a, a)\). Poleg tega pa, ker je
+  relacija, imamo \(⊢ \p{a, a'} = \p{a', a'} ∧ R(a',a') ⇒ R(a,a')\).
+  Leva stran implikacije se poenostavi na \(a = a'\), ker smo na \(\e{a'}\) in
+  je \(R(a',a')\) res.
+
+  Po definiciji je \(q{\p{a, a'}} = \i{a =_A a'}\). To pa pomeni, da je
+  \(q(a, a')∧q(b, b') ⇒ a =_A a' ∧ b =_A b'\), kar pa implicira želeno nenakost.
+  Celovitost pa preprosto sledi iz celovitosti identitete na \(A\), saj je ta
+  kot preslikava manjša od naše kvocientne preslikave.
+\end{dokaz}
 
 
 \subsubsection{Polne \(ℒ\)-množice}
@@ -786,14 +834,14 @@ lokalnih, je pa vseeno izziv kako identificirati zožitve, ki se ujemajo.
 % Snop \(F\) lahko sedaj rekonstruiramo iz njegovih enojcev.
 % Podobno bomo storili za \(ℒ\)-množice.
 
-\begin{definicija}
+\begin{definicija}\label{def:sing}
   \emph{(Pod)enojec} na \(ℒ\)-množici \(A\) je \(ℒ\)-podmnožica \(σ ⊑ A\), za katero velja
   \[ ⊢ a ∈ σ ∧ b ∈ σ ⇒ a = b\text. \]
 \end{definicija}
 \begin{opomba}
   V literaturi se tem preslikavam reče kar enojci, saj enolično določajo
   delno definirane elemente, in se bomo tega držali tudi mi. Poleg tega se za
-  enojce ponavadi uporablja grške črke \(σ\), \(ρ\), in \(τ\).
+  enojce ponavadi uporablja grške črke \(σ, ρ, τ, \).
 \end{opomba}
 \begin{opomba}
   Če želimo dokazati, da je neka preslikava enojec, zadošča preveriti gornji
@@ -801,15 +849,15 @@ lokalnih, je pa vseeno izziv kako identificirati zožitve, ki se ujemajo.
   saj prvi pogoj sledi iz gornjega pogoja.
 \end{opomba}
 
-\begin{konstrukcija}
-  Za vsak \(a ∈ A\) lahko tvorimo enojec \(\s a ≔ \set{x : A}{x = a}\).
-\end{konstrukcija}
+\begin{trditev}\label{th:sing-is-subsing}
+  Za \(a ∈ A\) je enojec \(\s a\) res enojec v gornjem smislu.
+\end{trditev}
 \begin{dokaz}
   \(ℒ\)-podmnožica \(\s a\) je res enojec, saj če imamo \(x,y ∈ \s a\) je
   \(x = a\) in \(y = a\), torej je \(x = y\).
 \end{dokaz}
 
-\begin{konstrukcija}
+\begin{konstrukcija}\label{cons:compl}
   Množica enojcev \(A\) z relacijo \(σ = τ ≔ \exist{x : A}{x ∈ σ ∧ x ∈ τ}\)
   tvori \(ℒ\)-množico \(\g A\).
 \end{konstrukcija}
@@ -842,7 +890,7 @@ lokalnih, je pa vseeno izziv kako identificirati zožitve, ki se ujemajo.
 \end{dokaz}
 
 Utemeljimo rabo besede \quot{enojec}.
-\begin{trditev}
+\begin{trditev}\label{th:subsing-is-sing}
   Za vsako \(ℒ\)-množico \(A\) velja
   \[ ⊢ \for{σ : \g A}{\exist{a : A}{a ∈ σ}}\text. \]
 \end{trditev}
@@ -865,13 +913,13 @@ menjamo med \(A\) in \(\g A\).
 % nam enojci ne predstavljajo nobenih novih elementov. % nobenih drugih elementov
 %                                 % kot elementov \(ℒ\)-množice same.
 
-\begin{definicija}
+\begin{definicija}\label{def:compl}
   \(ℒ\)-množica \(A\) je \emph{polna}, kadar je preslikava množic \(a ↦ \s a\)
   bijekcija. Polno podkategorijo polnih \(ℒ\)-množic označimo s
   \(\cat{CSet}(ℒ)\).
 \end{definicija}
 
-\begin{lema}
+\begin{lema}\label{th:compl-res}
   Polne \(ℒ\)-množice imajo operator zožitve, t.~j. za vsak \(a ∈ A\) in
   \(U ∈ ℒ\) obstaja \(a{\res U} ∈ A\), tako da velja \(⟦a{\res U} = b⟧ = ⟦a = b⟧∧U\).
   V posebnem torej tudi velja \(‖a{\res U}‖ = ‖a‖∧U\) in \(a{\res U\res V} = a{\res{U∧V}}\).
@@ -894,7 +942,7 @@ menjamo med \(A\) in \(\g A\).
   Za \(σ ∈ \g A\) in \(U ∈ ℒ\) velja \({\s σ}{\res U} = \s{σ{\res U}}\).
 \end{posledica}
 
-\begin{lema}
+\begin{lema}\label{th:compl-glue}
   Polne \(ℒ\)-množice imajo lastnost lepljenja skladnih družin, t.~j. za vsako
   družino \(aᵢ ∈ A\), za katero velja \(Uᵢ∧Uⱼ ⊩ aᵢ = aⱼ\), kjer je \(Uᵢ ≔ ‖aᵢ‖\),
   obstaja enoličen tak \(a ∈ A\), da velja \(Uᵢ ⊩ a = aᵢ\).
@@ -920,7 +968,7 @@ TODO: Insert examples
 % NOTE: Σ(-) definira idempotentno monado. To mi avtomatsko da naslednjih par
 % rezultatov (specifično do izreka da so polne ℒ-množice refleksivna
 % podkategorija).
-\begin{lema}
+\begin{lema}\label{th:compl-is-compl}
   \(ℒ\)-množica \(\g A\) je polna.
 \end{lema}
 \begin{dokaz}
@@ -941,30 +989,10 @@ TODO: Insert examples
   ki se vanj slika, tako da je preslikava \(\g -\) res bijekcija, in je \(\g A\)
   polna.
 \end{dokaz}
-
-TODO: to lahko pride kasneje…
-\begin{trditev}
-  Naj bo \(f : A ↬ B \) in \(B\) polna \(ℒ\)-množica. Tedaj obstaja preslikava
-  \(φ : A → B\), za katero velja \(⟦b = f(a)⟧ = ⟦b =_B φ(a)⟧\).
-  Poleg tega velja tudi \(⊢ a = a' ⇒ φ(a) = φ(a')\), in enakost drži kadar je \(a = a'\).
-\end{trditev}
-\begin{dokaz}
-  Za vsak \(a ∈ A\) je slika \(f(a)\) enojec, torej po polnosti \(B\) natanko
-  določa en element \(B\), ki ga označimo \(φ(a)\). To definira preslikavo
-  \(φ\).
-
-  TODO: neenakosti?
-\end{dokaz}
-\begin{posledica}
-  Kategorija polnih \(ℒ\)-množic je ekvivalentna kategoriji, katere
-  \catdef
-    {so polne \(ℒ\)-množice in}
-    {so funkcije \(f : A → B\), ki zadoščajo sledečima pogojema:
-      \begin{itemize}
-      \item \(⊢ a = a' ⇒ f(a) = f(a')\), in
-      \item \(⊢ \e{f(a)} ⇒ \e a\).
-      \end{itemize}}
-\end{posledica}
+\begin{opomba}
+  Gornji izek nam torej pove, da lahko \(\g A\) pravimo
+  \emph{napolnitev \(ℒ\)-množice A}.
+\end{opomba}
 
 \begin{izrek}\label{th:sigmaiso}
   \(ℒ\)-množica \(\g A\) je izomorfna \(A\).
@@ -982,8 +1010,34 @@ TODO: to lahko pride kasneje…
   sledi iz definicije enojca, surjektivnost pa sledi iz
   \(⟦\s a \sim η(a)⟧ = \i{a ∈ \s a} = ‖a‖\).
 \end{dokaz}
-\begin{posledica}
+\begin{posledica}\label{th:set-eq-cset}
   Kategorija \(ℒ\)-množic je ekvivalentna kategoriji polnih \(ℒ\)-množic.
+\end{posledica}
+
+
+TODO: to lahko pride kasneje…
+\begin{trditev}\label{th:ℒmor-into-compl-is-map}
+  Naj bo \(f : A ↬ B \) in \(B\) polna \(ℒ\)-množica. Tedaj obstaja preslikava
+  \(φ : A → B\), za katero velja \(⟦b = f(a)⟧ = ⟦b =_B φ(a)⟧\).
+  Poleg tega velja tudi \(⊢ a = a' ⇒ φ(a) = φ(a')\), in enakost drži kadar je
+  \(a = a'\).
+\end{trditev}
+\begin{dokaz}
+  Za vsak \(a ∈ A\) je slika \(f(a)\) enojec, torej po polnosti \(B\) natanko
+  določa en element \(B\), ki ga označimo \(φ(a)\). To definira preslikavo
+  \(φ\).
+
+  TODO: neenakosti?
+\end{dokaz}
+\begin{posledica}\label{th:set-eq-cset-with-maps}
+  Kategorija polnih \(ℒ\)-množic je ekvivalentna kategoriji, katere
+  \catdef
+    {so polne \(ℒ\)-množice in}
+    {so funkcije \(f : A → B\), ki zadoščajo sledečima pogojema:
+      \begin{itemize}
+      \item \(⊢ a = a' ⇒ f(a) = f(a')\), in
+      \item \(⊢ \e{f(a)} ⇒ \e a\).
+      \end{itemize}}
 \end{posledica}
 
 
@@ -1027,6 +1081,31 @@ Ker na vrednost \(f(a)\) želimo misliti kot term tipa \(B\), bi bilo priročno,
   \[ ⊢ \for{a : A}{f(a) = g(a)}\text. \]
 \end{opomba}
 
+\begin{konstrukcija}
+  \emph{Potenčni objekt \(ℒ\)-množic \(A\) in \(B\)} je konstantna \(ℒ\)-množica
+  \(ℒ\)-morfizmov \(A ↬ B\) in jo označimo \(B^A\).
+\end{konstrukcija}
+\begin{dokaz}
+  Pokazati je treba, da je evaluacijska preslikava kot mora biti.
+\end{dokaz}
+
+\begin{konstrukcija}
+  \emph{Klasifikator podobojektov} je \(ℒ\)-množica \(ℒ\) skupaj z enakostjo
+  \(⇔\) in ga označimo \(Ω\).
+\end{konstrukcija}
+\begin{dokaz}
+  Pokazati, da je to res klasifikator podobjektov je ubistvu kombinacija
+  trditev~\ref{th:ℒ-sub-is-sub} in~\ref{th:ℒ-sub-is-map-to-Ω}.
+\end{dokaz}
+
+
+\begin{konstrukcija}
+  Če je \(A\) \(ℒ\)-množica in za vsak \(a ∈ A\) \(Bₐ\) \(ℒ\)-množica je množica
+  \(\sigma{a : A}{Bₐ}\) z enakostjo
+  \(\i{\p{a, b} = \p{a', b'}} ≔ \i{a = a'}∧\i{b = b'}\) je \(ℒ\)-množica.
+
+  Prav tako je \(\pi{a : A}{Bₐ}\) z enakostjo \(\i{f, g} ≔ \)
+\end{konstrukcija}
 % \begin{lema}
 %   Naj bosta \(f, g : A ↬ B\) morfizma. Potem sta enaka natanko tedaj, ko velja
 %   \[ ⊢ b \sim f(a) ⇒ b = g(a) }.\]
@@ -1039,7 +1118,28 @@ Ker na vrednost \(f(a)\) želimo misliti kot term tipa \(B\), bi bilo priročno,
 
 Na podoben način bi si želeli karakterizirati epimorfizme in monomorfizme v
 kategoriji \(\cat{Set}(ℒ)\), in res jih lahko karakteriziramo kot surjekcije in
-injekcije v tem jeziku:
+injekcije v tem jeziku.
+
+Najprej pa konstruirajmo še vsote \(ℒ\)-množic, saj jih potrebujemo v dokazu.
+\begin{konstrukcija}
+  Za \(ℒ\)-množici \(A\) in \(B\) je konstantna \(ℒ\)-množica \(\c{A+B}\) njuna
+  vsota in jo označimo kar z \(A+B\). Poleg tega kanonični vložitvi \(ιᵢ\)
+  definirata \(ℒ\)-morfizma.
+\end{konstrukcija}
+\begin{dokaz}
+  Pokazati je treba, da sta vložitvi strogi in ekstenzionalni.
+  Brez škode za splošnost lahko to pokažemo zgolj za \(ι : A → A+B\).
+  Pri obeh primerih bomo imeli enakost v \(A+B\) zgolj na komponenti \(A\), tako
+  da se bo enakost \(ι(a) = ι(a')\) vedno prevedla kar na \(a = a'\). Potem je
+  pa preslikava očitno stroga in ekstenzionalna.
+\end{dokaz}
+\begin{konstrukcija}
+  Za \(ℒ\)-preslikavo \(f : A ↬ B\) je njeno \emph{kojedro} kvocient
+  \(ℒ\)-množice \(B+B\) po relaciji \(f[A]\). Označimo ga \(\coker(f)\).
+\end{konstrukcija}
+\begin{dokaz}
+  TODO: pokazat da je kojedro.
+\end{dokaz}
 
 \begin{definicija}
   Morfizem \(f : A ↬ B\) je \emph{surjektiven}, ko velja
