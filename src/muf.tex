@@ -83,6 +83,7 @@
 \makeatother
 
 \newcommand{\defquantifier}[2]{%
+  \expandafter\undef\csname #1\endcsname%
   \expandafter\newcommand\csname #1\endcsname[2]{{#2 ##1.}\;##2}%
 }
 \defquantifier{for}{\forall}
@@ -92,7 +93,6 @@
 \defquantifier{eventually}{\nabla}
 
 \defquantifier{sigma}{\Sigma}
-\def\pi{\undefined}
 \defquantifier{pi}{\Pi}
 
 \renewcommand{\check}{ \(\checkmark\)}

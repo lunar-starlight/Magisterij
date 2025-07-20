@@ -7,7 +7,7 @@
 % NALAGANJE PAKETOV
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
-%\RequirePackage{pdf14}
+\directlua{pdf.setminorversion(7)}
 \RequirePackage{amsfonts,amsmath,amssymb,amsthm}
 \RequirePackage{lmodern}
 \RequirePackage{newfile}
