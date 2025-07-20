@@ -648,9 +648,9 @@ spremenljivkah predstavimo kot eniško relacijo (ozioma predikat) na produktu.
   Preslikava je očitno stroga. Prav tako je ekstenzionalna, saj velja
   \begin{align*}
     \i{a = a'} ∧ \hat φ(a')
-    &≤ \i{a = a'} ∧ \e a ∧ \i{φ(a')}\\
-    &≤ \e a' ∧ \i{a = a' ∧ φ(a')}\\
-    &≤ \e a' ∧ \i{φ(a')} = \hat φ(a)
+    &≤ \i{a = a'} ∧ \e{a'} ∧ \i{φ(a')}\\
+    &≤ \e a ∧ \i{a = a' ∧ φ(a')}\\
+    &≤ \e a ∧ \i{φ(a)} = \hat φ(a)
   \end{align*}
 \end{dokaz}
 \begin{opomba}
@@ -665,6 +665,26 @@ spremenljivkah predstavimo kot eniško relacijo (ozioma predikat) na produktu.
 \end{primer}
 
 TODO: nekje nek soundness
+Pomembno je še dejstvo, da v interni logiki lahko logično sklepamo, kot smo
+navajeni. Bolj natančno, če neka trditev velja \emph{konstruktivno}, bo veljala
+tudi v naši interni logiki. Konstruktivnost je tu potrebna, saj kot smo povedali
+zgoraj v splošnem izključene tretje možnosti nimamo.
+\begin{izrek}
+  Če je \(φ\) formula brez prostih spremenljivk, in je veljavna konstruktivno,
+  je tudi veljavna v gornjem smislu.
+\end{izrek}
+Dokaz poteka po indukciji, in je relativno direkten, tako da se v detajle ne
+bomo spuščali, lahko si pa ogledate TODO: cite neki kjer to nardijo
+
+Lahko pa kot ilustracijo naredimo primera implikacije in disjunkcije.
+Pri implikaciji predpostavimo \(φ ⇒ ψ\) konstruktivno. TODO: kako?
+
+Pri disjunkciji pa dejansko dobimo nekaj več. Če je \(φ∨ψ\) konstruktivno res,
+je res kar že en od disjunktov (recimo \(φ\)). Potem pa po indukciji velja
+\(X ⊩ φ\), torej \(φ\) je res na celotnem \(X\), kar je močneje od
+interpretacije \(φ∨ψ\) v naši logiki. To je posledica dejstva, da je
+konstruktivna resnica močnejša od resnice v naših modelih, kajti topološki
+modeli niso vsi možni modeli konstruktivne logike.
 
 NOTE: Mogoče je to prezgodej, a so dokazi tle ok za to stopnjo?
 \begin{konstrukcija}
@@ -965,7 +985,7 @@ menjamo med \(A\) in \(\g A\).
 TODO: Insert examples
 
 
-% NOTE: Σ(-) definira idempotentno monado. To mi avtomatsko da naslednjih par
+% NOTE: ⟨-⟩ definira idempotentno monado. To mi avtomatsko da naslednjih par
 % rezultatov (specifično do izreka da so polne ℒ-množice refleksivna
 % podkategorija).
 \begin{lema}\label{th:compl-is-compl}
@@ -1014,20 +1034,22 @@ TODO: Insert examples
   Kategorija \(ℒ\)-množic je ekvivalentna kategoriji polnih \(ℒ\)-množic.
 \end{posledica}
 
+TODO: tu povedat, da je \(f(a)\) enojec in da je \(A ⊢ φ\) ekvivalentno
+\(\hat A ⊢ φ\), tako da lahko \(f(a)\) jemljemo kot elemente v dokazih formul.
+
 
 TODO: to lahko pride kasneje…
 \begin{trditev}\label{th:ℒmor-into-compl-is-map}
-  Naj bo \(f : A ↬ B \) in \(B\) polna \(ℒ\)-množica. Tedaj obstaja preslikava
-  \(φ : A → B\), za katero velja \(⟦b = f(a)⟧ = ⟦b =_B φ(a)⟧\).
-  Poleg tega velja tudi \(⊢ a = a' ⇒ φ(a) = φ(a')\), in enakost drži kadar je
-  \(a = a'\).
+  Naj bo \(f : A ↬ B \) in \(B\) polna \(ℒ\)-množica. Tedaj obstaja operacija
+  \(φ : A → B\), za katero velja \(⟦b \sim f(a)⟧ = ⟦b =_B φ(a)⟧\).
 \end{trditev}
 \begin{dokaz}
   Za vsak \(a ∈ A\) je slika \(f(a)\) enojec, torej po polnosti \(B\) natanko
   določa en element \(B\), ki ga označimo \(φ(a)\). To definira preslikavo
   \(φ\).
 
-  TODO: neenakosti?
+  Po definiciji je \(\e a = \i{φ(a) \sim f(a)} = \e{φ(a)}\).
+  Sedaj pa, če je \(a = a'\), je \(φ(a) \sim f(a')\), torej je \(φ(a) = φ(a')\).
 \end{dokaz}
 \begin{posledica}\label{th:set-eq-cset-with-maps}
   Kategorija polnih \(ℒ\)-množic je ekvivalentna kategoriji, katere
@@ -1050,8 +1072,6 @@ NOTE: mogoče je vredno kar rečt, da če dokazujemo propozicijo potem vemo, da
 obstaja \(b : B\), da je \(b \sim f(a)\), tako je \(f(a)\) pač element, dokler na
 koncu naredimo truncation.
 
-Ker na vrednost \(f(a)\) želimo misliti kot term tipa \(B\), bi bilo priročno,
-če lakho kako definiramo, kako se \(f(a)\) uporabi v formulah.
 \begin{definicija}
   Naj bo \(f : A ↬ B\), \(R\) interna eniška relacija na \(B\), in \(a ∈ A\).
   Potem lahko \(R(f(a))\) interpretiramo kot \(\exist{b : B}{b \sim f(a)∧R(b)}\).
@@ -1078,7 +1098,7 @@ Ker na vrednost \(f(a)\) želimo misliti kot term tipa \(B\), bi bilo priročno,
 \end{proof}
 \begin{opomba}
   Ker je \(f(a) = g(a)\) ekvivalentno \(f(a) \sim g(a)\) zadošča pokazati zgolj
-  \[ ⊢ \for{a : A}{f(a) = g(a)}\text. \]
+  \[ ⊢ \for{a : A}{f(a) \sim g(a)}\text. \]
 \end{opomba}
 
 \begin{konstrukcija}
@@ -1086,9 +1106,10 @@ Ker na vrednost \(f(a)\) želimo misliti kot term tipa \(B\), bi bilo priročno,
   \(ℒ\)-morfizmov \(A ↬ B\) in jo označimo \(B^A\).
 \end{konstrukcija}
 \begin{dokaz}
-  Pokazati je treba, da je evaluacijska preslikava kot mora biti.
+  TODO: Pokazati je treba, da je evaluacijska preslikava kot mora biti.
 \end{dokaz}
 
+TODO: th:ℒsub-is-map-to-Ω
 \begin{konstrukcija}
   \emph{Klasifikator podobojektov} je \(ℒ\)-množica \(ℒ\) skupaj z enakostjo
   \(⇔\) in ga označimo \(Ω\).
@@ -1103,24 +1124,25 @@ Ker na vrednost \(f(a)\) želimo misliti kot term tipa \(B\), bi bilo priročno,
   Če je \(A\) \(ℒ\)-množica in za vsak \(a ∈ A\) \(Bₐ\) \(ℒ\)-množica je množica
   \(\sigma{a : A}{Bₐ}\) z enakostjo
   \(\i{\p{a, b} = \p{a', b'}} ≔ \i{a = a'}∧\i{b = b'}\) je \(ℒ\)-množica.
+  Pravimo ji \emph{odvisna vsota}.
 
-  Prav tako je \(\pi{a : A}{Bₐ}\) z enakostjo \(\i{f, g} ≔ \)
+  Prav tako je \(\pi{a : A}{Bₐ}\) z enakostjo
+  \(\i{f, g} ≔ \i{\for{a : A}{f(a) = g(a)}}\) \(ℒ\)-množica in ji pravimo
+  \emph{odvisni produkt}.
 \end{konstrukcija}
-% \begin{lema}
-%   Naj bosta \(f, g : A ↬ B\) morfizma. Potem sta enaka natanko tedaj, ko velja
-%   \[ ⊢ b \sim f(a) ⇒ b = g(a) }.\]
-% \end{lema}
-% \begin{dokaz}
-%   V eno smer je trditev očitna, tako da predpostavimo, da velja gornja
-%   implikacija. Dokazujemo, da za \(a ∈ A\) velja \(f(a) = g(a)\).
-%   Po predpostavki zadošča pokazati, da je \(f(a) = f(a)\), kar je pa očitno res.
-% \end{dokaz}
+\begin{proof}
+  TODO: kaj je \(b = b'\) tam? A imamo transport vzdolž enakosti?
+
+  NOTE: Če je \(A\) samo indeksna še loh kej povemo. Mogoče rabim \(ℒ\)-množico
+  \(ℒ\)-množic…
+\end{proof}
 
 Na podoben način bi si želeli karakterizirati epimorfizme in monomorfizme v
 kategoriji \(\cat{Set}(ℒ)\), in res jih lahko karakteriziramo kot surjekcije in
 injekcije v tem jeziku.
 
-Najprej pa konstruirajmo še vsote \(ℒ\)-množic, saj jih potrebujemo v dokazu.
+Najprej pa konstruirajmo še nekaj konstrukcij \(ℒ\)-množic, saj jih potrebujemo
+v dokazu.
 \begin{konstrukcija}
   Za \(ℒ\)-množici \(A\) in \(B\) je konstantna \(ℒ\)-množica \(\c{A+B}\) njuna
   vsota in jo označimo kar z \(A+B\). Poleg tega kanonični vložitvi \(ιᵢ\)
@@ -1144,6 +1166,7 @@ Najprej pa konstruirajmo še vsote \(ℒ\)-množic, saj jih potrebujemo v dokazu
 \begin{definicija}
   Morfizem \(f : A ↬ B\) je \emph{surjektiven}, ko velja
   \[ ⊢ \for{b : B}{\exist{a ∈ A}{b \sim f(a)}}\text, \]
+  \[ ⊢ \for{b : B}{b ∈ f[A]}\text, \]
   in \emph{injektiven}, ko velja
   \[ a, a' : A ⊢ f(a) = f(a') ⇒ a = a'\text. \]
 \end{definicija}
@@ -1156,17 +1179,14 @@ Najprej pa konstruirajmo še vsote \(ℒ\)-množic, saj jih potrebujemo v dokazu
   Denimo, da je \(f\) surjektiven, \(g, h : B ↬ C\), in \(g ∘ f = h ∘ f\).
   Naj bo \(b : B\) in dokažimo \(g(b) \sim h(b)\).
   Po surjektivnosti potem obstaja \(a : A\), da je \(b \sim f(a)\). Potem je pa
-  % TODO: refactor? tranzitivnost ~ nekje? also, nek ap in cong za ~?
-  \(g(b) \sim g(f(a)) = h(f(a)) \sim h(b)\).
+  \(g(b) = g(f(a)) = h(f(a)) = h(b)\).
 
   Po drugi strani pa predpostavimo, da je \(f\) epimorfizem.
-  % TODO: dokaz
-
-  NOTE: Borceux naredi nek kompliciran argument, a obstaja kaj boljšega v
-  internem jeziku?
-
-  NOTE: Ah, sem ugotovila, on konstruira kojedro \(f\), in potem \(f\) izenači
-  obe vložitvi \(B → \coker{f}\), tako da sta enaki in je \(\coker f = B\).
+  Poglejmo si potem vložitvi v kojedro \(ι₁,ι₂ : B ↬ \coker(f)\).
+  Te \(f\) po konstrukciji očitno izenači, saj je \(\coker(f)\) ravno zlepek
+  kopij \(B\) po sliki \(f\). Torej sta po predpostavki enaki, saj je \(f\)
+  epimorfizem. Tedaj pa za vsak \(b : B\) velja, da je \(ι₁(b) = ι₂(b)\), torej
+  da je \(b ∈ f[A]\).
 \end{dokaz}
 
 \begin{trditev}
