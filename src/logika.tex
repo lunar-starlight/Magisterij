@@ -99,14 +99,14 @@ predstavljamo, kako to shemo imen razširiti na poljubno kardinalnost.
 \end{trditev}
 \begin{dokaz}
   TODO: sintaksa za standardne končne?
-  Princip končne izbire pravi, da če je \(A\) končna, torej izomorfna neki
-  standardni končni množici \(\{1,…,n\}\), in je \(R : A×B → Ω\) celovita, tedaj
-  obstaja funkcija izbire \(f : A → B\), da je \(\for{a:A}{R(a,f(a))}\).
+  Princip končne izbire je princip izbire, kjer domeno omejimo na končne
+  množice. Brez škode za splošnost, naj bo domena kar enaka neki
+  standardni končni množici \(\cli n\).
 
-  Brez škode za splošnost lahko torej predpostavimo, da je \(A = \{1,…,n\}\).
-  Če sedaj razpišemo, kaj gornje pomeni, dobimo, da če obstajajo \(bₖ:B\), da velja
-  \(R(1,b₁)∨…∨R(n,bₙ)\), obstaja končno zaporedje (torej, obstajajo \(bₖ:B\)),
-  da velja \(R(1,b₁)∨…∨R(n,bₙ)\)… To sta pa isti stvari, tako da je to preprosto res.
+  Potem pa \(\AC(\cli n)\) pravi, da če
+  obstajajo \(bₖ:B\), da velja \(R(1,b₁)∧\dots ∧R(n,bₙ)\), obstaja končno
+  zaporedje (torej, obstajajo \(bₖ:B\)), da velja \(R(1,b₁)∧\dots ∧R(n,bₙ)\)… To
+  sta pa isti stvari, tako da princip res drži.
 \end{dokaz}
 
 % \begin{definicija}
@@ -144,11 +144,12 @@ Seveda pa se principi ne delijo popolnoma zgolj na principe izbire in odločitve
   \emph{Kripkejeva shema za \(Σ ⊆ Ω\)} pravi, da je \(Σ = Ω\). Formulo
   \(\for{p : Ω}{\exist{s : Σ}{s = p}}\) bomo označili z \(\ks*(Σ)\).
 
-  Navadna \emph{kripkejeva shema} je kripkejeva shema za \(Σ₀¹\), torej za
-  množico \(\set{α \apart 0}{α : 2^ℕ} ⊆ Ω\).
+  Navadna \emph{kripkejeva shema} je kripkejeva shema za
+  \(Σ₀¹ ≔ \set{α \apart 0}{α : 2^ℕ} ⊆ Ω\).
 
-  \emph{Analitična kripkejeva shema} je kripkejeva shema za \(Σ_ℝ\), torej za
-  množico \(\set{x > 0}{x : ℝ} ⊆ Ω\).
+  TODO: dedekindova ali cauchyjeva ali kaj drugega.
+  \emph{Analitična kripkejeva shema} je kripkejeva shema za
+  \(Σ_ℝ ≔ \set{x > 0}{x : ℝ} ⊆ Ω\).
 \end{definicija}
 
 %%% Local Variables:
