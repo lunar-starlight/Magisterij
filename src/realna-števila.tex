@@ -39,7 +39,7 @@ pa tudi posledica \(\alpo*\).
 
 \subsection{\(\Rd{} = \Rc\) in \(\CCv\)}
 
-
+TODO: reword
 \begin{konstrukcija}
   Aksiom disjunktivne števne izbire \(\CCv\) ni potreben pogoj za ujemanje
   Cantorjevih in Dedekindovih realnih števil.
@@ -61,21 +61,37 @@ Primer podan zgoraj pa vseeno zadošča principu \(\alpo*\), ki konstruktivno
 implicira ujemanje Cantorjevih in Dedekindovih realnih
 števil~\cite{Birchfield24}.
 
-% TODO: a je to X l. pov ⇒ LPO? Ja, should be
+TODO: restructure?
 Izkaže se, da za lokalno povezane prostore to tudi pričakujemo.
 \begin{izrek}
   Če je \(X\) lokalno povezan in velja \(X ⊩ \Rd\ = \Rc\), potem velja \(X ⊩ \alpo*\).
 \end{izrek}
-\begin{proof}
-  Ker je \(X\) lokalno povezan so Cauchyjeva realna števila natanko lokalno
-  konstante preslikave v \(ℝ\). Denimo torej, da so vse preslikave v \(ℝ\)
-  lokalno konstantne in naj bo \(U ⊩ x : \Rd\).
+Ta izrek je zares kar posledica slednjega izreka.
+\begin{izrek}
+  Če je \(X\) lokalno povezan, potem velja \(X ⊩ \lpo*\).
+\end{izrek}
+\begin{dokaz}
+  Naj bo \(α : 2^ℕ\). Ker je \(X\) lokalno povezan, je snop \(2^ℕ\) kar
+  konstanen snop preslikav iz \(ℕ\) v \(2\). To pa pomeni, da je lokalno
+  \(α = f\), za nek \(f : ℕ → 2\). Sedaj pa v metateoriji imamo \(\lpo*\), tako
+  da lahko odločimo \(f = 0 ∨ f \apart 0\), kar pa pomeni, da to lahko odločimo
+  tudi za \(α\), torej nad \(X\) velja \(\lpo*\).
+\end{dokaz}
+\begin{dokaz}[Dokaz posledice]
+  Ker je \(\lpo*\) ekvivalenten \(\alpo*\) za Cauchyjeva realna števila,
+  avtomatsko sledi, da če velja \(\Rd\ = \Rc\), je potem \(\lpo*\) ekvivalenten
+  \(\alpo*\). 
+\end{dokaz}
+% \begin{proof}
+%   Ker je \(X\) lokalno povezan so Cauchyjeva realna števila natanko lokalno
+%   konstante preslikave v \(ℝ\). Denimo torej, da so vse preslikave v \(ℝ\)
+%   lokalno konstantne in naj bo \(U ⊩ x : \Rd\).
 
-  Tedaj po predpostavki vemo, da je \(x\) lokalno konstanten, kar pomeni, da je
-  lokalno enak eksternemu realnemu številu. Ampak za ta pa znamo odločiti
-  \(\alpo*\), torej velja \(\eventually{V ⊆ U}{x ≤ 0 ∨ x > 0}\), kar smo tudi
-  želeli dokazati.
-\end{proof}
+%   Tedaj po predpostavki vemo, da je \(x\) lokalno konstanten, kar pomeni, da je
+%   lokalno enak eksternemu realnemu številu. Ampak za ta pa znamo odločiti
+%   \(\alpo*\), torej velja \(\eventually{V ⊆ U}{x ≤ 0 ∨ x > 0}\), kar smo tudi
+%   želeli dokazati.
+% \end{proof}
 
 To pomeni, da če želimo ločiti \(\Rd = \Rc\) in \(\alpo*\) potrebujemo prostor,
 ki ni lokalno povezan. Avtorica meni, da je Fortov prostor na števno neskončni
@@ -104,6 +120,32 @@ držita. Še več, ker je ta prostor \(T₆\) validira \(AKS\), torej ne velja n
   komplementu \(U\). To pa pomeni, da je natanko na \(U\) različen od \(0\)
   kar je pa točno to, kar zahtevamo za analitično Kripkejevo shemo.
 \end{proof}
+\begin{opomba}
+  V dokazu smo zares pokazali \emph{globalen} obstoj za element \(x : ℝ\). To
+  nam da slutiti, da je (lokalno) \(T₆\) lastnost močnejša od \(\aks*\). In res
+  se izkaže, da je temu tako.
+  TODO: a se zmislim primer?
+\end{opomba}
+
+Vseeno pa velja obrat, če analitično Kripkejevo shemo malo ojačamo. Specifično,
+če predpostavimo obstoj \emph{funkcije izibre} za shemo \(\aks*\).
+\begin{trditev}
+  Če velja \(X ⊩ \exist{f : Ω → ℝ}{\for{p : Ω}{p ⇔ f(p) \apart 0}}\), je \(X\)
+  lokalno \(T₆\).
+\end{trditev}
+\begin{dokaz}
+  razponi \(f\) pokrijejo \(X\)
+
+  za \(f\) velja da za vse \(U\) pod \(\e f\) velja \(U = \i{f(U) \apart 0}\).
+
+  pika TODO: napiši zadevo normalno.
+\end{dokaz}
+\begin{opomba}
+  Ponovno smo pokazali malo več kot zgolj lokalno \(T₆\) lastnost. Dobili smo
+  \emph{funkcije izbire} za vsako od \(T₆\) komponent. Če v metateoriji
+  predpostavimo princip izbire, potem je to ekvivalentno tej močnejši verziji
+  \(\aks*\).
+\end{opomba}
 
 % TODO: res rabim prevod za to
 Fortov prostor zgoraj je \(T₆\), tako da v njemu ne velja niti šibkejša oblika

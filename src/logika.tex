@@ -1,5 +1,59 @@
 \section{Nekonstruktivni principi}
 
+\subsection{Realna števila}
+
+Spomnimo se nekaj definicij realnih števil.
+\begin{definicija}[Dedekindova realna števila]
+  Par \(\p{L, U} ∈ 𝒫(ℚ)×𝒫(ℚ)\) je \emph{Dedekindov rez}, ko velja
+  \begin{align}
+    L \text{ je poseljen}\\
+    U \text{ je poseljen}\\
+    L \text{ je navzdol zaprt}\\
+    U \text{ je navzgor zaprt}\\
+    L \text{ je navzgor odprt}\\
+    U \text{ je navzdol odprt}\\
+    \text{za } a < b \text{ je } a ∈ L ∨ b ∈ U\\
+    \text{za } a ∈ L ∧ b ∈ U \text{ je } a < b
+  \end{align}
+  Množica dedekindovih rezov tvori \emph{Dedekindova realna števila}, ki jih
+  označimo z \(\Rd\)
+\end{definicija}
+\begin{definicija}[Cauchyjeva realna števila]
+  Zaporedje racionalnih števil \(\p{qₙ}ₙ\) je \emph{Cauchyjevo}, ko velja
+  \[ \for{n : ℕ}{\exist{N : ℕ}{\for{k, l : ℕ}{k ≥ N ∧ l ≥ N ⇒ |qₖ - qₗ| < 2⁻ⁿ}}}\text. \]
+  TODO: modulusi
+\end{definicija}
+
+\begin{trditev}
+  Vsako Cauchyjevo realno število je tudi Dedekindovo.
+\end{trditev}
+\begin{dokaz}
+  Vzemimo \(L ≔ \set{q : ℚ}{q < x}\) in \(U ≔ \set{s : ℚ}{x < s}\).
+
+  Očitno ta zadoščata prvim šestim pogojem zgoraj, tako da se osredotočimo zgolj
+  na zadnja dva pogoja. Naj bo \(a < b\). Potem je \(x - a\) Cauchyjevo.
+\end{dokaz}
+
+\begin{izrek}
+  Vsako Dedekindovo realno število je tudi Cauchyjevo.
+\end{izrek}
+\begin{dokaz}[Dokaz (klasični)]
+  Pokazati je zgolj potrebno, da ima vsak Dedekindov rez pripadajoče Cauchyjevo
+  zaporedje. Naj bo \(\p{L, U}\) obojestranski dedekindov rez. Cauchyjevo
+  zaporedje lahko podamo kot zaporedje hitro padajočih racionalnih intervalov.
+
+  Naj bosta \(p₀ ∈ L\) in \(q₀ ∈ U\) racionalni števili. Potem pa na \(n\)-tem
+  koraku definiramo
+  \[ a ≔ \frac{2pₙ + qₙ}{3}\text,\quad b ≔ \frac{pₙ + 2qₙ}{3}\text{, in}\quad
+    \p{pₙ₊₁, qₙ₊₁} ≔ \begin{cases}
+      \p{a, qₙ} ;& a ∈ L\\
+      \p{pₙ, b} ;& b ∈ U\text.
+    \end{cases}
+  \]
+  Te intervali hitro konvergirajo proti \(\p{L, U}\), torej je to želeno
+  Cauchyjevo število.
+\end{dokaz}
+
 \subsection{Principi odločitve}
 
 \begin{definicija}[Izključena tretja možnost]\label{pr:lem}
