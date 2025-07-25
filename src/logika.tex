@@ -12,64 +12,138 @@ Spomnimo se nekaj definicij realnih števil.
     U \text{ je navzgor zaprt}\\
     L \text{ je navzgor odprt}\\
     U \text{ je navzdol odprt}\\
-    \text{za } a < b \text{ je } a ∈ L ∨ b ∈ U\\
+    \text{za } a < b \text{ je } a ∈ L ∨ b ∈ U\label{real:located}\\
     \text{za } a ∈ L ∧ b ∈ U \text{ je } a < b
   \end{align}
   Množica dedekindovih rezov tvori \emph{Dedekindova realna števila}, ki jih
   označimo z \(\Rd\)
 \end{definicija}
+\begin{opomba}
+  Pogoju~\ref{real:located} pravimo \emph{lociranost} in če velja za katerikoli
+  racionalni števili \(a\) in \(b\), bo veljala tudi za vse druge izbire.
+
+  Res, relacija \(<\) je invariantna na afine preslikave realne premice, tako da
+  lahko vsak interval \(\p{a,b}\) preslikamo (recimo) na \(\p{0,1}\) in nazaj.
+\end{opomba}
+
 \begin{definicija}[Cauchyjeva realna števila]
-  Zaporedje racionalnih števil \(\p{qₙ}ₙ\) je \emph{Cauchyjevo}, ko velja
-  \[ \for{n : ℕ}{\exist{N : ℕ}{\for{k, l : ℕ}{k ≥ N ∧ l ≥ N ⇒ |qₖ - qₗ| < 2⁻ⁿ}}}\text. \]
-  TODO: modulusi
+  Zaporedje racionalnih števil \(\p{xₙ}ₙ\) je \emph{Cauchyjevo}, ko za vsaka
+  \(i,j : ℕ\) velja \(|xᵢ - xⱼ| ≤ 2⁻ⁱ+2⁻ʲ\).
+
+  % \emph{Modulus konvergence} je preslikava \(α : ℚ₊ → ℕ\), za katero za vsak
+  % \(n : ℕ\) obstaja \(ε : ℚ₊\), da je \(α(ε) ≥ n\).
+
+  % Zaporedje racionalnih števil \(\p{xₙ}\) z modulusom konvergence \(α\) je
+  % \emph{Cauchyjevo}, ko za vsake \(ε : ℚ₊\) in \(i,j ≥ α(ε)\) velja
+  % \(|xᵢ - xⱼ| < ε\).
+
+  Dve Cauchyjevi zaporedji predstavljata isto realno število,
+  ko za vse \(i : ℕ\) velja \(|xᵢ - yᵢ| ≤ 2⁻ⁱ⁺¹\).
+  % ko obstaja modulus
+  % konvergence \(α\), da za \(ε : ℚ₊\) in \(i ≥ α(ε)\) velja \(|xᵢ - yᵢ| ≤ ε\). 
+
+  Množica Cauchyjevih zaporedij kvocientno z gornjo relacijo tvori
+  \emph{Cauchyjeva realna števila}, ki jih označimo z \(\Rc\).
 \end{definicija}
 
 \begin{trditev}
   Vsako Cauchyjevo realno število je tudi Dedekindovo.
 \end{trditev}
 \begin{dokaz}
-  Vzemimo \(L ≔ \set{q : ℚ}{q < x}\) in \(U ≔ \set{s : ℚ}{x < s}\).
+  Vzemimo \(L ≔ \set{q : ℚ}{q < x}\) in \(U ≔ \set{r : ℚ}{x < r}\).
+  Očitno ta zadoščata prvim šestim pogojem zgoraj, in prav tako zadoščata
+  zadnjemu pogoju, tako da se osredotočimo zgolj na zadnji pogoj.
 
-  Očitno ta zadoščata prvim šestim pogojem zgoraj, tako da se osredotočimo zgolj
-  na zadnja dva pogoja. Naj bo \(a < b\). Potem je \(x - a\) Cauchyjevo.
+  Pokazati moramo, da za vsako Cauchyjevo realno število \(x\) velja
+  \(x > 0 ∨ x < 3\).
+
+  %To pa pomeni, da mora obstajati nek indeks \(N : ℕ\), da so \(xᵢ > 0\) za vse
+  %\(i ≥ N\), ali pa \(xᵢ < 3\) za vse \(i ≥ N\).
+  Za racionalno število \(x₀\) velja \(x₀ > 1 ∨ x₀ < 2\), saj imajo racionalna
+  števila odločljivo neenakost. Sedaj pa vemo, da za vse \(i : ℕ\) velja
+  \(|x₀ - xᵢ| ≤ 1\), torej če je \(x₀ > 1\) bodo vsi \(xᵢ > 0\), po drugi strani
+  pa če je \(x₀ < 2\) bodo vsi \(xᵢ < 3\), kar pa zaključi dokaz.
 \end{dokaz}
 
-\begin{izrek}
-  Vsako Dedekindovo realno število je tudi Cauchyjevo.
-\end{izrek}
-\begin{dokaz}[Dokaz (klasični)]
-  Pokazati je zgolj potrebno, da ima vsak Dedekindov rez pripadajoče Cauchyjevo
-  zaporedje. Naj bo \(\p{L, U}\) obojestranski dedekindov rez. Cauchyjevo
-  zaporedje lahko podamo kot zaporedje hitro padajočih racionalnih intervalov.
+Obrat pa ne velja konstruktivno. Izračunajmo najprej, kaj so realna števila v
+topoloških modelih.
+\begin{trditev}
+  Nad \(X\) je objekt Dedekindovih realnih števil \(𝒪X\)-množica iz
+  primera~\ref{ex:reals}.
+  % Nad \(X\) je objekt Dedekindovih realnih števil \(𝒪X\)-množica
+  % \(\set{f : U → ℝ}{U ∈ 𝒪X\text{, }f\text{ zvezna}}\), z enakostjo definirano
+  % kot \(\i{f = g} ≔ \int{\set{t ∈ X}{f(t) = g(t)}}\).
+\end{trditev}
+\begin{dokaz}
+  Naj bo \(x = \p{L, U}\) dedekindov rez v interni logiki.
+  Sedaj lahko zunaj za \(t ∈ \e x\) definiramo
+  \[ Lₜ ≔ \set{q : ℚ}{t ∈ \i{q ∈ L}}\text{ in} \]
+  \[ Uₜ ≔ \set{r : ℚ}{t ∈ \i{r ∈ U}}\text. \]
+  Ta tvorita Dedekindov rez, tako da nam \(t ↦ \p{Lₜ, Uₜ}\) definira preslikavo
+  iz \(\e x → ℝ\).
 
-  Naj bosta \(p₀ ∈ L\) in \(q₀ ∈ U\) racionalni števili. Potem pa na \(n\)-tem
-  koraku definiramo
-  \[ a ≔ \frac{2pₙ + qₙ}{3}\text,\quad b ≔ \frac{pₙ + 2qₙ}{3}\text{, in}\quad
-    \p{pₙ₊₁, qₙ₊₁} ≔ \begin{cases}
-      \p{a, qₙ} ;& a ∈ L\\
-      \p{pₙ, b} ;& b ∈ U\text.
-    \end{cases}
-  \]
-  Te intervali hitro konvergirajo proti \(\p{L, U}\), torej je to želeno
-  Cauchyjevo število.
+  Obratno, če je \(x : V → ℝ\) zvezna preslikava, lahko tvorimo preslikavi
+  \[ L(t) ≔ \set{q : ℚ}{q < x(t)}\text{ in} \]
+  \[ U(t) ≔ \set{r : ℚ}{x(t) < r}\text. \]
+  Ti znotraj tvorita Dedekindov rez \(\p{L, U}\).
 \end{dokaz}
+\begin{trditev}
+  Naj bo prostor \(X\) lokalno povezan. Tedaj je nad \(X\) objekt Cauchyjevih
+  realnih števil \(𝒪X\)-množica \(\c ℝ\).
+\end{trditev}
+\begin{dokaz}
+  Pokazati je zares treba, da je objekt Cauchyjevih realnih števil \(\g{\c ℝ}\),
+  torej da so lokalno konstantne preslikave v \(ℝ\).
+
+  Podobno kot zgoraj nad \(t ∈ \e x\) dobimo Cauchyjevo zaporedje \(\p{xₙ(t)}ₙ\),
+  torej preslikavo \(\e x → ℝ\). Ker je \(X\) lokalno povezan ima pokritje iz
+  povezanih množic, tako da brez škode za splošnost predpostavimo, da je
+  \(\e x\) povezan. Ker pa je povezan, pa vemo, da so vsi \(xᵢ\) konstantne
+  preslikave, torej morajo biti vsi \(xₙ(t)\) enaki (za vse \(t ∈ \e x\)), tako
+  da je \(t ↦ \p{xₙ(t)}ₙ\) konstantna.
+
+  Obratno pa, če je \(f : U → ℝ\) konstantna preslikava, torej, naj bo recimo
+  \(x ∈ ℝ\), ima potem pripadajoče Cauchyjevo zaporedje \(\p{xₙ}ₙ\). Sedaj pa
+  lahko tvorimo konstantne preslikave \(xₙ : U → ℚ\), ki torej znotraj tvorijo
+  Cauchyjevo zaporedje.
+\end{dokaz}
+\begin{trditev}
+  Nad \(ℝ\) sta objekta Dedekindovih in Cauchyjevih realnih števil različna.
+\end{trditev}
+\begin{dokaz}
+  Preslikava \(t ↦ t\) je Dedekindovo realno število, ki pa ni lokalno
+  konstantno, torej ni Cauchyjevo.
+\end{dokaz}
+
 
 \subsection{Principi odločitve}
 
 \begin{definicija}[Izključena tretja možnost]\label{pr:lem}
-  \emph{Princip izključene tretje možnosti} pravi, da za vsako resničnostno vrednost
-  \(p\) velja \(p∨¬p\). Formulo \(p∨¬p\) označimo \(\lem(p)\), formulo
+  \emph{Princip izključene tretje možnosti} pravi, da za vsako resničnostno
+  vrednost \(p\) velja \(p∨¬p\). Formulo \(p∨¬p\) označimo \(\lem(p)\), formulo
   \(\for{p:Ω}{p∨¬p}\) pa z \(\lem*\).
 \end{definicija}
 
-\begin{definicija}
+\begin{definicija}[Šibka izključena tretja možnost]\label{pr:wlem}
+  \emph{Šibak princip izključene tretje možnosti} pravi, da za vsako
+  resničnostno vrednost \(p\) velja \(¬p∨¬¬p\). Formulo \(¬p∨¬¬p\) označimo
+  \(\wlem(p)\), formulo \(\for{p:Ω}{¬p∨¬¬p}\) pa z \(\wlem*\).
+\end{definicija}
+\begin{trditev}
+  Velja implikacija \(\lem* ⇒ \wlem*\).
+\end{trditev}
+\begin{dokaz}
+  Formula \(\wlem(p)\) je natanko \(\lem(¬p)\), tako da trditev očitno velja.
+\end{dokaz}
+
+\begin{definicija}\label{pr:lpo}
   \emph{Princip števne odločitve} pravi, da za vsako števno zaporedje ničel in enic
   lahko odločimo, ali je celo nič, ali pa obstaja mesto, na katerem je enica.
   Formulo \(α = 0∨α\apart 0\) označimo \(\lpo(α)\), formulo
   \(\for{α : 2^ℕ}{\lpo(α)}\) pa z \(\lpo*\).
 \end{definicija}
 
-\begin{definicija}
+\begin{definicija}\label{pr:alpo}
   \emph{Analitični princip števne odločitve} pravi, da za vsako realno število
   lahko odločimo, ali je pozitivno ali nenegativno. Formulo \(x > 0 ∨ x ≤ 0\)
   označimo \(\alpo(x)\), formulo \(\for{x : ℝ}{\alpo(x)}\) pa z \(\alpo*\).
@@ -92,6 +166,44 @@ Spomnimo se nekaj definicij realnih števil.
   Po drugi strani, če je \(x > 0\) pa obstaja nek \(k : ℕ\), tako da je
   \(x > 2⁻ᵏ\). To pa pomeni, da ima \(α\) enico na enem izmed prvih \(k\)
   mestih, kar konstruktivno pomeni, da želeni indeks obstaja.
+\end{dokaz}
+
+Pokazati moramo zgolj, da gornje implikacije niso obrnljive.
+\begin{trditev}
+  Nad \(2^ℕ\) ne velja \(\lpo*\).
+\end{trditev}
+\begin{dokaz}
+  Naj bo \(α : 2^ℕ → 2^ℕ\) identiteta. Resničnostna vrednost \(\lpo(α)\) je
+  \(2^ℕ⧵\{0\}\), saj je resničnostna vrednost \(α = 0\) enaka \(∅\).
+\end{dokaz}
+
+\begin{trditev}
+  Nad \(ℝ\) velja \(\lpo*\) in ne velja \(\alpo*\).
+\end{trditev}
+\begin{dokaz}
+  Naj bo \(x : ℝ\) zunaj identiteta. Potem je \(\i{\alpo(x)} = ℝ⧵\{0\}\).
+
+  Naj bo sedaj \(α : 2^ℕ\). TODO: a res še enkat…
+\end{dokaz}
+
+\begin{trditev}
+  Nad \(ℕ^{\text{cof}}\) velja \(\alpo*\) in ne velja \(\lem*\).
+\end{trditev}
+\begin{dokaz}
+  Prostor očitno ni diskreten. Naj bo \(x : ℝ\), torej preslikava \(\e x → ℝ\).
+  Naj bo \(t, t' ∈ \im x\). Potem sta \(x⁻¹(t)\) in \(x⁻¹(t')\) neprazni odprti
+  množica. To pa pomeni, da sta obe kokončni, torej imata neprazen presek, od
+  koder sledi, da sta si enaka. Torej je vsako notranje realno število
+  konstantno. Sedaj pa lahko za to realno število \(\alpo(x)\) odločimo zunaj.
+\end{dokaz}
+
+\begin{trditev}
+  Nad \(ℕ^{\text{cof}}\) velja \(\wlem*\) in ne velja \(\lem*\).
+\end{trditev}
+\begin{dokaz}
+  Prostor še vedno ni diskreten. Naj bo sedaj \(U\) odprta množica.
+  Njena zunanjost (torej negacija) je pa bodisi cel prostor, bodisi prazna. Za
+  te odprte množice pa velja da so komplementirane, torej \(\wlem*\) drži.
 \end{dokaz}
 
 \subsection{Principi izbire}
