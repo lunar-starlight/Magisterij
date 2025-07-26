@@ -30,32 +30,46 @@ Znana sta dva nekonstruktivna principa, ki sta zadostna za gornji odkaz in sta
 drugi primer na \(x < b ∧ ¬\p{a < x}\).
 
 Če pa imamo na voljo \(\CCv\) pa preprosto lahko naredimo števno mnogo
-% TODO: prevod tega, nujno
-odločitev. Zares potrebujemo tu zgolj \(\CCv\) za ``realne'' odločitve, kar je
+odločitev. Zares potrebujemo tu zgolj \(\CCv_{Σ_ℝ}\), kar je
 pa tudi posledica \(\alpo*\).
 
 Čeprav je iz tega očitno, da niti \(\alpo*\) niti \(\CCv\) nista potrebna za
-\(\Rd\ = \Rc\), jih vseeno poskusimo strogo ločiti.
+\(\Rd = \Rc\), jih vseeno poskusimo strogo ločiti.
 
-\subsection{\(\Rd{} = \Rc\) in \(\CCv\)}
+\subsection{\(\Rd{} = \Rc\)}
 
-TODO: reword
 \begin{konstrukcija}
-  Aksiom disjunktivne števne izbire \(\CCv\) ni potreben pogoj za ujemanje
-  Cantorjevih in Dedekindovih realnih števil.
+  Nad \(\Ncof\) velja \(\Rd = \Rc\), a ne velja princip števne
+  disjunktivne izbire.
 \end{konstrukcija}
 \begin{dokaz}
   Prostor naravnih števil s kokončno topologijo ima lastnost, da je vsaka
   funkcija \(ℕ → ℝ\) konstantna. To velja tudi za (neprazne) odprte podmnožice,
   ker so števno neskončne s kokončno topologijo, kar pa pomeni, da se, v toposu
   snopov nad \(ℕ\) s to topologijo, Dedekindova in Cauchyjeva realna števila
-  ujemajo. Vendar pa je presek množic \(\{0, n, n+1, …\} \) enak \(\{0\}\), ki
-  ni odprta, torej ta prostor ni P-prostor. Ker je ta prostor \(T₁\),
-  po~\ref{th:t1-ccv-is-psp} sledi, da ne validira \(\CCv\).
+  ujemajo.
+
+  Naj bo \(R(n, b) ≔ ℕ⧵\{2n+b\}\). Ta relacija je celovita, saj lahko za vsak
+  \(n : ℕ\) \(ℕ\) pokrijemo z \(R(n,0)\) in \(R(n,1)\). Pokažimo, da za to
+  relacijo ne obstaja funkcija izbire.
+
+  Denimo, da je \(f : ℕ → 2\) njena funkcija izbire, torej da velja
+  \(\for{n:ℕ}{R(n,f(n))}\). Če bi bila \(f\) konstantno \(b\), bi potem moralo
+  veljati \(ℕ ⊩ R(n, b)\) za vse \(n\), kar pa ni res. To pomeni, da sta
+  \(\i{0 = f(n)}\) in \(\i{1 = f(n)}\) obe neprazni, torej, ker sta odprti,
+  imata neprazen presek (ki je tudi neskončna odprta množica). Potem pa na tej
+  množici velja \(0 = 1\), kar pa očitno ne drži.\contradiction
+
+  Sledi, da funkcija izbire za ta \(R\) ne more obstajati, torej \(\CCv\) ne
+  drži.
 \end{dokaz}
-
-
-\subsection{\(\Rd{} = \Rc\) in \alpo*}
+\begin{dokaz}
+  Naj bodo \(Cₙ ≔ \{ℕ⧵\{2n\}, ℕ⧵\{2n+1\}\}\) pokritja \(\Ncof\) in \(C\) njihova
+  skupna pofinitev. Potem mora vsak \(U ∈ C\) biti podmnožica enega od elementov
+  vsakega od \(Cₙ\). To pa pomeni, da ima \(U\) neskončen komplement, torej je
+  prazna množica. Sledi, da \(C\) pokrije zgolj prazno množico, torej \(\CCv\)
+  ne drži.
+\end{dokaz}
 
 Primer podan zgoraj pa vseeno zadošča principu \(\alpo*\), ki konstruktivno
 implicira ujemanje Cantorjevih in Dedekindovih realnih
@@ -64,24 +78,32 @@ implicira ujemanje Cantorjevih in Dedekindovih realnih
 TODO: restructure?
 Izkaže se, da za lokalno povezane prostore to tudi pričakujemo.
 \begin{izrek}
-  Če je \(X\) lokalno povezan in velja \(X ⊩ \Rd\ = \Rc\), potem velja \(X ⊩ \alpo*\).
+  Če je \(X\) lokalno povezan in velja \(X ⊩ \Rd = \Rc\), velja \(X ⊩ \alpo*\).
 \end{izrek}
 Ta izrek je zares kar posledica slednjega izreka.
 \begin{izrek}
-  Če je \(X\) lokalno povezan, potem velja \(X ⊩ \lpo*\).
+  Če je \(X\) lokalno povezan, velja \(X ⊩ \lpo*\).
 \end{izrek}
 \begin{dokaz}
-  Naj bo \(α : 2^ℕ\). Ker je \(X\) lokalno povezan, je snop \(2^ℕ\) kar
-  konstanen snop preslikav iz \(ℕ\) v \(2\). To pa pomeni, da je lokalno
-  \(α = f\), za nek \(f : ℕ → 2\). Sedaj pa v metateoriji imamo \(\lpo*\), tako
-  da lahko odločimo \(f = 0 ∨ f \apart 0\), kar pa pomeni, da to lahko odločimo
-  tudi za \(α\), torej nad \(X\) velja \(\lpo*\).
+  Naj bo \(α : 2^ℕ\). Ker je \(X\) lokalno povezan, je množica \(2^ℕ\) kar
+  množica preslikav iz \(ℕ\) v \(2\). To pa pomeni, da je lokalno \(α = f\), za
+  nek \(f : ℕ → 2\). Zunaj pa imamo \(\lpo*\), tako da lahko odločimo \(f = 0 ∨
+  f \apart 0\), kar pa pomeni, da to lahko odločimo tudi za \(α\), torej nad
+  \(X\) velja \(\lpo*\).
 \end{dokaz}
 \begin{dokaz}[Dokaz posledice]
   Ker je \(\lpo*\) ekvivalenten \(\alpo*\) za Cauchyjeva realna števila,
-  avtomatsko sledi, da če velja \(\Rd\ = \Rc\), je potem \(\lpo*\) ekvivalenten
+  avtomatsko sledi, da če velja \(\Rd = \Rc\), je potem \(\lpo*\) ekvivalenten
   \(\alpo*\). 
 \end{dokaz}
+\begin{opomba}
+  Zares namesto lokalne povezanosti zadošča \(X ⊩ \Rc = \c ℝ\). To je zato, ker
+  je \(\alpo*\) za Cauchyjeva realna števila ekvivalenten \(\lpo*\).
+
+  V splošnem bi se izrek torej lahko glasil \(X ⊩ R = \c ℝ ⇒ \alpo*_R\), kjer je
+  \(R\) nek objekt realnih števil (Dedekindova, Cauchyjeva, Escardo-Simpsonova,
+  MacNeillova, itd⹁).
+\end{opomba}
 % \begin{proof}
 %   Ker je \(X\) lokalno povezan so Cauchyjeva realna števila natanko lokalno
 %   konstante preslikave v \(ℝ\). Denimo torej, da so vse preslikave v \(ℝ\)

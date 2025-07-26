@@ -1,119 +1,102 @@
 \section{Nekonstruktivni principi}
 
-\subsection{Realna števila}
+\subsection{Principi izbire}
 
-Spomnimo se nekaj definicij realnih števil.
-\begin{definicija}[Dedekindova realna števila]
-  Par \(\p{L, U} ∈ 𝒫(ℚ)×𝒫(ℚ)\) je \emph{Dedekindov rez}, ko velja
-  \begin{align}
-    L \text{ je poseljen}\\
-    U \text{ je poseljen}\\
-    L \text{ je navzdol zaprt}\\
-    U \text{ je navzgor zaprt}\\
-    L \text{ je navzgor odprt}\\
-    U \text{ je navzdol odprt}\\
-    \text{za } a < b \text{ je } a ∈ L ∨ b ∈ U\label{real:located}\\
-    \text{za } a ∈ L ∧ b ∈ U \text{ je } a < b
-  \end{align}
-  Množica dedekindovih rezov tvori \emph{Dedekindova realna števila}, ki jih
-  označimo z \(\Rd\)
+Za princip izbire ste verjetno že slišali. Ta pravi, da za vsaki množici \(A\)
+in \(B\), in vsako celovito relacijo \(R\) med njima, obstaja funkcija
+\(f : A → B\), tako da velja \(\for{a : A}{R(a, f(a))}\).
+
+Ta princip lahko ošibimo na tri načine: lahko omejimo množici \(A\) in \(B\),
+lahko pa omejimo relacijo \(R\), tako da jemlje resničnostne vrednosti zgolj iz
+določene množice \(Σ ⊆ Ω\).
+
+\begin{definicija}
+  \emph{Princip izbire nad \(Σ\)} je shema, ki za vsaka \(A\) in \(B\) pravi,
+  da za vsako relacijo \(R : A×B → Σ\) za katero velja
+  \(\for{a:A}{\exist{b:B}{R(a,b)}}\), obstaja funkcija izbire \(f : A → B\),
+  tako da velja \(\for{a:A}{R(a,f(a))}\). Objektu \(A\) tako pravimo
+  \emph{domena}, objektu \(B\) \emph{kodomena}, objektu \(Σ\) pa
+  \emph{Sierpinskijev objekt}.
+  Pogoju na \(R\) pravimo \emph{celovitost}.
+
+  To označimo z \(\AC_Σ\). Če je \(Σ = Ω\) indeks opustimo in temu pravimo
+  \emph{princip izbire}.
 \end{definicija}
-\begin{opomba}
-  Pogoju~\ref{real:located} pravimo \emph{lociranost} in če velja za katerikoli
-  racionalni števili \(a\) in \(b\), bo veljala tudi za vse druge izbire.
-
-  Res, relacija \(<\) je invariantna na afine preslikave realne premice, tako da
-  lahko vsak interval \(\p{a,b}\) preslikamo (recimo) na \(\p{0,1}\) in nazaj.
-\end{opomba}
-
-\begin{definicija}[Cauchyjeva realna števila]
-  Zaporedje racionalnih števil \(\p{xₙ}ₙ\) je \emph{Cauchyjevo}, ko za vsaka
-  \(i,j : ℕ\) velja \(|xᵢ - xⱼ| ≤ 2⁻ⁱ+2⁻ʲ\).
-
-  % \emph{Modulus konvergence} je preslikava \(α : ℚ₊ → ℕ\), za katero za vsak
-  % \(n : ℕ\) obstaja \(ε : ℚ₊\), da je \(α(ε) ≥ n\).
-
-  % Zaporedje racionalnih števil \(\p{xₙ}\) z modulusom konvergence \(α\) je
-  % \emph{Cauchyjevo}, ko za vsake \(ε : ℚ₊\) in \(i,j ≥ α(ε)\) velja
-  % \(|xᵢ - xⱼ| < ε\).
-
-  Dve Cauchyjevi zaporedji predstavljata isto realno število,
-  ko za vse \(i : ℕ\) velja \(|xᵢ - yᵢ| ≤ 2⁻ⁱ⁺¹\).
-  % ko obstaja modulus
-  % konvergence \(α\), da za \(ε : ℚ₊\) in \(i ≥ α(ε)\) velja \(|xᵢ - yᵢ| ≤ ε\). 
-
-  Množica Cauchyjevih zaporedij kvocientno z gornjo relacijo tvori
-  \emph{Cauchyjeva realna števila}, ki jih označimo z \(\Rc\).
+\begin{definicija}
+  Če v principu izbire fiksiramo domeno na nek \(A\), temu pravimo
+  \emph{princip izbire nad \(Σ\) iz \(A\)}, in če fiksiramo še kodomeno na nek
+  \(B\) temu pravimo \emph{princip izbire nad \(Σ\) iz \(A\) v \(B\)}. Ta potem
+  označujemo \(\AC_Σ(A)\) in \(\AC_Σ(A, B)\). Podobno kot zgoraj opuščamo \(Σ\)
+  ko je ta enaka \(Ω\).
 \end{definicija}
-
+Hitro lahko opazimo, da so principi izbire neobčutljivi za izomorfizme.
 \begin{trditev}
-  Vsako Cauchyjevo realno število je tudi Dedekindovo.
+  Naj bo \(φ : A ≅ A'\) in \(ψ : B ≅ B'\). Potem je \(\AC_Σ(A, B)\) ekvivalenten
+  \(\AC_Σ(A', B')\).
 \end{trditev}
 \begin{dokaz}
-  Vzemimo \(L ≔ \set{q : ℚ}{q < x}\) in \(U ≔ \set{r : ℚ}{x < r}\).
-  Očitno ta zadoščata prvim šestim pogojem zgoraj, in prav tako zadoščata
-  zadnjemu pogoju, tako da se osredotočimo zgolj na zadnji pogoj.
+  Situacija je očitno simetrična, tako da pokažimo zgolj eno implikacijo.
 
-  Pokazati moramo, da za vsako Cauchyjevo realno število \(x\) velja
-  \(x > 0 ∨ x < 3\).
-
-  %To pa pomeni, da mora obstajati nek indeks \(N : ℕ\), da so \(xᵢ > 0\) za vse
-  %\(i ≥ N\), ali pa \(xᵢ < 3\) za vse \(i ≥ N\).
-  Za racionalno število \(x₀\) velja \(x₀ > 1 ∨ x₀ < 2\), saj imajo racionalna
-  števila odločljivo neenakost. Sedaj pa vemo, da za vse \(i : ℕ\) velja
-  \(|x₀ - xᵢ| ≤ 1\), torej če je \(x₀ > 1\) bodo vsi \(xᵢ > 0\), po drugi strani
-  pa če je \(x₀ < 2\) bodo vsi \(xᵢ < 3\), kar pa zaključi dokaz.
+  Če je \(R : A'×B' → Σ\) celovita, je potem tudi \(R∘\p{φ×ψ} : A×B → Σ\)
+  celovita. Potem pa za to relacijo obstaja funkcija izbire, tako da je
+  \(\for{a : A}{R∘\p{φ×ψ}{(a, f(a))}}\), kar je pa enako
+  \(\for{a:A}{R(φ(a),ψ(f(a)))}\). Ker pa je \(φ\) izomorfizem, lahko
+  preindeksiramo kvantifikator in dobimo \(\for{a:A'}{R(a',ψ∘f∘φ⁻¹(a'))}\),
+  torej je \(ψ∘f∘φ⁻¹\) funkcija izbire za \(R\).
 \end{dokaz}
-
-Obrat pa ne velja konstruktivno. Izračunajmo najprej, kaj so realna števila v
-topoloških modelih.
+V teoriji množic to pomeni, da je aksiom izbire določen do kardinalnosti
+natančno. To nam tudi utemelji zakaj lahko \(\AC(ℕ)\) pravimo princip
+\emph{števne} izbire, saj deluje za poljubno števno (neskončno) množico. Tako si
+lahko tudi predstavljamo, kako to shemo imen razširiti na poljubno kardinalnost.
+Označimo ga torej \(\CC\). Pomembno vlogo bo igral tudi \emph{princip
+  števne disjunktivne izbire} \(\AC(ℕ, 2)\), ki ga označimo z \(\CCv\). 
 \begin{trditev}
-  Nad \(X\) je objekt Dedekindovih realnih števil \(𝒪X\)-množica iz
-  primera~\ref{ex:reals}.
-  % Nad \(X\) je objekt Dedekindovih realnih števil \(𝒪X\)-množica
-  % \(\set{f : U → ℝ}{U ∈ 𝒪X\text{, }f\text{ zvezna}}\), z enakostjo definirano
-  % kot \(\i{f = g} ≔ \int{\set{t ∈ X}{f(t) = g(t)}}\).
+  Če je \(Σ' ⊆ Σ\), \(\AC_Σ(A, B)\) implicira \(\AC_{Σ'}(A, B)\).
 \end{trditev}
 \begin{dokaz}
-  Naj bo \(x = \p{L, U}\) dedekindov rez v interni logiki.
-  Sedaj lahko zunaj za \(t ∈ \e x\) definiramo
-  \[ Lₜ ≔ \set{q : ℚ}{t ∈ \i{q ∈ L}}\text{ in} \]
-  \[ Uₜ ≔ \set{r : ℚ}{t ∈ \i{r ∈ U}}\text. \]
-  Ta tvorita Dedekindov rez, tako da nam \(t ↦ \p{Lₜ, Uₜ}\) definira preslikavo
-  iz \(\e x → ℝ\).
-
-  Obratno, če je \(x : V → ℝ\) zvezna preslikava, lahko tvorimo preslikavi
-  \[ L(t) ≔ \set{q : ℚ}{q < x(t)}\text{ in} \]
-  \[ U(t) ≔ \set{r : ℚ}{x(t) < r}\text. \]
-  Ti znotraj tvorita Dedekindov rez \(\p{L, U}\).
+  Vsaka relacija nad \(Σ'\) je tudi relacija nad \(Σ\), tako da če imajo
+  relacije nad \(Σ\) funkcije izbire jih imajo tudi relacije nad \(Σ'\).
 \end{dokaz}
 \begin{trditev}
-  Naj bo prostor \(X\) lokalno povezan. Tedaj je nad \(X\) objekt Cauchyjevih
-  realnih števil \(𝒪X\)-množica \(\c ℝ\).
+  Princip končne izbire velja.
 \end{trditev}
 \begin{dokaz}
-  Pokazati je zares treba, da je objekt Cauchyjevih realnih števil \(\g{\c ℝ}\),
-  torej da so lokalno konstantne preslikave v \(ℝ\).
+  TODO: sintaksa za standardne končne?
+  Princip končne izbire je princip izbire, kjer domeno omejimo na končne
+  množice. Brez škode za splošnost, naj bo domena kar enaka neki
+  standardni končni množici \(\cli n\).
 
-  Podobno kot zgoraj nad \(t ∈ \e x\) dobimo Cauchyjevo zaporedje \(\p{xₙ(t)}ₙ\),
-  torej preslikavo \(\e x → ℝ\). Ker je \(X\) lokalno povezan ima pokritje iz
-  povezanih množic, tako da brez škode za splošnost predpostavimo, da je
-  \(\e x\) povezan. Ker pa je povezan, pa vemo, da so vsi \(xᵢ\) konstantne
-  preslikave, torej morajo biti vsi \(xₙ(t)\) enaki (za vse \(t ∈ \e x\)), tako
-  da je \(t ↦ \p{xₙ(t)}ₙ\) konstantna.
+  Potem pa \(\AC(\cli n)\) pravi, da če
+  obstajajo \(bₖ:B\), da velja \(R(1,b₁)∧\dots ∧R(n,bₙ)\), obstaja končno
+  zaporedje (torej, obstajajo \(bₖ:B\)), da velja \(R(1,b₁)∧\dots ∧R(n,bₙ)\)… To
+  sta pa isti stvari, tako da princip res drži.
+\end{dokaz}
 
-  Obratno pa, če je \(f : U → ℝ\) konstantna preslikava, torej, naj bo recimo
-  \(x ∈ ℝ\), ima potem pripadajoče Cauchyjevo zaporedje \(\p{xₙ}ₙ\). Sedaj pa
-  lahko tvorimo konstantne preslikave \(xₙ : U → ℚ\), ki torej znotraj tvorijo
-  Cauchyjevo zaporedje.
-\end{dokaz}
-\begin{trditev}
-  Nad \(ℝ\) sta objekta Dedekindovih in Cauchyjevih realnih števil različna.
-\end{trditev}
-\begin{dokaz}
-  Preslikava \(t ↦ t\) je Dedekindovo realno število, ki pa ni lokalno
-  konstantno, torej ni Cauchyjevo.
-\end{dokaz}
+% \begin{definicija}
+%   \emph{Princip \[Σ\]-izbire iz \(A\) v \(B\)} pravi, da za vsako relacijo
+%   \(R : A×B → Σ\) za katero velja \(\for{a:A}{\exist{b:B}{R(a,b)}}\), obstaja
+%   funkcija izbire \(f : A → B\), tako da velja \(\for{a:A}{R(a,f(a))}\).
+
+%   To bomo označili z \(\AC_Σ(A,B)\). Z \(\AC_Σ(A)\) bomo označevali shemo
+%   \(\for{B}{\AC_Σ(A,B)}\), z \(\AC_Σ\) pa shemo \(\for{A}{\AC_Σ(A)}\).
+%   Tem pravimo \emph{princip \(Σ\)-izbire iz \(A\)} in \emph{princip \(Σ\)-izbire}.
+%   Kadar je \(Σ = Ω\) bomo \(Σ\) v indeksu opuščali, in ustrezno to poimenovali
+%   kar samo \emph{princip izbire (iz \(A\) v \(B\))}.
+
+%   Standardno se principu \(\AC(ℕ)\) pravi \emph{princip števne izbire} in
+%   označuje \(\CC\).
+%   Posebno pomemben bo princip \(\AC(ℕ, 2)\), ki ga bomo označevali \(\CCv\) in
+%   mu pravili \emph{princip števne dvojiške(disjunktivne?) izbire}.
+% \end{definicija}
+
+
+
+% \begin{definicija}
+%   \emph{Princip števne dvojiške izbire} pravi, da če velja
+%   \(\for{n : ℕ}{P(n, 0) ∨ P(n, 1)}\) (torej, \(P\) je celovita relacija na
+%   \(ℕ×2\)) obstaja funkcija izbire \(f : ℕ → 2\), da velja
+%   \(\for{n : ℕ}{P(n,f(n))}\).
+% \end{definicija}
 
 
 \subsection{Principi odločitve}
@@ -187,7 +170,7 @@ Pokazati moramo zgolj, da gornje implikacije niso obrnljive.
 \end{dokaz}
 
 \begin{trditev}
-  Nad \(ℕ^{\text{cof}}\) velja \(\alpo*\) in ne velja \(\lem*\).
+  Nad \(\Ncof\) velja \(\alpo*\) in ne velja \(\lem*\).
 \end{trditev}
 \begin{dokaz}
   Prostor očitno ni diskreten. Naj bo \(x : ℝ\), torej preslikava \(\e x → ℝ\).
@@ -198,7 +181,7 @@ Pokazati moramo zgolj, da gornje implikacije niso obrnljive.
 \end{dokaz}
 
 \begin{trditev}
-  Nad \(ℕ^{\text{cof}}\) velja \(\wlem*\) in ne velja \(\lem*\).
+  Nad \(\Ncof\) velja \(\wlem*\) in ne velja \(\lem*\).
 \end{trditev}
 \begin{dokaz}
   Prostor še vedno ni diskreten. Naj bo sedaj \(U\) odprta množica.
@@ -206,100 +189,208 @@ Pokazati moramo zgolj, da gornje implikacije niso obrnljive.
   te odprte množice pa velja da so komplementirane, torej \(\wlem*\) drži.
 \end{dokaz}
 
-\subsection{Principi izbire}
+\subsection{Realna števila}
 
-Za princip izbire ste verjetno že slišali. Ta pravi, da za vsaki množici \(A\)
-in \(B\), in vsako celovito relacijo \(R\) med njima, obstaja funkcija
-\(f : A → B\), tako da velja \(\for{a : A}{R(a, f(a))}\).
-
-Ta princip lahko ošibimo na tri načine: lahko omejimo množici \(A\) in \(B\),
-lahko pa omejimo relacijo \(R\), tako da jemlje resničnostne vrednosti zgolj iz
-določene množice \(Σ ⊆ Ω\).
-
-\begin{definicija}
-  \emph{Princip izbire nad \(Σ\)} je shema, ki za vsaka \(A\) in \(B\) pravi,
-  da za vsako relacijo \(R : A×B → Σ\) za katero velja
-  \(\for{a:A}{\exist{b:B}{R(a,b)}}\), obstaja funkcija izbire \(f : A → B\),
-  tako da velja \(\for{a:A}{R(a,f(a))}\). Objektu \(A\) tako pravimo
-  \emph{domena}, objektu \(B\) \emph{kodomena}, objektu \(Σ\) pa TODO: kaj?.
-  Pogoju na \(R\) pravimo \emph{celovitost}.
-
-  To označimo z \(\AC_Σ\). Če je \(Σ = Ω\) indeks opustimo in temu pravimo
-  \emph{princip izbire}.
+Spomnimo se nekaj definicij realnih števil.
+\begin{definicija}[Dedekindova realna števila]
+  Par \(\p{L, U} ∈ 𝒫(ℚ)×𝒫(ℚ)\) je \emph{Dedekindov rez}, ko velja
+  \begin{align}
+    L \text{ je poseljen}\\
+    U \text{ je poseljen}\\
+    L \text{ je navzdol zaprt}\\
+    U \text{ je navzgor zaprt}\\
+    L \text{ je navzgor odprt}\\
+    U \text{ je navzdol odprt}\\
+    \text{za } a < b \text{ je } a ∈ L ∨ b ∈ U\label{real:located}\\
+    \text{za } a ∈ L ∧ b ∈ U \text{ je } a < b
+  \end{align}
+  Množica Dedekindovih rezov tvori \emph{Dedekindova realna števila}, ki jih
+  označimo z \(\Rd\).
 \end{definicija}
-\begin{definicija}
-  Če v principu izbire fiksiramo domeno na nek \(A\), temu pravimo
-  \emph{princip izbire nad \(Σ\) iz \(A\)}, in če fiksiramo še kodomeno na nek
-  \(B\) temu pravimo \emph{princip izbire nad \(Σ\) iz \(A\) v \(B\)}. Ta potem
-  označujemo \(\AC_Σ(A)\) in \(\AC_Σ(A, B)\). Podobno kot zgoraj opuščamo \(Σ\)
-  ko je ta enaka \(Ω\).
+\begin{opomba}
+  Pogoju~\ref{real:located} pravimo \emph{lociranost} in če velja za katerikoli
+  racionalni števili \(a\) in \(b\), bo veljala tudi za vse druge izbire.
+
+  Res, relacija \(<\) je invariantna na afine preslikave realne premice, tako da
+  lahko vsak interval \(\p{a,b}\) preslikamo (recimo) na \(\p{0,1}\) in nazaj.
+\end{opomba}
+
+\begin{definicija}[Cauchyjeva realna števila]
+  Zaporedje racionalnih števil \((xₙ)ₙ\) je \emph{Cauchyjevo}, ko za vsaka
+  \(i,j : ℕ\) velja \(|xᵢ - xⱼ| ≤ 2⁻ⁱ+2⁻ʲ\).
+
+  % \emph{Modulus konvergence} je preslikava \(α : ℚ₊ → ℕ\), za katero za vsak
+  % \(n : ℕ\) obstaja \(ε : ℚ₊\), da je \(α(ε) ≥ n\).
+
+  % Zaporedje racionalnih števil \(\p{xₙ}\) z modulusom konvergence \(α\) je
+  % \emph{Cauchyjevo}, ko za vsake \(ε : ℚ₊\) in \(i,j ≥ α(ε)\) velja
+  % \(|xᵢ - xⱼ| < ε\).
+
+  Dve Cauchyjevi zaporedji predstavljata isto realno število,
+  ko za vse \(i : ℕ\) velja \(|xᵢ - yᵢ| ≤ 2⁻ⁱ⁺¹\).
+  % ko obstaja modulus
+  % konvergence \(α\), da za \(ε : ℚ₊\) in \(i ≥ α(ε)\) velja \(|xᵢ - yᵢ| ≤ ε\). 
+
+  Množica Cauchyjevih zaporedij kvocientno z gornjo relacijo tvori
+  \emph{Cauchyjeva realna števila}, ki jih označimo z \(\Rc\).
 \end{definicija}
-Hitro lahko opazimo, da so principi izbire neobčutljivi za izomorfizme.
+
 \begin{trditev}
-  Naj bo \(φ : A ≅ A'\) in \(ψ : B ≅ B'\). Potem je \(\AC_Σ(A, B)\) ekvivalenten
-  \(\AC_Σ(A', B')\).
+  Vsako Cauchyjevo realno število je tudi Dedekindovo.
 \end{trditev}
 \begin{dokaz}
-  Situacija je očitno simetrična, tako da pokažimo zgolj eno implikacijo.
+  Vzemimo \(L ≔ \set{q : ℚ}{q < x}\) in \(U ≔ \set{r : ℚ}{x < r}\).
+  Očitno ta zadoščata prvim šestim pogojem zgoraj, in prav tako zadoščata
+  zadnjemu pogoju, tako da se osredotočimo zgolj na zadnji pogoj.
 
-  Če je \(R : A'×B' → Σ\) celovita, je potem tudi \(R∘\p{φ×ψ} : A×B → Σ\)
-  celovita. Potem pa za to relacijo obstaja funkcija izbire, tako da je
-  \(\for{a : A}{R∘\p{φ×ψ}(a, f(a))}\), kar je pa enako
-  \(\for{a:A}{R(φ(a),ψ(f(a)))}\). Ker pa je \(φ\) izomorfizem, lahko
-  preindeksiramo kvantifikator in dobimo \(\for{a:A'}{R(a',ψ∘f∘φ⁻¹(a'))}\),
-  torej je \(ψ∘f∘φ⁻¹\) funkcija izbire za \(R\).
+  Pokazati moramo, da za vsako Cauchyjevo realno število \(x\) velja
+  \(x > 0 ∨ x < 3\).
+
+  %To pa pomeni, da mora obstajati nek indeks \(N : ℕ\), da so \(xᵢ > 0\) za vse
+  %\(i ≥ N\), ali pa \(xᵢ < 3\) za vse \(i ≥ N\).
+  Za racionalno število \(x₀\) velja \(x₀ > 1 ∨ x₀ < 2\), saj imajo racionalna
+  števila odločljivo neenakost. Sedaj pa vemo, da za vse \(i : ℕ\) velja
+  \(|x₀ - xᵢ| ≤ 1\), torej če je \(x₀ > 1\) bodo vsi \(xᵢ > 0\), po drugi strani
+  pa če je \(x₀ < 2\) bodo vsi \(xᵢ < 3\), kar pa zaključi dokaz.
 \end{dokaz}
-V teoriji množic to pomeni, da je aksiom izbire določen do kardinalnosti
-natančno. To nam tudi utemelji zakaj \(\CC\) lahko pravimo princip \emph{števne}
-izbire, saj deluje za poljubno števno (neskončno) množico. Tako si lahko tudi
-predstavljamo, kako to shemo imen razširiti na poljubno kardinalnost.
+
+Obrat pa ne velja konstruktivno. Izračunajmo najprej, kaj so realna števila v
+topoloških modelih.
 \begin{trditev}
-  Če je \(Σ' ⊆ Σ\), \(\AC_Σ(A, B)\) implicira \(\AC_{Σ'}(A, B)\).
+  Nad \(X\) je objekt Dedekindovih realnih števil \(𝒪X\)-množica iz
+  primera~\ref{ex:reals}.
+  % Nad \(X\) je objekt Dedekindovih realnih števil \(𝒪X\)-množica
+  % \(\set{f : U → ℝ}{U ∈ 𝒪X\text{, }f\text{ zvezna}}\), z enakostjo definirano
+  % kot \(\i{f = g} ≔ \int{\set{t ∈ X}{f(t) = g(t)}}\).
 \end{trditev}
 \begin{dokaz}
-  Vsaka relacija nad \(Σ'\) je tudi relacija nad \(Σ\), tako da če imajo
-  relacije nad \(Σ\) funkcije izbire jih imajo tudi relacije nad \(Σ'\).
+  Naj bo \(x = \p{L, U}\) dedekindov rez v interni logiki.
+  Sedaj lahko zunaj za \(t ∈ \e x\) definiramo
+  \[ Lₜ ≔ \set{q : ℚ}{t ∈ \i{q ∈ L}}\text{ in} \]
+  \[ Uₜ ≔ \set{r : ℚ}{t ∈ \i{r ∈ U}}\text. \]
+  Ta tvorita Dedekindov rez, tako da nam \(t ↦ \p{Lₜ, Uₜ}\) definira preslikavo
+  iz \(\e x → ℝ\).
+
+  Obratno, če je \(x : V → ℝ\) zvezna preslikava, lahko tvorimo preslikavi
+  \[ L(t) ≔ \set{q : ℚ}{q < x(t)}\text{ in} \]
+  \[ U(t) ≔ \set{r : ℚ}{x(t) < r}\text. \]
+  Ti znotraj tvorita Dedekindov rez \(\p{L, U}\).
 \end{dokaz}
+
 \begin{trditev}
-  Princip končne izbire velja.
+  Naj bo prostor \(X\) lokalno povezan. Tedaj je nad \(X\) objekt Cauchyjevih
+  realnih števil \(𝒪X\)-množica \(\c ℝ\).
 \end{trditev}
 \begin{dokaz}
-  TODO: sintaksa za standardne končne?
-  Princip končne izbire je princip izbire, kjer domeno omejimo na končne
-  množice. Brez škode za splošnost, naj bo domena kar enaka neki
-  standardni končni množici \(\cli n\).
+  Pokazati je zares treba, da je objekt Cauchyjevih realnih števil \(\g{\c ℝ}\),
+  torej da so lokalno konstantne preslikave v \(ℝ\).
 
-  Potem pa \(\AC(\cli n)\) pravi, da če
-  obstajajo \(bₖ:B\), da velja \(R(1,b₁)∧\dots ∧R(n,bₙ)\), obstaja končno
-  zaporedje (torej, obstajajo \(bₖ:B\)), da velja \(R(1,b₁)∧\dots ∧R(n,bₙ)\)… To
-  sta pa isti stvari, tako da princip res drži.
+  Podobno kot zgoraj nad \(t ∈ \e x\) dobimo Cauchyjevo zaporedje \((xₙ(t))ₙ\),
+  torej preslikavo \(\e x → ℝ\). Ker je \(X\) lokalno povezan ima pokritje iz
+  povezanih množic, tako da brez škode za splošnost predpostavimo, da je
+  \(\e x\) povezan. Ker pa je povezan, pa vemo, da so vsi \(xᵢ\) konstantne
+  preslikave, torej morajo biti vsi \(xₙ(t)\) enaki (za vse \(t ∈ \e x\)), tako
+  da je \(t ↦ (xₙ(t))ₙ\) konstantna.
+
+  Obratno pa, če je \(f : U → ℝ\) konstantna preslikava, recimo konstantno
+  \({x ∈ ℝ}\), ima potem pripadajoče Cauchyjevo zaporedje \((xₙ)ₙ\). Sedaj pa
+  lahko tvorimo konstantne preslikave \(xₙ : U → ℚ\), ki torej znotraj tvorijo
+  Cauchyjevo zaporedje.
 \end{dokaz}
 
-% \begin{definicija}
-%   \emph{Princip \[Σ\]-izbire iz \(A\) v \(B\)} pravi, da za vsako relacijo
-%   \(R : A×B → Σ\) za katero velja \(\for{a:A}{\exist{b:B}{R(a,b)}}\), obstaja
-%   funkcija izbire \(f : A → B\), tako da velja \(\for{a:A}{R(a,f(a))}\).
+\begin{trditev}
+  Nad \(ℝ\) sta objekta Dedekindovih in Cauchyjevih realnih števil različna.
+\end{trditev}
+\begin{dokaz}
+  Preslikava \(t ↦ t\) je Dedekindovo realno število, ki pa ni lokalno
+  konstantno, torej ni Cauchyjevo.
+\end{dokaz}
 
-%   To bomo označili z \(\AC_Σ(A,B)\). Z \(\AC_Σ(A)\) bomo označevali shemo
-%   \(\for{B}{\AC_Σ(A,B)}\), z \(\AC_Σ\) pa shemo \(\for{A}{\AC_Σ(A)}\).
-%   Tem pravimo \emph{princip \(Σ\)-izbire iz \(A\)} in \emph{princip \(Σ\)-izbire}.
-%   Kadar je \(Σ = Ω\) bomo \(Σ\) v indeksu opuščali, in ustrezno to poimenovali
-%   kar samo \emph{princip izbire (iz \(A\) v \(B\))}.
+To pomeni, da lahko na ``\(\Rd = \Rc\)'' in ``\(\Rc = \c ℝ\)'' gledamo kot
+nekakšna nekonstruktivna principa. Iz konstruktivne matematike pa poznamo tudi
+druge konstrukcije realnih števil, ki nam lahko dajo nove principe kot ta
+zgoraj.
 
-%   Standardno se principu \(\AC(ℕ)\) pravi \emph{princip števne izbire} in
-%   označuje \(\CC\).
-%   Posebno pomemben bo princip \(\AC(ℕ, 2)\), ki ga bomo označevali \(\CCv\) in
-%   mu pravili \emph{princip števne dvojiške(disjunktivne?) izbire}.
-% \end{definicija}
+TODO: cite nlab? elephant?
+\begin{definicija}[MacNeillova realna števila]
+  Par \(\p{L, U} ∈ 𝒫(ℚ)×𝒫(ℚ)\) je \emph{Dedekind-MacNeilleov rez}, ko velja
+  \begin{align}
+    L \text{ je poseljen}\\
+    U \text{ je poseljen}\\
+    L \text{ je navzdol zaprt}\\
+    U \text{ je navzgor zaprt}\\
+    L \text{ je navzgor odprt}\\
+    U \text{ je navzdol odprt}\\
+    L = \int{\p{Uᶜ}}\\
+    U = \int{\p{Lᶜ}}
+  \end{align}
+  Množica Dedekind-MacNeilleovih rezov tvori \emph{MacNeillova realna števila}, ki jih
+  označimo z \(\Rm\).
+\end{definicija}
 
+\begin{trditev}
+  Vsako Dedekindovo realno število je tudi MacNeillovo.
+\end{trditev}
+\begin{dokaz}
+  Točke \(1\) skozi \(6\) so enake, tako da je treba pokazati zgolj zadnji dve
+  lastnosti. Ker sta simetrični, pokažimo zgolj zadnjo.
 
+  Če je \(a ∈ L\) potem ni v \(U\), torej je v \(Uᶜ\). Sedaj pa, ker je \(L\)
+  navzgor odprt obstaja \(a' > a\), ki je tudi v \(L\) (torej v \(Uᶜ\) po enakem
+  argumentu.) Sedaj pa vemo, da je \(Uᶜ\) navzdol zaprt, torej je
+  \(a ∈ \p{-∞,a'} ⊆ Uᶜ\) in je \(a ∈ \int{\p{Uᶜ}}\).
+\end{dokaz}
 
-% \begin{definicija}
-%   \emph{Princip števne dvojiške izbire} pravi, da če velja
-%   \(\for{n : ℕ}{P(n, 0) ∨ P(n, 1)}\) (torej, \(P\) je celovita relacija na
-%   \(ℕ×2\)) obstaja funkcija izbire \(f : ℕ → 2\), da velja
-%   \(\for{n : ℕ}{P(n,f(n))}\).
-% \end{definicija}
+V obratno smer lahko pokažemo zgolj, da sta \(L\) in \(U\) disjunktna.
+\begin{lema}
+  Za MacNeillovo realno število \(\p{L,U}\) velja \(a∈L∧b∈U⇒a<b\).
+\end{lema}
+\begin{dokaz}
+  Naj bo \(a∈L\) in \(b∈U\). Potem je \(b ∈ \int{\p{Lᶜ}} ⊆ Lᶜ\), torej ni v
+  \(L\). Ker je \(L\) navzdol zaprt je torej \(b\) zgornja meja, in je večji od
+  \(a\).
+\end{dokaz}
+
+Ostalo bi torej pokazati zgolj lociranost vsakega MacNeillovega realnega
+števila, a to žal ni mogoče.
+\begin{lema}\label{th:Rm-sup}
+  MacNeillova realna števila so polna.
+\end{lema}
+\begin{dokaz}
+  TODO
+\end{dokaz}
+TODO: cite elephant
+TODO: izračunaj \(\Rm\) kot pari \(\p{\uline f, \bar f}\) spodnjih in gornjih
+polzveznih funkcij za katere je
+\[ \bar f(x) = \inf\set{\sup\set{\uline f(y)}{y ∈ U}}{U\nbd x} \]
+\[ \uline f(x) = \sup\set{\inf\set{\bar f(y)}{y ∈ U}}{U\nbd x} \]
+
+\begin{trditev}
+  Nad \(\p{3,\{∅, \{1\}, \{2\}, \{1,2\}, \{0,1,2\}\}}\) ne velja \(\Rm = \Rd\).
+\end{trditev}
+\begin{dokaz}
+  Naj bo \(x ≔ \sup\set{x : \Rm}{x = 0 ∨ x = 1∧\{1\}}\).
+  To je po lemi~\ref{th:Rm-sup} MacNeillovo realno število, saj je poseljeno z
+  \(0\) in omejeno z \(1\).
+
+  Poglejmo sedaj, če velja \(x < 1 ∨ x > 0\). Če velja \(x < 1\), je potem
+  \(x = 0\), torej \(\{1\}\) ne drži. Sledi, da je \(\i{x < 1} = \{2\}\).
+  Podobno lahko sklepamo, da je \(\i{x > 1} = \{1\}\). To pa pomeni, da \(x\) ni
+  locirano pri \(0\), torej ni Dedekindovo.
+\end{dokaz}
+\begin{dokaz}[Alternativni dokaz]
+  Definirajmo MacNeillovo realno število s preslikavama
+  \begin{align*}
+    \uline f(0) = 0 & \bar f(0) = 1\\
+    \uline f(1) = 1 & \bar f(1) = 1\\
+    \uline f(2) = 0 & \bar f(2) = 0
+  \end{align*}
+
+  Ti očitno zadoščata pogojem zgoraj, in se na \(0\) ne ujemata, tako da ne
+  definirata Dedekindovega realnega števila.
+\end{dokaz}
+
+Temu principu bomo torej pravili ``\(\Rm = \Rd\)''.
 
 
 \subsection{Ostali principi}

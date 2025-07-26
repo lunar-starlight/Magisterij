@@ -259,7 +259,8 @@ Najprej, lahko vsaki taki preslikavi dodelimo ``resničnostno vrednost obstoja''
 oziroma \emph{razpon}, ki bo kar njena domena. To označimo z \(‖-‖\). Če je
 \(n : U → ℕ\), potem \(n\) obstaja zgolj na \(U\), saj izven \(U\) nima
 vrednosti. Različni taki naravni števili lahko tudi primerjamo, tako da
-preprosto pogledamo množico, na kateri sta enaki: \(⟦n = m⟧ = \set{t ∈ X}{n(t) = m(t)}\),
+preprosto pogledamo množico, na kateri sta enaki:
+\(⟦n = m⟧ = \set{t ∈ X}{n(t) = m(t)}\),
 kjer seveda pazimo, da \(t\) jemljemo zgolj iz razpona obeh števil.
 Načeloma bi morali vzeti notranjost te množice, saj morajo biti resničnostne
 vrednosti odprte, ampak v tem primeru, ker so funkcije lokalno konstantne, bo ta
@@ -1150,8 +1151,8 @@ Najprej pa konstruirajmo še nekaj konstrukcij \(ℒ\)-množic, saj jih potrebuj
 v dokazu.
 \begin{konstrukcija}
   Za \(ℒ\)-množici \(A\) in \(B\) je konstantna \(ℒ\)-množica \(\c{A+B}\) njuna
-  vsota in jo označimo kar z \(A+B\). Poleg tega kanonični vložitvi \(ιᵢ\)
-  definirata \(ℒ\)-morfizma.
+  vsota in jo označimo kar z \(A+B\). Poleg tega sta kanonični vložitvi \(ιᵢ\)
+  operaciji.
 \end{konstrukcija}
 \begin{dokaz}
   Pokazati je treba, da sta vložitvi strogi in ekstenzionalni.
@@ -1161,16 +1162,19 @@ v dokazu.
   pa preslikava očitno stroga in ekstenzionalna.
 \end{dokaz}
 \begin{konstrukcija}
-  Za \(ℒ\)-preslikavo \(f : A ↬ B\) je njeno \emph{kojedro} kvocient
-  \(ℒ\)-množice \(B+B\) po relaciji \(f[A]\). Označimo ga \(\coker(f)\).
+  \emph{Kojedro} \(ℒ\)-preslikave \(f : A ↬ B\) je zlepek \(ℒ\)-množic
+  \(B\) in \(B\) po podmnožici \(f[A]\). Označimo ga \(\coker(f)\).
 \end{konstrukcija}
 \begin{dokaz}
+  Kot v Uvodu v geometrijsko topologijo ta zlepek konstruiramo kot kvocient
+  \(ℒ\)-množice \(B+B\) po relaciji generirani z \(ι₁(b) \sim ι₂(b) ⇔ b ∈ f[A]\).
+
   TODO: pokazat da je kojedro.
 \end{dokaz}
 
 \begin{definicija}
   Morfizem \(f : A ↬ B\) je \emph{surjektiven}, ko velja
-  \[ ⊢ \for{b : B}{\exist{a ∈ A}{b \sim f(a)}}\text, \]
+  % \[ ⊢ \for{b : B}{\exist{a ∈ A}{b = f(a)}}\text{ oziroma} \]
   \[ ⊢ \for{b : B}{b ∈ f[A]}\text, \]
   in \emph{injektiven}, ko velja
   \[ a, a' : A ⊢ f(a) = f(a') ⇒ a = a'\text. \]
@@ -1182,8 +1186,8 @@ v dokazu.
   Naj bo \(f : A ↬ B\).
 
   Denimo, da je \(f\) surjektiven, \(g, h : B ↬ C\), in \(g ∘ f = h ∘ f\).
-  Naj bo \(b : B\) in dokažimo \(g(b) \sim h(b)\).
-  Po surjektivnosti potem obstaja \(a : A\), da je \(b \sim f(a)\). Potem je pa
+  Naj bo \(b : B\) in dokažimo \(g(b) = h(b)\).
+  Po surjektivnosti potem obstaja \(a : A\), da je \(b = f(a)\). Potem je pa
   \(g(b) = g(f(a)) = h(f(a)) = h(b)\).
 
   Po drugi strani pa predpostavimo, da je \(f\) epimorfizem.
@@ -1208,8 +1212,8 @@ v dokazu.
   Obratno, naj bo \(f\) monomorfizem in \(a, a' : A\).
   Denimo, da velja \(f(a) = f(a')\) in naj bosta \(g, h : \mb1 ↬ A\) definirana
   s predpisoma \(g(*) \sim a\) ter \(h(*) \sim a'\). Potem pa velja tudi
-  \(f(g(*)) \sim f(a) = f(a') \sim f(h(*))\), torej je \(f∘g = f∘h\). Od tod pa sledi,
-  da je \(g = h\), torej velja \(a \sim g(*) = h(*) \sim a'\).
+  \(f(g(*)) \sim f(a) = f(a') \sim f(h(*))\), torej je \(f∘g = f∘h\). Od tod pa
+  sledi, da je \(g = h\), torej velja \(a \sim g(*) = h(*) \sim a'\).
 \end{proof}
 
 Sedaj se pa želimo vprašati, kaj so bijekcije \(ℒ\)-množic.
