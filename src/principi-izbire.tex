@@ -7,24 +7,25 @@
 \end{trditev}
 \begin{proof}
   Oglejmo si princip izbire \(\AC_Σ{\p{A, B}}\).
-  Potem za vsako celovito relacijo \(R : A×B → Σ\) imamo
+  Potem za vsako celovito relacijo \(R : A×B → Σ\) dobimo znotraj
   \[ X ⊩ \for{a : \c A}{\exist{b : \c B}{R(a, b)}}\text. \]
-  Potem pa po internem aksiomu izbire sčasoma obstaja interna funkcija
-  \(f : {\c B}^{\c A}\). Ker je prostor lokalo povezan, je to enako kot funkcija
+  Potem pa po notranjem aksiomu izbire sčasoma obstaja funkcija
+  \(f : {\c B}^{\c A}\). Ker je prostor lokalo povezan, je to enako kot element
   \(f : \c{B^A}\), kar nam pa da eksterno funkcijo \(f : A → B\), za katero
   potem velja \(\for{a ∈ A}{R(a, f(a)}\).
 \end{proof}
 
-Ta izrek nam pove, da zaes v preveč konstruktivni matematiki niti ne moremo
+Ta izrek nam pove, da zares v preveč konstruktivni metamatematiki niti ne moremo
 pričakovati, da se bo zgodilo kaj zanimivega. Skoraj noben topološki model ne bo
 validiral principov izbire, kar pa pomeni, da bodisi ne bomo mogli najti pametne
 topološke karakterizacije, bodisi pa ne bomo mogli pokazati, da topološki
-prostor s tako lastostko sploh obstaja.
+prostor s tako lastostjo sploh obstaja.
 
 \begin{opomba}
   Zgoraj smo lokalno povezanost uporabili zgolj za enakost \({\c B}^{\c A} = \c{B^A}\),
   tako da bi zadoščalo predpostaviti zgolj to (torej, za enaka \(A\) in \(B\)
-  kot se pojavita v aksiomu izbire). To bo tema tega razdelka.
+  kot se pojavita v aksiomu izbire). Enaka opomba bo na mestu za vse izreke o
+  lokalni povezanosti v tem razdelku, razen kjer bo eksplicitno omenjeno.
 \end{opomba}
 
 % %TODO: cite whatever talk he gave
@@ -93,7 +94,8 @@ prostor s tako lastostko sploh obstaja.
   \({f_{n,i} ∈ ℱ{\p{U_{n,i}}}}\), tako da velja \( U_{n,i} ⊩ Pₙ{\p{f_{n,i}}}\).
 
   Obstoj funkcije izbire pa pomeni, da mora obstajati pokritje \(\{Vⱼ\}ⱼ\) in
-  zaporedje prerezov \(f_{n,j} ∈ ℱ{\p{Vⱼ}}\), tako da velja \(Vⱼ ⊩ \for{n : ℕ}{Pₙ{\p{f_{n,j}}}}\).
+  zaporedje prerezov \(f_{n,j} ∈ ℱ{\p{Vⱼ}}\), tako da velja
+  \(Vⱼ ⊩ \for{n : ℕ}{Pₙ{\p{f_{n,j}}}}\).
 
   Za odvisno funkcijo \(φ : ∏_{n ∈ ℕ} Iₙ\) definirajmo množico
   \(U_φ ≔ ⋂_{n ∈ ℕ} U_{n,φ(n)}\), ki je števen presek odprtih množic torej po
@@ -114,56 +116,56 @@ prostor s tako lastostko sploh obstaja.
 \end{opomba}
 
 
-\begin{lema}\label{th:t1-ccv-is-psp}
-  Če nad \(T₁\) prostorom velja \(\CCv\), je prostor P-prostor.
-\end{lema}
-\begin{proof}
-  Naj torej velja \(X ⊩ \CCv\) in naj bo \(\{Uₙ\} ⊆ 𝒪X\) števna družina ter
-  \(a ∈ ⋂ₙ Uₙ\) poljubna točka. Dokazati želimo, da ta točka leži v notranjosti
-  preseka, kar bo pokazalo, da je odprt. Definirajmo interno relacijo \(R\) med
-  \(ℕ\) in \(2\) s predpisom
-  %\(X ⊩ R(n, b) ⇔ (b = 1 ∧ Uₙ) ∨ (b = 0 ∧ !a)\).
-  \[
-  R(n, b) ⇔
-  \begin{cases}
-    Uₙ &; b = 1\\
-    !a &; b = 0\text.
-  \end{cases}
-  \]
-  Ker so v \(T₁\) prostorih točke zaprte, je \(!a = X⧵\{a\}\).
-  Ker je \(Uₙ∪{!a} = Uₙ∪(X⧵\{a\}) = X\), je ta relacija celovita, torej lahko na
-  njej uporabimo dani aksiom izbire. Tako v okolici \(W\nbd a\) dobimo funkcijo
-  \({W ⊩ f : ℕ → 2}\), za katero velja \(W ⊩ \for{n : ℕ}{R(n, f(n))}\).
-
-  Ker je pa to geometrijska implikacija, pa velja tudi \(a ⊩ \for{n : ℕ}{R(n, f(n))}\).
-  Vendar pa za noben \(n\) ne velja \(a ⊩{!a} (= R(n, 0))\), torej je \(f = 1\).
-  Potem pa velja \(a ∈ W ⊆ ⋂ₙ ⟦R(n, f(n))⟧ = ⋂ₙ ⟦R(n, 1)⟧ = ⋂ₙ Uₙ\).
-\end{proof}
+% \begin{lema}\label{th:t1-ccv-is-psp}
+%   Če nad \(T₁\) prostorom velja \(\CCv\), je prostor P-prostor.
+% \end{lema}
 % \begin{proof}
-%   Naj je \(Uₙ\) števno pokritje \(U\) in \(a ∈ ⋂ₙ Uₙ\). Dokazujemo, da obstaja
-%   odprta okolica \(a\), ki je vsebovana v preseku.
-%   Konstruirajmo množice \(Vₙ ≔ ⋃_{k ≠ n} Uₖ ⧵ \{a\}\) in pokritja \(Cₙ ≔ ↓{\{Uₙ, Vₙ\}}\).
-%   Po predpostavki je tudi presek \(C ≔ ⋂ₙ Cₙ\) pokritje, torej za nek \(W ∈ C\)
-%   velja \(a ∈ W\). Potem pa za vse \(n\) velja \(W ∈ Cₙ\), torej imamo \(W ⊆ Uₙ\)
-%   ali \(W ⊆ Vₙ\).
+%   Naj torej velja \(X ⊩ \CCv\) in naj bo \(\{Uₙ\} ⊆ 𝒪X\) števna družina ter
+%   \(a ∈ ⋂ₙ Uₙ\) poljubna točka. Dokazati želimo, da ta točka leži v notranjosti
+%   preseka, kar bo pokazalo, da je odprt. Definirajmo interno relacijo \(R\) med
+%   \(ℕ\) in \(2\) s predpisom
+%   %\(X ⊩ R(n, b) ⇔ (b = 1 ∧ Uₙ) ∨ (b = 0 ∧ !a)\).
+%   \[
+%   R(n, b) ⇔
+%   \begin{cases}
+%     Uₙ &; b = 1\\
+%     !a &; b = 0\text.
+%   \end{cases}
+%   \]
+%   Ker so v \(T₁\) prostorih točke zaprte, je \(!a = X⧵\{a\}\).
+%   Ker je \(Uₙ∪{!a} = Uₙ∪(X⧵\{a\}) = X\), je ta relacija celovita, torej lahko na
+%   njej uporabimo dani aksiom izbire. Tako v okolici \(W\nbd a\) dobimo funkcijo
+%   \({W ⊩ f : ℕ → 2}\), za katero velja \(W ⊩ \for{n : ℕ}{R(n, f(n))}\).
 
-%   Ker je pa \(a ∈ W\) in \(a ∉ Vₙ\), je potem nujno \(W ⊆ Uₙ\), torej dobimo
-%   \(a ∈ W ⊆ ⋂ₙ Uₙ\), kar je natanko kar smo želeli.
+%   Ker je pa to geometrijska implikacija, pa velja tudi \(a ⊩ \for{n : ℕ}{R(n, f(n))}\).
+%   Vendar pa za noben \(n\) ne velja \(a ⊩{!a} (= R(n, 0))\), torej je \(f = 1\).
+%   Potem pa velja \(a ∈ W ⊆ ⋂ₙ ⟦R(n, f(n))⟧ = ⋂ₙ ⟦R(n, 1)⟧ = ⋂ₙ Uₙ\).
 % \end{proof}
-%\begin{opomba}
-%  Gornji dokaz deluje tudi za \(R₀\) prostore, saj lahko \(Vₙ\) definiramo z
-%  zaprtjem točke \(a\), in potrebujemo zgolj, da je to vsebovano v vsaki okolici
-%  točke \(a\), kar je pa natanko ekvivalentno pogoju \(R₀\). Za občutek, \(T₁\)
-%  prostori so natanko \(T₀\) in \(R₀\) prostori.
-%\end{opomba}
+% % \begin{proof}
+% %   Naj je \(Uₙ\) števno pokritje \(U\) in \(a ∈ ⋂ₙ Uₙ\). Dokazujemo, da obstaja
+% %   odprta okolica \(a\), ki je vsebovana v preseku.
+% %   Konstruirajmo množice \(Vₙ ≔ ⋃_{k ≠ n} Uₖ ⧵ \{a\}\) in pokritja \(Cₙ ≔ ↓{\{Uₙ, Vₙ\}}\).
+% %   Po predpostavki je tudi presek \(C ≔ ⋂ₙ Cₙ\) pokritje, torej za nek \(W ∈ C\)
+% %   velja \(a ∈ W\). Potem pa za vse \(n\) velja \(W ∈ Cₙ\), torej imamo \(W ⊆ Uₙ\)
+% %   ali \(W ⊆ Vₙ\).
+
+% %   Ker je pa \(a ∈ W\) in \(a ∉ Vₙ\), je potem nujno \(W ⊆ Uₙ\), torej dobimo
+% %   \(a ∈ W ⊆ ⋂ₙ Uₙ\), kar je natanko kar smo želeli.
+% % \end{proof}
+% %\begin{opomba}
+% %  Gornji dokaz deluje tudi za \(R₀\) prostore, saj lahko \(Vₙ\) definiramo z
+% %  zaprtjem točke \(a\), in potrebujemo zgolj, da je to vsebovano v vsaki okolici
+% %  točke \(a\), kar je pa natanko ekvivalentno pogoju \(R₀\). Za občutek, \(T₁\)
+% %  prostori so natanko \(T₀\) in \(R₀\) prostori.
+% %\end{opomba}
 
 
 
 
-Gornji lemi lahko združimo, da dobimo
-\begin{trditev}
-  Nad \(T₁\) prostori je števna izbira ekvivalentna disjunktivni števni izbiri.
-\end{trditev}
+% Gornji lemi lahko združimo, da dobimo
+% \begin{trditev}
+%   Nad \(T₁\) prostori je števna izbira ekvivalentna disjunktivni števni izbiri.
+% \end{trditev}
 \begin{opomba}
   V dokazu množica \(ℕ\) ni posebej odlikovana, razen da je enake kardinalnosti
   kot tista, za katero je topologija zaprta za preseke, torej izrek lahko
