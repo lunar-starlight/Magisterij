@@ -28,92 +28,128 @@ prostor s tako lastostjo sploh obstaja.
   lokalni povezanosti v tem razdelku, razen kjer bo eksplicitno omenjeno.
 \end{opomba}
 
-% %TODO: cite whatever talk he gave
-% Spodnji rezultat je odkril Alex Simpson, dokaz v primeru topoloških modelov je
-% pa originalen.
-% \begin{izrek}
-%   Nad \(X\) velja \(\AC_Σ{\p{\c A, \c B}}\) in \({\c B}^{\c A} = \c{B^A}\)
-%   natanko tedaj, ko je Grothendieckova topologija \(X\) zaprta za \(A\)-mnoge
-%   preseke \(B\)-indeksiranih \(Σ\)-krovov.
-% \end{izrek}
-% \begin{proof}
-%   \begin{itemize}
-%   \item[\(\p ⇐\)]
-%     Pokažimo prvo, da velja gornja enakost.
-%     Na stopnji \(U ∈ 𝒪X\) je \({\c B}^{\c A}\) navzven enak \(U×ΔA → ΔB\),
-%     objekt \(\c{B^A}\) pa \(U → Δ\p{B^A}\). Torej moramo pokazati, da vsaka
-%     zvezna funkcija \(f\) porodi zvezno funkcijo \(x ↦ (a ↦ f(x, a))\).
-    
-    
-%     Naj bo \(X ⊩ P : \c A × \c B → Σ\) celovita relacija.
-%     To pomeni, da za vsak \(a ∈ A\) obstaja \(B\)-indeksiran \(Σ\)-krov \(Cₐ\),
-%     tako da za vsak element \(U ∈ Cₐ\) obstaja tak \(b_{a, U} ∈ B(U)\), da velja
-%     \(U ⊩ P(a, b_{a, U})\).
+% TODO: cite whatever talk he gave
+Spodnji rezultat je od Alexa Simpsona, dokaz v primeru topoloških modelov je
+pa originalen.
+\begin{izrek}\label{th:ac-and-conn-is-pgt}
+  Nad \(X\) velja \(\AC_Σ(\c A, \c B)\) in \({\c B}^{\c A} = \c{B^A}\) natanko
+  tedaj, ko ima vsaka \(A\)-indeksirana množica \(B\)-indeksiranih
+  \(Σ\)-pokritij \(U\) skupno pofinitev.
+  %Nad \(X\) velja \(\AC_Σ{\p{\c A, \c B}}\) in \({\c B}^{\c A} = \c{B^A}\)
+  %natanko tedaj, ko je Grothendieckova topologija \(X\) zaprta za \(A\)-mnoge
+  %preseke \(B\)-indeksiranih \(Σ\)-krovov.
+\end{izrek}
+\begin{proof}
+  \begin{itemize}
+  \item[\(\p ⇐\)]
+    Pokažimo prvo, da velja gornja enakost.
+    Na stopnji \(U ∈ 𝒪X\) je \({\c B}^{\c A}\) navzven enak \(U×ΔA → ΔB\),
+    objekt \(\c{B^A}\) pa \(U → Δ\p{B^A}\). Torej moramo pokazati, da vsaka
+    zvezna funkcija \(f\) porodi zvezno funkcijo \(x ↦ (a ↦ f(x, a))\).
 
-%     Po predpostavki sedaj vemo, da je \(C ≔ ⋂_{a ∈ A} Cₐ\) tudi \(Σ\)-krov.
-%     Sedaj pa, za vsak \(U ∈ C\) velja, da je vsebovan v vsakem \(Cₐ\), tako da
-%     za vsak \(a ∈ A\) obstaja \(b_{a, U}\), da velja \(U ⊩ P(a, b_{a, U})\).
-%     Tedaj pa je preslikava \(a ↦ b_{a, U}\) ravno želena funkcija izbire.
-%   \item[\(\p ⇒\)]
-%     Naj bodo \(Cₐ\) \(Σ\)-krovi in \(C ≔ ⋂_{a ∈ A} Cₐ\). Pokazali bomo, da
-%     vsebuje \(Σ\)-krov, kar bo pokazalo, da je tudi sam \(Σ\)-krov.
-%     Definiramo relacijo med \(\uline A\) in \(\uline Σ\) s predpisom
-%     \(\X ⊩ P(α, U) ⇔ \p{U ∈ Cₐ} ∧ U\).
+    Naj bo \(X ⊩ P : \c A × \c B → Σ\) celovita relacija.
+    To pomeni, da za vsak \(a ∈ A\) obstaja \(B\)-indeksiran \(Σ\)-krov \(Cₐ\),
+    tako da za vsak element \(U ∈ Cₐ\) obstaja tak \(b_{a, U} ∈ B(U)\), da velja
+    \(U ⊩ P(a, b_{a, U})\).
 
-%     To je celovita relacija, saj \(Cₐ\) pokrivajo prostor, torej lahko uporabimo
-%     dani aksiom izbire. To pa pomeni, da za vsak \(x ∈ X\), sčasoma na \(U \nbd x\)
-%     obstaja \(f : {\ulineΣ}^{\uline A}(U)\), za katerega za vse \(a ∈ A\) velja
-%     \(U ⊩ P(a, f(a))\), oziroma \(U ⊩ f(a) ∈ Cₐ\) in \(U ⊩ f(a)\).
-%     To pa pomeni, da velja \(x ⊩ f(a)\), torej \(x ∈ f(x, a) ∈ Cₐ\).
-%     Ker je \(a\) poljuben je torej \(x\) vsebovan v 
-    
-    
-    
-%   \end{itemize}
-% \end{proof}
+    Po predpostavki sedaj vemo, da je \(C ≔ ⋂_{a ∈ A} Cₐ\) tudi \(Σ\)-krov.
+    Sedaj pa, za vsak \(U ∈ C\) velja, da je vsebovan v vsakem \(Cₐ\), tako da
+    za vsak \(a ∈ A\) obstaja \(b_{a, U}\), da velja \(U ⊩ P(a, b_{a, U})\).
+    Tedaj pa je preslikava \(a ↦ b_{a, U}\) ravno želena funkcija izbire.
+  \item[\(\p ⇒\)]
+    Naj bodo \(Cₐ = \{U_{a,b}\}_{b ∈ B}\) \(Σ\)-pokritja.
+    Ta definirajo relacijo \(R(a, b) ≔ U_{a,b}\), ki je celovita, saj so \(Cₐ\)
+    pokritja. Tedaj po principu izbire znotraj (sčasoma) dobimo funkcijo
+    \(f : A → B\), tako da je \(\for{a : A}{U_{a,f(a)}}\).
+    Sedaj pa, ker velja enakost iz predpostavke, je \(f\) tudi funkcija
+    \(A → B\) zunaj. To pa pomeni, da je \(\e f\) vsebovan v preseku
+    \(U_{a,f(a)}\), torej, ker \(\e f\) pokrivajo cel prostor, tvorijo skupno
+    pofinitev pokritij \(Cₐ\).
 
-\subsection{Števna izbira in P-prostori}
+    TODO: nekej o tem da je to \(Σ\)-pokritje? ker \(\e f\) trenutno nimajo
+    nobenega pogoja na sebi. (če je to sploh res)
+  \end{itemize}
+\end{proof}
 
 \begin{definicija}
   \emph{P-prostori} so prostori, za katere velja, da je števen presek odprtih
   množic odprt.
 \end{definicija}
 
-% NOTE: can we factor this through GT(X) σ-closed
-\begin{lema}\label{th:psp-has-cc}
-  Nad P-prostori velja \(\CC\).
-\end{lema}
-\begin{proof}
-  Trditev \(X ⊩ \AC{\p{ℕ, ℱ}}\) pravi, da če je \(P\) celovita relacija med \(ℕ\) in
-  \(ℱ\), potem obstaja funkcija \(f : ℕ → ℱ\), ki je podrelacija \(P\).
+\begin{trditev}\label{th:psp-is-pgt}
+  Če je \(X\) P-prostor ima vsaka množica števno mnogo pokritij \(X\) skupno
+  pofinitev.
+\end{trditev}
+\begin{dokaz}
+  Naj bodo \(Cₙ = \{U_{n,i}\}ᵢ\) pokritja. Brez škode za splošnost
+  predpostavimo, da so vsa indeksirana z nekim \(I\), saj lahko pokrijim dodamo
+  prazno množico.
 
-  Naj bo torej \(P\) taka celovita relacija v \(\sh{X}\).
-  Relacija \(P\) je navzven zaporedje globalnih prerezov potenčnega snopa \(ℱ\).
-  To da je celovita pa pomeni, da imamo za vsak \(n ∈ ℕ\) indeksno množico
-  \(Iₙ\) in pokritje \(\{U_{n,i}\}_{i ∈ Iₙ}\), skupaj z lokalnimi prerezi
-  \({f_{n,i} ∈ ℱ{\p{U_{n,i}}}}\), tako da velja \( U_{n,i} ⊩ Pₙ{\p{f_{n,i}}}\).
-
-  Obstoj funkcije izbire pa pomeni, da mora obstajati pokritje \(\{Vⱼ\}ⱼ\) in
-  zaporedje prerezov \(f_{n,j} ∈ ℱ{\p{Vⱼ}}\), tako da velja
-  \(Vⱼ ⊩ \for{n : ℕ}{Pₙ{\p{f_{n,j}}}}\).
-
-  Za odvisno funkcijo \(φ : ∏_{n ∈ ℕ} Iₙ\) definirajmo množico
-  \(U_φ ≔ ⋂_{n ∈ ℕ} U_{n,φ(n)}\), ki je števen presek odprtih množic torej po
-  predpostavki odprt. Množice \(U_φ\) pokrijejo prostor, saj je vsak \(x ∈ X\)
-  vsebovan v nekem \(U_{n, i}\) za vse \(n ∈ ℕ\) torej po aksiomu števne izbire
-  (v metateoriji) obstaja tudi funkcija \(φ\), tako da bo \(x ∈ U_{n, φ{n}}\),
-  torej v \(U_φ\).
-
-  Še več, za vse \(n\) in \(φ\) velja
-  \[ U_φ ⊆ U_{n,φ(n)} ⊩ Pₙ{\p{f_{n,φ(n)}}}\text. \]
-
-  To pa pomeni, da za obstoj funkcije izbire vzamemo krov \(\{U_φ\}_φ\) in
-  preslikavo \(φ ↦ \p{f_{n, φ(n)} ∈ ℱ{p{U_φ}}}ₙ\), ki zadošča želenemu pogoju,
-  kot smo pokazali zgoraj.
-\end{proof}
+  Potem naj bo \(φ : ℕ → I\) funkcija. Za to lahko tvorimo
+  \(U_φ ≔ ⋂_nU_{n,φ(n)}\). To je števen presek odprtih množic, torej je po
+  predpostavki odprta množica. Prav tako je pa vsak \(x ∈ X\) vsebovan v nekem
+  \(U_{n,i}\) za vsak \(n ∈ ℕ\), torej po principu izbire v metateoriji obstaja
+  preslikava \(φ : ℕ → I\), da je \(x ∈ U_φ\). To pomeni, da \(U_φ\) tvorijo
+  pokritje, ki je pofinitev vsakega \(Cₙ\).
+\end{dokaz}
+\begin{posledica}\label{th:psp-has-cc}
+  Nad P-prosotri velja \(\CC\).
+\end{posledica}
 \begin{opomba}
-  Gornji dokaz ključno uporabi askiom števne izbire v metateoriji.
+  V dokazu množica \(ℕ\) ni posebej odlikovana, razen da je enake kardinalnosti
+  kot tista, za katero je topologija zaprta za preseke, torej izrek lahko
+  posplošimo na princip izbire iz poljubne kardinalnosti.
+
+  Splošnem principu izbire torej pripadajo prostori Aleksandrova, kjer je presek
+  poljubne družine odprtih množic odprt.
 \end{opomba}
+
+\begin{trditev}
+  Če nad \(X\) velja \(\AC_Σ(\c A, \c B)\) za vse \(A\) in \(B\), velja tudi
+  \(\AC_Σ(A, B)\) za vse \(ℒ\)-množice \(A\) in \(B\).
+\end{trditev}
+\begin{dokaz}
+  Naj bo \(R : A×B → Σ\) celovita. Potem je tudi celovita kot relacija med
+  \(\c A\) in \(\c B\).
+\end{dokaz}
+
+
+%\subsection{Števna izbira in P-prostori}
+
+% \begin{lema}
+%   Nad P-prostori velja \(\CC\).
+% \end{lema}
+% \begin{proof}
+%   Trditev \(X ⊩ \AC{\p{ℕ, ℱ}}\) pravi, da če je \(P\) celovita relacija med \(ℕ\) in
+%   \(ℱ\), potem obstaja funkcija \(f : ℕ → ℱ\), ki je podrelacija \(P\).
+
+%   Naj bo torej \(P\) taka celovita relacija v \(\sh{X}\).
+%   Relacija \(P\) je navzven zaporedje globalnih prerezov potenčnega snopa \(ℱ\).
+%   To da je celovita pa pomeni, da imamo za vsak \(n ∈ ℕ\) indeksno množico
+%   \(Iₙ\) in pokritje \(\{U_{n,i}\}_{i ∈ Iₙ}\), skupaj z lokalnimi prerezi
+%   \({f_{n,i} ∈ ℱ{\p{U_{n,i}}}}\), tako da velja \( U_{n,i} ⊩ Pₙ{\p{f_{n,i}}}\).
+
+%   Obstoj funkcije izbire pa pomeni, da mora obstajati pokritje \(\{Vⱼ\}ⱼ\) in
+%   zaporedje prerezov \(f_{n,j} ∈ ℱ{\p{Vⱼ}}\), tako da velja
+%   \(Vⱼ ⊩ \for{n : ℕ}{Pₙ{\p{f_{n,j}}}}\).
+
+%   Za odvisno funkcijo \(φ : ∏_{n ∈ ℕ} Iₙ\) definirajmo množico
+%   \(U_φ ≔ ⋂_{n ∈ ℕ} U_{n,φ(n)}\), ki je števen presek odprtih množic torej po
+%   predpostavki odprt. Množice \(U_φ\) pokrijejo prostor, saj je vsak \(x ∈ X\)
+%   vsebovan v nekem \(U_{n, i}\) za vse \(n ∈ ℕ\) torej po aksiomu števne izbire
+%   (v metateoriji) obstaja tudi funkcija \(φ\), tako da bo \(x ∈ U_{n, φ{n}}\),
+%   torej v \(U_φ\).
+
+%   Še več, za vse \(n\) in \(φ\) velja
+%   \[ U_φ ⊆ U_{n,φ(n)} ⊩ Pₙ{\p{f_{n,φ(n)}}}\text. \]
+
+%   To pa pomeni, da za obstoj funkcije izbire vzamemo krov \(\{U_φ\}_φ\) in
+%   preslikavo \(φ ↦ \p{f_{n, φ(n)} ∈ ℱ{p{U_φ}}}ₙ\), ki zadošča želenemu pogoju,
+%   kot smo pokazali zgoraj.
+% \end{proof}
+% \begin{opomba}
+%   Gornji dokaz ključno uporabi askiom števne izbire v metateoriji.
+% \end{opomba}
 
 
 % \begin{lema}\label{th:t1-ccv-is-psp}
@@ -166,14 +202,6 @@ prostor s tako lastostjo sploh obstaja.
 % \begin{trditev}
 %   Nad \(T₁\) prostori je števna izbira ekvivalentna disjunktivni števni izbiri.
 % \end{trditev}
-\begin{opomba}
-  V dokazu množica \(ℕ\) ni posebej odlikovana, razen da je enake kardinalnosti
-  kot tista, za katero je topologija zaprta za preseke, torej izrek lahko
-  posplošimo na izbiro poljubne kardinalnosti.
-
-  Splošnem aksiomu izbire pripadajo torej prostori Aleksandrova, kjer je presek
-  poljubne družine odprtih množic odprt.
-\end{opomba}
 
 
 %%% Local Variables:
