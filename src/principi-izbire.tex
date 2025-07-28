@@ -104,14 +104,32 @@ pa originalen.
   poljubne družine odprtih množic odprt.
 \end{opomba}
 
+Obrat gornje posledice pa ne velja.
 \begin{trditev}
-  Če nad \(X\) velja \(\AC_Σ(\c A, \c B)\) za vse \(A\) in \(B\), velja tudi
-  \(\AC_Σ(A, B)\) za vse \(ℒ\)-množice \(A\) in \(B\).
+  Nad prostorom \(\cli{0,1}\) s topologijo \(\set{[0,a)}{a ∈ \cli{0,1}}\) ima
+  poljubno mnogo pokritij skupno pofinitev a ni P-prostor.
 \end{trditev}
 \begin{dokaz}
-  Naj bo \(R : A×B → Σ\) celovita. Potem je tudi celovita kot relacija med
-  \(\c A\) in \(\c B\).
+  Množice \(Uₙ ≔ [0,2⁻ⁿ)\) so odprte, a njihov presek je \(\{0\}\), ki ni
+  odprta množica, torej prostor ni P-prostor.
+
+  Sedaj pa, če je \(C\) pokritje \(X\) more pokriti \(1\). Ampak edina odprta
+  množica, ki pokrije \(1\) je \(\cli{0,1}\), torej je \(\{\cli{0,1}\}\)
+  pofinitev vsakega pokritja \(X\).
 \end{dokaz}
+
+% \begin{trditev}
+%   Če nad \(X\) velja \(\AC_Σ(\c A, \c B)\) za vse \(B\), velja tudi
+%   \(\AC_Σ(A, ℱ)\) za vse \(ℒ\)-množice \(ℱ\).
+% \end{trditev}
+% \begin{dokaz}
+%   Naj bo \(F\) podležna množica \(ℱ\) in \(R : A×F → Σ\) celovita. Potem je tudi
+%   celovita kot relacija med \(A\) in \(\c F\). Uporabimo princip izbire, da
+%   dobimo preslikavo \(f: A → \c{\g F}\), za katero velja \(\for{a : A}{R(a, f(a))}\).
+
+%   Pokažimo sedaj, da zunaj \(f\) definira \(ℒ\)-morfizem \(A ↬ ℱ\).
+%   Če je \(b = b'\) in \(b' = f(a)\),
+% \end{dokaz}
 
 
 %\subsection{Števna izbira in P-prostori}
