@@ -195,6 +195,7 @@ Pokazati moramo zgolj, da gornje implikacije niso obrnljive.
   te odprte množice pa velja da so komplementirane, torej \(\wlem*\) drži.
 \end{dokaz}
 
+
 \subsection{Realna števila}
 
 Spomnimo se nekaj definicij realnih števil.
@@ -275,7 +276,7 @@ topoloških modelih.
   \[ Lₜ ≔ \set{q : ℚ}{t ∈ \i{q ∈ L}}\text{ in} \]
   \[ Uₜ ≔ \set{r : ℚ}{t ∈ \i{r ∈ U}}\text. \]
   Ta tvorita Dedekindov rez, tako da nam \(t ↦ \p{Lₜ, Uₜ}\) definira preslikavo
-  iz \(\e x → ℝ\).
+  iz \(\e x → ℝ\). TODO: Zveznost.
 
   Obratno, če je \(x : V → ℝ\) zvezna preslikava, lahko tvorimo preslikavi
   \[ L(t) ≔ \set{q : ℚ}{q < x(t)}\text{ in} \]
@@ -365,11 +366,42 @@ Ostalo bi torej pokazati zgolj lociranost vsakega MacNeillovega realnega
 \begin{dokaz}
   TODO
 \end{dokaz}
+
 TODO: cite elephant
-TODO: izračunaj \(\Rm\) kot pari \(\p{\uline f, \bar f}\) spodnjih in gornjih
-polzveznih funkcij za katere je
-\[ \bar f(x) = \inf\set{\sup\set{\uline f(y)}{y ∈ U}}{U\nbd x} \]
-\[ \uline f(x) = \sup\set{\inf\set{\bar f(y)}{y ∈ U}}{U\nbd x} \]
+\begin{trditev}\label{real:Rm-maps}
+  Objekt MacNeillovih realnih števil je natanko \(ℒ\)-množica parov funkcij
+  \(\p{\uline f, \bar f}\) tipa \(U → ℝ\) za \(U ∈ 𝒪X\), za katere velja
+  \begin{align*}
+    \bar f(x)   &= \inf\set{\sup \uline f(V)}{V\nbd x}\text{ in}\\
+    \uline f(x) &= \sup\set{\inf \bar   f(V)}{V\nbd x}\text.
+  \end{align*}
+\end{trditev}
+\begin{dokaz}
+  TODO: izumi?
+
+  Če je \(x = \p{L,U}\) Dedekind-MacNeilleov rez, lahko za \(L\) in \(U\)
+  konstruiramo funkciji \(\uline f\) in \(\bar f\) kot pri Dedekindovih rezih,
+  s tem da slikamo v enostranske reze zunaj. Klasično so te ekvivalentni
+  Dedekindovim rezom, tako da dobimo preslikavi \(\e x → ℝ\).
+
+  Naj bo \(t ∈ \e x\). Ker je \(L = \int{Uᶜ}\), je
+  \(\uline f(t) = \int{\bar f(t)ᶜ} = \int{\set{r:ℚ}{t∈\i{r∈U}}ᶜ}\).
+  Komplement notranje množice je pa kar \(\set{r:ℚ}{t∉\i{r∈U}}\), čigar
+  notranjost je \(\set{r:ℚ}{t∈\i{r∉U}}\).
+
+  TODO: končaj to
+
+  % % i'm oopid, to ni treba…
+  % Pokažimo zgolj, da je \(\uline f\) navzdol polzvenzna, saj je dokaz
+  % simetričen. Naj bo \(a ∈ ℝ\). Potem je
+  % \(\uline f⁻¹(a,∞) = \set{t ∈ \e x}{f(t) > a}\).
+  % Po definiciji je \(\uline f(t) = \set{q : ℚ}{t ∈ \i{q < x}}\), in ta je večji
+  % od \(a\) ko je \(a\) element \(f(t)\), torej ko velja \(t ∈ \i{a < x}\). Sledi,
+  % da je \(\uline f⁻¹(a,∞) = \i{a < x}\), torej je navzdol polzvezna.
+
+  Obratno, če je pa \(\p{\uline f, \bar f}\) tak par,
+  TODO: Končaj to
+\end{dokaz}
 
 \begin{trditev}
   Nad \(\p{3,\{∅, \{1\}, \{2\}, \{1,2\}, \{0,1,2\}\}}\) ne velja \(\Rm = \Rd\).

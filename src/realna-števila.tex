@@ -98,6 +98,7 @@ Ta izrek je zares kar posledica slednjega izreka.
 \begin{opomba}
   Zares namesto lokalne povezanosti zadošča \(X ⊩ \Rc = \c ℝ\). To je zato, ker
   je \(\alpo*\) za Cauchyjeva realna števila ekvivalenten \(\lpo*\).
+  TODO: a velja \(\lpo* ⇒ \Rc = \c ℝ\)?
 
   V splošnem bi se izrek torej lahko glasil \(X ⊩ R = \c ℝ ⇒ \alpo*_R\), kjer je
   \(R\) nek objekt realnih števil (Dedekindova, Cauchyjeva, Escardo-Simpsonova,
@@ -114,12 +115,101 @@ Ta izrek je zares kar posledica slednjega izreka.
 %   želeli dokazati.
 % \end{proof}
 
+TODO: ta prostor ne dela, oziroma loči ta dva, ampak \(\CC\) vela
 To pomeni, da če želimo ločiti \(\Rd = \Rc\) in \(\alpo*\) potrebujemo prostor,
 ki ni lokalno povezan. Avtorica meni, da je Fortov prostor na števno neskončni
 množici dober kandidat, a ji ni uspelo preveriti detajlov. Vseeno, se je pa
 zadostno prepričala, da niti \(\alpo*\) niti \(\CCv\) nad tem prostorom ne
 držita. Še več, ker je ta prostor \(T₆\) validira \(\aks*\), torej ne velja niti
 \(\CCv\) za ``realne'' resničnostne vrednosti. 
+
+
+\subsection{\(\Rm{} = \Rd\)}
+
+% https://gist.github.com/andrejbauer/689b17b10a4e80ea409d03ec030c98b3
+Andrej Bauer je 2023 za prvoaprilsko šalo objavil, kar zgleda kot konstruktiven
+dokaz \(\wlem*\). V njem začne z ``znanimi dejstvi'' o MacNeilleovih realnih
+številih, zraven pa podtakne še lociranost. Vemo že, da je vsako MacNeillovo
+realno število locirano natanko tedaj, ko se ujemajo z Dedekindovimi realnimi
+števili.
+Skratka, pokazal je sledečo trditev.
+\begin{trditev}
+  Če velja \(\Rm = \Rd\) velja \(\wlem*\).
+\end{trditev}
+\begin{dokaz}
+  Dokaz je povsem konstruktiven, ampak ga lahko za topološke modele malo
+  poenostavimo.
+
+  Naj bo \(U ∈ 𝒪X\). Definirajmo preslikavi \(\uline f\) in \(\bar f\) tako, da
+  sta na \(U\) obe \(1\), na \(¬U\) obe \(0\), izven tega naj je pa \(\uline f\)
+  enaka \(0\), \(\bar f\) pa enaka \(1\).
+
+  Na \(¬U\) torej velja \(x ≤ 0\), na \(U\) pa \(x ≥ 1\).
+
+  To zadošča pogojema~\ref{real:Rm-maps}, torej definira MacNeillovo realno
+  število.
+  Sedaj pa uporabimo predpostavko, da je locirano, torej \(x < 1 ∨ x > 0\).
+  Vrednost \(x < 1\) je \(¬U\), saj je \(\bar f < 1\) natanko na tej množici,
+  vrednost \(x > 0\) je pa vsebovana v \(¬¬U\), saj na \(¬U\) velja \(x ≤ 0\),
+  torej \(\i{x>0}\) ne more sekati \(¬U\). 
+\end{dokaz}
+
+Izkaže pa se, da velja tudi obrat! Inspiracija za to dejstvo, je prišla iz
+predmeta ``Banachove mreže'', kjer se obravnava slednji izrek:
+\begin{izrek}
+  Če je \(X\) ekstremalno nepovezan je \(𝒞(X,ℝ)\) polna mreža.
+\end{izrek}
+
+To pa izgleda zelo sumljivo! Če se spomnimo, to da je \(X\) ekstremalno povezan
+ravno pomeni, da velja \(\wlem*\). Prav tako je \(𝒞(X,ℝ)\) znotraj množica
+globalnih Dedekindovih realnih števil. Konstruktivno ta niso polna, so pa
+MacNeillova realna števila, tako da bo supremum Dedekindovih realnih v
+MacNeillovih realnih številih obstajal, le da bo to MacNeillovo realno število.
+Potem pa lahko polnost Dedekindovih realnih števil izrazimo kot ``vsako
+MacNeillovo realno število je Dedekindovo''.
+
+Vredno je še omeniti, da je ekstremalna nepovezanost dedna lastnost na odprte
+podmnožice, tako da lahko konsekvent napišemo tudi kot ``\(𝒞(U,ℝ)\) je polna
+mreža za vse \(U\)''. To je pa že bistveno bližje temu, da bi rekli ``realna
+števila so polna'' v interni logiki. Ampak, preveriti moramo še, da je polnost
+znotraj enaka stvar kot polnost zunaj. 
+
+Izkaže se, da nista zares ista stvar, polnost znotraj pravi da ima vsaka
+poseljena \emph{odsekoma} omejena množica supremum, medtem ko polnost zunaj
+zahteva globalno omejenost. Ampak to ni problem, saj je vsaka omejena množica
+očitno tudi odsekoma omejena, torej je notranja trditev močnejša.
+
+TODO: a dobim tapravi obstoj tu?
+
+Sledi, da lahko gornji izrek sledi iz interpretacije spodnje trditve v interni
+logiki.
+\begin{trditev}
+  Velja implikacija \(\wlem* ⇒ \Rm = \Rd\).
+\end{trditev}
+\begin{dokaz}
+  Za \(x : \Rm\) velja \(¬(x < q) ⇒ \for{s<q}{s < x}\).
+
+  Uporabimo \(\wlem*\) na \(x < 1\) in \(2 < x\).
+  Ker hkrati oba očitno ne moreta veljati, lahko primer, ko sta oba \(¬¬\)
+  veljavna zanemarimo.
+  \begin{itemize}
+  \item Če velja \(¬(x < 1)\) potem gotovo velja \(0 < x\).
+  \item Če velja \(¬(2 < x)\) potem gotovo velja \(x < 3\).
+  \end{itemize}
+  V vseh primerih torej dobimo \(0 < x ∨ x < 3\), torej je \(x\) lociran.
+\end{dokaz}
+\begin{dokaz}[Topološki dokaz]
+  TODO: a v topoloških rečemo, da če je \(X\) ekstremalno nepovezan morta bit
+  \(\uline f\) in \(\bar f\) zvezni, in a to pomen da sta enaki?
+\end{dokaz}
+
+Gornji dokaz sem tudi formalizirala v dokazovalnem pomočniku Agda, kar nam da
+formaliziran, popolnoma konstruktiven dokaz sledečega izreka.
+\begin{izrek}
+  MacNeillova realna števila se ujemajo z Dedekindovimi natanko tedaj, ko velja
+  šibka izključena tretja možnost.
+\end{izrek}
+TODO: objavi kodo in jo citiraj tu.
 
 \subsection{Analitična Kripkejeva shema in lokalno \(T₆\) prostori}
 
