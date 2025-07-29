@@ -1,190 +1,7 @@
 \section{Nekonstruktivni principi}\label{sec:logika}
 
-\subsection{Principi izbire}\label{sec:logika-izbire}
-
-Za princip izbire ste verjetno že slišali. Ta pravi, da za vsaki množici \(A\)
-in \(B\), in vsako celovito relacijo \(R\) med njima, obstaja funkcija
-\(f : A → B\), tako da velja \(\for{a : A}{R(a, f(a))}\).
-
-Ta princip lahko ošibimo na tri načine: lahko omejimo množici \(A\) in \(B\),
-lahko pa omejimo relacijo \(R\), tako da jemlje resničnostne vrednosti zgolj iz
-določene množice \(Σ ⊆ Ω\).
-
-\begin{definicija}
-  \emph{Princip izbire nad \(Σ\)} je shema, ki za vsaka \(A\) in \(B\) pravi,
-  da za vsako relacijo \(R : A×B → Σ\) za katero velja
-  \(\for{a:A}{\exist{b:B}{R(a,b)}}\), obstaja funkcija izbire \(f : A → B\),
-  tako da velja \(\for{a:A}{R(a,f(a))}\). Objektu \(A\) tako pravimo
-  \emph{domena}, objektu \(B\) \emph{kodomena}, objektu \(Σ\) pa
-  \emph{Sierpinskijev objekt}.
-  Pogoju na \(R\) pravimo \emph{celovitost}.
-
-  To označimo z \(\AC_Σ\). Če je \(Σ = Ω\) indeks opustimo in temu pravimo
-  \emph{princip izbire}.
-\end{definicija}
-\begin{definicija}
-  Če v principu izbire fiksiramo domeno na nek \(A\), temu pravimo
-  \emph{princip izbire nad \(Σ\) iz \(A\)}, in če fiksiramo še kodomeno na nek
-  \(B\) temu pravimo \emph{princip izbire nad \(Σ\) iz \(A\) v \(B\)}. Ta potem
-  označujemo \(\AC_Σ(A)\) in \(\AC_Σ(A, B)\). Podobno kot zgoraj opuščamo \(Σ\)
-  ko je ta enaka \(Ω\).
-\end{definicija}
-
-TODO: enolična izbira
-
-Hitro lahko opazimo, da so principi izbire neobčutljivi za izomorfizme.
-\begin{trditev}
-  Naj bo \(φ : A ≅ A'\) in \(ψ : B ≅ B'\). Potem je \(\AC_Σ(A, B)\) ekvivalenten
-  \(\AC_Σ(A', B')\).
-\end{trditev}
-\begin{dokaz}
-  Situacija je očitno simetrična, tako da pokažimo zgolj eno implikacijo.
-
-  Če je \(R : A'×B' → Σ\) celovita, je potem tudi \(R∘\p{φ×ψ} : A×B → Σ\)
-  celovita. Potem pa za to relacijo obstaja funkcija izbire, tako da je
-  \(\for{a : A}{R∘\p{φ×ψ}{(a, f(a))}}\), kar je pa enako
-  \(\for{a:A}{R(φ(a),ψ(f(a)))}\). Ker pa je \(φ\) izomorfizem, lahko
-  preindeksiramo kvantifikator in dobimo \(\for{a:A'}{R(a',ψ∘f∘φ⁻¹(a'))}\),
-  torej je \(ψ∘f∘φ⁻¹\) funkcija izbire za \(R\).
-\end{dokaz}
-V teoriji množic to pomeni, da je aksiom izbire določen do kardinalnosti
-natančno. To nam tudi utemelji zakaj lahko \(\AC(ℕ)\) pravimo princip
-\emph{števne} izbire, saj deluje za poljubno števno (neskončno) množico. Tako si
-lahko tudi predstavljamo, kako to shemo imen razširiti na poljubno kardinalnost.
-Označimo ga torej \(\CC\). Pomembno vlogo bo igral tudi \emph{princip
-  števne disjunktivne izbire} \(\AC(ℕ, 2)\), ki ga označimo z \(\CCv\). 
-
-TODO: vložitve domene in kodomene tud
-\begin{trditev}
-  Če je \(Σ' ⊆ Σ\), \(\AC_Σ(A, B)\) implicira \(\AC_{Σ'}(A, B)\).
-\end{trditev}
-\begin{dokaz}
-  Vsaka relacija nad \(Σ'\) je tudi relacija nad \(Σ\), tako da če imajo
-  relacije nad \(Σ\) funkcije izbire jih imajo tudi relacije nad \(Σ'\).
-\end{dokaz}
-
-\begin{trditev}
-  Princip končne izbire velja.
-\end{trditev}
-\begin{dokaz}
-  TODO: sintaksa za standardne končne?
-  Princip končne izbire je princip izbire, kjer domeno omejimo na končne
-  množice. Brez škode za splošnost, naj bo domena kar enaka neki
-  standardni končni množici \(\cli n\).
-
-  Potem pa \(\AC(\cli n)\) pravi, da če
-  obstajajo \(bₖ:B\), da velja \(R(1,b₁)∧\dots ∧R(n,bₙ)\), obstaja končno
-  zaporedje (torej, obstajajo \(bₖ:B\)), da velja \(R(1,b₁)∧\dots ∧R(n,bₙ)\)… To
-  sta pa isti stvari, tako da princip res drži.
-\end{dokaz}
-
-% \begin{definicija}
-%   \emph{Princip \[Σ\]-izbire iz \(A\) v \(B\)} pravi, da za vsako relacijo
-%   \(R : A×B → Σ\) za katero velja \(\for{a:A}{\exist{b:B}{R(a,b)}}\), obstaja
-%   funkcija izbire \(f : A → B\), tako da velja \(\for{a:A}{R(a,f(a))}\).
-
-%   To bomo označili z \(\AC_Σ(A,B)\). Z \(\AC_Σ(A)\) bomo označevali shemo
-%   \(\for{B}{\AC_Σ(A,B)}\), z \(\AC_Σ\) pa shemo \(\for{A}{\AC_Σ(A)}\).
-%   Tem pravimo \emph{princip \(Σ\)-izbire iz \(A\)} in \emph{princip \(Σ\)-izbire}.
-%   Kadar je \(Σ = Ω\) bomo \(Σ\) v indeksu opuščali, in ustrezno to poimenovali
-%   kar samo \emph{princip izbire (iz \(A\) v \(B\))}.
-
-%   Standardno se principu \(\AC(ℕ)\) pravi \emph{princip števne izbire} in
-%   označuje \(\CC\).
-%   Posebno pomemben bo princip \(\AC(ℕ, 2)\), ki ga bomo označevali \(\CCv\) in
-%   mu pravili \emph{princip števne dvojiške(disjunktivne?) izbire}.
-% \end{definicija}
-
-
-
-% \begin{definicija}
-%   \emph{Princip števne dvojiške izbire} pravi, da če velja
-%   \(\for{n : ℕ}{P(n, 0) ∨ P(n, 1)}\) (torej, \(P\) je celovita relacija na
-%   \(ℕ×2\)) obstaja funkcija izbire \(f : ℕ → 2\), da velja
-%   \(\for{n : ℕ}{P(n,f(n))}\).
-% \end{definicija}
-
-Poznamo pa tudi še princip odvisne izbire.
-\begin{definicija}
-  \emph{Princip odvisne izbire nad \(Σ\) za \(A\)} pravi, da za vsako celovito
-  relacijo \(R : A×A → Σ\) in \(a₀ : A\) obstaja zaporedje \((aᵢ)ᵢ\) začenši z
-  \(a₀\), tako da za vsak \(n : ℕ\) velja \(R(aₙ, aₙ₊₁)\). Tega označimo z
-  \(\DC_Σ(A)\). Če princip velja za vse \(A\) ga označimo \(\DC_Σ\).
-\end{definicija}
-
-\begin{trditev}
-  Če je \(Σ⊆Ω\) zaprt za končne konjunkcije in števne disjunkcije, velja
-  implikacija \(\DC_Σ ⇒ \CC_Σ\).
-\end{trditev}
-\begin{dokaz}
-  Naj bo \(R : ℕ×B → Σ\) celovita.
-  Definirajmo \(X ≔ \set{b:B}{\exist{n:ℕ}{R(n,b)}}\) in na \(X×X\) relacijo
-  \(Q(x,y) ≔ \exist{n:ℕ}{R(n,x)∧R(n+1,y)}\).
-
-  Ta je celovita, tako da lahko na njej uporabimo \(\DC_Σ\), torej dobimo
-  zaporedje \(x : ℕ → X\). Ker je \(X⊑B\) je torej to preslikava \(ℕ → B\), ki
-  ima želeno lastnost.
-\end{dokaz}
-
-V dokazu je pogoj na Sierpinskijevem objektu res pomemben, sicer \(Q\) ni
-relacija nad \(Σ\). 
-
-
-\subsection{Principi odločitve}\label{sec:logika-odločitve}
-
-\begin{definicija}[Izključena tretja možnost]\label{pr:lem}
-  \emph{Princip izključene tretje možnosti} pravi, da za vsako resničnostno
-  vrednost \(p\) velja \(p∨¬p\). Formulo \(p∨¬p\) označimo \(\lem(p)\), formulo
-  \(\for{p:Ω}{p∨¬p}\) pa z \(\lem*\).
-\end{definicija}
-
-\begin{definicija}[Šibka izključena tretja možnost]\label{pr:wlem}
-  \emph{Šibak princip izključene tretje možnosti} pravi, da za vsako
-  resničnostno vrednost \(p\) velja \(¬p∨¬¬p\). Formulo \(¬p∨¬¬p\) označimo
-  \(\wlem(p)\), formulo \(\for{p:Ω}{¬p∨¬¬p}\) pa z \(\wlem*\).
-\end{definicija}
-\begin{trditev}
-  Velja implikacija \(\lem* ⇒ \wlem*\).
-\end{trditev}
-\begin{dokaz}
-  Formula \(\wlem(p)\) je natanko \(\lem(¬p)\), tako da trditev očitno velja.
-\end{dokaz}
-
-\begin{definicija}\label{pr:lpo}
-  \emph{Princip števne odločitve} pravi, da za vsako števno zaporedje ničel in enic
-  lahko odločimo, ali je celo nič, ali pa obstaja mesto, na katerem je enica.
-  Formulo \(α = 0∨α\apart 0\) označimo \(\lpo(α)\), formulo
-  \(\for{α : 2^ℕ}{\lpo(α)}\) pa z \(\lpo*\).
-\end{definicija}
-
-\begin{definicija}\label{pr:alpo}
-  \emph{Analitični princip števne odločitve} pravi, da za vsako realno število
-  lahko odločimo, ali je pozitivno ali nenegativno. Formulo \(x > 0 ∨ x ≤ 0\)
-  označimo \(\alpo(x)\), formulo \(\for{x : ℝ}{\alpo(x)}\) pa z \(\alpo*\).
-\end{definicija}
-
-\begin{trditev}
-  Velja veriga implikacij \(\lem* ⇒ \alpo* ⇒ \lpo*\).
-\end{trditev}
-\begin{dokaz}
-  Ker je \(¬(x > 0)\) natanko \(x ≤ 0\), je \(\alpo*\) očitno posledica
-  \(\lem*\).
-
-  Za drugo implikacijo pa potrebujemo malo dela. Naj bo \(α\) zaporedje, za
-  katerega odločamo, ali ima na kakem mestu enico. Definirajmo realno število
-  \[ x ≔ \lim_{n → ∞}2^{-\min\set{k : ℕ}{α(k) = 1 ∨ k ≥ n}}\text. \]
-
-  To je po definiciji Cauchyjevo realno število. Uporabimo sedaj predpostavko
-  \(\alpo(x)\). Če velja \(x ≤ 0\), mora zaporedje limitirati proti \(0\), kar
-  pa pomeni, da \(α(k) = 1\) ni nikoli zadoščeno, torej je \(α = 0\).
-  Po drugi strani, če je \(x > 0\) pa obstaja nek \(k : ℕ\), tako da je
-  \(x > 2⁻ᵏ\). To pa pomeni, da ima \(α\) enico na enem izmed prvih \(k\)
-  mestih, kar konstruktivno pomeni, da želeni indeks obstaja.
-\end{dokaz}
-
-Gornje implikacije niso obrnljive, a se k tem vrnemo kasneje, v
-razdelku~\ref{sec:odločitve}.
-
+\input{principi-izbire.tex}
+\input{principi-odločitve.tex}
 
 \subsection{Realna števila}\label{sec:logika-reals}
 
@@ -309,6 +126,8 @@ MacNeillovih realnih števil supremum.
   TODO
 \end{dokaz}
 
+TODO: alpo itd
+
 
 \subsection{Ostali principi}\label{sec:logika-ostalo}
 
@@ -323,9 +142,57 @@ Nekaj takih imamo zgoraj o realnih številih.
   \(Σ₀¹ ≔ \set{α \apart 0}{α : 2^ℕ} ⊆ Ω\).
 
   TODO: dedekindova ali cauchyjeva ali kaj drugega.
-  \emph{Analitična kripkejeva shema} je kripkejeva shema za
-  \(Σ_ℝ ≔ \set{x > 0}{x : ℝ} ⊆ Ω\).
+  \emph{Analitična kripkejeva shema za \(R\)} je kripkejeva shema za
+  \(Σ_R ≔ \set{x > 0}{x : R} ⊆ Ω\), kjer je \(R\) nek objekt realnih števil.
+
+  Posebej bomo \(\ks*(Σ_{\Rd})\) pravili \emph{analitična kripkejeva shema}.
 \end{definicija}
+
+\begin{trditev}
+  TODO: če se ne motim je \(Σ_{\Rc} = Σ₀¹\). Mogoče.
+\end{trditev}
+
+TODO: global existence
+\begin{trditev}\label{th:lT6-have-AKS}
+  Nad lokalno \(T₆\) prostori velja analitična Kripkejeva shema.
+\end{trditev}
+\begin{proof}
+  Brez škode za splošnost lahko predpostavimo, da je prostor \(X\) \(T₆\).
+  Naj bo \(U ⊆ X\). Tedaj obstaja \(f : X → ℝ\), ki je \(0\) natanko na
+  komplementu \(U\). To pa pomeni, da je natanko na \(U\) različen od \(0\)
+  kar je pa točno to, kar zahtevamo za analitično Kripkejevo shemo.
+\end{proof}
+\begin{opomba}
+  V dokazu smo zares pokazali \emph{globalen} obstoj za element \(x : ℝ\). To
+  nam da slutiti, da je (lokalno) \(T₆\) lastnost močnejša od \(\aks*\). In res
+  se izkaže, da je temu tako.
+  TODO: a se zmislim primer?
+\end{opomba}
+
+Vseeno pa velja obrat, če analitično Kripkejevo shemo malo ojačamo. Specifično,
+če predpostavimo obstoj \emph{funkcije izibre} za shemo \(\aks*\).
+\begin{trditev}
+  Če velja \(X ⊩ \exist{f : Ω → ℝ}{\for{p : Ω}{p ⇔ f(p) \apart 0}}\), je \(X\)
+  lokalno \(T₆\).
+\end{trditev}
+\begin{dokaz}
+  TODO: a je \(ℝ^Ω\) zuni funkcije? kaj je s tem?
+
+  razponi \(f\) pokrijejo \(X\)
+
+  za \(f\) velja da za vse \(U\) pod \(\e f\) velja \(U = \i{f(U) \apart 0}\).
+
+  pika TODO: napiši zadevo normalno.
+\end{dokaz}
+\begin{opomba}
+  Ponovno smo pokazali malo več kot zgolj lokalno \(T₆\) lastnost. Dobili smo
+  \emph{funkcije izbire} za vsako od \(T₆\) komponent. Če v metateoriji
+  predpostavimo princip izbire, potem je to ekvivalentno tej močnejši verziji
+  \(\aks*\).
+\end{opomba}
+
+\input{pretvorbe-primerkov.tex}
+
 
 %%% Local Variables:
 %%% mode: latex

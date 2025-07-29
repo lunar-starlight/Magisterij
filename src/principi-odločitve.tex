@@ -1,5 +1,22 @@
-\section{Principi odločitve}\label{sec:odločitve}
+\subsection{Principi odločitve}\label{sec:odločitve}
 
+\begin{definicija}[Izključena tretja možnost]\label{pr:lem}
+  \emph{Princip izključene tretje možnosti} pravi, da za vsako resničnostno
+  vrednost \(p\) velja \(p∨¬p\). Formulo \(p∨¬p\) označimo \(\lem(p)\), formulo
+  \(\for{p:Ω}{p∨¬p}\) pa z \(\lem*\).
+\end{definicija}
+
+\begin{definicija}[Šibka izključena tretja možnost]\label{pr:wlem}
+  \emph{Šibak princip izključene tretje možnosti} pravi, da za vsako
+  resničnostno vrednost \(p\) velja \(¬p∨¬¬p\). Formulo \(¬p∨¬¬p\) označimo
+  \(\wlem(p)\), formulo \(\for{p:Ω}{¬p∨¬¬p}\) pa z \(\wlem*\).
+\end{definicija}
+\begin{trditev}
+  Velja implikacija \(\lem* ⇒ \wlem*\).
+\end{trditev}
+\begin{dokaz}
+  Formula \(\wlem(p)\) je natanko \(\lem(¬p)\), tako da trditev očitno velja.
+\end{dokaz}
 
 Spomnimo se najprej karakterizacij \(\lem*\) in \(\wlem*\) iz
 podrazdelka~\ref{sec:modeli-logika-odprtih}.
@@ -18,7 +35,39 @@ Ker so naši prostori \(T₀\), so particijski prostori natanko diskretni. Res, 
 so točke zaprte, in je vsaka zaprta množica odprta, so točke odprte, torej je
 prostor diskreten.
 
-Pokažimo sedaj, da implikacije iz~\ref{sec:logika-odločitve} niso obrnljive.
+\begin{definicija}\label{pr:lpo}
+  \emph{Princip števne odločitve} pravi, da za vsako števno zaporedje ničel in enic
+  lahko odločimo, ali je celo nič, ali pa obstaja mesto, na katerem je enica.
+  Formulo \(α = 0∨α\apart 0\) označimo \(\lpo(α)\), formulo
+  \(\for{α : 2^ℕ}{\lpo(α)}\) pa z \(\lpo*\).
+\end{definicija}
+
+\begin{definicija}\label{pr:alpo}
+  \emph{Analitični princip števne odločitve} pravi, da za vsako realno število
+  lahko odločimo, ali je pozitivno ali nenegativno. Formulo \(x > 0 ∨ x ≤ 0\)
+  označimo \(\alpo(x)\), formulo \(\for{x : ℝ}{\alpo(x)}\) pa z \(\alpo*\).
+\end{definicija}
+
+\begin{trditev}
+  Velja veriga implikacij \(\lem* ⇒ \alpo* ⇒ \lpo*\).
+\end{trditev}
+\begin{dokaz}
+  Ker je \(¬(x > 0)\) natanko \(x ≤ 0\), je \(\alpo*\) očitno posledica
+  \(\lem*\).
+
+  Za drugo implikacijo pa potrebujemo malo dela. Naj bo \(α\) zaporedje, za
+  katerega odločamo, ali ima na kakem mestu enico. Definirajmo realno število
+  \[ x ≔ \lim_{n → ∞}2^{-\min\set{k : ℕ}{α(k) = 1 ∨ k ≥ n}}\text. \]
+
+  To je po definiciji Cauchyjevo realno število. Uporabimo sedaj predpostavko
+  \(\alpo(x)\). Če velja \(x ≤ 0\), mora zaporedje limitirati proti \(0\), kar
+  pa pomeni, da \(α(k) = 1\) ni nikoli zadoščeno, torej je \(α = 0\).
+  Po drugi strani, če je \(x > 0\) pa obstaja nek \(k : ℕ\), tako da je
+  \(x > 2⁻ᵏ\). To pa pomeni, da ima \(α\) enico na enem izmed prvih \(k\)
+  mestih, kar konstruktivno pomeni, da želeni indeks obstaja.
+\end{dokaz}
+
+Pokažimo sedaj, da gornje implikacije niso obrnljive.
 
 \begin{trditev}
   Nad \(2^ℕ\) ne velja \(\lpo*\).

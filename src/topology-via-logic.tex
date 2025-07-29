@@ -1,62 +1,6 @@
 \section{Topološka interpretacija neklasičnih logičnih principov}
 \label{sec:tvl}
 
-\subsection{Znane karakterizacije \lem* in \lpo*}
-\subsection{Karakterizacija (analitične) Kripkejeve sheme bis}
-TODO: global existence
-\begin{trditev}\label{th:lT6-have-AKS}
-  Nad lokalno \(T₆\) prostori velja analitična Kripkejeva shema.
-\end{trditev}
-\begin{proof}
-  Brez škode za splošnost lahko predpostavimo, da je prostor \(X\) \(T₆\).
-  Naj bo \(U ⊆ X\). Tedaj obstaja \(f : X → ℝ\), ki je \(0\) natanko na
-  komplementu \(U\). To pa pomeni, da je natanko na \(U\) različen od \(0\)
-  kar je pa točno to, kar zahtevamo za analitično Kripkejevo shemo.
-\end{proof}
-\begin{opomba}
-  V dokazu smo zares pokazali \emph{globalen} obstoj za element \(x : ℝ\). To
-  nam da slutiti, da je (lokalno) \(T₆\) lastnost močnejša od \(\aks*\). In res
-  se izkaže, da je temu tako.
-  TODO: a se zmislim primer?
-\end{opomba}
-
-Vseeno pa velja obrat, če analitično Kripkejevo shemo malo ojačamo. Specifično,
-če predpostavimo obstoj \emph{funkcije izibre} za shemo \(\aks*\).
-\begin{trditev}
-  Če velja \(X ⊩ \exist{f : Ω → ℝ}{\for{p : Ω}{p ⇔ f(p) \apart 0}}\), je \(X\)
-  lokalno \(T₆\).
-\end{trditev}
-\begin{dokaz}
-  TODO: a je \(ℝ^Ω\) zuni funkcije? kaj je s tem?
-
-  razponi \(f\) pokrijejo \(X\)
-
-  za \(f\) velja da za vse \(U\) pod \(\e f\) velja \(U = \i{f(U) \apart 0}\).
-
-  pika TODO: napiši zadevo normalno.
-\end{dokaz}
-\begin{opomba}
-  Ponovno smo pokazali malo več kot zgolj lokalno \(T₆\) lastnost. Dobili smo
-  \emph{funkcije izbire} za vsako od \(T₆\) komponent. Če v metateoriji
-  predpostavimo princip izbire, potem je to ekvivalentno tej močnejši verziji
-  \(\aks*\).
-\end{opomba}
-
-% TODO: res rabim prevod za to
-Fortov prostor zgoraj je \(T₆\), tako da v njemu ne velja niti šibkejša oblika
-\(\CCv\), ki je omejena na ``realne'' resničnostne vrednosti.
-Res, če še enkrat podrobno pogledamo dokaz enakosti, se potrebujemo števno
-mnogokrat odločiti za neenakosti z \emph{istim} realnim številom, \(\CCv\) pa
-govori o števno mnogo različnih realnih številih.
-Avtorica sumi, da je \(\Rd = \Rc\) ekvivalentno temu:
-\begin{quotation}
-  Naj bo \(p\) naraščajoče in \(q\) padajoče zaporedje, in naj bo \(\sup p ≤ \inf q\)
-  (tu morda \(=\)?), in naj bo \(x : ℝ\). Potem velja \(\for{n : ℕ}{pₙ < x ∨ x < qₙ}\),
-\end{quotation}
-kar je pa zelo šibek princip števne odločitve.
-
-
-\subsection{Idempotenca \lpo* bis}
 \subsection{Posplošitev funkcijske \(Tₙ\) hirearhije}
 
 %%% Local Variables:

@@ -1,5 +1,130 @@
-\section{Principi izbire}\label{sec:izbire}
+\subsection{Principi izbire}\label{sec:izbire}
 
+Za princip izbire ste verjetno že slišali. Ta pravi, da za vsaki množici \(A\)
+in \(B\), in vsako celovito relacijo \(R\) med njima, obstaja funkcija
+\(f : A → B\), tako da velja \(\for{a : A}{R(a, f(a))}\).
+
+Ta princip lahko ošibimo na tri načine: lahko omejimo množici \(A\) in \(B\),
+lahko pa omejimo relacijo \(R\), tako da jemlje resničnostne vrednosti zgolj iz
+določene množice \(Σ ⊆ Ω\).
+
+\begin{definicija}
+  \emph{Princip izbire nad \(Σ\)} je shema, ki za vsaka \(A\) in \(B\) pravi,
+  da za vsako relacijo \(R : A×B → Σ\) za katero velja
+  \(\for{a:A}{\exist{b:B}{R(a,b)}}\), obstaja funkcija izbire \(f : A → B\),
+  tako da velja \(\for{a:A}{R(a,f(a))}\). Objektu \(A\) tako pravimo
+  \emph{domena}, objektu \(B\) \emph{kodomena}, objektu \(Σ\) pa
+  \emph{Sierpinskijev objekt}.
+  Pogoju na \(R\) pravimo \emph{celovitost}.
+  To označimo z \(\AC_Σ\). Če je \(Σ = Ω\) indeks opustimo in temu pravimo
+  \emph{princip izbire}.
+\end{definicija}
+\begin{definicija}
+  Če v principu izbire fiksiramo domeno na nek \(A\), temu pravimo
+  \emph{princip izbire nad \(Σ\) iz \(A\)}, in če fiksiramo še kodomeno na nek
+  \(B\) temu pravimo \emph{princip izbire nad \(Σ\) iz \(A\) v \(B\)}. Ta potem
+  označujemo \(\AC_Σ(A)\) in \(\AC_Σ(A, B)\). Podobno kot zgoraj opuščamo \(Σ\)
+  ko je ta enaka \(Ω\).
+\end{definicija}
+
+TODO: enolična izbira
+
+Hitro lahko opazimo, da so principi izbire neobčutljivi za izomorfizme.
+\begin{trditev}
+  Naj bo \(φ : A ≅ A'\) in \(ψ : B ≅ B'\). Potem je \(\AC_Σ(A, B)\) ekvivalenten
+  \(\AC_Σ(A', B')\).
+\end{trditev}
+\begin{dokaz}
+  Situacija je očitno simetrična, tako da pokažimo zgolj eno implikacijo.
+
+  Če je \(R : A'×B' → Σ\) celovita, je potem tudi \(R∘\p{φ×ψ} : A×B → Σ\)
+  celovita. Potem pa za to relacijo obstaja funkcija izbire, tako da je
+  \(\for{a : A}{R∘\p{φ×ψ}{(a, f(a))}}\), kar je pa enako
+  \(\for{a:A}{R(φ(a),ψ(f(a)))}\). Ker pa je \(φ\) izomorfizem, lahko
+  preindeksiramo kvantifikator in dobimo \(\for{a:A'}{R(a',ψ∘f∘φ⁻¹(a'))}\),
+  torej je \(ψ∘f∘φ⁻¹\) funkcija izbire za \(R\).
+\end{dokaz}
+V teoriji množic to pomeni, da je aksiom izbire določen do kardinalnosti
+natančno. To nam tudi utemelji zakaj lahko \(\AC(ℕ)\) pravimo princip
+\emph{števne} izbire, saj deluje za poljubno števno (neskončno) množico. Tako si
+lahko tudi predstavljamo, kako to shemo imen razširiti na poljubno kardinalnost.
+Označimo ga torej \(\CC\). Pomembno vlogo bo igral tudi \emph{princip
+  števne disjunktivne izbire} \(\AC(ℕ, 2)\), ki ga označimo z \(\CCv\). 
+
+TODO: vložitve domene in kodomene tud
+\begin{trditev}
+  Če je \(Σ' ⊆ Σ\), \(\AC_Σ(A, B)\) implicira \(\AC_{Σ'}(A, B)\).
+\end{trditev}
+\begin{dokaz}
+  Vsaka relacija nad \(Σ'\) je tudi relacija nad \(Σ\), tako da če imajo
+  relacije nad \(Σ\) funkcije izbire jih imajo tudi relacije nad \(Σ'\).
+\end{dokaz}
+
+\begin{trditev}
+  Princip končne izbire velja.
+\end{trditev}
+\begin{dokaz}
+  TODO: sintaksa za standardne končne?
+  Princip končne izbire je princip izbire, kjer domeno omejimo na končne
+  množice. Brez škode za splošnost, naj bo domena kar enaka neki
+  standardni končni množici \(\cli n\).
+
+  Potem pa \(\AC(\cli n)\) pravi, da če
+  obstajajo \(bₖ:B\), da velja \(R(1,b₁)∧\dots ∧R(n,bₙ)\), obstaja končno
+  zaporedje (torej, obstajajo \(bₖ:B\)), da velja \(R(1,b₁)∧\dots ∧R(n,bₙ)\)… To
+  sta pa isti stvari, tako da princip res drži.
+\end{dokaz}
+
+% \begin{definicija}
+%   \emph{Princip \[Σ\]-izbire iz \(A\) v \(B\)} pravi, da za vsako relacijo
+%   \(R : A×B → Σ\) za katero velja \(\for{a:A}{\exist{b:B}{R(a,b)}}\), obstaja
+%   funkcija izbire \(f : A → B\), tako da velja \(\for{a:A}{R(a,f(a))}\).
+
+%   To bomo označili z \(\AC_Σ(A,B)\). Z \(\AC_Σ(A)\) bomo označevali shemo
+%   \(\for{B}{\AC_Σ(A,B)}\), z \(\AC_Σ\) pa shemo \(\for{A}{\AC_Σ(A)}\).
+%   Tem pravimo \emph{princip \(Σ\)-izbire iz \(A\)} in \emph{princip \(Σ\)-izbire}.
+%   Kadar je \(Σ = Ω\) bomo \(Σ\) v indeksu opuščali, in ustrezno to poimenovali
+%   kar samo \emph{princip izbire (iz \(A\) v \(B\))}.
+
+%   Standardno se principu \(\AC(ℕ)\) pravi \emph{princip števne izbire} in
+%   označuje \(\CC\).
+%   Posebno pomemben bo princip \(\AC(ℕ, 2)\), ki ga bomo označevali \(\CCv\) in
+%   mu pravili \emph{princip števne dvojiške(disjunktivne?) izbire}.
+% \end{definicija}
+
+
+
+% \begin{definicija}
+%   \emph{Princip števne dvojiške izbire} pravi, da če velja
+%   \(\for{n : ℕ}{P(n, 0) ∨ P(n, 1)}\) (torej, \(P\) je celovita relacija na
+%   \(ℕ×2\)) obstaja funkcija izbire \(f : ℕ → 2\), da velja
+%   \(\for{n : ℕ}{P(n,f(n))}\).
+% \end{definicija}
+
+Poznamo pa tudi še princip odvisne izbire.
+\begin{definicija}
+  \emph{Princip odvisne izbire nad \(Σ\) za \(A\)} pravi, da za vsako celovito
+  relacijo \(R : A×A → Σ\) in \(a₀ : A\) obstaja zaporedje \((aᵢ)ᵢ\) začenši z
+  \(a₀\), tako da za vsak \(n : ℕ\) velja \(R(aₙ, aₙ₊₁)\). Tega označimo z
+  \(\DC_Σ(A)\). Če princip velja za vse \(A\) ga označimo \(\DC_Σ\).
+\end{definicija}
+
+\begin{trditev}
+  Če je \(Σ⊆Ω\) zaprt za končne konjunkcije in števne disjunkcije, velja
+  implikacija \(\DC_Σ ⇒ \CC_Σ\).
+\end{trditev}
+\begin{dokaz}
+  Naj bo \(R : ℕ×B → Σ\) celovita.
+  Definirajmo \(X ≔ \set{b:B}{\exist{n:ℕ}{R(n,b)}}\) in na \(X×X\) relacijo
+  \(Q(x,y) ≔ \exist{n:ℕ}{R(n,x)∧R(n+1,y)}\).
+
+  Ta je celovita, tako da lahko na njej uporabimo \(\DC_Σ\), torej dobimo
+  zaporedje \(x : ℕ → X\). Ker je \(X⊑B\) je torej to preslikava \(ℕ → B\), ki
+  ima želeno lastnost.
+\end{dokaz}
+
+V dokazu je pogoj na Sierpinskijevem objektu res pomemben, sicer \(Q\) ni
+relacija nad \(Σ\). 
 % NOTE: A lahko to naredimo za poljuben \(X\)?
 \begin{trditev}
   Če je \(X\) lokalno povezan, in nad \(X\) velja kateri koli princip izbire,
@@ -15,6 +140,7 @@
   potem velja \(\for{a ∈ A}{R(a, f(a)}\).
 \end{proof}
 
+TODO: a je to relevantno?
 Ta izrek nam pove, da zares v preveč konstruktivni metamatematiki niti ne moremo
 pričakovati, da se bo zgodilo kaj zanimivega. Skoraj noben topološki model ne bo
 validiral principov izbire, kar pa pomeni, da bodisi ne bomo mogli najti pametne
