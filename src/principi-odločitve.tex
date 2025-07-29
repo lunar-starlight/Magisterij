@@ -1,0 +1,99 @@
+\section{Principi odločitve}\label{sec:odločitve}
+
+
+Spomnimo se najprej karakterizacij \(\lem*\) in \(\wlem*\) iz
+podrazdelka~\ref{sec:modeli-logika-odprtih}.
+
+TODO: renumber
+\begin{trditev}\label{th:lem-is-partition-second}
+  Nad topološkim prostorom velja princip izključene tretje možnosti natanko
+  tedaj, ko je prostor particijski.
+\end{trditev}
+\begin{trditev}\label{th:wlem-is-ext-disc-second}
+  Nad topološkim prostorom velja DeMorganov zakon natanko tedaj, ko je prostor
+  ekstremalno nepovezan.
+\end{trditev}
+
+Ker so naši prostori \(T₀\), so particijski prostori natanko diskretni. Res, če
+so točke zaprte, in je vsaka zaprta množica odprta, so točke odprte, torej je
+prostor diskreten.
+
+Pokažimo sedaj, da implikacije iz~\ref{sec:logika-odločitve} niso obrnljive.
+
+\begin{trditev}
+  Nad \(2^ℕ\) ne velja \(\lpo*\).
+\end{trditev}
+\begin{dokaz}
+  Naj bo \(α : 2^ℕ → 2^ℕ\) identiteta. Resničnostna vrednost \(\lpo(α)\) je
+  \(2^ℕ⧵\{0\}\), saj je resničnostna vrednost \(α = 0\) enaka \(∅\).
+\end{dokaz}
+
+\begin{trditev}
+  Nad \(ℝ\) velja \(\lpo*\) in ne velja \(\alpo*\).
+\end{trditev}
+\begin{dokaz}
+  Naj bo \(x : ℝ\) zunaj identiteta. Potem je \(\i{\alpo(x)} = ℝ⧵\{0\}\).
+
+  Preostanek tega dokaza izpeljemo malo kasneje, v izreku~\ref{th:lpov-lpo}
+\end{dokaz}
+
+\begin{trditev}
+  Nad \(\Ncof\) velja \(\alpo*\) in ne velja \(\lem*\).
+\end{trditev}
+\begin{dokaz}
+  Prostor očitno ni diskreten. Naj bo \(x : ℝ\), torej preslikava \(\e x → ℝ\).
+  Naj bo \(t, t' ∈ \im x\). Potem sta \(x⁻¹(t)\) in \(x⁻¹(t')\) neprazni odprti
+  množica. To pa pomeni, da sta obe kokončni, torej imata neprazen presek, od
+  koder sledi, da sta si enaka. Torej je vsako notranje realno število
+  konstantno. Sedaj pa lahko za to realno število \(\alpo(x)\) odločimo zunaj.
+\end{dokaz}
+
+\begin{trditev}
+  Nad \(\Ncof\) velja \(\wlem*\) in ne velja \(\lem*\).
+\end{trditev}
+\begin{dokaz}
+  Prostor še vedno ni diskreten. Naj bo sedaj \(U\) odprta množica.
+  Njena zunanjost (torej negacija) je pa bodisi cel prostor, bodisi prazna. Za
+  te odprte množice pa velja da so komplementirane, torej \(\wlem*\) drži.
+\end{dokaz}
+
+Obrate teh implikacij lahko torej jemljemo kot nekonstruktivni principi, a o teh
+ni veliko znano. Vemo le, da očitno \(\Rd = \Rc\) implicira \(\alpo* ⇔ \lpo*\),
+saj je \(\lpo*\) ekvivalenten \(\alpo*\) za Cauchyjeva realna števila, tako da
+je to zelo šibek princip. Kasneje si bomo ogledali kdaj obrati veljajo na nek
+strožji in bolj strukturiran način, ki ima povezavo s teorijo izračunljivosti,
+in ta upamo, da nam da močnejše principe, ki bodo potem tudi topološko bolj
+zanimivi.
+
+Vemo pa vsaj nekaj.
+\begin{izrek}\label{th:lpov-lpo}
+  Če je \(X\) lokalno povezan, velja \(X ⊩ \lpo*\).
+\end{izrek}
+\begin{dokaz}
+  Naj bo \(α : 2^ℕ\). Ker je \(X\) lokalno povezan, je množica \(2^ℕ\) kar
+  množica preslikav iz \(ℕ\) v \(2\). To pa pomeni, da je lokalno \(α = f\), za
+  nek \(f : ℕ → 2\). Zunaj pa imamo \(\lpo*\), tako da lahko odločimo \(f = 0 ∨
+  f \apart 0\), kar pa pomeni, da to lahko odločimo tudi za \(α\), torej nad
+  \(X\) velja \(\lpo*\).
+\end{dokaz}
+\begin{opomba}
+  Ker je \(\lpo*\) natanko \(\alpo*\) za Cauchyjeva realna števila (TODO: daj to
+  nekam na samo, zdej sem že petič napisala), in potrebujemo le, da so elementi
+  lokalno konstantni, zadošča predpostaviti \(\Rc = \c ℝ\). To pomeni, da je to
+  kar močen princip, saj je zadosten za \(\lpo*\).
+
+  TODO: a je ekvivalenca? smz da, ker \(x : \Rc\) je zvezna \(\e x → ℝ\), če
+  mamo \(\lpo*\) je \(\i{x = a} = \i{x \apart a}ᶜ\), tko da je \(x\) lokalno
+  konstantna.
+\end{opomba}
+
+TODO: Elephant, D4.7: It can be shown that, for a locale \(X\), \(\Rc\) coincides
+with \(\c ℝ\) iff for every open \(U\), the lattice of (relatively) clopen
+sublocales of \(U\) is closed under countable unions. (For a second countable
+locale this is equivalent to local connectedness)
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:

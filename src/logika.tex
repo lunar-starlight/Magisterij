@@ -1,6 +1,6 @@
-\section{Nekonstruktivni principi}
+\section{Nekonstruktivni principi}\label{sec:logika}
 
-\subsection{Principi izbire}
+\subsection{Principi izbire}\label{sec:logika-izbire}
 
 Za princip izbire ste verjetno že slišali. Ta pravi, da za vsaki množici \(A\)
 in \(B\), in vsako celovito relacijo \(R\) med njima, obstaja funkcija
@@ -104,8 +104,33 @@ TODO: vložitve domene in kodomene tud
 %   \(\for{n : ℕ}{P(n,f(n))}\).
 % \end{definicija}
 
+Poznamo pa tudi še princip odvisne izbire.
+\begin{definicija}
+  \emph{Princip odvisne izbire nad \(Σ\) za \(A\)} pravi, da za vsako celovito
+  relacijo \(R : A×A → Σ\) in \(a₀ : A\) obstaja zaporedje \((aᵢ)ᵢ\) začenši z
+  \(a₀\), tako da za vsak \(n : ℕ\) velja \(R(aₙ, aₙ₊₁)\). Tega označimo z
+  \(\DC_Σ(A)\). Če princip velja za vse \(A\) ga označimo \(\DC_Σ\).
+\end{definicija}
 
-\subsection{Principi odločitve}
+\begin{trditev}
+  Če je \(Σ⊆Ω\) zaprt za končne konjunkcije in števne disjunkcije, velja
+  implikacija \(\DC_Σ ⇒ \CC_Σ\).
+\end{trditev}
+\begin{dokaz}
+  Naj bo \(R : ℕ×B → Σ\) celovita.
+  Definirajmo \(X ≔ \set{b:B}{\exist{n:ℕ}{R(n,b)}}\) in na \(X×X\) relacijo
+  \(Q(x,y) ≔ \exist{n:ℕ}{R(n,x)∧R(n+1,y)}\).
+
+  Ta je celovita, tako da lahko na njej uporabimo \(\DC_Σ\), torej dobimo
+  zaporedje \(x : ℕ → X\). Ker je \(X⊑B\) je torej to preslikava \(ℕ → B\), ki
+  ima želeno lastnost.
+\end{dokaz}
+
+V dokazu je pogoj na Sierpinskijevem objektu res pomemben, sicer \(Q\) ni
+relacija nad \(Σ\). 
+
+
+\subsection{Principi odločitve}\label{sec:logika-odločitve}
 
 \begin{definicija}[Izključena tretja možnost]\label{pr:lem}
   \emph{Princip izključene tretje možnosti} pravi, da za vsako resničnostno
@@ -157,46 +182,11 @@ TODO: vložitve domene in kodomene tud
   mestih, kar konstruktivno pomeni, da želeni indeks obstaja.
 \end{dokaz}
 
-Pokazati moramo zgolj, da gornje implikacije niso obrnljive.
-\begin{trditev}
-  Nad \(2^ℕ\) ne velja \(\lpo*\).
-\end{trditev}
-\begin{dokaz}
-  Naj bo \(α : 2^ℕ → 2^ℕ\) identiteta. Resničnostna vrednost \(\lpo(α)\) je
-  \(2^ℕ⧵\{0\}\), saj je resničnostna vrednost \(α = 0\) enaka \(∅\).
-\end{dokaz}
-
-\begin{trditev}
-  Nad \(ℝ\) velja \(\lpo*\) in ne velja \(\alpo*\).
-\end{trditev}
-\begin{dokaz}
-  Naj bo \(x : ℝ\) zunaj identiteta. Potem je \(\i{\alpo(x)} = ℝ⧵\{0\}\).
-
-  Naj bo sedaj \(α : 2^ℕ\). TODO: a res še enkat…
-\end{dokaz}
-
-\begin{trditev}
-  Nad \(\Ncof\) velja \(\alpo*\) in ne velja \(\lem*\).
-\end{trditev}
-\begin{dokaz}
-  Prostor očitno ni diskreten. Naj bo \(x : ℝ\), torej preslikava \(\e x → ℝ\).
-  Naj bo \(t, t' ∈ \im x\). Potem sta \(x⁻¹(t)\) in \(x⁻¹(t')\) neprazni odprti
-  množica. To pa pomeni, da sta obe kokončni, torej imata neprazen presek, od
-  koder sledi, da sta si enaka. Torej je vsako notranje realno število
-  konstantno. Sedaj pa lahko za to realno število \(\alpo(x)\) odločimo zunaj.
-\end{dokaz}
-
-\begin{trditev}
-  Nad \(\Ncof\) velja \(\wlem*\) in ne velja \(\lem*\).
-\end{trditev}
-\begin{dokaz}
-  Prostor še vedno ni diskreten. Naj bo sedaj \(U\) odprta množica.
-  Njena zunanjost (torej negacija) je pa bodisi cel prostor, bodisi prazna. Za
-  te odprte množice pa velja da so komplementirane, torej \(\wlem*\) drži.
-\end{dokaz}
+Gornje implikacije niso obrnljive, a se k tem vrnemo kasneje, v
+razdelku~\ref{sec:odločitve}.
 
 
-\subsection{Realna števila}
+\subsection{Realna števila}\label{sec:logika-reals}
 
 Spomnimo se nekaj definicij realnih števil.
 \begin{definicija}[Dedekindova realna števila]
@@ -261,62 +251,10 @@ Spomnimo se nekaj definicij realnih števil.
   pa če je \(x₀ < 2\) bodo vsi \(xᵢ < 3\), kar pa zaključi dokaz.
 \end{dokaz}
 
-Obrat pa ne velja konstruktivno. Izračunajmo najprej, kaj so realna števila v
-topoloških modelih.
-\begin{trditev}
-  Nad \(X\) je objekt Dedekindovih realnih števil \(𝒪X\)-množica iz
-  primera~\ref{ex:reals}.
-  % Nad \(X\) je objekt Dedekindovih realnih števil \(𝒪X\)-množica
-  % \(\set{f : U → ℝ}{U ∈ 𝒪X\text{, }f\text{ zvezna}}\), z enakostjo definirano
-  % kot \(\i{f = g} ≔ \int{\set{t ∈ X}{f(t) = g(t)}}\).
-\end{trditev}
-\begin{dokaz}
-  Naj bo \(x = \p{L, U}\) dedekindov rez v interni logiki.
-  Sedaj lahko zunaj za \(t ∈ \e x\) definiramo
-  \[ Lₜ ≔ \set{q : ℚ}{t ∈ \i{q ∈ L}}\text{ in} \]
-  \[ Uₜ ≔ \set{r : ℚ}{t ∈ \i{r ∈ U}}\text. \]
-  Ta tvorita Dedekindov rez, tako da nam \(t ↦ \p{Lₜ, Uₜ}\) definira preslikavo
-  iz \(\e x → ℝ\). TODO: Zveznost.
-
-  Obratno, če je \(x : V → ℝ\) zvezna preslikava, lahko tvorimo preslikavi
-  \[ L(t) ≔ \set{q : ℚ}{q < x(t)}\text{ in} \]
-  \[ U(t) ≔ \set{r : ℚ}{x(t) < r}\text. \]
-  Ti znotraj tvorita Dedekindov rez \(\p{L, U}\).
-\end{dokaz}
-
-\begin{trditev}
-  Naj bo prostor \(X\) lokalno povezan. Tedaj je nad \(X\) objekt Cauchyjevih
-  realnih števil \(𝒪X\)-množica \(\c ℝ\).
-\end{trditev}
-\begin{dokaz}
-  Pokazati je zares treba, da je objekt Cauchyjevih realnih števil \(\g{\c ℝ}\),
-  torej da so lokalno konstantne preslikave v \(ℝ\).
-
-  Podobno kot zgoraj nad \(t ∈ \e x\) dobimo Cauchyjevo zaporedje \((xₙ(t))ₙ\),
-  torej preslikavo \(\e x → ℝ\). Ker je \(X\) lokalno povezan ima pokritje iz
-  povezanih množic, tako da brez škode za splošnost predpostavimo, da je
-  \(\e x\) povezan. Ker pa je povezan, pa vemo, da so vsi \(xᵢ\) konstantne
-  preslikave, torej morajo biti vsi \(xₙ(t)\) enaki (za vse \(t ∈ \e x\)), tako
-  da je \(t ↦ (xₙ(t))ₙ\) konstantna.
-
-  Obratno pa, če je \(f : U → ℝ\) konstantna preslikava, recimo konstantno
-  \({x ∈ ℝ}\), ima potem pripadajoče Cauchyjevo zaporedje \((xₙ)ₙ\). Sedaj pa
-  lahko tvorimo konstantne preslikave \(xₙ : U → ℚ\), ki torej znotraj tvorijo
-  Cauchyjevo zaporedje.
-\end{dokaz}
-
-\begin{trditev}
-  Nad \(ℝ\) sta objekta Dedekindovih in Cauchyjevih realnih števil različna.
-\end{trditev}
-\begin{dokaz}
-  Preslikava \(t ↦ t\) je Dedekindovo realno število, ki pa ni lokalno
-  konstantno, torej ni Cauchyjevo.
-\end{dokaz}
-
-To pomeni, da lahko na ``\(\Rd = \Rc\)'' in ``\(\Rc = \c ℝ\)'' gledamo kot
-nekakšna nekonstruktivna principa. Iz konstruktivne matematike pa poznamo tudi
-druge konstrukcije realnih števil, ki nam lahko dajo nove principe kot ta
-zgoraj.
+Obrat pa ne velja konstruktivno. To pomeni, da lahko na ``\(\Rd = \Rc\)''
+gledamo kot nekakšen nekonstruktiven princip. Iz konstruktivne matematike pa
+poznamo tudi druge konstrukcije realnih števil, ki nam lahko dajo nove principe
+kot ta zgoraj.
 
 TODO: cite nlab? elephant?
 \begin{definicija}[MacNeillova realna števila]
@@ -348,7 +286,7 @@ TODO: cite nlab? elephant?
   \(a ∈ \p{-∞,a'} ⊆ Uᶜ\) in je \(a ∈ \int{\p{Uᶜ}}\).
 \end{dokaz}
 
-V obratno smer lahko pokažemo zgolj, da sta \(L\) in \(U\) disjunktna.
+V obratno smer lahko pokažemo zgolj, da sta \(L\) in \(U\) ločena.
 \begin{lema}
   Za MacNeillovo realno število \(\p{L,U}\) velja \(a∈L∧b∈U⇒a<b\).
 \end{lema}
@@ -360,6 +298,10 @@ V obratno smer lahko pokažemo zgolj, da sta \(L\) in \(U\) disjunktna.
 
 Ostalo bi torej pokazati zgolj lociranost vsakega MacNeillovega realnega
 števila, a to žal ni mogoče.
+Temu principu bomo torej pravili ``\(\Rm = \Rd\)''.
+
+Pokažimo še koristno lemo, ki pravi, da ima vsaka poseljena omejena množica
+MacNeillovih realnih števil supremum.
 \begin{lema}\label{th:Rm-sup}
   MacNeillova realna števila so polna.
 \end{lema}
@@ -367,73 +309,11 @@ Ostalo bi torej pokazati zgolj lociranost vsakega MacNeillovega realnega
   TODO
 \end{dokaz}
 
-TODO: cite elephant
-\begin{trditev}\label{real:Rm-maps}
-  Objekt MacNeillovih realnih števil je natanko \(ℒ\)-množica parov funkcij
-  \(\p{\uline f, \bar f}\) tipa \(U → ℝ\) za \(U ∈ 𝒪X\), za katere velja
-  \begin{align*}
-    \bar f(x)   &= \inf\set{\sup \uline f(V)}{V\nbd x}\text{ in}\\
-    \uline f(x) &= \sup\set{\inf \bar   f(V)}{V\nbd x}\text.
-  \end{align*}
-\end{trditev}
-\begin{dokaz}
-  TODO: izumi?
 
-  Če je \(x = \p{L,U}\) Dedekind-MacNeilleov rez, lahko za \(L\) in \(U\)
-  konstruiramo funkciji \(\uline f\) in \(\bar f\) kot pri Dedekindovih rezih,
-  s tem da slikamo v enostranske reze zunaj. Klasično so te ekvivalentni
-  Dedekindovim rezom, tako da dobimo preslikavi \(\e x → ℝ\).
-
-  Naj bo \(t ∈ \e x\). Ker je \(L = \int{Uᶜ}\), je
-  \(\uline f(t) = \int{\bar f(t)ᶜ} = \int{\set{r:ℚ}{t∈\i{r∈U}}ᶜ}\).
-  Komplement notranje množice je pa kar \(\set{r:ℚ}{t∉\i{r∈U}}\), čigar
-  notranjost je \(\set{r:ℚ}{t∈\i{r∉U}}\).
-
-  TODO: končaj to
-
-  % % i'm oopid, to ni treba…
-  % Pokažimo zgolj, da je \(\uline f\) navzdol polzvenzna, saj je dokaz
-  % simetričen. Naj bo \(a ∈ ℝ\). Potem je
-  % \(\uline f⁻¹(a,∞) = \set{t ∈ \e x}{f(t) > a}\).
-  % Po definiciji je \(\uline f(t) = \set{q : ℚ}{t ∈ \i{q < x}}\), in ta je večji
-  % od \(a\) ko je \(a\) element \(f(t)\), torej ko velja \(t ∈ \i{a < x}\). Sledi,
-  % da je \(\uline f⁻¹(a,∞) = \i{a < x}\), torej je navzdol polzvezna.
-
-  Obratno, če je pa \(\p{\uline f, \bar f}\) tak par,
-  TODO: Končaj to
-\end{dokaz}
-
-\begin{trditev}
-  Nad \(\p{3,\{∅, \{1\}, \{2\}, \{1,2\}, \{0,1,2\}\}}\) ne velja \(\Rm = \Rd\).
-\end{trditev}
-\begin{dokaz}
-  Naj bo \(x ≔ \sup\set{x : \Rm}{x = 0 ∨ x = 1∧\{1\}}\).
-  To je po lemi~\ref{th:Rm-sup} MacNeillovo realno število, saj je poseljeno z
-  \(0\) in omejeno z \(1\).
-
-  Poglejmo sedaj, če velja \(x < 1 ∨ x > 0\). Če velja \(x < 1\), je potem
-  \(x = 0\), torej \(\{1\}\) ne drži. Sledi, da je \(\i{x < 1} = \{2\}\).
-  Podobno lahko sklepamo, da je \(\i{x > 1} = \{1\}\). To pa pomeni, da \(x\) ni
-  locirano pri \(0\), torej ni Dedekindovo.
-\end{dokaz}
-\begin{dokaz}[Alternativni dokaz]
-  Definirajmo MacNeillovo realno število s preslikavama
-  \begin{align*}
-    \uline f(0) = 0 && \bar f(0) = 1\\
-    \uline f(1) = 1 && \bar f(1) = 1\\
-    \uline f(2) = 0 && \bar f(2) = 0
-  \end{align*}
-
-  Ti očitno zadoščata pogojem zgoraj, in se na \(0\) ne ujemata, tako da ne
-  definirata Dedekindovega realnega števila.
-\end{dokaz}
-
-Temu principu bomo torej pravili ``\(\Rm = \Rd\)''.
-
-
-\subsection{Ostali principi}
+\subsection{Ostali principi}\label{sec:logika-ostalo}
 
 Seveda pa se principi ne delijo popolnoma zgolj na principe izbire in odločitve.
+Nekaj takih imamo zgoraj o realnih številih.
 
 \begin{definicija}
   \emph{Kripkejeva shema za \(Σ ⊆ Ω\)} pravi, da je \(Σ = Ω\). Formulo

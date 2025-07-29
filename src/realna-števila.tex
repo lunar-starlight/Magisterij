@@ -1,4 +1,141 @@
-\section{Dedekindova in Cauchyjeva realna števila v topoloških modelih}
+\section{Realna števila v topoloških modelih}\label{sec:reals}
+
+\begin{trditev}\label{th:Rd-maps}
+  Nad \(X\) je objekt Dedekindovih realnih števil \(𝒪X\)-množica iz
+  primera~\ref{ex:reals}.
+  % Nad \(X\) je objekt Dedekindovih realnih števil \(𝒪X\)-množica
+  % \(\set{f : U → ℝ}{U ∈ 𝒪X\text{, }f\text{ zvezna}}\), z enakostjo definirano
+  % kot \(\i{f = g} ≔ \int{\set{t ∈ X}{f(t) = g(t)}}\).
+\end{trditev}
+\begin{dokaz}
+  Naj bo \(x = \p{L, U}\) dedekindov rez v interni logiki.
+  Sedaj lahko zunaj za \(t ∈ \e x\) definiramo
+  \[ Lₜ ≔ \set{q : ℚ}{t ∈ \i{q ∈ L}}\text{ in} \]
+  \[ Uₜ ≔ \set{r : ℚ}{t ∈ \i{r ∈ U}}\text. \]
+  Ta tvorita Dedekindov rez, tako da nam \(t ↦ \p{Lₜ, Uₜ}\) definira preslikavo
+  iz \(\e x → ℝ\).
+  Pokazati ostane, da je ta preslikava (označimo jo \(\hat x\)) zvezna.
+  Naj bo \(\p{a,b}\) racionalen interval v \(ℝ\). Praslika tega intervala s
+  \(\hat x\) je množica \(\set{t ∈ \e x}{a < \hat x(t) < b}\).
+  Ta pogoj je pa ekvivalenten \(t ∈ \i{a ∈ L ∧ b ∈ U}\), torej je praslika kar
+  enaka \(\i{a∈L∧b∈U}\). Ta je pa odprta, torej je \(\hat x\) zvezna.
+
+  Obratno, če je \(x : \e x → ℝ\) zvezna preslikava, lahko tvorimo preslikavi
+  \[ L(t) ≔ \set{q : ℚ}{q < x(t)}\text{ in} \]
+  \[ U(t) ≔ \set{r : ℚ}{x(t) < r}\text. \]
+  Ti znotraj tvorita Dedekindov rez \(\p{L, U}\).
+\end{dokaz}
+
+\begin{trditev}\label{th:Rc-maps}
+  Naj bo prostor \(X\) lokalno povezan. Tedaj je nad \(X\) objekt Cauchyjevih
+  realnih števil \(𝒪X\)-množica \(\c ℝ\).
+\end{trditev}
+\begin{dokaz}
+  Pokazati je zares treba, da je objekt Cauchyjevih realnih števil \(\g{\c ℝ}\),
+  torej da so lokalno konstantne preslikave v \(ℝ\).
+
+  Podobno kot zgoraj nad \(t ∈ \e x\) dobimo Cauchyjevo zaporedje \((xₙ(t))ₙ\),
+  torej preslikavo \(\e x → ℝ\). Ker je \(X\) lokalno povezan ima pokritje iz
+  povezanih množic, tako da brez škode za splošnost predpostavimo, da je
+  \(\e x\) povezan. Ker pa je povezan, pa vemo, da so vsi \(xᵢ\) konstantne
+  preslikave, torej morajo biti vsi \(xₙ(t)\) enaki (za vse \(t ∈ \e x\)), tako
+  da je \(t ↦ (xₙ(t))ₙ\) konstantna.
+
+  Obratno pa, če je \(f : U → ℝ\) konstantna preslikava, recimo konstantno
+  \({x ∈ ℝ}\), ima potem pripadajoče Cauchyjevo zaporedje \((xₙ)ₙ\). Sedaj pa
+  lahko tvorimo konstantne preslikave \(xₙ : U → ℚ\), ki torej znotraj tvorijo
+  Cauchyjevo zaporedje.
+\end{dokaz}
+
+\begin{trditev}
+  Nad \(ℝ\) sta objekta Dedekindovih in Cauchyjevih realnih števil različna.
+\end{trditev}
+\begin{dokaz}
+  Identiteta na \(ℝ\) je Dedekindovo realno število, ki pa ni lokalno
+  konstantno, torej ni Cauchyjevo.
+\end{dokaz}
+
+TODO: cite elephant
+\begin{trditev}\label{real:Rm-maps}
+  Objekt MacNeillovih realnih števil je natanko \(ℒ\)-množica parov funkcij
+  \(\p{\uline f, \bar f}\) tipa \(U → ℝ\) za \(U ∈ 𝒪X\), za katere velja
+  \begin{align*}
+    \bar   f(t) &=
+    \limsup_{y → t}\uline f(y)\text{ in}\\
+    %\inf\set{\sup \uline f(V)}{V\nbd t}\text{ in}\\
+    \uline f(t) &=
+    \liminf_{y → t}\bar   f(y)\text.
+    % \sup\set{\inf \bar   f(V)}{V\nbd t}\text.
+  \end{align*}
+\end{trditev}
+\begin{dokaz}
+  TODO: reword all this. kaj je s temi liminfi? a to dela sploh?
+
+  Če je \(x = \p{L,U}\) Dedekind-MacNeilleov rez, lahko za \(L\) in \(U\)
+  konstruiramo funkciji \(\uline f\) in \(\bar f\) kot pri Dedekindovih rezih,
+  s tem da slikamo v enostranske reze zunaj. Klasično so te ekvivalentni
+  Dedekindovim rezom, tako da dobimo preslikavi \(\e x → ℝ\).
+
+  Limes inferior definira navzdol polzvezno preslikavo, namreč supremum vseh
+  navzgor polzveznih preslikav manjših ali enakih \(\bar f\).
+  To pomeni, da moramo pokazati, da je vsaka navzdol polzvezna preslikava manjša
+  ali enaka \(\uline f\).
+
+  Vemo, da so navzdol polzvezne preslikave natanko enostranski rezi v interni
+  logiki \(X\), tako da naj bo \(L'\) tak rez. Pogoj, da je preslikava manjša al
+  enaka \(\bar f\) pa pravi, da je \(L'\) vsebovan v komplementu \(U\).
+
+  Sedaj pa naj bo \(q ∈ L'\). Ker je \(L'\) navzgor odprt obstaja nek \(s > q\),
+  ki je še vedno v \(L'\), torej je \(s ∈ Uᶜ\). To pa pomeni, da je
+  \(q ∈ \int{\p{Uᶜ}} = L\), in je \(L' ⊆ L\). To pa očitno pomeni, da je
+  \(f ≤ \uline f\) in je \(\uline f = \liminf_{y → t}\bar f(y)\).
+
+  % Naj bo \(t ∈ \e x\). Ker je \(L = \int{Uᶜ}\), je
+  % \(\uline f(t) = \int{\bar f(t)ᶜ} = \int{\set{r:ℚ}{t∈\i{r∈U}}ᶜ}\).
+  % Komplement notranje množice je pa kar \(\set{r:ℚ}{t∉\i{r∈U}}\), čigar
+  % notranjost je \(\set{r:ℚ}{t∈\i{r∉U}}\).
+
+  % % i'm oopid, to ni treba…
+  % Pokažimo zgolj, da je \(\uline f\) navzdol polzvenzna, saj je dokaz
+  % simetričen. Naj bo \(a ∈ ℝ\). Potem je
+  % \(\uline f⁻¹(a,∞) = \set{t ∈ \e x}{f(t) > a}\).
+  % Po definiciji je \(\uline f(t) = \set{q : ℚ}{t ∈ \i{q < x}}\), in ta je večji
+  % od \(a\) ko je \(a\) element \(f(t)\), torej ko velja \(t ∈ \i{a < x}\). Sledi,
+  % da je \(\uline f⁻¹(a,∞) = \i{a < x}\), torej je navzdol polzvezna.
+
+  Obratno, če je pa \(\p{\uline f, \bar f}\) tak par, preslikavi definirata
+  enostranska reza \(L\) in \(U\). Očitno je \(L ⊆ \int{\p{Uᶜ}}\). Ampak
+  \(\int{\p{Uᶜ}}\) je tudi enostranski rez, torej definira navzdol polzvezno
+  preslikavo, ki je manjša od \(\bar f\), torej je tudi \(\int{\p{Uᶜ}} ⊆ L\).
+\end{dokaz}
+
+\begin{trditev}
+  Nad \(\p{3,\{∅, \{1\}, \{2\}, \{1,2\}, \{0,1,2\}\}}\) ne velja \(\Rm = \Rd\).
+\end{trditev}
+\begin{dokaz}
+  Naj bo \(x ≔ \sup\set{x : \Rm}{x = 0 ∨ x = 1∧\{1\}}\).
+  To je po lemi~\ref{th:Rm-sup} MacNeillovo realno število, saj je poseljeno z
+  \(0\) in omejeno z \(1\).
+
+  Poglejmo sedaj, če velja \(x < 1 ∨ x > 0\). Če velja \(x < 1\), je potem
+  \(x = 0\), torej \(\{1\}\) ne drži. Sledi, da je \(\i{x < 1} = \{2\}\).
+  Podobno lahko sklepamo, da je \(\i{x > 1} = \{1\}\). To pa pomeni, da \(x\) ni
+  locirano pri \(0\), torej ni Dedekindovo.
+\end{dokaz}
+\begin{dokaz}[Alternativni dokaz]
+  Definirajmo MacNeillovo realno število s preslikavama
+  \begin{align*}
+    \uline f(0) = 0 && \bar f(0) = 1\\
+    \uline f(1) = 1 && \bar f(1) = 1\\
+    \uline f(2) = 0 && \bar f(2) = 0
+  \end{align*}
+
+  Ti očitno zadoščata pogojem zgoraj, in se na \(0\) ne ujemata, tako da ne
+  definirata Dedekindovega realnega števila.
+\end{dokaz}
+
+
+\subsection{\(\Rd{} = \Rc\)}\label{sec:reals-Rd=Rc}
 
 Najprej si oglejmo klasičen dokaz ekvivalence Dedekindovih in Cauchyjevih
 realnih števil.
@@ -33,9 +170,7 @@ odločitev. Zares potrebujemo tu zgolj \(\CCv_{Σ_ℝ}\), kar je
 pa tudi posledica \(\alpo*\).
 
 Čeprav je iz tega očitno, da niti \(\alpo*\) niti \(\CCv\) nista potrebna za
-\(\Rd = \Rc\), jih vseeno poskusimo strogo ločiti.
-
-\subsection{\(\Rd{} = \Rc\)}
+\(\Rd = \Rc\), jih vseeno želimo strogo ločiti.
 
 \begin{konstrukcija}
   Nad \(\Ncof\) velja \(\Rd = \Rc\), a ne velja princip števne
@@ -79,22 +214,8 @@ Izkaže se, da za lokalno povezane prostore to tudi pričakujemo.
 \begin{izrek}
   Če je \(X\) lokalno povezan in velja \(X ⊩ \Rd = \Rc\), velja \(X ⊩ \alpo*\).
 \end{izrek}
-Ta izrek je zares kar posledica slednjega izreka.
-\begin{izrek}
-  Če je \(X\) lokalno povezan, velja \(X ⊩ \lpo*\).
-\end{izrek}
-\begin{dokaz}
-  Naj bo \(α : 2^ℕ\). Ker je \(X\) lokalno povezan, je množica \(2^ℕ\) kar
-  množica preslikav iz \(ℕ\) v \(2\). To pa pomeni, da je lokalno \(α = f\), za
-  nek \(f : ℕ → 2\). Zunaj pa imamo \(\lpo*\), tako da lahko odločimo \(f = 0 ∨
-  f \apart 0\), kar pa pomeni, da to lahko odločimo tudi za \(α\), torej nad
-  \(X\) velja \(\lpo*\).
-\end{dokaz}
-\begin{dokaz}[Dokaz posledice]
-  Ker je \(\lpo*\) ekvivalenten \(\alpo*\) za Cauchyjeva realna števila,
-  avtomatsko sledi, da če velja \(\Rd = \Rc\), je potem \(\lpo*\) ekvivalenten
-  \(\alpo*\). 
-\end{dokaz}
+Ta izrek je zares kar posledica izreka~\ref{th:lpov-lpo}, saj je \(\lpo*\)
+natanko \(\alpo*\) za Cauchyjeva realna števila.
 \begin{opomba}
   Zares namesto lokalne povezanosti zadošča \(X ⊩ \Rc = \c ℝ\). To je zato, ker
   je \(\alpo*\) za Cauchyjeva realna števila ekvivalenten \(\lpo*\).
@@ -104,16 +225,6 @@ Ta izrek je zares kar posledica slednjega izreka.
   \(R\) nek objekt realnih števil (Dedekindova, Cauchyjeva, Escardo-Simpsonova,
   MacNeillova, itd.).
 \end{opomba}
-% \begin{proof}
-%   Ker je \(X\) lokalno povezan so Cauchyjeva realna števila natanko lokalno
-%   konstante preslikave v \(ℝ\). Denimo torej, da so vse preslikave v \(ℝ\)
-%   lokalno konstantne in naj bo \(U ⊩ x : \Rd\).
-
-%   Tedaj po predpostavki vemo, da je \(x\) lokalno konstanten, kar pomeni, da je
-%   lokalno enak eksternemu realnemu številu. Ampak za ta pa znamo odločiti
-%   \(\alpo*\), torej velja \(\eventually{V ⊆ U}{x ≤ 0 ∨ x > 0}\), kar smo tudi
-%   želeli dokazati.
-% \end{proof}
 
 TODO: ta prostor ne dela, oziroma loči ta dva, ampak \(\CC\) vela
 To pomeni, da če želimo ločiti \(\Rd = \Rc\) in \(\alpo*\) potrebujemo prostor,
@@ -124,7 +235,7 @@ držita. Še več, ker je ta prostor \(T₆\) validira \(\aks*\), torej ne velja
 \(\CCv\) za ``realne'' resničnostne vrednosti. 
 
 
-\subsection{\(\Rm{} = \Rd\)}
+\subsection{\(\Rm{} = \Rd\)}\label{sec:reals-Rm=Rd}
 
 % https://gist.github.com/andrejbauer/689b17b10a4e80ea409d03ec030c98b3
 Andrej Bauer je 2023 za prvoaprilsko šalo objavil, kar zgleda kot konstruktiven
@@ -201,75 +312,20 @@ logiki.
 \begin{dokaz}[Topološki dokaz]
   TODO: a v topoloških rečemo, da če je \(X\) ekstremalno nepovezan morta bit
   \(\uline f\) in \(\bar f\) zvezni, in a to pomen da sta enaki?
+
+  NOTE: Najdla sm da pomen da je vmes med njima en zvezen… nevem zakaj to pomeni
+  da sta enaka… Aaha, sem ugotovila, ker sta ostra dobimo tud da sta enaka.
 \end{dokaz}
 
 Gornji dokaz sem tudi formalizirala v dokazovalnem pomočniku Agda, kar nam da
 formaliziran, popolnoma konstruktiven dokaz sledečega izreka.
-\begin{izrek}
+\begin{izrek}\label{th:Rm=Rd-wlem}
   MacNeillova realna števila se ujemajo z Dedekindovimi natanko tedaj, ko velja
   šibka izključena tretja možnost.
 \end{izrek}
 TODO: objavi kodo in jo citiraj tu.
 
-\subsection{Analitična Kripkejeva shema in lokalno \(T₆\) prostori}
-
-\begin{definicija}[Kripkejeva shema]
-  Kripkejeva shema je sledeči princip
-  \[ \for{p : Ω}{\exist{α : 2^ℕ}{p ⇔ a \apart 0}}\text. \]
-\end{definicija}
-\begin{definicija}[Analitična Kripkejeva shema]
-  Analitična Kripkejeva shema je sledeči princip
-  \[ \for{p : Ω}{\exist{x : ℝ}{p ⇔ x \apart 0}}\text. \]
-\end{definicija}
-
-\begin{trditev}\label{th:lT6-have-AKS}
-  Nad lokalno \(T₆\) prostori velja analitična Kripkejeva shema.
-\end{trditev}
-\begin{proof}
-  Brez škode za splošnost lahko predpostavimo, da je prostor \(X\) \(T₆\).
-  Naj bo \(U ⊆ X\). Tedaj obstaja \(f : X → ℝ\), ki je \(0\) natanko na
-  komplementu \(U\). To pa pomeni, da je natanko na \(U\) različen od \(0\)
-  kar je pa točno to, kar zahtevamo za analitično Kripkejevo shemo.
-\end{proof}
-\begin{opomba}
-  V dokazu smo zares pokazali \emph{globalen} obstoj za element \(x : ℝ\). To
-  nam da slutiti, da je (lokalno) \(T₆\) lastnost močnejša od \(\aks*\). In res
-  se izkaže, da je temu tako.
-  TODO: a se zmislim primer?
-\end{opomba}
-
-Vseeno pa velja obrat, če analitično Kripkejevo shemo malo ojačamo. Specifično,
-če predpostavimo obstoj \emph{funkcije izibre} za shemo \(\aks*\).
-\begin{trditev}
-  Če velja \(X ⊩ \exist{f : Ω → ℝ}{\for{p : Ω}{p ⇔ f(p) \apart 0}}\), je \(X\)
-  lokalno \(T₆\).
-\end{trditev}
-\begin{dokaz}
-  razponi \(f\) pokrijejo \(X\)
-
-  za \(f\) velja da za vse \(U\) pod \(\e f\) velja \(U = \i{f(U) \apart 0}\).
-
-  pika TODO: napiši zadevo normalno.
-\end{dokaz}
-\begin{opomba}
-  Ponovno smo pokazali malo več kot zgolj lokalno \(T₆\) lastnost. Dobili smo
-  \emph{funkcije izbire} za vsako od \(T₆\) komponent. Če v metateoriji
-  predpostavimo princip izbire, potem je to ekvivalentno tej močnejši verziji
-  \(\aks*\).
-\end{opomba}
-
-% TODO: res rabim prevod za to
-Fortov prostor zgoraj je \(T₆\), tako da v njemu ne velja niti šibkejša oblika
-\(\CCv\), ki je omejena na ``realne'' resničnostne vrednosti.
-Res, če še enkrat podrobno pogledamo dokaz enakosti, se potrebujemo števno
-mnogokrat odločiti za neenakosti z \emph{istim} realnim številom, \(\CCv\) pa
-govori o števno mnogo različnih realnih številih.
-Avtorica sumi, da je \(\Rd = \Rc\) ekvivalentno temu:
-\begin{quotation}
-  Naj bo \(p\) naraščajoče in \(q\) padajoče zaporedje, in naj bo \(\sup p ≤ \inf q\)
-  (tu morda \(=\)?), in naj bo \(x : ℝ\). Potem velja \(\for{n : ℕ}{pₙ < x ∨ x < qₙ}\),
-\end{quotation}
-kar je pa zelo šibek princip števne odločitve.
+TODO: elephant D4.7.11 je to
 
 
 %%% Local Variables:

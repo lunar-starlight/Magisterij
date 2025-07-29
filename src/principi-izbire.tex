@@ -1,4 +1,4 @@
-\section{Principi izbire}
+\section{Principi izbire}\label{sec:izbire}
 
 % NOTE: A lahko to naredimo za poljuben \(X\)?
 \begin{trditev}
@@ -76,7 +76,10 @@ NOTE: Mogoče tu rabimo \(\g B\) namesto \(B\).
 
 NOTE: interno je to \(\for{a:A}{\globalen{b:B}{R(a,b)}}\)
 
-\begin{definicija}
+TODO: Enkrat sem pokazala, da je \(\for{A,B}{\AC(\c A,\c B)}\) ekvivalentno
+\(\AC\), zdej pa ne znam. A je to res?
+
+\begin{definicija}\label{def:psp}
   \emph{P-prostori} so prostori, za katere velja, da je števen presek odprtih
   množic odprt.
 \end{definicija}
@@ -109,8 +112,8 @@ NOTE: interno je to \(\for{a:A}{\globalen{b:B}{R(a,b)}}\)
   poljubne družine odprtih množic odprt.
 \end{opomba}
 
-Obrat gornje posledice pa ne velja.
-\begin{trditev}
+Obrat gornje trditve pa ne velja.
+\begin{trditev}\label{th:psp-is-not-pgt}
   Nad prostorom \(\cli{0,1}\) s topologijo \(\set{[0,a)}{a ∈ \cli{0,1}}\) ima
   poljubno mnogo pokritij skupno pofinitev a ni P-prostor.
 \end{trditev}
@@ -122,6 +125,24 @@ Obrat gornje posledice pa ne velja.
   množica, ki pokrije \(1\) je \(\cli{0,1}\), torej je \(\{\cli{0,1}\}\)
   pofinitev vsakega pokritja \(X\).
 \end{dokaz}
+
+Znana je tudi delna karakterizacija \(\DC\) [TODO: cite Elephant D4.5.16,
+separating fragments].
+\begin{definicija}
+  Prostor \(X\) je \emph{ultraparakompakten} ali \emph{nič dimenzionalen}, ko
+  ima vsako pokritje prostora pofinitev s particijo.
+\end{definicija}
+\begin{trditev}
+  Nad ultraparakompaktnimi prostori velja \(\DC\).
+\end{trditev}
+\begin{dokaz}
+  TODO: dokaz
+\end{dokaz}
+\begin{opomba}
+  Tu verjetno lahko rečemo, da \(\DC_Σ\) pripada ultraparakompaktnost za
+  \(Σ\)-pokritja.
+\end{opomba}
+
 
 % \begin{trditev}
 %   Če nad \(X\) velja \(\AC_Σ(\c A, \c B)\) za vse \(B\), velja tudi
