@@ -163,7 +163,7 @@ Hitro lahko opazimo, da so principi izbire neobčutljivi za izomorfizme.
 \begin{dokaz}
   Situacija je očitno simetrična, tako da pokažimo zgolj eno implikacijo.
 
-  Če je \(R : A'×B' → Σ\) celovita, je potem tudi \(R∘\p{φ×ψ} : A×B → Σ\)
+  Če je \(R : A'×B' → Σ\) celovita, je potem tudi \({R∘\p{φ×ψ} : A×B → Σ\)
   celovita. Potem pa za to relacijo obstaja funkcija izbire, tako da je
   \(\for{a : A}{R∘\p{φ×ψ}{(a, f(a))}}\), kar je pa enako
   \(\for{a:A}{R(φ(a),ψ(f(a)))}\). Ker pa je \(φ\) izomorfizem, lahko
@@ -294,8 +294,8 @@ relacija nad \(Σ\).
   Ekvivalentno lahko vzamemo \(\alpo_ℝ(x) = x = 0 ∨ x \apart 0\).
 \end{trditev}
 \begin{dokaz}
-  Če uporabimo \(\alpo*\) na \(x\) in \(-x\) dobimo želeno formulo. Obratno pa
-  \(x = 0 ∨ x < 0\) očitno implicira \(x ≤ 0\).
+  Če uporabimo \(\alpo*_ℝ\) na \(x\) in \(-x\) dobimo želeno formulo. Obratno pa
+  \({x = 0 ∨ x < 0}\) očitno implicira \(x ≤ 0\).
   TODO: a je to res za MacNeillova?
 \end{dokaz}
 
@@ -343,8 +343,9 @@ relacija nad \(Σ\).
 \end{dokaz}
 
 To pomeni, da je analitični princip števne odločitve res smiselen zgolj za
-Dedekindova realna števila. Od tu naprej prosto menjamo med \(\alpo*\) in
-\(\lpo*\) po potrebi, brez posebne omembe.
+Dedekindova realna števila. Od tu naprej prosto menjamo med \(\alpo*_{\Rc}\) in
+\(\lpo*\) po potrebi, brez posebne omembe. Prav tako bomo raje pisali \(\lpo*\)
+in \(\lpo\), kjer ni dvoumno.
 TODO: odstrani posebne omembe.
 
 \subsection{Ostali principi}\label{sec:logika-ostalo}

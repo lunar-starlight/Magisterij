@@ -1,5 +1,16 @@
 \section{Realna števila v topoloških modelih}\label{sec:reals}
 
+\subsection{Objekti realnih števil}
+
+V~\ref{sec:modeli-heyting} smo videli dva ``topološka'' objekta realnih števil,
+objekt \(ℛ\) iz primera~\ref{ex:reals} in objekt \(\c ℝ\), definiran
+v~\ref{def:constant-hvs}. Vprašanje sedaj je, ali sta ta dva objekta kako
+povezana z internimi konstrukcijami realnih števil definiranih
+v~\ref{sec:logika-reals}.
+
+Izkaže se, da je odvisno. Objekt \(ℛ\) je vedno enak objektu Dedekindovih
+realnih števil, objekt \(\c ℝ\) je pa malo poseben.
+
 \begin{trditev}\label{th:Rd-maps}
   Nad \(X\) je objekt Dedekindovih realnih števil \(𝒪X\)-množica iz
   primera~\ref{ex:reals}.
@@ -10,20 +21,37 @@
 \begin{dokaz}
   Naj bo \(x = \p{L, U}\) dedekindov rez v interni logiki.
   Sedaj lahko zunaj za \(t ∈ \e x\) definiramo
-  \[ Lₜ ≔ \set{q : ℚ}{t ∈ \i{q ∈ L}}\text{ in} \]
-  \[ Uₜ ≔ \set{r : ℚ}{t ∈ \i{r ∈ U}}\text. \]
+  \begin{align*}
+    Lₜ &≔ \set{q : ℚ}{t ∈ \i{q ∈ L}}\text{ in}\\
+    Uₜ &≔ \set{r : ℚ}{t ∈ \i{r ∈ U}}\text.
+  \end{align*}
   Ta tvorita Dedekindov rez, tako da nam \(t ↦ \p{Lₜ, Uₜ}\) definira preslikavo
   iz \(\e x → ℝ\).
   Pokazati ostane, da je ta preslikava (označimo jo \(\hat x\)) zvezna.
-  Naj bo \(\p{a,b}\) racionalen interval v \(ℝ\). Praslika tega intervala s
+  Naj bo \(\p{a,b}\) racionalen interval v \(ℝ\). Praslika tega intervala z
   \(\hat x\) je množica \(\set{t ∈ \e x}{a < \hat x(t) < b}\).
-  Ta pogoj je pa ekvivalenten \(t ∈ \i{a ∈ L ∧ b ∈ U}\), torej je praslika kar
-  enaka \(\i{a∈L∧b∈U}\). Ta je pa odprta, torej je \(\hat x\) zvezna.
+  Ta pogoj je ekvivalenten \(t ∈ \i{a ∈ L ∧ b ∈ U}\), torej je praslika kar
+  enaka \(\i{a∈L∧b∈U}\), torej je odprta in je \(\hat x\) zvezna.
 
   Obratno, če je \(x : \e x → ℝ\) zvezna preslikava, lahko tvorimo preslikavi
-  \[ L(t) ≔ \set{q : ℚ}{q < x(t)}\text{ in} \]
-  \[ U(t) ≔ \set{r : ℚ}{x(t) < r}\text. \]
+  \begin{align*}
+    L(t) &≔ \set{q : ℚ}{q < x(t)}\text{ in}\\
+    U(t) &≔ \set{r : ℚ}{x(t) < r}\text.
+  \end{align*}
   Ti znotraj tvorita Dedekindov rez \(\p{L, U}\).
+\end{dokaz}
+
+Med drugim to pomeni, da so Cauchyjeva realna števila podmnožica zveznih
+preslikav v \(ℝ\). Ampak katerih?
+
+\begin{trditev}
+  Vsaka lokalno konstantna preslikava definira Cauchyjevo realno število.
+\end{trditev}
+\begin{dokaz}
+  Brez škode za splošnost naj bo \(f : U → ℝ\) konstantna preslikava, recimo
+  konstantno \({x ∈ ℝ}\). Ta ima potem pripadajoče Cauchyjevo zaporedje
+  \((xₙ)ₙ\). Sedaj pa lahko tvorimo konstantne preslikave \(\hat xₙ : U → ℚ\), ki
+  znotraj tvorijo Cauchyjevo zaporedje.
 \end{dokaz}
 
 \begin{trditev}\label{th:Rc-maps}
@@ -31,21 +59,19 @@
   realnih števil \(𝒪X\)-množica \(\c ℝ\).
 \end{trditev}
 \begin{dokaz}
-  Pokazati je zares treba, da je objekt Cauchyjevih realnih števil \(\g{\c ℝ}\),
-  torej da so lokalno konstantne preslikave v \(ℝ\).
+  Pokazati moramo zgolj, da je vsako Cauchyjevo realno število zunaj lokalno
+  konstantna preslikava.
 
-  Podobno kot zgoraj nad \(t ∈ \e x\) dobimo Cauchyjevo zaporedje \((xₙ(t))ₙ\),
-  torej preslikavo \(\e x → ℝ\). Ker je \(X\) lokalno povezan ima pokritje iz
-  povezanih množic, tako da brez škode za splošnost predpostavimo, da je
-  \(\e x\) povezan. Ker pa je povezan, pa vemo, da so vsi \(xᵢ\) konstantne
-  preslikave, torej morajo biti vsi \(xₙ(t)\) enaki (za vse \(t ∈ \e x\)), tako
-  da je \(t ↦ (xₙ(t))ₙ\) konstantna.
-
-  Obratno pa, če je \(f : U → ℝ\) konstantna preslikava, recimo konstantno
-  \({x ∈ ℝ}\), ima potem pripadajoče Cauchyjevo zaporedje \((xₙ)ₙ\). Sedaj pa
-  lahko tvorimo konstantne preslikave \(xₙ : U → ℚ\), ki torej znotraj tvorijo
-  Cauchyjevo zaporedje.
+  TODO: tle mi neki ni čist všeč, glede povezanosti \(\e x\). a kej elaboriram?
+  
+  Nad \(t ∈ \e x\) dobimo Cauchyjevo zaporedje \((xₙ(t))ₙ\). Ker je \(X\)
+  lokalno povezan ima pokritje iz povezanih množic, tako da brez škode za
+  splošnost predpostavimo, da je \(\e x\) povezan. Ker pa je povezan, pa vemo,
+  da so vsi \(xᵢ\) konstantne preslikave, torej morajo biti vsi \(xₙ(t)\) enaki
+  (za vse \(t ∈ \e x\)), tako da je \(t ↦ (xₙ(t))ₙ\) konstantna.
 \end{dokaz}
+
+Dokaj očitno to pomeni, da noben od teh objektov v splošnem ni enak drugim.
 
 \begin{trditev}
   Nad \(ℝ\) sta objekta Dedekindovih in Cauchyjevih realnih števil različna.
@@ -54,6 +80,24 @@
   Identiteta na \(ℝ\) je Dedekindovo realno število, ki pa ni lokalno
   konstantno, torej ni Cauchyjevo.
 \end{dokaz}
+
+\begin{trditev}
+  Nad \(2^ℕ\) sta objekta Cauchyjevih in lokalno konstantnih realnih števil
+  različna.
+\end{trditev}
+\begin{dokaz}
+  Definirajmo \(x : 2^ℕ → ℝ\) kot \(x(α) ≔ \sum_{n=0}^∞ \frac{2α(n)}{3ⁿ}\).
+  To je znotraj Cauchyjevo, saj je limita racionalnih števil. Ampak ni lokalno
+  konstantno, saj je \(x⁻¹(0) = \{0\}\), ki pa ni odprta množica.
+\end{dokaz}
+
+Kaj pa MacNeillova realna števila? Teh je več kot Dedekindovih, tako da če jih
+želimo karakterizirati kot nekakšne funkcije iz odprtih podmnožic \(X\), bodo te
+morale biti nezvezne. Izkaže se, da so odgovor polzvezne funkcije. Seveda, če je
+funkcija polzvezna navzdol in navzgor, je zvezna. Ampak, lahko vzamemo par
+navzdol in navzgor polzveznih preslikav \(\uline f\) in \(\bar f\), ki sta si
+nekako ``čimbolj blizu''. To pomeni, da želimo, da je \(\uline f\) največja
+navzdol polzvezna preslikava manjša ali enaka \(\bar f\), in obratno.
 
 TODO: cite elephant
 \begin{trditev}\label{real:Rm-maps}
@@ -96,18 +140,25 @@ TODO: cite elephant
   % notranjost je \(\set{r:ℚ}{t∈\i{r∉U}}\).
 
   % % i'm oopid, to ni treba…
-  % Pokažimo zgolj, da je \(\uline f\) navzdol polzvenzna, saj je dokaz
-  % simetričen. Naj bo \(a ∈ ℝ\). Potem je
-  % \(\uline f⁻¹(a,∞) = \set{t ∈ \e x}{f(t) > a}\).
-  % Po definiciji je \(\uline f(t) = \set{q : ℚ}{t ∈ \i{q < x}}\), in ta je večji
-  % od \(a\) ko je \(a\) element \(f(t)\), torej ko velja \(t ∈ \i{a < x}\). Sledi,
-  % da je \(\uline f⁻¹(a,∞) = \i{a < x}\), torej je navzdol polzvezna.
 
   Obratno, če je pa \(\p{\uline f, \bar f}\) tak par, preslikavi definirata
   enostranska reza \(L\) in \(U\). Očitno je \(L ⊆ \int{\p{Uᶜ}}\). Ampak
   \(\int{\p{Uᶜ}}\) je tudi enostranski rez, torej definira navzdol polzvezno
   preslikavo, ki je manjša od \(\bar f\), torej je tudi \(\int{\p{Uᶜ}} ⊆ L\).
 \end{dokaz}
+
+Pogoja zgoraj implicirata, da sta preslikavi polzvezni, tako da tega posebej ne
+omenjamo.
+Pokažimo, da je \(\uline f\) navzdol polzvenzna, saj je dokaz za \(\bar f\)
+simetričen. Naj bo \(a ∈ ℝ\). Potem je
+\(\uline f⁻¹(a,∞) = \set{t ∈ \e x}{f(t) > a}\).
+Po definiciji je \(\uline f(t) = \set{q : ℚ}{t ∈ \i{q < x}}\), in ta je večji
+od \(a\) ko je \(a\) element \(f(t)\), torej ko velja \(t ∈ \i{a < x}\). Sledi,
+da je \(\uline f⁻¹(a,∞) = \i{a < x}\), torej je navzdol polzvezna.
+
+Spet očitno vidimo, da sta objekta Dedekindovih in MacNeillovih realnih števil
+različna. MacNeillov rez definira Dedekindovo realno število, natanko tedaj, ko
+sta preslikavi \(\uline f\) in \(\bar f\) enaki.
 
 \begin{trditev}
   Nad \(\p{3,\{∅, \{1\}, \{2\}, \{1,2\}, \{0,1,2\}\}}\) ne velja \(\Rm = \Rd\).
@@ -134,6 +185,27 @@ TODO: cite elephant
   definirata Dedekindovega realnega števila.
 \end{dokaz}
 
+\subsection{\(\Rc{} = \c ℝ\)}\label{sec:reals-Rc=ℝ}
+
+Poglejmo si tu še enkrat trditev~\ref{th:lpov-lpo}. Ta pravi, da nad lokalno
+povezanimi prostori velja \(\lpo*\). Zares pa potrebujemo zgolj \(\Rc = \c ℝ\).
+Izkaže se, da velja tudi obrat.
+
+\begin{trditev}
+  Če nad \(X\) velja \(\lpo*\), velja \(\Rc = \c ℝ\).
+\end{trditev}
+\begin{dokaz}
+  Naj bo \(x : \Rc\). To je zunaj preslikava \(\hat x : \e x → ℝ\), saj je vsako
+  Cauchyjevo realno število tudi Dedekindovo.
+
+  Ker velja \(\lpo*\), imamo za vsak \(a ∈ ℝ\) \(\lpo(x-a)\), torej
+  \(x = a ∨ x \apart a\). Med drugim to pomeni, da so množice
+  \(\set{t∈\e x}{\hat x(t) = a}\) odprte, torej je \(\hat x\) lokalno konstantna
+  preslikava.
+\end{dokaz}
+\begin{opomba}
+  Tu smo uporabili \(ℝ\) mnogo instanc \(\lpo*\).
+\end{opomba}
 
 \subsection{\(\Rd{} = \Rc\)}\label{sec:reals-Rd=Rc}
 

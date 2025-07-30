@@ -1,4 +1,4 @@
-\section{Topološki modeli}
+\section{Topološki modeli}\label{sec:modeli}
 
 % Teorija modelov morda zveni kot zelo abstraktna in filozofska zadeva (govora je
 % o matematičnih svetovih), vendar je pa ideja sama blizu vsakemu matematiku, ki
@@ -251,7 +251,7 @@ principa: princip izključene tretje možnosti in DeMorganov zakon.
 \end{proof}
 
 
-\subsection{Heytingovo-vrednotene množice}
+\subsection{Heytingovo-vrednotene množice}\label{sec:modeli-heyting}
 
 Oglejmo si spet primer naravnih števil nad nekim prostorom \(X\). To bodo zvezne
 preslikave iz odprtih podmnožic \(X\) v \(ℕ\).
@@ -300,8 +300,9 @@ ekvivalenčno relacijo.
 \begin{primer}\label{ex:reals}
   Na \(\set{f : U → ℝ}{U ∈ ℒ\text{, \(f\) zvezna}}\) lahko definiramo enakost
   \[ ⟦f = g⟧ = \int{\p{\set{t ∈ X}{f(t) = g(t)}}}\text. \]
-  To je \(ℒ\)-množica, ki jo bomo označili z \(ℝ\), oziroma z \(ℝ_d\), saj se
-  izkaže, da je to objekt dedekindovih realnih števil v internem svetu.
+  To je \(ℒ\)-množica, ki jo bomo označili z \(ℛ\).
+  %, oziroma z \(ℝ_d\), saj se
+  %izkaže, da je to objekt dedekindovih realnih števil v internem svetu.
 \end{primer}
 
 Je pa ta struktura bistveno bolj splošna kot ``množica preslikav z enakostjo po
@@ -329,7 +330,7 @@ točkah''.
   je \(ℒ\)-množica. To bomo označevali z \(\c ℕ\).
 \end{primer}
 To je instanca bolj splošne konstrukcije \emph{konstantnih \(ℒ\)-množic}.
-\begin{konstrukcija}
+\begin{konstrukcija}\label{def:constant-hvs}
   Naj bo \(A\) množica in enakost na njej definirana kot zgoraj, torej
   \(\i{a = b} ≔ ⋃\set{X}{a = b}\). To je \(ℒ\)-množica, ki jo označimo \(\c A\).
 \end{konstrukcija}
