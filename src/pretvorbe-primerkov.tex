@@ -1,20 +1,52 @@
-\subsubsection{Pretvorba primerkov}
+\section{Pretvorba primerkov}
 
-\subsubsection{Idempotenca \alpo* nad lokalno \(T₆\) prostori}
+\subsection{Kripkejeve sheme}
 
+TODO: global existence
+\begin{trditev}\label{th:lT6-have-AKS}
+  Nad lokalno \(T₆\) prostori velja analitična Kripkejeva shema.
+\end{trditev}
+\begin{proof}
+  Brez škode za splošnost lahko predpostavimo, da je prostor \(X\) \(T₆\).
+  Naj bo \(U ⊆ X\). Tedaj obstaja \(f : X → ℝ\), ki je \(0\) natanko na
+  komplementu \(U\). To pa pomeni, da je natanko na \(U\) različen od \(0\)
+  kar je pa točno to, kar zahtevamo za analitično Kripkejevo shemo.
+\end{proof}
+\begin{opomba}
+  V dokazu smo zares pokazali \emph{globalen} obstoj za element \(x : ℝ\). To
+  nam da slutiti, da je (lokalno) \(T₆\) lastnost močnejša od \(\aks*\). In res
+  se izkaže, da je temu tako.
+  TODO: a se zmislim primer?
+\end{opomba}
+
+Vseeno pa velja obrat, če analitično Kripkejevo shemo malo ojačamo. Specifično,
+če predpostavimo obstoj \emph{funkcije izibre} za shemo \(\aks*\).
 \begin{trditev}
-  Nad vsakim okolišem \(X\) je \(\lem*\) idempotenten.
+  Če velja \(X ⊩ \exist{f : Ω → ℝ}{\for{p : Ω}{p ⇔ f(p) \apart 0}}\), je \(X\)
+  lokalno \(T₆\).
 \end{trditev}
 \begin{dokaz}
-  Naj bosta \(p\) in \(q\) resničnostni vrednosti.
-  Potem definiramo \(r ≔ \lem²{\p{p, q}}\).
-  Ker \(\lem ⁿ\) slika v goste resničnostne vrednosti, je \(\lem{\p r} = r\), tako da
-  je \[\lem{\p r} = r = \lem²{\p{p, q}}\text.\qedhere\]
-\end{dokaz}
+  TODO: a je \(ℝ^Ω\) zuni funkcije? kaj je s tem?
 
-Spomnimo se na Trditev~\ref{th:lT6-have-AKS}:
+  razponi \(f\) pokrijejo \(X\)
+
+  za \(f\) velja da za vse \(U\) pod \(\e f\) velja \(U = \i{f(U) \apart 0}\).
+
+  pika TODO: napiši zadevo normalno.
+\end{dokaz}
+\begin{opomba}
+  Ponovno smo pokazali malo več kot zgolj lokalno \(T₆\) lastnost. Dobili smo
+  \emph{funkcije izbire} za vsako od \(T₆\) komponent. Če v metateoriji
+  predpostavimo princip izbire, potem je to ekvivalentno tej močnejši verziji
+  \(\aks*\).
+\end{opomba}
+
+
+\subsection{Idempotenca \alpo* nad lokalno \(T₆\) prostori}
+
+Spomnimo se na trditev~\ref{th:lT6-have-AKS}:
 % TODO: set number
-\begin{trditev}\label{th:lT6-have-AKS}
+\begin{trditev}\label{th:lT6-have-AKS-second}
   Nad lokalno \(T₆\) prostori velja analitična Kripkejeva shema.
 \end{trditev}
 
@@ -48,21 +80,8 @@ Spomnimo se na Trditev~\ref{th:lT6-have-AKS}:
 \end{posledica}
 
 
-\subsubsection{Idempotenca \lpo* nad Cantorjevim prostorm}
+\subsection{Idempotenca \lpo* nad Cantorjevim prostorm}
 
-\begin{trditev}
-  Nad vsakim okolišem \(X\) velja \(\lpo* ≤ \alpo*\).
-\end{trditev}
-\begin{dokaz}
-  Naj bo \(φ : 2^ℕ → ℝ\) definirana s predpisom
-  \[α ↦ \lim_{n→∞}2^{-\min\set{k ∈ ℕ}{αₖ = 1 ∨ k = n}}\text.\]
-  Denimo, da je \(α ∈ 2^ℕ\) in uporabimo \(\alpo*\) na \(φ(α)\).
-
-  Če velja \(φ(α) ≤ 0\) vemo, da \(α\) ne more imeti enice na nobenem mestu.
-
-  Alternativno, če je \(φ(α) > 0\), pa je tudi \(φ(α) > 2^{-n}\) za nek \(n\).
-  Sledi, da mora imeti \(α\) na enem izmed prvih \(n\) mest enico.
-\end{dokaz}
 
 % Joint with prof. Bauer
 \begin{lema}
