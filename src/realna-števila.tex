@@ -86,9 +86,10 @@ Dokaj očitno to pomeni, da noben od teh objektov v splošnem ni enak drugim.
   različna.
 \end{trditev}
 \begin{dokaz}
-  Definirajmo \(x : 2^ℕ → ℝ\) kot \(x(α) ≔ \sum_{n=0}^∞ \frac{2α(n)}{3ⁿ}\).
-  To je znotraj Cauchyjevo, saj je limita racionalnih števil. Ampak ni lokalno
-  konstantno, saj je \(x⁻¹(0) = \{0\}\), ki pa ni odprta množica.
+  Definirajmo \(x : 2^ℕ → ℝ\) kot \(x(α) ≔ \sum_{n=0}^∞ \frac{2α(n)}{3ⁿ}\). Ta
+  preslikava je zares kanonična vložitev Kantorjeve množice v realna, in je
+  znotraj Cauchyjevo realno število, saj je limita racionalnih števil. Ampak ni
+  lokalno konstantno, saj je \(x⁻¹(0) = \{0\}\), ki pa ni odprta množica.
 \end{dokaz}
 
 Kaj pa MacNeillova realna števila? Teh je več kot Dedekindovih, tako da če jih
@@ -160,6 +161,7 @@ Spet očitno vidimo, da sta objekta Dedekindovih in MacNeillovih realnih števil
 različna. MacNeillov rez definira Dedekindovo realno število, natanko tedaj, ko
 sta preslikavi \(\uline f\) in \(\bar f\) enaki.
 
+NOTE: a je tuki bolš da dam \(ℝ\)? folk je tega navajen.
 \begin{trditev}
   Nad \(\p{3,\{∅, \{1\}, \{2\}, \{1,2\}, \{0,1,2\}\}}\) ne velja \(\Rm = \Rd\).
 \end{trditev}
@@ -323,6 +325,9 @@ Avtorica sumi, da je \(\Rd = \Rc\) ekvivalentno temu:
 kar je pa zelo šibek princip števne odločitve.
 
 \subsection{\(\Rm{} = \Rd\)}\label{sec:reals-Rm=Rd}
+
+NOTE: \(\Rm = \Rd ⇒ T3.5\)? to ne more bit res, ampak ne vem zakaj ne. Uglaunem,
+pri Banachovih mrežah je tle izrek ``\(𝒞(X, ℝ)\) polna in \(T_π\) ⇒ ext. nepov''.
 
 % https://gist.github.com/andrejbauer/689b17b10a4e80ea409d03ec030c98b3
 Andrej Bauer je 2023 za prvoaprilsko šalo objavil, kar zgleda kot konstruktiven

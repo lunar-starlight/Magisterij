@@ -583,6 +583,22 @@ To nam da zanimivo posledico, da je veljavnost ekvivalentna lokalni veljavnosti.
   implikacijo, in kasneje stvari poenostaviti.
 \end{opomba}
 
+Ker vpeljujemo jezik, ker želimo v njem pisati matematiko, bi bilo dobro, da
+dejansko v njem lahko sklepamo.
+\begin{izrek}[Zdravost]
+  Če je formula \(φ\) konstruktivno formalno dokazljiva, je tudi veljavna v naši
+  logiki.
+\end{izrek}
+
+Dokaza tu ne navedemo, da se ognemo 20 stranem točne definicije ``formalno
+dokazljiva'', si pa to lahko ogledate v~\cite{Sco79,FS79}. Dokaz potem sledi
+dokaj rutinsko, preveriti je zgolj treba, da so interpretacije vseh aksiomov
+veljavne. Na primer za univerzalni kvantifikator mora veljati
+\(\p{\for{x:A}{φ(a)}}∧\e t ⇒ φ(t)\). Za vajo lahko preverite, da se res
+interpretira v \(X\).
+
+TODO: mogoče ni res da hočmo to tko pisat… za razmislit.
+
 Kdaj bomo pa tudi želeli pisati formule s prostimi spremenljivkami, recimo
 zgoraj v definicijah \(ℒ\)-množic in morfizmov. V teh primerih vedno želimo, da
 je formula veljavna na vseh možnih vrednostih teh spremenljivk, tako da bomo
@@ -599,6 +615,8 @@ veljavnost teh formul tako tudi definirali.
 TODO: numbering
 Ponovimo sedaj gornje definicije v internem jeziku.
 \begin{definicija}
+  NOTE: to ni prav, ker če \(A\) ni \(ℒ\)-množica nimamo internega jezika za
+  njene terme. a pustim notri in dam opombo, ali povem kaj več?
   \emph{\(ℒ\)-množica} je množica \(A\) z interno relacijo \(=\), tako da velja
   \begin{align*}
     &⊢ a = b ⇒ b = a\\
@@ -957,12 +975,12 @@ menjamo med \(A\) in \(\g A\).
     ⟦a{\res U} = b⟧ = ⟦τ = \s b⟧ = \i{b ∈ τ} = ⟦a = b⟧∧U\text. \qedhere
   \end{equation*}
 \end{dokaz}
-\begin{posledica}
-  Za \(a ∈ A\) in \(U ∈ ℒ\) velja \(\i{b ∈ {\s a}{\res U}} = \i{b ∈ \s a}∧U\).
-\end{posledica}
-\begin{posledica}
-  Za \(σ ∈ \g A\) in \(U ∈ ℒ\) velja \({\s σ}{\res U} = \s{σ{\res U}}\).
-\end{posledica}
+% \begin{posledica}
+%   Za \(a ∈ A\) in \(U ∈ ℒ\) velja \(\i{b ∈ {\s a}{\res U}} = \i{b ∈ \s a}∧U\).
+% \end{posledica}
+% \begin{posledica}
+%   Za \(σ ∈ \g A\) in \(U ∈ ℒ\) velja \({\s σ}{\res U} = \s{σ{\res U}}\).
+% \end{posledica}
 
 \begin{lema}\label{th:compl-glue}
   Polne \(ℒ\)-množice imajo lastnost lepljenja skladnih družin, t.~j. za vsako
@@ -1036,8 +1054,71 @@ TODO: Insert examples
   Kategorija \(ℒ\)-množic je ekvivalentna kategoriji polnih \(ℒ\)-množic.
 \end{posledica}
 
-TODO: tu povedat, da je \(f(a)\) enojec in da je \(A ⊢ φ\) ekvivalentno
-\(\hat A ⊢ φ\), tako da lahko \(f(a)\) jemljemo kot elemente v dokazih formul.
+\begin{konstrukcija}
+  Naj bo \(R\) relacija na \(A\).
+  Potem je relacija \(\hat R(σ) ≔ \exist{a : A}{a ∈ σ∧R(a)}\) enolična relacija
+  na \(\g A\), za katero velja \(R(a) ⇔ \hat R(\s a)\).
+\end{konstrukcija}
+\begin{dokaz}
+  Očitno je \(\hat R(\s a) ⇔ \exist{a' : A}{a'∈\s a ∧ R(a')} ⇔ R(a)\).
+  Naj bo \(Q\) neka druga relacija, in naj velja \(R(a) ⇔ Q(\s a)\) za vse
+  \(a : A\).
+
+  Naj bo \(σ : \g A\). Potem je enak nekemu \(\s a\), tako da preverimo, ali je
+  \(\hat R(\s a) ⇔ Q(\s a)\). Ampak ta sta po predpostavki oba \(R(a)\), torej
+  sta enaka.
+\end{dokaz}
+
+\begin{izrek}
+  Formula \(φ\) je veljavna natanko tedaj, ko je veljavna formula, v kateri
+  vse relacije \(R\) zamenjamo z \(\hat R\), vse domene kvantifikacije \(A\)
+  zamenjamo z njihovimi napolnitvami \(\g A\), in vse konstante \(a\) zamenjamo
+  z \(\s a\).
+\end{izrek}
+Ker so relacije \(\hat R\) enolično določene, jih lahko (TODO: kaj je beseda za to da
+jih sintaktično kot iste obravnavamo?). Prav tako, ker je \(\s -\) vložitev \(A\) v
+\(\g A\), lahko konstante tipa \(A\) smatramo kot konstante tipa \(\g A\).
+Nazadnje, spremenimo vse simbole \(∈\) v \(=\). To deluje, saj je
+\(\g{\g A} ≅ \g A\), torej imamo lahko največ en ``nivo'' elementov, torej bodo
+vsi primerljivi z \(=\).
+
+Oglejmo si najprej, kaj to pomeni na primeru.
+\begin{trditev}
+  Velja \(\for{σ : \g A}{\exist{a : A}{a ∈ σ}}\).
+\end{trditev}
+\begin{dokaz}
+  Po gornjem izreku gornja formula velja natanko tedaj, ko velja
+  \[ \for{σ:\g A}{\exist{a:\g A}{a = σ}}\text. \]
+  To je pa očitno res, saj za \(a\) vzamemo kar \(σ\).
+\end{dokaz}
+
+To se torej izkaže za zelo koristno, saj pomeni, da lahko v interni logiki
+uporabljamo vse lastnosti polnih \(ℒ\)-množic, ampak ko prevajamo formule v
+zunanji svet pa lahko vseeno delamo le z generatorji.
+Najpomembnejša posledica pa je, da če je \(f\) \(ℒ\)-morfizem, lahko na \(f[a]\)
+gledamo kot term tipa \(B\). Res, ker je \(f[a]\) enojec, in je \(B ≅ \g B\),
+lahko vsako formulo s spremenljivko tipa \(B\), v katero vstavimo \(f[a]\),
+preprosto interpretiramo kot formulo nad \(\g B\). Potem pa po gornjem izreku
+vemo, da to ohranja veljavnost, tako da ne produciramo nobene nove trditve.
+Paziti je le treba, da če v internem jeziku konstruiramo \emph{elemente} tipa
+\(B\), nam \(f[a]\) očitno ne definira dejanskega elementa množice \(B\).
+
+Od tod naprej označujmo enojec \(f[a]\) z \(f(a)\). Ta zapisa sta v edinem
+kontekstu, kjer lahko pride do zmede ekvivalentna, saj velja
+\(b \sim f(a) ⇔ \s b = f[a]\), tako da ne pride do težav.
+
+\begin{dokaz}[Dokaz izreka]
+  Dokaz poteka po indukciji. Naredimo primer za univerzalni kvantifikator.
+  Formula \(\for{a:A}{φ(a)}\) velja natanko tedaj, ko za vsak \(a ∈ A\) velja
+  \(\e a ⇒ φ(a)\). Po drugi strani pa je \(\for{σ:\g A}{φ(σ)}\) veljavna natanko
+  tedaj, ko za vsak enojec \(σ : A → ℒ\) velja \(\exist{a:A}{a ∈ σ} ⇒ φ(σ)\).
+
+  Očitno sta za enojce \(\s a\) ta dva pogoja enaka, torej veljavnost formule za
+  \(\g A\) implicira tisto za \(A\). Obratno pa, naj bo \(σ : A → ℒ\) poljuben
+  enojec, in naj velja formula za \(A\).
+  V internem jeziku je potem \(σ = \s a\) za nek \(a\), torej je
+  \(φ(σ) ⇔ φ(\s a)\), ki pa po predpostavki drži.
+\end{dokaz}
 
 
 TODO: to lahko pride kasneje…
@@ -1070,17 +1151,7 @@ TODO: to lahko pride kasneje…
 TODO: kako to napisat? ni res trditev, ampak da loh to definiramo bi blo fajn
 prevert da je na nek način konsistentno. Loh rečem tud da je sam za relacije, k
 pol vrstni red ni dvoumen.
-NOTE: mogoče je vredno kar rečt, da če dokazujemo propozicijo potem vemo, da
-obstaja \(b : B\), da je \(b \sim f(a)\), tako je \(f(a)\) pač element, dokler na
-koncu naredimo truncation.
 
-\begin{definicija}
-  Naj bo \(f : A ↬ B\), \(R\) interna eniška relacija na \(B\), in \(a ∈ A\).
-  Potem lahko \(R(f(a))\) interpretiramo kot \(\exist{b : B}{b \sim f(a)∧R(b)}\).
-\end{definicija}
-\begin{opomba}
-  Na tej točki lahko torej 
-\end{opomba}
 
 
 % TODO: povemo kej o f(a) = g(a)
