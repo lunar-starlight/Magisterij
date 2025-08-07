@@ -250,7 +250,13 @@ Poznamo pa tudi še princip odvisne izbire.
 \end{dokaz}
 
 V dokazu je pogoj na Sierpinskijevem objektu res pomemben, sicer \(Q\) ni
-relacija nad \(Σ\). 
+relacija nad \(Σ\).
+
+Poznamo tudi princip enolične izbire. Ta pravi, da vsaka funkcijska relacija
+določa (enolično) funkcijo. Ampak v topoloških modelih smo funkcije definirali
+natanko kot funkcijske relacije, tako da v naših modelih ta princip vedno velja,
+tako da ga ne bomo posebej obravnavali.
+
 
 \subsection{Principi odločitve}\label{sec:logika-odločitve}
 
@@ -261,7 +267,7 @@ relacija nad \(Σ\).
 \end{definicija}
 
 \begin{definicija}[Šibka izključena tretja možnost]\label{pr:wlem}
-  \emph{Šibak princip izključene tretje možnosti} pravi, da za vsako
+  \emph{Princip šibke izključene tretje možnosti} pravi, da za vsako
   resničnostno vrednost \(p\) velja \(¬p∨¬¬p\). Formulo \(¬p∨¬¬p\) označimo
   \(\wlem(p)\), formulo \(\for{p:Ω}{¬p∨¬¬p}\) pa z \(\wlem*\).
 \end{definicija}
@@ -279,6 +285,14 @@ relacija nad \(Σ\).
   \(\for{α : 2^ℕ}{\lpo(α)}\) pa z \(\lpo*\).
 \end{definicija}
 
+TODO: tega verjetno ne rabim?
+\begin{definicija}\label{pr:wlpo}
+  \emph{Princip šibke števne odločitve} pravi, da za vsako števno zaporedje
+  ničel in enic lahko odločimo, ali je celo nič, ali ni.
+  Formulo \(α = 0∨α ≠ 0\) označimo \(\wlpo(α)\), formulo
+  \(\for{a:2^ℕ}{\wlpo(α)}\) pa z \(\wlpo*\)
+\end{definicija}
+
 \begin{definicija}\label{pr:alpo}
   Naj bo \(ℝ\) nek objekt realnih števil (bodisi Dedekindova, Cauchyjeva, itd.).
   \emph{Analitični princip števne odločitve za \(ℝ\)} pravi, da za vsako realno
@@ -286,8 +300,11 @@ relacija nad \(Σ\).
   \(x > 0 ∨ x ≤ 0\) označimo \(\alpo_ℝ(x)\), formulo \(\for{x : ℝ}{\alpo_ℝ(x)}\) pa
   z \(\alpo*_ℝ\).
 
-  Če je \(ℝ = \Rd\), indeks opustimo in pravimo le \emph{Analitični princip
+  Če je \(ℝ = \Rd\), indeks opustimo in pravimo le \emph{analitični princip
     števne odločitve}.
+
+  Podobno definiramo \emph{analitični princip šibke števne odločitve za \(ℝ\)},
+  ki ga označimo \(\awlpo*_ℝ\).
 \end{definicija}
 
 \begin{trditev}
@@ -299,7 +316,7 @@ relacija nad \(Σ\).
   TODO: a je to res za MacNeillova?
 \end{dokaz}
 
-\begin{trditev}\label{th:alpoc-is-lpo}
+\begin{trditev}\label{th:alpoc-is-lpo}\label{th:implications}
   Velja veriga implikacij \(\lem* ⇒ \alpo* ⇒ \alpo*_{\Rc} ⇔ \lpo*\).
 \end{trditev}
 \begin{dokaz}
@@ -309,7 +326,7 @@ relacija nad \(Σ\).
 
   Za zadnjo ekvivalenco pa potrebujemo malo dela. Naj bo \(α\) zaporedje, za
   katerega odločamo, ali ima na kakem mestu enico. Definirajmo realno število
-  \[ x ≔ \lim_{n → ∞}2^{-\min\set{k : ℕ}{α(k) = 1 ∨ k ≥ n}}\text. \]
+  \[ x ≔ \lim_{n → ∞}2^{-\min\set{k : ℕ}{α(k) = 1 ∨ k = n}}\text. \]
 
   To je po definiciji Cauchyjevo realno število. Uporabimo sedaj predpostavko
   \(\alpo(x)\). Če velja \(x ≤ 0\), mora zaporedje limitirati proti \(0\), kar
@@ -385,11 +402,75 @@ smer res na prazno skonstruiramo \(x : \Rc\), da velja gornje, ampak v obratno
 smer pa bistveno uporabimo več (celo neskončno \emph{instanc}) \(\lpo*\) v
 konstrukciji zaporedja \(α\).
 
-Izkaže se, da lahko matematično natančno opišemo gornji pojav. Ideja pride iz
-teorije izračunljivosti, specifično iz Weihrauchovih redukcij. Tam skrbno
-pazimo, kolikokrat se uporabi posamezne predpostavke.
+Izkaže se, da lahko matematično natančno opišemo gornji pojav.~\cite{Bau22}
+Ideja pride iz teorije izračunljivosti, specifično iz Weihrauchovih redukcij.
+Tam skrbno pazimo, kolikokrat se uporabi posamezne predpostavke.
 
 TODO: definicije in vse
+
+\begin{definicija}
+  Predikat \(φ ⊑ A\) je \emph{reducibilen} na predikat \(ψ ⊑ B\), ko velja
+  \[ \for{x:A}{\exist{y:B}{ψ(y) ⇒ φ(x)}}\text. \label{eq:inst-red} \]
+  To označimo z \(\p{φ, A} ≤ \p{ψ, B}\), ali kar z \(φ ≤ ψ\), ko so domene
+  predikatov razvidne iz konteksta.
+\end{definicija}
+
+Reducibilnost nam torej pove, da lahko vsako instanco \(\for{x:A}{φ(x)}\)
+(torej, vsak \(φ(a)\)) dokažemo tako, da poiščemo nek \(b:B\), da bo \(ψ(b)\)
+dovolj močen, da lahko pokaže \(φ(a)\). Pomembno tu je, da lahko poiščemo samo
+en \(b\), torej lahko uporabimo samo eno \emph{instanco} \(\for{y:b}{ψ(b)}\).
+
+Tako vsi principi odločitve in izbire postanejo instance, saj so vsi univerzalno
+kvantificirani. Prav tako, če pogledamo dokaz iz gornjega razdelka vidimo, da
+dobimo redukcije \(\lpo* ≤ \alpo*_{\Rc} ≤ \alpo* ≤ \lem*\) in \(\wlem* ≤ \lem*\).
+
+Redukcije \(\p{φ, A} ≤ \p{φ, B}\), ko je \(A ⊆ B\) so očitne, tako da poglejmo
+le ta zanimivo redukcijo \(\lpo* ≤ \alpo*_{\Rc}\).
+
+% \begin{trditev}
+%   Velja redukcija \(\lpo* ≤ \alpo*_{\Rc}\).
+% \end{trditev}
+\begin{dokaz}
+  Naj bo \(α:2^ℕ\). Definirajmo realno število
+  \[ x ≔ \lim_{n → ∞}2^{-\min\set{k : ℕ}{α(k) = 1 ∨ k = n}}\text. \]
+
+  Kot smo zgoraj pokazali velja \(x \apart 0 ⇔ α \apart 0\), torej redukcija
+  velja.
+\end{dokaz}
+
+Reducibilnost nam torej definira refleksivno in tranzitivno relacijo. To lahko
+dopolnimo do ekvivalenčne relacije \(≡\), ki ji pravimo \emph{ekvivalenca instanc}.
+Ekvivalenčnim razredom po tej relaciji pa pravimo \emph{TODO: stopnja (instance)}.
+Izkaže se, da ima ta ureditev zelo lepo strukturo. Več o njej si lakho pogledate
+v~\ref{Bau22}, saj za naše potrebe ni relevantna.
+
+Pomembne so pa operacije na stopnjah. Definiramo lahko dva seštevanja in dva
+množenja, kar se izkaže, da ima povezave z linearno logiko, a tud definirajmo
+samo navadno množenje.
+
+\begin{definicija}
+  \emph{Produkt \(φ⊑A\) in \(ψ⊑B\)} je predikat \(φ×ψ⊑A×B\) definiran po točkah.
+  Na očiten način lahko definiramo tudi končne potence predikata \(φ\).
+\end{definicija}
+
+\begin{definicija}
+  Pravimo, da je \(φ⊑A\) \emph{idempotenten}, ko velja \(φ²≤φ\).
+\end{definicija}
+Idempotentnost pomeni, da lahko odločitev \(φ\) za dve vrednosti iz \(A\)
+odločimo zgolj z eno ``poizvedbo'' \(φ\), na nekem drugem \(a\).
+
+Poglejmo si recimo \(\lem*\). Zgleda, kot da se moramo odločiti med štirimi
+alternativami, \(p∧q\), \(p∧¬q\), \(¬p∧q\), in \(¬p∧¬q\), medtem ko nam ena
+instanca \(\lem*\) da zgolj dve možnosti. Zgleda nemogoče, ampak se izkaže, da
+to lahko pokažemo.
+
+\begin{lema}
+  Za vse \(p:Ω\) velja \(¬¬\lem(p)\).
+\end{lema}
+\begin{dokaz}
+  Formula \(¬\lem(p)\) je natanko formula principa neprotislovja za \(¬p\), ki
+  ni veljaven.
+\end{dokaz}
 
 \begin{trditev}
   Princip \(\lem*\) je idempotenten.
@@ -401,21 +482,8 @@ TODO: definicije in vse
   je \[\lem{\p r} = r = \lem²{\p{p, q}}\text.\qedhere\]
 \end{dokaz}
 
-\begin{trditev}
-  Velja redukcija \(\lpo* ≤ \alpo*_{\Rc} ≤ \alpo*\).
-\end{trditev}
-\begin{dokaz}
-  TODO: to smo dokazali že zgoraj
-  Naj bo \(φ : 2^ℕ → ℝ\) definirana s predpisom
-  \[α ↦ \lim_{n→∞}2^{-\min\set{k ∈ ℕ}{αₖ = 1 ∨ k = n}}\text.\]
-  Denimo, da je \(α ∈ 2^ℕ\) in uporabimo \(\alpo*\) na \(φ(α)\).
 
-  Če velja \(φ(α) ≤ 0\) vemo, da \(α\) ne more imeti enice na nobenem mestu.
-
-  Alternativno, če je \(φ(α) > 0\), pa je tudi \(φ(α) > 2^{-n}\) za nek \(n\).
-  Sledi, da mora imeti \(α\) na enem izmed prvih \(n\) mest enico.
-\end{dokaz}
-
+TODO: a to pustim?
 \begin{trditev}
   Velja redukcija \(\alpo*_{\Rc} ≤ \lpo*^ω\).
 \end{trditev}
@@ -433,8 +501,6 @@ Oglejmo si sedaj malce strožjo reducibilnost, namreč, ko v~\ref{eq:inst-red} z
 velja \(\for{p:Ω}{\exist{s∈Σ}{s ⇔ p}}\). Kot vidimo, je to enaka formula
 kot~\ref{eq:inst-red}, le da smo \(⇒\) zamenjali z \(⇔\).
 
-TODO: a niso use te \(Σ\) zaprte navzdol? ker mamo zožitve? mogoče to samo za
-\(Σ_{\Rd}\).
 \begin{definicija}
   \emph{Kripkejeva shema za \(Σ ⊆ Ω\)} pravi, da je \(Σ = Ω\). Formulo
   \(\for{p : Ω}{\exist{s : Σ}{s = p}}\) bomo označili z \(\ks*(Σ)\).
@@ -465,6 +531,17 @@ Prav tako bomo potem v dokazih prosto menjavali med \(x > 0\) in \(x \apart 0\).
   rabmo like neskončno instanc...
 \end{trditev}
 
+\begin{trditev}\label{th:aks-impl-lem≤alpo}
+  Če velja \(\ks*(Σ)\), velja \(\p{\lem*,Ω} ≤ \p{\lem*,Σ}\). V posebnem velja
+  \(\lem* ≤ \alpo*\), če velja \(\aks*\).
+\end{trditev}
+\begin{dokaz}
+  Naj bo \(p:Ω\). Po predpostavki je \(Σ = Ω\), torej je \(p∈Σ\). Potem pa
+  lahko na \(p\) uporabimo \(\p{\lem*,Σ}\) in \(\lem(p)\) velja.
+\end{dokaz}
+\begin{posledica}
+  Če velja \(\ks*(Σ)\) je \(\p{\lem*,Σ}\) idempotenten.
+\end{posledica}
 
 %%% Local Variables:
 %%% mode: latex

@@ -49,29 +49,28 @@ Spomnimo se na trditev~\ref{th:lT6-have-AKS}:
 \begin{trditev}\label{th:lT6-have-AKS-second}
   Nad lokalno \(T₆\) prostori velja analitična Kripkejeva shema.
 \end{trditev}
+Če jo združimo s trditvijo~\ref{th:aks-impl-lem≤alpo}, lahko zaključimo
 
-% TODO: Faktoriziraj čez AKS ⇒ LEM ≤ ALPO
 \begin{izrek}
   Naj bo \(X\) lokalno \(T₆\). Potem nad \(X\) velja redukcija \(\lem* ≤ \alpo*\).
 \end{izrek}
-\begin{proof}
-  % TODO: reword kot 'ALPO je LEM za Ω_ℝ in AKS je Ω_ℝ = Ω'?
-  Ker vemo, da nad \(X\) velja analitična Kripkejeva shema, zadošča
-  konstruktivno pokazati, da velja \(\lem* ≤ \alpo*\).
-  Po predpostavki, je vsaka resničnostna vrednost \(p\) oblike \(x > 0\) za nek
-  \(x : ℝ\). Tedaj pa velja
-  \[ \lem{\p p} = p ∨ ¬ p = x > 0 ∨ ¬\p{x > 0} = \alpo{\p x}\text, \]
-  torej za vsak \(p : Ω\) obstaja \(x : ℝ\), da je \(\alpo{\p x} ⇒ \lem{\p p}\).
-  % Ker dokazujemo resnico v topološkem modelu brez škode za splošnost
-  % predpostavimo, da je prostor \(T₆\).
-  % To pomeni da za vsako odprto množico \(U\) obstaja nenegativna funkcija
-  % \(P_U : X → ℝ\), tako da velja \(P_U > 0 ⇔ U\).
-  % Če želimo reducirati \(\lem*\) na \(\alpo*\), mora za vse
-  % \(U ⊆ X\) veljati \(\eventually{x : ℝ}{x ≤ 0 ∨ x > 0 ⇒ U ∪ ¬U}\).
-  % Uporabimo predpostavko na \(U ∪ ¬U\), torej nam ostane pokazati, da
-  % velja \({P_U ≤ 0 ∨ P_U > 0 ⇒ P_U > 0}\).
-  % Ker je \(⟦P_U ≤ 0⟧ = ¬{\p{U ∪ ¬ U}} = ∅\), velja \(¬\p{x ≤ 0}\), kar dokaže trditev.
-\end{proof}
+% \begin{proof}
+%   Ker vemo, da nad \(X\) velja analitična Kripkejeva shema, zadošča
+%   konstruktivno pokazati, da velja \(\lem* ≤ \alpo*\).
+%   Po predpostavki, je vsaka resničnostna vrednost \(p\) oblike \(x > 0\) za nek
+%   \(x : ℝ\). Tedaj pa velja
+%   \[ \lem{\p p} = p ∨ ¬ p = x > 0 ∨ ¬\p{x > 0} = \alpo{\p x}\text, \]
+%   torej za vsak \(p : Ω\) obstaja \(x : ℝ\), da je \(\alpo{\p x} ⇒ \lem{\p p}\).
+%   % Ker dokazujemo resnico v topološkem modelu brez škode za splošnost
+%   % predpostavimo, da je prostor \(T₆\).
+%   % To pomeni da za vsako odprto množico \(U\) obstaja nenegativna funkcija
+%   % \(P_U : X → ℝ\), tako da velja \(P_U > 0 ⇔ U\).
+%   % Če želimo reducirati \(\lem*\) na \(\alpo*\), mora za vse
+%   % \(U ⊆ X\) veljati \(\eventually{x : ℝ}{x ≤ 0 ∨ x > 0 ⇒ U ∪ ¬U}\).
+%   % Uporabimo predpostavko na \(U ∪ ¬U\), torej nam ostane pokazati, da
+%   % velja \({P_U ≤ 0 ∨ P_U > 0 ⇒ P_U > 0}\).
+%   % Ker je \(⟦P_U ≤ 0⟧ = ¬{\p{U ∪ ¬ U}} = ∅\), velja \(¬\p{x ≤ 0}\), kar dokaže trditev.
+% \end{proof}
 \begin{posledica}
   Če je prostor \(X\) lokalno \(T₆\), velja \(\alpo*×\alpo* ≤ \alpo*\).
 \end{posledica}
@@ -110,11 +109,11 @@ Spomnimo se na trditev~\ref{th:lT6-have-AKS}:
   Nad Cantorjevim prostorom je \(\lpo*\) ekvivalenten \(\alpo*\).
 \end{lema}
 \begin{dokaz}
-  Vemo že, da velja \(\lpo* ≤ \alpo*\) tako da moramo pokazati zgolj obratno redukcijo.
-  Naj bo \(U ⊩ x : ℝ\). Potem iz gornje leme dobimo \(U ⊩ \hat x : C\), za
-  katerega velja \(\hat x \apart 0 ⇔ x > 0\).
-  Kontrapizitivna oblika te ekvivalence pa pravi ravno, da je \(\hat x = 0 ⇔ x ≤ 0\),
-  torej res velja \(\lpo{\p{\hat f}} ⇔ \alpo{\p{f}}\).
+  Vemo že, da velja \(\lpo* ≤ \alpo*\) tako da moramo pokazati zgolj obratno
+  redukcijo. Naj bo \(x : ℝ\). Potem iz gornje leme dobimo \(\hat x : C\), za
+  katerega velja \(\hat x \apart 0 ⇔ x > 0\). Kontrapizitivna oblika te
+  ekvivalence pa pravi ravno, da je \(\hat x = 0 ⇔ x ≤ 0\), torej res velja
+  \(\lpo{\p{\hat f}} ⇔ \alpo{\p{f}}\).
 \end{dokaz}
 \begin{posledica}
   Nad Cantorjevim prostorom je \(\lpo*\) idempotenten.
@@ -123,7 +122,7 @@ Spomnimo se na trditev~\ref{th:lT6-have-AKS}:
   V tem podrazdelku bi lahko namesto Cantorjevega prostora zares vzeli
   katerikoli kompakten nič dimenzionalen prostor (z drugimi besedami, Stoneov prostor).
 \end{opomba}
-
+Zares smo tu pokazali, da nad temi prostori velja \(Σ_{\Rd} = Σ₀¹\). TODO: a res?
 
 
 %%% Local Variables:

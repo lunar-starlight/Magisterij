@@ -1,0 +1,31 @@
+Logic		| Space
+Boolean		= Partition topology/Boolean locale/locally indiscrete
+DeMorgan	= irreducible (acc. to Ingo)/extremally disconnected (acc. to nlab)
+                  irred = ext. disc + conn.
+WLEM		= regularne r.v. so clopen (wlem = demorgan, je ext. disc)
+WLEMₙ		= ?
+ALPO…		= "realne resničnostne vrednosti so komplementirane"/"ničelne množice so odprte"
+		= P-SPACE????? [Gillman 1960, 4J(3)] (samo za T3.5 prostore, ne vem a T₀ rabimo)
+LPO…		= "semiodločljive r.v. so clopen", implied by locally connected
+AWLPO…		= (l.?) basically disconnected (int{x≤0} = cl{x>0}ᶜ)
+		WLEM ⇒  AWLPO?
+WLPO…		= ?
+LLPO…		= ?
+ALLPO…		= ""
+LLPOₙ…		= ?
+AMP…		= "realna dominanca ⊆ regularna dominanca (= ¬¬Ω)"/"ničelne množice so regularne"
+MP…		= by above "semiodločljiva dominanca ⊆ reg. dominanca"
+AKS		= "vse r.v. so resnične"/ne l. T₆ (literatura on these? kaj vemo več o tem)
+KS		= "vse r.v. so semiodločljive"/ne l. T₆(₂ℕ) (a je to kej znanega?)
+DC		= implied by ultraparacompact (every open cover has open partition refinement)
+AWMP		= implied by 1st ctbl, CReg [HL16]
+WMP		= ?
+WMP ∧ ¬AWMP	= ?
+LLPO∧WMP⇔ LPO	= ? (can we show this via topology from above?)
+P-space		= implies CC, locally basically disconnected (so AWLPO?), ALPO, and ℝ_d = ℝ_c
+		  P-points? Mₚ = {f | f(p) = 0}, Oₚ = {f | germₚ f = 0}
+		  P-space iff ∀ₚ Mₚ = Oₚ
+		  f cts at P-point ⇒  f const on nbd
+Stone-Čech	= impl. C*(X) = C(βX), ni uporabno, ker cl_{βX} U ≠ βU v splošnem
+		  βℕ, βℚ tot. disc.
+		  βX ext./basically disc. iff X ext./basically disc.

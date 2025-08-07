@@ -1,0 +1,41 @@
+Top modeli:
+ - Vložitev elementov od zunaj v interno logiko.
+   - Funkcije delajo, realna števila delajo, kaj se z ostalim nardi.
+ - pov iff 1 ma 2 korena
+   - n komp iff 1 ma 2ⁿ korenov
+   - pov iff dva idempotenta
+ - X ≅ Y iff C(X) ≅ C(Y)
+   - torej če imata prostora ista globalna realna števila sta homeomorfna, ampak lokalno mamo pa
+     lahko drugačno šaro… za razmislit.
+ - P-space ⇒  locally basically disconnected (CCᵛ ⇒  awlpo?)
+
+
+--------------------------------------------
+
+a ma lem desni adjunkt (oz. a je B(X) = "smallest dense sublocale" free)
+✓a si loh pomagam z Lawvere-Tierney topologijami (a mam kako ekvivalenco dobro vmes)
+	- Ne lih. Instance degrees ne izpolnujejo pogoja jj=j
+	- živijo v zgornjem bulbu
+✓Instance degrees so monotoni endomorfizmi Ω
+
+from [BGP17]
+interpretacija EC za foro (slika P, n ↦  n ∈ P (∃k. p(k) = n+1))
+	- relation z LPO (P ↦  ∃k. k ∉ P (p(k) = 0))
+	- v W je EC ≡ₛ \hat{LPO} (map na zaporedja)
+interpretacija choice (dom(C_X) = {nonempty closed subset of X})
+	- v W je C_X ≡ₛ Z_X če X computable metric space 
+	- v W je \hat{C_ℕ} ≡ₛ \hat{LPO}
+	- prop 7.7
+interpretacija principa Markova in BD-ℕ
+	- v W sta computable
+
+look at AG
+	- Noetherian spaces
+	- zariski topology/topos
+	- Blechschmidt
+Heyting spaces?
+
+Subfit locales are R₀? (R₀ means ACᵛ is CC)
+kateri so turing degrees med weihrauch degrees? hyland (the effective topos) trdi da vsak TD porodi LT topologijo v Eff.
+
+Če je powersheaf Ω-množica predikatov, kako se ∀S:Pℕ. S fin ⇒  ∃M. S ≤ M interpretira točno. Kaj je zožitev S : ℕ → Ω?
