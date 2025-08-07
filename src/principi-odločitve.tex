@@ -3,15 +3,14 @@
 Spomnimo se najprej karakterizacij \(\lem*\) in \(\wlem*\) iz
 podrazdelka~\ref{sec:modeli-logika-odprtih}.
 
-TODO: renumber
-\begin{trditev}\label{th:lem-is-partition-second}
+\begin{retrditev}{th:lem-is-partition}
   Nad topološkim prostorom velja princip izključene tretje možnosti natanko
   tedaj, ko je prostor particijski.
-\end{trditev}
-\begin{trditev}\label{th:wlem-is-ext-disc-second}
+\end{retrditev}
+\begin{retrditev}{th:wlem-is-ext-disc}
   Nad topološkim prostorom velja DeMorganov zakon natanko tedaj, ko je prostor
   ekstremalno nepovezan.
-\end{trditev}
+\end{retrditev}
 
 Ker so naši prostori \(T₀\), so particijski prostori natanko diskretni. Res, če
 so točke zaprte, in je vsaka zaprta množica odprta, so točke odprte, torej je
@@ -93,6 +92,121 @@ TODO: Elephant, D4.7: It can be shown that, for a locale \(X\), \(\Rc\) coincide
 with \(\c ℝ\) iff for every open \(U\), the lattice of (relatively) clopen
 sublocales of \(U\) is closed under countable unions. (For a second countable
 locale this is equivalent to local connectedness)
+
+TODO: vezno besedilo
+
+\begin{izrek}\label{th:alpo-is-zerosets-open}
+  Nad \(X\) velja \(\alpo*\) natanko tedaj, ko je vsaka ničelna množica odprta.
+\end{izrek}
+\begin{dokaz}
+  Če je vsaka ničelna množica odprta je \(\i{x = 0}\) enak ničelni množici,
+  torej skupaj z \(\i{x\apart 0}\) pokrijeta prostor.
+
+  Obratno, če velja \(\alpo*\), morata \(\i{x=0}\) in \(\i{x\apart 0}\) pokriti
+  cel prostor. Ker je ničelna množica disjunktna z \(\i{x\apart 0}\), mora biti
+  potem enaka \(\i{x=0}\), torej je odprta.
+\end{dokaz}
+
+Oglejmo si še \(\awlpo*\). Ta pravi, da za vsak \(x : ℝ\) velja \(x≤0 ∨¬(x≤0)\).
+Ker je \(x≤0\) natanko \(¬(x>0)\) je to natanko \(\wlem*_{Σ_{\Rd}}\).
+Če si pogledamo definicijo ekstremalno nepovezanih prostorov, in v nej zamenjamo
+odprte množice z realnimi, dobimo sledečo lastnost.
+\begin{definicija}
+  Prostor je \emph{TODO: basically disconnected}, ko je za vsako funkcijo
+  \(f : X → ℝ\) množica \(\cl\set{t∈X}{f(t)>0}\) odprta.
+\end{definicija}
+
+
+\begin{trditev}\label{th:awlpo-is-basically-disconnected}
+  Nad \(X\) velja \(\awlpo*\) natanko tedaj, ko je vsaka odpra podmnožica \(X\)
+  basically disconnected.
+\end{trditev}
+Dokaz trditve je enak kot~\ref{th:wlem-is-ext-disc}, tako da ga ne ponovimo.
+
+\begin{trditev}
+  Nad \(X\) velja \(\allpo*\) natanko tedaj, ko je vsaka odprta podmnožica \(X\)
+  F-prostor. TODO: definicija
+\end{trditev}
+TODO: dokaz v GJ60.
+
+Velja pa zanimiva posledica, namreč, da nad basically disconnected prostori
+obstaja funkcija \(\mathrm{sgn}\) (oziroma nekaj dovolj podobnega).
+\begin{trditev}
+  Če nad \(X\) velja \(\awlpo*\), potem za vsak \(x : ℝ\) obstaja
+  \(u : \e x → ℝ\), tako da je \(u\) nad \(\e x\) obrnljiv, in velja
+  \(\e x ⊩ f = u\abs f\).
+\end{trditev}
+\begin{dokaz}
+  Brez škode za splošnost naj bo \(\e x = X\).
+
+  Princip \(\awlpo*\) potem pravi, da je množica \(U ≔ \cl{\i{x>0}}\) odprta,
+  torej tvori particijo in lahko definiramo
+  \[ u ≔
+    \begin{cases}
+       1&; U\\
+      -1&; Uᶜ\text.
+    \end{cases}
+  \]
+  %\(U ⊩ u = 1\) in \(Uᶜ ⊩ u = -1\).
+  Ta \(u\) je obrnljiv, saj je \(u⋅u = 1\). Prav tako velja želena enačba, saj
+  je \(f ≤ 0\) na \(Uᶜ\).
+\end{dokaz}
+
+Če pa želimo zares definirati \(\mathrm{sgn}\), moramo uporabiti \(\alpo\). Ta
+pravi, da je ničelna množica \(x\) odprta, torej lahko tam definiramo
+\[ u ≔
+  \begin{cases}
+     1&; x < 0\\
+     0&; x = 0\\
+    -1&; x > 0\text.
+  \end{cases}
+\]
+
+\begin{definicija}
+  Prostor \(X\) je \emph{skoraj P-prostor}, ko je za vsak \(f : X → ℝ\) množica
+  \(\i{f > 0}\) regularna~\cite{Levy77}.
+\end{definicija}
+Kot bi sklepali iz imena je vsak P-prostor tudi skoraj P-prostor.
+\begin{dokaz}
+  Naj bodo \(Zᵢ ≔ f⁻¹[2⁻ⁱ,∞)\). Njihova unija \(Z = \i{f > 0}\) je zaprta, saj
+  je \(X\) P-prostor. Potem je pa \(\int{\cl{Z}} = \int Z = Z\).
+\end{dokaz}
+
+\begin{trditev}\label{th:amp-is-almost-psp}
+  Nad \(X\) velja \(\amp*\) natanko tedaj, ko je vsaka odprta podmnožica \(X\)
+  skoraj P-prostor.
+\end{trditev}
+\begin{dokaz}
+  Princip pravi, da za vsak tak \(f\) velja \(\int{\cl{\i{f > 0}}} ⊆ \i{f > 0}\).
+  Ker obratna enakost očitno velja, je to ravno definicija regularnosti odprte množice.
+\end{dokaz}
+Analogno velja tudi \(\mp*\) natanko tedaj, ko je vsaka semiodločljiva odprta
+množica regularna.
+\begin{opomba}
+  V~\cite[2.1]{Lev77} piše, da je vsaka odprta podmnožica skoraj P-prostora
+  ``očitno'' skoraj P-prostor. Jaz tega ne vidim, mogoče je res samo za
+  \(T_{3.5}\) prostore, kot imajo v članku.
+\end{opomba}
+
+Konstruktivno velja \(\awlpo*∧\amp* ⇔ \alpo*\).
+V trditvah~\ref{th:awlpo-is-basically-disconnected},~\ref{th:amp-is-almost-psp},
+in~\ref{th:alpo-is-zerosets-open}, smo karakterizirali vse prostore, ki so v
+igri v tej ekvivalenci, tako da bi morala veljati ekvivalenca med njimi.
+\begin{izrek}
+  Ničelne množice \(f : X → ℝ\) so odprte natanko tedaj, ko je \(X\) skoraj
+  P-prostor in basically disconnected.
+\end{izrek}
+\begin{dokaz}
+  Če je vsaka množica \(\i{f > 0}\) zaprta, je tudi regularna (vse odprto zaprte
+  množice so regularne). Prav tako je njeno zaprtje odprto.
+
+  Obratno, če je \(\i{f > 0} = \int{\cl{\i{f>0}}}\), in je zaprtje \(\i{f>0}\)
+  odprto, je potem \(\i{f>0} = \cl{\i{f>0}}\), torej je zaprta.
+\end{dokaz}
+Avtorici ni znano, če se ta izrek pojavi kje v literaturi, predvsem ker je
+večina literature o teh prostorih objavljene pod predpostavko \(T_{3.5}\).
+Če to predpostavimo dobimo, da je \(X\) P-prostor natanko tedaj, ko je skoraj
+P-prostor in basically disconnected~\cite{Levy77}\cite[4J(3)]{GJ60}.
 
 
 %%% Local Variables:

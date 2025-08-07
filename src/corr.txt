@@ -21,7 +21,7 @@ DC		= implied by ultraparacompact (every open cover has open partition refinemen
 AWMP		= implied by 1st ctbl, CReg [HL16]
 WMP		= ?
 WMP ∧ ¬AWMP	= ?
-LLPO∧WMP⇔ LPO	= ? (can we show this via topology from above?)
+WLPO∧MP⇔ LPO	= ? (can we show this via topology from above?) YES!
 P-space		= implies CC, locally basically disconnected (so AWLPO?), ALPO, and ℝ_d = ℝ_c
 		  P-points? Mₚ = {f | f(p) = 0}, Oₚ = {f | germₚ f = 0}
 		  P-space iff ∀ₚ Mₚ = Oₚ

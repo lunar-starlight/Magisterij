@@ -570,6 +570,13 @@
 \newpf{dokaz}{\square}
 %\newenvironment{dokaz}[1][Dokaz]{\begin{proof}[#1]}{\end{proof}}
 
+\theoremstyle{plain}
+\newtheorem*{@retrditev*}{Izrek~\ref{\@ref}}
+\newenvironment{retrditev}[2][]{%
+  \def\@ref{#2}%
+  \begin{@retrditev*}[#1]}
+  {\end{@retrditev*}}
+
 % bold matematika znotraj \textbf{ }, tudi v naslovih
 \g@addto@macro\bfseries{\boldmath}
 
