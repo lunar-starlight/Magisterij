@@ -44,15 +44,14 @@ Vseeno pa velja obrat, če analitično Kripkejevo shemo malo ojačamo. Specifič
 
 \subsection{Idempotenca \alpo* nad lokalno \(T₆\) prostori}
 
-Spomnimo se na trditev~\ref{th:lT6-have-AKS}:
-% TODO: set number
-\begin{trditev}\label{th:lT6-have-AKS-second}
+Spomnimo se na trditev~\ref{th:aks-impl-lem≤alpo}:
+\begin{retrditev}{th:lT6-have-AKS-second}
   Nad lokalno \(T₆\) prostori velja analitična Kripkejeva shema.
-\end{trditev}
-Če jo združimo s trditvijo~\ref{th:aks-impl-lem≤alpo}, lahko zaključimo
+\end{retrditev}
+Če jo združimo s trditvijo~\ref{th:lT6-have-AKS}, lahko zaključimo
 
 \begin{izrek}
-  Naj bo \(X\) lokalno \(T₆\). Potem nad \(X\) velja redukcija \(\lem* ≤ \alpo*\).
+  Nad lokalno \(T₆\) velja redukcija \(\lem* ≤ \alpo*\).
 \end{izrek}
 % \begin{proof}
 %   Ker vemo, da nad \(X\) velja analitična Kripkejeva shema, zadošča
@@ -72,10 +71,7 @@ Spomnimo se na trditev~\ref{th:lT6-have-AKS}:
 %   % Ker je \(⟦P_U ≤ 0⟧ = ¬{\p{U ∪ ¬ U}} = ∅\), velja \(¬\p{x ≤ 0}\), kar dokaže trditev.
 % \end{proof}
 \begin{posledica}
-  Če je prostor \(X\) lokalno \(T₆\), velja \(\alpo*×\alpo* ≤ \alpo*\).
-\end{posledica}
-\begin{posledica}
-  Nad lokalno \(T₆\) prostorom je \(\alpo*\) idempotenten.
+  Nad lokalno \(T₆\) prostori je \(\alpo*\) idempotenten.
 \end{posledica}
 Obrat pa ne velja niti približno. Tudi, če bi predpostavili funkcijsko
 redukcijo, iz \(x>0∨x≤0 ⇒ p∨¬p\) ne moremo niti sklepati, da \(x>0 ⇒ p\)!
@@ -114,11 +110,13 @@ do \(T₄\) lastnosti.
   Nad Cantorjevim prostorom je \(\lpo*\) ekvivalenten \(\alpo*\).
 \end{lema}
 \begin{dokaz}
-  Vemo že, da velja \(\lpo* ≤ \alpo*\) tako da moramo pokazati zgolj obratno
-  redukcijo. Naj bo \(x : ℝ\). Potem iz gornje leme dobimo \(\hat x : C\), za
-  katerega velja \(\hat x \apart 0 ⇔ x > 0\). Kontrapizitivna oblika te
-  ekvivalence pa pravi ravno, da je \(\hat x = 0 ⇔ x ≤ 0\), torej res velja
-  \(\lpo{\p{\hat f}} ⇔ \alpo{\p{f}}\).
+  Zares gornja lema pokaže, da je \(Σ_{\Rd} = Σ₀¹\), kar po enakem argumentu kot
+  v trditvi~\ref{th:aks-impl-lem≤alpo} implicira gornjo ekvivalenco.
+  % Vemo že, da velja \(\lpo* ≤ \alpo*\) tako da moramo pokazati zgolj obratno
+  % redukcijo. Naj bo \(x : ℝ\). Potem iz gornje leme dobimo \(\hat x : C\), za
+  % katerega velja \(\hat x \apart 0 ⇔ x > 0\). Kontrapizitivna oblika te
+  % ekvivalence pa pravi ravno, da je \(\hat x = 0 ⇔ x ≤ 0\), torej res velja
+  % \(\lpo{\p{\hat f}} ⇔ \alpo{\p{f}}\).
 \end{dokaz}
 \begin{posledica}
   Nad Cantorjevim prostorom je \(\lpo*\) idempotenten.
