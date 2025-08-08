@@ -33,7 +33,8 @@ Pokažimo sedaj, da implikacije iz~\ref{sec:logika-odločitve} niso obrnljive.
 \begin{dokaz}
   Naj bo \(x : ℝ\) zunaj identiteta. Potem je \(\i{\alpo(x)} = ℝ⧵\{0\}\).
 
-  Preostanek tega dokaza izpeljemo malo kasneje, v izreku~\ref{th:lpov-lpo}
+  Preostanek tega dokaza izpeljemo malo kasneje, v trditvi~\ref{th:lpov-lpo},
+  saj je \(ℝ\) lokalno povezana.
 \end{dokaz}
 
 \begin{trditev}
@@ -64,12 +65,11 @@ strožji in bolj strukturiran način, ki ima povezavo s teorijo izračunljivosti
 in ta upamo, da nam da močnejše principe, ki bodo potem tudi topološko bolj
 zanimivi.
 
-TODO: premakni zgoraj?
+TODO: vezno besedilo
 
-Vemo pa vsaj nekaj.
-\begin{izrek}\label{th:lpov-lpo}
+\begin{trditev}\label{th:lpov-lpo}
   Če je \(X\) lokalno povezan, velja \(X ⊩ \lpo*\).
-\end{izrek}
+\end{trditev}
 \begin{dokaz}
   Naj bo \(α : 2^ℕ\). Ker je \(X\) lokalno povezan, je množica \(2^ℕ\) kar
   množica preslikav iz \(ℕ\) v \(2\). To pa pomeni, da je lokalno \(α = f\), za
@@ -82,18 +82,8 @@ Vemo pa vsaj nekaj.
   nekam na samo, zdej sem že petič napisala), in potrebujemo le, da so elementi
   lokalno konstantni, zadošča predpostaviti \(\Rc = \c ℝ\). To pomeni, da je to
   kar močen princip, saj je zadosten za \(\lpo*\).
-
-  TODO: a je ekvivalenca? smz da, ker \(x : \Rc\) je zvezna \(\e x → ℝ\), če
-  mamo \(\lpo*\) je \(\i{x = a} = \i{x \apart a}ᶜ\), tko da je \(x\) lokalno
-  konstantna.
 \end{opomba}
 
-TODO: Elephant, D4.7: It can be shown that, for a locale \(X\), \(\Rc\) coincides
-with \(\c ℝ\) iff for every open \(U\), the lattice of (relatively) clopen
-sublocales of \(U\) is closed under countable unions. (For a second countable
-locale this is equivalent to local connectedness)
-
-TODO: vezno besedilo
 
 \begin{izrek}\label{th:alpo-is-zerosets-open}
   Nad \(X\) velja \(\alpo*\) natanko tedaj, ko je vsaka ničelna množica odprta.

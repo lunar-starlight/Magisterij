@@ -62,13 +62,10 @@ preslikav v \(ℝ\). Ampak katerih?
   Pokazati moramo zgolj, da je vsako Cauchyjevo realno število zunaj lokalno
   konstantna preslikava.
 
-  TODO: tle mi neki ni čist všeč, glede povezanosti \(\e x\). a kej elaboriram?
-  
   Nad \(t ∈ \e x\) dobimo Cauchyjevo zaporedje \((xₙ(t))ₙ\). Ker je \(X\)
-  lokalno povezan ima pokritje iz povezanih množic, tako da brez škode za
-  splošnost predpostavimo, da je \(\e x\) povezan. Ker pa je povezan, pa vemo,
-  da so vsi \(xᵢ\) konstantne preslikave, torej morajo biti vsi \(xₙ(t)\) enaki
-  (za vse \(t ∈ \e x\)), tako da je \(t ↦ (xₙ(t))ₙ\) konstantna.
+  lokalno povezan, ima pokritje iz povezanih množic, tako da brez škode za
+  splošnost predpostavimo, da je \(\e x\) povezan. Sledi, da so \(xₙ\)
+  konstantne preslikave, torej je tudi preslikava \(t ↦ (xₙ(t))ₙ\) konstantna.
 \end{dokaz}
 
 Dokaj očitno to pomeni, da noben od teh objektov v splošnem ni enak drugim.
@@ -89,37 +86,54 @@ Dokaj očitno to pomeni, da noben od teh objektov v splošnem ni enak drugim.
   Definirajmo \(x : 2^ℕ → ℝ\) kot \(x(α) ≔ \sum_{n=0}^∞ \frac{2α(n)}{3ⁿ}\). Ta
   preslikava je zares kanonična vložitev Kantorjeve množice v realna, in je
   znotraj Cauchyjevo realno število, saj je limita racionalnih števil. Ampak ni
-  lokalno konstantno, saj je \(x⁻¹(0) = \{0\}\), ki pa ni odprta množica.
+  lokalno konstantno, saj je \({x⁻¹(0) = \{0\}}\), ki pa ni odprta množica.
 \end{dokaz}
 
 Kaj pa MacNeillova realna števila? Teh je več kot Dedekindovih, tako da če jih
 želimo karakterizirati kot nekakšne funkcije iz odprtih podmnožic \(X\), bodo te
-morale biti nezvezne. Izkaže se, da so odgovor polzvezne funkcije. Seveda, če je
-funkcija polzvezna navzdol in navzgor, je zvezna. Ampak, lahko vzamemo par
-navzdol in navzgor polzveznih preslikav \(\uline f\) in \(\bar f\), ki sta si
-nekako ``čimbolj blizu''. To pomeni, da želimo, da je \(\uline f\) največja
-navzdol polzvezna preslikava manjša ali enaka \(\bar f\), in obratno.
+morale biti nezvezne. Izkaže se, da so odgovor polzvezne
+funkcije.~\cite[posl.~D4.7.5]{Johnstone02} Seveda, če je funkcija polzvezna
+navzdol in navzgor, je zvezna. Ampak, lahko vzamemo par navzdol in navzgor
+polzveznih preslikav \(\uline f\) in \(\bar f\), ki sta si nekako ``čimbolj
+blizu''. To pomeni, da želimo, da je \(\uline f\) največja navzdol polzvezna
+preslikava manjša ali enaka \(\bar f\), in obratno.
 
-TODO: cite elephant
+\begin{lema}
+  V topoloških modelih so dolnji (gornji) enostranski rezi predstavljeni z
+  navzdol (navzgor) polzveznimi preslikavami.
+\end{lema}
+\begin{dokaz}
+  Naj bo \(L\) dolnji enostranski rez. Kot za Dedekindove reze tvorimo
+  preslikavo \(x(t) = Lₜ\). To je preslikava \(\e L → ℝ\), saj so klasično
+  enostranski rezi ekvivalentni dvostranskim.
+
+  Oglejmo si sedaj \(x⁻¹\p{p,∞}\). To je natanko \(\set{t∈\e L}{p < x(t)}\). Po
+  definiciji je ta pogoj ekvivalenten \(t ∈ \i{p ∈ L}\), torej je praskika
+  odprta.
+
+  Obratno, naj bo \(x : U → ℝ\) navzdol polzvezna. Potem lahko definiramo
+  preslikavo \(L(t) ≔ \set{p ∈ ℚ}{p < x(t)}\). Ta znotraj tvori dolnji
+  enostranski rez, saj so morfizmi v \(Ω\) natanko operacije v \(Ω\).
+\end{dokaz}
+Ker pa interno nimamo gornjega reza, ne bomo znali izraziti pogoja \(x(t) < q\)
+na lep način, tako da v splošnem ta presklikava ni zvezna.
+
 \begin{trditev}\label{real:Rm-maps}
-  Objekt MacNeillovih realnih števil je natanko \(ℒ\)-množica parov funkcij
-  \(\p{\uline f, \bar f}\) tipa \(U → ℝ\) za \(U ∈ 𝒪X\), za katere velja
+  Objekt MacNeillovih realnih števil je natanko \(ℒ\)-množica parov polzveznih
+  funkcij \(\p{\uline f, \bar f}\) tipa \(U → ℝ\) za \(U ∈ 𝒪X\), za katere velja
   \begin{align*}
-    \bar   f(t) &=
-    \limsup_{y → t}\uline f(y)\text{ in}\\
-    %\inf\set{\sup \uline f(V)}{V\nbd t}\text{ in}\\
     \uline f(t) &=
-    \liminf_{y → t}\bar   f(y)\text.
-    % \sup\set{\inf \bar   f(V)}{V\nbd t}\text.
+    \liminf_{y → t}\bar   f(y)\text{in}\\
+    \bar   f(t) &=
+    \limsup_{y → t}\uline f(y)\text,
   \end{align*}
+  z enakostjo definirano po točkah. Pogoju zgoraj pravimo \emph{tesnost}.
 \end{trditev}
 \begin{dokaz}
-  TODO: reword all this. kaj je s temi liminfi? a to dela sploh?
-
-  Če je \(x = \p{L,U}\) Dedekind-MacNeilleov rez, lahko za \(L\) in \(U\)
-  konstruiramo funkciji \(\uline f\) in \(\bar f\) kot pri Dedekindovih rezih,
-  s tem da slikamo v enostranske reze zunaj. Klasično so te ekvivalentni
-  Dedekindovim rezom, tako da dobimo preslikavi \(\e x → ℝ\).
+  Po gornji lemi lahko za MacNeillovo realno število \(x = \p{L,U}\)
+  konstruiramo navzdol in navzgor polzvezni preslikavi \(\uline f\) in
+  \(\bar f\). Pokazati nam ostane, da sta preslikavi tesni. Pokažimo zgolj prvi
+  pogoj, saj sta si simetrična.
 
   Limes inferior definira navzdol polzvezno preslikavo, namreč supremum vseh
   navzgor polzveznih preslikav manjših ali enakih \(\bar f\).
@@ -135,56 +149,25 @@ TODO: cite elephant
   \(q ∈ \int{\p{Uᶜ}} = L\), in je \(L' ⊆ L\). To pa očitno pomeni, da je
   \(f ≤ \uline f\) in je \(\uline f = \liminf_{y → t}\bar f(y)\).
 
-  % Naj bo \(t ∈ \e x\). Ker je \(L = \int{Uᶜ}\), je
-  % \(\uline f(t) = \int{\bar f(t)ᶜ} = \int{\set{r:ℚ}{t∈\i{r∈U}}ᶜ}\).
-  % Komplement notranje množice je pa kar \(\set{r:ℚ}{t∉\i{r∈U}}\), čigar
-  % notranjost je \(\set{r:ℚ}{t∈\i{r∉U}}\).
+  Obratno, če je pa \(\p{\uline f, \bar f}\) tak par. Potem sta navdol oziroma
+  navzgor polzvezni, torej definirata enostranska reza \(L\) in \(U\).
 
-  % % i'm oopid, to ni treba…
-
-  Obratno, če je pa \(\p{\uline f, \bar f}\) tak par, preslikavi definirata
-  enostranska reza \(L\) in \(U\). Očitno je \(L ⊆ \int{\p{Uᶜ}}\). Ampak
-  \(\int{\p{Uᶜ}}\) je tudi enostranski rez, torej definira navzdol polzvezno
-  preslikavo, ki je manjša od \(\bar f\), torej je tudi \(\int{\p{Uᶜ}} ⊆ L\).
+  Očitno je \(L ⊆ \int{\p{Uᶜ}}\). Ampak \(\int{\p{Uᶜ}}\) je tudi enostranski
+  rez, torej definira navzdol polzvezno preslikavo, ki je manjša od \(\bar f\),
+  torej je tudi \(\int{\p{Uᶜ}} ⊆ L\).
 \end{dokaz}
-
-Pogoja zgoraj implicirata, da sta preslikavi polzvezni, tako da tega posebej ne
-omenjamo.
-Pokažimo, da je \(\uline f\) navzdol polzvenzna, saj je dokaz za \(\bar f\)
-simetričen. Naj bo \(a ∈ ℝ\). Potem je
-\(\uline f⁻¹(a,∞) = \set{t ∈ \e x}{f(t) > a}\).
-Po definiciji je \(\uline f(t) = \set{q : ℚ}{t ∈ \i{q < x}}\), in ta je večji
-od \(a\) ko je \(a\) element \(f(t)\), torej ko velja \(t ∈ \i{a < x}\). Sledi,
-da je \(\uline f⁻¹(a,∞) = \i{a < x}\), torej je navzdol polzvezna.
 
 Spet očitno vidimo, da sta objekta Dedekindovih in MacNeillovih realnih števil
 različna. MacNeillov rez definira Dedekindovo realno število, natanko tedaj, ko
 sta preslikavi \(\uline f\) in \(\bar f\) enaki.
 
-NOTE: a je tuki bolš da dam \(ℝ\)? folk je tega navajen.
 \begin{trditev}
-  Nad \(\p{3,\{∅, \{1\}, \{2\}, \{1,2\}, \{0,1,2\}\}}\) ne velja \(\Rm = \Rd\).
+  Nad \(ℝ\) ne velja \(\Rm = \Rd\).
 \end{trditev}
 \begin{dokaz}
-  Naj bo \(x ≔ \sup\set{x : \Rm}{x = 0 ∨ x = 1∧\{1\}}\).
-  To je po lemi~\ref{th:Rm-sup} MacNeillovo realno število, saj je poseljeno z
-  \(0\) in omejeno z \(1\).
-
-  Poglejmo sedaj, če velja \(x < 1 ∨ x > 0\). Če velja \(x < 1\), je potem
-  \(x = 0\), torej \(\{1\}\) ne drži. Sledi, da je \(\i{x < 1} = \{2\}\).
-  Podobno lahko sklepamo, da je \(\i{x > 1} = \{1\}\). To pa pomeni, da \(x\) ni
-  locirano pri \(0\), torej ni Dedekindovo.
-\end{dokaz}
-\begin{dokaz}[Alternativni dokaz]
-  Definirajmo MacNeillovo realno število s preslikavama
-  \begin{align*}
-    \uline f(0) = 0 && \bar f(0) = 1\\
-    \uline f(1) = 1 && \bar f(1) = 1\\
-    \uline f(2) = 0 && \bar f(2) = 0
-  \end{align*}
-
-  Ti očitno zadoščata pogojem zgoraj, in se na \(0\) ne ujemata, tako da ne
-  definirata Dedekindovega realnega števila.
+  Definirajmo MacNeillovo realno število s preslikavama \(χ_{(0,∞)}\) ter
+  \(χ_{[0,∞)}\). Ti sta tesni, a se v \(0\) ne ujemata, tako da ne definirata
+  Dedekindovega realnega števila.
 \end{dokaz}
 
 \subsection{\(\Rc{} = \c ℝ\)}\label{sec:reals-Rc=ℝ}
@@ -208,6 +191,48 @@ Izkaže se, da velja tudi obrat.
 \begin{opomba}
   Tu smo uporabili \(ℝ\) mnogo instanc \(\lpo*\).
 \end{opomba}
+
+Skupaj s trditvijo~\ref{th:lpov-lpo} lahko zatrdimo ekvivalenco.
+\begin{izrek}\label{th:\Rc=\cR-is-lpo}
+  Nad \(X\) velja \(\lpo*\) natanko tedaj, ko je \(\Rc = \c ℝ\).
+\end{izrek}
+Tako lahko namesto \(\Rc = \c ℝ\) od tu naprej pišemo kar \(\lpo*\)
+
+Izkaže pa se, da začetna formulacija trditve~\ref{th:lpov-lpo} ni bila napačna.
+Nad \(2\)-števnimi prostori je namreč princip \(\lpo*\) ekvivalenten lokalni
+povezanosti~\cite[1026]{Johnstone02}.
+
+Karakterizirajmo najprej \(\lpo*\) brez realnih števil.
+\begin{lema}
+  Nad \(X\) velja \(\lpo*\) natanko tedaj, ko za vsak \(U\) in števno družino
+  \(\{Vₙ\}ₙ\) odprtih množic, ki so relativno zaprte v \(U\), njihov presek
+  odprt.
+\end{lema}
+\begin{dokaz}
+  Označimo njihov presek z \(V\).
+  Definirajmo relacijo \(α(n, b) ≔ \i{b=1∧(U⧵Vₙ) ∨ b=0∧Vₙ}\).
+  Ker so \(Vₙ\) odprte in zaprte, je ta celovita in enolična, torej definira
+  element \(2^ℕ\) na stopnji \(U\). Uporabimo sedaj \(\lpo*\), in dobimo, da je
+  \(U = \i{α = 0} ∪ \i{α\apart 0}\). Vrednost \(α\apart 0\) je natanko unija
+  vseh \(U⧵Vₙ\), torej natanko \(U⧵V\). Sledi, da je \(\i{α=0} = V\), torej je
+  presek odprt.
+
+  Obratno, naj bo \(α : 2^ℕ\) in definirajmo \(Uₙ ≔ \i{α(n) = 0}\) in
+  \(Vₙ ≔ \i{α(n) = 1}\). Velja \(\e α = Uₙ ∪ Vₙ\), in \(Uₙ ⊥ Vₙ\), torej so
+  \(Uₙ\) in \(Vₙ\) relativno zaprte v \(\e α\).
+
+  Sledi, da je presek \(Uₙ\) odprt, torej je odprta tudi množica \(t ∈ \e α\),
+  kjer je \(α = 0\). To pa pomeni, da velja \(α = 0 ∨ α \apart 0\), torej velja
+  \(\lpo*\).
+\end{dokaz}
+
+\begin{trditev}
+  Če nad \(2\)-števnim prostorom velja \(\lpo*\), je lokalno povezan.
+\end{trditev}
+\begin{dokaz}
+  TODO: slon pravi da je to res, zdej pa…
+\end{dokaz}
+
 
 \subsection{\(\Rd{} = \Rc\)}\label{sec:reals-Rd=Rc}
 
@@ -299,24 +324,18 @@ natanko \(\alpo*\) za Cauchyjeva realna števila.
   pokazali že v izreku~\ref{th:alpo-is-zerosets-open}.
 \end{opomba}
 
-TODO: ta prostor ne dela, oziroma loči ta dva, ampak \(\CC\) vela
+NOTE: \(\Ncof + (ω+1)\) dela, ampak ta validira \(\CCv_{Σ_{\Rd}}\).
 To pomeni, da če želimo ločiti \(\Rd = \Rc\) in \(\alpo*\) potrebujemo prostor,
-ki ni lokalno povezan. Avtorica meni, da je Fortov prostor na števno neskončni
-množici dober kandidat, a ji ni uspelo preveriti detajlov. Vseeno, se je pa
-zadostno prepričala, da niti \(\alpo*\) niti \(\CCv\) nad tem prostorom ne
-držita. Še več, ker je ta prostor \(T₆\) validira \(\aks*\), torej ne velja niti
-\(\CCv\) za ``realne'' resničnostne vrednosti. 
+ki ni lokalno povezan. Avtorica meni, da je modificiran Fortov prostor na \(ℝ\)
+dober kandidat, a ji ni uspelo preveriti detajlov. Vseeno, se je pa zadostno
+prepričala, da niti \(\alpo*\) niti \(\CCv\) nad tem prostorom ne držita.
 
-NOTE: technically to pomen da \(\Ncof + (ω+1)\) dela, ampak ta validira
-\(\CCv_{Σ_{\Rd}}\).
-
-% TODO: res rabim prevod za to
-Fortov prostor zgoraj je \(T₆\), tako da v njemu ne velja niti šibkejša oblika
-\(\CCv\), ki je omejena na ``realne'' resničnostne vrednosti.
-Res, če še enkrat podrobno pogledamo dokaz enakosti, se potrebujemo števno
-mnogokrat odločiti za neenakosti z \emph{istim} realnim številom, \(\CCv\) pa
-govori o števno mnogo različnih realnih številih.
-Avtorica sumi, da je \(\Rd = \Rc\) ekvivalentno temu:
+Velja pa še več, namreč nad tem prostorm ne velja niti \(\CCv_{Σ_{\Rd}}\).
+Kar je pa tudi za pričakovati (namreč, da je \(\Rd = \Rc\) šibkejši), saj če
+podrobno pogledamo klasičen dokaz enakosti, se potrebujemo števno mnogokrat
+odločiti za neenakosti z \emph{istim} realnim številom, \(\CCv\) pa govori o
+števno mnogo različnih realnih številih. Avtorica sumi, da je \(\Rd = \Rc\)
+ekvivalentno temu:
 \begin{quotation}
   Naj bo \(p\) naraščajoče in \(q\) padajoče zaporedje, in naj bo \(\sup p ≤ \inf q\)
   (tu morda \(=\)?), in naj bo \(x : ℝ\). Potem velja \(\for{n : ℕ}{pₙ < x ∨ x < qₙ}\),
@@ -324,9 +343,6 @@ Avtorica sumi, da je \(\Rd = \Rc\) ekvivalentno temu:
 kar je pa zelo šibek princip števne odločitve.
 
 \subsection{\(\Rm{} = \Rd\)}\label{sec:reals-Rm=Rd}
-
-NOTE: \(\Rm = \Rd ⇒ T3.5\)? to ne more bit res, ampak ne vem zakaj ne. Uglaunem,
-pri Banachovih mrežah je tle izrek ``\(𝒞(X, ℝ)\) polna in \(T_π\) ⇒ ext. nepov''.
 
 % https://gist.github.com/andrejbauer/689b17b10a4e80ea409d03ec030c98b3
 Andrej Bauer je 2023 za prvoaprilsko šalo objavil, kar zgleda kot konstruktiven
@@ -405,7 +421,7 @@ logiki.
   \(\uline f\) in \(\bar f\) zvezni, in a to pomen da sta enaki?
 
   NOTE: Najdla sm da pomen da je vmes med njima en zvezen… nevem zakaj to pomeni
-  da sta enaka… Aaha, sem ugotovila, ker sta ostra dobimo tud da sta enaka.
+  da sta enaka… Aaha, sem ugotovila, ker sta tesna dobimo tud da sta enaka.
 \end{dokaz}
 
 Gornji dokaz sem tudi formalizirala v dokazovalnem pomočniku Agda, kar nam da
@@ -414,18 +430,19 @@ formaliziran, popolnoma konstruktiven dokaz sledečega izreka.
   MacNeillova realna števila se ujemajo z Dedekindovimi natanko tedaj, ko velja
   šibka izključena tretja možnost.
 \end{izrek}
+
+V literaturi se to pojavi v recimo~\cite[trd.~D4.7.11]{Johnstone02}, sem pa to
+tudi formalizirala v dokazovalnem pomočniku Agda~\cite{Strah25}.
 TODO: objavi kodo in jo citiraj tu.
 
-TODO: elephant D4.7.11 je to
-
 Kaj pa, če bi zahtevali šibkejši pogoj, da ima vsaka števna omejena množica
-supremum? Izkaže se, da je to natanko ekvivalentno \(\awlpo*\).
+supremum? Izkaže se, da je to natanko ekvivalentno
+\(\awlpo*\)~\cite[vaja~3N.5]{GJ60}.
 
 \begin{trditev}
   Nad \(X\) velja \(\awlpo*\) natanko tedaj, ko ima vsaka omejena, poseljena,
   števna družina realnih števil supremum.
 \end{trditev}
-TODO: dokaz. GJ60, 3N.5
 
 
 %%% Local Variables:

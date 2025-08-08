@@ -104,7 +104,7 @@
 %\usepackage{xparse}
 \newcommand{\forces}[2]{#1\;⊩\;#2}
 \makeatletter
-\NewDocumentCommand{\@definstance}{mmm}{%
+\NewDocumentCommand{\@defprinciple}{mmm}{%
   \ExpandArgs{c}\NewDocumentCommand{#1}{s}{%
     \IfBooleanTF##1%
     {\textnormal{\sffamily #2}}%
@@ -116,26 +116,26 @@
     }%
   }%
 }
-\newcommand{\definstance}[1]{\@definstance{#1}{\MakeUppercase{#1}}{\MakeLowercase{#1}}}
+\newcommand{\defprinciple}[1]{\@defprinciple{#1}{\MakeUppercase{#1}}{\MakeLowercase{#1}}}
 \makeatother
-\newcommand{\instance}[1]{\textnormal{\sffamily #1}} % TODO: rename
-\definstance{lem}
-\definstance{wlem}
-\definstance{lpo}
-\definstance{wlpo}
+\newcommand{\principle}[1]{\textnormal{\sffamily #1}} % TODO: rename
+\defprinciple{lem}
+\defprinciple{wlem}
+\defprinciple{lpo}
+\defprinciple{wlpo}
 \undef\mp
-\definstance{mp}
-\definstance{ks}
-\definstance{alpo}
-\definstance{awlpo}
-\definstance{allpo}
-\definstance{amp}
-\definstance{aks}
-\newcommand{\AC}{\instance{AC}}
-\newcommand{\IAC}{\instance{IAC}}
-\newcommand{\CC}{\instance{CC}}
-\newcommand{\CCv}{\instance{CC}^∨}
-\newcommand{\DC}{\instance{DC}}
+\defprinciple{mp}
+\defprinciple{ks}
+\defprinciple{alpo}
+\defprinciple{awlpo}
+\defprinciple{allpo}
+\defprinciple{amp}
+\defprinciple{aks}
+\newcommand{\AC}{\principle{AC}}
+\newcommand{\IAC}{\principle{IAC}}
+\newcommand{\CC}{\principle{CC}}
+\newcommand{\CCv}{\principle{CC}^∨}
+\newcommand{\DC}{\principle{DC}}
 \def\Rm{ℝ_{\text{M}}}
 \def\Rd{ℝ_{\text{D}}}
 \def\Rc{ℝ_{\text{C}}}
@@ -154,9 +154,8 @@
 
 \newcommand{\quot}[1]{``#1''}
 
-\theoremstyle{definition}
-\newtheorem{konstrukcija}[definicija]{Konstrukcija}
-\newtheorem{oznaka}[definicija]{oznaka}
+\newdef{konstrukcija}
+\newdef{oznaka}
 
 \renewcommand{\ln}{\mathcal{\mathrm{Ln}}}
 
