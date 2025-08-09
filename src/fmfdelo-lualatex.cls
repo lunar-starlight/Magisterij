@@ -227,7 +227,6 @@
 \renewcommand{\title}{\@definerequiredfield{@title}}
 \newcommand{\letnica}{\@definerequiredfield{@letnica}}
 \newcommand{\zahvala}{\@definefield{@zahvala}}
-\newcommand{\osnovnaliteratura}{\@definefield{@osnovnaliteratura}}
 \newcommand{\povzetek}{\@definerequiredfield{@povzetek}}
 \renewcommand{\abstract}{\@definerequiredfield{@abstract}}
 \newcommand{\klasifikacija}{\@definerequiredfield{@klasifikacija}}
@@ -916,8 +915,8 @@
   {\addcontentsline{toc}{section}{References}}
 \printbibliography
 \fi
-\cleardoublepage
-\printindex
+%\cleardoublepage
+%\printindex
 
 \@ifthen{\boolean{@trst}}{
   \newtheorem{assioma}{Assioma}
