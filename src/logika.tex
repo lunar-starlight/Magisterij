@@ -6,8 +6,8 @@ Spomnimo se nekaj definicij realnih števil.
 \begin{definicija}[Dedekindova realna števila]
   Par \(\p{L, U} ∈ 𝒫(ℚ)×𝒫(ℚ)\) je \emph{Dedekindov rez}, ko velja
   \begin{align}
-    L \text{ je poseljen}\\
-    U \text{ je poseljen}\\
+    L \text{ je naseljen}\\
+    U \text{ je naeljen}\\
     L \text{ je navzdol zaprt}\\
     U \text{ je navzgor zaprt}\\
     L \text{ je navzgor odprt}\\
@@ -30,21 +30,24 @@ Spomnimo se nekaj definicij realnih števil.
   Zaporedje racionalnih števil \((xₙ)ₙ\) je \emph{Cauchyjevo}, ko za vsaka
   \(i,j : ℕ\) velja \(|xᵢ - xⱼ| ≤ 2⁻ⁱ+2⁻ʲ\).
 
-  % \emph{Modulus konvergence} je preslikava \(α : ℚ₊ → ℕ\), za katero za vsak
-  % \(n : ℕ\) obstaja \(ε : ℚ₊\), da je \(α(ε) ≥ n\).
-
-  % Zaporedje racionalnih števil \(\p{xₙ}\) z modulusom konvergence \(α\) je
-  % \emph{Cauchyjevo}, ko za vsake \(ε : ℚ₊\) in \(i,j ≥ α(ε)\) velja
-  % \(|xᵢ - xⱼ| < ε\).
-
   Dve Cauchyjevi zaporedji predstavljata isto realno število,
   ko za vse \(i : ℕ\) velja \(|xᵢ - yᵢ| ≤ 2⁻ⁱ⁺¹\).
-  % ko obstaja modulus
-  % konvergence \(α\), da za \(ε : ℚ₊\) in \(i ≥ α(ε)\) velja \(|xᵢ - yᵢ| ≤ ε\). 
 
   Množica Cauchyjevih zaporedij kvocientno z gornjo relacijo tvori
   \emph{Cauchyjeva realna števila}, ki jih označimo z \(\Rc\).
 \end{definicija}
+\begin{opomba}
+  Takim zaporedjim ponavadi pravimo hitra Cauchyjeva zaporedja.
+  Izkaže se, da so ekvivalentna moduliranim Cauchyjevim
+  zaporedjim~\cite{nlab-cauchy-real}, a je definicija tistih bolj komplicirana,
+  tako da raje uporabimo to.
+
+  Paziti je pa treba, da klasična \(ε\)-\(δ\) definicija Cauchyjevih zaporedij
+  \emph{ni} ekvivalentna gornji. Tem se potem pravi bodisi klasična Cauchyjeva
+  zaporedja ali pa Cantorjeva zaporedja~\cite{nlab-cauchy-real}.
+  Ker pa v našem delu teh ne potrebujemo, bomo objekt hitrih Cauchyjevih realnih
+  števil imenovali kar samo Cauchyjeva.
+\end{opomba}
 
 \begin{trditev}
   Vsako Cauchyjevo realno število je tudi Dedekindovo.
@@ -57,12 +60,10 @@ Spomnimo se nekaj definicij realnih števil.
   Pokazati moramo, da za vsako Cauchyjevo realno število \(x\) velja
   \(x > 0 ∨ x < 3\).
 
-  %To pa pomeni, da mora obstajati nek indeks \(N : ℕ\), da so \(xᵢ > 0\) za vse
-  %\(i ≥ N\), ali pa \(xᵢ < 3\) za vse \(i ≥ N\).
   Za racionalno število \(x₀\) velja \(x₀ > 1 ∨ x₀ < 2\), saj imajo racionalna
   števila odločljivo neenakost. Sedaj pa vemo, da za vse \(i : ℕ\) velja
-  \(|x₀ - xᵢ| ≤ 1\), torej če je \(x₀ > 1\) bodo vsi \(xᵢ > 0\), po drugi strani
-  pa če je \(x₀ < 2\) bodo vsi \(xᵢ < 3\), kar pa zaključi dokaz.
+  \(|x₀ - xᵢ| ≤ 1\), torej, če je \(x₀ > 1\), bodo vsi \(xᵢ > 0\), po drugi strani
+  pa, če je \(x₀ < 2\), bodo vsi \(xᵢ < 3\), kar pa zaključi dokaz.
 \end{dokaz}
 
 Obrat pa ne velja konstruktivno. To pomeni, da lahko na ``\(\Rd = \Rc\)''
@@ -74,8 +75,8 @@ TODO: cite nlab? elephant?
 \begin{definicija}[MacNeillova realna števila]
   Par \(\p{L, U} ∈ 𝒫(ℚ)×𝒫(ℚ)\) je \emph{Dedekind-MacNeilleov rez}, ko velja
   \begin{align}
-    L \text{ je poseljen}\\
-    U \text{ je poseljen}\\
+    L \text{ je naseljen}\\
+    U \text{ je naseljen}\\
     L \text{ je navzdol zaprt}\\
     U \text{ je navzgor zaprt}\\
     L \text{ je navzgor odprt}\\
@@ -114,7 +115,7 @@ Ostalo bi torej pokazati zgolj lociranost vsakega MacNeillovega realnega
 števila, a to žal ni mogoče.
 Temu principu bomo torej pravili ``\(\Rm = \Rd\)''.
 
-Pokažimo še koristno lemo, ki pravi, da ima vsaka poseljena omejena množica
+Pokažimo še koristno lemo, ki pravi, da ima vsaka naseljena omejena množica
 MacNeillovih realnih števil supremum.
 \begin{lema}\label{th:Rm-sup}
   MacNeillova realna števila so polna.
