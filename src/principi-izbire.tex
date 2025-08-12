@@ -1,5 +1,9 @@
-\section{Principi izbire}\label{sec:izbire}
+\section{Principi izbire v topoloških modelih}\label{sec:izbire}
 
+Od tu naprej bomo ponovno delali v klasični metateoriji. Čeprav bi bilo lepo
+razviti ekvivalence konstruktivno, se izkaže, da v konstruktivni metateoriji
+pogosto ne bomo mogli pokazati, da modeli zadoščajo logičnim principom. To nam
+nakazuje spodnji izrek.
 
 \begin{trditev}
   Če je \(X\) lokalno povezan, in nad \(X\) velja kateri koli princip izbire,
@@ -14,14 +18,6 @@
   \(f : \c{B^A}\), kar nam pa da eksterno funkcijo \(f : A → B\), za katero
   potem velja \(\for{a ∈ A}{R(a, f(a)}\).
 \end{proof}
-
-TODO: a je to relevantno?
-Ta izrek nam pove, da zares v preveč konstruktivni metamatematiki niti ne moremo
-pričakovati, da se bo zgodilo kaj zanimivega. Skoraj noben topološki model ne bo
-validiral principov izbire, kar pa pomeni, da bodisi ne bomo mogli najti pametne
-topološke karakterizacije, bodisi pa ne bomo mogli pokazati, da topološki
-prostor s tako lastostjo sploh obstaja.
-
 \begin{opomba}
   Zgoraj smo lokalno povezanost uporabili zgolj za enakost \({\c B}^{\c A} = \c{B^A}\),
   tako da bi zadoščalo predpostaviti zgolj to (torej, za enaka \(A\) in \(B\)
@@ -29,9 +25,16 @@ prostor s tako lastostjo sploh obstaja.
   lokalni povezanosti v tem razdelku, razen kjer bo eksplicitno omenjeno.
 \end{opomba}
 
-% TODO: cite whatever talk he gave
-Spodnji rezultat je v malo drugačni obliki pokazal Alex Simpson, dokaz v primeru
-topoloških modelov je pa originalen.
+Torej, za lokalno povezane modele brez \(\AC(A,B)\) v metateorji ne bomo morali
+najti \emph{nobenega} modela, ki bi ta princip validiral. To pa tudi pomeni, da
+ne bomo mogli najti ustrezne topološke lastnosti, ki bi temu principu pripadala.
+
+Seveda pa glede na to, da nas zanimajo topološke lastnosti, in se teorija
+topologije večinoma razvija klasično, je to še močnejši razlog, zakaj bi
+preferirali klasično metateorijo.
+
+Spodnji rezultat je v malo drugačni obliki pokazal Alex Simpson~\ref{Simpson24},
+dokaz v primeru topoloških modelov je pa originalen.
 \begin{izrek}\label{th:ac-and-conn-is-pgt}
   Nad \(X\) velja \(\AC_Σ(\c A, \c B)\) in \({\c B}^{\c A} = \c{B^A}\) natanko
   tedaj, ko ima vsaka \(A\)-indeksirana množica \(B\)-indeksiranih
@@ -71,14 +74,12 @@ topoloških modelov je pa originalen.
     nobenega pogoja na sebi. (če je to sploh res)
   \end{itemize}
 \end{proof}
-NOTE: brez meta-ac je leva stran lahko za vse celovite \(R\) velja
-\[ \eventually{V⊆U}{\for{a∈A}{\exist{b∈B}{V⊩R(a,b)}}} \]
-NOTE: Mogoče tu rabimo \(\g B\) namesto \(B\).
+%NOTE: brez meta-ac je leva stran lahko za vse celovite \(R\) velja
+%\[ \eventually{V⊆U}{\for{a∈A}{\exist{b∈B}{V⊩R(a,b)}}} \]
+%NOTE: Mogoče tu rabimo \(\g B\) namesto \(B\).
+%NOTE: interno je to \(\for{a:A}{\globalen{b:B}{R(a,b)}}\)
 
-NOTE: interno je to \(\for{a:A}{\globalen{b:B}{R(a,b)}}\)
-
-TODO: Enkrat sem pokazala, da je \(\for{A,B}{\AC(\c A,\c B)}\) ekvivalentno
-\(\AC\), zdej pa ne znam. A je to res?
+Ta lastnost o pofinitvah pa ni zares klasična topološka lastost. 
 
 \begin{definicija}\label{def:psp}
   \emph{P-prostori} so prostori, za katere velja, da je števen presek odprtih
@@ -129,8 +130,8 @@ Obrat gornje trditve pa ne velja.
 
 Znana je tudi delna karakterizacija \(\DC\)~\cite[lema~D4.5.16]{Johnstone02}\cite[trd.~2.2]{HL16}.
 \begin{definicija}
-  Prostor \(X\) je \emph{ultraparakompakten}, ko
-  ima vsako pokritje prostora pofinitev s particijo.
+  Prostor \(X\) je \emph{ultraparakompakten}, ko ima vsako pokritje prostora
+  pofinitev s particijo.
 \end{definicija}
 \begin{trditev}
   Nad ultraparakompaktnimi prostori velja \(\DC\).
@@ -138,12 +139,14 @@ Znana je tudi delna karakterizacija \(\DC\)~\cite[lema~D4.5.16]{Johnstone02}\cit
 \begin{dokaz}
   Denimo, da smo že konstruirali \(xₙ\). Potem po celovitosti množice
   \(\i{R(xₙ,x)}\) tvorijo pokritje, torej po predpostavki obstaja pofinitev s
-  particijo \(\{Pₓ\}ₓ\). Potem pa velja \(\unique{x:X}{R(xₙ,x)∧Pₓ}\), torej
-  lahko \(xₙ₊₁\) definiramo kot natanko ta \(x\).
+  particijo \(\{P_α\}_α\). Potem lahko uporabimo aksiom odvisne izbire v
+  metateoriji, da za vsak \(α\) izberemo tak \(x_α\), da je \(P_α ⊆ \i{R(xₙ,x_α)}\).
+  Potem pa lahko definiramo \(xₙ\) tako, da je na \(P_α\) enak \(x_α\). Ker
+  \(P_α\) tvorijo pokritje, in so paroma disjunktni, to dobro definra term tipa \(X\).
 \end{dokaz}
 \begin{opomba}
-  TODO: Tu verjetno lahko rečemo, da \(\DC_Σ\) pripada ultraparakompaktnost za
-  \(Σ\)-pokritja.
+  Gornjo trditev lahko preprosto posplošimo na \(\DC_Σ\), tako da od prostora
+  zahtevamo, imajo \(Σ\)-pokrtija pofinitve s particijo.
 \end{opomba}
 
 

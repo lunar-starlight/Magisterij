@@ -269,7 +269,7 @@ tako da če znamo primerjati vsa števila, lahko izpeljemo tudi razpon, kar bomo
 tudi vzeli kot osnovni gradnik naših objektov.
 
 Označimo z \(ℒ\) topologijo prostora \(X\).
-\begin{definicija}
+\begin{definicija}\label{def:ℒset}
   TODO: a naj bo ime \(ℒ\)-množice, ali dam kaj drugega? \(X\)-množice nočem
   zares, \(𝒪X\)-množice je malo nereodno, še posebej če nikjer nimam nobene
   točke in sight.
@@ -306,12 +306,19 @@ ekvivalenčno relacijo.
   %izkaže, da je to objekt dedekindovih realnih števil v internem svetu.
 \end{primer}
 
-Gornja dva primera sta primera bolj splošne konstrukcije, saj so lokalno
-konstantne preslikave v \(ℕ\) ravno zvezne. Konstrukciji v splošnem pravimo…
-TODO: kaj tle nardim?
+Gornja dva primera sta primera bolj splošne konstrukcije, saj so zvezne
+preslikave v \(ℕ\) lokalno konstantne (in lokalno konstantne so očitno zvezne).
+Tej konstrukciji v splošnem pravimo \emph{snop lokalnih prerezov}. Specifično so
+njeni elementi lokalni prerezi preslikave \(π : X×A → X\). Ta konstrukcija dela
+le za topološke prostore, in je naravni način kako topološki prostor \(A\)
+``internalizirati''. Je pa vredno omeniti, da lahko vsaki \(ℒ\)-množici
+priredimo tak topološki prostor, da bo snop lokalnih prerezov izomorfen začetni
+\(ℒ\)-množici. Detajle o tem si lahko ogledate v~\cite[pogl.~2]{MM92}, ker
+izvedejo konstrukcijo prostora, in~\cite[pogl.~4]{FS79} ali~\cite{BorceuxV3},
+kjer pokažejo ekvivalenco med \(ℒ\)-množicami in snopi kot so definirani v prvem
+viru.
 
-Je pa struktura \(ℒ\)-množic bistveno bolj splošna kot ``množica preslikav z
-enakostjo po točkah''.
+Struktura \(ℒ\)-množic pa zajema več kot le snope lokalnih prerezov. 
 
 \begin{konstrukcija}
   Množica \(∅\) je \(ℒ\)-množica.
@@ -353,6 +360,13 @@ Te nam služijo kot vložitve navadnih množic v notranji svet topološkega mode
 Najbolj prav to pride, ko imamo družino elementov \(ℒ\)-množice, in jo želimo
 smatrati kot družino znotraj modela.
 
+Poznamo pa tudi primere, ki pa ne spadajo v gornje kategorije.
+\begin{primer}
+  Množica \(ℒ\) skupaj z enakostjo \(\i{p = q} ≔ p ⇔ q\) je \(ℒ\)-množica.
+  Označimo jo z \(Ω\), saj so njeni elementi natanko resničnostne vrednosti naše
+  logike.
+\end{primer}
+
 Ampak naša motivacija za definicijo \(ℒ\)-množic so bile ravno množice zveznih
 preslikav, kar te niso.
 %V tem primeru elementi množice očitno niso zvezne funkcije iz prostora.
@@ -376,7 +390,7 @@ definiciji funkcij. Želeli bi recimo, da je operacija zožitve preslikava, ampa
 če \(ℒ\)-množice niso zaprte za zožitve, slike elementov preprosto ne nujno
 obstajajo.
 
-\begin{primer}
+\begin{primer}\label{ex:one-to-one}
   Na primer, naj bo \(\p{2, 𝒫2}\) diskreten prostor na dveh točkah.
   \(𝒫2\)-množica \(A\) naj ima en element \(a\) definiran povsod,
   \(B\) pa dva elementa, \(b₀\) in \(b₁\), definirana v vsaki od točk prostora.
@@ -408,28 +422,30 @@ poseben primer morfizmov, ki pa dejansko so funkcije med \(ℒ\)-množicami.
   \end{align*}
 \end{definicija}
 
-\begin{definicija}
+\begin{definicija}\label{def:ℒmap}
   \emph{Morfizem med \(ℒ\)-množicama} \(A\) in \(B\) je relacija
   \(f : A×B → ℒ\), za katero velja
   \begin{align}
-    &\i{f(a,b))} ∧ \i{f(a,b')} ≤ \i{b =_B b'} \tag{enoličnost}\label{eq:enoličnost-raw}\\
-    &\e a ≤ ⋁_{b ∈ B} \i{f(a,b)}              \tag{celovitost}\label{eq:celovitost-raw}
+    &f(a,b)) ∧ f(a,b') ≤ \i{b =_B b'} \tag{enoličnost}\label{eq:enoličnost-raw}\\
+    &\e a ≤ ⋁_{b ∈ B} f(a,b)          \tag{celovitost}\label{eq:celovitost-raw}
   \end{align}
-  Na prvi dve pravili gledamo kot na skladnost z enakostima na \(A\) in \(B\),
-  na drugi dve sta pa enoličnost in celovitost, zato morfizme vseeno pišemo v
-  funkcijskem zapisu kot \(f : A ↬ B\).
+
+  Ker so morfizmi funkcijske relacije, jih bomo pisali v funkcijskem zapisu kot
+  \(f : A ↬ B\).
 \end{definicija}
 Vseeno pa bomo internem jeziku na \(⋁_{b ∈ B} φ(b)\) gledali kot eksistenčni
-kvantifikator, torej \ref{eq:celovitost-raw} res pravi, da obstaja nek \(b\), ki
-je slika elementa \(a\).
+kvantifikator, torej celovitost res pravi, da obstaja nek \(b\), ki je slika
+elementa \(a\). To nam bo kasneje omogočilo, da na morfizme gledamo kot
+operacije. Ampak, ne prenaglimo se, povejmo najprej točno, kaj ta interni jezik
+sploh je.
+
 
 \subsubsection{Interni jezik}
 
-Oglejmo si ta interni jezik bolj natančno. Uvedimo končno oznako za
-interpretacijo logičnih formul kot odprte množice, t.~j.~za formulo \(φ\)
-označimo njeno interpretacijo kot \(⟦φ⟧\). Ta je namerno enaka gornjima dvema,
-saj bomo videli, da sta zares to sestavna dela interpretacije v splošnem.
-Spomnimo se sedaj tabele za logiko odprtih množic, z novim zapisom:
+Uvedimo oznako za interpretacijo logičnih formul kot odprte množice, t.~j.~za
+formulo \(φ\) označimo njeno interpretacijo kot \(⟦φ⟧\). Ta je namerno enaka
+gornjima dvema, saj bomo videli, da sta zares to sestavna dela interpretacije v
+splošnem. Spomnimo se sedaj tabele za logiko odprtih množic, z novim zapisom:
 \begin{center}
   \begin{tabularx}{0.6\textwidth}{p{0.2\textwidth} X}
     \(⟦⊤⟧\)     & \(≔ X\)\\
@@ -460,8 +476,7 @@ ampak ni nujno.
     \hline
     \(a\)            & \(a\), za \(a ∈ A\)\\
     \(x\)            & \(x\), kjer je \(x\) spremenljivka tipa \(A\)\\
-    \(f(α)\)         & \(f{\p{\i β}}\), kjer je \(f : B → A\) operacija in
-                       \(β : B\)
+    \(f(α)\)         & \(f{\p{\i β}}\), kjer je \(f : B → A\) operacija in \(β : B\)
   \end{tabularx}
 
   \caption{Interpretacija termov v internem jeziku}
@@ -486,10 +501,10 @@ Na primer \quot{Naj bo \(x : A\)} se naj bere kot
     \(φ ⇒ ψ\)               & \(\int{\p{\i ψ ∪ {\i φ}ᶜ}}\)\\
     \(\for{x : A}{φ(x)}\)   & \(\int{\p{⋂_{a ∈ A}\i{\e a ⇒ φ(a)}}}\)\\
     \(\exist{x : A}{φ(x)}\) & \(⋃_{a ∈ A}\i{\e a ∧ φ(a)}\)\\
-    \(τ = σ\)               & \(\i{\i τ = \i σ}\)\\
+    \(τ = σ\)               & \(\i{\i τ_A = \i σ_A}\)\\
     %\(\i{\e τ}\)                & \(≔ \e{\i τ}\)\\
     %\(\i{τ \sim f(σ)}\)         & \(≔ \i{\i τ \sim f(\i σ)}\)\\
-    \(R(τ)\)                & \(R{\p{\i τ}}\), kjer je \(R : A → ℒ\) relacija
+    \(R(τ)\)                & \(R{\p{\i τ_A}}\), kjer je \(R : A → ℒ\) relacija
   \end{tabularx}
 
   \caption{Interpretacija formul v internem jeziku}
@@ -608,45 +623,33 @@ interpretira v \(X\).
 % konstruktivna resnica močnejša od resnice v naših modelih, kajti topološki
 % modeli niso vsi možni modeli konstruktivne logike.
 
-% TODO: mogoče ni res da hočmo to tko pisat… za razmislit.
-
-% Kdaj bomo pa tudi želeli pisati formule s prostimi spremenljivkami, recimo
-% zgoraj v definicijah \(ℒ\)-množic in morfizmov. V teh primerih vedno želimo, da
-% je formula veljavna na vseh možnih vrednostih teh spremenljivk, tako da bomo
-% veljavnost teh formul tako tudi definirali.
-% \begin{definicija}
-%   Formula \(φ\) s prostimi spremenljivkami tipov \(A₁,…,Aₙ\) je
-%   \emph{(lokalno) veljavna na \(U\)} (pišemo \(U ⊩ φ\)), ko je za vse
-%   \(aᵢ ∈ Aᵢ\) formula \(φ(a₁,…,aₙ)\) veljavna na \(U\).
-%   Če želimo izraziti, da je formula veljavna na celem \(X\), bomo kot zgoraj
-%   pisali tudi \(⊢ φ\), oziroma če želimo izpostaviti katerega tipa so
-%   spremenljivke kot \({x₁ : A₁,…,xₙ : Aₙ ⊢ φ}\).
-% \end{definicija}
-
-TODO: numbering
 Ponovimo sedaj gornje definicije v internem jeziku.
-\begin{definicija}
-  \emph{\(ℒ\)-množica \(A\)} je množica \(\abs A\) z interno relacijo \(=_A\),
-  tako da velja
+\begin{redefinicija}{def:ℒset}
+  \emph{\(ℒ\)-množica \(A\)} je množica \(\abs A\) z interno relacijo \(=_A\) na
+  \(\abs A × \abs A\), tako da velja
   \begin{align*}
     &⊩ \for{x,y:\c{\abs A}}{x =_A y ⇒ y =_A x}\\
     &⊩ \for{x,y,z:\c{\abs A}}{x =_A y ∧ y =_A z ⇒ x =_A z}
   \end{align*}
-\end{definicija}
+\end{redefinicija}
 \begin{opomba}
   Seveda če smo natančni, smo tako \(ℒ\)-množice definirali v fragmentu gornjega
   jezika, kjer za tipe vzamemo konstantne \(ℒ\)-množice. Ampak te detajli niso
   zares važni, tako da bomo še naprej uporabljali ista simbola za \(A\) in
   \(\abs A\).
+
+  Bilo bi bistveno lepše, če bi lahko napisala, da so \(ℒ\)-množica samo množice
+  z delno ekvivalenčno relacijo \(=_A\), ampak da lahko sploh govorimo o
+  relacijah moramo najprej imeti definirano enakost na \(ℒ\)-množici.
 \end{opomba}
-\begin{definicija}
+\begin{redefinicija}{def:ℒmap}
   \emph{Morfizem med \(ℒ\)-množicama \(A\) in \(B\)} je relacija
   \({f : A×B → ℒ}\), za katero velja
   \begin{align}
     &⊩ \for{x:A}{\for{y,y':B}{f(x,y)∧f(x,y') ⇒ y=y'}} \tag{enoličnost}\label{eq:enoličnost}\\
     &⊩ \for{x : A}{\exist{y : B}{f(x,y)}}             \tag{celovitost}\label{eq:celovitost}
   \end{align}
-\end{definicija}
+\end{redefinicija}
 \begin{opomba}
   Pogoja enoličnosti in celovitosti lahko sedaj združimo v en
   pogoj
@@ -721,7 +724,6 @@ recimo produkt \(ℒ\)-množic.
   tipa \(\c{A×B}\).
 \end{primer}
 
-NOTE: Mogoče je to prezgodej, a so dokazi tle ok za to stopnjo?
 \begin{konstrukcija}
   Če imamo \(ℒ\)-morfizma \(A \oset{f}{↬} B \oset{g}{↬} C\), je njun kompozitum
   \(g∘f : A ↬ C\) definiran z relacijo
@@ -746,22 +748,45 @@ NOTE: Mogoče je to prezgodej, a so dokazi tle ok za to stopnjo?
   označimo z \(\cat{Set}(ℒ)\).
 \end{definicija}
 
-Kot vemo, so podobjekti natanko (ekvivalenčni razredi) monomorfizmov
+Karakterizirajmo sedaj podobjekte \(ℒ\)-množice \(A\). Običajno so te
+do izomorfizma natančno monomorfizmi s kodomeno \(A\). Poleg tega so urejeni,
+tako da je \(S ⊆ T\) natanko tedaj, ko obstaja monomorfizem \(S → T\).
+Vemo pa tudi, da ponavadi lahko podobjekte predstavimo s \emph{predikati} na
+množici, torej funkcijami iz \(A\) v množico resničnostnih vrednostih.
+
+V našem primeru igra topologija \(ℒ\) vlogo množice resničnostnih vrednosti,
+tako da bi lahko za podobjekte vzeli morfizme \(A ↬ ℒ\), ampak se izkaže, da lahko
+definicijo še poenostavimo.
+
+\begin{lema}\label{th:ℒsub-is-map-to-Ω}
+  Za vsak morfizem \(f : A ↬ Ω\) obstaja enolična operacija \(\hat f : A → Ω\),
+  tako da je morfizem porojen z \(\hat f\) enak \(f\).
+\end{lema}
+\begin{dokaz}
+  Definirajmo \(\hat f(a) ≔ f(a,⊤)\).
+  Očitno je \(\hat f(a) ≤ \e a\), saj je vsak \(f(a,⊤) ≤ \e a\).
+
+  Denimo sedaj, da je \(a=a'\). Potem je \(f(a,⊤) = f(a',⊤)\), torej je
+  \(\hat f(a) = \hat f(a')\), torej je \(\hat f\) res operacija.
+
+  Denimo, da velja \(f(a,U)\). Potem je \(f(a,U) = f(a,⊤)\), torej je
+  \(U = f(a,U) = \hat f(a)\).
+
+  Obratno, naj velja \(f(a,⊤) = U\) in denimo, da \(U\) velja. Potem pa tudi
+  \(f(a,U)\) velja, po prvi lasnosti relacije.
+\end{dokaz}
+
+Torej lahko za \(ℒ\)-podmnožice vzamemo kar eniške relacije na \(A\), saj so te
+natanko operacije v \(Ω\). Kasneje bomo pa pokazali, da so to res podobjekti.
+
 \begin{definicija}\label{def:subset}
   Eniškim relacijam na \(A\) pravimo \emph{\(ℒ\)-podmnožice \(A\)} in označimo
   \(S ⊑ A\). Za \(τ : A\) in \(S ⊑ A\) bomo namesto \(S(τ)\) pisali \(τ ∈ S\).
   Interni jezik razširimo z \(∈\) na očiten način.
-  %z enakostjo definirano kot \(⊢ \for{a : A}{P(a) ⇔ Q(a)}\).
-  % ekvivalenčnih razredov monomorfizmov
-  % s kodomeno \(A\), kjer sta monomorfizma \(s : S ↬ A\) in \(t : T ↬ A\) v
-  % relaciji natanko tedaj, ko obstaja izomorfizem \(i : S ↬ T\), da je
-  % \(t ∘ i = s\). 
 \end{definicija}
 
 \begin{konstrukcija}\label{cons:ℒ-sub-lattice}
-  TODO: a rečem mreža al delna ureditev?
-
-  \(ℒ\)-podmnožice tvorijo mrežo z ureditvijo
+  \(ℒ\)-podmnožice tvorijo delno ureditev z ureditvijo
   \[ S ⊑ T :⇔\ ⊢ \for{x : A}{x ∈ S ⇒ x ∈ T}\text. \]
 \end{konstrukcija}
 
@@ -792,22 +817,29 @@ Kot vemo, so podobjekti natanko (ekvivalenčni razredi) monomorfizmov
   kot smo vajeni.
 \end{konstrukcija}
 
-Iz vsake \(ℒ\)-podmnožice lahko tudi zgradimo dejansko \(ℒ\)-množico, ki se
-vloži v svojo nadmnožico.
+Primer te konstrukcije smo zares že videli, v dokazu
+leme~\ref{th:ℒsub-is-map-to-Ω}. Tam smo zares iz morfizma \(f : A ↬ Ω\)
+skonstruirali \(ℒ\)-podmnožico \(f⁻¹(⊤)\). Iz teorije kategorij pa vemo, da če
+je \(f\) karakteristična preslikava podobjekta \(S\), je potem \(S = f⁻¹(⊤)\),
+torej je to natanko ista konstrukcija. Pokažimo sedaj, da so \(ℒ\)-podmnožice
+natanko podobjekti.
+
+Preden se lotimo dejanskega dokaza pa pokažimo, da lahko iz vsake
+\(ℒ\)-podmnožice lahko tudi zgradimo dejansko \(ℒ\)-množico, ki se vloži v svojo
+nadmnožico. To je zares konstrukcija podobjekta iz \(ℒ\)-podmnožice.
 \begin{konstrukcija}\label{cons:ℒset-from-ℒsub}
   Naj bo \(P ⊑ A\). Tvorimo \(ℒ\)-množico \(\hat P\) z nosilcem \(A\) in
   enakostjo definirano kot \(x =_A x'∧P(x)\).
-  Identiteta na \(A\) potem definira vložitev \(m : \hat P ↬ A\).
+  Identiteta na \(A\) potem definira monomorfizem \(m : \hat P ↬ A\).
 \end{konstrukcija}
 \begin{dokaz}
   Relacija je simetrična, saj iz \(x=x'∧P(x)\) sledi \(P(x')\), in obratno.
   Tranzitivnost pa očitno sledi iz tranzitivnosti \(=_A\).
 
-  Za preslikavo \(m\) velja, da za vsak \(f : B ↬ \hat P\) velja
+  Za morfizem \(m\) velja, da za vsak \(f : B ↬ \hat P\) velja
   \(m∘f(b,a) = f(b,a)\). To pa pomeni, da je monomorfizem, torej vložitev.
 \end{dokaz}
 
-TODO: standardno so podobjekti bla bla bla, to je isto, we good
 \begin{trditev}\label{th:ℒsub-is-sub}
   Delni ureditvi \(ℒ\)-podmnožic \(A\) in podobjektov \(A\) sta si ekvivalentni.
 \end{trditev}
@@ -821,11 +853,17 @@ TODO: standardno so podobjekti bla bla bla, to je isto, we good
   
   Preverimo, da sta si ti operaciji inverzni.
   Če začnemo z \(m : S ↬ A\), se \(m\) zoži na \(S ↬ A/m[S]\). Prav tako je ta
-  preslikava surjektivna, saj za vsak \(a : A/m[S]\) vemo, da ima razpon
+  morfizem surjektiven, saj za vsak \(a : A/m[S]\) vemo, da ima razpon
   \(\e a ∧ a ∈ m[S]\), torej obstaja nek \(s : S\), da je \(m(s,a)\).
 
   Obratno, če je \(P ⊑ A\) je \(a ∈ \id[\hat P]\) natanko tedaj, ko velja \(a ∈ P\).
 \end{proof}
+
+Za konec pa definirajmo še kvocientne \(ℒ\)-množice. Najprej pokažimo 
+
+\begin{definicija}
+  Relacija \(R\) na \(A×A\) je refleksivna, ko velja \(⊩ \for{x:A}{R(x,x)}\).
+\end{definicija}
 
 \begin{lema}
   Za refleksivno relacijo \(R\) na \(A×A\) velja
@@ -833,7 +871,7 @@ TODO: standardno so podobjekti bla bla bla, to je isto, we good
 \end{lema}
 \begin{dokaz}
   Naj bosta \(a\) in \(b\) tipa \(A\) enaka. Potem je \(R(a,b)\) natanko
-  \(R(a,a)\), kar je pa po predpostavki res.
+  \(R(a,a)\), kar je pa natanko refleksivnost \(R\).
 \end{dokaz}
 
 \begin{konstrukcija}\label{cons:quot}
@@ -841,11 +879,11 @@ TODO: standardno so podobjekti bla bla bla, to je isto, we good
   enakost vzamemo \(R\), tvori \(ℒ\)-množico, ki ji pravimo
   \emph{kvocient \(A\) po \{R\}} in jo označimo \(\frac A R\).
 
-  Identiteta na \(A\) potem definira kvocientno preslikavo \(q : A ↬ \frac A R\).
+  Identiteta na \(A\) potem definira kvocientni morfizem \(q : A ↬ \frac A R\).
 \end{konstrukcija}
 \begin{dokaz}
   Enakost bo očitno simetrična in tranzitivna, tako da rabimo preveriti samo, da
-  identiteta res definira ustrezno preslikavo.
+  identiteta res definira ustrezen morfizem.
 
   % Najprej pokažimo, da velja \(⊩\for{x,y:A}{x = y ⇒ R(x,y)}\). Ker je preslikava
   % refleksivna, to pomeni, da velja \(⊩ \for{x:A}{R(x, x)}\). Poleg tega
@@ -853,53 +891,37 @@ TODO: standardno so podobjekti bla bla bla, to je isto, we good
   % Leva stran implikacije se poenostavi na \(a = a'\), ker smo na \(\e{a'}\) in
   % je \(R(a',a')\) res.
 
-  TODO: reword
-  Po definiciji je \(q{\p{a, a'}} = \i{a =_A a'}\). To pa pomeni, da je
-  \(q(a, a')∧q(b, b') ⇒ a =_A a' ∧ b =_A b'\), kar pa implicira želeno nenakost.
-  Celovitost pa preprosto sledi iz celovitosti identitete na \(A\), saj je ta
-  kot preslikava manjša od naše kvocientne preslikave.
+  Naj bo \(f : A ↬ B\) morfizem, za katerega velja \(R(a,a')∧f(a',b) ≤ f(a,b)\).
+  Tedaj bo \(f\) tudi morfizem tipa \(\frac A R ↬ B\), torej je \(q\) res
+  kvocientna reslikava.
 \end{dokaz}
 
 
 \subsubsection{Polne \(ℒ\)-množice}
 
-Prej smo že omenili, da lahko iz globalnih lokalnih elementov rekonstruiramo
-snop, vendar je ta konstrukcija komplicirana, poleg tega pa potem delamo z
-nekimi kvocienti, kar nikoli ni prijetno. Tako bi želeli, da bi naše
-\(ℒ\)-množice kar dopolnili še z vsemi ostalimi elementi snopa. Vemo, da imamo
-za to dovolj informacij, saj je vsak element zožitev enega od globalnih
-lokalnih, je pa vseeno izziv kako identificirati zožitve, ki se ujemajo.
+Pogosto omenjamo, da zaradi lokalne narave naše logike in splošnosti definicije
+\(ℒ\)-množic nekateri elementi ne obstajajo. Oglejmo si recimo spet
+primer~\ref{ex:one-to-one}. Naj bo \(X = 2\), \(A = \mb 1\), in
+\(B = \{b₀,b₁\}\), kjer je \(\e{bᵢ} = \{i\}\).
+Potem je \(f(*,bᵢ) ≔ \{i\}\) funkcijska relacija, a slika \(f[*]\) ni element
+\(B\). A vendar je vrednost \quot{\(bᵢ\) in \(bⱼ\) elementa \(f[*]\)} enaka
+\(\{i\}∩\{j\}\). Če je vrednost enaka recimo \(\{0\}\) vemo, da sta oba \(bᵢ\)
+in \(bⱼ\) enaka \(b₀\). Če je pa vrednost prazna, pa elementa očitno nista oba v
+sliki \(f[*]\). Skupaj to pomeni, da ima \(f[*]\) največ en element.
 
-% TODO: reword
-% Trik, ki ga bomo uporabili smo že srečali pri motivaciji za definicijo
-% \(ℒ\)-preslikav, namreč, da lahko element snopa \(f\) primerjamo z vsemi
-% globalnimi lokalnimi elementi, torej da dobimo funkcijo iz \(ℒ\)-množice v okvir
-% \(ℒ\). Ta konstrukcija v snopih enolično določa elemente, torej če sta
-% \(f ∈ F(U)\) in \(g ∈ F(V)\), in se njune primerjave ujemata na vseh globalnih
-% lokalnih elementih, se v posebnem tudi ujemata z neko razširitvijo \(f\) (ki jo
-% označimo \(f'\)), torej velja \(f{\res V} = f'{\res{U∩V}} = g{\res U}\), kar pa
-% pomeni, da sta \(f\) in \(g\) skladna. Potem pa nam vsaka primerjava definira
-% skladno družino, ki jo lahko zlepimo v enoličen element snopa.
+Seveda pa kot prej, ni nobenega elementa v \(B\), ki bi bil povsod element \(f[*]\).
+Ker pa nam \(f[*]\) vseeno natanko predstavlja ta element, lahko gornjo
+lastnost, torej, \(ℒ\)-podmnožica z največ enim elementom, vzamemo kot nekakšno
+\quot{napolnitev} \(ℒ\)-množice \(B\). Izkaže se, da nam bo to dovolilo
+neposredno izraziti zožitve in zlepke elementov.
 
-% Spomnimo se pa, da so take funkcije natanko podobjekti, in če je element
-% podobjekta enolično določen, mu lahko pravimo enojec, oziroma podenojec, ker ta
-% element ne obstaja nujno med globalnimi lokalnimi elementi. Vendar pa kljub
-% temu, da so te podenojci lahko \quot{prazni}, imajo dovolj zanimivo strukturo,
-% da iz njih lahko rekonstruiramo celoten snop.
-
-% % TODO: reword
-% Naj bo \(F\) snop nad \(ℒ\). Potem lahko za \(m ∈ F(U)\) definiramo enojec
-% \(⟦a ∈ ⟨m⟩⟧ ≔ ⟦a = m⟧\), kjer je \(a ∈ F(V), V ∈ ℒ\).
-% Na enojcih lahko definiramo tudi \(⟦⟨m⟩ = ⟨n⟩⟧ ≔ ⟦m = n⟧\).
-% Snop \(F\) lahko sedaj rekonstruiramo iz njegovih enojcev.
-% Podobno bomo storili za \(ℒ\)-množice.
 
 \begin{definicija}\label{def:sing}
   \emph{(Pod)enojec} na \(ℒ\)-množici \(A\) je \(ℒ\)-podmnožica \(σ ⊑ A\), za katero velja
   \[ ⊩ \for{x,y:A}{x ∈ σ ∧ y ∈ σ ⇒ x = y}\text. \]
 \end{definicija}
 \begin{opomba}
-  V literaturi se tem preslikavam reče kar enojci, saj enolično določajo
+  V literaturi se tem \(ℒ\)-podmnožicam reče kar enojci, saj enolično določajo
   delno definirane elemente, in se bomo tega držali tudi mi. Poleg tega se za
   enojce ponavadi uporablja grške črke \(σ, ρ, τ,…\).
 \end{opomba}
@@ -916,6 +938,10 @@ lokalnih, je pa vseeno izziv kako identificirati zožitve, ki se ujemajo.
   Če imamo \(x\), \(y ∈ \s a\), je po defniciji potem \(x = a = y\), torej je
   \(x=y\).
 \end{dokaz}
+
+TODO: tle povej da je zožitev in zlepek enojec?
+
+TODO: reorder. enojec, lokalnost, \(\g A\), leme, polne, \(\g A\) polna, iso
 
 \begin{konstrukcija}\label{cons:compl}
   Množica enojcev \(A\) z relacijo \(σ = τ ≔ \exist{x : A}{x ∈ σ ∧ x ∈ τ}\)
@@ -964,17 +990,12 @@ Utemeljimo sedaj rabo besede \quot{enojec} za elemente \(\g A\).
   oblike \(\s a\), za nek \(a : A\).
 \end{posledica}
 
-Zares velja še več. Gornji obstoj je enoličen, tako da zares obstaja morfizem
-\(\g A ↬ A\).
+% NOTE: tega še nočem razkrit
+%Zares velja še več. Gornji obstoj je enoličen, tako da zares obstaja morfizem
+%\(\g A ↬ A\).
 
-
-% TODO: rewrite
-% Kot smo rekli na začetku podrazdelka, nam vsak enojec na \(F'\) enolično določa
-% element snopa \(F\). Prav tako pa enojci na \(F\) enolično določajo elemente
-% \(F\). Če torej želimo dopolniti \(ℒ\)-množico do celega snopa, moramo vzeti
-% njeno množico enojcev, oziroma bolj natančno, so polne \(ℒ\)-množice take, kjer
-% nam enojci ne predstavljajo nobenih novih elementov. % nobenih drugih elementov
-%                                 % kot elementov \(ℒ\)-množice same.
+Enojci nam torej dajo način, kako razširiti \(ℒ\)-množico z vsemi zožitvami in
+zlepki njenih elementov. Vprašanje pa je, kdaj se ta proces ustavi.
 
 \begin{definicija}\label{def:compl}
   \(ℒ\)-množica \(A\) je \emph{polna}, kadar je preslikava množic \(a ↦ \s a\)
@@ -982,6 +1003,7 @@ Zares velja še več. Gornji obstoj je enoličen, tako da zares obstaja morfizem
   \(\cat{CSet}(ℒ)\).
 \end{definicija}
 
+TODO: to gre pol deloma gor.
 \begin{lema}\label{th:compl-res}
   Polne \(ℒ\)-množice imajo operator zožitve, t.~j. za vsak \(a ∈ A\) in
   \(U ∈ ℒ\) obstaja \(a{\res U} ∈ A\), tako da velja \(⟦a{\res U} = b⟧ = ⟦a = b⟧∧U\).
@@ -1030,7 +1052,7 @@ veliko poželjnih lastonsti. A to pomeni, da moramo začeti znova s polnimi
 \(ℒ\)-množicami? Namreč, do sedaj smo imeli zgolj en primer polne \(ℒ\)-množice,
 v primeru~\ref{ex:reals}. Izkaže se, da temu ni tako.
 
-% NOTE: ⟨-⟩ definira idempotentno monado. To mi avtomatsko da naslednjih par
+% ⟨-⟩ definira idempotentno monado. To mi avtomatsko da naslednjih par
 % rezultatov (specifično do izreka da so polne ℒ-množice refleksivna
 % podkategorija).
 \begin{lema}\label{th:compl-is-compl}
@@ -1039,7 +1061,7 @@ v primeru~\ref{ex:reals}. Izkaže se, da temu ni tako.
 \begin{dokaz}
   Pokazati moramo, da je preslikava \(σ ↦ \s σ\) bijekcija.
   Injektivnost sledi neposredno iz druge točke gornje leme.
-  % NOTE: to je inverz enote (in je množenje).
+  % to je inverz enote (in je množenje).
   Naj bo potem \(Σ ∈ \g{\g A}\). Definirajmo \(τ ≔ \set{x : A}{\s x ∈ Σ}\).
   To je enojec, saj velja
   \[
@@ -1051,7 +1073,7 @@ v primeru~\ref{ex:reals}. Izkaže se, da temu ni tako.
   \(\s a = τ\). Potem je pa \(\s a ∈ Σ\), torej je \(Σ\) res enak \(\s τ\).
   
   Sledi, da za vsak enojec v \(\g{\g A}\) obstaja natanko en enojec v \(\g A\),
-  ki se vanj slika, tako da je preslikava \(\g -\) res bijekcija, in je \(\g A\)
+  ki se vanj slika, tako da je preslikava \(\s -\) res bijekcija, in je \(\g A\)
   polna.
 \end{dokaz}
 \begin{opomba}
@@ -1069,17 +1091,13 @@ potrebno, saj lahko trditve o \(\g A\) neposredno primerjamo s trditvami o
   \(ℒ\)-množica \(\g A\) je izomorfna \(A\).
 \end{izrek}
 \begin{dokaz}
-  % NOTE: η je enota monade σ, če je g njen inverz, kaj je njena povezava z
-  % množenjem? Plus lahko spustimo pol dokazov, da je η morfizem.
-  Definirajmo preslikavo \(⟦σ \sim η(a)⟧ ≔ \i{a ∈ σ}\).
-  Očitno je skladna z relacijama, tako da moramo preveriti zgolj
-  enoličnost in celovitost.
-  Enoličnost sledi iz implikacije \(a∈σ ∧ a∈τ ⇒ σ = τ\), ostanea le celovitost.
-  Naj bo \(a : A\). Potem velja \(a ∈ \s a\), torej \(\s a \sim η(a)\).
-  
-  Preveriti moramo torej le še, da je bijekcija. Injektivna je očitno, saj to
-  sledi iz definicije enojca, surjektivnost pa sledi iz
-  \(⟦\s a \sim η(a)⟧ = \i{a ∈ \s a} = ‖a‖\).
+  % {-} je enota monade σ, če je η njen inverz, kaj je njena povezava z
+  % množenjem? Plus lahko spustimo pol dokazov, da je {-} morfizem.
+  Vemo že, da se \(A\) vloži v \(\g A\) z morfizmom \(a ↦ \s a\).
+  Njen inverz je \(η(σ,a) ≔ a ∈ σ\).
+  Očitno je \(η(\s a) = a\). Oglejmo si \(\s{η(σ)}\). Ker je sčasoma
+  \(σ = \s a\), je \(\s{η(σ)} = \s{η(\s a)}\), torej \(\s a\). To pa pomeni, da
+  je \(\s{η(σ)} = σ\), torej je res inverz.
 \end{dokaz}
 \begin{posledica}\label{th:set-eq-cset}
   Kategorija \(ℒ\)-množic je ekvivalentna kategoriji polnih \(ℒ\)-množic.
@@ -1105,6 +1123,9 @@ formule s prosto spremenljivko tipa \(\g A\).
   \(\hat R(\s a) ⇔ Q(\s a)\). Ampak ta sta po predpostavki oba \(R(a)\), torej
   sta enaka.
 \end{dokaz}
+Če torej terme \(A\) smatramo kot termre \(\g A\), lahko kar vse relacije
+zamenjamo s konstrukcijo zgoraj, in ne eksplicitno ločujemo med \(R\) in
+\(\hat R\).
 
 \begin{izrek}
   Formula \(φ\) je veljavna natanko tedaj, ko je veljavna formula, v kateri
@@ -1112,12 +1133,11 @@ formule s prosto spremenljivko tipa \(\g A\).
   zamenjamo z njihovimi napolnitvami \(\g A\), in vse konstante \(a\) zamenjamo
   z \(\s a\).
 \end{izrek}
-Ker so relacije \(\hat R\) enolično določene, jih lahko (TODO: kaj je beseda za to da
-jih sintaktično kot iste obravnavamo?). Prav tako, ker je \(\s -\) vložitev \(A\) v
-\(\g A\), lahko konstante tipa \(A\) smatramo kot konstante tipa \(\g A\).
-Nazadnje, spremenimo vse simbole \(∈\) v \(=\). To deluje, saj je
-\(\g{\g A} ≅ \g A\), torej imamo lahko največ en ``nivo'' elementov, torej bodo
-vsi primerljivi z \(=\).
+Ker so relacije \(\hat R\) enolično določene, jih lahko še naprej označujemo kar
+z \(R\). Prav tako, ker je \(\s -\) vložitev \(A\) v \(\g A\), lahko konstante
+tipa \(A\) smatramo kar kot konstante tipa \(\g A\). Nazadnje, spremenimo vse
+simbole \(∈\) v \(=\). To deluje, saj je \(\g{\g A} ≅ \g A\), torej imamo lahko
+največ en ``nivo'' elementov, torej bodo vsi primerljivi z \(=\).
 
 Oglejmo si najprej, kaj to pomeni na primeru.
 \begin{trditev}
@@ -1205,15 +1225,9 @@ kontekstu, kjer lahko pride do zmede ekvivalentna, saj velja
   \(ℒ\)-morfizmov \(A ↬ B\) in jo označimo \(B^A\).
 \end{konstrukcija}
 \begin{dokaz}
-  TODO: Pokazati je treba, da je evaluacijska preslikava kot mora biti.
+  TODO: Pokazati je treba, da je evaluacijski morfizem kot mora biti.
 \end{dokaz}
 
-\begin{trditev}\label{th:ℒsub-is-map-to-Ω}
-  \(ℒ\)-podmnožice \(A\) so natanko morfizmi \(A ↬ Ω\).
-\end{trditev}
-\begin{dokaz}
-  TODO: Dokaz
-\end{dokaz}
 \begin{konstrukcija}
   \emph{Klasifikator podobojektov} je \(ℒ\)-množica \(ℒ\) skupaj z enakostjo
   \(⇔\) in ga označimo \(Ω\).
@@ -1243,14 +1257,12 @@ v dokazu.
   pa preslikava očitno stroga in ekstenzionalna.
 \end{dokaz}
 \begin{konstrukcija}
-  \emph{Kojedro} \(ℒ\)-preslikave \(f : A ↬ B\) je zlepek \(ℒ\)-množic
+  \emph{Kojedro} morfizma \(f : A ↬ B\) je zlepek \(ℒ\)-množic
   \(B\) in \(B\) po podmnožici \(f[A]\). Označimo ga \(\coker(f)\).
 \end{konstrukcija}
 \begin{dokaz}
   Kot v Uvodu v geometrijsko topologijo ta zlepek konstruiramo kot kvocient
   \(ℒ\)-množice \(B+B\) po relaciji generirani z \(ι₁(b) \sim ι₂(b) ⇔ b ∈ f[A]\).
-
-  TODO: pokazat da je kojedro.
 \end{dokaz}
 
 \begin{definicija}
@@ -1312,8 +1324,6 @@ Kompozituma z dualom pa sta res identiteti.
   Naj bo \(a = fᵒ(f(a'))\), torej \(f(a)=f(a')\). Ker je \(f\) bijektivna, je
   \(a = a'\), in velja \(\id = fᵒ∘f\).
 \end{dokaz}
-
-TODO: global existence
 
 
 %%% Local Variables:
