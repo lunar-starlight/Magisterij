@@ -3,17 +3,27 @@
 \subsection{Realna števila}\label{sec:logika-reals}
 
 Spomnimo se nekaj definicij realnih števil.
+\begin{definicija}
+  Podmnožica \(L ⊆ ℚ\) je
+  \begin{itemize}
+  \item \emph{naseljena}, ko obstaja element \(L\),
+  \item \emph{doljna}, ko za vsak \(q ∈ L\) in \(p < q\) velja \(p ∈ L\),
+  \item \emph{navzgor odprta}, ko za vsak \(p ∈ L\) obstaja \(q > p\), da je \(q ∈ L\).
+  \end{itemize}
+  Pojme \emph{gornja} in \emph{navzdol odprta} definiramo simetrično.
+\end{definicija}
+
 \begin{definicija}[Dedekindova realna števila]
   Par \(\p{L, U} ∈ 𝒫(ℚ)×𝒫(ℚ)\) je \emph{Dedekindov rez}, ko velja
   \begin{align}
-    L \text{ je naseljen}\\
-    U \text{ je naeljen}\\
-    L \text{ je navzdol zaprt}\\
-    U \text{ je navzgor zaprt}\\
-    L \text{ je navzgor odprt}\\
-    U \text{ je navzdol odprt}\\
-    \text{za } a < b \text{ je } a ∈ L ∨ b ∈ U\label{real:located}\\
-    \text{za } a ∈ L ∧ b ∈ U \text{ je } a < b
+    &L \text{ je naseljen}\\
+    &U \text{ je naeljen}\\
+    &L \text{ je doljna}\\
+    &U \text{ je gornja}\\
+    &L \text{ je navzgor odprt}\\
+    &U \text{ je navzdol odprt}\\
+    &\text{za } p < q \text{ je } p ∈ L ∨ q ∈ U\label{real:located}\\
+    &\text{za } p ∈ L ∧ q ∈ U \text{ je } p < q
   \end{align}
   Množica Dedekindovih rezov tvori \emph{Dedekindova realna števila}, ki jih
   označimo z \(\Rd\).
@@ -75,30 +85,33 @@ TODO: cite nlab? elephant?
 \begin{definicija}[MacNeillova realna števila]
   Par \(\p{L, U} ∈ 𝒫(ℚ)×𝒫(ℚ)\) je \emph{Dedekind-MacNeilleov rez}, ko velja
   \begin{align}
-    L \text{ je naseljen}\\
-    U \text{ je naseljen}\\
-    L \text{ je navzdol zaprt}\\
-    U \text{ je navzgor zaprt}\\
-    L \text{ je navzgor odprt}\\
-    U \text{ je navzdol odprt}\\
-    L = \int{\p{Uᶜ}}\\
-    U = \int{\p{Lᶜ}}
+    &L \text{ je naseljen}\\
+    &U \text{ je naseljen}\\
+    &L \text{ je doljna}\\
+    &U \text{ je gornja}\\
+    &L \text{ je navzgor odprt}\\
+    &U \text{ je navzdol odprt}\\
+    &L = \int{\p{Uᶜ}}\\
+    &U = \int{\p{Lᶜ}}
   \end{align}
   Množica Dedekind-MacNeilleovih rezov tvori \emph{MacNeillova realna števila}, ki jih
   označimo z \(\Rm\).
 \end{definicija}
+\begin{opomba}
+  Zadnji pogoj je ekvivalenten trditvi \(q ∈ U ⇔ \exist{p<q}{p ∉ L}\)
+  (simetrično velja tudi za predzadnji pogoj).
+\end{opomba}
 
 \begin{trditev}
   Vsako Dedekindovo realno število je tudi MacNeillovo.
 \end{trditev}
 \begin{dokaz}
   Točke \(1\) skozi \(6\) so enake, tako da je treba pokazati zgolj zadnji dve
-  lastnosti. Ker sta simetrični, pokažimo zgolj zadnjo.
+  lastnosti. Ker sta simetrični, pokažimo zgolj predzadnjo.
 
-  Če je \(a ∈ L\) potem ni v \(U\), torej je v \(Uᶜ\). Sedaj pa, ker je \(L\)
-  navzgor odprt obstaja \(a' > a\), ki je tudi v \(L\) (torej v \(Uᶜ\) po enakem
-  argumentu.) Sedaj pa vemo, da je \(Uᶜ\) navzdol zaprt, torej je
-  \(a ∈ \p{-∞,a'} ⊆ Uᶜ\) in je \(a ∈ \int{\p{Uᶜ}}\).
+  Množica \(U\) je odprta, in je podmnožica \(Lᶜ\), torej je tudi podmnožica
+  njene notranjosti.
+  Obratno pa, če je \(p < q\) in \(p ∉ L\), po lociranorsti vemo, da je \(q ∈ U\).
 \end{dokaz}
 
 V obratno smer lahko pokažemo zgolj, da sta \(L\) in \(U\) ločena.
@@ -106,9 +119,8 @@ V obratno smer lahko pokažemo zgolj, da sta \(L\) in \(U\) ločena.
   Za MacNeillovo realno število \(\p{L,U}\) velja \(a∈L∧b∈U⇒a<b\).
 \end{lema}
 \begin{dokaz}
-  Naj bo \(a∈L\) in \(b∈U\). Potem je \(b ∈ \int{\p{Lᶜ}} ⊆ Lᶜ\), torej ni v
-  \(L\). Ker je \(L\) navzdol zaprt je torej \(b\) zgornja meja, in je večji od
-  \(a\).
+  Naj bo \(p∈L\) in \(q∈U\). Potem je \(q ∈ \int{\p{Lᶜ}} ⊆ Lᶜ\), torej ni v
+  \(L\). Ker je \(L\) doljna je torej \(q\) zgornja meja, in je večji od \(p\).
 \end{dokaz}
 
 Ostalo bi torej pokazati zgolj lociranost vsakega MacNeillovega realnega
@@ -121,7 +133,13 @@ MacNeillovih realnih števil supremum.
   MacNeillova realna števila so polna.
 \end{lema}
 \begin{dokaz}
-  TODO
+  Naj bo \(S ⊂ \Rm\) naseljena in omejena z \(a : \Rm\).
+
+  Definirajmo \(L ≔ ⋃\set{Lₓ}{x ∈ S}\) in \(U ≔ \int(Lᶜ)\).
+  Lastnosti \((1)-(7)\) zanju očitno veljajo.
+
+  Potem je pa \(\int(Uᶜ) = \int(\cl L)\). Ampak \(L\) je navzdol zaprta, torej
+  je notranjost njenega zaprtja kar \(L\).
 \end{dokaz}
 
 
@@ -154,8 +172,6 @@ določene množice \(Σ ⊆ Ω\).
   ko je ta enaka \(Ω\).
 \end{definicija}
 
-TODO: enolična izbira
-
 Hitro lahko opazimo, da so principi izbire neobčutljivi za izomorfizme.
 \begin{trditev}
   Naj bo \(φ : A ≅ A'\) in \(ψ : B ≅ B'\). Potem je \(\AC_Σ(A, B)\) ekvivalenten
@@ -166,9 +182,9 @@ Hitro lahko opazimo, da so principi izbire neobčutljivi za izomorfizme.
 
   Če je \(R : A'×B' → Σ\) celovita, je potem tudi \({R∘\p{φ×ψ} : A×B → Σ}\)
   celovita. Potem pa za to relacijo obstaja funkcija izbire, tako da je
-  \(\for{a : A}{R∘\p{φ×ψ}{(a, f(a))}}\), kar je pa enako
-  \(\for{a:A}{R(φ(a),ψ(f(a)))}\). Ker pa je \(φ\) izomorfizem, lahko
-  preindeksiramo kvantifikator in dobimo \(\for{a:A'}{R(a',ψ∘f∘φ⁻¹(a'))}\),
+  \(\for{x : A}{R∘\p{φ×ψ}{(x, f(x))}}\), kar je pa enako
+  \(\for{x:A}{R(φ(x),ψ(f(x)))}\). Ker pa je \(φ\) izomorfizem, lahko
+  preindeksiramo kvantifikator in dobimo \(\for{x:A'}{R(x,ψ∘f∘φ⁻¹(x))}\),
   torej je \(ψ∘f∘φ⁻¹\) funkcija izbire za \(R\).
 \end{dokaz}
 V teoriji množic to pomeni, da je aksiom izbire določen do kardinalnosti
@@ -176,9 +192,8 @@ natančno. To nam tudi utemelji zakaj lahko \(\AC(ℕ)\) pravimo princip
 \emph{števne} izbire, saj deluje za poljubno števno (neskončno) množico. Tako si
 lahko tudi predstavljamo, kako to shemo imen razširiti na poljubno kardinalnost.
 Označimo ga torej \(\CC\). Pomembno vlogo bo igral tudi \emph{princip
-  števne disjunktivne izbire} \(\AC(ℕ, 2)\), ki ga označimo z \(\CCv\). 
+  števne disjunktivne izbire} \(\AC(ℕ, 2)\), ki ga označimo z \(\CCv\).
 
-TODO: vložitve domene in kodomene tud
 \begin{trditev}
   Če je \(Σ' ⊆ Σ\), \(\AC_Σ(A, B)\) implicira \(\AC_{Σ'}(A, B)\).
 \end{trditev}
@@ -191,7 +206,6 @@ TODO: vložitve domene in kodomene tud
   Princip končne izbire velja.
 \end{trditev}
 \begin{dokaz}
-  TODO: sintaksa za standardne končne?
   Princip končne izbire je princip izbire, kjer domeno omejimo na končne
   množice. Brez škode za splošnost, naj bo domena kar enaka neki
   standardni končni množici \(\cli n\).
@@ -314,7 +328,6 @@ TODO: tega verjetno ne rabim?
 \begin{dokaz}
   Če uporabimo \(\alpo*_ℝ\) na \(x\) in \(-x\) dobimo želeno formulo. Obratno pa
   \({x = 0 ∨ x < 0}\) očitno implicira \(x ≤ 0\).
-  TODO: a je to res za MacNeillova?
 \end{dokaz}
 
 \begin{trditev}\label{th:alpoc-is-lpo}\label{th:implications}
@@ -377,12 +390,31 @@ Nekaj takih imamo zgoraj o realnih številih.
 Oglejmo si najprej razne Sierpinskijeve objekte, ki smo jih do sedaj definirali.
 \begin{align*}
   % TODO: a mamo še kake?
-  Ω      &= \set{p}{p : Ω}\\
-  %Σ_{\Rm} &= \set{x > 0}{x : \Rm}\\% TODO: a je ta smiselen
-  Σ_{\Rd} &= \set{x > 0}{x : \Rd}\\
-  Σ_{\Rc} &= \set{x > 0}{x : \Rc}\\
-  Σ₀¹    &= \set{α \apart 0}{α : 2^ℕ}
+  Ω   &= \set{p}{p : Ω}\\
+  Σ_ℝ &= \set{x > 0}{x : ℝ}\\
+  Σ₀¹ &= \set{α \apart 0}{α : 2^ℕ}\\
+  Δ   &= \set{p : Ω}{p ∨ ¬p}
 \end{align*}
+
+\begin{trditev}
+  Naj bo \(ℝ\) objekt realnih števil.
+  Sierpinski objekt \(Σ_ℝ\) je enak \(\set{x \apart 0}{x : ℝ}\).
+\end{trditev}
+\begin{dokaz}
+  Če je \(x : ℝ\), je potem \(x \apart 0 ⇔ \abs x > 0\).
+  Obratno pa, je \(x > 0 ⇔ \max\{x,0\} \apart 0\).
+\end{dokaz}
+Prav tako bomo potem v dokazih prosto menjavali med \(x > 0\) in \(x \apart 0\).
+
+\begin{definicija}
+  Vse logične principe, kvantificirane po \(Ω\), lahko razširimo tako, da domeno
+  kvantifikacije omejimo na nek Sierpinskijev objekt. Specifično je torej
+  \(\lem*(Σ) ≔ \for{p∈Σ}{\lem(p)}\), itd.
+\end{definicija}
+
+\begin{trditev}
+  Princip \(\lem*(Δ)\) velja.
+\end{trditev}
 
 Izkaže se, da lahko principe odločitve izrazimo kot princip izključene tretje
 možnosti, omejene na te Sierpinskijeve objekte.
@@ -393,6 +425,8 @@ možnosti, omejene na te Sierpinskijeve objekte.
 \begin{dokaz}
   Ker je \(¬(x > 0) ⇔ x ≤ 0\), in \(¬(α\apart 0) ⇔ α = 0\), enakosti očitno sledijo.
 \end{dokaz}
+Podobno lahko šibke verzije gornjih principov dobimo kot zožitve \(\wlem*\) na
+vsakega od teh objektov.
 
 Ampak mi smo pa tudi pokazali, da je \(\alpo*_{\Rc} ⇔ \lpo*\). Ali to pomeni, da
 je \(Σ_{\Rc} = Σ₀¹\)? Namreč, v dokazu~\ref{th:alpoc-is-lpo} skonsturiramo taka
@@ -406,8 +440,6 @@ konstrukciji zaporedja \(α\).
 Izkaže se, da lahko matematično natančno opišemo gornji pojav.~\cite{Bauer22}
 Ideja pride iz teorije izračunljivosti, specifično iz Weihrauchovih redukcij.
 Tam skrbno pazimo, kolikokrat se uporabi posamezne predpostavke.
-
-TODO: definicije in vse
 
 \begin{definicija}
   Predikat \(φ ⊑ A\) je \emph{reducibilen} na predikat \(ψ ⊑ B\), ko velja
@@ -486,7 +518,13 @@ to lahko pokažemo.
 TODO: idempotence pa vseeno ne pričakujemo pogosto, namreč \(\lpo*\) ni
 idempotenten v izračunljivosti.
 
-TODO: a to pustim?
+
+V~\ref{th:alpoc-is-lpo} smo pokazali, da so principi, ki govorijo o \(Σ₀¹\) in
+\(Σ_{\Rc}\) ekvivalentni. Ampak vseeno pa ta Sierpinskijeva objekta nista nujno
+enaka. Na kratko se lahko o tem prepričamo tako, da rečemo, da je dokaz tega
+desjtva zahteval neskončno instanc \(Σ₀¹\), torej so elementi \(Σ_{\Rc}\)
+ekvivalentni števnim konjunkcijam elementov \(Σ₀¹\). Velja torej naslednja
+redukcija.
 \begin{trditev}
   Velja redukcija \(\alpo*_{\Rc} ≤ \lpo*^ℕ\).
 \end{trditev}
@@ -521,18 +559,7 @@ kot~\ref{eq:inst-red}, le da smo \(⇒\) zamenjali z \(⇔\).
 \end{definicija}
 
 \begin{trditev}
-  Sierpinski objekt \(Σ_ℝ\) je enak \(\set{x \apart 0}{x : ℝ}\).
-  %Princip \(\aks*_ℝ\) je ekvivalenten \(\ks*(\set{x \apart 0}{x : ℝ})\).
-\end{trditev}
-\begin{dokaz}
-  Če je \(x : ℝ\), je potem \(x \apart 0 ⇔ \abs x > 0\).
-  Obratno pa, je \(x > 0 ⇔ \max\{x,0\} \apart 0\).  
-\end{dokaz}
-Prav tako bomo potem v dokazih prosto menjavali med \(x > 0\) in \(x \apart 0\).
-
-\begin{trditev}
-  TODO: če se ne motim je \(Σ_{\Rc} = Σ₀¹\). Zih je \(⊇\). aha to ni res, k
-  rabmo like neskončno instanc...
+  Kripkejeva shema za \(Δ\) je natanko \(\lem*\).
 \end{trditev}
 
 \begin{trditev}\label{th:aks-impl-lem≤alpo}
@@ -547,6 +574,14 @@ Prav tako bomo potem v dokazih prosto menjavali med \(x > 0\) in \(x \apart 0\).
   Če velja \(\ks*(Σ)\), je \(\p{\lem*,Σ}\) idempotenten.
 \end{posledica}
 
+
+\subsubsection{Princip markova}
+
+Kot na začetku tega podrazdelka pa lahko zožimo še Kripkejevo shemo.
+\begin{trditev}
+  Kripkejeva shema za \(Δ ⊆ Σ₀¹\) je natanko \(\mp*\). Podobno velja za
+  analitične različice principa.
+\end{trditev}
 
 %%% Local Variables:
 %%% mode: latex

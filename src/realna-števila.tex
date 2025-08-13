@@ -173,8 +173,9 @@ sta preslikavi \(\uline f\) in \(\bar f\) enaki.
 \subsection{\(\Rc{} = \c ℝ\)}\label{sec:reals-Rc=R}
 
 Poglejmo si tu še enkrat trditev~\ref{th:lpov-lpo}. Ta pravi, da nad lokalno
-povezanimi prostori velja \(\lpo*\). Zares pa potrebujemo zgolj \(\Rc = \c ℝ\).
-Izkaže se, da velja tudi obrat.
+povezanimi prostori velja \(\lpo*\). Zares pa potrebujemo zgolj \(\Rc = \c ℝ\),
+saj smo potrebovali le, da so elementi \(\Rc\) lokalno konstantni. Izkaže se, da
+velja tudi obrat.
 
 \begin{trditev}
   Če nad \(X\) velja \(\lpo*\), velja \(\Rc = \c ℝ\).
@@ -229,9 +230,7 @@ Karakterizirajmo najprej \(\lpo*\) brez realnih števil.
 \begin{trditev}
   Če nad \(2\)-števnim prostorom velja \(\lpo*\), je lokalno povezan.
 \end{trditev}
-\begin{dokaz}
-  TODO: slon pravi da je to res, zdej pa…
-\end{dokaz}
+Dokaz za vajo prepuščen bralki (avtorica ne zna izpeljat dokaza).
 
 
 \subsection{\(\Rd{} = \Rc\)}\label{sec:reals-Rd=Rc}
@@ -324,23 +323,38 @@ natanko \(\alpo*\) za Cauchyjeva realna števila.
   pokazali že v izreku~\ref{th:alpo-is-zerosets-open}.
 \end{opomba}
 
-NOTE: \(\Ncof + (ω+1)\) dela, ampak ta validira \(\CCv_{Σ_{\Rd}}\).
 To pomeni, da če želimo ločiti \(\Rd = \Rc\) in \(\alpo*\) potrebujemo prostor,
-ki ni lokalno povezan. Avtorica meni, da je modificiran Fortov prostor na \(ℝ\)
-dober kandidat, a ji ni uspelo preveriti detajlov. Vseeno, se je pa zadostno
-prepričala, da niti \(\alpo*\) niti \(\CCv\) nad tem prostorom ne držita.
+ki ni lokalno povezan. Seveda, \(\Ncof + (ω+1)\) dela. Na prvi komponenti ne
+velja \(\CCv\), na drugi pa \(\alpo*\). A vseeno pa velja \(\CCv ∨ \alpo*\),
+torej klasični dokaz enakosti \(\Rd = \Rc\) še vedno deluje.
 
-Velja pa še več, namreč nad tem prostorm ne velja niti \(\CCv_{Σ_{\Rd}}\).
-Kar je pa tudi za pričakovati (namreč, da je \(\Rd = \Rc\) šibkejši), saj če
-podrobno pogledamo klasičen dokaz enakosti, se potrebujemo števno mnogokrat
-odločiti za neenakosti z \emph{istim} realnim številom, \(\CCv\) pa govori o
-števno mnogo različnih realnih številih. Avtorica sumi, da je \(\Rd = \Rc\)
-ekvivalentno temu:
-\begin{quotation}
-  Naj bo \(p\) naraščajoče in \(q\) padajoče zaporedje, in naj bo \(\sup p ≤ \inf q\)
-  (tu morda \(=\)?), in naj bo \(x : ℝ\). Potem velja \(\for{n : ℕ}{pₙ < x ∨ x < qₙ}\),
-\end{quotation}
-kar je pa zelo šibek princip števne odločitve.
+\emph{Modificiran Fortov prostor na \(ℝ\)}, je prostor \(X=ℝ∪\{∞₀,∞₁\}\), kjer so
+odprte množice podmnožice \(X\) bodisi točke \(ℝ\), bodisi kokončne množice, ki
+vsebujejo kako od točk v neskončnosti.
+
+Nad tem prostorom \(\alpo*\) in \(\CCv\) ne veljata. Prvi spodleti zaradi
+funkcije, ki je na naravnih številih \(2⁻ⁿ\) in \(0\) sicer, drugi pa zaradi
+relacije \(R(n,i) = ℝ⧵\{2n+i\}∪\{∞ᵢ\}\). Vseeno pa velja \(\CCv_{Σ_{\Rd}}\).
+Argument je malo zakompliciran, in ni zares pomemben. Ključno je, da zvezne
+funkcije iz \(X\) vedno slikajo obe točki v neskončnosti v isto vrednost, torej
+se celovite relacije z vrednostmi v \(Σ_{\Rd}\) obnašajo ravno tako kot v
+navadnem Fortovem prostoru na \(ℝ\), tam pa velja odvisna izbira.
+
+Več od tega avtorici ni znano, saj je zelo težko preverjati, če nad prostorom
+velja \(\Rd = \Rc\), kajti nimamo nobene karakterizacije Cauchyjevih realnih
+števil v topoloških modelih. Kandidata za preveriti bi bila prebita
+Knaster-Kuratowskijeva pahljača in Erdősev prostor.
+
+% Kar je pa tudi za pričakovati (namreč, da je \(\Rd = \Rc\) šibkejši), saj če
+% podrobno pogledamo klasičen dokaz enakosti, se potrebujemo števno mnogokrat
+% odločiti za neenakosti z \emph{istim} realnim številom, \(\CCv\) pa govori o
+% števno mnogo različnih realnih številih. Avtorica sumi, da je \(\Rd = \Rc\)
+% ekvivalentno temu:
+% \begin{quotation}
+%   Naj bo \(p\) naraščajoče in \(q\) padajoče zaporedje, in naj bo \(\sup p ≤ \inf q\)
+%   (tu morda \(=\)?), in naj bo \(x : ℝ\). Potem velja \(\for{n : ℕ}{pₙ < x ∨ x < qₙ}\),
+% \end{quotation}
+% kar je pa zelo šibek princip števne odločitve.
 
 \subsection{\(\Rm{} = \Rd\)}\label{sec:reals-Rm=Rd}
 
@@ -397,31 +411,33 @@ poseljena \emph{odsekoma} omejena množica supremum, medtem ko polnost zunaj
 zahteva globalno omejenost. Ampak to ni problem, saj je vsaka omejena množica
 očitno tudi odsekoma omejena, torej je notranja trditev močnejša.
 
-TODO: a dobim tapravi obstoj tu?
-
-Sledi, da lahko gornji izrek sledi iz interpretacije spodnje trditve v interni
+Sledi, da gornji izrek sledi iz interpretacije spodnje trditve v interni
 logiki.
 \begin{trditev}
   Velja implikacija \(\wlem* ⇒ \Rm = \Rd\).
 \end{trditev}
 \begin{dokaz}
-  Za \(x : \Rm\) velja \(¬(x < q) ⇒ \for{s<q}{s < x}\).
+  Spomnimo se, da za MacNeillova realna števila \(x : \Rm\) velja
+  \(¬(x < q) ⇒ \for{s<q}{s < x}\).
 
-  Uporabimo \(\wlem*\) na \(x < 1\) in \(2 < x\).
-  Ker hkrati oba očitno ne moreta veljati, lahko primer, ko sta oba \(¬¬\)
-  veljavna zanemarimo.
+  Uporabimo \(\wlem*\) na \(x < 1\) in \(2 < x\) in ločimo na štiri primere.
+  Ker hkrati oba očitno ne moreta veljati, lahko primer, ko sta oba dvojno
+  negirana zanemarimo. Ostanejo le še primeri, ko vsaj ena od neenakosti ne
+  velja.
   \begin{itemize}
-  \item Če velja \(¬(x < 1)\) potem gotovo velja \(0 < x\).
-  \item Če velja \(¬(2 < x)\) potem gotovo velja \(x < 3\).
+  \item Če ne velja \(x < 1\), potem gotovo velja \(0 < x\).
+  \item Če ne velja \(2 < x\), potem gotovo velja \(x < 3\).
   \end{itemize}
   V vseh primerih torej dobimo \(0 < x ∨ x < 3\), torej je \(x\) lociran.
 \end{dokaz}
 \begin{dokaz}[Topološki dokaz]
-  TODO: a v topoloških rečemo, da če je \(X\) ekstremalno nepovezan morta bit
-  \(\uline f\) in \(\bar f\) zvezni, in a to pomen da sta enaki?
+  Obstaja tudi topološki dokaz, a je bolj zapleten kot gornji.
 
-  NOTE: Najdla sm da pomen da je vmes med njima en zvezen… nevem zakaj to pomeni
-  da sta enaka… Aaha, sem ugotovila, ker sta tesna dobimo tud da sta enaka.
+  Iz dejstva, da je \(X\) ekstremalno nepovezan sledi, da je ekstremalno
+  nepovezana tudi vsaka njegova odprta podmnožica. Naj bosta potem \(\uline f\)
+  in \(\bar f\) par tesnih preslikav. Potem obstaja zvezna preslikava \(f\), za
+  katero velja \(\uline f ≤ f ≤ \bar f\). Ker sta pa polzvezni preslikavi tesni,
+  je pa \(f ≤ \uline f\) in \(\bar f ≤ f\), torej so preslikave enake in so zvezne.
 \end{dokaz}
 
 Gornji dokaz sem tudi formalizirala v dokazovalnem pomočniku Agda, kar nam da
@@ -432,8 +448,7 @@ formaliziran, popolnoma konstruktiven dokaz sledečega izreka.
 \end{izrek}
 
 V literaturi se to pojavi v recimo~\cite[trd.~D4.7.11]{Johnstone02}, sem pa to
-tudi formalizirala v dokazovalnem pomočniku Agda~\cite{Strah25}.
-TODO: objavi kodo in jo citiraj tu.
+tudi formalizirala v dokazovalnem pomočniku Agda~\cite{BS25}.
 
 Kaj pa, če bi zahtevali šibkejši pogoj, da ima vsaka števna omejena množica
 supremum? Izkaže se, da je to natanko ekvivalentno

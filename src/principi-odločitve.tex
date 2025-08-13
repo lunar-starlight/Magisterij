@@ -58,7 +58,7 @@ Pokažimo sedaj, da implikacije iz~\ref{sec:logika-odločitve} niso obrnljive.
 \end{dokaz}
 
 Obrate teh implikacij lahko torej jemljemo kot nekonstruktivni principi, a o teh
-ni veliko znano. Vemo le, da očitno \(\Rd = \Rc\) implicira \(\alpo* ⇔ \lpo*\),
+ni veliko znano. Vemo le, da očitno \(\Rd = \Rc\) implicira \(\lpo* ⇒ \alpo*\),
 saj je \(\lpo*\) ekvivalenten \(\alpo*\) za Cauchyjeva realna števila, tako da
 je to zelo šibek princip. Kasneje si bomo ogledali kdaj obrati veljajo na nek
 strožji in bolj strukturiran način, ki ima povezavo s teorijo izračunljivosti,
@@ -77,12 +77,11 @@ TODO: vezno besedilo
   f \apart 0\), kar pa pomeni, da to lahko odločimo tudi za \(α\), torej nad
   \(X\) velja \(\lpo*\).
 \end{dokaz}
-\begin{opomba}
-  Ker je \(\lpo*\) natanko \(\alpo*\) za Cauchyjeva realna števila (TODO: daj to
-  nekam na samo, zdej sem že petič napisala), in potrebujemo le, da so elementi
-  lokalno konstantni, zadošča predpostaviti \(\Rc = \c ℝ\). To pomeni, da je to
-  kar močen princip, saj je zadosten za \(\lpo*\).
-\end{opomba}
+% \begin{opomba}
+%   Ker potrebujemo le, da so elementi \(\Rc\) lokalno konstantni, zadošča predpostaviti
+%   \(\Rc = \c ℝ\). To pomeni, da je to kar močen princip, saj je zadosten za
+%   \(\lpo*\).
+% \end{opomba}
 
 
 \begin{izrek}\label{th:alpo-is-zerosets-open}
@@ -113,11 +112,11 @@ odprte množice z realnimi, dobimo sledečo lastnost.
 \end{trditev}
 Dokaz trditve je enak kot~\ref{th:wlem-is-ext-disc}, tako da ga ne ponovimo.
 
-\begin{trditev}\label{th:allpo-is-f-space}
-  Nad \(X\) velja \(\allpo*\) natanko tedaj, ko je vsaka odprta podmnožica \(X\)
-  F-prostor. TODO: definicija
-\end{trditev}
-TODO: dokaz v GJ60.
+% \begin{trditev}\label{th:allpo-is-f-space}
+%   Nad \(X\) velja \(\allpo*\) natanko tedaj, ko je vsaka odprta podmnožica \(X\)
+%   F-prostor. %TODO: definicija
+% \end{trditev}
+%TODO: dokaz v GJ60.
 
 Velja pa zanimiva posledica, namreč, da nad basically disconnected prostori
 obstaja funkcija \(\mathrm{sgn}\) (oziroma nekaj dovolj podobnega).

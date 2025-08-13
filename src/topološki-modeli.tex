@@ -426,8 +426,8 @@ poseben primer morfizmov, ki pa dejansko so funkcije med \(ℒ\)-množicami.
   \emph{Morfizem med \(ℒ\)-množicama} \(A\) in \(B\) je relacija
   \(f : A×B → ℒ\), za katero velja
   \begin{align}
-    &f(a,b)) ∧ f(a,b') ≤ \i{b =_B b'} \tag{enoličnost}\label{eq:enoličnost-raw}\\
-    &\e a ≤ ⋁_{b ∈ B} f(a,b)          \tag{celovitost}\label{eq:celovitost-raw}
+    &f(a,b) ∧ f(a,b') ≤ \i{b =_B b'} \tag{enoličnost}\label{eq:enoličnost-raw}\\
+    &\e a ≤ ⋁_{b ∈ B} f(a,b)         \tag{celovitost}\label{eq:celovitost-raw}
   \end{align}
 
   Ker so morfizmi funkcijske relacije, jih bomo pisali v funkcijskem zapisu kot
@@ -1221,11 +1221,26 @@ kontekstu, kjer lahko pride do zmede ekvivalentna, saj velja
 \end{proof}
 
 \begin{konstrukcija}
-  \emph{Potenčni objekt \(ℒ\)-množic \(A\) in \(B\)} je konstantna \(ℒ\)-množica
-  \(ℒ\)-morfizmov \(A ↬ B\) in jo označimo \(B^A\).
+  \emph{Potenčna \(ℒ\)-množica \(A\) in \(B\)} je množica morfizmov \(A ↬ B\) z
+  enakostjo \(f=g ⇔ \for{x:A}{f(x)=g(x)}\) in jo označimo \(B^A\).
 \end{konstrukcija}
 \begin{dokaz}
-  TODO: Pokazati je treba, da je evaluacijski morfizem kot mora biti.
+  To je \(ℒ\)-množica, saj je relacija očitno simetrična in tranzitivna.
+
+  Pokazati je torej treba le, da obstaja morfizem \(\ev : B^A×A ↬ B\), za
+  katerega velja, da za vsak \(e : C×A ↬ B\) obstaja enolična preslikava
+  \(u : C ↬ B^A\), da je \(\ev∘(u×\id) = e\).
+
+  Definiramo \(u(c,f) ≔ \for{x:A}{e(c,x) = f(x)}\). Z drugimi besedami, za vse
+  \(a:A\) je \({u(c)(a) = e(c,a)}\), kar je natanko Curryiranje, kot bi
+  pričakovali.
+  Potem je pa \[ \ev∘(u×\id)(c,a) = \ev(u(c),a) = u(c)(a) = e(c,a)\text. \]
+  % Po lokalnosti obstaja \(f\), da je \(f = u(c)\), torej je gornje enako
+  % \(\ev(f,a) = f(a)\). Prav tako, pa velja \(u(c,f)\), torej je
+  % \(f(a) = e(c,a)\), kot zahtevano.
+
+  Preskikava \(u\) je enolična, saj za vsako drugo tako preslikavo \(u'\) velja,
+  da je \(u(c)(a) = e(c,a) = u'(c)(a)\).
 \end{dokaz}
 
 \begin{konstrukcija}
@@ -1237,10 +1252,8 @@ kontekstu, kjer lahko pride do zmede ekvivalentna, saj velja
   trditev~\ref{th:ℒsub-is-sub} in~\ref{th:ℒsub-is-map-to-Ω}.
 \end{dokaz}
 
-TODO: reword, zdaj je to out of place
-Na podoben način bi si želeli karakterizirati epimorfizme in monomorfizme v
-kategoriji \(\cat{Set}(ℒ)\), in res jih lahko karakteriziramo kot surjekcije in
-injekcije v tem jeziku.
+Sedaj ko imamo dostop do vrednosti morfizmov, pa lahko karakteriziramo
+epimorfizme in monomorfizme, kot surjekcije in injekcije.
 
 Najprej pa konstruirajmo še nekaj konstrukcij \(ℒ\)-množic, saj jih potrebujemo
 v dokazu.
