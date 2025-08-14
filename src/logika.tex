@@ -78,10 +78,11 @@ Spomnimo se nekaj definicij realnih števil.
 
 Obrat pa ne velja konstruktivno. To pomeni, da lahko na ``\(\Rd = \Rc\)''
 gledamo kot nekakšen nekonstruktiven princip. Iz konstruktivne matematike pa
-poznamo tudi druge konstrukcije realnih števil, ki nam lahko dajo nove principe
-kot ta zgoraj.
+poznamo tudi druge konstrukcije realnih števil, na primer MacNeillovo
+konstrukcijo~\cite{nlab-macneille-reals}~\cite[pogl.~D4.7]{Johnstone02}, ki nam
+lahko da nove principe kot ta zgoraj. Obstajajo še druge konstrukcije, a o njih
+ni veliko znano, tako da jih v tem delu ne obravnavamo.
 
-TODO: cite nlab? elephant?
 \begin{definicija}[MacNeillova realna števila]
   Par \(\p{L, U} ∈ 𝒫(ℚ)×𝒫(ℚ)\) je \emph{Dedekind-MacNeilleov rez}, ko velja
   \begin{align}
@@ -300,13 +301,13 @@ tako da ga ne bomo posebej obravnavali.
   \(\for{α : 2^ℕ}{\lpo(α)}\) pa z \(\lpo*\).
 \end{definicija}
 
-TODO: tega verjetno ne rabim?
-\begin{definicija}\label{pr:wlpo}
-  \emph{Princip šibke števne odločitve} pravi, da za vsako števno zaporedje
-  ničel in enic lahko odločimo, ali je celo nič, ali ni.
-  Formulo \(α = 0∨α ≠ 0\) označimo \(\wlpo(α)\), formulo
-  \(\for{a:2^ℕ}{\wlpo(α)}\) pa z \(\wlpo*\)
-\end{definicija}
+%TODO: tega verjetno ne rabim?
+% \begin{definicija}\label{pr:wlpo}
+%   \emph{Princip šibke števne odločitve} pravi, da za vsako števno zaporedje
+%   ničel in enic lahko odločimo, ali je celo nič, ali ni.
+%   Formulo \(α = 0∨α ≠ 0\) označimo \(\wlpo(α)\), formulo
+%   \(\for{a:2^ℕ}{\wlpo(α)}\) pa z \(\wlpo*\)
+% \end{definicija}
 
 \begin{definicija}\label{pr:alpo}
   Naj bo \(ℝ\) nek objekt realnih števil (bodisi Dedekindova, Cauchyjeva, itd.).
@@ -319,15 +320,17 @@ TODO: tega verjetno ne rabim?
     števne odločitve}.
 
   Podobno definiramo \emph{analitični princip šibke števne odločitve za \(ℝ\)},
-  ki ga označimo \(\awlpo*_ℝ\).
+  ki ga označimo \(\awlpo*_ℝ\), s formulo \(\awlpo_ℝ(x) = x≤0 ∨ ¬(x≤0)\).
 \end{definicija}
 
 \begin{trditev}
-  Ekvivalentno lahko vzamemo \(\alpo_ℝ(x) = x = 0 ∨ x \apart 0\).
+  Ekvivalentno lahko vzamemo \(\alpo_ℝ(x) = x = 0 ∨ x \apart 0\) in
+  \(\awlpo_ℝ(x) = x = 0 ∨ ¬(x=0)\).
 \end{trditev}
 \begin{dokaz}
   Če uporabimo \(\alpo*_ℝ\) na \(x\) in \(-x\) dobimo želeno formulo. Obratno pa
-  \({x = 0 ∨ x < 0}\) očitno implicira \(x ≤ 0\).
+  \({x = 0 ∨ x < 0}\) očitno implicira \(x ≤ 0\). Podobno pokažemo tudi drugi
+  del trditve.
 \end{dokaz}
 
 \begin{trditev}\label{th:alpoc-is-lpo}\label{th:implications}
@@ -382,19 +385,31 @@ TODO: odstrani posebne omembe.
 \subsection{Ostali principi}\label{sec:logika-ostalo}
 
 Seveda pa se principi ne delijo popolnoma zgolj na principe izbire in odločitve.
-Nekaj takih imamo zgoraj o realnih številih.
+Nekaj takih imamo zgoraj o realnih številih, nekaj jih bomo pa še definirali.
+
+\begin{definicija}\label{pr:mp}
+  \emph{Princip Markova} je formula \(\mp* ≔ \for{α:2^ℕ}{\mp(α)}\), kjer je
+  \(\mp(α) ≔ ¬(α=0) ⇒ α \apart 0\).
+
+  Podobno kot v~\ref{pr:alpo} definiramo analitične različice principa.
+\end{definicija}
+Ta je zožitev principa eliminacije dvojne negacije, \(\for{p:Ω}{¬¬p ⇒ p}\), na
+Sierpinskijev objekt \(Σ₀¹\). Za tega vemo, da je ekvivalenten izključeni tretji
+možnosti, a je \(\mp*\) vseeno šibkejši od \(\lpo*\).
 
 
 \subsubsection{Redukcija instanc}
 
 Oglejmo si najprej razne Sierpinskijeve objekte, ki smo jih do sedaj definirali.
 \begin{align*}
-  % TODO: a mamo še kake?
   Ω   &= \set{p}{p : Ω}\\
   Σ_ℝ &= \set{x > 0}{x : ℝ}\\
   Σ₀¹ &= \set{α \apart 0}{α : 2^ℕ}\\
-  Δ   &= \set{p : Ω}{p ∨ ¬p}
+  Δ   &= \set{p : Ω}{p ∨ ¬p}\\
+  R   &= \set{p : Ω}{¬¬p ⇒ p}
 \end{align*}
+Tu nam \(Δ\) predstavlja Sierpinskijev objekt \emph{odločljivih} resničnostnih
+vrednosti, \(R\) pa \emph{regularnih}.
 
 \begin{trditev}
   Naj bo \(ℝ\) objekt realnih števil.
@@ -426,7 +441,8 @@ možnosti, omejene na te Sierpinskijeve objekte.
   Ker je \(¬(x > 0) ⇔ x ≤ 0\), in \(¬(α\apart 0) ⇔ α = 0\), enakosti očitno sledijo.
 \end{dokaz}
 Podobno lahko šibke verzije gornjih principov dobimo kot zožitve \(\wlem*\) na
-vsakega od teh objektov.
+vsakega od teh objektov. To je tudi razlog, zakaj tej skupini principov pravimo
+``principi odločitve''.
 
 Ampak mi smo pa tudi pokazali, da je \(\alpo*_{\Rc} ⇔ \lpo*\). Ali to pomeni, da
 je \(Σ_{\Rc} = Σ₀¹\)? Namreč, v dokazu~\ref{th:alpoc-is-lpo} skonsturiramo taka
@@ -434,7 +450,7 @@ je \(Σ_{\Rc} = Σ₀¹\)? Namreč, v dokazu~\ref{th:alpoc-is-lpo} skonsturiramo
 
 A vendar se izkaže, da velja zgolj \(Σ₀¹ ⊆ Σ_{\Rc}\). Če pogledamo dokaz, v to
 smer res na prazno skonstruiramo \(x : \Rc\), da velja gornje, ampak v obratno
-smer pa bistveno uporabimo več (celo neskončno \emph{instanc}) \(\lpo*\) v
+smer pa bistveno uporabimo več (celo neskončno) \emph{instanc} \(\lpo*\) v
 konstrukciji zaporedja \(α\).
 
 Izkaže se, da lahko matematično natančno opišemo gornji pojav.~\cite{Bauer22}
@@ -451,7 +467,7 @@ Tam skrbno pazimo, kolikokrat se uporabi posamezne predpostavke.
 Reducibilnost nam torej pove, da lahko vsako instanco \(\for{x:A}{φ(x)}\)
 (torej, vsak \(φ(a)\)) dokažemo tako, da poiščemo nek \(b:B\), da bo \(ψ(b)\)
 dovolj močen, da lahko pokaže \(φ(a)\). Pomembno tu je, da lahko poiščemo samo
-en \(b\), torej lahko uporabimo samo eno \emph{instanco} \(\for{y:b}{ψ(b)}\).
+en \(b\), torej lahko uporabimo samo eno instanco \(\for{y:b}{ψ(b)}\).
 
 Tako vsi principi odločitve in izbire postanejo instance, saj so vsi univerzalno
 kvantificirani. Prav tako, če pogledamo dokaz iz gornjega razdelka vidimo, da
@@ -460,9 +476,9 @@ dobimo redukcije \(\lpo* ≤ \alpo*_{\Rc} ≤ \alpo* ≤ \lem*\) in \(\wlem* ≤
 Redukcije \(\p{φ, A} ≤ \p{φ, B}\), ko je \(A ⊆ B\) so očitne, tako da poglejmo
 le ta zanimivo redukcijo \(\lpo* ≤ \alpo*_{\Rc}\).
 
-% \begin{trditev}
-%   Velja redukcija \(\lpo* ≤ \alpo*_{\Rc}\).
-% \end{trditev}
+\begin{trditev}
+  Velja redukcija \(\lpo* ≤ \alpo*_{\Rc}\).
+\end{trditev}
 \begin{dokaz}
   Naj bo \(α:2^ℕ\). Definirajmo realno število
   \[ x ≔ \lim_{n → ∞}2^{-\min\set{k : ℕ}{α(k) = 1 ∨ k = n}}\text. \]
@@ -473,7 +489,7 @@ le ta zanimivo redukcijo \(\lpo* ≤ \alpo*_{\Rc}\).
 
 Reducibilnost nam torej definira refleksivno in tranzitivno relacijo. To lahko
 dopolnimo do ekvivalenčne relacije \(≡\), ki ji pravimo \emph{ekvivalenca instanc}.
-Ekvivalenčnim razredom po tej relaciji pa pravimo \emph{TODO: stopnja (instance)}.
+Ekvivalenčnim razredom po tej relaciji pa pravimo \emph{stopnje}.
 Izkaže se, da ima ta ureditev zelo lepo strukturo. Več o njej si lakho pogledate
 v~\cite{Bauer22}, saj za naše potrebe ni relevantna.
 
@@ -514,10 +530,14 @@ to lahko pokažemo.
   Ker \(\lem ⁿ\) slika v goste resničnostne vrednosti, je \(\lem{\p r} = r\), tako da
   je \[\lem{\p r} = r = \lem²{\p{p, q}}\text.\qedhere\]
 \end{dokaz}
-
-TODO: idempotence pa vseeno ne pričakujemo pogosto, namreč \(\lpo*\) ni
-idempotenten v izračunljivosti.
-
+Reducibilnost izhaja iz teorije izračunljivosti. Tam se idempotenca ne pojavi
+pogosto, saj tam pomeni, da lahko dve izvedbi algoritma izvedemo že z eno
+izvedbo, na posebej izbranem vhodu. Recimo \(\lpo*\) ni idempotenten, saj ko
+skeniramo neskončno zaporedje za enico, lahko rečemo, da se algoritem na neki
+točki ``premisli'', in namesto ničle vrne mesto enice. Če iščemo enico v dveh
+zaporedjih, se mora potencialno za vsakega od njih premisliti, tako da gotovo
+ne moremo tega izračunati z eno izvedbo algoritma. Se pa izkaže, da v topoloških
+modelih temu ni tako, a k temu se vrnemo kasneje.
 
 V~\ref{th:alpoc-is-lpo} smo pokazali, da so principi, ki govorijo o \(Σ₀¹\) in
 \(Σ_{\Rc}\) ekvivalentni. Ampak vseeno pa ta Sierpinskijeva objekta nista nujno
@@ -550,10 +570,8 @@ kot~\ref{eq:inst-red}, le da smo \(⇒\) zamenjali z \(⇔\).
   Navadna \emph{kripkejeva shema} je kripkejeva shema za
   \(Σ₀¹ ≔ \set{α \apart 0}{α : 2^ℕ} ⊆ Ω\).
 
-  TODO: dedekindova ali cauchyjeva ali kaj drugega.
-  \emph{Analitična kripkejeva shema za \(ℝ\)} je kripkejeva shema za
-  \(Σ_ℝ ≔ \set{x > 0}{x : ℝ} ⊆ Ω\), kjer je \(ℝ\) nek objekt realnih števil.
-  Označili jo bomo z \(\aks*_ℝ\)
+  \emph{Analitična kripkejeva shema za \(ℝ\)} je kripkejeva shema za \(Σ_ℝ\),
+  kjer je \(ℝ\) nek objekt realnih števil. Označili jo bomo z \(\aks*_ℝ\)
 
   Posebej bomo \(\ks*(Σ_{\Rd})\) pravili \emph{analitična kripkejeva shema}.
 \end{definicija}
@@ -579,7 +597,7 @@ kot~\ref{eq:inst-red}, le da smo \(⇒\) zamenjali z \(⇔\).
 
 Kot na začetku tega podrazdelka pa lahko zožimo še Kripkejevo shemo.
 \begin{trditev}
-  Kripkejeva shema za \(Δ ⊆ Σ₀¹\) je natanko \(\mp*\). Podobno velja za
+  Kripkejeva shema \(Σ₀¹ = R\) je natanko \(\mp*\). Podobno velja za
   analitične različice principa.
 \end{trditev}
 

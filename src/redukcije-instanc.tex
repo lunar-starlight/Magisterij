@@ -2,13 +2,12 @@
 
 \subsection{Kripkejeve sheme}
 
-TODO: global existence
 \begin{trditev}\label{th:lT6-have-AKS}
   Nad lokalno \(T₆\) prostori velja analitična Kripkejeva shema.
 \end{trditev}
 \begin{proof}
   Brez škode za splošnost lahko predpostavimo, da je prostor \(X\) \(T₆\).
-  Naj bo \(U ⊆ X\). Tedaj obstaja \(f : X → ℝ\), ki je \(0\) natanko na
+  Naj bo \(U ⊆ X\). Tedaj obstaja \(x : X → ℝ\), ki je \(0\) natanko na
   komplementu \(U\). To pa pomeni, da je natanko na \(U\) različen od \(0\)
   kar je pa točno to, kar zahtevamo za analitično Kripkejevo shemo.
 \end{proof}
@@ -16,13 +15,12 @@ TODO: global existence
   V dokazu smo zares pokazali \emph{globalen} obstoj za element \(x : ℝ\). To
   nam da slutiti, da je (lokalno) \(T₆\) lastnost močnejša od \(\aks*\). In res
   se izkaže, da je temu tako.
-  TODO: a se zmislim primer?
 \end{opomba}
 
 Vseeno pa velja obrat, če analitično Kripkejevo shemo malo ojačamo. Specifično,
 če predpostavimo obstoj \emph{funkcije izibre} za shemo \(\aks*\).
 \begin{trditev}
-  Če velja \(X ⊩ \exist{f : Ω → ℝ}{\for{p : Ω}{p ⇔ f(p) \apart 0}}\), je \(X\)
+  Če velja \(X ⊩ \exist{f : ℝ^Ω}{\for{p : Ω}{p ⇔ f(p) \apart 0}}\), je \(X\)
   lokalno \(T₆\).
 \end{trditev}
 \begin{dokaz}
@@ -34,12 +32,15 @@ Vseeno pa velja obrat, če analitično Kripkejevo shemo malo ojačamo. Specifič
 
   pika TODO: napiši zadevo normalno.
 \end{dokaz}
-\begin{opomba}
-  Ponovno smo pokazali malo več kot zgolj lokalno \(T₆\) lastnost. Dobili smo
-  \emph{funkcije izbire} za vsako od \(T₆\) komponent. Če v metateoriji
-  predpostavimo princip izbire, potem je to ekvivalentno tej močnejši verziji
-  \(\aks*\).
-\end{opomba}
+Ponovno smo pokazali malo več kot zgolj lokalno \(T₆\) lastnost. Dobili smo
+\emph{funkcije izbire} za vsako od \(T₆\) komponent. Ker pa imamo v metateoriji
+princip izbire, je to ekvivalentno lokalno \(T₆\) lastnosti. Skupaj dobimo torej
+sledeči izrek.
+
+\begin{izrek}
+  Prostor je lokalno \(T₆\) natanko tedaj, ko nad njem velja
+  \[ \exist{f : ℝ^Ω}{\for{p : Ω}{p ⇔ f(p) \apart 0}}\text. \]
+\end{izrek}
 
 
 \subsection{Idempotenca \alpo* nad lokalno \(T₆\) prostori}
@@ -107,7 +108,7 @@ do \(T₄\) lastnosti.
 \end{posledica}
 
 \begin{lema}
-  Nad Cantorjevim prostorom je \(\lpo*\) ekvivalenten \(\alpo*\).
+  Nad Cantorjevim prostorom je stopnja \(\lpo*\) ekvivalentna \(\alpo*\).
 \end{lema}
 \begin{dokaz}
   Zares gornja lema pokaže, da je \(Σ_{\Rd} = Σ₀¹\), kar po enakem argumentu kot
