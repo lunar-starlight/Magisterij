@@ -139,9 +139,9 @@
 \setmathfont{Asana Math}[range={scr}]
 \setmathfont{STIX Two Math-Regular}[range={bb,"1D538-"1D56B,"0211D}]
 \setmathfont{STIX Two Math-Regular}[range={"2102,"210D,"2115,"2119,"211A,"211D,"2124}]
-% \setmathfont{TeX Gyre Pagella Math}[range={8730}]
+% \setmathfont{TeX Gyre Pagella Math}[range={8730}] %sqrt
 % \setmathfont{Asana Math}[range={"007B,"007D}]  % {}
-\setmathfont{Asana Math}[range={8709, \setminus, "2216, "29F5}]  % U+2205, emptyset
+\setmathfont{Asana Math}[range={8709,\setminus,"2216,"29F5,"219D}]  % U+2205, emptyset
 %\setmathfont{Asana Math}[range={"3088}] % U+3088, よ
 %\setmathfont{Source Han Sans JP}[range={"3088}, math-style=TeX] % U+3088, よ
 %\newfontfamily\cjkfont[Script=CJK]{Kochi Mincho}
@@ -934,3 +934,7 @@
   \@make@razsirjenipovzetek{slovene}{Razsirjeni povzetek}{\@razsirjenipovzetek}
 }
 }
+
+%%% Local Variables:
+%%% TeX-master: "main"
+%%% End:

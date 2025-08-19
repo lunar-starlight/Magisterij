@@ -5,7 +5,7 @@ vsakemu prostoru na nek način dodeliti logični sistem, katerega lastnosti bodo
 potem odražale (upamo da znane) lastnosti topološkega prostora.
 Prva opazka, ki jo lahko naredimo je, da lahko gledamo ``logiko odprtih množic'',
 kjer smatramo odprte množice kot trditve oziroma resničnostne vrednosti.
-O tem si mislimo, kot da se resnica spreminja po prostoru. Na primer poglejmo si
+O tem si mislimo, kot da se resnica spreminja po prostoru. Poglejmo si na primer
 trditev ``funkcija \(\id\) je pozitivna''. To seveda ni res, je pa res če jo
 zožimo na pozitivna realna števila. Tako lahko tej trditvi priredimo
 resničnostno vrednost \(\p{0, ∞}\). Tako torej presek igra vlogo konjunkcije,
@@ -13,26 +13,25 @@ unija disjunkcije, izrazimo lahko pa tudi implikacijo (čeprav jo v topologiji
 redko vidimo).
 
 Tako smo prostoru priredili \emph{izjavni račun}. Že s tem lahko izrazimo
-veliko, recimo karakteriziramo lahko particijske topologije, ekstremalno
-% TODO: prevodi za `extremally' in `basically' disconnected
+veliko, recimo karakteriziramo lahko diskretne prostore, ekstremalno
 nepovezane prostore, in še kakšne.
 
 Ampak izkaže se, da lahko našo logiko obogatimo še do logike višjega reda,
 kar nam bo dalo več možnosti za karakterizacije topoloških lastnosti.
-Recimo, da bi želeli dodati naravna števila v logiko prostora evklidskih realnih
-števil. Tako kot zgoraj, bi želeli, da se lahko ``vrednost'' naravnega števila
-spreminja po prostoru. To je pa natanko (zvezna) funkcija \(ℝ → ℕ\). Zveznost
-zahtevamo, da se ta naravna števila dovolj lepo obnašajo, konec koncev pa to
-pomeni, da je ta funkcija konstantna. Zanimivo potem postane, da naravna števila
-niso nujno definirana povsod: res, obstajajo funkcije v naravna števila tudi iz
-odprtih podmnožic \(ℝ\), ta pa niso nujno povezana, tako da tudi te funkcije
-niso nujno konstantne.
+Recimo, da bi želeli dodati naravna števila v logiko prostora realnih števil.
+Tako kot zgoraj, bi želeli, da se lahko ``vrednost'' naravnega števila spreminja
+po prostoru. To je pa natanko (zvezna) funkcija \(ℝ → ℕ\). Zveznost zahtevamo,
+da se ta naravna števila dovolj lepo obnašajo, konec koncev pa to pomeni, da je
+ta funkcija konstantna. Zanimivo potem postane, da naravna števila niso nujno
+definirana povsod: res, obstajajo funkcije v naravna števila tudi iz odprtih
+podmnožic \(ℝ\), ta pa niso nujno povezana, tako da te funkcije niso nujno
+konstantne.
 
 Taki logiki bomo potem pravili \emph{topološki model}. Zares smo do tega prišli
 v napačnem vrstnem redu, saj imamo ponavadi najprej neko logiko, in potem
 najdemo matematični objekt, ki se mu reče \emph{model}, ki tej logiki zadošča.
-Tako je bolj korektno, da rečemo, da je cilj naloge pokazati, da v logiki velja
-določen neklasičen princip natanko tedaj, ko za topološke modele te logike velja
+Tako je bolj korektno, da rečemo, da je cilj dela pokazati, da v logiki velja
+določen logični princip natanko tedaj, ko za topološke modele te logike velja
 neka topološka lastnost. Tako dobimo recimo izrek, da izključena tretja možnost
 velja natanko v diskretnih prostorih.
 
@@ -66,15 +65,15 @@ velja natanko v diskretnih prostorih.
 % lastnostmi, kot na primer kompaktnost, separabilnost, \(Tₙ\) lastnostmi, in
 % podobno.
 
-Močno se zgledujemo po delu Inga Blechschmidta~\cite{Blechschmidt17}, ki zgradi
-slovar med algebraično geometrijo in komutativno algebro v (Zariskijevem)
-modelu.
+Močno se zgledujemo po delu Inga
+Blechschmidta~\cite{Blechschmidt17,Blechschmidt22}, ki zgradi slovar med
+algebraično geometrijo in komutativno algebro v (Zariskijevem) modelu.
 
 To delo predpostavlja znanje teorije kategorij, se pa bo avtorica potrudila
 navesti točne citate na vse naprednejše kategorične definicije in izreke. Znanje
 teorije modelov ali teorije toposov ni nujno, je pa za globje razumevanje
 celostne slike verjetno potrebno. Zaželjeno je osnovno poznavanje konstruktivne
-matematike, za kar priporočamo~\cite{Bauer16, Greenleaf20, Bishop85}.
+matematike, za kar priporočamo~\cite{Bauer16, Bishop85}.
 
 \subsection{Notacija}
 
@@ -85,21 +84,28 @@ spodnji tabeli.
 \begin{tabularx}{0.9\linewidth}{lX}
   % \(よ\) & vložitev Yonede\\
   \(f{\res U}\) & zožitev \(f\) na \(U\)\\
+  \(\Rm\) & realna števila konstruirana z MacNeillovimi rezi\\
   \(\Rd\) & realna števila konstruirana z Dedekindovimi rezi\\
-  \(\Rc\) & realna števila konstruirana kot kvocijen Cauchyjevih zaporedij\\
+  \(\Rc\) & realna števila konstruirana kot kvocient Cauchyjevih zaporedij\\
   %\(\lem\) & princip izključene tretje možnosti, \\
   % \(\cov{U}{i}\) & pokritje \(\{Uᵢ\}_{i∈I}\) monžice \(U\), kjer je
   %                  \(I\) neka indeksna množica\\
   \(\eventually{V ⊆ U}{P(V)}\) & obstaja pokritje množice \(U\), in za vsak
                                  element pokritja \(V\) velja \(P(V)\)\\
   \(\lightning\) & protislovje\\
+  \(𝒫A\) & potenčna množica \(A\)\\
   \(𝒪X\) & odprte množice prostora \(X\)\\
   \(𝒜X\) & zaprte množice prostora \(X\)\\
-  \(U ⊥ V\) & imata prazen presek\\
-  \(U \between V\) & imata neprazen presek\\
+  %\(U \op X\) & \(U\) odprta podmnožica \(X\)\\
+  \(U ⊥ V\) & presek \(U\) in \(V\) je prazen\\
+  \(U \between V\) & presek \(U\) in \(V\) ni prazen\\
+  \(\) &\\
+  \(\) &\\
+  \(\) &\\
   \(\) &
 \end{tabularx}
 
+TODO: družine
 
 %%% Local Variables:
 %%% mode: latex

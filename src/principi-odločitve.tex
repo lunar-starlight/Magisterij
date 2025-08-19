@@ -3,19 +3,14 @@
 Spomnimo se najprej karakterizacij \(\lem*\) in \(\wlem*\) iz
 podrazdelka~\ref{sec:modeli-logika-odprtih}.
 
-\begin{retrditev}{th:lem-is-partition}
+\begin{retrditev}{th:lem-is-discrete}
   Nad topološkim prostorom velja princip izključene tretje možnosti natanko
-  tedaj, ko je prostor particijski.
+  tedaj, ko je prostor diskreten.
 \end{retrditev}
 \begin{retrditev}{th:wlem-is-ext-disc}
   Nad topološkim prostorom velja DeMorganov zakon natanko tedaj, ko je prostor
   ekstremalno nepovezan.
 \end{retrditev}
-
-Ker so naši prostori \(T₀\), so particijski prostori natanko diskretni. Res, če
-so točke zaprte, in je vsaka zaprta množica odprta, so točke odprte, torej je
-prostor diskreten.
-
 
 Pokažimo sedaj, da implikacije iz~\ref{sec:logika-odločitve} niso obrnljive.
 
@@ -71,17 +66,10 @@ TODO: vezno besedilo
   Če je \(X\) lokalno povezan, velja \(X ⊩ \lpo*\).
 \end{trditev}
 \begin{dokaz}
-  Naj bo \(α : 2^ℕ\). Ker je \(X\) lokalno povezan, je množica \(2^ℕ\) kar
-  množica preslikav iz \(ℕ\) v \(2\). To pa pomeni, da je lokalno \(α = f\), za
-  nek \(f : ℕ → 2\). Zunaj pa imamo \(\lpo*\), tako da lahko odločimo \(f = 0 ∨
-  f \apart 0\), kar pa pomeni, da to lahko odločimo tudi za \(α\), torej nad
-  \(X\) velja \(\lpo*\).
+  Naj bo \(α : 2^ℕ\). Po trdtivi~\ref{th:lpov-exponentiable} je torej \(α\)
+  lokalno funkcija \(ℕ → 2\). Ker imamo zunaj \(\lpo*\), lahko odločimo
+  \(α = 0 ∨ α \apart 0\) tam, kar pa pomeni, da to lahko odločimo tudi znotraj.
 \end{dokaz}
-% \begin{opomba}
-%   Ker potrebujemo le, da so elementi \(\Rc\) lokalno konstantni, zadošča predpostaviti
-%   \(\Rc = \c ℝ\). To pomeni, da je to kar močen princip, saj je zadosten za
-%   \(\lpo*\).
-% \end{opomba}
 
 
 \begin{izrek}\label{th:alpo-is-zerosets-open}
@@ -111,19 +99,12 @@ odprte množice z realnimi, dobimo sledečo lastnost.
   basically disconnected.
 \end{trditev}
 Dokaz trditve je enak kot~\ref{th:wlem-is-ext-disc}, tako da ga ne ponovimo.
-
-% \begin{trditev}\label{th:allpo-is-f-space}
-%   Nad \(X\) velja \(\allpo*\) natanko tedaj, ko je vsaka odprta podmnožica \(X\)
-%   F-prostor. %TODO: definicija
-% \end{trditev}
-%TODO: dokaz v GJ60.
-
 Velja pa zanimiva posledica, namreč, da nad basically disconnected prostori
 obstaja funkcija \(\mathrm{sgn}\) (oziroma nekaj dovolj podobnega).
 \begin{trditev}
   Če nad \(X\) velja \(\awlpo*\), potem za vsak \(x : ℝ\) obstaja
   \(u : \e x → ℝ\), tako da je \(u\) nad \(\e x\) obrnljiv, in velja
-  \(\e x ⊩ f = u\abs f\).
+  \(\e x ⊩ x = u\abs x\).
 \end{trditev}
 \begin{dokaz}
   Brez škode za splošnost naj bo \(\e x = X\).
@@ -138,7 +119,7 @@ obstaja funkcija \(\mathrm{sgn}\) (oziroma nekaj dovolj podobnega).
   \]
   %\(U ⊩ u = 1\) in \(Uᶜ ⊩ u = -1\).
   Ta \(u\) je obrnljiv, saj je \(u⋅u = 1\). Prav tako velja želena enačba, saj
-  je \(f ≤ 0\) na \(Uᶜ\).
+  je \(U\) vsebovan v \(x ≥ 0\), in velja \(f ≤ 0\) na \(Uᶜ\).
 \end{dokaz}
 
 Če pa želimo zares definirati \(\mathrm{sgn}\), moramo uporabiti \(\alpo\). Ta
@@ -166,8 +147,9 @@ Kot bi sklepali iz imena je vsak P-prostor tudi skoraj P-prostor.
   skoraj P-prostor.
 \end{trditev}
 \begin{dokaz}
-  Princip pravi, da za vsak tak \(f\) velja \(\int{\cl{\i{f > 0}}} ⊆ \i{f > 0}\).
-  Ker obratna enakost očitno velja, je to ravno definicija regularnosti odprte množice.
+  Princip pravi, da za vsak tak \(f\) velja
+  \(\int{\p{\cl{\i{f > 0}}}} ⊆ \i{f > 0}\). Ker obratna enakost očitno velja, je
+  to ravno definicija regularnosti odprte množice.
 \end{dokaz}
 Analogno velja tudi \(\mp*\) natanko tedaj, ko je vsaka semiodločljiva odprta
 množica regularna.
@@ -189,8 +171,8 @@ igri v tej ekvivalenci, tako da bi morala veljati ekvivalenca med njimi.
   Če je vsaka množica \(\i{f > 0}\) zaprta, je tudi regularna (vse odprto zaprte
   množice so regularne). Prav tako je njeno zaprtje odprto.
 
-  Obratno, če je \(\i{f > 0} = \int{\cl{\i{f>0}}}\), in je zaprtje \(\i{f>0}\)
-  odprto, je potem \(\i{f>0} = \cl{\i{f>0}}\), torej je zaprta.
+  Obratno, če je \(\i{f > 0} = \int{\p{\cl{\i{f>0}}}}\), in je zaprtje
+  \(\i{f>0}\) odprto, je potem \(\i{f>0} = \cl{\i{f>0}}\), torej je zaprta.
 \end{dokaz}
 Avtorici ni znano, če se ta izrek pojavi kje v literaturi, predvsem ker je
 večina literature o teh prostorih objavljene pod predpostavko \(T_{3.5}\).

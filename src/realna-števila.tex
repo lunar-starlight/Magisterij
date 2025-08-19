@@ -22,12 +22,12 @@ realnih števil, objekt \(\c ℝ\) je pa malo poseben.
   Naj bo \(x = \p{L, U}\) dedekindov rez v interni logiki.
   Sedaj lahko zunaj za \(t ∈ \e x\) definiramo
   \begin{align*}
-    Lₜ &≔ \set{q : ℚ}{t ∈ \i{q ∈ L}}\text{ in}\\
-    Uₜ &≔ \set{r : ℚ}{t ∈ \i{r ∈ U}}\text.
+    L(t) &≔ \set{q : ℚ}{t ∈ \i{q ∈ L}}\text{ in}\\
+    U(t) &≔ \set{r : ℚ}{t ∈ \i{r ∈ U}}\text.
   \end{align*}
-  Ta tvorita Dedekindov rez, tako da nam \(t ↦ \p{Lₜ, Uₜ}\) definira preslikavo
-  iz \(\e x → ℝ\).
-  Pokazati ostane, da je ta preslikava (označimo jo \(\hat x\)) zvezna.
+  Ta tvorita Dedekindov rez zunaj, tako da nam \(t ↦ \p{L(t), U(t)}\) definira
+  preslikavo \(\hat x : \e x → ℝ\).
+  Pokazati ostane, da je ta preslikava zvezna.
   Naj bo \(\p{a,b}\) racionalen interval v \(ℝ\). Praslika tega intervala z
   \(\hat x\) je množica \(\set{t ∈ \e x}{a < \hat x(t) < b}\).
   Ta pogoj je ekvivalenten \(t ∈ \i{a ∈ L ∧ b ∈ U}\), torej je praslika kar
@@ -50,8 +50,8 @@ preslikav v \(ℝ\). Ampak katerih?
 \begin{dokaz}
   Brez škode za splošnost naj bo \(f : U → ℝ\) konstantna preslikava, recimo
   konstantno \({x ∈ ℝ}\). Ta ima potem pripadajoče Cauchyjevo zaporedje
-  \((xₙ)ₙ\). Sedaj pa lahko tvorimo konstantne preslikave \(\hat xₙ : U → ℚ\), ki
-  znotraj tvorijo Cauchyjevo zaporedje.
+  \((xₙ)ₙ\). Sedaj pa lahko tvorimo konstantne preslikave \(\hat xₙ : U → ℚ\),
+  ki znotraj tvorijo Cauchyjevo zaporedje.
 \end{dokaz}
 
 \begin{trditev}\label{th:Rc-maps}
@@ -104,8 +104,8 @@ preslikava manjša ali enaka \(\bar f\), in obratno.
 \end{lema}
 \begin{dokaz}
   Naj bo \(L\) dolnji enostranski rez. Kot za Dedekindove reze tvorimo
-  preslikavo \(x(t) = Lₜ\). To je preslikava \(\e L → ℝ\), saj so klasično
-  enostranski rezi ekvivalentni dvostranskim.
+  preslikavo \(t ↦ \set{q:ℚ}{t ∈ \i{q∈L}}\). To je preslikava \(x : \e L → ℝ\),
+  saj so klasično enostranski rezi ekvivalentni dvostranskim.
 
   Oglejmo si sedaj \(x⁻¹\p{p,∞}\). To je natanko \(\set{t∈\e L}{p < x(t)}\). Po
   definiciji je ta pogoj ekvivalenten \(t ∈ \i{p ∈ L}\), torej je praskika
@@ -444,7 +444,7 @@ Gornji dokaz sem tudi formalizirala v dokazovalnem pomočniku Agda, kar nam da
 formaliziran, popolnoma konstruktiven dokaz sledečega izreka.
 \begin{izrek}\label{th:Rm=Rd-wlem}
   MacNeillova realna števila se ujemajo z Dedekindovimi natanko tedaj, ko velja
-  šibka izključena tretja možnost.
+  princip šibke izključene tretje možnosti.
 \end{izrek}
 
 V literaturi se to pojavi v recimo~\cite[trd.~D4.7.11]{Johnstone02}, sem pa to

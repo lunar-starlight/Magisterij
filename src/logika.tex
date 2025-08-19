@@ -15,25 +15,35 @@ Spomnimo se nekaj definicij realnih števil.
 
 \begin{definicija}[Dedekindova realna števila]
   Par \(\p{L, U} ∈ 𝒫(ℚ)×𝒫(ℚ)\) je \emph{Dedekindov rez}, ko velja
-  \begin{align}
-    &L \text{ je naseljen}\\
-    &U \text{ je naeljen}\\
-    &L \text{ je doljna}\\
-    &U \text{ je gornja}\\
-    &L \text{ je navzgor odprt}\\
-    &U \text{ je navzdol odprt}\\
-    &\text{za } p < q \text{ je } p ∈ L ∨ q ∈ U\label{real:located}\\
-    &\text{za } p ∈ L ∧ q ∈ U \text{ je } p < q
-  \end{align}
+  \begin{enumerate}
+    \item \(L\) je naseljen
+    \item \(U\) je naseljen
+    \item \(L\) je doljna
+    \item \(U\) je gornja
+    \item \(L\) je navzgor odprt
+    \item \(U\) je navzdol odprt
+    \item \(0 ∈ L ∨ 1 ∈ U\)
+    \item za vsaka \(p\), \(q : ℚ\) velja \(p ∈ L ∧ q ∈ U ⇒ p < q\)
+  \end{enumerate}
   Množica Dedekindovih rezov tvori \emph{Dedekindova realna števila}, ki jih
   označimo z \(\Rd\).
+  Za \(x : \Rd\) naj \(Lₓ\) in \(Uₓ\) označujeta podmnožici \(ℚ\), ki tvorita
+  dedekindov rez \(x\).
+
+  Za racionalno število \(p\) definiramo \(p < x\) kot \(p ∈ Lₓ\) in \(x < p\)
+  kot \(p ∈ Uₓ\). Relacijo \(x < y\) za Dedekindovi realni števili potem
+  definiamo kot ``obstaja racionalno število \(p\), da je \(x < p < y\)''.
+  Z rezi to izrazimo kot \(U_x \between L_y\).
+
+  Relacijo \(\p{L,U} ≤ \p{L',U'}\) definiramo kot \(L ⊆ L' ∧ U' ⊆ U\).
+  Pogoja sta ekvivalentna, tako da zadošča pokazati zgolj eno vsebovanost.
 \end{definicija}
 \begin{opomba}
-  Pogoju~\ref{real:located} pravimo \emph{lociranost} in če velja za katerikoli
-  racionalni števili \(a\) in \(b\), bo veljala tudi za vse druge izbire.
-
+  Sedmemu pogoju zgoraj pravimo \emph{lociranost}. Izkaže se, da sta števili
+  \(0\) in \(1\) arbitrarni, saj je pogoj ekvivalenten pogoju
+  ``za vse \(p < q\) je \(p ∈ L\) ali \(q ∈ U\)''.
   Res, relacija \(<\) je invariantna na afine preslikave realne premice, tako da
-  lahko vsak interval \(\p{a,b}\) preslikamo (recimo) na \(\p{0,1}\) in nazaj.
+  lahko vsak interval \(\p{p,q}\) preslikamo na \(\p{0,1}\) in nazaj.
 \end{opomba}
 
 \begin{definicija}[Cauchyjeva realna števila]
@@ -45,6 +55,9 @@ Spomnimo se nekaj definicij realnih števil.
 
   Množica Cauchyjevih zaporedij kvocientno z gornjo relacijo tvori
   \emph{Cauchyjeva realna števila}, ki jih označimo z \(\Rc\).
+
+  Relacijo \(x < y\) definiramo kot \(\exist{n:ℕ}{xₙ + 2⁻ⁿ < yₙ - 2⁻ⁿ}\),
+  relacijo \(x ≤ y\) pa enako kot zgoraj le da \(<\) spremenimo v \(≤\).
 \end{definicija}
 \begin{opomba}
   Takim zaporedjim ponavadi pravimo hitra Cauchyjeva zaporedja.
@@ -58,6 +71,12 @@ Spomnimo se nekaj definicij realnih števil.
   Ker pa v našem delu teh ne potrebujemo, bomo objekt hitrih Cauchyjevih realnih
   števil imenovali kar samo Cauchyjeva.
 \end{opomba}
+
+\begin{lema}\label{th:real-order-lemma}
+  Relaciji \(<\) in \(≤\) sta delni ureditvi v Dedekindovih in Cauchyjevih
+  realnih številih. Poleg tega velja \(x < y ≤ z ⇒ x < z\) in
+  \(x ≤ y < z ⇒ x < z\).
+\end{lema}
 
 \begin{trditev}
   Vsako Cauchyjevo realno število je tudi Dedekindovo.
@@ -85,23 +104,28 @@ ni veliko znano, tako da jih v tem delu ne obravnavamo.
 
 \begin{definicija}[MacNeillova realna števila]
   Par \(\p{L, U} ∈ 𝒫(ℚ)×𝒫(ℚ)\) je \emph{Dedekind-MacNeilleov rez}, ko velja
-  \begin{align}
-    &L \text{ je naseljen}\\
-    &U \text{ je naseljen}\\
-    &L \text{ je doljna}\\
-    &U \text{ je gornja}\\
-    &L \text{ je navzgor odprt}\\
-    &U \text{ je navzdol odprt}\\
-    &L = \int{\p{Uᶜ}}\\
-    &U = \int{\p{Lᶜ}}
-  \end{align}
-  Množica Dedekind-MacNeilleovih rezov tvori \emph{MacNeillova realna števila}, ki jih
-  označimo z \(\Rm\).
+  \begin{enumerate}
+    \item \(L\) je naseljen
+    \item \(U\) je naseljen
+    \item \(L\) je doljna
+    \item \(U\) je gornja
+    \item \(L\) je navzgor odprt
+    \item \(U\) je navzdol odprt
+    \item \(L = \int{\p{Uᶜ}}\)
+    \item \(U = \int{\p{Lᶜ}}\)
+  \end{enumerate}
+  Množica Dedekind-MacNeilleovih rezov tvori \emph{MacNeillova realna števila},
+  ki jih označimo z \(\Rm\).
+
+  Ureditev na MacNeillovih realnih številih definiramo enako kot na Dedekindovih
+  realnih številih.
 \end{definicija}
 \begin{opomba}
   Zadnji pogoj je ekvivalenten trditvi \(q ∈ U ⇔ \exist{p<q}{p ∉ L}\)
-  (simetrično velja tudi za predzadnji pogoj).
+  (in simetrično velja tudi za predzadnji pogoj).
 \end{opomba}
+
+Lema~\ref{th:real-order-lemma} velja tudi za ureditve na MacNeillovih realnih številih.
 
 \begin{trditev}
   Vsako Dedekindovo realno število je tudi MacNeillovo.
@@ -128,8 +152,8 @@ Ostalo bi torej pokazati zgolj lociranost vsakega MacNeillovega realnega
 števila, a to žal ni mogoče.
 Temu principu bomo torej pravili ``\(\Rm = \Rd\)''.
 
-Pokažimo še koristno lemo, ki pravi, da ima vsaka naseljena omejena množica
-MacNeillovih realnih števil supremum.
+MacNeillova realna števila so zanimiva, saj imajo lepo lastnost, ki pravi, da
+ima vsaka naseljena omejena množica MacNeillovih realnih števil supremum.
 \begin{lema}\label{th:Rm-sup}
   MacNeillova realna števila so polna.
 \end{lema}
@@ -142,6 +166,39 @@ MacNeillovih realnih števil supremum.
   Potem je pa \(\int(Uᶜ) = \int(\cl L)\). Ampak \(L\) je navzdol zaprta, torej
   je notranjost njenega zaprtja kar \(L\).
 \end{dokaz}
+
+Tako princip \(\Rm = \Rd\) pravi, da ima vsaka naseljena omejena množica
+\emph{Dedekindovih} realnih števil supremum!
+
+Poglejmo si bolj podrobno ureditve \(<\) in \(≤\). Sedaj smo definirali vsako na
+vsaki od množic realnih števil, vemo pa, da velja \(\Rc ⊆ \Rd ⊆ \Rm\). Izkaže
+se, da so si relacije povezane.
+
+\begin{lema}
+  Za Cauchyjevi realni števili velja \(x <_\Rc y ⇔ x <_\Rd y\) in \(x ≤_\Rc y ⇔ x ≤_\Rd y\).
+  Za Dedekindovi realni števili velja \(x <_\Rd y ⇔ x <_\Rm y\) in \(x ≤_\Rd y ⇔ x ≤_\Rm y\).
+\end{lema}
+
+\begin{lema}\label{th:dedekind-real-≤-is-¬>}
+  Za Dedekindovi realni števili \(x\) in \(y\) je \(x ≤ y ⇔ ¬(y < x)\).
+\end{lema}
+\begin{dokaz}
+  Očitno \(x ≤ y < x\) vodi v protislovje, torej je smer \(⇒\) dokazana. Naj
+  sedaj velja \(¬(y < x)\), torej za noben \(p : ℚ\) ne velja \(y < p < x\).
+  To pa pomeni, da je \(U_y⊥L_x\). Če je sedaj \(p ∈ L_x\), mora po odprtosti
+  obstajati \(q ∈ L_x\), ki je večji od \(p\). Potem pa po lociranosti \(y\)
+  velja \(p ∈ L_y ∨ q ∈ U_y\). Ampak \(q\) ne more biti v \(L_x\) in \(U_y\),
+  tako da je \(p ∈ L_y\).
+\end{dokaz}
+
+A to žal ne velja za ureditvi na MacNeilleovih realnih številih, kljub temu, da
+se na \(\Rd\) ujemajo. Vseeno pa velja implikacija v desno, saj ta sledi iz
+leme~\ref{th:real-order-lemma}. Vseeno pa velja sledeče:
+\begin{lema}
+  Za (poljubni) realni števili \(x\) in \(y\) velja \(x < y ∨ x=y ⇒ x ≤ y\).
+\end{lema}
+Gornjo lemo je preprosto preveriti. V klasični logiki tu velja tudi obrat
+implikacije, a tega ne moremo pokazati konstruktivno.
 
 
 \subsection{Principi izbire}\label{sec:logika-izbire}
@@ -162,7 +219,7 @@ določene množice \(Σ ⊆ Ω\).
   \emph{domena}, objektu \(B\) \emph{kodomena}, objektu \(Σ\) pa
   \emph{Sierpinskijev objekt}.
   Pogoju na \(R\) pravimo \emph{celovitost}.
-  To označimo z \(\AC_Σ\). Če je \(Σ = Ω\) indeks opustimo in temu pravimo
+  To označimo z \(\AC_Σ\). Če je \(Σ = Ω\), indeks opustimo in temu pravimo
   \emph{princip izbire}.
 \end{definicija}
 \begin{definicija}
@@ -180,12 +237,11 @@ Hitro lahko opazimo, da so principi izbire neobčutljivi za izomorfizme.
 \end{trditev}
 \begin{dokaz}
   Situacija je očitno simetrična, tako da pokažimo zgolj eno implikacijo.
-
-  Če je \(R : A'×B' → Σ\) celovita, je potem tudi \({R∘\p{φ×ψ} : A×B → Σ}\)
-  celovita. Potem pa za to relacijo obstaja funkcija izbire, tako da je
+  Če je \({R : A'×B' → Σ}\) celovita, je potem tudi \({R∘\p{φ×ψ} : A×B → Σ}\)
+  celovita. Za to relacijo po predpostavki obstaja funkcija izbire, tako da je
   \(\for{x : A}{R∘\p{φ×ψ}{(x, f(x))}}\), kar je pa enako
-  \(\for{x:A}{R(φ(x),ψ(f(x)))}\). Ker pa je \(φ\) izomorfizem, lahko
-  preindeksiramo kvantifikator in dobimo \(\for{x:A'}{R(x,ψ∘f∘φ⁻¹(x))}\),
+  \(\for{x:A}{R(φ(x),ψ(f(x)))}\). Ker je \(φ\) izomorfizem, lahko
+  kvantifikator preindeksiramo in dobimo \(\for{x:A'}{R(x,ψ∘f∘φ⁻¹(x))}\),
   torej je \(ψ∘f∘φ⁻¹\) funkcija izbire za \(R\).
 \end{dokaz}
 V teoriji množic to pomeni, da je aksiom izbire določen do kardinalnosti
@@ -194,6 +250,9 @@ natančno. To nam tudi utemelji zakaj lahko \(\AC(ℕ)\) pravimo princip
 lahko tudi predstavljamo, kako to shemo imen razširiti na poljubno kardinalnost.
 Označimo ga torej \(\CC\). Pomembno vlogo bo igral tudi \emph{princip
   števne disjunktivne izbire} \(\AC(ℕ, 2)\), ki ga označimo z \(\CCv\).
+
+Seveda pa v internem jeziku nismo definirali, kaj ``kardinalnost'' sploh je,
+tako da bo vsaka omemba kardinalnosti v tem delu bila v smislu zunanjega sveta.
 
 \begin{trditev}
   Če je \(Σ' ⊆ Σ\), \(\AC_Σ(A, B)\) implicira \(\AC_{Σ'}(A, B)\).
@@ -323,15 +382,16 @@ tako da ga ne bomo posebej obravnavali.
   ki ga označimo \(\awlpo*_ℝ\), s formulo \(\awlpo_ℝ(x) = x≤0 ∨ ¬(x≤0)\).
 \end{definicija}
 
-\begin{trditev}
-  Ekvivalentno lahko vzamemo \(\alpo_ℝ(x) = x = 0 ∨ x \apart 0\) in
-  \(\awlpo_ℝ(x) = x = 0 ∨ ¬(x=0)\).
+\begin{trditev}\label{th:alpo-equiv}
+  Ekvivalentno lahko definiramo \(\alpo*_ℝ\) kot \(\for{x:ℝ}{x = 0 ∨ x \apart 0}\) in
+  \(\awlpo*_ℝ\) kot \(\for{x:ℝ}{x = 0 ∨ ¬(x=0)}\).
 \end{trditev}
 \begin{dokaz}
   Če uporabimo \(\alpo*_ℝ\) na \(x\) in \(-x\) dobimo želeno formulo. Obratno pa
-  \({x = 0 ∨ x < 0}\) očitno implicira \(x ≤ 0\). Podobno pokažemo tudi drugi
-  del trditve.
+  \({x = 0 ∨ x < 0}\) implicira \(x ≤ 0\). Podobno pokažemo tudi drugi del.
 \end{dokaz}
+Tako bomo v dokazih prosto menjali med ekvivalentnima pogojema.
+
 
 \begin{trditev}\label{th:alpoc-is-lpo}\label{th:implications}
   Velja veriga implikacij \(\lem* ⇒ \alpo* ⇒ \alpo*_{\Rc} ⇔ \lpo*\).
@@ -352,6 +412,7 @@ tako da ga ne bomo posebej obravnavali.
   \(x > 2⁻ᵏ\). To pa pomeni, da ima \(α\) enico na enem izmed prvih \(k\)
   mestih, kar pomeni, da želeni indeks obstaja.
 
+  TODO: cite the MO post
   Obratno, naj bo \(x = (xᵢ)ᵢ\) Cauchyjevo zaporedje.
   Definiramo lahko zaporedje
   \[ β(k,n) ≔
@@ -388,15 +449,17 @@ Seveda pa se principi ne delijo popolnoma zgolj na principe izbire in odločitve
 Nekaj takih imamo zgoraj o realnih številih, nekaj jih bomo pa še definirali.
 
 \begin{definicija}\label{pr:mp}
-  \emph{Princip Markova} je formula \(\mp* ≔ \for{α:2^ℕ}{\mp(α)}\), kjer je
-  \(\mp(α) ≔ ¬(α=0) ⇒ α \apart 0\).
+  \emph{Princip Markova} je \(\for{α:2^ℕ}{¬(α=0) ⇒ α \apart 0}\). Kot ponavadi
+  označimo z \(\mp(α)\) notranjo formulo in z \(\mp*\) kvantificiran izraz.
 
   Podobno kot v~\ref{pr:alpo} definiramo analitične različice principa.
 \end{definicija}
 Ta je zožitev principa eliminacije dvojne negacije, \(\for{p:Ω}{¬¬p ⇒ p}\), na
 Sierpinskijev objekt \(Σ₀¹\). Za tega vemo, da je ekvivalenten izključeni tretji
 možnosti, a je \(\mp*\) vseeno šibkejši od \(\lpo*\).
-
+\begin{dokaz}
+  Če velja \(α = 0 ∨ α \apart 0\), in ne velja \(α=0\), potem velja \(α \apart 0\).
+\end{dokaz}
 
 \subsubsection{Redukcija instanc}
 
@@ -412,10 +475,12 @@ Tu nam \(Δ\) predstavlja Sierpinskijev objekt \emph{odločljivih} resničnostni
 vrednosti, \(R\) pa \emph{regularnih}.
 
 \begin{trditev}
-  Naj bo \(ℝ\) objekt realnih števil.
-  Sierpinski objekt \(Σ_ℝ\) je enak \(\set{x \apart 0}{x : ℝ}\).
+  Naj bo \(ℝ\) objekt realnih števil. Potem je Sierpinskijev objekt \(Σ_ℝ\) enak
+  \(\set{x \apart 0}{x : ℝ}\).
 \end{trditev}
 \begin{dokaz}
+  TODO: a je to res, in če je, a je pol velja \ref{th:alpo-equiv} kot redukcija?
+
   Če je \(x : ℝ\), je potem \(x \apart 0 ⇔ \abs x > 0\).
   Obratno pa, je \(x > 0 ⇔ \max\{x,0\} \apart 0\).
 \end{dokaz}
@@ -424,21 +489,21 @@ Prav tako bomo potem v dokazih prosto menjavali med \(x > 0\) in \(x \apart 0\).
 \begin{definicija}
   Vse logične principe, kvantificirane po \(Ω\), lahko razširimo tako, da domeno
   kvantifikacije omejimo na nek Sierpinskijev objekt. Specifično je torej
-  \(\lem*(Σ) ≔ \for{p∈Σ}{\lem(p)}\), itd.
+  \(\lem*{\res Σ} ≔ \for{p∈Σ}{\lem(p)}\), itd.
 \end{definicija}
 
 \begin{trditev}
-  Princip \(\lem*(Δ)\) velja.
+  Princip \(\lem*{\res Δ}\) velja.
 \end{trditev}
 
 Izkaže se, da lahko principe odločitve izrazimo kot princip izključene tretje
 možnosti, omejene na te Sierpinskijeve objekte.
 \begin{trditev}
-  Imamo \(\alpo* = \lem*(Σ_{\Rd})\), \(\alpo*_{\Rc} = \lem*(Σ_{\Rc})\), in
-  \(\lpo* = \lem*(Σ₀¹)\).
+  Imamo \(\alpo* = \lem*{\res{Σ_{\Rd}}}\), \(\alpo*_{\Rc} = \lem*{\res{Σ_{\Rc}}}\), in
+  \(\lpo* = \lem*{\res{Σ₀¹}}\).
 \end{trditev}
 \begin{dokaz}
-  Ker je \(¬(x > 0) ⇔ x ≤ 0\), in \(¬(α\apart 0) ⇔ α = 0\), enakosti očitno sledijo.
+  Ker je \(¬(x > 0) ⇔ x ≤ 0\), in \(¬(α\apart 0) ⇔ α = 0\), enakosti sledijo.
 \end{dokaz}
 Podobno lahko šibke verzije gornjih principov dobimo kot zožitve \(\wlem*\) na
 vsakega od teh objektov. To je tudi razlog, zakaj tej skupini principov pravimo
@@ -449,11 +514,11 @@ je \(Σ_{\Rc} = Σ₀¹\)? Namreč, v dokazu~\ref{th:alpoc-is-lpo} skonsturiramo
 \(x : \Rc\) in \(α : 2^ℕ\), da je \(x > 0\) natanko tedaj, ko je \(α \apart 0\).
 
 A vendar se izkaže, da velja zgolj \(Σ₀¹ ⊆ Σ_{\Rc}\). Če pogledamo dokaz, v to
-smer res na prazno skonstruiramo \(x : \Rc\), da velja gornje, ampak v obratno
-smer pa bistveno uporabimo več (celo neskončno) \emph{instanc} \(\lpo*\) v
-konstrukciji zaporedja \(α\).
+smer brez predpostavk skonstruiramo \(x : \Rc\), da velja gornje, ampak v
+obratno smer pa bistveno uporabimo več (celo neskončno) \emph{instanc} \(\lpo*\)
+v konstrukciji zaporedja \(α\).
 
-Izkaže se, da lahko matematično natančno opišemo gornji pojav.~\cite{Bauer22}
+Izkaže se, da lahko matematično natančno opišemo gornji pojav~\cite{Bauer22}.
 Ideja pride iz teorije izračunljivosti, specifično iz Weihrauchovih redukcij.
 Tam skrbno pazimo, kolikokrat se uporabi posamezne predpostavke.
 
@@ -532,12 +597,13 @@ to lahko pokažemo.
 \end{dokaz}
 Reducibilnost izhaja iz teorije izračunljivosti. Tam se idempotenca ne pojavi
 pogosto, saj tam pomeni, da lahko dve izvedbi algoritma izvedemo že z eno
-izvedbo, na posebej izbranem vhodu. Recimo \(\lpo*\) ni idempotenten, saj ko
-skeniramo neskončno zaporedje za enico, lahko rečemo, da se algoritem na neki
-točki ``premisli'', in namesto ničle vrne mesto enice. Če iščemo enico v dveh
-zaporedjih, se mora potencialno za vsakega od njih premisliti, tako da gotovo
-ne moremo tega izračunati z eno izvedbo algoritma. Se pa izkaže, da v topoloških
-modelih temu ni tako, a k temu se vrnemo kasneje.
+izvedbo, na posebej izbranem vhodu. Recimo \(\lpo*\) ni idempotenten.
+Hipotetični algoritem, ki bi odločal \(\lpo(α)\), najprej reče, da je odločil
+\(α=0\). Nato bere zaporedje, in ko naleti na enico, potuje skozi čas in
+spremeni svoj odgovor. Če iščemo enico v dveh zaporedjih, mora za vsakega od
+njih potovati skozi čas, tako da gotovo ne moremo tega izračunati z eno izvedbo
+algoritma. Se pa izkaže, da v topoloških modelih temu ni nujno tako, a k temu se
+vrnemo kasneje.
 
 V~\ref{th:alpoc-is-lpo} smo pokazali, da so principi, ki govorijo o \(Σ₀¹\) in
 \(Σ_{\Rc}\) ekvivalentni. Ampak vseeno pa ta Sierpinskijeva objekta nista nujno

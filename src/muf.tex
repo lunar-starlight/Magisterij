@@ -25,13 +25,15 @@
 \newcommand{\set}[2]{\left\{ #1 \mid #2 \right\}}
 \newcommand{\apart}{\ensuremath{\mathrel{\#}}}
 \newcommand{\nbd}{\oset{\text{\clap{\tiny nbd}}}{∋}}
-\newcommand{\newfrac}[2]{{}^{#1}\!/_{\!#2}}
+\newcommand{\quot}[2]{{#1}/_{\!#2}}
 \newcommand{\mb}[1]{\mathbf{#1}}
+\newcommand{\bb}[1]{\mathbb{#1}}
 \newcommand{\mf}[1]{\mathfrak{#1}}
 \renewcommand{\mc}[1]{\mathcal{#1}}
 \newcommand{\cat}[1]{\mathbf{#1}}
 \newcommand{\opcat}[1]{\left(\mathbf{#1}\right)^{op}}
-\newcommand{\op}[1]{{#1}^{op}}
+%\newcommand{\op}[1]{{#1}^{op}}
+\newcommand{\op}{\oset{\text{op}}{⊆}}
 \newcommand{\res}[1]{↾_{\hspace{-0.15em}#1}}
 % \newcommand{\res}[2]{#1{↾_{\hspace{-0.15em}#2}}}
 \newcommand{\sh}[1]{\textrm{Sh}{\left( #1 \right)}}
@@ -42,8 +44,8 @@
 \DeclareMathOperator{\coim}{coim}
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\codim}{codim}
-\DeclareMathOperator{\cl}{Cl}
-\DeclareMathOperator{\ext}{Ext}
+\DeclareMathOperator{\cl}{cl}
+\DeclareMathOperator{\ext}{ext}
 \DeclareMathOperator{\dom}{dom}
 \DeclareMathOperator{\ev}{ev}
 \DeclareMathOperator{\dm}{DM}
@@ -58,7 +60,7 @@
   \newcommand{\e}[1]{\left‖ {#1} \right‖}
   \newcommand{\s}[1]{\left\{ {#1} \right\}}
   \renewcommand{\O}[1]{\mathcal{O}{#1}}
-  \renewcommand{\int}{\textrm{Int}}
+  \renewcommand{\int}{\textrm{int}}
 }
 
 \usepackage{graphicx}
@@ -125,8 +127,10 @@
 \defprinciple{wlem}
 \defprinciple{lpo}
 \defprinciple{wlpo}
+\AtBeginDocument{  
 \undef\mp
 \defprinciple{mp}
+}
 \defprinciple{ks}
 \defprinciple{alpo}
 \defprinciple{awlpo}
@@ -154,7 +158,7 @@
   \end{tabularx}
 }
 
-\newcommand{\quot}[1]{``#1''}
+%\newcommand{\quot}[1]{``#1''}
 
 \newdef{konstrukcija}
 \newdef{oznaka}

@@ -9,15 +9,15 @@ nakazuje spodnji izrek.
   Če je \(X\) lokalno povezan, in nad \(X\) velja kateri koli princip izbire,
   velja potem tudi v metateoriji.
 \end{trditev}
-\begin{proof}
+\begin{dokaz}
   Oglejmo si princip izbire \(\AC_Σ{\p{A, B}}\).
-  Potem za vsako celovito relacijo \(R : A×B → Σ\) dobimo znotraj
+  Za celovito relacijo \({R : A×B → Σ}\) znotraj dobimo
   \[ X ⊩ \for{a : \c A}{\exist{b : \c B}{R(a, b)}}\text. \]
-  Potem pa po notranjem aksiomu izbire sčasoma obstaja funkcija
-  \(f : {\c B}^{\c A}\). Ker je prostor lokalo povezan, je to enako kot element
-  \(f : \c{B^A}\), kar nam pa da eksterno funkcijo \(f : A → B\), za katero
-  potem velja \(\for{a ∈ A}{R(a, f(a)}\).
-\end{proof}
+  Potem pa po notranjem aksiomu izbire sčasoma obstaja morfizem
+  \(f : \c A ↬ {\c B}\). Ker je prostor lokalno povezan, je to enako kot element
+  \(f : \c{B^A}\), kar pa nam da funkcijo \(f : A → B\) zunaj, za katero
+  potem velja \(\for{a ∈ A}{R(a, f(a))}\).
+\end{dokaz}
 \begin{opomba}
   Zgoraj smo lokalno povezanost uporabili zgolj za enakost \({\c B}^{\c A} = \c{B^A}\),
   tako da bi zadoščalo predpostaviti zgolj to (torej, za enaka \(A\) in \(B\)
@@ -33,61 +33,82 @@ Seveda pa glede na to, da nas zanimajo topološke lastnosti, in se teorija
 topologije večinoma razvija klasično, je to še močnejši razlog, zakaj bi
 preferirali klasično metateorijo.
 
-Spodnji rezultat je v malo drugačni obliki pokazal Alex Simpson~\ref{Simpson24},
+Spodnji rezultat je v malo drugačni obliki pokazal Alex Simpson~\cite{Simpson24},
 dokaz v primeru topoloških modelov je pa originalen.
 \begin{izrek}\label{th:ac-and-conn-is-pgt}
-  Nad \(X\) velja \(\AC_Σ(\c A, \c B)\) in \({\c B}^{\c A} = \c{B^A}\) natanko
+  Nad \(X\) velja \(\AC(\c A, \c B)\) in \(\c A ↬ {\c B} = \c{B^A}\) natanko
   tedaj, ko ima vsaka \(A\)-indeksirana množica \(B\)-indeksiranih
-  \(Σ\)-pokritij \(U\) skupno pofinitev.
+  pokritij \(U\) skupno pofinitev.
   %Nad \(X\) velja \(\AC_Σ{\p{\c A, \c B}}\) in \({\c B}^{\c A} = \c{B^A}\)
   %natanko tedaj, ko je Grothendieckova topologija \(X\) zaprta za \(A\)-mnoge
   %preseke \(B\)-indeksiranih \(Σ\)-krovov.
 \end{izrek}
-\begin{proof}
+\begin{dokaz}
   \begin{itemize}
   \item[\(\p ⇐\)]
-    Pokažimo prvo, da velja gornja enakost.
-    Na stopnji \(U ∈ 𝒪X\) je \({\c B}^{\c A}\) navzven enak \(U×ΔA → ΔB\),
-    objekt \(\c{B^A}\) pa \(U → Δ\p{B^A}\). Torej moramo pokazati, da vsaka
-    zvezna funkcija \(f\) porodi zvezno funkcijo \(x ↦ (a ↦ f(x, a))\).
+    Pokažimo najprej, da velja gornja enakost.
+    Tip \(\c A ↬ \c B\) bo enak tipu \(\c{A → B}\) natanko tedaj, ko je vsak
+    morfizem operacija. To velja, saj je vsaka funkcija množic operacija med
+    konstantnimi tipi. Naj bo \(f : \c A ↬ \c B\). Potem
+    \(Cₐ ≔ \set{f(a,b)}{b∈B}\) tvorijo pokritje \(\e a = X\). Po predpostavki
+    imajo skupno pofinitev \(C\), tako da za vsak \(U ∈ C\) obstaja \(b_{a,U}\),
+    tako da velja \(U ⊩ f(a,b_{a,U})\). Potem pa lahko na \(U\) definiramo
+    preslikavo \(a ↦ b_{a,U}\), ki je enaka \(f\), torej enakost velja.
 
-    Naj bo \(X ⊩ P : \c A × \c B → Σ\) celovita relacija.
-    To pomeni, da za vsak \(a ∈ A\) obstaja \(B\)-indeksiran \(Σ\)-krov \(Cₐ\),
-    tako da za vsak element \(U ∈ Cₐ\) obstaja tak \(b_{a, U} ∈ B(U)\), da velja
-    \(U ⊩ P(a, b_{a, U})\).
+    Naj bo sedaj \(R\) celovita relacija med \(\c A\) in \(\c B\).
+    To pomeni, da za vsak \(a ∈ A\) obstaja \(B\)-indeksirano pokritje \(Cₐ\),
+    tako da za vsak element \(U ∈ Cₐ\) obstaja tak \(b_{a, U} ∈ B\), da velja
+    \(U ⊩ R(a, b_{a, U})\).
 
-    Po predpostavki sedaj vemo, da je \(C ≔ ⋂_{a ∈ A} Cₐ\) tudi \(Σ\)-krov.
-    Sedaj pa, za vsak \(U ∈ C\) velja, da je vsebovan v vsakem \(Cₐ\), tako da
-    za vsak \(a ∈ A\) obstaja \(b_{a, U}\), da velja \(U ⊩ P(a, b_{a, U})\).
-    Tedaj pa je preslikava \(a ↦ b_{a, U}\) ravno želena funkcija izbire.
+    Po predpostavki sedaj vemo, da imajo te krovi skupno pofinitev \(C\), torej
+    za vsak \(U ∈ C\) in \(a ∈ A\) lahko izmed \(b_{a,Uₐ}\), kjer je \(Uₐ\)
+    nadmnožica \(U\) v \(Cₐ\), izberemo \(b_{a, U}'\). Potem pa lahko na \(U\)
+    definiramo funkcijo tipa \(A → B\), ki slika \(a\) v \(b_{a,U}'\).
   \item[\(\p ⇒\)]
-    Naj bodo \(Cₐ = \{U_{a,b}\}_{b ∈ B}\) \(Σ\)-pokritja.
+    Naj bodo \(Cₐ = \{U_{a,b}\}_{b ∈ B}\) pokritja.
     Ta definirajo relacijo \(R(a, b) ≔ U_{a,b}\), ki je celovita, saj so \(Cₐ\)
     pokritja. Tedaj po principu izbire znotraj (sčasoma) dobimo funkcijo
     \(f : A → B\), tako da je \(\for{a : A}{U_{a,f(a)}}\).
     Sedaj pa, ker velja enakost iz predpostavke, je \(f\) tudi funkcija
-    \(A → B\) zunaj. To pa pomeni, da je \(\e f\) vsebovan v preseku
+    \(A → B\) zunaj. To pa pomeni, da je \(\e f\) vsebovan v vsakem od
     \(U_{a,f(a)}\), torej, ker \(\e f\) pokrivajo cel prostor, tvorijo skupno
     pofinitev pokritij \(Cₐ\).
-
-    TODO: nekej o tem da je to \(Σ\)-pokritje? ker \(\e f\) trenutno nimajo
-    nobenega pogoja na sebi. (če je to sploh res)
   \end{itemize}
-\end{proof}
+\end{dokaz}
 %NOTE: brez meta-ac je leva stran lahko za vse celovite \(R\) velja
 %\[ \eventually{V⊆U}{\for{a∈A}{\exist{b∈B}{V⊩R(a,b)}}} \]
 %NOTE: Mogoče tu rabimo \(\g B\) namesto \(B\).
 %NOTE: interno je to \(\for{a:A}{\globalen{b:B}{R(a,b)}}\)
+\begin{posledica}
+  Nad \(X\) velja \(\AC(\c A)\) in \(\for{B}{\c A ↬ B = \c{A ↝ B}}\) natanko
+  tedaj, ko ima vsaka \(A\)-indeksirana množica pokritij \(U\) skupno pofinitev.
+\end{posledica}
+To ne zares sledi iz gornjega, a je dokaz enak, tako da ga ne ponovimo.
 
-Ta lastnost o pofinitvah pa ni zares klasična topološka lastost. 
+\begin{opomba}
+  Gornje lahko relativiziramo še glede na Sierpinskijev objekt \(Σ\), tako da na
+  desni vzamemo pokritja, ki so podmnožice \(Σ\), na desni pa moramo omejiti
+  morfizme, tako da bo \(f(a,b) ∈ Σ\), in aksiom izbire sam. Dokaz nato poteka
+  enako.
+\end{opomba}
+
+Ta lastnost o pofinitvah pa ni zares tipična topološka lastost, saj ponavadi
+govorimo o pofinitvi specifičnega tipa \emph{enega} pokritja. Definicija izhaja
+iz teorije Grothendieckovih topologij, kjer definiramo \emph{krov} kot navzdol
+zaprto pokrtije, nato je pa Grothendieckova topologija na \(U\) enaka množici
+krovov \(U\). Potem se lastnost zgoraj glasi ``Grothendieckova topologija na
+\(X\) je zaprta za \(A\)-mnoge preseke''. To pa že zgleda bolj podobno čemu
+znanemu, namreč prostori, katerih topologije so zaprte za števne preseke imajo
+ime.
 
 \begin{definicija}\label{def:psp}
-  \emph{P-prostori} so prostori, za katere velja, da je števen presek odprtih
-  množic odprt.
+  Prostor je \emph{P-prostor}, ko je števen presek odprtih množic odprt.
 \end{definicija}
 
+Ta lastnost prostora potem implicira tisto o Grothendieckovi topologiji.
+
 \begin{trditev}\label{th:psp-is-pgt}
-  Če je \(X\) P-prostor ima vsaka množica števno mnogo pokritij \(X\) skupno
+  Če je \(X\) P-prostor, ima vsaka množica števno mnogo pokritij \(X\) skupno
   pofinitev.
 \end{trditev}
 \begin{dokaz}
@@ -105,30 +126,65 @@ Ta lastnost o pofinitvah pa ni zares klasična topološka lastost.
 \begin{posledica}\label{th:psp-has-cc}
   Nad P-prosotri velja \(\CC\).
 \end{posledica}
-\begin{opomba}
-  V dokazu množica \(ℕ\) ni posebej odlikovana, razen da je enake kardinalnosti
-  kot tista, za katero je topologija zaprta za preseke, torej izrek lahko
-  posplošimo na princip izbire iz poljubne kardinalnosti.
+Seveda se vse to posploši na poljbne kardinalnosti, a v literaturi razen za
+števni primer nimamo imena. Poznamo le še prostore Aleksandrova, ki so natanko
+prostori, kjer so \emph{vsi} preseki odprtih množic odprti. Ta nam da idejo, da
+potem nad temi prostori velja polnomočen \(\AC\), a žal temu ni tako.
 
-  Splošnem principu izbire torej pripadajo prostori Aleksandrova, kjer je presek
-  poljubne družine odprtih množic odprt.
-\end{opomba}
+Očitno imajo diskretni prostori to lastnost, in kot smo že povedali, so to
+natanko prostori, nad katerimi velja \(\lem*\). Ker pa velja aksiom izbire
+implicira princip izključene tretje možnosti (ta izrek je znan kot izrek
+Diaconescuja~\cite{Bauer16}), mora vsak prostor, nad katerim velja \(\AC\) biti
+diskreten.
 
-Obrat gornje trditve pa ne velja.
+Očitno torej ne more veljati \(\AC\) nad \emph{vsemi} prostori Aleksandrova, saj
+obstajajo taki, ki niso diskretni. In res, gornje nam da zgolj, da za vsako
+množico \(A\) velja \(\AC(\c A)\), ne da velja \(\AC(A)\) za vse \emph{tipe}
+\(A\). To je torej pomembna razlika, kar je do neke mere tudi za pričakovati.
+Zgoraj smo bistveno uporabljali, da so elementi \(\c A\) definirani na istem
+nivoju \(X\), torej so tudi pokritja \(Cₐ\) pokritja \(X\). Za splošen tip \(A\)
+bodo pa pokritja \(Cₐ\) pokrivala \(\e a\), torej ne bomo mogli niti govoriti o
+skupnih pofinitvah.
+
+TODO: a kej vem pol o AC?
+
+Torej gornje pokaže, da ima P-prostor gornjo lastnost na Grothendieckovi
+topologiji. Obrat pa ne velja.
 \begin{trditev}\label{th:psp-is-not-pgt}
   Nad prostorom \(\cli{0,1}\) s topologijo \(\set{[0,a)}{a ∈ \cli{0,1}}\) ima
-  poljubno mnogo pokritij skupno pofinitev a ni P-prostor.
+  poljubno mnogo pokritij skupno pofinitev, a ta ni P-prostor.
 \end{trditev}
 \begin{dokaz}
   Množice \(Uₙ ≔ [0,2⁻ⁿ)\) so odprte, a njihov presek je \(\{0\}\), ki ni
   odprta množica, torej prostor ni P-prostor.
 
-  Sedaj pa, če je \(C\) pokritje \(X\) more pokriti \(1\). Ampak edina odprta
-  množica, ki pokrije \(1\) je \(\cli{0,1}\), torej je \(\{\cli{0,1}\}\)
-  pofinitev vsakega pokritja \(X\).
+  Sedaj pa, če je \(C\) pokritje \(X\) more pokriti \(1\). Ampak edina okolica
+  \(1\) je \(\cli{0,1}\), torej je \(\{\cli{0,1}\}\) pofinitev vsakega pokritja
+  \(X\).
 \end{dokaz}
+To pravzaprav pomeni, da nad tem prostorom velja \(\for{A}{\AC(\c A)}\), 
+vseeno ni {P-prostor}. Izkaže pa se, da pod predpostavko \(T₁\) lahko pokažemo
+obrat.
 
-Znana je tudi delna karakterizacija \(\DC\)~\cite[lema~D4.5.16]{Johnstone02}\cite[trd.~2.2]{HL16}.
+\begin{trditev}\label{th:t1-pgt-is-psp}
+  Če je prostor \(X\) \(T₁\) in so njegove Grothendieckove topologije zaprte za
+  števne preseke, je P-prostor.
+\end{trditev}
+\begin{dokaz}
+  Naj bo \(\{Uₙ\}ₙ\) števna družina odprtih množic in za \(t ∈ ⋂ₙUₙ\) tvorimo
+  pokritja \(\{Uₙ, X⧵{\{t\}}\}\). Ta so po predpostavki \(T₁\) odprta pokritja,
+  torej imajo skupno pofinitev \(C\). Naj \(U ∈ C\) pokriva točko \(t\). Tedaj
+  očitno ne velja \(U ⊆ X⧵{\{t\}}\), torej je \(U ⊆ Uₙ\). Potem je pa \(U\)
+  odprta okolica \(t\), ki je v celoti vsebovana v \(⋂ₙUₙ\), torej je ta presek
+  odprt.
+\end{dokaz}
+\begin{opomba}
+  Vseeno pa to ne pomeni, da so \(T₁\) P-prostori natanko \(T₁\) prostori, nad
+  katerimi velja \(\CC\). Namreč, prostor lahko validira \(\CC\), a ne validira
+  enakosti iz~\ref{th:ac-and-conn-is-pgt}, torej ne bo P-prostor.
+\end{opomba}
+
+Znana je pa delna karakterizacija \(\DC\)~\cite[lema~D4.5.16]{Johnstone02}\cite[trd.~2.2]{HL16}.
 \begin{definicija}
   Prostor \(X\) je \emph{ultraparakompakten}, ko ima vsako pokritje prostora
   pofinitev s particijo.
@@ -142,7 +198,10 @@ Znana je tudi delna karakterizacija \(\DC\)~\cite[lema~D4.5.16]{Johnstone02}\cit
   particijo \(\{P_α\}_α\). Potem lahko uporabimo aksiom odvisne izbire v
   metateoriji, da za vsak \(α\) izberemo tak \(x_α\), da je \(P_α ⊆ \i{R(xₙ,x_α)}\).
   Potem pa lahko definiramo \(xₙ\) tako, da je na \(P_α\) enak \(x_α\). Ker
-  \(P_α\) tvorijo pokritje, in so paroma disjunktni, to dobro definra term tipa \(X\).
+  \(P_α\) tvorijo pokritje, in so paroma disjunktni, to dobro definra term tipa
+  \(X\).
+
+  Ker smo začeli z globalnim \(x₀\), to definira globalno zaporedje \((xₙ)ₙ\).
 \end{dokaz}
 \begin{opomba}
   Gornjo trditev lahko preprosto posplošimo na \(\DC_Σ\), tako da od prostora
@@ -169,7 +228,7 @@ Znana je tudi delna karakterizacija \(\DC\)~\cite[lema~D4.5.16]{Johnstone02}\cit
 % \begin{lema}
 %   Nad P-prostori velja \(\CC\).
 % \end{lema}
-% \begin{proof}
+% \begin{dokaz}
 %   Trditev \(X ⊩ \AC{\p{ℕ, ℱ}}\) pravi, da če je \(P\) celovita relacija med \(ℕ\) in
 %   \(ℱ\), potem obstaja funkcija \(f : ℕ → ℱ\), ki je podrelacija \(P\).
 
@@ -196,7 +255,7 @@ Znana je tudi delna karakterizacija \(\DC\)~\cite[lema~D4.5.16]{Johnstone02}\cit
 %   To pa pomeni, da za obstoj funkcije izbire vzamemo krov \(\{U_φ\}_φ\) in
 %   preslikavo \(φ ↦ \p{f_{n, φ(n)} ∈ ℱ{p{U_φ}}}ₙ\), ki zadošča želenemu pogoju,
 %   kot smo pokazali zgoraj.
-% \end{proof}
+% \end{dokaz}
 % \begin{opomba}
 %   Gornji dokaz ključno uporabi askiom števne izbire v metateoriji.
 % \end{opomba}
@@ -205,7 +264,7 @@ Znana je tudi delna karakterizacija \(\DC\)~\cite[lema~D4.5.16]{Johnstone02}\cit
 % \begin{lema}\label{th:t1-ccv-is-psp}
 %   Če nad \(T₁\) prostorom velja \(\CCv\), je prostor P-prostor.
 % \end{lema}
-% \begin{proof}
+% \begin{dokaz}
 %   Naj torej velja \(X ⊩ \CCv\) in naj bo \(\{Uₙ\} ⊆ 𝒪X\) števna družina ter
 %   \(a ∈ ⋂ₙ Uₙ\) poljubna točka. Dokazati želimo, da ta točka leži v notranjosti
 %   preseka, kar bo pokazalo, da je odprt. Definirajmo interno relacijo \(R\) med
@@ -226,8 +285,8 @@ Znana je tudi delna karakterizacija \(\DC\)~\cite[lema~D4.5.16]{Johnstone02}\cit
 %   Ker je pa to geometrijska implikacija, pa velja tudi \(a ⊩ \for{n : ℕ}{R(n, f(n))}\).
 %   Vendar pa za noben \(n\) ne velja \(a ⊩{!a} (= R(n, 0))\), torej je \(f = 1\).
 %   Potem pa velja \(a ∈ W ⊆ ⋂ₙ ⟦R(n, f(n))⟧ = ⋂ₙ ⟦R(n, 1)⟧ = ⋂ₙ Uₙ\).
-% \end{proof}
-% % \begin{proof}
+% \end{dokaz}
+% % \begin{dokaz}
 % %   Naj je \(Uₙ\) števno pokritje \(U\) in \(a ∈ ⋂ₙ Uₙ\). Dokazujemo, da obstaja
 % %   odprta okolica \(a\), ki je vsebovana v preseku.
 % %   Konstruirajmo množice \(Vₙ ≔ ⋃_{k ≠ n} Uₖ ⧵ \{a\}\) in pokritja \(Cₙ ≔ ↓{\{Uₙ, Vₙ\}}\).
@@ -237,7 +296,7 @@ Znana je tudi delna karakterizacija \(\DC\)~\cite[lema~D4.5.16]{Johnstone02}\cit
 
 % %   Ker je pa \(a ∈ W\) in \(a ∉ Vₙ\), je potem nujno \(W ⊆ Uₙ\), torej dobimo
 % %   \(a ∈ W ⊆ ⋂ₙ Uₙ\), kar je natanko kar smo želeli.
-% % \end{proof}
+% % \end{dokaz}
 % %\begin{opomba}
 % %  Gornji dokaz deluje tudi za \(R₀\) prostore, saj lahko \(Vₙ\) definiramo z
 % %  zaprtjem točke \(a\), in potrebujemo zgolj, da je to vsebovano v vsaki okolici
