@@ -806,7 +806,9 @@
     \textbf{\@title}\\[3mm]
     \textsc{Abstract}
   \end{center}
-  \@abstract
+  \begin{english}
+    \@abstract
+  \end{english}
   \vfill
 }
 \def\@frontpages@trst@abstract{
