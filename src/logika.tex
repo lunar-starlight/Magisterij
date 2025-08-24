@@ -98,7 +98,7 @@ Spomnimo se nekaj definicij realnih števil.
 Obrat pa ne velja konstruktivno. To pomeni, da lahko na ``\(\Rd = \Rc\)''
 gledamo kot nekakšen nekonstruktiven princip. Iz konstruktivne matematike pa
 poznamo tudi druge konstrukcije realnih števil, na primer MacNeillovo
-konstrukcijo~\cite{nlab-macneille-reals}~\cite[pogl.~D4.7]{Johnstone02}, ki nam
+konstrukcijo~\cite{nlab-macneille-reals}\cite[pogl.~D4.7]{Johnstone02}, ki nam
 lahko da nove principe kot ta zgoraj. Obstajajo še druge konstrukcije, a o njih
 ni veliko znano, tako da jih v tem delu ne obravnavamo.
 
@@ -414,7 +414,7 @@ Tako bomo v dokazih prosto menjali med ekvivalentnima pogojema.
   \(x > 2⁻ᵏ\). To pa pomeni, da ima \(α\) enico na enem izmed prvih \(k\)
   mestih, kar pomeni, da želeni indeks obstaja.
 
-  TODO: cite the MO post
+  Preostanek dokaza izvira iz~\cite{Gro-Tsen24}.
   Obratno, naj bo \(x = (xᵢ)ᵢ\) Cauchyjevo zaporedje.
   Definiramo lahko zaporedje
   \[ β(k,n) ≔
@@ -422,17 +422,16 @@ Tako bomo v dokazih prosto menjali med ekvivalentnima pogojema.
       1 &; \for  {m≥n}{xₘ ≤ 2⁻ᵏ}\\
       0 &; \exist{m≥n}{xₘ > 2⁻ⁿ}\text.
     \end{cases} \]
-
   Vse te odločitve lahko naredimo, saj velja \(\lpo*\) in je neenakost med
   racionalnimi števili odločljiva. Sedaj uporabimo \(\lpo*\) na \(n↦β(k,n)\).
 
-  Tako definiramo
+  Podobno definiramo
   \[ α(k) ≔
     \begin{cases}
-      1 &; \for  {n:ℕ}{α(k,n) = 0}\\
-      0 &; \exist{n:ℕ}{α(k,n) = 1}\text.
+      1 &; \for  {n:ℕ}{β(k,n) = 0}\\
+      0 &; \exist{n:ℕ}{β(k,n) = 1}\text.
     \end{cases} \]
-  Nazadnje sedaj uporabimo \(\lpo*\) na \(α\). Če je \(α = 0\), imamo za vsak
+  Nazadnje uporabimo \(\lpo*\) na \(α\). Če je \(α = 0\), imamo za vsak
   \(k\) nek \(n\), da je za vsak \(m≥n\) \(xₘ ≤ 2⁻ᵏ\). To pa pomeni, da je
   \(x = 0\). Po drugi strani pa, če je \(α(k) = 1\) za nek \(k\) pa velja, da za
   vsak \(n\) obstaja \(m≥n\), da je \(xₘ > 2⁻ᵏ\), torej je \(x > 2⁻ᵏ\) in je
@@ -443,7 +442,6 @@ To pomeni, da je analitični princip števne odločitve res smiselen zgolj za
 Dedekindova realna števila. Od tu naprej prosto menjamo med \(\alpo*_{\Rc}\) in
 \(\lpo*\) po potrebi, brez posebne omembe. Prav tako bomo raje pisali \(\lpo*\)
 in \(\lpo\), kjer ni dvoumno.
-TODO: odstrani posebne omembe.
 
 \subsection{Ostali principi}\label{sec:logika-ostalo}
 

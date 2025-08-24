@@ -20,17 +20,20 @@
 Vseeno pa velja obrat, če analitično Kripkejevo shemo malo ojačamo. Specifično,
 če predpostavimo obstoj \emph{funkcije izibre} za shemo \(\aks*\).
 \begin{trditev}
-  Če velja \(X ⊩ \exist{f : ℝ^Ω}{\for{p : Ω}{p ⇔ f(p) \apart 0}}\), je \(X\)
+  Če velja \(X ⊩ \exist{f : Ω ↬ ℝ}{\for{p : Ω}{p ⇔ f(p) \apart 0}}\), je \(X\)
   lokalno \(T₆\).
 \end{trditev}
 \begin{dokaz}
-  TODO: a je \(ℝ^Ω\) zuni funkcije? kaj je s tem?
+  Po predpostavki dobimo, da obstaja pokritje \(C\). Naj bo \(U ∈ C\) in
+  \(f : Ω ↬ ℝ\), za katero velja \(U ⊩ \for{p : Ω}{p ⇔ f(p) \apart 0}\).
+  Tip \(ℝ\) je poln, tako da lahko za \(f\) vzamemo kar operacijo \(Ω ↝ ℝ\).
 
-  razponi \(f\) pokrijejo \(X\)
-
-  za \(f\) velja da za vse \(U\) pod \(\e f\) velja \(U = \i{f(U) \apart 0}\).
-
-  pika TODO: napiši zadevo normalno.
+  Naj bo \(A ∈ 𝒜U\). Potem je \(V ≔ U ⧵ A\) odprta množica, torej lahko na njej
+  uporabimo predpostavko. Sledi, da velja \(U ⊩ V ⇔ f(V) \apart 0\).
+  To pa pomeni, da je \(V = \set{t ∈ U}{f(V)(t) ≠ 0}\). Sledi, da je
+  \(A = f(V)⁻¹(0)\), torej je \(f(V) : U → ℝ\) zvezna preslikava, katere ničelna
+  množica je \(A\). Sledi da je \(U\) \(T₆\) prostor, torej je \(X\) lokalno
+  \(T₆\).
 \end{dokaz}
 Ponovno smo pokazali malo več kot zgolj lokalno \(T₆\) lastnost. Dobili smo
 \emph{funkcije izbire} za vsako od \(T₆\) komponent. Ker pa imamo v metateoriji
@@ -39,7 +42,7 @@ sledeči izrek.
 
 \begin{izrek}
   Prostor je lokalno \(T₆\) natanko tedaj, ko nad njem velja
-  \[ \exist{f : ℝ^Ω}{\for{p : Ω}{p ⇔ f(p) \apart 0}}\text. \]
+  \[ \exist{f : Ω ↬ ℝ}{\for{p : Ω}{p ⇔ f(p) \apart 0}}\text. \]
 \end{izrek}
 
 
@@ -86,22 +89,22 @@ do \(T₄\) lastnosti.
 
 % Joint with prof. Bauer
 \begin{lema}
-  Za vsako funkcijo \(f : C → ℝ\) obstaja funkcija \(\hat f : C → C\), za katero
-  velja \(C ⊩ \hat f \apart 0 ⇔ f > 0\).
+  Za vsako funkcijo \(f : 2^ℕ → ℝ\) obstaja funkcija \(\hat f : 2^ℕ → 2^ℕ\), za katero
+  velja \(⊩ \hat f \apart 0 ⇔ f > 0\).
 \end{lema}
 \begin{proof}
   Naj bo \(U := ⟦f > 0⟧\). Potem obstaja števna particija \(U = ⋃ₖVₖ\) z
   bazičnimi odprtimi. Ker so te kompaktne, za vsak \(k\) velja
   \(\exist{i ∈ ℕ}{f{\res{Vₖ}} > 2⁻ⁱ}\). Po aksiomu izbire torej obstaja funkcija
-  izbire \(m : ℕ → ℕ\), da velja \(f{\res{Vₖ}} > 2⁻ᵐ⁽ᵏ⁾\). Potem pa definiramo
-  \[ C ⊩ \hat fᵢ ≔
+  izbire \(m : ℕ → ℕ\), da velja \(f{\res{Vₖ}} > 2⁻ᵐ⁽ᵏ⁾\). Definiramo
+  \[ \hat f(t,i) ≔
     \begin{cases}
-      1;& \exist{k : ℕ}{Vₖ ∧ i = m(k)}\\
+      1;& \exist{k : ℕ}{t ∈ Vₖ ∧ i = m(k)}\\
       0;& \text{sicer.}
     \end{cases}\]
   Potem pa velja
-  \[ \hat f \apart 0 ⇔ \exist{i : ℕ}{\exist{k : ℕ}{Vₖ ∧ i = m(k)}} ⇔ \exist{k : ℕ}{Vₖ} ⇔ U\text, \]
-  torej je \(C ⊩ \hat f \apart 0 ⇔ f > 0\).
+  \[ ⊩ \hat f \apart 0 ⇔ \exist{i : ℕ}{\exist{k : ℕ}{Vₖ ∧ i = m(k)}} ⇔ \exist{k : ℕ}{Vₖ} ⇔ U\text, \]
+  torej velja \(⊩ \hat f \apart 0 ⇔ f > 0\).
 \end{proof}
 \begin{posledica}
   V zgornji lemi lahko domeno zamenjamo s poljubno odprto množico.
@@ -112,19 +115,16 @@ do \(T₄\) lastnosti.
 \end{lema}
 \begin{dokaz}
   Zares gornja lema pokaže, da je \(Σ_{\Rd} = Σ₀¹\), kar po enakem argumentu kot
-  v trditvi~\ref{th:aks-impl-lem≤alpo} implicira gornjo ekvivalenco.
-  % Vemo že, da velja \(\lpo* ≤ \alpo*\) tako da moramo pokazati zgolj obratno
-  % redukcijo. Naj bo \(x : ℝ\). Potem iz gornje leme dobimo \(\hat x : C\), za
-  % katerega velja \(\hat x \apart 0 ⇔ x > 0\). Kontrapizitivna oblika te
-  % ekvivalence pa pravi ravno, da je \(\hat x = 0 ⇔ x ≤ 0\), torej res velja
-  % \(\lpo{\p{\hat f}} ⇔ \alpo{\p{f}}\).
+  v trditvi~\ref{th:aks-impl-lem≤alpo} implicira želeno ekvivalenco.
 \end{dokaz}
 \begin{posledica}
   Nad Cantorjevim prostorom je \(\lpo*\) idempotenten.
 \end{posledica}
 \begin{opomba}
   V tem podrazdelku bi lahko namesto Cantorjevega prostora zares vzeli
-  katerikoli kompakten nič dimenzionalen prostor (z drugimi besedami, Stoneov prostor).
+  katerikoli kompakten nič dimenzionalen prostor. Tem se reče Stoneovi prostori
+  in igrajo pomembno vlogo v konstruktivni topologiji in teoriji okolišev. Od
+  kod pride ta povezava mi ni znano.
 \end{opomba}
 
 

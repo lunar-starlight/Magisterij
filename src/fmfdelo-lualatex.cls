@@ -122,6 +122,7 @@
   \setmainlanguage{slovene}
   \setotherlanguage{english}
   \RequirePackage[style=german]{csquotes}
+  \RequirePackage[degm]{luaquotes}
 }{
   \setmainlanguage{english}
   \RequirePackage[style=english]{csquotes}

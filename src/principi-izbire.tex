@@ -14,15 +14,14 @@ nakazuje spodnji izrek.
   Za celovito relacijo \({R : A×B → Σ}\) znotraj dobimo
   \[ X ⊩ \for{a : \c A}{\exist{b : \c B}{R(a, b)}}\text. \]
   Potem pa po notranjem aksiomu izbire sčasoma obstaja morfizem
-  \(f : \c A ↬ {\c B}\). Ker je prostor lokalno povezan, je to enako kot element
+  \(f : \c A ↬ \c B\). Ker je prostor lokalno povezan, je to enako kot element
   \(f : \c{B^A}\), kar pa nam da funkcijo \(f : A → B\) zunaj, za katero
   potem velja \(\for{a ∈ A}{R(a, f(a))}\).
 \end{dokaz}
 \begin{opomba}
-  Zgoraj smo lokalno povezanost uporabili zgolj za enakost \({\c B}^{\c A} = \c{B^A}\),
+  Zgoraj smo lokalno povezanost uporabili zgolj za izomorfizem \(\c A ↬ \c B ≅ \c{B^A}\),
   tako da bi zadoščalo predpostaviti zgolj to (torej, za enaka \(A\) in \(B\)
-  kot se pojavita v aksiomu izbire). Enaka opomba bo na mestu za vse izreke o
-  lokalni povezanosti v tem razdelku, razen kjer bo eksplicitno omenjeno.
+  kot se pojavita v aksiomu izbire).
 \end{opomba}
 
 Torej, za lokalno povezane modele brez \(\AC(A,B)\) v metateorji ne bomo morali
@@ -36,10 +35,10 @@ preferirali klasično metateorijo.
 Spodnji rezultat je v malo drugačni obliki pokazal Alex Simpson~\cite{Simpson24},
 dokaz v primeru topoloških modelov je pa originalen.
 \begin{izrek}\label{th:ac-and-conn-is-pgt}
-  Nad \(X\) velja \(\AC(\c A, \c B)\) in \(\c A ↬ {\c B} = \c{B^A}\) natanko
+  Nad \(X\) velja \(\AC(\c A, \c B)\) in \(\c A ↬ \c B ≅ \c{B^A}\) natanko
   tedaj, ko ima vsaka \(A\)-indeksirana množica \(B\)-indeksiranih
   pokritij \(U\) skupno pofinitev.
-  %Nad \(X\) velja \(\AC_Σ{\p{\c A, \c B}}\) in \({\c B}^{\c A} = \c{B^A}\)
+  %Nad \(X\) velja \(\AC_Σ{\p{\c A, \c B}}\) in \({\c B}^{\c A} ≅ \c{B^A}\)
   %natanko tedaj, ko je Grothendieckova topologija \(X\) zaprta za \(A\)-mnoge
   %preseke \(B\)-indeksiranih \(Σ\)-krovov.
 \end{izrek}
@@ -80,7 +79,7 @@ dokaz v primeru topoloških modelov je pa originalen.
 %NOTE: Mogoče tu rabimo \(\g B\) namesto \(B\).
 %NOTE: interno je to \(\for{a:A}{\globalen{b:B}{R(a,b)}}\)
 \begin{posledica}
-  Nad \(X\) velja \(\AC(\c A)\) in \(\for{B}{\c A ↬ B = \c{A ↝ B}}\) natanko
+  Nad \(X\) velja \(\AC(\c A)\) in \(\for{B}{\c A ↬ B ≅ \c{A ↝ B}}\) natanko
   tedaj, ko ima vsaka \(A\)-indeksirana množica pokritij \(U\) skupno pofinitev.
 \end{posledica}
 To ne zares sledi iz gornjega, a je dokaz enak, tako da ga ne ponovimo.
@@ -137,16 +136,15 @@ implicira princip izključene tretje možnosti (ta izrek je znan kot izrek
 Diaconescuja~\cite{Bauer16}), mora vsak prostor, nad katerim velja \(\AC\) biti
 diskreten.
 
-Očitno torej ne more veljati \(\AC\) nad \emph{vsemi} prostori Aleksandrova, saj
+Očitno torej \(\AC\) ne more veljati nad \emph{vsemi} prostori Aleksandrova, saj
 obstajajo taki, ki niso diskretni. In res, gornje nam da zgolj, da za vsako
 množico \(A\) velja \(\AC(\c A)\), ne da velja \(\AC(A)\) za vse \emph{tipe}
 \(A\). To je torej pomembna razlika, kar je do neke mere tudi za pričakovati.
 Zgoraj smo bistveno uporabljali, da so elementi \(\c A\) definirani na istem
 nivoju \(X\), torej so tudi pokritja \(Cₐ\) pokritja \(X\). Za splošen tip \(A\)
 bodo pa pokritja \(Cₐ\) pokrivala \(\e a\), torej ne bomo mogli niti govoriti o
-skupnih pofinitvah.
-
-TODO: a kej vem pol o AC?
+skupnih pofinitvah. Avtorici ni znana nobena karakterizacija \(\AC\), razen, da
+ta ni topološka.
 
 Torej gornje pokaže, da ima P-prostor gornjo lastnost na Grothendieckovi
 topologiji. Obrat pa ne velja.
