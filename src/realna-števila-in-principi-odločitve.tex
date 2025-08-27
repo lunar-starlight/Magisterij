@@ -1,0 +1,185 @@
+\section{Realna števila in principi odločitve v topoloških modelih}
+\label{sec:reals}
+\label{sec:odločitve}
+
+\subsection{Objekti realnih števil}
+
+V~\ref{sec:modeli-heyting} smo videli dva ``topološka'' objekta realnih števil,
+objekt \(ℛ\) iz primera~\ref{ex:reals} in objekt \(\c ℝ\), definiran
+v~\ref{def:constant-hvs}. Vprašanje sedaj je, ali sta ta dva objekta kako
+povezana z internimi konstrukcijami realnih števil definiranih
+v~\ref{sec:logika-reals}.
+
+Izkaže se, da je odvisno. Objekt \(ℛ\) je vedno enak objektu Dedekindovih
+realnih števil, objekt \(\c ℝ\) je pa malo poseben.
+
+\begin{trditev}\label{th:Rd-maps}
+  Nad \(X\) je objekt Dedekindovih realnih števil tip \(ℛ\) iz
+  primera~\ref{ex:reals}.
+  % Nad \(X\) je objekt Dedekindovih realnih števil tip
+  % \(\set{f : U → ℝ}{U ∈ 𝒪X\text{, }f\text{ zvezna}}\), z enakostjo definirano
+  % kot \(\i{f = g} ≔ \int{\set{t ∈ X}{f(t) = g(t)}}\).
+\end{trditev}
+\begin{dokaz}
+  Naj bo \(x = \p{L, U}\) dedekindov rez v interni logiki.
+  Sedaj lahko zunaj za \(t ∈ \e x\) definiramo
+  \begin{align*}
+    L(t) &≔ \set{q : ℚ}{t ∈ \i{q ∈ L}}\text{ in}\\
+    U(t) &≔ \set{r : ℚ}{t ∈ \i{r ∈ U}}\text.
+  \end{align*}
+  Ta tvorita Dedekindov rez zunaj, tako da nam \(t ↦ \p{L(t), U(t)}\) definira
+  preslikavo \(\hat x : \e x → ℝ\).
+  Pokazati ostane, da je ta preslikava zvezna.
+  Naj bo \(\p{a,b}\) racionalen interval v \(ℝ\). Praslika tega intervala z
+  \(\hat x\) je množica \(\set{t ∈ \e x}{a < \hat x(t) < b}\).
+  Ta pogoj je ekvivalenten \(t ∈ \i{a ∈ L ∧ b ∈ U}\), torej je praslika kar
+  enaka \(\i{a∈L∧b∈U}\), torej je odprta in je \(\hat x\) zvezna.
+
+  Obratno, če je \(x : \e x → ℝ\) zvezna preslikava, lahko tvorimo preslikavi
+  \begin{align*}
+    L(t) &≔ \set{q : ℚ}{q < x(t)}\text{ in}\\
+    U(t) &≔ \set{r : ℚ}{x(t) < r}\text.
+  \end{align*}
+  Ti znotraj tvorita Dedekindov rez \(\p{L, U}\).
+\end{dokaz}
+
+Med drugim to pomeni, da so Cauchyjeva realna števila podmnožica zveznih
+preslikav v \(ℝ\). Ampak katerih?
+
+\begin{trditev}
+  Vsaka lokalno konstantna preslikava definira Cauchyjevo realno število.
+\end{trditev}
+\begin{dokaz}
+  Brez škode za splošnost naj bo \(f : U → ℝ\) konstantna preslikava, recimo
+  konstantno \({x ∈ ℝ}\). Ta ima potem pripadajoče Cauchyjevo zaporedje
+  \((xₙ)ₙ\). Sedaj pa lahko tvorimo konstantne preslikave \(\hat xₙ : U → ℚ\),
+  ki znotraj tvorijo Cauchyjevo zaporedje.
+\end{dokaz}
+
+\begin{trditev}\label{th:Rc-maps}
+  Naj bo prostor \(X\) lokalno povezan. Tedaj je nad \(X\) objekt Cauchyjevih
+  realnih števil tip \(\c ℝ\).
+\end{trditev}
+\begin{dokaz}
+  Pokazati moramo zgolj, da je vsako Cauchyjevo realno število zunaj lokalno
+  konstantna preslikava.
+
+  Nad \(t ∈ \e x\) dobimo Cauchyjevo zaporedje \((xₙ(t))ₙ\). Ker je \(X\)
+  lokalno povezan, ima pokritje iz povezanih množic, tako da brez škode za
+  splošnost predpostavimo, da je \(\e x\) povezan. Sledi, da so \(xₙ\)
+  konstantne preslikave, torej je tudi preslikava \(t ↦ (xₙ(t))ₙ\) konstantna.
+\end{dokaz}
+
+Dokaj očitno to pomeni, da noben od teh objektov v splošnem ni enak drugim.
+
+\begin{trditev}
+  Nad \(ℝ\) sta objekta Dedekindovih in Cauchyjevih realnih števil različna.
+\end{trditev}
+\begin{dokaz}
+  Identiteta na \(ℝ\) je Dedekindovo realno število, ki pa ni lokalno
+  konstantno, torej ni Cauchyjevo.
+\end{dokaz}
+
+\begin{trditev}
+  Nad \(2^ℕ\) sta objekta Cauchyjevih in lokalno konstantnih realnih števil
+  različna.
+\end{trditev}
+\begin{dokaz}
+  Definirajmo \(x : 2^ℕ → ℝ\) kot \(x(α) ≔ \sum_{n=0}^∞ \frac{2α(n)}{3ⁿ}\). Ta
+  preslikava je zares kanonična vložitev Cantorjeve množice v realna, in je
+  znotraj Cauchyjevo realno število, saj je limita racionalnih števil. Ampak ni
+  lokalno konstantno, saj je \({x⁻¹(0) = \{0\}}\), ki ni odprta množica.
+\end{dokaz}
+
+Kaj pa MacNeillova realna števila? Teh je več kot Dedekindovih, tako da če jih
+želimo karakterizirati kot nekakšne funkcije iz odprtih podmnožic \(X\), bodo te
+morale biti nezvezne. Izkaže se, da so odgovor polzvezne
+funkcije~\cite[posl.~D4.7.5]{Johnstone02}. Seveda, če je funkcija polzvezna
+navzdol in navzgor, je zvezna. Ampak, lahko vzamemo par navzdol in navzgor
+polzveznih preslikav \(\uline f\) in \(\bar f\), ki sta si nekako ``čimbolj
+blizu''. To pomeni, da želimo, da je \(\uline f\) največja navzdol polzvezna
+preslikava manjša ali enaka \(\bar f\), in obratno.
+
+\begin{lema}
+  V topoloških modelih so dolnji (gornji) enostranski rezi predstavljeni z
+  navzdol (navzgor) polzveznimi preslikavami.
+\end{lema}
+\begin{dokaz}
+  Naj bo \(L\) dolnji enostranski rez. Kot za Dedekindove reze tvorimo
+  preslikavo \(t ↦ \set{q:ℚ}{t ∈ \i{q∈L}}\). To je preslikava \(x : \e L → ℝ\),
+  saj so klasično enostranski rezi ekvivalentni dvostranskim.
+
+  Oglejmo si sedaj \(x⁻¹\p{p,∞}\). To je natanko \(\set{t∈\e L}{p < x(t)}\). Po
+  definiciji je ta pogoj ekvivalenten \(t ∈ \i{p ∈ L}\), torej je praskika
+  odprta.
+
+  Obratno, naj bo \(x : U → ℝ\) navzdol polzvezna. Potem lahko definiramo
+  preslikavo \(L(t) ≔ \set{p ∈ ℚ}{p < x(t)}\). Ta znotraj tvori dolnji
+  enostranski rez, saj so morfizmi v \(Ω\) natanko operacije v \(Ω\).
+\end{dokaz}
+Ker pa interno nimamo gornjega reza, ne bomo znali izraziti pogoja \(x(t) < q\)
+na lep način, tako da v splošnem ta presklikava ni zvezna.
+
+\begin{trditev}\label{real:Rm-maps}
+  Objekt MacNeillovih realnih števil je natanko tip parov polzveznih
+  funkcij \(\p{\uline f, \bar f}\) tipa \(U → ℝ\) za \(U ∈ 𝒪X\), za katere velja
+  \begin{align*}
+    \uline f(t) &=
+    \liminf_{y → t}\bar   f(y)\text{ in}\\
+    \bar   f(t) &=
+    \limsup_{y → t}\uline f(y)\text,
+  \end{align*}
+  z enakostjo definirano po točkah. Pogoju zgoraj pravimo \emph{tesnost}.
+\end{trditev}
+Dokaz te trditve ni kompliciran, ampak se zanaša na veliko analize, tako da ga
+tu ne ponovimo. Bralka si ga lahko ogleda v~\cite[D4.7.5]{Johnstone02}.
+% \begin{dokaz}
+%   Po gornji lemi lahko za MacNeillovo realno število \(x = \p{L,U}\)
+%   konstruiramo navzdol in navzgor polzvezni preslikavi \(\uline f\) in
+%   \(\bar f\). Pokazati nam ostane, da sta preslikavi tesni. Pokažimo zgolj prvi
+%   pogoj, saj sta si simetrična.
+
+%   Limes inferior definira navzdol polzvezno preslikavo, namreč supremum vseh
+%   navzgor polzveznih preslikav manjših ali enakih \(\bar f\).
+%   To pomeni, da moramo pokazati, da je vsaka navzdol polzvezna preslikava manjša
+%   ali enaka \(\uline f\).
+
+%   Vemo, da so navzdol polzvezne preslikave natanko enostranski rezi v interni
+%   logiki \(X\), tako da naj bo \(L'\) tak rez. Pogoj, da je preslikava manjša al
+%   enaka \(\bar f\) pa pravi, da je \(L'\) vsebovan v komplementu \(U\).
+
+%   Sedaj pa naj bo \(q ∈ L'\). Ker je \(L'\) navzgor odprt obstaja nek \(s > q\),
+%   ki je še vedno v \(L'\), torej je \(s ∈ Uᶜ\). To pa pomeni, da je
+%   \(q ∈ \int{\p{Uᶜ}} = L\), in je \(L' ⊆ L\). To pa očitno pomeni, da je
+%   \(f ≤ \uline f\) in je \(\uline f = \liminf_{y → t}\bar f(y)\).
+
+%   Obratno, če je pa \(\p{\uline f, \bar f}\) tak par. Potem sta navdol oziroma
+%   navzgor polzvezni, torej definirata enostranska reza \(L\) in \(U\).
+
+%   Očitno je \(L ⊆ \int{\p{Uᶜ}}\). Ampak \(\int{\p{Uᶜ}}\) je tudi enostranski
+%   rez, torej definira navzdol polzvezno preslikavo, ki je manjša od \(\bar f\),
+%   torej je tudi \(\int{\p{Uᶜ}} ⊆ L\).
+% \end{dokaz}
+
+Spet očitno vidimo, da sta objekta Dedekindovih in MacNeillovih realnih števil
+različna. MacNeillov rez definira Dedekindovo realno število, natanko tedaj, ko
+sta preslikavi \(\uline f\) in \(\bar f\) enaki.
+
+\begin{trditev}
+  Nad \(ℝ\) ne velja \(\Rm = \Rd\).
+\end{trditev}
+\begin{dokaz}
+  Definirajmo MacNeillovo realno število s preslikavama \(χ_{(0,∞)}\) ter
+  \(χ_{[0,∞)}\). Ti sta tesni, a se v \(0\) ne ujemata, tako da ne definirata
+  Dedekindovega realnega števila.
+\end{dokaz}
+
+\input{principi-odločitve.tex}
+\input{realna-števila.tex}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:
+

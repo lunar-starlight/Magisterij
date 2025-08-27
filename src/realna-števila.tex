@@ -1,174 +1,5 @@
-\section{Realna števila v topoloških modelih}\label{sec:reals}
+%\section{Realna števila v topoloških modelih}\label{sec:reals}
 
-\subsection{Objekti realnih števil}
-
-V~\ref{sec:modeli-heyting} smo videli dva ``topološka'' objekta realnih števil,
-objekt \(ℛ\) iz primera~\ref{ex:reals} in objekt \(\c ℝ\), definiran
-v~\ref{def:constant-hvs}. Vprašanje sedaj je, ali sta ta dva objekta kako
-povezana z internimi konstrukcijami realnih števil definiranih
-v~\ref{sec:logika-reals}.
-
-Izkaže se, da je odvisno. Objekt \(ℛ\) je vedno enak objektu Dedekindovih
-realnih števil, objekt \(\c ℝ\) je pa malo poseben.
-
-\begin{trditev}\label{th:Rd-maps}
-  Nad \(X\) je objekt Dedekindovih realnih števil \(𝒪X\)-množica \(ℛ\) iz
-  primera~\ref{ex:reals}.
-  % Nad \(X\) je objekt Dedekindovih realnih števil \(𝒪X\)-množica
-  % \(\set{f : U → ℝ}{U ∈ 𝒪X\text{, }f\text{ zvezna}}\), z enakostjo definirano
-  % kot \(\i{f = g} ≔ \int{\set{t ∈ X}{f(t) = g(t)}}\).
-\end{trditev}
-\begin{dokaz}
-  Naj bo \(x = \p{L, U}\) dedekindov rez v interni logiki.
-  Sedaj lahko zunaj za \(t ∈ \e x\) definiramo
-  \begin{align*}
-    L(t) &≔ \set{q : ℚ}{t ∈ \i{q ∈ L}}\text{ in}\\
-    U(t) &≔ \set{r : ℚ}{t ∈ \i{r ∈ U}}\text.
-  \end{align*}
-  Ta tvorita Dedekindov rez zunaj, tako da nam \(t ↦ \p{L(t), U(t)}\) definira
-  preslikavo \(\hat x : \e x → ℝ\).
-  Pokazati ostane, da je ta preslikava zvezna.
-  Naj bo \(\p{a,b}\) racionalen interval v \(ℝ\). Praslika tega intervala z
-  \(\hat x\) je množica \(\set{t ∈ \e x}{a < \hat x(t) < b}\).
-  Ta pogoj je ekvivalenten \(t ∈ \i{a ∈ L ∧ b ∈ U}\), torej je praslika kar
-  enaka \(\i{a∈L∧b∈U}\), torej je odprta in je \(\hat x\) zvezna.
-
-  Obratno, če je \(x : \e x → ℝ\) zvezna preslikava, lahko tvorimo preslikavi
-  \begin{align*}
-    L(t) &≔ \set{q : ℚ}{q < x(t)}\text{ in}\\
-    U(t) &≔ \set{r : ℚ}{x(t) < r}\text.
-  \end{align*}
-  Ti znotraj tvorita Dedekindov rez \(\p{L, U}\).
-\end{dokaz}
-
-Med drugim to pomeni, da so Cauchyjeva realna števila podmnožica zveznih
-preslikav v \(ℝ\). Ampak katerih?
-
-\begin{trditev}
-  Vsaka lokalno konstantna preslikava definira Cauchyjevo realno število.
-\end{trditev}
-\begin{dokaz}
-  Brez škode za splošnost naj bo \(f : U → ℝ\) konstantna preslikava, recimo
-  konstantno \({x ∈ ℝ}\). Ta ima potem pripadajoče Cauchyjevo zaporedje
-  \((xₙ)ₙ\). Sedaj pa lahko tvorimo konstantne preslikave \(\hat xₙ : U → ℚ\),
-  ki znotraj tvorijo Cauchyjevo zaporedje.
-\end{dokaz}
-
-\begin{trditev}\label{th:Rc-maps}
-  Naj bo prostor \(X\) lokalno povezan. Tedaj je nad \(X\) objekt Cauchyjevih
-  realnih števil \(𝒪X\)-množica \(\c ℝ\).
-\end{trditev}
-\begin{dokaz}
-  Pokazati moramo zgolj, da je vsako Cauchyjevo realno število zunaj lokalno
-  konstantna preslikava.
-
-  Nad \(t ∈ \e x\) dobimo Cauchyjevo zaporedje \((xₙ(t))ₙ\). Ker je \(X\)
-  lokalno povezan, ima pokritje iz povezanih množic, tako da brez škode za
-  splošnost predpostavimo, da je \(\e x\) povezan. Sledi, da so \(xₙ\)
-  konstantne preslikave, torej je tudi preslikava \(t ↦ (xₙ(t))ₙ\) konstantna.
-\end{dokaz}
-
-Dokaj očitno to pomeni, da noben od teh objektov v splošnem ni enak drugim.
-
-\begin{trditev}
-  Nad \(ℝ\) sta objekta Dedekindovih in Cauchyjevih realnih števil različna.
-\end{trditev}
-\begin{dokaz}
-  Identiteta na \(ℝ\) je Dedekindovo realno število, ki pa ni lokalno
-  konstantno, torej ni Cauchyjevo.
-\end{dokaz}
-
-\begin{trditev}
-  Nad \(2^ℕ\) sta objekta Cauchyjevih in lokalno konstantnih realnih števil
-  različna.
-\end{trditev}
-\begin{dokaz}
-  Definirajmo \(x : 2^ℕ → ℝ\) kot \(x(α) ≔ \sum_{n=0}^∞ \frac{2α(n)}{3ⁿ}\). Ta
-  preslikava je zares kanonična vložitev Kantorjeve množice v realna, in je
-  znotraj Cauchyjevo realno število, saj je limita racionalnih števil. Ampak ni
-  lokalno konstantno, saj je \({x⁻¹(0) = \{0\}}\), ki ni odprta množica.
-\end{dokaz}
-
-Kaj pa MacNeillova realna števila? Teh je več kot Dedekindovih, tako da če jih
-želimo karakterizirati kot nekakšne funkcije iz odprtih podmnožic \(X\), bodo te
-morale biti nezvezne. Izkaže se, da so odgovor polzvezne
-funkcije.~\cite[posl.~D4.7.5]{Johnstone02} Seveda, če je funkcija polzvezna
-navzdol in navzgor, je zvezna. Ampak, lahko vzamemo par navzdol in navzgor
-polzveznih preslikav \(\uline f\) in \(\bar f\), ki sta si nekako ``čimbolj
-blizu''. To pomeni, da želimo, da je \(\uline f\) največja navzdol polzvezna
-preslikava manjša ali enaka \(\bar f\), in obratno.
-
-\begin{lema}
-  V topoloških modelih so dolnji (gornji) enostranski rezi predstavljeni z
-  navzdol (navzgor) polzveznimi preslikavami.
-\end{lema}
-\begin{dokaz}
-  Naj bo \(L\) dolnji enostranski rez. Kot za Dedekindove reze tvorimo
-  preslikavo \(t ↦ \set{q:ℚ}{t ∈ \i{q∈L}}\). To je preslikava \(x : \e L → ℝ\),
-  saj so klasično enostranski rezi ekvivalentni dvostranskim.
-
-  Oglejmo si sedaj \(x⁻¹\p{p,∞}\). To je natanko \(\set{t∈\e L}{p < x(t)}\). Po
-  definiciji je ta pogoj ekvivalenten \(t ∈ \i{p ∈ L}\), torej je praskika
-  odprta.
-
-  Obratno, naj bo \(x : U → ℝ\) navzdol polzvezna. Potem lahko definiramo
-  preslikavo \(L(t) ≔ \set{p ∈ ℚ}{p < x(t)}\). Ta znotraj tvori dolnji
-  enostranski rez, saj so morfizmi v \(Ω\) natanko operacije v \(Ω\).
-\end{dokaz}
-Ker pa interno nimamo gornjega reza, ne bomo znali izraziti pogoja \(x(t) < q\)
-na lep način, tako da v splošnem ta presklikava ni zvezna.
-
-\begin{trditev}\label{real:Rm-maps}
-  Objekt MacNeillovih realnih števil je natanko \(ℒ\)-množica parov polzveznih
-  funkcij \(\p{\uline f, \bar f}\) tipa \(U → ℝ\) za \(U ∈ 𝒪X\), za katere velja
-  \begin{align*}
-    \uline f(t) &=
-    \liminf_{y → t}\bar   f(y)\text{ in}\\
-    \bar   f(t) &=
-    \limsup_{y → t}\uline f(y)\text,
-  \end{align*}
-  z enakostjo definirano po točkah. Pogoju zgoraj pravimo \emph{tesnost}.
-\end{trditev}
-\begin{dokaz}
-  Po gornji lemi lahko za MacNeillovo realno število \(x = \p{L,U}\)
-  konstruiramo navzdol in navzgor polzvezni preslikavi \(\uline f\) in
-  \(\bar f\). Pokazati nam ostane, da sta preslikavi tesni. Pokažimo zgolj prvi
-  pogoj, saj sta si simetrična.
-
-  Limes inferior definira navzdol polzvezno preslikavo, namreč supremum vseh
-  navzgor polzveznih preslikav manjših ali enakih \(\bar f\).
-  To pomeni, da moramo pokazati, da je vsaka navzdol polzvezna preslikava manjša
-  ali enaka \(\uline f\).
-
-  Vemo, da so navzdol polzvezne preslikave natanko enostranski rezi v interni
-  logiki \(X\), tako da naj bo \(L'\) tak rez. Pogoj, da je preslikava manjša al
-  enaka \(\bar f\) pa pravi, da je \(L'\) vsebovan v komplementu \(U\).
-
-  Sedaj pa naj bo \(q ∈ L'\). Ker je \(L'\) navzgor odprt obstaja nek \(s > q\),
-  ki je še vedno v \(L'\), torej je \(s ∈ Uᶜ\). To pa pomeni, da je
-  \(q ∈ \int{\p{Uᶜ}} = L\), in je \(L' ⊆ L\). To pa očitno pomeni, da je
-  \(f ≤ \uline f\) in je \(\uline f = \liminf_{y → t}\bar f(y)\).
-
-  Obratno, če je pa \(\p{\uline f, \bar f}\) tak par. Potem sta navdol oziroma
-  navzgor polzvezni, torej definirata enostranska reza \(L\) in \(U\).
-
-  Očitno je \(L ⊆ \int{\p{Uᶜ}}\). Ampak \(\int{\p{Uᶜ}}\) je tudi enostranski
-  rez, torej definira navzdol polzvezno preslikavo, ki je manjša od \(\bar f\),
-  torej je tudi \(\int{\p{Uᶜ}} ⊆ L\).
-\end{dokaz}
-
-Spet očitno vidimo, da sta objekta Dedekindovih in MacNeillovih realnih števil
-različna. MacNeillov rez definira Dedekindovo realno število, natanko tedaj, ko
-sta preslikavi \(\uline f\) in \(\bar f\) enaki.
-
-\begin{trditev}
-  Nad \(ℝ\) ne velja \(\Rm = \Rd\).
-\end{trditev}
-\begin{dokaz}
-  Definirajmo MacNeillovo realno število s preslikavama \(χ_{(0,∞)}\) ter
-  \(χ_{[0,∞)}\). Ti sta tesni, a se v \(0\) ne ujemata, tako da ne definirata
-  Dedekindovega realnega števila.
-\end{dokaz}
 
 \subsection{\(\Rc{} = \c ℝ\)}\label{sec:reals-Rc=R}
 
@@ -230,7 +61,8 @@ Karakterizirajmo najprej \(\lpo*\) brez realnih števil.
 \begin{trditev}
   Če nad \(2\)-števnim prostorom velja \(\lpo*\), je lokalno povezan.
 \end{trditev}
-Dokaz za vajo prepuščen bralki (avtorica ne zna izpeljat dokaza).
+Dokaz za vajo prepuščen bralki (avtorica ne zna izpeljat dokaza, literatura pa
+pravi, da je očiten).
 
 
 \subsection{\(\Rd{} = \Rc\)}\label{sec:reals-Rd=Rc}
@@ -285,12 +117,12 @@ pa tudi posledica \(\alpo*\).
   \(n : ℕ\) \(ℕ\) pokrijemo z \(R(n,0)\) in \(R(n,1)\). Pokažimo, da za to
   relacijo ne obstaja funkcija izbire.
 
-  Denimo, da je \(f : ℕ → 2\) njena funkcija izbire, torej da velja
+  Denimo, da je \(f : ℕ ↬ 2\) njena funkcija izbire, torej da velja
   \(\for{n:ℕ}{R(n,f(n))}\). Če bi bila \(f\) konstantno \(b\), bi potem moralo
-  veljati \(ℕ ⊩ R(n, b)\) za vse \(n\), kar pa ni res. To pomeni, da sta
-  \(\i{0 = f(n)}\) in \(\i{1 = f(n)}\) obe neprazni, torej, ker sta odprti,
-  imata neprazen presek (ki je tudi neskončna odprta množica). Potem pa na tej
-  množici velja \(0 = 1\), kar pa očitno ne drži.\contradiction
+  veljati \(ℕ ⊩ R(n, b)\) za vse \(n\), kar pa ni res. To pomeni, da sta množici
+  \(f(n,0)\) in \(f(n,1)\) obe neprazni, torej je njun presek neprazna odprta
+  množica. Na tej množici po enoličnosti \(f\) velja \(0 = 1\), kar pa očitno ne
+  drži.\contradiction
 
   Sledi, da funkcija izbire za ta \(R\) ne more obstajati, torej \(\CCv\) ne
   drži.
@@ -366,24 +198,17 @@ realno število locirano natanko tedaj, ko se ujemajo z Dedekindovimi realnimi
 števili.
 Skratka, pokazal je sledečo trditev.
 \begin{trditev}
-  Če velja \(\Rm = \Rd\) velja \(\wlem*\).
+  Če velja \(⊩ \Rm = \Rd\) velja \(⊩ \wlem*\).
 \end{trditev}
 \begin{dokaz}
   Dokaz je povsem konstruktiven, ampak ga lahko za topološke modele malo
   poenostavimo.
 
-  Naj bo \(U ∈ 𝒪X\). Definirajmo preslikavi \(\uline f\) in \(\bar f\) tako, da
-  sta na \(U\) obe \(1\), na \(¬U\) obe \(0\), izven tega naj je pa \(\uline f\)
-  enaka \(0\), \(\bar f\) pa enaka \(1\).
-
-  Na \(¬U\) torej velja \(x ≤ 0\), na \(U\) pa \(x ≥ 1\).
-
-  To zadošča pogojema~\ref{real:Rm-maps}, torej definira MacNeillovo realno
-  število.
-  Sedaj pa uporabimo predpostavko, da je locirano, torej \(x < 1 ∨ x > 0\).
-  Vrednost \(x < 1\) je \(¬U\), saj je \(\bar f < 1\) natanko na tej množici,
-  vrednost \(x > 0\) je pa vsebovana v \(¬¬U\), saj na \(¬U\) velja \(x ≤ 0\),
-  torej \(\i{x>0}\) ne more sekati \(¬U\). 
+  Naj bo \(U ∈ 𝒪X\), \(\uline f ≔ χ_{¬¬U}\), in \(\bar f ≔ χ_{\cl U}\). Ti
+  preslikavi sta tesni, torej definirata MacNeillovo realno število. Ta so po
+  predpostavki enaka Dedekindovim, torej sta preslikavi \(\uline f\) in
+  \(\bar f\) enaki, kar pomeni, da sta množici \(¬¬U\) in \(\cl U\) enaki.
+  Sledi, da je \(X = \cl U ∪ ¬U = ¬¬U ∪ ¬U\), torej nad \(X\) velja \(\wlem*\).
 \end{dokaz}
 
 Izkaže pa se, da velja tudi obrat! Inspiracija za to dejstvo, je prišla iz
@@ -392,7 +217,7 @@ predmeta ``Banachove mreže'', kjer se obravnava slednji izrek:
   Če je \(X\) ekstremalno nepovezan je \(𝒞(X,ℝ)\) polna mreža.
 \end{izrek}
 
-To pa izgleda zelo sumljivo! Če se spomnimo, to da je \(X\) ekstremalno povezan
+To pa zgleda zelo sumljivo! Če se spomnimo, to da je \(X\) ekstremalno povezan
 ravno pomeni, da velja \(\wlem*\). Prav tako je \(𝒞(X,ℝ)\) znotraj množica
 globalnih Dedekindovih realnih števil. Konstruktivno ta niso polna, so pa
 MacNeillova realna števila, tako da bo supremum Dedekindovih realnih v
@@ -414,7 +239,7 @@ očitno tudi odsekoma omejena, torej je notranja trditev močnejša.
 Sledi, da gornji izrek sledi iz interpretacije spodnje trditve v interni
 logiki.
 \begin{trditev}
-  Velja implikacija \(\wlem* ⇒ \Rm = \Rd\).
+  Velja \(⊩ \wlem* ⇒ \Rm = \Rd\).
 \end{trditev}
 \begin{dokaz}
   Spomnimo se, da za MacNeillova realna števila \(x : \Rm\) velja
@@ -451,13 +276,14 @@ V literaturi se to pojavi v recimo~\cite[trd.~D4.7.11]{Johnstone02}, sem pa to
 tudi formalizirala v dokazovalnem pomočniku Agda~\cite{BS25}.
 
 Kaj pa, če bi zahtevali šibkejši pogoj, da ima vsaka števna omejena množica
-supremum? Izkaže se, da je to natanko ekvivalentno
-\(\awlpo*\)~\cite[vaja~3N.5]{GJ60}.
+supremum? Literatura kaže, da bi to moralo biti natanko ekvivalentno
+\(\awlpo*\)~\cite[vaja~3N.5]{GJ60}, a avtorici ni uspelo najti dokaza tega
+dejstva.
 
-\begin{trditev}
-  Nad \(X\) velja \(\awlpo*\) natanko tedaj, ko ima vsaka omejena, poseljena,
-  števna družina realnih števil supremum.
-\end{trditev}
+% \begin{trditev}
+%   Nad \(X\) velja \(\awlpo*\) natanko tedaj, ko ima vsaka omejena, poseljena,
+%   števna družina realnih števil supremum.
+% \end{trditev}
 
 
 %%% Local Variables:

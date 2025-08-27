@@ -1,4 +1,4 @@
-\section{Principi odločitve v topoloških modelih}\label{sec:odločitve}
+%\section{Principi odločitve v topoloških modelih}\label{sec:odločitve}
 
 Spomnimo se najprej karakterizacij \(\lem*\) in \(\wlem*\) iz
 podrazdelka~\ref{sec:modeli-logika-odprtih}.
@@ -18,29 +18,31 @@ Pokažimo sedaj, da implikacije iz~\ref{sec:logika-odločitve} niso obrnljive.
   Nad \(2^ℕ\) ne velja \(\lpo*\).
 \end{trditev}
 \begin{dokaz}
-  Naj bo \(α : 2^ℕ → 2^ℕ\) identiteta. Resničnostna vrednost \(\lpo(α)\) je
-  \(2^ℕ⧵\{0\}\), saj je resničnostna vrednost \(α = 0\) enaka \(∅\).
+  Naj bo \(α : 2^ℕ → 2^ℕ\) identiteta, ki je znotraj element tipa \(2^ℕ\).
+  Zanj velja \(\i{\lpo(α)} = 2^ℕ⧵\{0\}\), torej \(\lpo*\) ne velja.
 \end{dokaz}
 
 \begin{trditev}
   Nad \(ℝ\) velja \(\lpo*\) in ne velja \(\alpo*\).
 \end{trditev}
 \begin{dokaz}
-  Naj bo \(x : ℝ\) zunaj identiteta. Potem je \(\i{\alpo(x)} = ℝ⧵\{0\}\).
+  Identiteta \(\id : ℝ → ℝ\) je znotraj Dedekindovo realno število. Zanj velja
+  \(\i{\alpo(\id)} = ℝ⧵\{0\}\), torej \(\alpo*\) ne velja nad \(ℝ\).
 
-  Preostanek tega dokaza izpeljemo malo kasneje, v trditvi~\ref{th:lpov-lpo},
-  saj je \(ℝ\) lokalno povezana.
+  Dokaz, da nad \(ℝ\) velja \(\lpo*\) je identičen dokazu bolj splošne
+  trditve~\ref{th:lpov-lpo}, do katere še pridemo, tako da ga tu ne ponovimo.
 \end{dokaz}
 
 \begin{trditev}
   Nad \(\Ncof\) velja \(\alpo*\) in ne velja \(\lem*\).
 \end{trditev}
 \begin{dokaz}
-  Prostor očitno ni diskreten. Naj bo \(x : ℝ\), torej preslikava \(\e x → ℝ\).
-  Naj bo \(t, t' ∈ \im x\). Potem sta \(x⁻¹(t)\) in \(x⁻¹(t')\) neprazni odprti
-  množici. To pa pomeni, da sta obe kokončni, torej imata neprazen presek, od
-  koder sledi, da sta si enaka. Torej je vsako notranje realno število
-  konstantno. Sedaj pa lahko za to realno število \(\alpo(x)\) odločimo zunaj.
+  Prostor očitno ni diskreten, torej nad njem \(\lem*\) ne drži.
+  Naj bo \(f : U → ℝ\) zvezna (torej Dedekindovo realno število znotraj) in
+  \(x, x' ∈ \im f\). Potem sta \(f⁻¹(x)\) in \(f⁻¹(x')\) neprazni odprti
+  množici, torej imata neprazen presek. Sledi, da je \(x = x'\), torej je
+  funkcija \(f\) konstantna. Ker lahko potem v metateoriji odločimo
+  \(\alpo(f(t))\) (za nek \(t ∈ U\)), lahko odločimo tudi \(\alpo(f)\) znotraj.
 \end{dokaz}
 
 \begin{trditev}
@@ -176,8 +178,8 @@ igri v tej ekvivalenci, tako da bi morala veljati ekvivalenca med njimi.
 \end{dokaz}
 Avtorici ni znano, če se ta izrek pojavi kje v literaturi, predvsem ker je
 večina literature o teh prostorih objavljene pod predpostavko \(T_{3.5}\).
-Če to predpostavimo dobimo, da je \(X\) P-prostor natanko tedaj, ko je skoraj
-P-prostor in basically disconnected~\cite{Levy77}\cite[4J(3)]{GJ60}.
+Če to predpostavimo, dobimo izrek, ki pravi, da so P-prostori natanko basically
+disconnected skoraj P-prostori~\cite{Levy77}\cite[4J(3)]{GJ60}.
 
 
 %%% Local Variables:

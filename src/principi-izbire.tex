@@ -1,43 +1,15 @@
 \section{Principi izbire v topoloških modelih}\label{sec:izbire}
 
 Od tu naprej bomo ponovno delali v klasični metateoriji. Čeprav bi bilo lepo
-razviti ekvivalence konstruktivno, se izkaže, da v konstruktivni metateoriji
-pogosto ne bomo mogli pokazati, da modeli zadoščajo logičnim principom. To nam
-nakazuje spodnji izrek.
-
-\begin{trditev}
-  Če je \(X\) lokalno povezan, in nad \(X\) velja kateri koli princip izbire,
-  velja potem tudi v metateoriji.
-\end{trditev}
-\begin{dokaz}
-  Oglejmo si princip izbire \(\AC_Σ{\p{A, B}}\).
-  Za celovito relacijo \({R : A×B → Σ}\) znotraj dobimo
-  \[ X ⊩ \for{a : \c A}{\exist{b : \c B}{R(a, b)}}\text. \]
-  Potem pa po notranjem aksiomu izbire sčasoma obstaja morfizem
-  \(f : \c A ↬ \c B\). Ker je prostor lokalno povezan, je to enako kot element
-  \(f : \c{B^A}\), kar pa nam da funkcijo \(f : A → B\) zunaj, za katero
-  potem velja \(\for{a ∈ A}{R(a, f(a))}\).
-\end{dokaz}
-\begin{opomba}
-  Zgoraj smo lokalno povezanost uporabili zgolj za izomorfizem \(\c A ↬ \c B ≅ \c{B^A}\),
-  tako da bi zadoščalo predpostaviti zgolj to (torej, za enaka \(A\) in \(B\)
-  kot se pojavita v aksiomu izbire).
-\end{opomba}
-
-Torej, za lokalno povezane modele brez \(\AC(A,B)\) v metateorji ne bomo morali
-najti \emph{nobenega} modela, ki bi ta princip validiral. To pa tudi pomeni, da
-ne bomo mogli najti ustrezne topološke lastnosti, ki bi temu principu pripadala.
-
-Seveda pa glede na to, da nas zanimajo topološke lastnosti, in se teorija
-topologije večinoma razvija klasično, je to še močnejši razlog, zakaj bi
-preferirali klasično metateorijo.
+razviti ekvivalence konstruktivno, nas zanimajo topološke lastnosti, te se pa
+običajno razvija v klasični metateorji.
 
 Spodnji rezultat je v malo drugačni obliki pokazal Alex Simpson~\cite{Simpson24},
 dokaz v primeru topoloških modelov je pa originalen.
 \begin{izrek}\label{th:ac-and-conn-is-pgt}
   Nad \(X\) velja \(\AC(\c A, \c B)\) in \(\c A ↬ \c B ≅ \c{B^A}\) natanko
   tedaj, ko ima vsaka \(A\)-indeksirana množica \(B\)-indeksiranih
-  pokritij \(U\) skupno pofinitev.
+  pokritij skupno pofinitev.
   %Nad \(X\) velja \(\AC_Σ{\p{\c A, \c B}}\) in \({\c B}^{\c A} ≅ \c{B^A}\)
   %natanko tedaj, ko je Grothendieckova topologija \(X\) zaprta za \(A\)-mnoge
   %preseke \(B\)-indeksiranih \(Σ\)-krovov.
@@ -52,26 +24,25 @@ dokaz v primeru topoloških modelov je pa originalen.
     \(Cₐ ≔ \set{f(a,b)}{b∈B}\) tvorijo pokritje \(\e a = X\). Po predpostavki
     imajo skupno pofinitev \(C\), tako da za vsak \(U ∈ C\) obstaja \(b_{a,U}\),
     tako da velja \(U ⊩ f(a,b_{a,U})\). Potem pa lahko na \(U\) definiramo
-    preslikavo \(a ↦ b_{a,U}\), ki je enaka \(f\), torej enakost velja.
+    preslikavo \(a ↦ b_{a,U}\), ki je enaka \(f\), torej izomorfizem
+    \(\c A ↬ \c B ≅ \c{B^A}\) velja.
 
     Naj bo sedaj \(R\) celovita relacija med \(\c A\) in \(\c B\).
     To pomeni, da za vsak \(a ∈ A\) obstaja \(B\)-indeksirano pokritje \(Cₐ\),
     tako da za vsak element \(U ∈ Cₐ\) obstaja tak \(b_{a, U} ∈ B\), da velja
     \(U ⊩ R(a, b_{a, U})\).
 
-    Po predpostavki sedaj vemo, da imajo te krovi skupno pofinitev \(C\), torej
+    Po predpostavki vemo, da imajo te krovi skupno pofinitev \(C\), torej
     za vsak \(U ∈ C\) in \(a ∈ A\) lahko izmed \(b_{a,Uₐ}\), kjer je \(Uₐ\)
     nadmnožica \(U\) v \(Cₐ\), izberemo \(b_{a, U}'\). Potem pa lahko na \(U\)
     definiramo funkcijo tipa \(A → B\), ki slika \(a\) v \(b_{a,U}'\).
   \item[\(\p ⇒\)]
     Naj bodo \(Cₐ = \{U_{a,b}\}_{b ∈ B}\) pokritja.
     Ta definirajo relacijo \(R(a, b) ≔ U_{a,b}\), ki je celovita, saj so \(Cₐ\)
-    pokritja. Tedaj po principu izbire znotraj (sčasoma) dobimo funkcijo
-    \(f : A → B\), tako da je \(\for{a : A}{U_{a,f(a)}}\).
-    Sedaj pa, ker velja enakost iz predpostavke, je \(f\) tudi funkcija
-    \(A → B\) zunaj. To pa pomeni, da je \(\e f\) vsebovan v vsakem od
-    \(U_{a,f(a)}\), torej, ker \(\e f\) pokrivajo cel prostor, tvorijo skupno
-    pofinitev pokritij \(Cₐ\).
+    pokritja. Tedaj po principu izbire in predpostavki o morfizmih obstaja
+    pokritje \(C\), da na vsakem \(V ∈ C\) obstaja \emph{funkcija} \(f : A → B\),
+    za katero velja \(V ⊩ \for{a : \c A}{U_{a,f(a)}}\). To pa pomeni, da je
+    \(C\) skupna pofinitev pokritij \(Cₐ\), kar zaključi dokaz.
   \end{itemize}
 \end{dokaz}
 %NOTE: brez meta-ac je leva stran lahko za vse celovite \(R\) velja
@@ -80,15 +51,13 @@ dokaz v primeru topoloških modelov je pa originalen.
 %NOTE: interno je to \(\for{a:A}{\globalen{b:B}{R(a,b)}}\)
 \begin{posledica}
   Nad \(X\) velja \(\AC(\c A)\) in \(\for{B}{\c A ↬ B ≅ \c{A ↝ B}}\) natanko
-  tedaj, ko ima vsaka \(A\)-indeksirana množica pokritij \(U\) skupno pofinitev.
+  tedaj, ko ima vsaka \(A\)-indeksirana množica pokritij skupno pofinitev.
 \end{posledica}
-To ne zares sledi iz gornjega, a je dokaz enak, tako da ga ne ponovimo.
+To zares ni posledica, a je dokaz enak, tako da ga ne ponovimo.
 
 \begin{opomba}
-  Gornje lahko relativiziramo še glede na Sierpinskijev objekt \(Σ\), tako da na
-  desni vzamemo pokritja, ki so podmnožice \(Σ\), na desni pa moramo omejiti
-  morfizme, tako da bo \(f(a,b) ∈ Σ\), in aksiom izbire sam. Dokaz nato poteka
-  enako.
+  Gornje lahko relativiziramo še glede na Sierpinskijev objekt \(Σ\), a se malo
+  zaplete pri pogoju \(\c A ↬ \c B ≅ \c{B^A}\), tako da to pozabimo.
 \end{opomba}
 
 Ta lastnost o pofinitvah pa ni zares tipična topološka lastost, saj ponavadi

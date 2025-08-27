@@ -73,7 +73,7 @@ standardna literatura na to temo je pa~\cite{MM92,Johnstone02}.
 
 To delo predpostavlja nekaj znanja teorije kategorij, se pa bo avtorica
 potrudila navesti točne citate na vse naprednejše kategorične definicije in
-izreke. Znanje teorije modelov ali teorije toposov ni nujno, je pa za globje
+izreke. Znanje teorije modelov ali teorije toposov ni nujno, je pa za globlje
 razumevanje celostne slike verjetno potrebno. Zaželeno je osnovno poznavanje
 konstruktivne matematike, za kar priporočamo~\cite{Bauer16, Bishop85}.
 
@@ -86,7 +86,7 @@ spodnji tabeli.
 \begin{tabularx}{0.9\linewidth}{lX}
   % \(よ\) & vložitev Yonede\\
   \(f{\res U}\) & zožitev \(f\) na \(U\)\\
-  \(\Rm\) & realna števila konstruirana z MacNeillovimi rezi\\
+  \(\Rm\) & realna števila konstruirana z MacNeilleovimi rezi\\
   \(\Rd\) & realna števila konstruirana z Dedekindovimi rezi\\
   \(\Rc\) & realna števila konstruirana kot kvocient Cauchyjevih zaporedij\\
   %\(\lem\) & princip izključene tretje možnosti, \\
@@ -107,6 +107,25 @@ spodnji tabeli.
   \(\) &
 \end{tabularx}
 
+V delu tudi uvedem novo vrsto definicije, namreč \emph{konstrukcijo}. Ta igra
+vlogo izrekov, ki skonstruirajo točno določen objekt. Primer takega je recimo
+prvi izrek o izomorfizmu.
+\begin{izrek}
+  Naj bosta \(G\) in \(H\) grupi in \(φ : G → H\) homomorfizem.
+  Potem je \(\im φ ≅ \quot{G}{\ker φ}\).
+\end{izrek}
+\begin{dokaz}
+  Definirajmo \(\hat φ(g\ker φ) ≔ φ(g)\)...
+\end{dokaz}
+Torej ne obstaja kar nek izomorfizem, ampak je ta natanko določen. Tako se
+pogosto sklicuje na ``dokaz izreka X.XX'', ki je izvedel neko tako konstrukcijo.
+Veliko bolje bi se bilo torej sklicati na specifično konstrukcijo.
+\begin{konstrukcija}
+  Za grupi \(G\) in \(H\) in homomorfizem \(φ : G → H\) je preslikava
+  \(\hat φ(g\ker φ) ≔ φ(g)\) tipa \(\quot{G}{\ker φ} → \im φ\) izomorfizem.
+\end{konstrukcija}
+Tako je že na začetku natančno razvidno, za katero preslikavo gre, in kakšno
+oznako smo uvedli zanjo.
 
 %%% Local Variables:
 %%% mode: latex
