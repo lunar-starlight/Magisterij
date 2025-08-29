@@ -256,10 +256,10 @@ Hitro lahko opazimo, da so principi izbire neobčutljivi za izomorfizme.
 V teoriji množic to pomeni, da je aksiom izbire določen do kardinalnosti
 natančno. To nam tudi utemelji zakaj lahko \(\AC(ℕ)\) pravimo princip
 \emph{števne} izbire, saj deluje za poljubno števno (neskončno) množico.
-Označimo ga torej \(\CC\), iz angleško \english{countable choice}. Pomembno
+Označimo ga torej \(\CC\), iz angleško \textenglish{countable choice}. Pomembno
 vlogo bo igral tudi \emph{princip števne disjunktivne izbire} \(\AC(ℕ, 2)\), ki
-ga označimo z \(\CCv\). Ime za tega pride, iz dejstva, da je
-\(\exist{b:2}{R(n,b)}\) ekvivalenten \(R(n,0) ∨ R(n,1)\).
+ga označimo z \(\CCv\). Ime izhaja iz dejstva, da je
+\(\exist{b:2}{R(n,b)}\) ekvivalentno \(R(n,0) ∨ R(n,1)\).
 
 \begin{trditev}
   Če je \(Σ' ⊆ Σ\), \(\AC_Σ(A, B)\) implicira \(\AC_{Σ'}(A, B)\).
@@ -276,8 +276,7 @@ ga označimo z \(\CCv\). Ime za tega pride, iz dejstva, da je
 \begin{trditev}
   Princip \(\AC(\cli n)\) velja.
 \end{trditev}
-Dokaz je očiten in poteka z indukcijo.
-
+Dokaza z indukcijo, ki je standarden, na tem mestu ne bomo ponavljali.
 % \begin{definicija}
 %   \emph{Princip \[Σ\]-izbire iz \(A\) v \(B\)} pravi, da za vsako relacijo
 %   \(R : A×B → Σ\) za katero velja \(\for{a:A}{\exist{b:B}{R(a,b)}}\), obstaja
@@ -325,13 +324,13 @@ Poznamo še princip odvisne izbire.
   zaporedje \(x : ℕ → X\). Ker je \(X⊑B\) je torej to preslikava \(ℕ → B\), ki
   ima želeno lastnost.
 \end{dokaz}
-
-V dokazu je pogoj na \(Σ\) res pomemben, sicer \(Q\) ni relacija nad \(Σ\).
+S pogojem, da je \(Σ\) zaprt za navedeni operaciji, zagotovimo, da je \(Q\)
+relacija na \(Σ\).
 
 Poznamo tudi princip enolične izbire. Ta pravi, da vsaka funkcijska relacija
-določa (enolično) funkcijo. Ker smo topoloških modelih smo funkcije definirali
-natanko kot funkcijske relacije, v topoloških modelih ta princip vedno velja,
-tako da ga ne bomo posebej obravnavali.
+določa (enolično) funkcijo. Ker smo v topoloških modelih funkcije definirali
+kot funkcijske relacije, v topoloških modelih ta princip vedno velja, tako da ga
+ne bomo posebej obravnavali.
 
 
 \subsection{Principi odločitve}\label{sec:logika-odločitve}
@@ -391,8 +390,8 @@ tako da ga ne bomo posebej obravnavali.
   Če uporabimo \(\alpo*_ℝ\) na \(x\) in \(-x\) dobimo želeno formulo. Obratno pa
   \({x = 0 ∨ x < 0}\) implicira \(x ≤ 0\). Podobno pokažemo tudi drugi del.
 \end{dokaz}
-Tako bomo v dokazih prosto menjali med ekvivalentnima pogojema.
-
+Tako bomo prosto od tu naprej menjali med ekvivalentnima pogojema. Seveda pa se
+v posameznem dokazu omejimo na zgolj enega.
 
 \begin{trditev}\label{th:alpoc-is-lpo}\label{th:implications}
   Velja veriga implikacij \(\lem* ⇒ \alpo* ⇒ \alpo*_{\Rc} ⇔ \lpo*\).
@@ -413,7 +412,7 @@ Tako bomo v dokazih prosto menjali med ekvivalentnima pogojema.
   mest, kar pomeni, da želeni indeks obstaja.
 
   Preostanek dokaza izvira iz~\cite{Gro-Tsen24}.
-  Obratno, naj bo \(x = (xᵢ)ᵢ\) Cauchyjevo zaporedje.
+  Naj bo \(x = (xᵢ)ᵢ\) Cauchyjevo zaporedje, za katerega odločamo \(\alpo_{\Rc}*\).
   Definiramo lahko zaporedje
   \[ β(k,n) ≔
     \begin{cases}
@@ -440,6 +439,7 @@ To pomeni, da analitični princip števne odločitve za Cauchyjeva realna števi
 ni zanimiv, tako od tu naprej prosto menjamo med \(\alpo*_{\Rc}\) in
 \(\lpo*\) po potrebi, kjer to ne povzroči zmede.
 
+
 \subsection{Ostali principi}\label{sec:logika-ostalo}
 
 Seveda se principi ne delijo popolnoma zgolj na principe izbire in odločitve.
@@ -456,17 +456,17 @@ Oglejmo si najprej razne Sierpinskijeve objekte, ki smo jih do sedaj definirali.
   Δ   &= \set{p : Ω}{p ∨ ¬p}\\
   R   &= \set{p : Ω}{¬¬p ⇒ p}
 \end{align*}
-Tu nam \(Δ\) predstavlja Sierpinskijev objekt \emph{odločljivih} resničnostnih
-vrednosti, \(R\) pa \emph{regularnih}.
+Objektom \(Σ_ℝ\), \(Σ⁰₁\), \(Δ\), in \(R\) pravimo \emph{realne},
+\emph{semiodločljive}, \emph{odločljive}, in \emph{regularne} resničnostne vrednosti.
+% Tu nam \(Δ\) predstavlja Sierpinskijev objekt \emph{odločljivih} resničnostnih
+% vrednosti, \(R\) pa \emph{regularnih}.
 
 \begin{trditev}
   Naj bo \(ℝ\) objekt realnih števil. Potem je Sierpinskijev objekt \(Σ_ℝ\) enak
   \(\set{x \apart 0}{x : ℝ}\).
 \end{trditev}
 \begin{dokaz}
-  TODO: a je to res, in če je, a je pol velja \ref{th:alpo-equiv} kot redukcija?
-
-  Če je \(x : ℝ\), je potem \(x \apart 0 ⇔ \abs x > 0\).
+  Če je \(x : ℝ\), je \(x \apart 0 ⇔ \abs x > 0\).
   Obratno je \(x > 0 ⇔ \max\{x,0\} \apart 0\).
 \end{dokaz}
 
@@ -538,29 +538,29 @@ le ta zanimivo redukcijo \(\lpo* ≤ \alpo*_{\Rc}\).
 
 Reducibilnost nam torej definira refleksivno in tranzitivno relacijo. To lahko
 dopolnimo do ekvivalenčne relacije \(≡\), ki ji pravimo \emph{ekvivalenca instanc}.
-Ekvivalenčnim razredom po tej relaciji pravimo \emph{stopnje}.
+Ekvivalenčnim razredom po tej relaciji pravimo \emph{stopnje instance}, ali na
+kratko \emph{stopnje}.
 Izkaže se, da ima ta ureditev zelo lepo strukturo. Več o njej si lahko pogledate
-v~\cite{Bauer22}, saj za naše potrebe ni relevantna.
-
-Operacije na stopnjah imajo bogato strukturo. Definiramo lahko dve seštevanji in
-dve množenji, kar se izkaže, da ima povezavo z linearno logiko, a v tem delu
-potrebujemo le navadno množenje.
+v~\cite{Bauer22}, mi bomo pa definirali le produkt stopenj.
 
 \begin{definicija}
-  \emph{Produkt \(φ⊑A\) in \(ψ⊑B\)} je predikat \(φ×ψ⊑A×B\) definiran po točkah.
-  Na očiten način lahko definiramo tudi končne potence predikata \(φ\).
+  \emph{Produkt \(φ⊑A\) in \(ψ⊑B\)} je predikat \(φ×ψ⊑A×B\) definiran s
+  predpisom \(φ×ψ(a,b) ≔ φ(a)∧ψ(b)\).
+  Na očiten način lahko definiramo končne potence \(φⁿ\) predikata \(φ\).
+  Prav tako lahko definiramo števno potenco \(φ^ℕ\) predikata \(φ\) s predpisom
+  \(φ^ℕ((aᵢ)ᵢ) ≔ \for{i:I}{φ(aᵢ)}\).
 \end{definicija}
 
 \begin{definicija}
   Pravimo, da je \(φ⊑A\) \emph{idempotenten}, ko velja \(φ²≤φ\).
 \end{definicija}
-Idempotentnost pomeni, da lahko odločitev \(φ\) za dve vrednosti iz \(A\)
-odločimo zgolj z eno ``poizvedbo'' \(φ\), na nekem drugem \(a\).
+Idempotentnost pomeni, da lahko odločitev \(φ\) za dve vrednosti \(a₀\) in
+\(a₁ ∈ A\) odločimo zgolj z eno ``poizvedbo'' \(φ\) na nekem \(a ∈ A\).
 
-Poglejmo si recimo \(\lem*\). Zgleda, kot da se moramo odločiti med štirimi
-alternativami, \(p∧q\), \(p∧¬q\), \(¬p∧q\), in \(¬p∧¬q\), medtem ko nam ena
-instanca \(\lem*\) da zgolj dve možnosti. Zgleda nemogoče, ampak se izkaže, da
-to lahko pokažemo.
+Poglejmo si recimo \(\lem*\). Na prvi pogled je videti, kot da se moramo
+odločiti med štirimi alternativami, \(p∧q\), \(p∧¬q\), \(¬p∧q\), in \(¬p∧¬q\),
+medtem ko nam ena instanca \(\lem*\) da zgolj dve možnosti. Čeprav se zdi
+nemogoče, idempotenco \(\lem*\) lahko dokažemo.
 
 \begin{lema}
   Za vse \(p:Ω\) velja \(¬¬\lem(p)\).
@@ -574,9 +574,8 @@ to lahko pokažemo.
 \end{trditev}
 \begin{dokaz}
   Naj bosta \(p\) in \(q\) resničnostni vrednosti.
-  Potem definiramo \(r ≔ \lem²{\p{p, q}}\).
-  Ker \(\lem ⁿ\) slika v goste resničnostne vrednosti, je \(\lem{\p r} = r\), tako da
-  je \[\lem{\p r} = r = \lem²{\p{p, q}}\text.\qedhere\]
+  Iz \(\lem{\p{\lem²(p,q)}}\) sledi \(\lem²(p,q)\), saj \(¬\lem²(p,q)\) ne
+  velja, torej je \(\lem²(p,q)\) želena vrednost.
 \end{dokaz}
 Reducibilnost izhaja iz teorije izračunljivosti. Tam se idempotenca ne pojavi
 pogosto, saj tam pomeni, da lahko dve izvedbi algoritma izvedemo že z eno
@@ -590,7 +589,7 @@ vrnemo kasneje.
 
 V~\ref{th:alpoc-is-lpo} smo pokazali, da so principi, ki govorijo o \(Σ⁰₁\) in
 \(Σ_{\Rc}\) ekvivalentni. Ampak vseeno ta Sierpinskijeva objekta nista nujno
-enaka. Na kratko se lahko o tem prepričamo tako, da rečemo, da je dokaz tega
+enaka. Na kratko se lahko o tem prepričamo tako, da opazimo, da je dokaz tega
 dejstva zahteval neskončno instanc \(Σ⁰₁\), torej so elementi \(Σ_{\Rc}\)
 ekvivalentni števnim konjunkcijam elementov \(Σ⁰₁\). Velja torej naslednja
 redukcija.
@@ -598,7 +597,7 @@ redukcija.
   Velja redukcija \(\alpo*_{\Rc} ≤ \lpo*^ℕ\).
 \end{trditev}
 \begin{dokaz}
-  To smo zares pokazali že zgoraj. Uporabimo \(ω⋅ω + ω + 1\) instanc \(\lpo*\),
+  To smo pravzaprav pokazali že zgoraj. Uporabimo \(ω⋅ω + ω + 1\) instanc \(\lpo*\),
   kar je števno mnogo, torej je števno mnogo instanc \(\lpo*\) dovolj za gornjo
   redukcijo.
 \end{dokaz}
@@ -615,30 +614,28 @@ kot~\ref{eq:inst-red}, le da smo \(⇒\) zamenjali z \(⇔\).
 \begin{definicija}
   \emph{Kripkejeva shema za \(Σ ⊆ Ω\)} pravi, da je \(Σ = Ω\). Formulo
   \(\for{p : Ω}{\exist{s : Σ}{s = p}}\) označimo s \(\ks*(Σ)\).
-
   Navadna \emph{Kripkejeva shema} je Kripkejeva shema za
   \(Σ⁰₁ ≔ \set{α \apart 0}{α : 2^ℕ} ⊆ Ω\) in jo označimo \(\ks*\).
 
   \emph{Analitična Kripkejeva shema za \(ℝ\)} je Kripkejeva shema za \(Σ_ℝ\),
   kjer je \(ℝ\) nek objekt realnih števil. Označimo jo z \(\aks*_ℝ\)
-
   Posebej \(\ks*(Σ_{\Rd})\) pravimo \emph{analitična Kripkejeva shema}.
 \end{definicija}
 
 \begin{trditev}
-  Kripkejeva shema za \(Δ\) je natanko \(\lem*\).
+  Kripkejeva shema za \(Δ\) je ekvivalentna \(\lem*\).
 \end{trditev}
 
 \begin{trditev}\label{th:aks-impl-lem≤alpo}
-  Če velja \(\ks*(Σ)\), velja \(\p{\lem*,Ω} ≤ \p{\lem*,Σ}\). V posebnem velja
+  Če velja \(\ks*(Σ)\), velja \(\lem* ≤ \lem*{\res{Σ}}\). V posebnem velja
   \(\lem* ≤ \alpo*\), če velja \(\aks*\).
 \end{trditev}
 \begin{dokaz}
   Naj bo \(p:Ω\). Po predpostavki je \(Σ = Ω\), torej je \(p∈Σ\). Potem
-  lahko na \(p\) uporabimo \(\p{\lem*,Σ}\) in \(\lem(p)\) velja.
+  lahko na \(p\) uporabimo \(\lem*{\res{Σ}}\) in \(\lem(p)\) velja.
 \end{dokaz}
 \begin{posledica}
-  Če velja \(\ks*(Σ)\), je \(\p{\lem*,Σ}\) idempotenten.
+  Če velja \(\ks*(Σ)\), je \(\lem*{\res{Σ}}\) idempotenten.
 \end{posledica}
 
 
@@ -657,10 +654,12 @@ možnosti, a je \(\mp*\) vseeno šibkejši od \(\lpo*\).
 %   Če velja \(α = 0 ∨ α \apart 0\), in ne velja \(α=0\), potem velja \(α \apart 0\).
 % \end{dokaz}
 
-Kot na začetku tega podrazdelka lahko zožimo še Kripkejevo shemo.
+Kot na začetku tega podrazdelka lahko zožimo še Kripkejevo shemo. Tu moramo
+paziti, da ko zožimo \(\ks*(Σ)\) na \(Σ' ⊆ Ω\), mora veljati \(Σ ⊆ Σ'\).
 \begin{trditev}
-  Kripkejeva shema \(Σ⁰₁ = R\) je natanko \(\mp*\). Podobno velja za
-  analitične različice principa.
+  Kripkejeva shema za \(Σ⁰₁∩R ⊆ Σ⁰₁\) je natanko princip Markova in je
+  ekvivalenten trditvi \(Σ⁰₁ ⊆ R\). Podobno velja za analitične različice
+  principa.
 \end{trditev}
 
 %%% Local Variables:

@@ -6,13 +6,10 @@
 
 V~\ref{sec:modeli-heyting} smo videli dva ``topološka'' objekta realnih števil,
 objekt \(ℛ\) iz primera~\ref{ex:reals} in objekt \(\c ℝ\), definiran
-v~\ref{def:constant-hvs}. Vprašanje sedaj je, ali sta ta dva objekta kako
-povezana z internimi konstrukcijami realnih števil definiranih
-v~\ref{sec:logika-reals}.
+v~\ref{def:constant-hvs}. Vprašanje je, kako sta dva objekta povezana z
+internimi konstrukcijami realnih števil definiranih v~\ref{sec:logika-reals}.
 
-Izkaže se, da je odvisno. Objekt \(ℛ\) je vedno enak objektu Dedekindovih
-realnih števil, objekt \(\c ℝ\) je pa malo poseben.
-
+Objekt \(ℛ\) je vedno enak objektu Dedekindovih realnih števil.
 \begin{trditev}\label{th:Rd-maps}
   Nad \(X\) je objekt Dedekindovih realnih števil tip \(ℛ\) iz
   primera~\ref{ex:reals}.
@@ -21,7 +18,7 @@ realnih števil, objekt \(\c ℝ\) je pa malo poseben.
   % kot \(\i{f = g} ≔ \int{\set{t ∈ X}{f(t) = g(t)}}\).
 \end{trditev}
 \begin{dokaz}
-  Naj bo \(x = \p{L, U}\) dedekindov rez v interni logiki.
+  Naj bo \(x = \p{L, U}\) Dedekindov rez v interni logiki.
   Sedaj lahko zunaj za \(t ∈ \e x\) definiramo
   \begin{align*}
     L(t) &≔ \set{q : ℚ}{t ∈ \i{q ∈ L}}\text{ in}\\
@@ -44,18 +41,35 @@ realnih števil, objekt \(\c ℝ\) je pa malo poseben.
 \end{dokaz}
 
 Med drugim to pomeni, da so Cauchyjeva realna števila podmnožica zveznih
-preslikav v \(ℝ\). Ampak katerih?
+preslikav v \(ℝ\). Ampak katerih? Oglejmo si najprej tip \(\c ℝ\).
 
-\begin{trditev}
-  Vsaka lokalno konstantna preslikava definira Cauchyjevo realno število.
+\begin{definicija}
+  Naj bo \(U ∈ 𝒪X\). Preslikava \(f : U → ℝ\) je \emph{lokalno konstantna}, ko
+  velja \(\eventually{V ⊆ U}{f{\res V}\text{ je konstantna}}\).
+\end{definicija}
+Očitno torej vsaka lokalno konstantna preslikava določa Dedekindovo realno
+število. Povemo pa lahko malo več.
+
+\begin{trditev}\label{th:R-into-Rc}
+  Vsaka lokalno konstantna preslikava \(f : U → ℝ\) določa Cauchyjevo realno
+  število.
 \end{trditev}
 \begin{dokaz}
-  Brez škode za splošnost naj bo \(f : U → ℝ\) konstantna preslikava, recimo
-  konstantno \({x ∈ ℝ}\). Ta ima potem pripadajoče Cauchyjevo zaporedje
-  \((xₙ)ₙ\). Sedaj pa lahko tvorimo konstantne preslikave \(\hat xₙ : U → ℚ\),
-  ki znotraj tvorijo Cauchyjevo zaporedje.
-\end{dokaz}
+  Naj bo najprej \(f : U → ℝ\) konstantno \(x ∈ ℝ\). Zunaj je \(x\)
+  predstavljeno s Cauchyjevim zaporedjem \((xₙ)ₙ\). Sedaj lahko tvorimo
+  konstantne preslikave \(\hat xₙ : U → ℚ\), ki znotraj tvorijo Cauchyjevo
+  zaporedje, torej določajo Cauchyjevo realno število \(x\). Po
+  trditvi~\ref{th:Rd-maps}, in ker je vsako Cauchyjevo realno število tudi
+  Dedekindovo, je to predstavljeno s preslikavo \(f\).
 
+  Če je \(f : U → ℝ\) lokalno konstantna, po definiciji obstaja pokritje \(C\),
+  tako da je na vsakem elementu pokritja \(f\) konstantna. Po prvi točki torej
+  na vsakem \(V ∈ C\) obstaja Cauchyjevo realno število, ki je določeno s
+  preslikavo \(f{\res V}\). Potem po lokalnosti veljavnosti~\ref{th:valid-local}
+  obstaja Cauchyjevo realno število na celotnem \(U\), ki je določeno s
+  preslikavo \(f\).
+\end{dokaz}
+V določenih primerih pa velja tudi obrat.
 \begin{trditev}\label{th:Rc-maps}
   Naj bo prostor \(X\) lokalno povezan. Tedaj je nad \(X\) objekt Cauchyjevih
   realnih števil tip \(\c ℝ\).
@@ -70,7 +84,8 @@ preslikav v \(ℝ\). Ampak katerih?
   konstantne preslikave, torej je tudi preslikava \(t ↦ (xₙ(t))ₙ\) konstantna.
 \end{dokaz}
 
-Dokaj očitno to pomeni, da noben od teh objektov v splošnem ni enak drugim.
+Trditvi~\ref{th:Rd-maps} in~\ref{th:Rc-maps} nakazujeta, da vsebovanosti
+\(\c ℝ ⊆ \Rc ⊆ \Rd\) v splošnem niso obrnljive.
 
 \begin{trditev}
   Nad \(ℝ\) sta objekta Dedekindovih in Cauchyjevih realnih števil različna.
@@ -86,9 +101,9 @@ Dokaj očitno to pomeni, da noben od teh objektov v splošnem ni enak drugim.
 \end{trditev}
 \begin{dokaz}
   Definirajmo \(x : 2^ℕ → ℝ\) kot \(x(α) ≔ \sum_{n=0}^∞ \frac{2α(n)}{3ⁿ}\). Ta
-  preslikava je zares kanonična vložitev Cantorjeve množice v realna, in je
-  znotraj Cauchyjevo realno število, saj je limita racionalnih števil. Ampak ni
-  lokalno konstantno, saj je \({x⁻¹(0) = \{0\}}\), ki ni odprta množica.
+  preslikava je vložitev Cantorjeve množice v \(ℝ\), in je znotraj Cauchyjevo
+  realno število, saj je limita racionalnih števil. Ampak ni lokalno konstantno,
+  saj je \({x⁻¹(0) = \{0\}}\), ki ni odprta množica.
 \end{dokaz}
 
 Kaj pa MacNeillova realna števila? Teh je več kot Dedekindovih, tako da če jih
@@ -96,11 +111,11 @@ Kaj pa MacNeillova realna števila? Teh je več kot Dedekindovih, tako da če ji
 morale biti nezvezne. Izkaže se, da so odgovor polzvezne
 funkcije~\cite[posl.~D4.7.5]{Johnstone02}. Seveda, če je funkcija polzvezna
 navzdol in navzgor, je zvezna. Ampak, lahko vzamemo par navzdol in navzgor
-polzveznih preslikav \(\uline f\) in \(\bar f\), ki sta si nekako ``čimbolj
-blizu''. To pomeni, da želimo, da je \(\uline f\) največja navzdol polzvezna
+polzveznih preslikav \(\uline f\) in \(\bar f\), ki sta si nekako ``čim
+bližje''. To pomeni, da želimo, da je \(\uline f\) največja navzdol polzvezna
 preslikava manjša ali enaka \(\bar f\), in obratno.
 
-\begin{lema}
+\begin{lema}\label{th:onesided-cuts-are-scts}
   V topoloških modelih so dolnji (gornji) enostranski rezi predstavljeni z
   navzdol (navzgor) polzveznimi preslikavami.
 \end{lema}
@@ -110,7 +125,7 @@ preslikava manjša ali enaka \(\bar f\), in obratno.
   saj so klasično enostranski rezi ekvivalentni dvostranskim.
 
   Oglejmo si sedaj \(x⁻¹\p{p,∞}\). To je natanko \(\set{t∈\e L}{p < x(t)}\). Po
-  definiciji je ta pogoj ekvivalenten \(t ∈ \i{p ∈ L}\), torej je praskika
+  definiciji je ta pogoj ekvivalenten \(t ∈ \i{p ∈ L}\), torej je praslika
   odprta.
 
   Obratno, naj bo \(x : U → ℝ\) navzdol polzvezna. Potem lahko definiramo
@@ -118,18 +133,21 @@ preslikava manjša ali enaka \(\bar f\), in obratno.
   enostranski rez, saj so morfizmi v \(Ω\) natanko operacije v \(Ω\).
 \end{dokaz}
 Ker pa interno nimamo gornjega reza, ne bomo znali izraziti pogoja \(x(t) < q\)
-na lep način, tako da v splošnem ta presklikava ni zvezna.
+na lep način, tako da v splošnem ta preslikava ni zvezna.
 
-\begin{trditev}\label{real:Rm-maps}
-  Objekt MacNeillovih realnih števil je natanko tip parov polzveznih
-  funkcij \(\p{\uline f, \bar f}\) tipa \(U → ℝ\) za \(U ∈ 𝒪X\), za katere velja
-  \begin{align*}
-    \uline f(t) &=
-    \liminf_{y → t}\bar   f(y)\text{ in}\\
-    \bar   f(t) &=
-    \limsup_{y → t}\uline f(y)\text,
-  \end{align*}
-  z enakostjo definirano po točkah. Pogoju zgoraj pravimo \emph{tesnost}.
+\begin{trditev}\label{th:Rm-maps}
+  Objekt MacNeilleovih realnih števil je natanko tip parov polzveznih
+  funkcij \(\p{\uline f, \bar f}\) tipa \(U → ℝ\) za \(U ∈ 𝒪X\), za kateri velja
+  pogoj \emph{tesnosti}, ki se glasi:
+  \[
+    \uline f(t) = \liminf_{y → t}\bar   f(y)\qquad\text{ in}\qquad
+    \bar   f(t) = \limsup_{y → t}\uline f(y)\text,
+  \]
+  z enakostjo definirano kot
+  \[
+    \i{\p{\uline f, \bar f} = \p{\uline g, \bar g}} ≔
+    \int\set{t ∈ U}{\uline f(t) = \uline g(t) ∧ \bar f(t) = \bar g(t)}\text.
+  \]
 \end{trditev}
 Dokaz te trditve ni kompliciran, ampak se zanaša na veliko analize, tako da ga
 tu ne ponovimo. Bralka si ga lahko ogleda v~\cite[D4.7.5]{Johnstone02}.
@@ -161,18 +179,40 @@ tu ne ponovimo. Bralka si ga lahko ogleda v~\cite[D4.7.5]{Johnstone02}.
 %   torej je tudi \(\int{\p{Uᶜ}} ⊆ L\).
 % \end{dokaz}
 
-Spet očitno vidimo, da sta objekta Dedekindovih in MacNeillovih realnih števil
-različna. MacNeillov rez definira Dedekindovo realno število, natanko tedaj, ko
-sta preslikavi \(\uline f\) in \(\bar f\) enaki.
+Spet vidimo, da sta v splošnem objekta Dedekindovih in MacNeilleovih realnih
+števil očitno različna.
+\begin{lema}
+  MacNeilleovo realno število \(x : \Rm\) je Dedekindovo natanko tedaj, ko sta
+  pripadajoči tesni preslikavi \(\uline x\) in \(\bar x\) enaki.
+\end{lema}
+\begin{dokaz}
+  Če sta preslikavi \(\uline x\) in \(\bar x\) enaki, je ta preslikava zvezni, torej po
+  trditvi~\ref{th:Rd-maps} določa Dedekindovo realno število.
+
+  Obratno, vsako Dedekindovo realno število je zunaj zvezna preslikava
+  \(f : \e x → ℝ\) in par \(\p{f,f}\) je očitno tesen.
+\end{dokaz}
 
 \begin{trditev}
   Nad \(ℝ\) ne velja \(\Rm = \Rd\).
 \end{trditev}
 \begin{dokaz}
-  Definirajmo MacNeillovo realno število s preslikavama \(χ_{(0,∞)}\) ter
-  \(χ_{[0,∞)}\). Ti sta tesni, a se v \(0\) ne ujemata, tako da ne definirata
+  Preslikavi \(χ_{(0,∞)}\) in \(χ_{[0,∞)}\) sta tesni, torej določata
+  MacNeilleovo realno število, a se v \(0\) ne ujemata, tako da ne določata
   Dedekindovega realnega števila.
 \end{dokaz}
+
+Ostane nam še množica \(2^ℕ\).
+\begin{definicija}
+  \emph{Cantorjev prostor} je prostor \(ℕ → 2\) s kompaktno-odprto topologijo.
+\end{definicija}
+Cantorjev prostor se ponavadi predstavi kot podmnožico \(ℝ\) z vložitvijo
+\[ (bₙ)ₙ ↦ ∑_{n}\frac{2bₙ}{3ⁿ}\text. \]
+\begin{trditev}
+  Tip \(2^ℕ\) je natanko snop lokalnih prerezov za Cantorjev prostor. To so
+  torej zvezne preslikave \(U → 2^ℕ\).
+\end{trditev}
+
 
 \input{principi-odločitve.tex}
 \input{realna-števila.tex}

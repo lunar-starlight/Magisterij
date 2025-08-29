@@ -1,8 +1,13 @@
 %\section{Principi odločitve v topoloških modelih}\label{sec:odločitve}
 
-Spomnimo se najprej karakterizacij \(\lem*\) in \(\wlem*\) iz
-podrazdelka~\ref{sec:modeli-logika-odprtih}.
-
+V podrazdelku~\ref{sec:modeli-logika-odprtih} smo karakterizirali \(\lem*\) in
+\(\wlem*\) z logiko odprtih množic. V tej logiki igra množica \(𝒪X\) vlogo
+``tipa resničnostnih vrednosti'', v topoloških modelih smo pa v
+primeru~\ref{ex:omega} tip resničnostnih vrednosti definirali kot tip \(Ω\).
+Izkaže se, da se interpretacije formul kvantificiranih po \(Ω\) ne spremenijo,
+če \(Ω\) zamenjamo z \(\c{𝒪X}\), saj so vsi elementi \(Ω\) globalni, formuli pa
+ne vsebujeta enakosti. Tako trditvi~\ref{th:lem-is-discrete}
+in~\ref{th:wlem-is-ext-disc} veljata kot navedeni tudi v topoloških modelih.
 \begin{retrditev}{th:lem-is-discrete}
   Nad topološkim prostorom velja princip izključene tretje možnosti natanko
   tedaj, ko je prostor diskreten.
@@ -11,69 +16,19 @@ podrazdelka~\ref{sec:modeli-logika-odprtih}.
   Nad topološkim prostorom velja DeMorganov zakon natanko tedaj, ko je prostor
   ekstremalno nepovezan.
 \end{retrditev}
+Ker so dokazi enaki, jih tu ne ponovimo.
 
-Pokažimo sedaj, da implikacije iz~\ref{sec:logika-odločitve} niso obrnljive.
-
-\begin{trditev}
-  Nad \(2^ℕ\) ne velja \(\lpo*\).
-\end{trditev}
-\begin{dokaz}
-  Naj bo \(α : 2^ℕ → 2^ℕ\) identiteta, ki je znotraj element tipa \(2^ℕ\).
-  Zanj velja \(\i{\lpo(α)} = 2^ℕ⧵\{0\}\), torej \(\lpo*\) ne velja.
-\end{dokaz}
-
-\begin{trditev}
-  Nad \(ℝ\) velja \(\lpo*\) in ne velja \(\alpo*\).
-\end{trditev}
-\begin{dokaz}
-  Identiteta \(\id : ℝ → ℝ\) je znotraj Dedekindovo realno število. Zanj velja
-  \(\i{\alpo(\id)} = ℝ⧵\{0\}\), torej \(\alpo*\) ne velja nad \(ℝ\).
-
-  Dokaz, da nad \(ℝ\) velja \(\lpo*\) je identičen dokazu bolj splošne
-  trditve~\ref{th:lpov-lpo}, do katere še pridemo, tako da ga tu ne ponovimo.
-\end{dokaz}
-
-\begin{trditev}
-  Nad \(\Ncof\) velja \(\alpo*\) in ne velja \(\lem*\).
-\end{trditev}
-\begin{dokaz}
-  Prostor očitno ni diskreten, torej nad njem \(\lem*\) ne drži.
-  Naj bo \(f : U → ℝ\) zvezna (torej Dedekindovo realno število znotraj) in
-  \(x, x' ∈ \im f\). Potem sta \(f⁻¹(x)\) in \(f⁻¹(x')\) neprazni odprti
-  množici, torej imata neprazen presek. Sledi, da je \(x = x'\), torej je
-  funkcija \(f\) konstantna. Ker lahko potem v metateoriji odločimo
-  \(\alpo(f(t))\) (za nek \(t ∈ U\)), lahko odločimo tudi \(\alpo(f)\) znotraj.
-\end{dokaz}
-
-\begin{trditev}
-  Nad \(\Ncof\) velja \(\wlem*\) in ne velja \(\lem*\).
-\end{trditev}
-\begin{dokaz}
-  Prostor še vedno ni diskreten. Naj bo sedaj \(U\) odprta množica.
-  Njena zunanjost (torej negacija) je pa bodisi cel prostor, bodisi prazna. Za
-  te odprte množice pa velja da so komplementirane, torej \(\wlem*\) drži.
-\end{dokaz}
-
-Obrate teh implikacij lahko torej jemljemo kot nekonstruktivni principi, a o teh
-ni veliko znano. Vemo le, da očitno \(\Rd = \Rc\) implicira \(\lpo* ⇒ \alpo*\),
-saj je \(\lpo*\) ekvivalenten \(\alpo*\) za Cauchyjeva realna števila, tako da
-je to zelo šibek princip. Kasneje si bomo ogledali kdaj obrati veljajo na nek
-strožji in bolj strukturiran način, ki ima povezavo s teorijo izračunljivosti,
-in ta upamo, da nam da močnejše principe, ki bodo potem tudi topološko bolj
-zanimivi.
-
-Oglejmo si sedaj (delne) karakterizacije raznih principov odločitve. Večino teh,
-prav tako kot večino primerov zgoraj, sem odkrila s pomočjo matematične
-podatkovne baze~\cite{pibase}.
+S pomočjo tipov pa lahko povemo tudi kaj o principih števne odločitve.
 
 \begin{trditev}\label{th:lpov-lpo}
-  Če je \(X\) lokalno povezan, velja \(X ⊩ \lpo*\).
+  Nad lokalno povezanimi prostori velja \(\lpo*\).
 \end{trditev}
 \begin{dokaz}
-  Naj bo \(α : 2^ℕ\). Po trdtivi~\ref{th:lpov-exponentiable} je torej \(α\)
-  lokalno funkcija \(ℕ → 2\). Ker imamo zunaj \(\lpo*\), lahko odločimo
+  Naj bo \(α : 2^ℕ\). Po trditvi~\ref{th:lpov-exponentiable} je \(α\) lokalno
+  funkcija \(ℕ → 2\). Ker imamo zunaj \(\lpo*\), lahko odločimo
   \(α = 0 ∨ α \apart 0\) tam, kar pa pomeni, da to lahko odločimo tudi znotraj.
 \end{dokaz}
+To je zgolj delna karakterizacija, tako da se k tej še vrnemo.
 
 \begin{izrek}\label{th:alpo-is-zerosets-open}
   Nad \(X\) velja \(\alpo*\) natanko tedaj, ko je vsaka ničelna množica odprta.
@@ -83,26 +38,79 @@ podatkovne baze~\cite{pibase}.
   torej skupaj z \(\i{x\apart 0}\) pokrijeta prostor.
 
   Obratno, če velja \(\alpo*\), morata \(\i{x=0}\) in \(\i{x\apart 0}\) pokriti
-  cel prostor. Ker je ničelna množica disjunktna z \(\i{x\apart 0}\), mora biti
-  potem enaka \(\i{x=0}\), torej je odprta.
+  cel prostor. Ker je ničelna množica disjunktna množici \(\i{x\apart 0}\), je
+  enaka \(\i{x=0}\), torej je odprta.
 \end{dokaz}
 
+Sedaj lahko pokažemo implikacije iz podrazdelka~\ref{sec:logika-odločitve} v
+splošnem niso obrnljive.
+\begin{trditev}
+  Nad Cantorjevim prostorom ne velja \(\lpo*\).
+\end{trditev}
+\begin{dokaz}
+  Identiteta \(α : 2^ℕ → 2^ℕ\) je znotraj element tipa \(2^ℕ\) in zanjo je
+  \(\i{\lpo(α)} = 2^ℕ⧵\{0\}\), torej \(\lpo*\) ne velja povsod.
+\end{dokaz}
+
+\begin{trditev}
+  Nad \(ℝ\) velja \(\lpo*\) in ne velja \(\alpo*\).
+\end{trditev}
+\begin{dokaz}
+  Ker je prostor \(ℝ\) lokalno povezan, po trditvi~\ref{th:lpov-lpo} nad njim
+  velja \(\lpo*\). Poglejmo si sedaj identiteto \(\id : ℝ → ℝ\). Ta je znotraj
+  Dedekindovo realno število in zanjo je \(\i{\alpo(\id)} = ℝ⧵\{0\}\), torej
+  \(\alpo*\) ne velja nad \(ℝ\).
+\end{dokaz}
+
+Ker prostor \(\Ncof\) naravnih števil s kokončno topologijo ni diskreten, nad
+njim ne velja \(\lem*\). To lahko izkoristimo, za ločevanje \(\lem*\) od
+\(\alpo*\) in \(\wlem*\) v naslednjih trditvah. Ta prostor sem odkrila s pomočjo
+matematične podatkovne baze~\cite{pibase}, in ga bomo še srečali.
+
+\begin{trditev}
+  Nad \(\Ncof\) velja \(\alpo*\) in ne velja \(\lem*\).
+\end{trditev}
+\begin{dokaz}
+  Naj bo \(f : U → ℝ\) zvezna preslikava in \(x, x' ∈ \im f\). Potem sta
+  \(f⁻¹(x)\) in \(f⁻¹(x')\) neprazni odprti množici, torej imata neprazen
+  presek. Sledi, da je \(x = x'\), torej je funkcija \(f\) konstantna. Ker lahko
+  potem v metateoriji odločimo \(\alpo(f(t))\) (za nek \(t ∈ U\)), lahko
+  odločimo tudi \(\alpo(f)\) znotraj.
+\end{dokaz}
+
+\begin{trditev}
+  Nad \(\Ncof\) velja \(\wlem*\) in ne velja \(\lem*\).
+\end{trditev}
+\begin{dokaz}
+  Naj bo \(U\) odprta množica. Njena zunanjost (torej negacija) je pa bodisi cel
+  prostor, bodisi prazna. Za te odprte množice pa velja, da so komplementirane,
+  torej \(\wlem*\) drži.
+\end{dokaz}
+
+% Obrate teh implikacij lahko torej jemljemo kot nekonstruktivni principi, a o teh
+% ni veliko znano. Vemo le, da očitno \(\Rd = \Rc\) implicira \(\lpo* ⇒ \alpo*\),
+% saj je \(\lpo*\) ekvivalenten \(\alpo*\) za Cauchyjeva realna števila, tako da
+% je to zelo šibek princip. Kasneje si bomo ogledali kdaj obrati veljajo na nek
+% strožji in bolj strukturiran način, ki ima povezavo s teorijo izračunljivosti,
+% in ta upamo, da nam da močnejše principe, ki bodo potem tudi topološko bolj
+% zanimivi.
+
 Oglejmo si še \(\awlpo*\). Ta pravi, da za vsak \(x : ℝ\) velja \(x≤0 ∨¬(x≤0)\).
-Ker je \(x≤0\) natanko \(¬(x>0)\) je to natanko \(\wlem*_{Σ_{\Rd}}\).
-Če si pogledamo definicijo ekstremalno nepovezanih prostorov, in v nej zamenjamo
+Ker je \(x≤0\) natanko \(¬(x>0)\) je \(\awlpo*\) ekvivalenten \(\wlem*_{Σ_{\Rd}}\).
+Če si pogledamo definicijo ekstremalno nepovezanih prostorov, in v njej zamenjamo
 odprte množice z realnimi, dobimo sledečo lastnost.
 \begin{definicija}
-  Prostor je \emph{TODO: basically disconnected}, ko je za vsako funkcijo
-  \(f : X → ℝ\) množica \(\cl\set{t∈X}{f(t)>0}\) odprta.
+  Prostor je \emph{realno nepovezan}, ko je za vsako funkcijo \(f : X → ℝ\)
+  množica \(\cl\set{t∈X}{f(t)>0}\) odprta.
 \end{definicija}
 
 \begin{trditev}\label{th:awlpo-is-basically-disconnected}
-  Nad \(X\) velja \(\awlpo*\) natanko tedaj, ko je vsaka odpra podmnožica \(X\)
-  basically disconnected.
+  Nad \(X\) velja \(\awlpo*\) natanko tedaj, ko je vsaka odprta podmnožica \(X\)
+  realno nepovezana.
 \end{trditev}
 Dokaz trditve je enak kot~\ref{th:wlem-is-ext-disc}, tako da ga ne ponovimo.
-Velja pa zanimiva posledica, namreč, da nad basically disconnected prostori
-obstaja funkcija \(\mathrm{sgn}\) (oziroma nekaj dovolj podobnega).
+Velja pa zanimiva posledica, namreč, da nad realno nepovezanimi prostori
+obstaja funkcija "predznak" v naslednjem smislu.
 \begin{trditev}
   Če nad \(X\) velja \(\awlpo*\), potem za vsak \(x : ℝ\) obstaja
   \(u : \e x → ℝ\), tako da je \(u\) nad \(\e x\) obrnljiv, in velja
@@ -124,8 +132,8 @@ obstaja funkcija \(\mathrm{sgn}\) (oziroma nekaj dovolj podobnega).
   je \(U\) vsebovan v \(x ≥ 0\), in velja \(f ≤ 0\) na \(Uᶜ\).
 \end{dokaz}
 
-Če pa želimo zares definirati \(\mathrm{sgn}\), moramo uporabiti \(\alpo\). Ta
-pravi, da je ničelna množica \(x\) odprta, torej lahko tam definiramo
+Če želimo zares definirati predznak, moramo uporabiti \(\alpo\). Ta
+pravi, da je ničelna množica \(x\) odprta, torej lahko na njej definiramo
 \[ u ≔
   \begin{cases}
      1&; x < 0\\
@@ -138,11 +146,9 @@ pravi, da je ničelna množica \(x\) odprta, torej lahko tam definiramo
   Prostor \(X\) je \emph{skoraj P-prostor}, ko je za vsak \(f : X → ℝ\) množica
   \(\i{f > 0}\) regularna~\cite{Levy77}.
 \end{definicija}
-Kot bi sklepali iz imena je vsak P-prostor tudi skoraj P-prostor.
-\begin{dokaz}
-  Naj bodo \(Zᵢ ≔ f⁻¹[2⁻ⁱ,∞)\). Njihova unija \(Z = \i{f > 0}\) je zaprta, saj
-  je \(X\) P-prostor. Potem je pa \(\int{\cl{Z}} = \int Z = Z\).
-\end{dokaz}
+Seveda je vsak P-prostor tudi skoraj P-prostor.
+Res, naj bodo \(Zᵢ ≔ f⁻¹[2⁻ⁱ,∞)\). Njihova unija \(Z = \i{f > 0}\) je zaprta,
+saj je \(X\) P-prostor. Potem je pa \(\int{\p{\cl{Z}}} = \int Z = Z\).
 
 \begin{trditev}\label{th:amp-is-almost-psp}
   Nad \(X\) velja \(\amp*\) natanko tedaj, ko je vsaka odprta podmnožica \(X\)
@@ -158,7 +164,7 @@ množica regularna.
 \begin{opomba}
   V~\cite[2.1]{Levy77} piše, da je vsaka odprta podmnožica skoraj P-prostora
   ``očitno'' skoraj P-prostor. Jaz tega ne vidim, mogoče je res samo za
-  \(T_{3.5}\) prostore, kot imajo v članku.
+  \(T_{3.5}\) prostore, na katere se omeji članek.
 \end{opomba}
 
 Konstruktivno velja \(\awlpo*∧\amp* ⇔ \alpo*\).
@@ -167,7 +173,7 @@ in~\ref{th:alpo-is-zerosets-open}, smo karakterizirali vse prostore, ki so v
 igri v tej ekvivalenci, tako da bi morala veljati ekvivalenca med njimi.
 \begin{izrek}
   Ničelne množice \(f : X → ℝ\) so odprte natanko tedaj, ko je \(X\) skoraj
-  P-prostor in basically disconnected.
+  P-prostor in realno nepovezan.
 \end{izrek}
 \begin{dokaz}
   Če je vsaka množica \(\i{f > 0}\) zaprta, je tudi regularna (vse odprto zaprte
@@ -178,8 +184,14 @@ igri v tej ekvivalenci, tako da bi morala veljati ekvivalenca med njimi.
 \end{dokaz}
 Avtorici ni znano, če se ta izrek pojavi kje v literaturi, predvsem ker je
 večina literature o teh prostorih objavljene pod predpostavko \(T_{3.5}\).
-Če to predpostavimo, dobimo izrek, ki pravi, da so P-prostori natanko basically
-disconnected skoraj P-prostori~\cite{Levy77}\cite[4J(3)]{GJ60}.
+Pod predpostavko \(T_{3.5}\) torej najdemo izrek
+"P-prostori so natanko realno nepovezani skoraj P-prostori" v~\cite{Levy77}
+in~\cite[4J(3)]{GJ60}.
+To porodi dve zanimivi vprašanji. Prvič, kako nujna je predpostavka \(T_{3.5}\)
+za razvoj teorije kolobarjev realnih funkcij, in drugič, kaj lastnost
+\(T_{3.5}\) pomeni v interni logiki topološkega modela. Avtorica žal nima
+odgovora na nobeno od teh vprašanj, saj je prvo preobsežno za to delo, za
+drugega pa ni našla pravega navdiha.
 
 
 %%% Local Variables:

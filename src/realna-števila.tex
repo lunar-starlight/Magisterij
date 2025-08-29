@@ -30,33 +30,33 @@ Skupaj s trditvijo~\ref{th:lpov-lpo} lahko zatrdimo ekvivalenco.
 \end{izrek}
 Tako lahko namesto \(\Rc = \c ℝ\) od tu naprej pišemo kar \(\lpo*\)
 
-Izkaže pa se, da začetna formulacija trditve~\ref{th:lpov-lpo} ni bila napačna.
+Izkaže pa se, da začetna formulacija trditve~\ref{th:lpov-lpo} ni tako napačna.
 Nad \(2\)-števnimi prostori je namreč princip \(\lpo*\) ekvivalenten lokalni
 povezanosti~\cite[1026]{Johnstone02}.
 
-Karakterizirajmo najprej \(\lpo*\) brez realnih števil.
-\begin{lema}
-  Nad \(X\) velja \(\lpo*\) natanko tedaj, ko za vsak \(U\) in števno družino
-  \(\{Vₙ\}ₙ\) odprtih množic, ki so relativno zaprte v \(U\), njihov presek
-  odprt.
-\end{lema}
-\begin{dokaz}
-  Označimo njihov presek z \(V\).
-  Definirajmo relacijo \(α(n, b) ≔ \i{b=1∧(U⧵Vₙ) ∨ b=0∧Vₙ}\).
-  Ker so \(Vₙ\) odprte in zaprte, je ta celovita in enolična, torej definira
-  element \(2^ℕ\) na stopnji \(U\). Uporabimo sedaj \(\lpo*\), in dobimo, da je
-  \(U = \i{α = 0} ∪ \i{α\apart 0}\). Vrednost \(α\apart 0\) je natanko unija
-  vseh \(U⧵Vₙ\), torej natanko \(U⧵V\). Sledi, da je \(\i{α=0} = V\), torej je
-  presek odprt.
+% Karakterizirajmo najprej \(\lpo*\) brez realnih števil.
+% \begin{lema}
+%   Nad \(X\) velja \(\lpo*\) natanko tedaj, ko za vsak \(U\) in števno družino
+%   \(\{Vₙ\}ₙ\) odprtih množic, ki so relativno zaprte v \(U\), je njihov presek
+%   odprt.
+% \end{lema}
+% \begin{dokaz}
+%   Označimo \(V ≔ ⋂ₙVₙ\) in definirajmo relacijo
+%   \[ α(n, b) ≔ \i{b=1∧(U⧵Vₙ) ∨ b=0∧Vₙ} \text. \]
+%   Ker so \(Vₙ\) odprte in zaprte, je ta celovita in enolična, torej definira
+%   \(α : 2^ℕ\) z razponom \(U\). Uporabimo sedaj \(\lpo*\), in dobimo, da je
+%   \(U = \i{α = 0} ∪ \i{α\apart 0}\). Vrednost \(α\apart 0\) je natanko unija
+%   vseh \(U⧵Vₙ\), torej natanko \(U⧵V\). Sledi, da je \(\i{α=0} = V\), torej je
+%   presek odprt.
 
-  Obratno, naj bo \(α : 2^ℕ\) in definirajmo \(Uₙ ≔ \i{α(n) = 0}\) in
-  \(Vₙ ≔ \i{α(n) = 1}\). Velja \(\e α = Uₙ ∪ Vₙ\), in \(Uₙ ⊥ Vₙ\), torej so
-  \(Uₙ\) in \(Vₙ\) relativno zaprte v \(\e α\).
+%   Obratno, naj bo \(α : 2^ℕ\) in definirajmo \(Uₙ ≔ \i{α(n) = 0}\) in
+%   \(Vₙ ≔ \i{α(n) = 1}\). Velja \(\e α = Uₙ ∪ Vₙ\), in \(Uₙ ⊥ Vₙ\), torej so
+%   \(Uₙ\) in \(Vₙ\) relativno zaprte v \(\e α\).
 
-  Sledi, da je presek \(Uₙ\) odprt, torej je odprta tudi množica \(t ∈ \e α\),
-  kjer je \(α = 0\). To pa pomeni, da velja \(α = 0 ∨ α \apart 0\), torej velja
-  \(\lpo*\).
-\end{dokaz}
+%   Sledi, da je presek \(Uₙ\) odprt, torej je odprta tudi množica \(t ∈ \e α\),
+%   kjer je \(α = 0\). To pa pomeni, da velja \(α = 0 ∨ α \apart 0\), torej velja
+%   \(\lpo*\).
+% \end{dokaz}
 
 \begin{trditev}
   Če nad \(2\)-števnim prostorom velja \(\lpo*\), je lokalno povezan.
@@ -141,7 +141,7 @@ implicira ujemanje Cantorjevih in Dedekindovih realnih
 
 Izkaže se, da za lokalno povezane prostore to tudi pričakujemo.
 \begin{trditev}
-  Če je \(X\) lokalno povezan in velja \(X ⊩ \Rd = \Rc\), velja \(X ⊩ \alpo*\).
+  Če je \(X\) lokalno povezan, velja \(X ⊩ \Rd = \Rc ⇒ \alpo*\).
 \end{trditev}
 Ta izrek je zares kar posledica izreka~\ref{th:lpov-lpo}, saj je \(\lpo*\)
 natanko \(\alpo*\) za Cauchyjeva realna števila.
@@ -198,7 +198,7 @@ realno število locirano natanko tedaj, ko se ujemajo z Dedekindovimi realnimi
 števili.
 Skratka, pokazal je sledečo trditev.
 \begin{trditev}
-  Če velja \(⊩ \Rm = \Rd\) velja \(⊩ \wlem*\).
+  Nad vsakim \(X\) velja \(\Rm = \Rd ⇒ \wlem*\).
 \end{trditev}
 \begin{dokaz}
   Dokaz je povsem konstruktiven, ampak ga lahko za topološke modele malo
@@ -239,7 +239,7 @@ očitno tudi odsekoma omejena, torej je notranja trditev močnejša.
 Sledi, da gornji izrek sledi iz interpretacije spodnje trditve v interni
 logiki.
 \begin{trditev}
-  Velja \(⊩ \wlem* ⇒ \Rm = \Rd\).
+  Nad vsakim \(X\) velja \(⊩ \wlem* ⇒ \Rm = \Rd\).
 \end{trditev}
 \begin{dokaz}
   Spomnimo se, da za MacNeillova realna števila \(x : \Rm\) velja

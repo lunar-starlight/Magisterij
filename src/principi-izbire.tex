@@ -1,15 +1,23 @@
 \section{Principi izbire v topoloških modelih}\label{sec:izbire}
 
-Od tu naprej bomo ponovno delali v klasični metateoriji. Čeprav bi bilo lepo
-razviti ekvivalence konstruktivno, nas zanimajo topološke lastnosti, te se pa
-običajno razvija v klasični metateorji.
+Od tu naprej bomo ponovno delali v klasični metateoriji. Definirajmo najprej
+nekaj izrazov o indeksiranosti in pokritjih.
+\begin{definicija}
+  Naj bo \(I\) množica. Družina je \emph{\(I\)-indeksirana}, ko lahko njene
+  elemente indeksiramo z elementi množice \(I\). Pokritje je
+  \emph{\(I\)-indeksirano}, ko je \(I\)-indeksirano kot družina.
+\end{definicija}
+\begin{definicija}
+  Pokritje \(C\) je \emph{pofinitev} pokritja \(D\), ko za vsak \(U ∈ C\)
+  obstaja \(U' ∈ D\), da je \(U ⊆ U'\).
+  Če je \(𝒟\) družina pokritij, je \(C\) njihova \emph{skupna pofinitev}, ko je
+  pokritje \(C\) pofinitev vsakega pokritja \(D ∈ 𝒟\).
+\end{definicija}
 
-Spodnji rezultat je v malo drugačni obliki pokazal Alex Simpson~\cite{Simpson24},
-dokaz v primeru topoloških modelov je pa originalen.
 \begin{izrek}\label{th:ac-and-conn-is-pgt}
   Nad \(X\) velja \(\AC(\c A, \c B)\) in \(\c A ↬ \c B ≅ \c{B^A}\) natanko
-  tedaj, ko ima vsaka \(A\)-indeksirana množica \(B\)-indeksiranih
-  pokritij skupno pofinitev.
+  tedaj, ko ima vsaka \(A\)-indeksirana družina \(B\)-indeksiranih
+  pokritij \(X\) skupno pofinitev.
   %Nad \(X\) velja \(\AC_Σ{\p{\c A, \c B}}\) in \({\c B}^{\c A} ≅ \c{B^A}\)
   %natanko tedaj, ko je Grothendieckova topologija \(X\) zaprta za \(A\)-mnoge
   %preseke \(B\)-indeksiranih \(Σ\)-krovov.
@@ -38,50 +46,59 @@ dokaz v primeru topoloških modelov je pa originalen.
     definiramo funkcijo tipa \(A → B\), ki slika \(a\) v \(b_{a,U}'\).
   \item[\(\p ⇒\)]
     Naj bodo \(Cₐ = \{U_{a,b}\}_{b ∈ B}\) pokritja.
-    Ta definirajo relacijo \(R(a, b) ≔ U_{a,b}\), ki je celovita, saj so \(Cₐ\)
-    pokritja. Tedaj po principu izbire in predpostavki o morfizmih obstaja
-    pokritje \(C\), da na vsakem \(V ∈ C\) obstaja \emph{funkcija} \(f : A → B\),
-    za katero velja \(V ⊩ \for{a : \c A}{U_{a,f(a)}}\). To pa pomeni, da je
-    \(C\) skupna pofinitev pokritij \(Cₐ\), kar zaključi dokaz.
+    Znotraj lahko definiramo relacijo \({R(a, b) ≔ U_{a,b}}\), ki je celovita,
+    saj so družine \(Cₐ\) pokritja. Tedaj po principu izbire in predpostavki o
+    morfizmih obstaja pokritje \(C\), da na vsakem \(V ∈ C\) obstaja
+    \emph{funkcija} \({f : A → B}\), za katero velja
+    \(V ⊩ \for{a : \c A}{U_{a,f(a)}}\). To pomeni, da je \(C\) skupna pofinitev
+    pokritij \(Cₐ\), kar zaključi dokaz.
   \end{itemize}
 \end{dokaz}
 %NOTE: brez meta-ac je leva stran lahko za vse celovite \(R\) velja
 %\[ \eventually{V⊆U}{\for{a∈A}{\exist{b∈B}{V⊩R(a,b)}}} \]
 %NOTE: Mogoče tu rabimo \(\g B\) namesto \(B\).
 %NOTE: interno je to \(\for{a:A}{\globalen{b:B}{R(a,b)}}\)
-\begin{posledica}
+\begin{trditev}\label{th:ac-and-conn-is-pgt-2}
   Nad \(X\) velja \(\AC(\c A)\) in \(\for{B}{\c A ↬ B ≅ \c{A ↝ B}}\) natanko
   tedaj, ko ima vsaka \(A\)-indeksirana množica pokritij skupno pofinitev.
-\end{posledica}
-To zares ni posledica, a je dokaz enak, tako da ga ne ponovimo.
+\end{trditev}
+Dokaz te trditve poteka enako kot prejšnji, tako da ga ne ponovimo.
+
+Ta rezultat je na primeru \(A = ℕ\) za splošne Grothendieckove topose pokazal
+Alex Simpson~\cite{Simpson24}, dokaz v primeru topoloških modelov je pa
+originalen.
 
 \begin{opomba}
-  Gornje lahko relativiziramo še glede na Sierpinskijev objekt \(Σ\), a se malo
-  zaplete pri pogoju \(\c A ↬ \c B ≅ \c{B^A}\), tako da to pozabimo.
+  Trditvi~\ref{th:ac-and-conn-is-pgt} in \ref{th:ac-and-conn-is-pgt-2} je mogoče
+  relativizirati glede na Sierpinskijev objekt \(Σ\), kot smo to zastavili v
+  podpoglavju~\ref{sec:logika-izbire}, a nastanejo zapleti pri relativizaciji
+  pogoja \(\c A ↬ \c B ≅ \c{B^A}\), tako da tega tu eksplicitno ne navedemo.
 \end{opomba}
 
-Ta lastnost o pofinitvah pa ni zares tipična topološka lastost, saj ponavadi
-govorimo o pofinitvi specifičnega tipa \emph{enega} pokritja. Definicija izhaja
-iz teorije Grothendieckovih topologij, kjer definiramo \emph{krov} kot navzdol
-zaprto pokrtije, nato je pa Grothendieckova topologija na \(U\) enaka množici
-krovov \(U\). Potem se lastnost zgoraj glasi ``Grothendieckova topologija na
-\(X\) je zaprta za \(A\)-mnoge preseke''. To pa že zgleda bolj podobno čemu
-znanemu, namreč prostori, katerih topologije so zaprte za števne preseke imajo
-ime.
+Do konca tega poglavja označimo lastnost,
+"vsaka \(A\)-indeksirana družina pokritij ima skupno pofinitev"
+z \((*)\).
+Ta ni tipična topološka lastnost, saj ponavadi govorimo o pofinitvi \emph{enega}
+pokritja. Definicija izhaja iz teorije Grothendieckovih topologij, kjer
+definiramo \emph{krov} kot navzdol zaprto pokritje, nato je pa Grothendieckova
+topologija na \(U\) enaka množici krovov \(U\). Potem se lastnost zgoraj glasi
+``Grothendieckova topologija na \(X\) je zaprta za \(A\)-indeksirane preseke''.
+To je že bolj podobno čemu znanemu, saj imajo prostori, katerih topologije so
+zaprte za števne preseke, ime.
 
 \begin{definicija}\label{def:psp}
   Prostor je \emph{P-prostor}, ko je števen presek odprtih množic odprt.
 \end{definicija}
 
-Ta lastnost prostora potem implicira tisto o Grothendieckovi topologiji.
+Ta lastnost prostora implicira lastnost \((*)\) za števne indeksne množice.
 
 \begin{trditev}\label{th:psp-is-pgt}
-  Če je \(X\) P-prostor, ima vsaka množica števno mnogo pokritij \(X\) skupno
+  Če je \(X\) P-prostor, ima vsaka števna družina pokritij \(X\) skupno
   pofinitev.
 \end{trditev}
 \begin{dokaz}
-  Naj bodo \(Cₙ = \{U_{n,i}\}ᵢ\) pokritja. Brez škode za splošnost
-  predpostavimo, da so vsa indeksirana z nekim \(I\), saj lahko pokrijim dodamo
+  Naj bodo \(Cₙ = \{U_{n,i}\}ᵢ\) pokritja \(U\). Brez škode za splošnost
+  predpostavimo, da so vsa indeksirana z nekim \(I\), saj lahko pokrijem dodamo
   prazno množico.
 
   Potem naj bo \(φ : ℕ → I\) funkcija. Za to lahko tvorimo
@@ -92,40 +109,40 @@ Ta lastnost prostora potem implicira tisto o Grothendieckovi topologiji.
   pokritje, ki je pofinitev vsakega \(Cₙ\).
 \end{dokaz}
 \begin{posledica}\label{th:psp-has-cc}
-  Nad P-prosotri velja \(\CC\).
+  Nad P-prostori velja \(\CC\).
 \end{posledica}
-Seveda se vse to posploši na poljbne kardinalnosti, a v literaturi razen za
+Seveda se vse to posploši na poljubne kardinalnosti, a v literaturi razen za
 števni primer nimamo imena. Poznamo le še prostore Aleksandrova, ki so natanko
 prostori, kjer so \emph{vsi} preseki odprtih množic odprti. Ta nam da idejo, da
-potem nad temi prostori velja polnomočen \(\AC\), a žal temu ni tako.
+morda nad temi prostori velja polnomočen \(\AC\), a žal temu ni tako.
 
-Očitno imajo diskretni prostori to lastnost, in kot smo že povedali, so to
-natanko prostori, nad katerimi velja \(\lem*\). Ker pa velja aksiom izbire
-implicira princip izključene tretje možnosti (ta izrek je znan kot izrek
-Diaconescuja~\cite{Bauer16}), mora vsak prostor, nad katerim velja \(\AC\) biti
-diskreten.
+Diskretni prostori so očitno tudi P-prostori, in kot smo že povedali, so to
+natanko prostori, nad katerimi velja \(\lem*\). Ker aksiom izbire implicira
+princip izključene tretje možnosti (ta izrek je znan kot izrek
+Diaconescuja~\cite{Diaconescu75}), mora biti vsak prostor, nad katerim velja
+\(\AC\), diskreten.
 
 Očitno torej \(\AC\) ne more veljati nad \emph{vsemi} prostori Aleksandrova, saj
-obstajajo taki, ki niso diskretni. In res, gornje nam da zgolj, da za vsako
-množico \(A\) velja \(\AC(\c A)\), ne da velja \(\AC(A)\) za vse \emph{tipe}
-\(A\). To je torej pomembna razlika, kar je do neke mere tudi za pričakovati.
-Zgoraj smo bistveno uporabljali, da so elementi \(\c A\) definirani na istem
-nivoju \(X\), torej so tudi pokritja \(Cₐ\) pokritja \(X\). Za splošen tip \(A\)
-bodo pa pokritja \(Cₐ\) pokrivala \(\e a\), torej ne bomo mogli niti govoriti o
-skupnih pofinitvah. Avtorici ni znana nobena karakterizacija \(\AC\), razen, da
-ta ni topološka.
+obstajajo taki, ki niso diskretni. In res, posledica~\label{th:psp-has-cc},
+posplošena na poljubne kardinalnosti, nam pove zgolj, da za vsako množico \(A\)
+velja \(\AC(\c A)\), ne pa da velja \(\AC(A)\) za vse \emph{tipe} \(A\). To je
+torej pomembna razlika, kar je do neke mere tudi za pričakovati. Zgoraj smo
+bistveno uporabljali, da imajo elementi \(\c A\) razpon enak \(X\), torej so
+tudi \(Cₐ\) pokritja \(X\). Za splošen tip \(A\) bodo pokritja \(Cₐ\) pokrivala
+\(\e a\), torej ne moremo niti govoriti o skupnih pofinitvah. Avtorici ni
+znana nobena topološka karakterizacija principa \(\AC\).
 
-Torej gornje pokaže, da ima P-prostor gornjo lastnost na Grothendieckovi
-topologiji. Obrat pa ne velja.
+Trditev~\ref{th:psp-is-pgt} torej pokaže, da imajo P-prostori lastnost \((*)\).
+Obrat pa ne velja.
 \begin{trditev}\label{th:psp-is-not-pgt}
-  Nad prostorom \(\cli{0,1}\) s topologijo \(\set{[0,a)}{a ∈ \cli{0,1}}\) ima
-  poljubno mnogo pokritij skupno pofinitev, a ta ni P-prostor.
+  Nad prostorom \(\cli{0,1}\) s topologijo \(\set{[0,a)}{a ∈ \cli{0,1}} ∪ \cli{0,1}\)
+  ima vsaka družina pokritij skupno pofinitev, a ta ni P-prostor.
 \end{trditev}
 \begin{dokaz}
   Množice \(Uₙ ≔ [0,2⁻ⁿ)\) so odprte, a njihov presek je \(\{0\}\), ki ni
   odprta množica, torej prostor ni P-prostor.
 
-  Sedaj pa, če je \(C\) pokritje \(X\) more pokriti \(1\). Ampak edina okolica
+  Sedaj pa, če je \(C\) pokritje \(X\), mora pokriti \(1\). Ampak edina okolica
   \(1\) je \(\cli{0,1}\), torej je \(\{\cli{0,1}\}\) pofinitev vsakega pokritja
   \(X\).
 \end{dokaz}
@@ -134,8 +151,8 @@ vseeno ni {P-prostor}. Izkaže pa se, da pod predpostavko \(T₁\) lahko pokaže
 obrat.
 
 \begin{trditev}\label{th:t1-pgt-is-psp}
-  Če je prostor \(X\) \(T₁\) in so njegove Grothendieckove topologije zaprte za
-  števne preseke, je P-prostor.
+  Če je prostor \(X\) \(T₁\) in ima vsaka števna družina pokritij \(X\) skupno
+  pofinitev, je P-prostor.
 \end{trditev}
 \begin{dokaz}
   Naj bo \(\{Uₙ\}ₙ\) števna družina odprtih množic in za \(t ∈ ⋂ₙUₙ\) tvorimo
@@ -146,12 +163,13 @@ obrat.
   odprt.
 \end{dokaz}
 \begin{opomba}
-  Vseeno pa to ne pomeni, da so \(T₁\) P-prostori natanko \(T₁\) prostori, nad
-  katerimi velja \(\CC\). Namreč, prostor lahko validira \(\CC\), a ne validira
-  enakosti iz~\ref{th:ac-and-conn-is-pgt}, torej ne bo P-prostor.
+  Vendar pa ne moremo sklepati, da so \(T₁\) P-prostori natanko tisti \(T₁\)
+  prostori, nad katerimi velja \(\CC\). Prostor namreč lahko validira \(\CC\) in
+  ne \(ℕ ↬ B ≅ \c{ℕ ↝ B}\), torej ne bo P-prostor. Primer takega prostora je na
+  primer podprostor \(\{0\}∪\set{2⁻ⁿ}{n ∈ ℕ} ⊆ ℝ\).
 \end{opomba}
 
-Znana je pa delna karakterizacija \(\DC\)~\cite[lema~D4.5.16]{Johnstone02}\cite[trd.~2.2]{HL16}.
+Znana je tudi delna karakterizacija \(\DC\)~\cite[lema~D4.5.16]{Johnstone02}\cite[trd.~2.2]{HL16}.
 \begin{definicija}
   Prostor \(X\) je \emph{ultraparakompakten}, ko ima vsako pokritje prostora
   pofinitev s particijo.
@@ -165,14 +183,14 @@ Znana je pa delna karakterizacija \(\DC\)~\cite[lema~D4.5.16]{Johnstone02}\cite[
   particijo \(\{P_α\}_α\). Potem lahko uporabimo aksiom odvisne izbire v
   metateoriji, da za vsak \(α\) izberemo tak \(x_α\), da je \(P_α ⊆ \i{R(xₙ,x_α)}\).
   Potem pa lahko definiramo \(xₙ\) tako, da je na \(P_α\) enak \(x_α\). Ker
-  \(P_α\) tvorijo pokritje, in so paroma disjunktni, to dobro definra term tipa
+  \(P_α\) tvorijo pokritje, in so paroma disjunktni, to dobro definira term tipa
   \(X\).
 
   Ker smo začeli z globalnim \(x₀\), to definira globalno zaporedje \((xₙ)ₙ\).
 \end{dokaz}
 \begin{opomba}
   Gornjo trditev lahko preprosto posplošimo na \(\DC_Σ\), tako da od prostora
-  zahtevamo, imajo \(Σ\)-pokrtija pofinitve s particijo.
+  zahtevamo, imajo \(Σ\)-pokritja pofinitve s particijo.
 \end{opomba}
 
 
@@ -181,7 +199,7 @@ Znana je pa delna karakterizacija \(\DC\)~\cite[lema~D4.5.16]{Johnstone02}\cite[
 %   \(\AC_Σ(A, ℱ)\) za vse \(ℒ\)-množice \(ℱ\).
 % \end{trditev}
 % \begin{dokaz}
-%   Naj bo \(F\) podležna množica \(ℱ\) in \(R : A×F → Σ\) celovita. Potem je tudi
+%   Naj bo \(F\) podležna množica \(ℱ\) in \(R : A×F → Σ\) celovita. Potem je tudi 
 %   celovita kot relacija med \(A\) in \(\c F\). Uporabimo princip izbire, da
 %   dobimo preslikavo \(f: A → \c{\g F}\), za katero velja \(\for{a : A}{R(a, f(a))}\).
 

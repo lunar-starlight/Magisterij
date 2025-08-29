@@ -213,16 +213,15 @@ V splošnem sta pravili interpretacije univerzalnih kvantifikatorjev torej slede
   \exist{a : \c A}{P(a)} &≔ ⋃_{a ∈ A}P(a)
 \end{align*}
 Tukaj pišemo \(a : \c A\), da bo to skladno s kasnejšo notacijo, ampak za zdaj
-se to bere kot "\(a\) element \(A\)". Posebej namesto \(\c{𝒪X}\) pišemo \(Ω\),
-saj je \(Ω\) standardna oznaka za mrežo resničnostnih vrednosti.
+se to bere kot "\(a\) element \(A\)".
 
 Nekaj primerov formul, ki uporabljajo kvantifikatorje bi bili na primer
-\(\for{p:Ω}{p∨¬p}\) ali \(\for{p:Ω}{\exist{q:Ω}{p ⇔ ¬q}}\). Prva je natanko
-princip izključene tretje možnosti, druga pa nima posebnega imena, a pravi, da
-je vsaka resničnostna vrednost negacija. Izkaže se, da čeprav ti formuli
-konstruktivno \emph{nista} ekvivalentni, karakterizirata isti razred topoloških
-prostorov. Dokaz tega dejstva se nahaja v~\cite[izr.~2.1]{GJ08}, a ga v tem delu
-ne ponovimo.
+\(\for{U:\c{𝒪X}}{U∨¬U}\) ali \(\for{U:\c{𝒪X}}{\exist{V:\c{𝒪X}}{U ⇔ ¬V}}\). V
+prvi prepoznamo princip izključene tretje možnosti, druga pa nima posebnega
+imena, a pravi, da je vsaka resničnostna vrednost negacija. Izkaže se, da čeprav
+ti formuli konstruktivno \emph{nista} ekvivalentni, karakterizirata isti razred
+topoloških prostorov. Dokaz tega dejstva se nahaja v~\cite[izr.~2.1]{GJ08}, a ga
+v tem delu ne ponovimo.
 
 Oglejmo si najprej, kaj zares pomeni, da je kvantificiran izraz ``res''.
 Če je notranjost množice \(S ⊆ X\) enaka \(X\), mora biti tudi množica \(S\)
@@ -238,9 +237,9 @@ Po drugi strani, je "\(\exist{a:\c A}{P(a)}\)" res natanko tedaj, ko množice
   Za \(U ∈ 𝒪X\) velja \(U∨¬U\), natanko tedaj, ko je \(U\) zaprta.
 \end{lema}
 \begin{dokaz}
-  Interpretacija \(U∨¬U\) je \(U ∪ \int{Uᶜ}\). Če je \(U\) zaprta, je
-  \(¬U = Uᶜ\) in je \(U∨¬U = X\). Obratno, ker je \(U ⊥ ¬U\), če je
-  \(X = U∨¬U\), mora biti \(¬U=Uᶜ\), in je \(U\) zaprta.
+  Interpretacija \(U∨¬U\) je \(U ∪ \ext U\). Če je \(U\) zaprta, je
+  \(\ext U = Uᶜ\) in je \(U∨¬U = ⊤\). Obratno, ker je \(U ⊥ \ext U\), iz
+  \(U∨¬U = ⊤\) sledi \(\ext U=Uᶜ\), in je \(U\) zaprta.
 \end{dokaz}
 
 \begin{trditev}\label{th:lem-is-discrete}
@@ -249,7 +248,7 @@ Po drugi strani, je "\(\exist{a:\c A}{P(a)}\)" res natanko tedaj, ko množice
 \end{trditev}
 \begin{dokaz}
   Princip izključene tretje možnosti pravi, da velja formula
-  \(\for{p : Ω}{p ∨ ¬p}\). Po gornjem to natanko pomeni, da za vsako odprto
+  \(\for{U : \c{𝒪X}}{U ∨ ¬U}\). Po gornjem to natanko pomeni, da za vsako odprto
   množico velja \(U∨¬U\), torej po lemi, da je zaprta. To je očitno res za
   diskretne prostore, saj je \emph{vsaka} podmnožica zaprta. Pokažimo torej
   drugo smer.
@@ -265,7 +264,7 @@ Po drugi strani, je "\(\exist{a:\c A}{P(a)}\)" res natanko tedaj, ko množice
 
 Naredimo še eno karakterizacijo, tokrat DeMorganovega zakona.
 \begin{definicija}
-  \emph{DeMorganov zakon} je formula \(\for{p,q:Ω}{¬(p∧q) ⇒ ¬p∨¬q}\).
+  \emph{DeMorganov zakon} je formula \(\for{U,V:\c{𝒪X}}{¬(U∧V) ⇒ ¬U∨¬V}\).
 \end{definicija}
 
 \begin{definicija}
@@ -277,7 +276,7 @@ Naredimo še eno karakterizacijo, tokrat DeMorganovega zakona.
   ekstremalno nepovezan.
 \end{trditev}
 \begin{dokaz}
-  DeMorganov zakon je ekvivalenten trditvi \(\for{p : Ω}{¬p ∨ ¬¬p}\), kar po
+  DeMorganov zakon je ekvivalenten trditvi \(\for{U:\c{𝒪X}}{¬U ∨ ¬¬U}\), kar po
   gornji lemi pravi, da so vse zunanjosti množic zaprte. To pomeni, da so
   njihovi komplementi, torej zaprtja množic, odprta, kar je natanko kar smo
   želeli.
@@ -397,9 +396,9 @@ topološkega modela. Najbolj prav to pride, ko imamo družino elementov tipa, in
 jo želimo smatrati kot družino tudi znotraj modela.
 
 Poznamo tudi tipe, ki niso niti konstantni, niti snopi lokalnih prerezov.
-\begin{primer}
+\begin{primer}\label{ex:omega}
   Množica \(𝒪X\) skupaj z enakostjo \(\i{U = V} ≔ U ⇔ V\) je tip. Označimo ga z
-  \(Ω\), saj so njeni elementi natanko resničnostne vrednosti naše logike.
+  \(Ω\), saj v topoloških modelih predstavlja \emph{tip resničnostnih vrednosti}.
 \end{primer}
 
 % Ampak naša motivacija za definicijo Heytingovo vrednotenih množic so bile ravno
@@ -1514,7 +1513,7 @@ lokalno povezanimi prostori posebej lepo karakterizacijo.
   Definirajmo morfizem \(φ(f,g) ≔ \for{x:\c A}{f(x) = g(x)}\).
   Če velja \(φ(f) = φ(f')\), za vse \(x : \c A\) velja \(f(x) = f'(x)\), torej
   je \(φ\) injektivna.
-  Za surjektivnost, naj bo \(g : \c{A ↝ B}\) in definirajmo
+  Za surjektivnost naj bo \(g : \c{A ↝ B}\) in definirajmo
   \(f(a, b) ≔ ⋃\set{U ∈ C}{U ⊩ g(a) = b}\).
   Za tega velja \(f(x) = g(x)\), torej velja \(φ(f,g)\).
   Sledi, da je \(φ\) izomorfizem med \(\c A ↬ \c B\) in \(\c{A ↝ B}\).
