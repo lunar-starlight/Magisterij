@@ -1,5 +1,9 @@
 \section{Redukcije instanc}\label{sec:inst-red}
 
+Avtorici ni uspelo najti nobene pametne karakterizacije redukcije instanc v
+topoloških modelih, tako da lahko poda le nekaj primerov topoloških lastnosti,
+ki so nekako povezane z redukcijami instanc.
+
 \subsection{Kripkejeve sheme}
 
 \begin{trditev}\label{th:lT6-have-AKS}
@@ -12,20 +16,20 @@
   kar je pa točno to, kar zahtevamo za analitično Kripkejevo shemo.
 \end{proof}
 \begin{opomba}
-  V dokazu smo zares pokazali \emph{globalen} obstoj za element \(x : ℝ\). To
+  V dokazu smo zares pokazali \emph{globalen} obstoj za element \(x : \Rd\). To
   nam da slutiti, da je (lokalno) \(T₆\) lastnost močnejša od \(\aks*\). In res
   se izkaže, da je temu tako.
 \end{opomba}
 
 Vseeno pa velja obrat, če analitično Kripkejevo shemo malo ojačamo. Specifično,
-če predpostavimo obstoj \emph{funkcije izibre} za shemo \(\aks*\).
+če predpostavimo obstoj \emph{funkcije izbire} za shemo \(\aks*\).
 \begin{trditev}
-  Če velja \(X ⊩ \exist{f : Ω ↬ ℝ}{\for{p : Ω}{p ⇔ f(p) \apart 0}}\), je \(X\)
+  Če velja \(X ⊩ \exist{f : Ω ↬ \Rd}{\for{p : Ω}{p ⇔ f(p) \apart 0}}\), je \(X\)
   lokalno \(T₆\).
 \end{trditev}
 \begin{dokaz}
   Po predpostavki dobimo, da obstaja pokritje \(C\). Naj bo \(U ∈ C\) in
-  \(f : Ω ↬ ℝ\), za katero velja \(U ⊩ \for{p : Ω}{p ⇔ f(p) \apart 0}\).
+  \(f : Ω ↬ \Rd\), za katero velja \(U ⊩ \for{p : Ω}{p ⇔ f(p) \apart 0}\).
   Tip \(ℝ\) je poln, tako da lahko za \(f\) vzamemo kar operacijo \(Ω ↝ ℝ\).
 
   Naj bo \(A ∈ 𝒜U\). Potem je \(V ≔ U ⧵ A\) odprta množica, torej lahko na njej
@@ -42,7 +46,7 @@ sledeči izrek.
 
 \begin{izrek}
   Prostor je lokalno \(T₆\) natanko tedaj, ko nad njem velja
-  \[ \exist{f : Ω ↬ ℝ}{\for{p : Ω}{p ⇔ f(p) \apart 0}}\text. \]
+  \[ \exist{f : Ω ↬ \Rd}{\for{p : Ω}{p ⇔ f(p) \apart 0}}\text. \]
 \end{izrek}
 
 
@@ -78,14 +82,14 @@ Spomnimo se na trditev~\ref{th:aks-impl-lem≤alpo}, specializirano na primer \(
   Nad lokalno \(T₆\) prostori je \(\alpo*\) idempotenten.
 \end{posledica}
 Obrat pa ne velja niti približno. Tudi, če bi predpostavili funkcijsko
-redukcijo, iz \(x>0∨x≤0 ⇒ p∨¬p\) ne moremo niti sklepati, da \(x>0 ⇒ p\)!
+redukcijo, iz \(x>0∨x≤0 ⇒ p∨¬p\) ne moremo niti sklepati, da velja \(x>0 ⇒ p\)!
 
 Z drugimi besedami, za zaprto množico \(A\) ne vemo niti, ali obstaja funkcija,
-ki je na njej ničelna. To pomeni, da si s to redukcijo ne moremo pomagati niti
+ki je na njej ničelna, kar pomeni, da si s to redukcijo ne moremo pomagati niti
 do \(T₄\) lastnosti.
 
 
-\subsection{Idempotenca \lpo* nad Cantorjevim prostorm}
+\subsection{Idempotenca \lpo* nad Cantorjevim prostorom}
 
 % Joint with prof. Bauer
 \begin{lema}
@@ -124,7 +128,7 @@ do \(T₄\) lastnosti.
   V tem podrazdelku bi lahko namesto Cantorjevega prostora zares vzeli
   katerikoli kompakten nič dimenzionalen prostor. Tem se reče Stoneovi prostori
   in igrajo pomembno vlogo v konstruktivni topologiji in teoriji okolišev. Od
-  kod pride ta povezava mi ni znano.
+  kod pride povezava med to teorijo in gornjimi izreki avtorici ni znano.
 \end{opomba}
 
 
