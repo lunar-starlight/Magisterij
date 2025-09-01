@@ -26,7 +26,7 @@ nekaj izrazov o indeksiranosti in pokritjih.
 \begin{dokaz}
   \begin{itemize}
   \item[\(\p ⇐\)]
-    Pokažimo najprej, da velja gornja enakost.
+    Pokažimo najprej, da obstaja gornji izomorfizem.
     Tip \(\c A ↬ \c B\) bo enak tipu \(\c{A → B}\) natanko tedaj, ko je vsak
     morfizem operacija. To velja, saj je vsaka funkcija množic operacija med
     konstantnimi tipi. Naj bo \(f : \c A ↬ \c B\). Potem
@@ -47,9 +47,9 @@ nekaj izrazov o indeksiranosti in pokritjih.
     definiramo funkcijo tipa \(A → B\), ki slika \(a\) v \(b_{a,U}'\).
   \item[\(\p ⇒\)]
     Naj bodo \(Cₐ = \{U_{a,b}\}_{b ∈ B}\) pokritja.
-    Znotraj lahko definiramo relacijo \({R(a, b) ≔ U_{a,b}}\), ki je celovita,
+    Znotraj definiramo relacijo \({R(a, b) ≔ U_{a,b}}\), ki je celovita,
     saj so družine \(Cₐ\) pokritja. Tedaj po principu izbire in predpostavki o
-    morfizmih obstaja pokritje \(C\), da na vsakem \(V ∈ C\) obstaja
+    morfizmih obstaja pokritje \(C\), da za vsak \(V ∈ C\) obstaja
     \emph{funkcija} \({f : A → B}\), za katero velja
     \(V ⊩ \for{a : \c A}{U_{a,f(a)}}\). To pomeni, da je \(C\) skupna pofinitev
     pokritij \(Cₐ\), kar zaključi dokaz.
@@ -140,14 +140,15 @@ Vseeno pa lahko nad diskretnimi prostori pokažemo, da velja \(\AC\).
   prostor diskreten, je \(\e aᶜ\) odprta množica in je \(\i{\e a ⇒ R(a,b)}\)
   enak \(\e aᶜ ∪ R(a,b)\). Relacija \(Q(a,b) ≔ \e aᶜ∪R(a,b)\) med \(\c A\) in
   \(B\) je potem očitno celovita, in lahko na njej uporabimo \(\AC(\c A)\), ki
-  velja zaradi diskretnosti prostora. Imamo torej morfizem \(f : \c A ↬ B\), za
-  katerega velja \(\for{x : \c A}{Q(x,f(x))}\). Definirajmo sedaj \(g : A ↬ B\)
-  s predpisom \(\p{a,b} ↦ ⋃_{x∈A}\i{x = a}∩f(x,b)\). S previdnim računom lahko
-  preverimo, da velja \(\for{x : A}{R(x,g(x))}\), torej je \(g\) funkcija izbire
-  za \(R\) in \(\AC\) drži.
+  velja zaradi diskretnosti prostora, kar nam da morfizem \(f : \c A ↬ B\), za
+  katerega velja \(\for{x : \c A}{Q(x,f(x))}\). S predpisom
+  \[\p{a,b} ↦ ⋃_{x∈A}\i{x = a}∩f(x,b) \]
+  definiramo preslikavo \(g : A×B → 𝒪X\). S previdnim računom lahko preverimo,
+  da je \(g\) morfizem \(A ↬ B\), in da zanj velja \(\for{x : A}{R(x,g(x))}\),
+  torej \(\AC\) drži.
 \end{dokaz}
-Tako lahko združimo trditvi~\ref{th:lem-is-discrete} in~\ref{th:disc-has-ac},
-skupaj z izrekom Diaconescuja, da dobimo sledeči izrek:
+Tako lahko trditvi~\ref{th:lem-is-discrete} in~\ref{th:disc-has-ac} združimo z
+izrekom Diaconescuja, da dobimo sledeči izrek:
 \begin{izrek}\label{th:ac-is-lem}
   V topoloških modelih je \(\AC\) ekvivalenten \(\lem*\).
 \end{izrek}
@@ -167,8 +168,8 @@ Obrat ne velja.
   \(X\) pokriti \(1\). Ampak edina okolica \(1\) je \(\cli{0,1}\), torej je
   \(\{\cli{0,1}\}\) pofinitev vsakega pokritja \(X\).
 \end{dokaz}
-To pravzaprav pomeni, da nad tem prostorom velja \(\for{A}{\AC(\c A)}\), 
-vseeno ni {P-prostor}. Izkaže pa se, da pod predpostavko \(T₁\) lahko pokažemo
+To pravzaprav pomeni, da čeprav nad tem prostorom velja \(\for{A}{\AC(\c A)}\), 
+ta ni {P-prostor}. Izkaže pa se, da pod predpostavko \(T₁\) lahko pokažemo
 obrat.
 
 \begin{trditev}\label{th:t1-pgt-is-psp}
@@ -185,9 +186,9 @@ obrat.
 \end{dokaz}
 \begin{opomba}
   Vendar pa ne moremo sklepati, da so \(T₁\) P-prostori natanko tisti \(T₁\)
-  prostori, nad katerimi velja \(\CC\). Prostor namreč lahko validira \(\CC\) in
-  ne \({ℕ ↬ B ≅ \c{ℕ ↝ B}}\), torej ni P-prostor. Primer takega prostora je
-  podprostor \(\{0\}∪\set{2⁻ⁿ}{n ∈ ℕ} ⊆ ℝ\).
+  prostori, nad katerimi velja \(\CC\). Prostor namreč lahko validira \(\CC\), a
+  nad njim ne velja \({ℕ ↬ B ≅ \c{ℕ ↝ B}}\), torej ni P-prostor. Primer takega
+  prostora je podprostor \({\{0\}∪\set{2⁻ⁿ}{n ∈ ℕ} ⊆ ℝ}\).
 \end{opomba}
 
 Znana je tudi delna karakterizacija \(\DC\)~\cite[lema~D4.5.16]{Johnstone02}\cite[trd.~2.2]{HL16}.

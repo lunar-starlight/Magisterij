@@ -757,20 +757,18 @@ predstavimo kot eniško relacijo (oziroma predikat) na produktu.
   Projekciji \(π₀ : A×B → A\) in \(π₁ : A×B → B\) sta operaciji.
 \end{konstrukcija}
 \begin{dokaz}
-  Gornja enakost je očitno simetrična in tranzitivna, tako da tvori
-  tip.
-
-  Pokažimo le, da je projekcija \(π : A×B → A\) operacija.
-  Velja \(\e{\p{a, b}} = \e a ∩ \e b = \e a\), torej velja
-  \(\e{\p{a,b}} ⊆ \e{π{\p{a,b}}}\). Za drugo lastnost imamo
+  Gornja enakost je očitno simetrična in tranzitivna, tako da tvori tip, tako
+  pokažimo le, da je projekcija \(π : A×B → A\) operacija. Ker je
+  \(\e{\p{a, b}} = \e a\), velja \(\e{\p{a,b}} ⊆ \e{π{\p{a,b}}}\). Za drugo
+  lastnost imamo
   \[ \i{\p{a,b} = \p{a',b'}} = \i{a=a'}∩\i{b=b'} ⊆ \i{a = a'} =
     \i{π(a,b) = π(a',b')}\text.\qedhere \]
 \end{dokaz}
 \begin{opomba}
   Pričakovali bi, da bi za nosilec produkta vzeli kar produkt množic elementov
   \(A\) in \(B\). Izkaže se, da če želimo, da sta projekciji operaciji, moramo
-  vzeti množico zgoraj. Res, če sta projekciji operaciji velja
-  \(\e{(a,b)} = \e{π(a,b)} = \e a\) (simetrično \(\e b\)). Potem sledi
+  vzeti množico zgoraj. Res, če sta projekciji operaciji, velja
+  \(\e{(a,b)} = \e{π(a,b)} = \e a\) (in simetrično za \(\e b\)). Potem sledi
   \(\e a = \e b\), kar je pa natanko pogoj na parih, ki ga imamo zgoraj.
 \end{opomba}
 
@@ -795,8 +793,8 @@ predstavimo kot eniško relacijo (oziroma predikat) na produktu.
 
 \begin{primer}
   Če je \(R\) relacija na \(A\), je \(\hat R = R\). Res, ker je \(R\) že sama po
-  sebi stroga, lahko uporabimo gornjo opombo in pišemo \(\hat R(a) = \i{R(a)}\).
-  To je pa natanko \(R(a)\).
+  sebi stroga, lahko uporabimo gornjo opombo in pišemo \(\hat R(a) = \i{R(a)}\),
+  kar je natanko \(R(a)\).
 \end{primer}
 \begin{primer}
   Naj bo \(x ≡ y \mod 2\) formula s prostima spremenljivkama tipa \(\c ℕ\). Potem
@@ -864,9 +862,9 @@ lepšo karakterizacijo.
   \(\i{\hat f(a) = U}∩f(a,V) ⊆ U=V\). Potem pa lahko po enoličnosti \(f\)
   zapišemo \(\i{\hat f(a) = U}∩f(a,V) ⊆ f(a,U)\).
 
-  Če je \(g : A ↝ Ω\) neka druga operacija, ki porodi morfizem enak \(f\), je
-  \(\e a = \i{g(a) = g(a)} = \i{f(a,g(a))} = \i{\hat f(a) = g(a)}\), torej sta
-  operaciji \(\hat f\) in \(g\) enaki.
+  Če je \(g : A ↝ Ω\) operacija, ki porodi morfizem enak \(f\), je ta enaka
+  \(\hat f\), saj velja
+  \[ \e a = \i{g(a) = g(a)} = f(a,g(a)) = \i{\hat f(a) = g(a)}\text.\qedhere \]
 \end{dokaz}
 
 Dokaz \(\i{\hat f(a) = U} ⊆ f(a,U)\) že napol zgleda kot matematično sklepanje,
@@ -947,8 +945,9 @@ podobjekta iz podtipa.
   Relacija je simetrična, saj je \(\i{x=_Ax'}∩P(x)\) enak \(\i{x=_Ax'}∩P(x')\),
   tranzitivnost pa očitno sledi iz tranzitivnosti \(=_A\).
 
-  Za morfizem \(m\) velja, da za vsak \(f : B ↬ \hat P\), \(a ∈ A\), in
-  \(b ∈ B\) velja \(m∘f(b,a) = f(b,a)\). Od tod sledi, da je \(m\) monomorfizem.
+  Za vsake \(f, g : B ↬ \hat P\), \(a ∈ A\), in \(b ∈ B\) velja
+  \(m∘f(b,a) = f(b,a)\) (simetrično za \(g\)), torej iz \(m∘f = m∘g\)
+  sledi \(f = g\). 
 \end{dokaz}
 
 \begin{trditev}\label{th:ℒsub-is-sub}

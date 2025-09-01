@@ -33,16 +33,13 @@ Vseeno pa velja obrat, če analitično Kripkejevo shemo malo ojačamo. Specifič
   lokalno \(T₆\).
 \end{trditev}
 \begin{dokaz}
-  Po predpostavki dobimo, da obstaja pokritje \(C\). Naj bo \(U ∈ C\) in
-  \(f : Ω ↬ \Rd\), za katero velja \(U ⊩ \for{p : Ω}{p ⇔ f(p) \apart 0}\).
-  Tip \(ℝ\) je poln, tako da lahko za \(f\) vzamemo kar operacijo \(Ω ↝ ℝ\).
-
-  Naj bo \(A ∈ 𝒜U\). Potem je \(V ≔ U ⧵ A\) odprta množica, torej lahko na njej
-  uporabimo predpostavko. Sledi, da velja \(U ⊩ V ⇔ f(V) \apart 0\).
-  To pa pomeni, da je \(V = \set{t ∈ U}{f(V)(t) ≠ 0}\). Sledi, da je
-  \(A = f(V)⁻¹(0)\), torej je \(f(V) : U → ℝ\) zvezna preslikava, katere ničelna
-  množica je \(A\). Sledi da je \(U\) \(T₆\) prostor, torej je \(X\) lokalno
-  \(T₆\).
+  Predpostavka pravi, da obstaja pokritje \(C\), za katerega za vsak \(U ∈ C\)
+  in \({f : Ω ↬ \Rd}\) velja \(U ⊩ \for{p : Ω}{p ⇔ f(p) \apart 0}\).
+  Tip \(\Rd\) je poln, tako da lahko za \(f\) vzamemo kar operacijo \(Ω ↝ \Rd\).
+  Pokažimo, da je vsak \(U ∈ C\) \(T₆\) prostor.
+  Naj bo \(A ∈ 𝒜U\). Potem je \(V ≔ U ⧵ A\) odprta množica, \(f(V) : U → ℝ\) in
+  velja \(V = \i{f(V) \apart 0}\). Sledi, da je \(A = f⁻¹\{0\}\) in je \(f(V)\)
+  želena preslikava.
 \end{dokaz}
 Ponovno smo pokazali malo več kot zgolj lokalno \(T₆\) lastnost. Dobili smo
 \emph{funkcije izbire} za vsako od \(T₆\) komponent. Ker pa imamo v metateoriji

@@ -48,8 +48,8 @@ splošnem niso obrnljive.
   Nad Cantorjevim prostorom ne velja \(\lpo*\).
 \end{trditev}
 \begin{dokaz}
-  Identiteta \(α : 2^ℕ → 2^ℕ\) je znotraj element tipa \(2^ℕ\) in zanjo je
-  \(\i{\lpo(α)} = 2^ℕ⧵\{0\}\), torej \(\lpo*\) ne velja povsod.
+  Identiteta \(\id : 2^ℕ → 2^ℕ\) je zvezna, torej je znotraj element tipa \(2^ℕ\)
+  in je zanjo \(\i{\lpo(\id)} = 2^ℕ⧵\{0\}\). Sledi, da \(\lpo*\) ne velja.
 \end{dokaz}
 
 \begin{trditev}
@@ -67,18 +67,15 @@ njim ne velja \(\lem*\). To lahko izkoristimo, za ločevanje \(\lem*\) od
 \(\alpo*\) in \(\wlem*\) v naslednjih trditvah.
 
 \begin{lema}\label{th:Ncof-str-conn}
-  Vsaka zvezna preslikava \(f : \Ncof → ℝ\) je konstantna.
+  Za neprazno \(U ∈ 𝒪X\) je vsaka zvezna preslikava \(f : U → ℝ\) konstantna.
 \end{lema}
 \begin{dokaz}
-  Naj bo \(f : \Ncof → ℝ\) zvezna preslikava in \(x, x' ∈ \im f\). Denimo, da
-  velja \(x < x'\). Potem sta množici \(f⁻¹(\frac{x+x'}2,∞)\) in
+  Naj bo \(f : U → ℝ\) zvezna preslikava in \(x, x' ∈ \im f\). Denimo, da
+  velja \({x < x'}\). Potem sta množici \(f⁻¹(\frac{x+x'}2,∞)\) in
   \(f⁻¹(-∞,\frac{x+x'}2)\) neprazni odprti podmnožici \(\Ncof\), torej imata
   neprazen presek. Ampak ti množici sta očitno disjunktni, torej je \(x = x'\)
   in je funkcija \(f\) konstantna.
 \end{dokaz}
-Ker je vsak neprazen odprt podprostor \(\Ncof\) homeomorfen \(\Ncof\), ta lema
-velja tudi za funkcije \(f : U → ℝ\) za poljubno neprazno odprto podmnožico
-\(\Ncof\).
 
 \begin{trditev}
   Nad \(\Ncof\) velja \(\alpo*\) in ne velja \(\lem*\).
@@ -165,7 +162,7 @@ pravi, da je ničelna množica \(x\) odprta, torej lahko na njej definiramo
 \end{definicija}
 Seveda je vsak P-prostor tudi skoraj P-prostor.
 Res, naj bodo \(Zᵢ ≔ f⁻¹[2⁻ⁱ,∞)\). Njihova unija \(Z = \i{f > 0}\) je zaprta,
-saj je \(X\) P-prostor. Potem je pa \(\int{\p{\cl{Z}}} = \int Z = Z\).
+saj je \(X\) P-prostor in velja \(\int{\p{\cl{Z}}} = \int Z = Z\).
 
 \begin{trditev}\label{th:amp-is-almost-psp}
   Nad \(X\) velja \(\amp*\) natanko tedaj, ko je vsaka odprta podmnožica \(X\)
@@ -177,7 +174,7 @@ saj je \(X\) P-prostor. Potem je pa \(\int{\p{\cl{Z}}} = \int Z = Z\).
   to ravno definicija regularnosti odprte množice.
 \end{dokaz}
 \begin{opomba}
-  V~\cite[2.1]{Levy77} piše, da je vsaka odprta podmnožica skoraj P-prostora
+  V~\cite[2.1]{Levy77} piše, da je vsak odprt podprostor skoraj P-prostora
   ``očitno'' skoraj P-prostor. Jaz tega ne vidim, mogoče je res samo za
   \(T_{3.5}\) prostore, na katere se omeji članek.
 \end{opomba}
