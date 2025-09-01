@@ -77,7 +77,33 @@ izreke. Znanje teorije modelov ali teorije toposov ni nujno, je pa za globlje
 razumevanje celostne slike verjetno potrebno. Zaželeno je osnovno poznavanje
 konstruktivne matematike, za kar priporočamo~\cite{Bauer16, Bishop85}.
 
-\subsection{Notacija}
+Razdelek~\ref{sec:modeli} je namenjen uvodu pojma topološkega modela,
+razdelek~\ref{sec:logika} definira različne logične principe, ki jih v tem delu
+obravnavamo. Razdelki~\ref{sec:izbire},~\ref{sec:reals}, in~\ref{sec:inst-red}
+so namenjeni karakterizaciji topoloških lastnosti prek interpretacije logičnih principov iz
+razdelka~\ref{sec:logika} v topoloških modelih.
+
+Večina trditev in izrekov je bila dokazana neodvisno,
+trditve~\ref{th:psp-is-pgt},~\ref{th:psp-has-cc},~\ref{th:psp-is-not-pgt},in~\ref{th:t1-pgt-is-psp},
+ki pokažejo povezavo med principom števne izbire in P-prostori, so pa originalni
+prispevki. Prav tako so originalne
+trditve~\ref{th:lpov-lpo},~\ref{th:amp-is-almost-psp},~\ref{th:alpo-is-awlpo-and-amp},
+in~\ref{th:Rc=R-is-lpo} o povezavi med principom števne odločitve in
+Cauchyjevimi realnimi števili. Ločitev \(\Rd = \Rc\) od \(\CCv\) in \(\alpo*\)
+iz podrazdelka~\ref{sec:reals-Rd=Rc} je tudi nova. Rezultati iz
+razdelka~\ref{sec:inst-red} so originalni, le
+lema~\ref{th:cantor-real-is-semidec} je bila razvita s pomočjo mentorja.
+Zame najpomembnejša je pa nova predstavitev topoloških modelov prek internega
+jezika. Ta močno olajša in sistematizira dokazovanje trditev o topoloških
+modelih. Standardna literatura~\cite{FS79,FH79,MM92} ta jezik uvede, ampak v
+ga ne uporablja za sklepanje, le kot orodje, ki prevaja med formulami zunaj in
+znotraj. Cilj tega dela je torej tudi predstaviti nov pogled na topološke modele
+in kako lahko v njih računamo.
+
+Vse primere prostorov, ki ločijo kakšne principe, sem našla s
+pomočjo~\cite{pibase}, ki je matematična zbirka podatkov o topoloških prostorih.
+
+\subsection{Oznake}
 
 V delu uporabljamo več nestandardnih oznak, ki so navedene in razložene v
 spodnji tabeli.
@@ -92,7 +118,6 @@ spodnji tabeli.
   %\(\lem\) & princip izključene tretje možnosti, \\
   % \(\cov{U}{i}\) & pokritje \(\{Uᵢ\}_{i∈I}\) monžice \(U\), kjer je
   %                  \(I\) neka indeksna množica\\
-  \(\lightning\) & protislovje\\
   \(𝒫A\) & potenčna množica \(A\)\\
   \(𝒪X\) & odprte množice prostora \(X\)\\
   \(𝒜X\) & zaprte množice prostora \(X\)\\
@@ -100,16 +125,12 @@ spodnji tabeli.
   \(U ⊥ V\) & presek \(U\) in \(V\) je prazen\\
   \(U \between V\) & presek \(U\) in \(V\) ni prazen\\
   \(\eventually{V ⊆ U}{P(V)}\) & obstaja pokritje množice \(U\), in za vsak
-                                 element pokritja \(V\) velja \(P(V)\)\\
-  \(\) &\\
-  \(\) &\\
-  \(\) &\\
-  \(\) &
+                                 element pokritja \(V\) velja \(P(V)\)
 \end{tabularx}
 
-V delu tudi uvedem novo vrsto definicije, namreč \emph{konstrukcijo}. Ta igra
-vlogo izrekov, ki skonstruirajo točno določen objekt. Primer takega je recimo
-prvi izrek o izomorfizmu.
+V delu tudi uvedem novo vrsto definicije oziroma izreka, namreč
+\emph{konstrukcijo}. Ta igra vlogo izrekov, ki konstruirajo točno določen
+objekt. Primer takega je recimo prvi izrek o izomorfizmu.
 \begin{izrek}
   Naj bosta \(G\) in \(H\) grupi in \(φ : G → H\) homomorfizem.
   Potem je \(\im φ ≅ \quot{G}{\ker φ}\).
@@ -117,15 +138,17 @@ prvi izrek o izomorfizmu.
 \begin{dokaz}
   Definirajmo \(\hat φ(g\ker φ) ≔ φ(g)\)...
 \end{dokaz}
-Torej ne obstaja kar nek izomorfizem, ampak je ta natanko določen. Tako se
-pogosto sklicuje na ``dokaz izreka X.XX'', ki je izvedel neko tako konstrukcijo.
-Veliko bolje bi se bilo torej sklicati na specifično konstrukcijo.
+Torej ko govorimo o prvem izreku o izomorfizmu ne mislimo o kar nekem
+izomorfizmu, ampak imamo v mislih nek določen izomorfizem. Tako se pogosto
+sklicuje na ``dokaz izreka X.XX'', ki je izvedel neko tako konstrukcijo. Veliko
+bolje bi bilo, če se lahko skličemo kar neposredno na specifično konstrukcijo.
 \begin{konstrukcija}
   Za grupi \(G\) in \(H\) in homomorfizem \(φ : G → H\) je preslikava
-  \(\hat φ(g\ker φ) ≔ φ(g)\) tipa \(\quot{G}{\ker φ} → \im φ\) izomorfizem.
+  \(\hat φ(g\ker φ) ≔ φ(g)\) izomorfizem \(\quot{G}{\ker φ} ≅ \im φ\).
 \end{konstrukcija}
-Tako je že na začetku natančno razvidno, za katero preslikavo gre, in kakšno
-oznako smo uvedli zanjo.
+Tako ne rabimo podrobno brati dokaza, da iz njega izluščimo ključne definicije
+in oznake.
+
 
 %%% Local Variables:
 %%% mode: latex

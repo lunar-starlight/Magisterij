@@ -215,8 +215,8 @@ V splošnem sta pravili interpretacije univerzalnih kvantifikatorjev torej slede
 Tukaj pišemo \(a : \c A\), da bo to skladno s kasnejšo notacijo, ampak za zdaj
 se to bere kot "\(a\) element \(A\)".
 
-Nekaj primerov formul, ki uporabljajo kvantifikatorje bi bili na primer
-\(\for{U:\c{𝒪X}}{U∨¬U}\) ali \(\for{U:\c{𝒪X}}{\exist{V:\c{𝒪X}}{U ⇔ ¬V}}\). V
+Primera formul, ki uporabljata kvantifikatorje bi bili na primer
+\(\for{U:\c{𝒪X}}{U∨¬U}\) in \(\for{U:\c{𝒪X}}{\exist{V:\c{𝒪X}}{U ⇔ ¬V}}\). V
 prvi prepoznamo princip izključene tretje možnosti, druga pa nima posebnega
 imena, a pravi, da je vsaka resničnostna vrednost negacija. Izkaže se, da čeprav
 ti formuli konstruktivno \emph{nista} ekvivalentni, karakterizirata isti razred
@@ -234,52 +234,52 @@ Po drugi strani, je "\(\exist{a:\c A}{P(a)}\)" res natanko tedaj, ko množice
 \(P(a)\) tvorijo pokritje \(X\). 
 
 \begin{lema}
-  Za \(U ∈ 𝒪X\) velja \(U∨¬U\), natanko tedaj, ko je \(U\) zaprta.
+Za \(U ∈ 𝒪X\) velja \(U∨¬U\), natanko tedaj, ko je \(U\) zaprta.
 \end{lema}
 \begin{dokaz}
-  Interpretacija \(U∨¬U\) je \(U ∪ \ext U\). Če je \(U\) zaprta, je
-  \(\ext U = Uᶜ\) in je \(U∨¬U = ⊤\). Obratno, ker je \(U ⊥ \ext U\), iz
-  \(U∨¬U = ⊤\) sledi \(\ext U=Uᶜ\), in je \(U\) zaprta.
+Interpretacija \(U∨¬U\) je \(U ∪ \ext U\). Če je \(U\) zaprta, je
+\(\ext U = Uᶜ\) in je \(U∨¬U = ⊤\). Obratno, ker je \(U ⊥ \ext U\), iz
+\(U∨¬U = ⊤\) sledi \(\ext U=Uᶜ\), in je \(U\) zaprta.
 \end{dokaz}
 
 \begin{trditev}\label{th:lem-is-discrete}
-  Nad topološkim prostorom velja princip izključene tretje možnosti natanko
-  tedaj, ko je prostor diskreten.
+Nad topološkim prostorom velja princip izključene tretje možnosti natanko
+tedaj, ko je prostor diskreten.
 \end{trditev}
 \begin{dokaz}
-  Princip izključene tretje možnosti pravi, da velja formula
-  \(\for{U : \c{𝒪X}}{U ∨ ¬U}\). Po gornjem to natanko pomeni, da za vsako odprto
-  množico velja \(U∨¬U\), torej po lemi, da je zaprta. To je očitno res za
-  diskretne prostore, saj je \emph{vsaka} podmnožica zaprta. Pokažimo torej
-  drugo smer.
+Princip izključene tretje možnosti pravi, da velja formula
+\(\for{U : \c{𝒪X}}{U ∨ ¬U}\). Po gornjem to natanko pomeni, da za vsako odprto
+množico velja \(U∨¬U\), torej po lemi, da je zaprta. To je očitno res za
+diskretne prostore, saj je \emph{vsaka} podmnožica zaprta. Pokažimo torej
+drugo smer.
 
-  Naj bo \(t ∈ X\) in \(s ∈ \cl\{t\}⧵\{t\}\). Potem po \(T₀\) lastnosti obstaja
-  odprta množica \(U\), ki ju ločuje. Ker je \(s\) v zaprtju \(t\) mora biti
-  \(U\) nujno okolica \(t\). Ta je po predpostavki zaprta, torej vsebuje
-  \(\cl\{t\}\). To je protislovno, saj \(U\) ne sme vsebovati točke \(s\).
-  Sledi, da taka točka \(s\) ne obstaja, torej je \(\cl\{t\} = \{t\}\). To
-  pomeni, da so točke zaprte, torej so po predpostavki tudi odprte in je prostor
-  diskreten.
+Naj bo \(t ∈ X\) in \(s ∈ \cl\{t\}⧵\{t\}\). Potem po \(T₀\) lastnosti obstaja
+odprta množica \(U\), ki ju ločuje. Ker je \(s\) v zaprtju \(t\) mora biti
+\(U\) nujno okolica \(t\). Ta je po predpostavki zaprta, torej vsebuje
+\(\cl\{t\}\). To je protislovno, saj \(U\) ne sme vsebovati točke \(s\).
+Sledi, da taka točka \(s\) ne obstaja, torej je \(\cl\{t\} = \{t\}\). To
+pomeni, da so točke zaprte, torej so po predpostavki tudi odprte in je prostor
+diskreten.
 \end{dokaz}
 
 Naredimo še eno karakterizacijo, tokrat DeMorganovega zakona.
 \begin{definicija}
-  \emph{DeMorganov zakon} je formula \(\for{U,V:\c{𝒪X}}{¬(U∧V) ⇒ ¬U∨¬V}\).
+\emph{DeMorganov zakon} je formula \(\for{U,V:\c{𝒪X}}{¬(U∧V) ⇒ ¬U∨¬V}\).
 \end{definicija}
 
 \begin{definicija}
-  Prostor je \emph{ekstremalno nepovezan}, ko je zaprtje vsake odprte množice
-  odprto.
+Prostor je \emph{ekstremalno nepovezan}, ko je zaprtje vsake odprte množice
+odprto.
 \end{definicija}
 \begin{trditev}\label{th:wlem-is-ext-disc}
-  Nad topološkim prostorom velja DeMorganov zakon natanko tedaj, ko je prostor
-  ekstremalno nepovezan.
+Nad topološkim prostorom velja DeMorganov zakon natanko tedaj, ko je prostor
+ekstremalno nepovezan.
 \end{trditev}
 \begin{dokaz}
-  DeMorganov zakon je ekvivalenten trditvi \(\for{U:\c{𝒪X}}{¬U ∨ ¬¬U}\), kar po
-  gornji lemi pravi, da so vse zunanjosti množic zaprte. To pomeni, da so
-  njihovi komplementi, torej zaprtja množic, odprta, kar je natanko kar smo
-  želeli.
+DeMorganov zakon je ekvivalenten trditvi \(\for{U:\c{𝒪X}}{¬U ∨ ¬¬U}\), kar po
+gornji lemi pravi, da so vse zunanjosti množic zaprte. To pomeni, da so
+njihovi komplementi, torej zaprtja množic, odprta, kar je natanko kar smo
+želeli.
 \end{dokaz}
 
 
@@ -300,18 +300,18 @@ vsa števila, lahko izpeljemo tudi razpon, kar bomo tudi vzeli kot osnovni
 gradnik naših objektov.
 
 \begin{definicija}\label{def:ℒset}
-  \emph{Heytingovo vrednotena množica} oziroma \emph{tip} je množica \(A\),
-  skupaj s preslikavo \(⟦- =_A -⟧ : A×A → 𝒪X\), tako da za vse \(a\), \(b\), in
-  \(c ∈ A\) velja
-  \begin{gather*}
-    ⟦ a =_A b ⟧ ⊆ ⟦ b =_A a ⟧\text{ in}\\
-    ⟦ a =_A b ⟧ ∩ ⟦ b =_A c ⟧ ⊆ ⟦ a =_A c ⟧\text.
-  \end{gather*}
-  Če je iz konteksta razvidno, kateri množici pripada preslikava \(⟦- =_A -⟧\),
-  indeks opustimo. Če želimo ločiti tip \(A\) od množice \(A\), na kateri je
-  definiran, množici \(A\) pravimo \emph{množica elementov (tipa A)}.
+\emph{Heytingovo vrednotena množica} oziroma \emph{tip} je množica \(A\),
+skupaj s preslikavo \(⟦- =_A -⟧ : A×A → 𝒪X\), tako da za vse \(a\), \(b\), in
+\(c ∈ A\) velja
+\begin{gather*}
+  ⟦ a =_A b ⟧ ⊆ ⟦ b =_A a ⟧\text{ in}\\
+  ⟦ a =_A b ⟧ ∩ ⟦ b =_A c ⟧ ⊆ ⟦ a =_A c ⟧\text.
+\end{gather*}
+Če je iz konteksta razvidno, kateri množici pripada preslikava \(⟦- =_A -⟧\),
+indeks opustimo. Če želimo ločiti tip \(A\) od množice \(A\), na kateri je
+definiran, množici \(A\) pravimo \emph{množica elementov (tipa A)}.
 
-  Kot zgoraj naj bo \(‖a‖ ≔ ⟦a = a⟧\) \emph{razpon \(a\)}.
+Kot zgoraj naj bo \(‖a‖ ≔ ⟦a = a⟧\) \emph{razpon \(a\)}.
 \end{definicija}
 
 Če to beremo v logiki odprtih množic, gornja aksioma izražata simetričnosti
@@ -327,16 +327,16 @@ Tako se refleksivnost bolj pravilno glasi, da za vsak \(a ∈ A\) velja
 kasneje v interni logiki, je enakost refleksivna.
 
 \begin{primer}\label{ex:nats}
-  Na \(\set{f : U → ℕ}{U ∈ 𝒪X\text{, }f\text{ lokalno konstantna}}\) definiramo
-  enakost
-  \[ ⟦n = m⟧ = \set{t ∈ X}{n(t) = m(t)}\text. \]
-  To je tip, ki ga označimo z \(𝒩\).
+Na \(\set{f : U → ℕ}{U ∈ 𝒪X\text{, }f\text{ lokalno konstantna}}\) definiramo
+enakost
+\[ ⟦n = m⟧ = \set{t ∈ X}{n(t) = m(t)}\text. \]
+To je tip, ki ga označimo z \(𝒩\).
 \end{primer}
 
 \begin{primer}\label{ex:reals}
-  Na \(\set{f : U → ℝ}{U ∈ 𝒪X\text{, }f\text{ zvezna}}\) definiramo enakost
-  \[ ⟦f = g⟧ = \int{\p{\set{t ∈ X}{f(t) = g(t)}}}\text. \]
-  To je tip, ki ga označimo z \(ℛ\).
+Na \(\set{f : U → ℝ}{U ∈ 𝒪X\text{, }f\text{ zvezna}}\) definiramo enakost
+\[ ⟦f = g⟧ = \int{\p{\set{t ∈ X}{f(t) = g(t)}}}\text. \]
+To je tip, ki ga označimo z \(ℛ\).
 \end{primer}
 
 Gornja dva primera sta instanci bolj splošne konstrukcije, saj so zvezne
@@ -356,7 +356,7 @@ Struktura Heytingovo vrednotenih množic zajema več kot le snope lokalnih
 prerezov.
 
 \begin{konstrukcija}
-  Množica \(∅\) je tip. Množica \(\{*\}\) z enakostjo \(\i{*=*} = X\) je tip, ki
+Množica \(∅\) je tip. Množica \(\{*\}\) z enakostjo \(\i{*=*} = X\) je tip, ki
   ga označimo z \(\bb 1\). Pravimo jima \emph{prazen tip} in \emph{tip z enim
     elementom}.
 \end{konstrukcija}
@@ -691,6 +691,12 @@ paziti, da term na katerem ga uporabljamo obstaja. To bo veljalo, čim smo ta
 term skonstruirali v interni logiki. Pri dokazovanju eksistenčnega
 kvantifikatorja podobno pazimo, da termi, ki jih skonstruiramo, dejansko
 pokrijejo trenutni kontekst.
+
+Ampak, če začnemo sklepati v internem jeziku, bo lahko hitro nastala zmeda med
+argumenti v internem jeziku in v metateoriji.
+Tako sklepanje in matematične objekte v internem jeziku označujemo z besedo
+``znotraj'', ko pa želimo govoriti o njihovi interpretaciji pa to označimo z
+besedo ``zunaj''.
 
 Ponovimo sedaj definicije tipov in morfizmov v internem jeziku.
 \begin{redefinicija}{def:ℒset}

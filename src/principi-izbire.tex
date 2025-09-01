@@ -3,9 +3,10 @@
 Od tu naprej bomo ponovno delali v klasični metateoriji. Definirajmo najprej
 nekaj izrazov o indeksiranosti in pokritjih.
 \begin{definicija}
-  Naj bo \(I\) množica. Družina je \emph{\(I\)-indeksirana}, ko lahko njene
-  elemente indeksiramo z elementi množice \(I\). Pokritje je
-  \emph{\(I\)-indeksirano}, ko je \(I\)-indeksirano kot družina.
+  \emph{Družina množic} je preslikava \(A : I → \setcat\), iz množice \(I\) v
+  razred množic \(\setcat\). Pravimo, da je \(A\) \emph{\(I\)-indeksirana}
+  družina. Pokritje je \emph{\(I\)-indeksirano}, ko je \(I\)-indeksirano kot
+  družina.
 \end{definicija}
 \begin{definicija}
   Pokritje \(C\) je \emph{pofinitev} pokritja \(D\), ko za vsak \(U ∈ C\)
@@ -81,7 +82,7 @@ z \((*)\).
 Ta ni tipična topološka lastnost, saj ponavadi govorimo o pofinitvi \emph{enega}
 pokritja. Definicija izhaja iz teorije Grothendieckovih topologij, kjer
 definiramo \emph{krov} kot navzdol zaprto pokritje, nato je pa Grothendieckova
-topologija na \(U\) enaka množici krovov \(U\). Potem se lastnost zgoraj glasi
+topologija na \(U\) enaka množici krovov \(U\). Potem se lastnost \((*)\) glasi
 ``Grothendieckova topologija na \(X\) je zaprta za \(A\)-indeksirane preseke''.
 To je že bolj podobno čemu znanemu, saj imajo prostori, katerih topologije so
 zaprte za števne preseke, ime.
@@ -123,28 +124,48 @@ Diaconescuja~\cite{Diaconescu75}), mora biti vsak prostor, nad katerim velja
 \(\AC\), diskreten.
 
 Očitno torej \(\AC\) ne more veljati nad \emph{vsemi} prostori Aleksandrova, saj
-obstajajo taki, ki niso diskretni. In res, posledica~\label{th:psp-has-cc},
-posplošena na poljubne kardinalnosti, nam pove zgolj, da za vsako množico \(A\)
-velja \(\AC(\c A)\), ne pa da velja \(\AC(A)\) za vse \emph{tipe} \(A\). To je
-torej pomembna razlika, kar je do neke mere tudi za pričakovati. Zgoraj smo
-bistveno uporabljali, da imajo elementi \(\c A\) razpon enak \(X\), torej so
-tudi \(Cₐ\) pokritja \(X\). Za splošen tip \(A\) bodo pokritja \(Cₐ\) pokrivala
-\(\e a\), torej ne moremo niti govoriti o skupnih pofinitvah. Avtorici ni
-znana nobena topološka karakterizacija principa \(\AC\).
+niso vsi diskretni. In res, posledica~\ref{th:psp-has-cc}, posplošena na
+poljubne kardinalnosti, nam pove zgolj, da za vsako množico \(A\) velja
+\(\AC(\c A)\), ne pa da velja \(\AC(A)\) za vse \emph{tipe} \(A\). To je torej
+pomembna razlika, kar je do neke mere tudi za pričakovati. Zgoraj smo bistveno
+uporabljali, da imajo elementi \(\c A\) razpon enak \(X\), torej so tudi \(Cₐ\)
+pokritja \(X\). Za splošen tip \(A\) bodo pokritja \(Cₐ\) pokrivala \(\e a\),
+torej ne moremo niti govoriti o skupnih pofinitvah.
+Vseeno pa lahko nad diskretnimi prostori pokažemo, da velja \(\AC\).
+\begin{trditev}\label{th:disc-has-ac}
+  Če je \(X\) diskreten prostor, nad njem velja \(\AC\).
+\end{trditev}
+\begin{dokaz}
+  Naj bosta \(A\) in \(B\) tipa in \(R : A×B → Ω\) celovita relacija. Ker je
+  prostor diskreten, je \(\e aᶜ\) odprta množica in je \(\i{\e a ⇒ R(a,b)}\)
+  enak \(\e aᶜ ∪ R(a,b)\). Relacija \(Q(a,b) ≔ \e aᶜ∪R(a,b)\) med \(\c A\) in
+  \(B\) je potem očitno celovita, in lahko na njej uporabimo \(\AC(\c A)\), ki
+  velja zaradi diskretnosti prostora. Imamo torej morfizem \(f : \c A ↬ B\), za
+  katerega velja \(\for{x : \c A}{Q(x,f(x))}\). Definirajmo sedaj \(g : A ↬ B\)
+  s predpisom \(\p{a,b} ↦ ⋃_{x∈A}\i{x = a}∩f(x,b)\). S previdnim računom lahko
+  preverimo, da velja \(\for{x : A}{R(x,g(x))}\), torej je \(g\) funkcija izbire
+  za \(R\) in \(\AC\) drži.
+\end{dokaz}
+Tako lahko združimo trditvi~\ref{th:lem-is-discrete} in~\ref{th:disc-has-ac},
+skupaj z izrekom Diaconescuja, da dobimo sledeči izrek:
+\begin{izrek}\label{th:ac-is-lem}
+  V topoloških modelih je \(\AC\) ekvivalenten \(\lem*\).
+\end{izrek}
+To je presenetljivo, saj je običajno \(\AC\) bistveno močnejši od izključene
+tretje možnosti. To nam nakazuje, da so v topoloških modelih principi odločitve
+bolj bistveni od principov izbire.
 
-Trditev~\ref{th:psp-is-pgt} torej pokaže, da imajo P-prostori lastnost \((*)\).
-Obrat pa ne velja.
+V trditvi~\ref{th:psp-is-pgt} smo pokazali, da imajo P-prostori lastnost \((*)\).
+Obrat ne velja.
 \begin{trditev}\label{th:psp-is-not-pgt}
   Nad prostorom \(\cli{0,1}\) s topologijo \(\set{[0,a)}{a ∈ \cli{0,1}} ∪ \cli{0,1}\)
   ima vsaka družina pokritij skupno pofinitev, a ta ni P-prostor.
 \end{trditev}
 \begin{dokaz}
   Množice \(Uₙ ≔ [0,2⁻ⁿ)\) so odprte, a njihov presek je \(\{0\}\), ki ni
-  odprta množica, torej prostor ni P-prostor.
-
-  Sedaj pa, če je \(C\) pokritje \(X\), mora pokriti \(1\). Ampak edina okolica
-  \(1\) je \(\cli{0,1}\), torej je \(\{\cli{0,1}\}\) pofinitev vsakega pokritja
-  \(X\).
+  odprta množica, torej prostor ni P-prostor. Vseeno pa mora vsako pokritje
+  \(X\) pokriti \(1\). Ampak edina okolica \(1\) je \(\cli{0,1}\), torej je
+  \(\{\cli{0,1}\}\) pofinitev vsakega pokritja \(X\).
 \end{dokaz}
 To pravzaprav pomeni, da nad tem prostorom velja \(\for{A}{\AC(\c A)}\), 
 vseeno ni {P-prostor}. Izkaže pa se, da pod predpostavko \(T₁\) lahko pokažemo
@@ -165,8 +186,8 @@ obrat.
 \begin{opomba}
   Vendar pa ne moremo sklepati, da so \(T₁\) P-prostori natanko tisti \(T₁\)
   prostori, nad katerimi velja \(\CC\). Prostor namreč lahko validira \(\CC\) in
-  ne \(ℕ ↬ B ≅ \c{ℕ ↝ B}\), torej ne bo P-prostor. Primer takega prostora je na
-  primer podprostor \(\{0\}∪\set{2⁻ⁿ}{n ∈ ℕ} ⊆ ℝ\).
+  ne \({ℕ ↬ B ≅ \c{ℕ ↝ B}}\), torej ni P-prostor. Primer takega prostora je
+  podprostor \(\{0\}∪\set{2⁻ⁿ}{n ∈ ℕ} ⊆ ℝ\).
 \end{opomba}
 
 Znana je tudi delna karakterizacija \(\DC\)~\cite[lema~D4.5.16]{Johnstone02}\cite[trd.~2.2]{HL16}.
@@ -178,15 +199,14 @@ Znana je tudi delna karakterizacija \(\DC\)~\cite[lema~D4.5.16]{Johnstone02}\cit
   Nad ultraparakompaktnimi prostori velja \(\DC\).
 \end{trditev}
 \begin{dokaz}
-  Denimo, da smo že konstruirali \(xₙ\). Potem po celovitosti množice
+  Denimo, da smo že konstruirali \(xₙ\). Ker je \(R\) celovita, množice
   \(\i{R(xₙ,x)}\) tvorijo pokritje, torej po predpostavki obstaja pofinitev s
   particijo \(\{P_α\}_α\). Potem lahko uporabimo aksiom odvisne izbire v
   metateoriji, da za vsak \(α\) izberemo tak \(x_α\), da je \(P_α ⊆ \i{R(xₙ,x_α)}\).
-  Potem pa lahko definiramo \(xₙ\) tako, da je na \(P_α\) enak \(x_α\). Ker
-  \(P_α\) tvorijo pokritje, in so paroma disjunktni, to dobro definira term tipa
-  \(X\).
-
-  Ker smo začeli z globalnim \(x₀\), to definira globalno zaporedje \((xₙ)ₙ\).
+  Element \(xₙ\) definiramo tako, da je na \(P_α\) enak \(x_α\). Ker množice
+  \(P_α\) tvorijo pokritje, in so paroma disjunktne, to dobro definira term tipa
+  \(X\). Ker smo začeli z globalnim \(x₀\), to definira globalno zaporedje
+  \((xₙ)ₙ\).
 \end{dokaz}
 \begin{opomba}
   Gornjo trditev lahko preprosto posplošimo na \(\DC_Σ\), tako da od prostora

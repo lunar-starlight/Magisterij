@@ -1,4 +1,4 @@
-%\section{Principi odločitve v topoloških modelih}\label{sec:odločitve}
+\subsection{Principi odločitve v topoloških modelih}\label{sec:odločitve-odločitve}
 
 V podrazdelku~\ref{sec:modeli-logika-odprtih} smo karakterizirali \(\lem*\) in
 \(\wlem*\) z logiko odprtih množic. V tej logiki igra množica \(𝒪X\) vlogo
@@ -42,7 +42,7 @@ To je zgolj delna karakterizacija, tako da se k tej še vrnemo.
   enaka \(\i{x=0}\), torej je odprta.
 \end{dokaz}
 
-Sedaj lahko pokažemo implikacije iz podrazdelka~\ref{sec:logika-odločitve} v
+Sedaj lahko pokažemo, da implikacije iz podrazdelka~\ref{sec:logika-odločitve} v
 splošnem niso obrnljive.
 \begin{trditev}
   Nad Cantorjevim prostorom ne velja \(\lpo*\).
@@ -64,27 +64,39 @@ splošnem niso obrnljive.
 
 Ker prostor \(\Ncof\) naravnih števil s kokončno topologijo ni diskreten, nad
 njim ne velja \(\lem*\). To lahko izkoristimo, za ločevanje \(\lem*\) od
-\(\alpo*\) in \(\wlem*\) v naslednjih trditvah. Ta prostor sem odkrila s pomočjo
-matematične podatkovne baze~\cite{pibase}, in ga bomo še srečali.
+\(\alpo*\) in \(\wlem*\) v naslednjih trditvah.
+
+\begin{lema}\label{th:Ncof-str-conn}
+  Vsaka zvezna preslikava \(f : \Ncof → ℝ\) je konstantna.
+\end{lema}
+\begin{dokaz}
+  Naj bo \(f : \Ncof → ℝ\) zvezna preslikava in \(x, x' ∈ \im f\). Denimo, da
+  velja \(x < x'\). Potem sta množici \(f⁻¹(\frac{x+x'}2,∞)\) in
+  \(f⁻¹(-∞,\frac{x+x'}2)\) neprazni odprti podmnožici \(\Ncof\), torej imata
+  neprazen presek. Ampak ti množici sta očitno disjunktni, torej je \(x = x'\)
+  in je funkcija \(f\) konstantna.
+\end{dokaz}
+Ker je vsak neprazen odprt podprostor \(\Ncof\) homeomorfen \(\Ncof\), ta lema
+velja tudi za funkcije \(f : U → ℝ\) za poljubno neprazno odprto podmnožico
+\(\Ncof\).
 
 \begin{trditev}
   Nad \(\Ncof\) velja \(\alpo*\) in ne velja \(\lem*\).
 \end{trditev}
 \begin{dokaz}
-  Naj bo \(f : U → ℝ\) zvezna preslikava in \(x, x' ∈ \im f\). Potem sta
-  \(f⁻¹(x)\) in \(f⁻¹(x')\) neprazni odprti množici, torej imata neprazen
-  presek. Sledi, da je \(x = x'\), torej je funkcija \(f\) konstantna. Ker lahko
-  potem v metateoriji odločimo \(\alpo(f(t))\) (za nek \(t ∈ U\)), lahko
-  odločimo tudi \(\alpo(f)\) znotraj.
+  Naj bo \(x : \Rd\). Če je \(\e x = ∅\), je \(\alpo(x)\) na prazno izpolnjen.
+  Sicer, je \(x : \e x → ℝ\) zvezna preslikava, torej je po
+  lemi~\ref{th:Ncof-str-conn} konstantna. Ker lahko zunaj, za nek \(t ∈ \e x\),
+  odločimo \(\alpo(x(t))\), lahko posledično odločimo \(\alpo(x)\) znotraj.
 \end{dokaz}
 
 \begin{trditev}
   Nad \(\Ncof\) velja \(\wlem*\) in ne velja \(\lem*\).
 \end{trditev}
 \begin{dokaz}
-  Naj bo \(U\) odprta množica. Njena zunanjost (torej negacija) je pa bodisi cel
-  prostor, bodisi prazna. Za te odprte množice pa velja, da so komplementirane,
-  torej \(\wlem*\) drži.
+  Naj bo \(U\) odprta množica. Njena zunanjost (torej negacija) je bodisi cel
+  prostor bodisi prazna. Za ti odprti množici pa velja, da sta komplementirani
+  ena drugi, torej \(\wlem*\) drži.
 \end{dokaz}
 
 % Obrate teh implikacij lahko torej jemljemo kot nekonstruktivni principi, a o teh
@@ -98,14 +110,15 @@ matematične podatkovne baze~\cite{pibase}, in ga bomo še srečali.
 Oglejmo si še \(\awlpo*\). Ta pravi, da za vsak \(x : ℝ\) velja \(x≤0 ∨¬(x≤0)\).
 Ker je \(x≤0\) natanko \(¬(x>0)\) je \(\awlpo*\) ekvivalenten \(\wlem*_{Σ_{\Rd}}\).
 Če si pogledamo definicijo ekstremalno nepovezanih prostorov, in v njej zamenjamo
-odprte množice z realnimi, dobimo sledečo lastnost.
+odprte množice z realno odprtimi, torej množicam \(\i{x > 0}\) za \(x : \Rd\),
+dobimo sledečo lastnost.
 \begin{definicija}
   Prostor je \emph{realno nepovezan}, ko je za vsako funkcijo \(f : X → ℝ\)
   množica \(\cl\set{t∈X}{f(t)>0}\) odprta.
 \end{definicija}
 
 \begin{trditev}\label{th:awlpo-is-basically-disconnected}
-  Nad \(X\) velja \(\awlpo*\) natanko tedaj, ko je vsaka odprta podmnožica \(X\)
+  Nad \(X\) velja \(\awlpo*\) natanko tedaj, ko je vsak odprt podprostor \(X\)
   realno nepovezana.
 \end{trditev}
 Dokaz trditve je enak kot~\ref{th:wlem-is-ext-disc}, tako da ga ne ponovimo.
@@ -113,26 +126,27 @@ Velja pa zanimiva posledica, namreč, da nad realno nepovezanimi prostori
 obstaja funkcija "predznak" v naslednjem smislu.
 \begin{trditev}
   Če nad \(X\) velja \(\awlpo*\), potem za vsak \(x : ℝ\) obstaja
-  \(u : \e x → ℝ\), tako da je \(u\) nad \(\e x\) obrnljiv, in velja
-  \(\e x ⊩ x = u\abs x\).
+  \(u : \e x → ℝ\), tako da je \(u\) nad \(\e x\) obrnljiv in
+  \(\e x ⊩ x = u⋅\abs x\).
 \end{trditev}
 \begin{dokaz}
   Brez škode za splošnost naj bo \(\e x = X\).
 
-  Princip \(\awlpo*\) potem pravi, da je množica \(U ≔ \cl{\i{x>0}}\) odprta,
-  torej tvori particijo in lahko definiramo
+  Princip \(\awlpo*\) pravi, da je množica \(U ≔ \cl{\i{x>0}}\) odprta, zato je
+  preslikava
   \[ u ≔
     \begin{cases}
        1&; U\\
-      -1&; Uᶜ\text.
+      -1&; Uᶜ
     \end{cases}
   \]
+  zvezna.
   %\(U ⊩ u = 1\) in \(Uᶜ ⊩ u = -1\).
-  Ta \(u\) je obrnljiv, saj je \(u⋅u = 1\). Prav tako velja želena enačba, saj
-  je \(U\) vsebovan v \(x ≥ 0\), in velja \(f ≤ 0\) na \(Uᶜ\).
+  Poleg tega je \(u\) obrnljiv, saj je \(u⋅u = 1\). Prav tako velja želena
+  enačba, saj je \(U\) vsebovan v \(x ≥ 0\), in velja \(f ≤ 0\) na \(Uᶜ\).
 \end{dokaz}
 
-Če želimo zares definirati predznak, moramo uporabiti \(\alpo\). Ta
+Če želimo zares definirati predznak, moramo uporabiti \(\alpo*\). Ta
 pravi, da je ničelna množica \(x\) odprta, torej lahko na njej definiramo
 \[ u ≔
   \begin{cases}
@@ -143,8 +157,11 @@ pravi, da je ničelna množica \(x\) odprta, torej lahko na njej definiramo
 \]
 
 \begin{definicija}
+  Odprta množica \(U ∈ 𝒪X\) je \emph{regularna}, ko je \(U = \int{\p{\cl U}}\).
+\end{definicija}
+\begin{definicija}[\cite{Levy77}]
   Prostor \(X\) je \emph{skoraj P-prostor}, ko je za vsak \(f : X → ℝ\) množica
-  \(\i{f > 0}\) regularna~\cite{Levy77}.
+  \(\i{f > 0}\) regularna.
 \end{definicija}
 Seveda je vsak P-prostor tudi skoraj P-prostor.
 Res, naj bodo \(Zᵢ ≔ f⁻¹[2⁻ⁱ,∞)\). Njihova unija \(Z = \i{f > 0}\) je zaprta,
@@ -159,8 +176,6 @@ saj je \(X\) P-prostor. Potem je pa \(\int{\p{\cl{Z}}} = \int Z = Z\).
   \(\int{\p{\cl{\i{f > 0}}}} ⊆ \i{f > 0}\). Ker obratna enakost očitno velja, je
   to ravno definicija regularnosti odprte množice.
 \end{dokaz}
-Analogno velja tudi \(\mp*\) natanko tedaj, ko je vsaka semiodločljiva odprta
-množica regularna.
 \begin{opomba}
   V~\cite[2.1]{Levy77} piše, da je vsaka odprta podmnožica skoraj P-prostora
   ``očitno'' skoraj P-prostor. Jaz tega ne vidim, mogoče je res samo za
@@ -171,7 +186,7 @@ Konstruktivno velja \(\awlpo*∧\amp* ⇔ \alpo*\).
 V trditvah~\ref{th:awlpo-is-basically-disconnected},~\ref{th:amp-is-almost-psp},
 in~\ref{th:alpo-is-zerosets-open}, smo karakterizirali vse prostore, ki so v
 igri v tej ekvivalenci, tako da bi morala veljati ekvivalenca med njimi.
-\begin{izrek}
+\begin{izrek}\label{th:alpo-is-awlpo-and-amp}
   Ničelne množice \(f : X → ℝ\) so odprte natanko tedaj, ko je \(X\) skoraj
   P-prostor in realno nepovezan.
 \end{izrek}

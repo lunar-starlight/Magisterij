@@ -12,7 +12,7 @@
   Pojme \emph{gornja} in \emph{navzdol odprta} definiramo simetrično.
 \end{definicija}
 
-\begin{definicija}[Dedekindova konstrukcija]
+\begin{definicija}[Dedekindova konstrukcija]\label{def:Rd}
   Par \(\p{L, U} ∈ 𝒫(ℚ)×𝒫(ℚ)\) je \emph{Dedekindov rez}, ko velja
   \begin{enumerate}
     \item \(L\) je naseljena, dolnja, in navzgor odprta
@@ -43,7 +43,7 @@
   \(q\) neki \emph{izbrani} racionalni števili, za kateri velja \(p < q\).
 \end{opomba}
 
-\begin{definicija}[Cauchyjeva konstrukcija]\label{def:real-cauchy}
+\begin{definicija}[Cauchyjeva konstrukcija]\label{def:Rc}
   Zaporedje racionalnih števil \((xₙ)ₙ\) je \emph{Cauchyjevo}, ko za vsaka
   \(i,j : ℕ\) velja \(|xᵢ - xⱼ| ≤ 2⁻ⁱ+2⁻ʲ\).
 
@@ -57,7 +57,7 @@
   relacijo \(x ≤ y\) pa kot \(\exist{n:ℕ}{xₙ + 2⁻ⁿ ≤ yₙ - 2⁻ⁿ}\).
 \end{definicija}
 \begin{opomba}
-  Zaporedjem iz definicije~\ref{def:real-cauchy} ponavadi pravimo hitra
+  Zaporedjem iz definicije~\ref{def:Rc} ponavadi pravimo hitra
   Cauchyjeva zaporedja. Paziti je treba, da klasična \(ε\)-\(δ\) definicija
   Cauchyjevih zaporedij \emph{ni} ekvivalentna gornji. Več o različicah
   Cauchyjevih realnih števil si bralka lahko ogleda v~\cite{nlab-cauchy-real}.
@@ -93,7 +93,7 @@ konstrukcijo~\cite{nlab-macneille-reals}\cite[pogl.~D4.7]{Johnstone02}, ki jo
 tudi lahko primerjamo z \(\Rd\) in \(\Rc\). Obstajajo še druge konstrukcije, a
 se bomo v tem delu posvetili zgolj tem.
 
-\begin{definicija}[MacNeilleova konstrukcija]\label{def:real-macneille}
+\begin{definicija}[MacNeilleova konstrukcija]\label{def:Rm}
   Par \(\p{L, U} ∈ 𝒫(ℚ)×𝒫(ℚ)\) je \emph{Dedekind-MacNeilleov rez}, ko velja
   \begin{enumerate}[(a)]
     \item \(L\) je naseljena, dolnja, in navzgor odprta
@@ -153,7 +153,7 @@ ima vsaka naseljena omejena množica MacNeilleovih realnih števil supremum.
   množice \(S\).
 \end{konstrukcija}
 \begin{dokaz}
-  Prve tri lastnosti MacNeilleove konstrukcije~\ref{def:real-macneille} očitno
+  Prve tri lastnosti MacNeilleove konstrukcije~\ref{def:Rm} očitno
   veljajo, tako da pokažimo le zadnjo.
 
   Naj bo \(q ∈ U\). Potem obstaja \(p < q\), ki je prav tako element \(U\),
@@ -231,7 +231,7 @@ določene množice \(Σ ⊆ Ω\).
   To označimo z \(\AC_Σ\). Če je \(Σ = Ω\), indeks opustimo in temu pravimo
   \emph{princip izbire}.
 \end{definicija}
-\begin{definicija}
+\begin{definicija}\label{pr:ac}
   Če v principu izbire fiksiramo domeno na \(A\), temu pravimo
   \emph{princip izbire nad \(Σ\) iz \(A\)}, in če fiksiramo še kodomeno na nek
   \(B\) temu pravimo \emph{princip izbire nad \(Σ\) iz \(A\) v \(B\)}. Ta potem
@@ -270,8 +270,8 @@ ga označimo z \(\CCv\). Ime izhaja iz dejstva, da je
 \end{dokaz}
 
 \begin{definicija}
-  Množica \(A\) je \emph{končna}, ko obstaja naravno število, da je
-  \(A ≅ \cli n ≔ \{1,…,n\}\).
+  Množica \(A\) je \emph{končna}, ko obstaja naravno število, da je množica
+  \(A\) izomorfna \emph{standardni končni množici} \(\cli n ≔ \{1,…,n\}\).
 \end{definicija}
 \begin{trditev}
   Princip \(\AC(\cli n)\) velja.
@@ -304,7 +304,7 @@ Dokaza z indukcijo, ki je standarden, na tem mestu ne bomo ponavljali.
 % \end{definicija}
 
 Poznamo še princip odvisne izbire.
-\begin{definicija}
+\begin{definicija}\label{pr:dc}
   \emph{Princip odvisne izbire nad \(Σ\) za \(A\)} pravi, da za vsako celovito
   relacijo \(R : A×A → Σ\) in \(a₀ : A\) obstaja zaporedje \((aᵢ)ᵢ\) začenši z
   \(a₀\), tako da za vsak \(n : ℕ\) velja \(R(aₙ, aₙ₊₁)\). Tega označimo z
@@ -346,7 +346,7 @@ ne bomo posebej obravnavali.
   resničnostno vrednost \(p\) velja \(¬p∨¬¬p\). Formulo \(¬p∨¬¬p\) označimo
   \(\wlem(p)\), formulo \(\for{p:Ω}{¬p∨¬¬p}\) pa z \(\wlem*\).
 \end{definicija}
-\begin{trditev}
+\begin{trditev}\label{th:lem-impl-wlem}
   Velja implikacija \(\lem* ⇒ \wlem*\).
 \end{trditev}
 \begin{dokaz}
@@ -470,8 +470,8 @@ Objektom \(Σ_ℝ\), \(Σ⁰₁\), \(Δ\), in \(R\) pravimo \emph{realne},
   Obratno je \(x > 0 ⇔ \max\{x,0\} \apart 0\).
 \end{dokaz}
 
-\begin{definicija}
-  Vse logične principe, kvantificirane po \(Ω\), lahko razširimo tako, da domeno
+\begin{definicija}\label{pr:res}
+  Vse logične principe, kvantificirane po \(Ω\), lahko omejimo tako, da domeno
   kvantifikacije omejimo na nek Sierpinskijev objekt. Specifično je torej
   \(\lem*{\res Σ} ≔ \for{p∈Σ}{\lem(p)}\), itd.
 \end{definicija}
@@ -519,10 +519,11 @@ dovolj močen, da lahko pokaže \(φ(a)\). Pomembno tu je, da lahko poiščemo s
 en \(b\), torej lahko uporabimo samo eno instanco \(\for{y:b}{ψ(b)}\).
 
 Tako vsi principi odločitve in izbire postanejo instance, saj so vsi univerzalno
-kvantificirani. Prav tako, če pogledamo dokaz iz gornjega razdelka vidimo, da
-dobimo redukcije \(\lpo* ≤ \alpo*_{\Rc} ≤ \alpo* ≤ \lem*\) in \(\wlem* ≤ \lem*\).
+kvantificirani. Prav tako, če pogledamo dokaze trditev~\ref{th:lem-impl-wlem}
+in~\ref{th:implications} vidimo, da dobimo redukcije
+\(\lpo* ≤ \alpo*_{\Rc} ≤ \alpo* ≤ \lem*\) in \(\wlem* ≤ \lem*\). 
 
-Redukcije \(\p{φ, A} ≤ \p{φ, B}\), ko je \(A ⊆ B\) so očitne, tako da poglejmo
+Redukcije \(\p{φ, A} ≤ \p{φ, B}\), ko je \(A ⊆ B\), so očitne, tako da poglejmo
 le ta zanimivo redukcijo \(\lpo* ≤ \alpo*_{\Rc}\).
 
 \begin{trditev}
@@ -611,7 +612,7 @@ Oglejmo si sedaj malce strožjo reducibilnost, namreč, ko v~\ref{eq:inst-red} z
 velja \(\for{p:Ω}{\exist{s∈Σ}{s ⇔ p}}\). Kot vidimo, je to enaka formula
 kot~\ref{eq:inst-red}, le da smo \(⇒\) zamenjali z \(⇔\).
 
-\begin{definicija}
+\begin{definicija}\label{pr:ks}
   \emph{Kripkejeva shema za \(Σ ⊆ Ω\)} pravi, da je \(Σ = Ω\). Formulo
   \(\for{p : Ω}{\exist{s : Σ}{s = p}}\) označimo s \(\ks*(Σ)\).
   Navadna \emph{Kripkejeva shema} je Kripkejeva shema za

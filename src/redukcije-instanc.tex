@@ -1,10 +1,15 @@
 \section{Redukcije instanc}\label{sec:inst-red}
 
-Avtorici ni uspelo najti nobene pametne karakterizacije redukcije instanc v
-topoloških modelih, tako da lahko poda le nekaj primerov topoloških lastnosti,
-ki so nekako povezane z redukcijami instanc.
 
 \subsection{Kripkejeve sheme}
+
+\begin{definicija}
+  Prostor \(X\) ima separacijsko lastnost \emph{\(T₆\)}, ko za vsako zaprto
+  množico \(A ∈ 𝒜X\) obstaja zvezna funkcija \(f : X → ℝ\), tako da je
+  \(f⁻¹\{0\} = A\).
+  Prostor \(X\) ima separacijsko lastnost \emph{lokalno \(T₆\)}, ko je pokrit s
+  \(T₆\) podprostori.
+\end{definicija}
 
 \begin{trditev}\label{th:lT6-have-AKS}
   Nad lokalno \(T₆\) prostori velja analitična Kripkejeva shema.
@@ -45,21 +50,18 @@ princip izbire, je to ekvivalentno lokalno \(T₆\) lastnosti. Skupaj dobimo tor
 sledeči izrek.
 
 \begin{izrek}
-  Prostor je lokalno \(T₆\) natanko tedaj, ko nad njem velja
+  Prostor je lokalno \(T₆\) natanko tedaj, ko nad njim velja
   \[ \exist{f : Ω ↬ \Rd}{\for{p : Ω}{p ⇔ f(p) \apart 0}}\text. \]
 \end{izrek}
 
 
-\subsection{Idempotenca \alpo* nad lokalno \(T₆\) prostori}
+\subsection{Idempotenca \alpo* in \lpo*}
 
-Spomnimo se na trditev~\ref{th:aks-impl-lem≤alpo}, specializirano na primer \(\aks*\).
-\begin{retrditev}{th:aks-impl-lem≤alpo}
-  Če velja \(\aks*\), velja redukcija \(\lem* ≤ \alpo*\).
-\end{retrditev}
-Če jo združimo s trditvijo~\ref{th:lT6-have-AKS}, lahko zaključimo
-
+Če trditev~\ref{th:aks-impl-lem≤alpo} specializiramo na primer \(\aks*\),
+vidimo, da iz \(\aks*\) sledi redukcija \(\lem* ≤ \alpo*\). Če to združimo s
+trditvijo~\ref{th:lT6-have-AKS}, lahko zaključimo
 \begin{izrek}
-  Nad lokalno \(T₆\) velja redukcija \(\lem* ≤ \alpo*\).
+  Nad lokalno \(T₆\) prostori velja redukcija \(\lem* ≤ \alpo*\).
 \end{izrek}
 % \begin{proof}
 %   Ker vemo, da nad \(X\) velja analitična Kripkejeva shema, zadošča
@@ -81,24 +83,25 @@ Spomnimo se na trditev~\ref{th:aks-impl-lem≤alpo}, specializirano na primer \(
 \begin{posledica}
   Nad lokalno \(T₆\) prostori je \(\alpo*\) idempotenten.
 \end{posledica}
-Obrat pa ne velja niti približno. Tudi, če bi predpostavili funkcijsko
-redukcijo, iz \(x>0∨x≤0 ⇒ p∨¬p\) ne moremo niti sklepati, da velja \(x>0 ⇒ p\)!
+Ali lahko iz redukcije \(\lem* ≤ \alpo*\) izpeljemo kako topološko lastnost
+prostora? Zagotovo ne lokalno \(T₆\) lastnosti: če tudi bi predpostavili
+funkcijsko redukcijo, iz \(x>0∨x≤0 ⇒ p∨¬p\) ne moremo niti sklepati, da velja
+\(x>0 ⇒ p\).
 
 Z drugimi besedami, za zaprto množico \(A\) ne vemo niti, ali obstaja funkcija,
 ki je na njej ničelna, kar pomeni, da si s to redukcijo ne moremo pomagati niti
 do \(T₄\) lastnosti.
 
-
-\subsection{Idempotenca \lpo* nad Cantorjevim prostorom}
+Oglejmo si še idempotenco principa \(\lpo*\).
 
 % Joint with prof. Bauer
-\begin{lema}
-  Za vsako funkcijo \(f : 2^ℕ → ℝ\) obstaja funkcija \(\hat f : 2^ℕ → 2^ℕ\), za katero
-  velja \(⊩ \hat f \apart 0 ⇔ f > 0\).
+\begin{lema}\label{th:cantor-real-is-semidec}
+  Za vsak \(W ∈ 𝒪X\) in vsako zvezno funkcijo \(W : U → ℝ\) obstaja zvezna
+  funkcija \(\hat f : W → 2^ℕ\), za katero velja \(W ⊩ \hat f \apart 0 ⇔ f > 0\).
 \end{lema}
 \begin{proof}
   Naj bo \(U := ⟦f > 0⟧\). Potem obstaja števna particija \(U = ⋃ₖVₖ\) z
-  bazičnimi odprtimi. Ker so te kompaktne, za vsak \(k\) velja
+  bazičnimi okolicami. Ker so te kompaktne, za vsak \(k\) velja
   \(\exist{i ∈ ℕ}{f{\res{Vₖ}} > 2⁻ⁱ}\). Po aksiomu izbire torej obstaja funkcija
   izbire \(m : ℕ → ℕ\), da velja \(f{\res{Vₖ}} > 2⁻ᵐ⁽ᵏ⁾\). Definiramo
   \[ \hat f(t,i) ≔
@@ -107,28 +110,28 @@ do \(T₄\) lastnosti.
       0;& \text{sicer.}
     \end{cases}\]
   Potem pa velja
-  \[ ⊩ \hat f \apart 0 ⇔ \exist{i : ℕ}{\exist{k : ℕ}{Vₖ ∧ i = m(k)}} ⇔ \exist{k : ℕ}{Vₖ} ⇔ U\text, \]
-  torej velja \(⊩ \hat f \apart 0 ⇔ f > 0\).
+  \[ W ⊩ \hat f \apart 0 ⇔ \exist{i : ℕ}{\exist{k : ℕ}{Vₖ ∧ i = m(k)}} ⇔ \exist{k : ℕ}{Vₖ} ⇔ U\text, \]
+  torej velja \(W ⊩ \hat f \apart 0 ⇔ f > 0\).
 \end{proof}
-\begin{posledica}
-  V zgornji lemi lahko domeno zamenjamo s poljubno odprto množico.
-\end{posledica}
 
 \begin{lema}
-  Nad Cantorjevim prostorom je stopnja \(\lpo*\) ekvivalentna \(\alpo*\).
+  Nad Cantorjevim prostorom sta \(\lpo*\) in \(\alpo*\) ekvivalentna glede na
+  redukcije instanc.
 \end{lema}
 \begin{dokaz}
-  Zares gornja lema pokaže, da je \(Σ_{\Rd} = Σ₀¹\), kar po enakem argumentu kot
-  v trditvi~\ref{th:aks-impl-lem≤alpo} implicira želeno ekvivalenco.
+  Zares lema~\ref{th:cantor-real-is-semidec} pokaže, da je \(Σ_{\Rd} = Σ₀¹\), iz
+  česar sledi želena ekvivalenca, dokaz je podoben dokazu
+  trditve~\ref{th:aks-impl-lem≤alpo}.
 \end{dokaz}
 \begin{posledica}
   Nad Cantorjevim prostorom je \(\lpo*\) idempotenten.
 \end{posledica}
 \begin{opomba}
-  V tem podrazdelku bi lahko namesto Cantorjevega prostora zares vzeli
-  katerikoli kompakten nič dimenzionalen prostor. Tem se reče Stoneovi prostori
-  in igrajo pomembno vlogo v konstruktivni topologiji in teoriji okolišev. Od
-  kod pride povezava med to teorijo in gornjimi izreki avtorici ni znano.
+  V tem podrazdelku bi lahko namesto Cantorjevega prostora vzeli katerikoli
+  kompakten \(0\)-dimenzionalen prostor. Skupaj z lastnostjo \(T₀\) se takim
+  prostorom reče Stoneovi prostori in igrajo pomembno vlogo v konstruktivni
+  topologiji in teoriji okolišev. Od kod pride povezava med to teorijo in
+  gornjimi izreki, avtorici ni znano.
 \end{opomba}
 
 

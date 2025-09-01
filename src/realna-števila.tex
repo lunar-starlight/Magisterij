@@ -1,9 +1,9 @@
-%\section{Realna števila v topoloških modelih}\label{sec:reals}
+%\section{Realna števila v topoloških modelih}
 
 
 \subsection{\(\Rc{} = \c ℝ\)}\label{sec:reals-Rc=R}
 
-Poglejmo si tu še enkrat trditev~\ref{th:lpov-lpo}. Ta pravi, da nad lokalno
+Poglejmo si tu še enkrat trditev~\ref{th:lpov-lpo}, ki pravi, da nad lokalno
 povezanimi prostori velja \(\lpo*\). Zares pa potrebujemo zgolj \(\Rc = \c ℝ\),
 saj smo potrebovali le, da so elementi \(\Rc\) lokalno konstantni. Izkaže se, da
 velja tudi obrat.
@@ -35,44 +35,45 @@ Nad \(2\)-števnimi prostori je namreč princip \(\lpo*\) ekvivalenten lokalni
 povezanosti~\cite[1026]{Johnstone02}.
 
 % Karakterizirajmo najprej \(\lpo*\) brez realnih števil.
-% \begin{lema}
-%   Nad \(X\) velja \(\lpo*\) natanko tedaj, ko za vsak \(U\) in števno družino
-%   \(\{Vₙ\}ₙ\) odprtih množic, ki so relativno zaprte v \(U\), je njihov presek
-%   odprt.
-% \end{lema}
-% \begin{dokaz}
-%   Označimo \(V ≔ ⋂ₙVₙ\) in definirajmo relacijo
-%   \[ α(n, b) ≔ \i{b=1∧(U⧵Vₙ) ∨ b=0∧Vₙ} \text. \]
-%   Ker so \(Vₙ\) odprte in zaprte, je ta celovita in enolična, torej definira
-%   \(α : 2^ℕ\) z razponom \(U\). Uporabimo sedaj \(\lpo*\), in dobimo, da je
-%   \(U = \i{α = 0} ∪ \i{α\apart 0}\). Vrednost \(α\apart 0\) je natanko unija
-%   vseh \(U⧵Vₙ\), torej natanko \(U⧵V\). Sledi, da je \(\i{α=0} = V\), torej je
-%   presek odprt.
+\begin{lema}
+  Nad \(X\) velja \(\lpo*\) natanko tedaj, ko za vsak \(U\) in števno družino
+  \(\{Vₙ\}ₙ\) odprtih množic, ki so relativno zaprte v \(U\), je njihov presek
+  odprt.
+\end{lema}
+\begin{dokaz}
+  Označimo \(V ≔ ⋂ₙVₙ\) in definirajmo relacijo
+  \[ α(n, b) ≔ \i{b=1∧(U⧵Vₙ) ∨ b=0∧Vₙ} \text. \]
+  Ker so \(Vₙ\) odprte in zaprte, je ta celovita in enolična, torej definira
+  \(α : 2^ℕ\) z razponom \(U\). Uporabimo sedaj \(\lpo*\), in dobimo, da je
+  \(U = \i{α = 0} ∪ \i{α\apart 0}\). Vrednost \(α\apart 0\) je natanko unija
+  vseh \(U⧵Vₙ\), torej natanko \(U⧵V\). Sledi, da je \(\i{α=0} = V\), torej je
+  presek odprt.
 
-%   Obratno, naj bo \(α : 2^ℕ\) in definirajmo \(Uₙ ≔ \i{α(n) = 0}\) in
-%   \(Vₙ ≔ \i{α(n) = 1}\). Velja \(\e α = Uₙ ∪ Vₙ\), in \(Uₙ ⊥ Vₙ\), torej so
-%   \(Uₙ\) in \(Vₙ\) relativno zaprte v \(\e α\).
+  Obratno, naj bo \(α : 2^ℕ\) in definirajmo \(Uₙ ≔ \i{α(n) = 0}\) in
+  \(Vₙ ≔ \i{α(n) = 1}\). Velja \(\e α = Uₙ ∪ Vₙ\), in \(Uₙ ⊥ Vₙ\), torej so
+  \(Uₙ\) in \(Vₙ\) relativno zaprte v \(\e α\).
 
-%   Sledi, da je presek \(Uₙ\) odprt, torej je odprta tudi množica \(t ∈ \e α\),
-%   kjer je \(α = 0\). To pa pomeni, da velja \(α = 0 ∨ α \apart 0\), torej velja
-%   \(\lpo*\).
-% \end{dokaz}
+  Sledi, da je presek \(Uₙ\) odprt, torej je odprta tudi množica \(t ∈ \e α\),
+  kjer je \(α = 0\). To pa pomeni, da velja \(α = 0 ∨ α \apart 0\), torej velja
+  \(\lpo*\).
+\end{dokaz}
 
 \begin{trditev}
   Če nad \(2\)-števnim prostorom velja \(\lpo*\), je lokalno povezan.
 \end{trditev}
-Dokaz za vajo prepuščen bralki (avtorica ne zna izpeljat dokaza, literatura pa
-pravi, da je očiten).
+Dokaz za vajo prepuščen bralki (avtorica ne zna izpeljat dokaza,
+\cite[1026]{Johnstone02} pravi zgolj, da to drži in za podrobnosti dokaza bralce
+preusmeri na članek v francoščini, ki prav tako ne vsebuje dokaza tega dejstva).
 
 
 \subsection{\(\Rd{} = \Rc\)}\label{sec:reals-Rd=Rc}
 
 Najprej si oglejmo klasičen dokaz ekvivalence Dedekindovih in Cauchyjevih
 realnih števil.
-\begin{izrek}[Klasični]
+\begin{dokaz}[Klasični dokaz]
   Pokazati je zgolj potrebno, da ima vsak Dedekindov rez pripadajoče Cauchyjevo
   zaporedje.
-  Naj bo \(\p{L, U}\) obojestranski dedekindov rez. Cauchyjevo zaporedje lahko
+  Naj bo \(\p{L, U}\) obojestranski Dedekindov rez. Cauchyjevo zaporedje lahko
   podamo kot zaporedje hitro padajočih racionalnih intervalov.
 
   Naj bosta \(p₀ ∈ L\) in \(q₀ ∈ U\) racionalni števili.
@@ -85,32 +86,28 @@ realnih števil.
   \]
   Te intervali hitro konvergirajo proti \(\p{L, U}\), torej je to želeno
   Cauchyjevo število.
-\end{izrek}
+\end{dokaz}
 
 Gornji izrek naredi števno mnogo odločitev, ko se odločamo, če velja \(a ∈ L\)
 ali \(b ∈ U\) (oziroma ali velja \(a < x\) ali \(x < b\)), torej dokaz ni
 konstruktiven.
-Znana sta dva nekonstruktivna principa, ki sta zadostna za gornji odkaz in sta
+Znana sta dva nekonstruktivna principa, ki sta zadostna za gornji dokaz in sta
 šibkejša od izključene tretje možnosti. To sta \(\alpo*\) ter \(\CCv\).
-Če velja \(\alpo*\) je potem \(a < x\) odločljivo, torej lahko vnaprej popravimo
+Če velja \(\alpo*\), je \(a < x\) odločljivo, torej lahko vnaprej popravimo
 drugi primer na \(x < b ∧ ¬\p{a < x}\).
+Če pa imamo na voljo \(\CCv\) preprosto lahko naredimo števno mnogo odločitev.
+Zares potrebujemo tu zgolj \(\CCv_{Σ_ℝ}\), ki je tudi posledica \(\alpo*\).
 
-Če pa imamo na voljo \(\CCv\) pa preprosto lahko naredimo števno mnogo
-odločitev. Zares potrebujemo tu zgolj \(\CCv_{Σ_ℝ}\), kar je
-pa tudi posledica \(\alpo*\).
-
-Čeprav je iz tega očitno, da niti \(\alpo*\) niti \(\CCv\) nista potrebna za
+Čeprav nam gornje namiguje, da niti \(\alpo*\) niti \(\CCv\) nista potrebna za
 \(\Rd = \Rc\), jih vseeno želimo strogo ločiti.
 
-\begin{konstrukcija}
+\begin{trditev}
   Nad \(\Ncof\) velja \(\Rd = \Rc\), a ne velja princip števne
   disjunktivne izbire.
-\end{konstrukcija}
+\end{trditev}
 \begin{dokaz}
-  Prostor naravnih števil s kokončno topologijo ima lastnost, da je vsaka
-  funkcija \(ℕ → ℝ\) konstantna. To velja tudi za (neprazne) odprte podmnožice,
-  ker so števno neskončne s kokončno topologijo, kar pa pomeni, da se, v toposu
-  snopov nad \(ℕ\) s to topologijo, Dedekindova in Cauchyjeva realna števila
+  Po lemi~\ref{th:Ncof-str-conn} so vse zvezne funkcije \(U → ℝ\) za neprazne
+  \(U ∈ 𝒪\Ncof\) konstantne, torej se Dedekindova in Cauchyjeva realna števila
   ujemajo.
 
   Naj bo \(R(n, b) ≔ ℕ⧵\{2n+b\}\). Ta relacija je celovita, saj lahko za vsak
@@ -118,25 +115,22 @@ pa tudi posledica \(\alpo*\).
   relacijo ne obstaja funkcija izbire.
 
   Denimo, da je \(f : ℕ ↬ 2\) njena funkcija izbire, torej da velja
-  \(\for{n:ℕ}{R(n,f(n))}\). Če bi bila \(f\) konstantno \(b\), bi potem moralo
-  veljati \(ℕ ⊩ R(n, b)\) za vse \(n\), kar pa ni res. To pomeni, da sta množici
+  \(\for{n:ℕ}{R(n,f(n))}\). Če bi bila \(f\) konstantno \(b\), bi veljalo
+  \(\Ncof ⊩ R(n, b)\) za vse \(n\), kar pa ni res. To pomeni, da sta množici 
   \(f(n,0)\) in \(f(n,1)\) obe neprazni, torej je njun presek neprazna odprta
   množica. Na tej množici po enoličnosti \(f\) velja \(0 = 1\), kar pa očitno ne
-  drži.\contradiction
-
-  Sledi, da funkcija izbire za ta \(R\) ne more obstajati, torej \(\CCv\) ne
-  drži.
+  drži, tako da \(f\) ni funkcija izbire za \(R\) in \(\CCv\) ne drži.
 \end{dokaz}
-\begin{dokaz}
-  Naj bodo \(Cₙ ≔ \{ℕ⧵\{2n\}, ℕ⧵\{2n+1\}\}\) pokritja \(\Ncof\) in \(C\) njihova
-  skupna pofinitev. Potem mora vsak \(U ∈ C\) biti podmnožica enega od elementov
-  vsakega od \(Cₙ\). To pa pomeni, da ima \(U\) neskončen komplement, torej je
-  prazna množica. Sledi, da \(C\) pokrije zgolj prazno množico, torej \(\CCv\)
-  ne drži.
-\end{dokaz}
+% \begin{dokaz}
+%   Naj bodo \(Cₙ ≔ \{ℕ⧵\{2n\}, ℕ⧵\{2n+1\}\}\) pokritja \(\Ncof\) in \(C\) njihova
+%   skupna pofinitev. Potem mora vsak \(U ∈ C\) biti podmnožica enega od elementov
+%   vsakega od \(Cₙ\). To pa pomeni, da ima \(U\) neskončen komplement, torej je
+%   prazna množica. Sledi, da \(C\) pokrije zgolj prazno množico, torej \(\CCv\)
+%   ne drži.
+% \end{dokaz}
 
-Primer podan zgoraj pa vseeno zadošča principu \(\alpo*\), ki konstruktivno
-implicira ujemanje Cantorjevih in Dedekindovih realnih
+Prostor \(\Ncof\) pa vseeno zadošča principu \(\alpo*\), ki konstruktivno
+implicira ujemanje Cauchyjevih in Dedekindovih realnih
 števil~\cite{Birchfield24}.
 
 Izkaže se, da za lokalno povezane prostore to tudi pričakujemo.
@@ -149,31 +143,32 @@ natanko \(\alpo*\) za Cauchyjeva realna števila.
   Spet namesto lokalne povezanosti zadošča \(X ⊩ \Rc = \c ℝ\).
   V splošnem bi se izrek torej lahko glasil \(X ⊩ R = \c ℝ ⇒ \alpo*_R\), kjer je
   \(R\) nek objekt realnih števil (Dedekindova, Cauchyjeva, Escardo-Simpsonova,
-  MacNeillova, itd.), kar smo pa za primer Dedekindovih realnih števil zares
+  MacNeilleova, itd.), kar smo pa za primer Dedekindovih realnih števil zares
   pokazali že v izreku~\ref{th:alpo-is-zerosets-open}.
 \end{opomba}
 
 To pomeni, da če želimo ločiti \(\Rd = \Rc\) in \(\alpo*\) potrebujemo prostor,
-ki ni lokalno povezan. Seveda, \(\Ncof + (ω+1)\) dela. Na prvi komponenti ne
-velja \(\CCv\), na drugi pa \(\alpo*\). A vseeno pa velja \(\CCv ∨ \alpo*\),
+ki ni lokalno povezan. Seveda, \(\Ncof + (ω+1)\) deluje. Na prvi komponenti ne
+velja \(\CCv\), na drugi pa \(\alpo*\). Kljub temu velja \(\CCv ∨ \alpo*\),
 torej klasični dokaz enakosti \(\Rd = \Rc\) še vedno deluje.
 
-\emph{Modificiran Fortov prostor na \(ℝ\)}, je prostor \(X=ℝ∪\{∞₀,∞₁\}\), kjer so
-odprte množice podmnožice \(X\) bodisi točke \(ℝ\), bodisi kokončne množice, ki
-vsebujejo kako od točk v neskončnosti.
+\emph{Modificiran Fortov prostor na \(ℝ\)}, je prostor \(F ≔ ℝ∪\{∞₀,∞₁\}\), za
+katerega so vse točke \(ℝ\) izolirane, odprte okolice \(∞ᵢ\) so pa kokončne
+podmnožice \(F\), ki to točko vsebujejo.
 
-Nad tem prostorom \(\alpo*\) in \(\CCv\) ne veljata. Prvi spodleti zaradi
-funkcije, ki je na naravnih številih \(2⁻ⁿ\) in \(0\) sicer, drugi pa zaradi
-relacije \(R(n,i) = ℝ⧵\{2n+i\}∪\{∞ᵢ\}\). Vseeno pa velja \(\CCv_{Σ_{\Rd}}\).
-Argument je malo zakompliciran, in ni zares pomemben. Ključno je, da zvezne
-funkcije iz \(X\) vedno slikajo obe točki v neskončnosti v isto vrednost, torej
-se celovite relacije z vrednostmi v \(Σ_{\Rd}\) obnašajo ravno tako kot v
-navadnem Fortovem prostoru na \(ℝ\), tam pa velja odvisna izbira.
+Nad \(F\) principa \(\alpo*\) in \(\CCv\) ne veljata. Prvi spodleti zaradi
+funkcije, ki ima na naravnih številih vrednost \(2⁻ⁿ\) in je enaka \(0\) sicer,
+drugi pa zaradi relacije \(R(n,i) = ℝ⧵\{2n+i\}∪\{∞ᵢ\}\). Vseeno pa velja
+\(F ⊩ \CCv_{Σ_{\Rd}}\). Res, ključne so zvezne funkcije iz \(F\), saj te vedno
+slikajo obe točki v neskončnosti v isto vrednost, torej se celovite relacije z
+vrednostmi v \(Σ_{\Rd}\) obnašajo ravno tako kot v navadnem Fortovem prostoru na
+\(ℝ\), tam pa velja odvisna izbira.
 
 Več od tega avtorici ni znano, saj je zelo težko preverjati, če nad prostorom
 velja \(\Rd = \Rc\), kajti nimamo nobene karakterizacije Cauchyjevih realnih
-števil v topoloških modelih. Kandidata za preveriti bi bila prebita
-Knaster-Kuratowskijeva pahljača in Erdősev prostor.
+števil v topoloških modelih. Avtorica sumi, da nad prebito Knaster-Kuratowskijevo
+pahljačo ali Erdősevim prostorom velja \(\Rd = \Rc\), a ne velja
+\(\CCv_{Σ_{\Rd}}\), a tega ni uspela preveriti.
 
 % Kar je pa tudi za pričakovati (namreč, da je \(\Rd = \Rc\) šibkejši), saj če
 % podrobno pogledamo klasičen dokaz enakosti, se potrebujemo števno mnogokrat
@@ -191,97 +186,88 @@ Knaster-Kuratowskijeva pahljača in Erdősev prostor.
 % https://gist.github.com/andrejbauer/689b17b10a4e80ea409d03ec030c98b3
 Andrej Bauer je 2023 za prvoaprilsko šalo objavil, kar zgleda kot konstruktiven
 dokaz \(\wlem*\). V njem začne z ``znanimi dejstvi'' o MacNeilleovih realnih
-številih, zraven pa podtakne še lociranost. Vemo že, da je vsako MacNeillovo
-realno število locirano natanko tedaj, ko se ujemajo z Dedekindovimi realnimi
+številih, zraven pa podtakne še lociranost. Vemo že, da so MacNeilleova
+realna števila locirana natanko tedaj, ko se ujemajo z Dedekindovimi realnimi
 števili.
-Skratka, pokazal je sledečo trditev.
+Skratka, podal je konstruktiven dokaz implikacije \(\Rm = \Rd ⇒ \wlem*\), ki ga
+lahko v topoloških modelih še poenostavimo:
 \begin{trditev}
   Nad vsakim \(X\) velja \(\Rm = \Rd ⇒ \wlem*\).
 \end{trditev}
 \begin{dokaz}
-  Dokaz je povsem konstruktiven, ampak ga lahko za topološke modele malo
-  poenostavimo.
-
   Naj bo \(U ∈ 𝒪X\), \(\uline f ≔ χ_{¬¬U}\), in \(\bar f ≔ χ_{\cl U}\). Ti
-  preslikavi sta tesni, torej definirata MacNeillovo realno število. Ta so po
+  preslikavi sta tesni, torej definirata MacNeilleovo realno število. Ta so po
   predpostavki enaka Dedekindovim, torej sta preslikavi \(\uline f\) in
   \(\bar f\) enaki, kar pomeni, da sta množici \(¬¬U\) in \(\cl U\) enaki.
   Sledi, da je \(X = \cl U ∪ ¬U = ¬¬U ∪ ¬U\), torej nad \(X\) velja \(\wlem*\).
 \end{dokaz}
-
-Izkaže pa se, da velja tudi obrat! Inspiracija za to dejstvo, je prišla iz
-predmeta ``Banachove mreže'', kjer se obravnava slednji izrek:
-\begin{izrek}
-  Če je \(X\) ekstremalno nepovezan je \(𝒞(X,ℝ)\) polna mreža.
+Izkaže pa se, da velja tudi obrat. Inspiracija za to dejstvo je prišla iz
+predmeta Banachove mreže, kjer se obravnava sledeči izrek:
+\begin{izrek}\label{th:ban-mr}
+  Če je \(X\) ekstremalno nepovezan \(T_{3.5}\) prostor, je \(𝒞(X,ℝ)\) polna mreža.
 \end{izrek}
-
 To pa zgleda zelo sumljivo! Če se spomnimo, to da je \(X\) ekstremalno povezan
 ravno pomeni, da velja \(\wlem*\). Prav tako je \(𝒞(X,ℝ)\) znotraj množica
 globalnih Dedekindovih realnih števil. Konstruktivno ta niso polna, so pa
-MacNeillova realna števila, tako da bo supremum Dedekindovih realnih v
-MacNeillovih realnih številih obstajal, le da bo to MacNeillovo realno število.
+MacNeilleova realna števila, tako da bo supremum Dedekindovih realnih v
+MacNeilleovih realnih številih obstajal, le da bo to MacNeilleovo realno število.
 Potem pa lahko polnost Dedekindovih realnih števil izrazimo kot ``vsako
-MacNeillovo realno število je Dedekindovo''.
+MacNeilleovo realno število je Dedekindovo''.
 
 Vredno je še omeniti, da je ekstremalna nepovezanost dedna lastnost na odprte
 podmnožice, tako da lahko konsekvent napišemo tudi kot ``\(𝒞(U,ℝ)\) je polna
 mreža za vse \(U\)''. To je pa že bistveno bližje temu, da bi rekli ``realna
-števila so polna'' v interni logiki. Ampak, preveriti moramo še, da je polnost
-znotraj enaka stvar kot polnost zunaj. 
+števila so polna'' v interni logiki. Ampak, preveriti moramo še, da se notranja
+in zunanja polnost ujemata. 
 
-Izkaže se, da nista zares ista stvar, polnost znotraj pravi da ima vsaka
-poseljena \emph{odsekoma} omejena množica supremum, medtem ko polnost zunaj
+Izkaže se, da se ne ujemata, polnost znotraj pravi, da ima vsaka
+naseljena \emph{odsekoma} omejena množica supremum, medtem ko polnost zunaj
 zahteva globalno omejenost. Ampak to ni problem, saj je vsaka omejena množica
-očitno tudi odsekoma omejena, torej je notranja trditev močnejša.
-
-Sledi, da gornji izrek sledi iz interpretacije spodnje trditve v interni
-logiki.
+očitno tudi odsekoma omejena, torej je notranja trditev močnejša. Ostane le še
+vprašanje, ali je \(T_{3.5}\) predpostavka potrebna. Izkaže se da ni, torej
+izrek~\ref{th:ban-mr} sledi iz naslednje trditve:
 \begin{trditev}
   Nad vsakim \(X\) velja \(\wlem* ⇒ \Rm = \Rd\).
 \end{trditev}
 \begin{dokaz}
-  Spomnimo se, da za MacNeillova realna števila \(x : \Rm\) velja
+  Spomnimo se, da za MacNeilleova realna števila \(x : \Rm\) velja
   \(¬(x < q) ⇒ \for{s<q}{s < x}\).
 
-  Uporabimo \(\wlem*\) na \(x < 1\) in \(2 < x\) in ločimo na štiri primere.
-  Ker hkrati oba očitno ne moreta veljati, lahko primer, ko sta oba dvojno
-  negirana zanemarimo. Ostanejo le še primeri, ko vsaj ena od neenakosti ne
-  velja.
+  Naj bosta \(p < q\) racionalni števili in definirajmo \(r ≔ \frac{2p+q}3\) in
+  \(s ≔ \frac{p+2q}3\), tako da velja \(p<r<s<q\).
+  Uporabimo \(\wlem*\) na \(x < r\) in \(s < x\) in ločimo
+  na štiri primere, od katerih je en trivialen, druge tri pa zajamemo s
+  spodnjima dvema implikacijama:
   \begin{itemize}
-  \item Če ne velja \(x < 1\), potem gotovo velja \(0 < x\).
-  \item Če ne velja \(2 < x\), potem gotovo velja \(x < 3\).
+  \item Če ne velja \(x < r\), potem velja \(p < x\).
+  \item Če ne velja \(s < x\), potem velja \(x < q\).
   \end{itemize}
-  V vseh primerih torej dobimo \(0 < x ∨ x < 3\), torej je \(x\) lociran.
+  V vseh primerih dobimo \(p < x ∨ x < q\), torej je \(x\) lociran.
 \end{dokaz}
+Skicirajmo še topološki dokaz.
 \begin{dokaz}[Topološki dokaz]
-  Obstaja tudi topološki dokaz, a je bolj zapleten kot gornji.
-
-  Iz dejstva, da je \(X\) ekstremalno nepovezan sledi, da je ekstremalno
-  nepovezana tudi vsaka njegova odprta podmnožica. Naj bosta potem \(\uline f\)
-  in \(\bar f\) par tesnih preslikav. Potem obstaja zvezna preslikava \(f\), za
-  katero velja \(\uline f ≤ f ≤ \bar f\). Ker sta pa polzvezni preslikavi tesni,
-  je pa \(f ≤ \uline f\) in \(\bar f ≤ f\), torej so preslikave enake in so zvezne.
+  Ker je \(X\) ekstremalno nepovezan sledi, da je ekstremalno nepovezana tudi
+  vsaka njegova odprta podmnožica. Naj bosta \(\uline f\) in \(\bar f\) par
+  tesnih preslikav. Potem obstaja zvezna preslikava \(f\), za katero velja
+  \(\uline f ≤ f ≤ \bar f\). Ker sta pa polzvezni preslikavi tesni, je
+  \(f ≤ \uline f\) in \(\bar f ≤ f\), torej so preslikave enake in zvezne.
 \end{dokaz}
 
-Gornji dokaz sem tudi formalizirala v dokazovalnem pomočniku Agda, kar nam da
-formaliziran, popolnoma konstruktiven dokaz sledečega izreka.
 \begin{izrek}\label{th:Rm=Rd-wlem}
-  MacNeillova realna števila se ujemajo z Dedekindovimi natanko tedaj, ko velja
+  MacNeilleova realna števila se ujemajo z Dedekindovimi natanko tedaj, ko velja
   princip šibke izključene tretje možnosti.
 \end{izrek}
 
-V literaturi se to pojavi v recimo~\cite[trd.~D4.7.11]{Johnstone02}, sem pa to
-tudi formalizirala v dokazovalnem pomočniku Agda~\cite{BS25}.
+V literaturi se izrek~\ref{th:Rm=Rd-wlem} pojavi v
+recimo~\cite[trd.~D4.7.11]{Johnstone02}, sem pa to tudi formalizirala v
+dokazovalnem pomočniku Agda~\cite{BS25}.
 
 Kaj pa, če bi zahtevali šibkejši pogoj, da ima vsaka števna omejena množica
-supremum? Literatura kaže, da bi to moralo biti natanko ekvivalentno
-\(\awlpo*\)~\cite[vaja~3N.5]{GJ60}, a avtorici ni uspelo najti dokaza tega
-dejstva.
-
-% \begin{trditev}
-%   Nad \(X\) velja \(\awlpo*\) natanko tedaj, ko ima vsaka omejena, poseljena,
-%   števna družina realnih števil supremum.
-% \end{trditev}
+supremum? V literaturi~\cite[vaja~3N.5]{GJ60} najdemo izrek, ki za \(T_{3.5}\)
+prostore pravi, da to velja natanko nad realno nepovezanimi prostori. Po zgledu
+izreka~\ref{th:ban-mr} bi upali, da je tudi tu predpostavka \(T_{3.5}\)
+nepotrebna, ampak avtorici ni uspelo najti dokaza te trditve, tako da tega ne
+more zatrditi.
 
 
 %%% Local Variables:
