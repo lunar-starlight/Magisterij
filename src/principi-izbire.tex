@@ -52,7 +52,7 @@ nekaj izrazov o indeksiranosti in pokritjih.
     morfizmih obstaja pokritje \(C\), da za vsak \(V ∈ C\) obstaja
     \emph{funkcija} \({f : A → B}\), za katero velja
     \(V ⊩ \for{a : \c A}{U_{a,f(a)}}\). To pomeni, da je \(C\) skupna pofinitev
-    pokritij \(Cₐ\), kar zaključi dokaz.
+    pokritij \(Cₐ\), kar zaključi dokaz.\qedhere
   \end{itemize}
 \end{dokaz}
 %NOTE: brez meta-ac je leva stran lahko za vse celovite \(R\) velja
@@ -184,11 +184,14 @@ obrat.
   odprta okolica \(t\), ki je v celoti vsebovana v \(⋂ₙUₙ\), torej je ta presek
   odprt.
 \end{dokaz}
+\begin{posledica}
+  Nad lokalno povezanimi \(T₁\) prostori je \(\CC\) ekvivalenten \(\CCv\).
+\end{posledica}
 \begin{opomba}
-  Vendar pa ne moremo sklepati, da so \(T₁\) P-prostori natanko tisti \(T₁\)
-  prostori, nad katerimi velja \(\CC\). Prostor namreč lahko validira \(\CC\), a
-  nad njim ne velja \({ℕ ↬ B ≅ \c{ℕ ↝ B}}\), torej ni P-prostor. Primer takega
-  prostora je podprostor \({\{0\}∪\set{2⁻ⁿ}{n ∈ ℕ} ⊆ ℝ}\).
+  Ne moremo sklepati, da so \(T₁\) P-prostori natanko tisti \(T₁\) prostori, nad
+  katerimi velja \(\CC\). Prostor namreč lahko validira \(\CC\), a nad njim ne
+  velja \({ℕ ↬ B ≅ \c{ℕ ↝ B}}\), torej ni P-prostor. Primer takega prostora je
+  podprostor \({\{0\}∪\set{2⁻ⁿ}{n ∈ ℕ} ⊆ ℝ}\).
 \end{opomba}
 
 Znana je tudi delna karakterizacija \(\DC\)~\cite[lema~D4.5.16]{Johnstone02}\cite[trd.~2.2]{HL16}.

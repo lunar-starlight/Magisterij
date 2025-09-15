@@ -1,0 +1,561 @@
+\documentclass[handout]{beamer}
+%\documentclass{beamer}
+
+% \usetheme{boxes} % see http://www.deic.uab.es/~iblanes/beamer_gallery/ for lots of examples
+\usetheme{metropolis}
+\usecolortheme{rose}
+% \useinnertheme{circles}
+% \useoutertheme{split}
+% \setbeamertemplate{blocks}[rounded][shadow=true]
+
+\setbeamertemplate{navigation symbols}{} % remove navigation symbols
+\setbeamertemplate{footline}{} % remove title, too long
+
+% %next set colors - not needed
+% \setbeamercolor{title}{fg=black!70!black}
+% \setbeamercolor{frametitle}{fg=blue!70!black}
+% \setbeamercolor{framesubtitle}{fg=green!30!black}
+% \setbeamercolor{author}{fg=red!70!black}
+% \setbeamercolor{institute}{fg=green!30!black}
+% \setbeamercolor{date}{fg=blue!50!black}
+
+% \usepackage[T1]{fontenc}        % kodiranje znakov v .pdf
+% \usepackage[utf8]{inputenc}     % kodiranje znakov v .tex
+% \usepackage[slovene]{babel}     % nastavimo slovenščino
+% \usepackage{stmaryrd}
+
+\usepackage{fontspec}
+\usepackage{mathtools}
+\usepackage{unicode-math}
+\usepackage{enumerate}
+
+\usepackage{graphicx}
+
+
+\setmainfont{Latin Modern Roman}
+% \setmainfont{TeX Gyre Pagella}
+% \setmathfont{TeX Gyre Pagella Math}
+\setmathfont{Latin Modern Math}
+\setmathfont{Asana Math}[range={scr}]
+\setmathfont{STIX Two Math-Regular}[range={bb,"1D538-"1D56B,"0211D}]
+\setmathfont{STIX Two Math-Regular}[range={"2102,"210D,"2115,"2119,"211A,"211D,"2124}]
+% \setmathfont{TeX Gyre Pagella Math}[range={8730}] %sqrt
+% \setmathfont{Asana Math}[range={"007B,"007D}]  % {}
+\setmathfont{Asana Math}[range={8709,\setminus,"2216,"29F5,"219D}]  % U+2205, emptyset
+\setmathfont{Asana Math}[range={10631, 10632}]  % U+2987, U+2988, bb parenthesis
+
+\usepackage[normalem]{ulem}
+\renewcommand{\ULdepth}{1.8pt}
+\newcommand{\ul}[1]{\uline{#1}}
+
+
+\usepackage{amsfonts,amsmath,amssymb,amsthm}
+\theoremstyle{plain}
+\newtheorem{izrek}{Izrek}
+\newtheorem{trditev}{Trditev}
+\newtheorem{lema}{Lema}
+\newtheorem*{posledica}{Posledica}
+
+\theoremstyle{definition}
+\newtheorem{definicija}{Definicija}
+
+\newtheorem*{primer}{Primer}
+\newtheorem*{primer*}{Primer}
+\newtheorem*{primeri}{Primeri}
+
+\theoremstyle{remark}
+\newtheorem*{opomba}{Opomba}
+
+% \beamertemplatetransparentcovereddynamic
+
+\title{Topološke lastnosti so logični principi v topoloških modelih}
+\author{Luna Strah}
+\institute{Univerza v Ljubljani, Fakulteta za matematiko in fiziko}
+\date{19.~5.~2025}
+
+\newcommand{\eps}{\varepsilon}
+\renewcommand{\hat}{\widehat}
+\renewcommand{\tilde}{\widetilde}
+
+
+\def\bN{\mb{N}}
+\def\bR{\mb{R}}
+\def\subq{\subseteq}
+\def\phi{\varphi}
+
+
+\DeclarePairedDelimiterX{\parens}[1]{(}{)}{#1}
+\DeclarePairedDelimiterX{\absolute}[1]{\lvert}{\rvert}{#1}
+\def\abs{\absolute*}
+\newcommand{\cli}[1]{\left[ {#1} \right]}
+\newcommand{\floor}[1]{\left\lfloor {#1} \right\rfloor}
+\newcommand{\set}[2]{\left\{ #1 \mid #2 \right\}}
+\newcommand{\apart}{\ensuremath{\mathrel{\#}}}
+\newcommand{\nbd}{\oset{\text{\clap{\tiny nbd}}}{∋}}
+\newcommand{\quot}[2]{{#1}/_{\!#2}}
+\newcommand{\mb}[1]{\mathbf{#1}}
+\newcommand{\bb}[1]{\mathbb{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\cat}[1]{\mathbf{#1}}
+\newcommand{\opcat}[1]{\left(\mathbf{#1}\right)^{op}}
+%\newcommand{\op}[1]{{#1}^{op}}
+\newcommand{\op}{\oset{\text{op}}{⊆}}
+\newcommand{\res}[1]{↾_{\hspace{-0.15em}#1}}
+% \newcommand{\res}[2]{#1{↾_{\hspace{-0.15em}#2}}}
+\newcommand{\sh}[1]{\textrm{Sh}{\left( #1 \right)}}
+%\newcommand{\psh}[1]{\textrm{PSh}{\left( #1 \right)}}
+\newcommand{\psh}[1]{\hat{#1}}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\coim}{coim}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\codim}{codim}
+\DeclareMathOperator{\cl}{cl}
+\DeclareMathOperator{\ext}{ext}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\dm}{DM}
+%\DeclareMathOperator{\cov}{Cov}
+\AtBeginDocument{
+  %\def\c#1{\left( {#1} \right)^c}
+  %\def\c#1{{#1}^c}
+  \def\c{\uline}
+  \newcommand{\g}[1]{\left\langle {#1} \right\rangle}
+  \renewcommand{\b}[1]{\left\{ {#1} \right\}}
+  \renewcommand{\i}[1]{\left⟦ {#1} \right⟧}
+  \newcommand{\e}[1]{\left‖ {#1} \right‖}
+  \newcommand{\s}[1]{\left\{ {#1} \right\}}
+  \renewcommand{\O}[1]{\mathcal{O}{#1}}
+  \renewcommand{\int}{\textrm{int}}
+  \def\p{\parens*}
+}
+
+
+\newcommand{\defquantifier}[2]{%
+  \expandafter\undef\csname #1\endcsname%
+  \expandafter\newcommand\csname #1\endcsname[2]{{#2 ##1.}\;##2}%
+}
+\defquantifier{for}{\forall}
+\defquantifier{exist}{\exists}
+\defquantifier{unique}{\exists!}
+%\defquantifier{globalen}{\exists ᵍ}
+\defquantifier{exact}{ι}
+\defquantifier{eventually}{\nabla}
+\AtBeginDocument{
+\defquantifier{sigma}{\Sigma}
+\defquantifier{pi}{\Pi}
+}
+\renewcommand{\check}{ \(\checkmark\)}
+
+\newcommand{\germ}[2]{\textrm{germ}_{#2}#1}
+%\usepackage{xparse}
+\makeatletter
+\NewDocumentCommand{\@defprinciple}{mmm}{%
+  \ExpandArgs{c}\NewDocumentCommand{#1}{s}{%
+    \IfBooleanTF##1%
+    {\textnormal{\sffamily #2}}%
+    {\textnormal{\sffamily #3}}%
+  }%
+  \AtEndPreamble{%
+    \pdfstringdefDisableCommands{%
+      \expandafter\def\csname #1\endcsname*{#2}%
+    }%
+  }%
+}
+\newcommand{\defprinciple}[1]{\@defprinciple{#1}{\MakeUppercase{#1}}{\MakeLowercase{#1}}}
+\makeatother
+\newcommand{\principle}[1]{\textnormal{\sffamily #1}} % TODO: rename
+\defprinciple{lem}
+\defprinciple{wlem}
+\defprinciple{lpo}
+\defprinciple{wlpo}
+\AtBeginDocument{  
+\undef\mp
+\defprinciple{mp}
+}
+\defprinciple{ks}
+\defprinciple{alpo}
+\defprinciple{awlpo}
+%\defprinciple{allpo}
+\defprinciple{amp}
+\defprinciple{aks}
+\newcommand{\AC}{\principle{AC}}
+\newcommand{\IAC}{\principle{IAC}}
+\newcommand{\CC}{\principle{CC}}
+\newcommand{\CCv}{\principle{CC}^∨}
+\newcommand{\DC}{\principle{DC}}
+\def\Rm{ℝ_{\text{M}}}
+\def\Rd{ℝ_{\text{D}}}
+\def\Rc{ℝ_{\text{C}}}
+\def\Ncof{ℕ^{\text{cof}}}
+
+\setbeameroption{hide notes} % Only slides
+% \setbeameroption{show only notes} % Only notes
+% \setbeameroption{show notes} % Both
+% \setbeameroption{show notes on second screen=right} % Both
+
+\usepackage{hyperref}
+\hypersetup{pdfpagemode=FullScreen}
+
+\usepackage[style=alphabetic,
+            hyperref=auto,
+            isbn=false,
+            doi=true,
+            url=false,
+            date=year,
+            giveninits=true,
+            maxnames=3,
+            useprefix=true,
+            backend=biber]{biblatex}
+\bibliography{../src/magisterij.bib}
+
+\begin{document}
+%%%%%
+\frame{
+  \titlepage
+  
+  \note{
+    Dober dan, ime mi je Luna, dans vam bom predstavljala mojo magistrsko
+    nalogo, ki ma zaenkrat naslov ``Nekonstruktivni principi v topoloških
+    modelih'', ampak mi ni čist všeč, tko da.
+
+    Zdej, kaj je zgodba tuki, mal mi boste mogl na besedo verjet, ampak glavno
+    je, da za vsak topološki prostor lahko skonstruiramo matematični svet (tem
+    se potem reče topološki modeli), kjer so resničnostne vrednosti natanko
+    odprte množice prostora. To je recimo praktično, če želimo gledati recimo
+    pozitivnost realne funkcije. Namesto, da se vprašamo, če je funkcija
+    pozitivna, se vprašamo \emph{kje} je funkcija pozitivna, kar je mogoče
+    zanimivo, oziroma js trdim, da je.
+  }
+}
+\frame{
+  \titlepage
+  
+  \note{
+    Zdej mamo pa na eni strani prostore, na drugi pa topološke modele. In
+    nekak za prostore kot celota mamo neke lastnosti, recimo \(T₁\), \(T₂\),
+    \(T₆\), lokalna povezanost, kompaktnost, svašta.
+    Na drugi strani mamo pa modele logike, ki se izkaže, da ponavadi ni
+    klasična. To pomeni, da recimo izključena tretja možnost ali pa aksiom
+    izbire ne nujno držjo. Ampak tako kot za prostore, eni bojo mel, drugi pa
+    ne. In zdaj se lahko vprašamo, a se katere topološke lastnosti da smiselno
+    izražat z nekonstruktivnimi principi v konstruktivni logiki, preko te
+    konstrukcije topoloških modelov.
+  }
+}
+%%%%%
+\begin{frame}
+  \frametitle{Heytingovo vrednotene množice}
+
+  \begin{definicija}
+    \emph{Heytingovo vrednotena množica} ali \emph{tip} \(A\) je množica \(A\)
+    skupaj s preslikavo \(⟦- =_A -⟧ : A×A → 𝒪X\), tako da za vse \(a\), \(b\),
+    in \(c ∈ A\) velja
+    \begin{gather*}
+      ⟦ a =_A b ⟧ ⊆ ⟦ b =_A a ⟧\text{ in}\\
+      ⟦ a =_A b ⟧ ∩ ⟦ b =_A c ⟧ ⊆ ⟦ a =_A c ⟧\text.
+    \end{gather*}
+
+    \emph{Razpon} \(\e a\) je \(\i{a = a}\).
+  \end{definicija}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Relacije in operacije}
+
+  \begin{definicija}
+    Naj bodo \(A₁,\dots,Aₙ,B\) tipi.
+
+    \emph{Relacija} \(R\) na \(A₁×\dots×Aₙ\) je preslikava \(A₁×\dots×Aₙ → 𝒪X\), ki
+    za vse \(aᵢ ∈ Aᵢ\) zadošča pogojema
+    \begin{gather*}
+      \i{a₁ = a₁'} ∩ \dots ∩ \i{aₙ = aₙ'} ∩ R(a₁,…,aₙ) ⊆ R(a₁',…,aₙ')\text{ in}\\
+      R(a₁,…,aₙ) ⊆ \e{a₁}∩\dots∩\e{aₙ}\text.
+    \end{gather*}
+
+  \end{definicija}
+\end{frame}
+\begin{frame}
+  \frametitle{Relacije in operacije}
+
+  \begin{definicija}
+    Naj bodo \(A₁,\dots,Aₙ,B\) tipi.
+
+    \emph{Operacija} \(f : A₁×\dots×Aₙ ↝ B\) je preslikava \(A₁×\dots×Aₙ → B\),
+    ki za vse \(aᵢ ∈ Aᵢ\) zadošča pogojema
+    \begin{gather*}
+      \i{a₁ = a₁'} ∩ \dots ∩ \i{aₙ = aₙ'} ⊆ \i{f(a₁,…,aₙ) = f(a₁',…,aₙ')}\text{ in}\\
+      f(a₁,…,aₙ) ⊆ \e{a₁}∩\dots∩\e{aₙ}\text.
+    \end{gather*}
+    Dve operaciji \(f,g : A₁×\dots×Aₙ ↝ B\) sta enaki, ko za vse \(aᵢ ∈ Aᵢ\)
+    velja \[ \i{f(a₁,…,aₙ) = g(a₁,…,aₙ)} = \e{a₁}∩\dots∩\e{aₙ}\text. \]
+
+  \end{definicija}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Morfizmi}
+
+  \begin{definicija}\label{def:ℒmap}
+    \emph{Morfizem} \(f : A ↬ B\) med tipoma \(A\) in \(B\) je relacija med \(A\)
+    in \(B\), za katero za vse \(a ∈ A\) in \(b\), \(b' ∈ B\) velja
+    \begin{gather*}
+      f(a,b) ∩ f(a,b') ⊆ \i{b =_B b'}\\
+      \e a ⊆ ⋃_{b ∈ B} f(a,b)
+    \end{gather*}
+  \end{definicija}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Logika odprtih množic}
+
+  \begin{align*}
+    &\i ⊤                    ≔ X\\
+    &\i ⊥                    ≔ ∅\\
+    &\i{φ ∧ ψ}               ≔ \i φ ∩ \i ψ\\
+    &\i{φ ∨ ψ}               ≔ \i φ ∪ \i ψ\\
+    &\i{φ ⇒ ψ}               ≔ \int{\p{\i φ ∪ \i φᶜ}}\\
+    &\i{\for{x : A}{φ(x)}}   ≔ \int{⋂_{a ∈ A}\i{\e a ⇒ φ(a)}}\\
+    &\i{\exist{x : A}{φ(x)}} ≔ ⋃_{a ∈ A}\i{\e a ∧ φ(a)}\\
+    &\i{τ = σ}               ≔ \i{\i τ_A = \i σ_A}\\
+    &\i{R(τ)}                ≔ R{\p{\i τ_A}}\text{, za relacijo \(R\) na \(A\) in \(τ : A\)}
+  \end{align*}
+  \note{
+    Formula \(φ\) je veljavna na \(U\), ko je \(U ⊆ \i φ\).
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{Objekti}
+
+  \(A\) množica, \(T\) topološki prostor
+  \[ T_X ≔ \set{f : 𝒞(U, T)}{U ∈ 𝒪(X)} \]
+  Nad realnimi števili je torej \(\id : ℝ → ℝ\) Dedekindovo realno število.
+
+  \note{
+    \(\Rc, \Rd, \Rm, \c ℝ, Ω\), Cantor
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{Izbira}
+
+  \begin{definicija}
+    Princip \(\AC_Σ(A,B)\) pravi, da za vsako celovito relacijo \(R : A×B→Σ\)
+    obstaja funkcija izbire.
+
+    \begin{align*}
+      &\AC_Σ(A) ≔ \for{B}{\AC_Σ(A,B)}\\
+      &\AC_Σ ≔ \for{A}{\AC_Σ(A)}\\
+      &\CC_Σ ≔ \for{B}{\AC_Σ(ℕ,B)}\\
+      &\CCv_Σ ≔ \AC_Σ(ℕ,2)
+    \end{align*}
+  \end{definicija}
+  
+\end{frame}
+\begin{frame}
+
+  \begin{izrek}[\cite{Simpson24}]
+    Nad \(X\) velja \(\AC(\c A)\) in \(\for{B}{\c A ↬ B ≅ \c{A ↝ B}}\) natanko
+    tedaj, ko ima vsaka \(A\)-indeksirana družina pokritij \(X\) skupno
+    pofinitev.
+  \end{izrek}
+
+  \pause
+
+  \begin{definicija}\label{def:psp}
+    Prostor je \emph{P-prostor}, ko je števen presek odprtih množic odprt.
+  \end{definicija}
+  \begin{trditev}\label{th:psp-is-pgt}
+    Če je \(X\) P-prostor, ima vsaka števna družina pokritij \(X\) skupno
+    pofinitev.
+  \end{trditev}
+  \begin{posledica}\label{th:psp-has-cc}
+    Nad P-prostori velja \(\CC\).
+  \end{posledica}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{trditev}\label{th:psp-is-not-pgt}
+    Nad prostorom \(\cli{0,1}\) s topologijo \(\set{[0,a)}{a ∈ \cli{0,1}} ∪ \cli{0,1}\)
+    ima vsaka družina pokritij skupno pofinitev, a ta ni P-prostor.
+  \end{trditev}
+
+  \pause
+
+  \begin{trditev}\label{th:t1-pgt-is-psp}
+    Če je prostor \(X\) \(T₁\) in ima vsaka števna družina pokritij \(X\) skupno
+    pofinitev, je P-prostor.
+  \end{trditev}
+
+  \begin{posledica}
+    Nad lokalno povezanimi \(T₁\) prostori je \(\CC\) ekvivalentna \(\CCv\).
+  \end{posledica}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{trditev}
+    Nad prostori Aleksandova velja \(\AC(\c A)\) za vse množice \(A\).
+  \end{trditev}
+
+  \pause
+  
+  \begin{trditev}\label{th:disc-has-ac}
+    Če je \(X\) diskreten prostor, nad njem velja \(\AC\).
+  \end{trditev}
+
+  \begin{izrek}\label{th:ac-is-lem}
+    V topoloških modelih je \(\AC\) ekvivalenten \(\lem*\).
+  \end{izrek}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Dedekindova konstrukcija}
+
+  \begin{definicija}[Dedekindova konstrukcija]\label{def:Rd}
+    Par \(\p{L, U} ∈ 𝒫(ℚ)×𝒫(ℚ)\) je \emph{Dedekindov rez}, ko velja
+    \begin{enumerate}
+    \item \(L\) je naseljena, dolnja, in navzgor odprta
+    \item \(U\) je naseljena, gornja, in navzdol odprta
+    \item za vsaka \(p\), \(q : ℚ\) velja \(p ∈ L ∧ q ∈ U ⇒ p < q\)
+    \item za vsaka \(p < q\) velja \(p ∈ L ∨ q ∈ U\)
+    \end{enumerate}
+  \end{definicija}
+
+\end{frame}
+
+% \begin{frame}
+%   \frametitle{MacNeillova konstrukcija}
+
+%   \begin{definicija}[MacNeilleova konstrukcija]\label{def:Rm}
+%     Par \(\p{L, U} ∈ 𝒫(ℚ)×𝒫(ℚ)\) je \emph{Dedekind-MacNeilleov rez}, ko velja
+%     \begin{enumerate}[(a)]
+%     \item \(L\) je naseljena, dolnja, in navzgor odprta
+%     \item \(U\) je naseljena, gornja, in navzdol odprta
+%     \item \(p ∈ L ⇔ \exist{q>p}{q ∉ U}\)
+%     \item \(q ∈ U ⇔ \exist{p<q}{p ∉ L}\)
+%     \end{enumerate}
+%   \end{definicija}
+
+% \end{frame}
+
+% \begin{frame}
+%   \frametitle{MacNeillova konstrukcija}
+
+%   \begin{trditev}[\cite{Johnstone02}]\label{th:Rm-maps}
+%     Objekt MacNeilleovih realnih števil je natanko tip parov funkcij
+%     \(\p{\uline f, \bar f}\) tipa \(U → ℝ\) za \(U ∈ 𝒪X\), za kateri velja
+%     pogoj \emph{tesnosti}, ki se glasi:
+%     \[
+%       \uline f(t) = \liminf_{y → t}\bar   f(y)\qquad\text{ in}\qquad
+%       \bar   f(t) = \limsup_{y → t}\uline f(y)\text.
+%     \]
+%   \end{trditev}
+
+% \end{frame}
+
+\begin{frame}
+  \frametitle{Principi}
+
+  \begin{align*}
+    &\lpo* ≔ \for{α : 2^ℕ}{α = 0 ∨ α \apart 0}\\
+    &\wlpo* ≔ \for{α : 2^ℕ}{α = 0 ∨ α ≠ 0}\\
+    &\alpo* ≔ \for{x : \Rd}{x = 0 ∨ x \apart 0}\\ 
+    &\awlpo* ≔ \for{x : \Rd}{x = 0 ∨ x ≠ 0}\\
+    &\ks* ≔ \for{p : Ω}{\exist{α : 2^ℕ}{p ⇔ α \apart 0}}\\
+    &\aks* ≔ \for{p : Ω}{\exist{x : \Rd}{p ⇔ x \apart 0}}\\
+    &\mp* ≔ \for{α : 2^ℕ}{¬(α = 0) ⇒ α \apart 0}\\
+    &\amp* ≔ \for{x : \Rd}{¬(x = 0) ⇒ x \apart 0}
+  \end{align*}
+\end{frame}
+
+\begin{frame}
+
+  \begin{trditev}
+    Nad \(X\) drži \(\alpo*\) natanko tedaj, ko so ničelne množice funkcij
+    \(U → ℝ\) odprte.
+  \end{trditev}
+
+  \pause
+  
+  \begin{trditev}
+    Če je \(X\) lokalno \(T₆\), nad njem drži \(\aks*\).
+  \end{trditev}
+
+  \begin{trditev}
+    Če nad \(X\) obstaja funkcija izbire za \(\aks*\), je lokalno \(T₆\).
+  \end{trditev}
+  \note{
+  }
+\end{frame}
+
+\begin{frame}
+
+  \begin{definicija}
+    Prostor je \emph{realno nepovezan}, ko je za vsako funkcijo \(f : X → ℝ\)
+    množica \(\cl\set{t∈X}{f(t)>0}\) odprta.
+  \end{definicija}
+  \begin{trditev}\label{th:awlpo-is-basically-disconnected}
+    Nad \(X\) velja \(\awlpo*\) natanko tedaj, ko je vsak odprt podprostor \(X\)
+    realno nepovezana.
+  \end{trditev}
+  
+\end{frame}
+
+\begin{frame}
+
+  \begin{definicija}
+    Prostor \(X\) je \emph{skoraj P-prostor}, ko je za vsak \(f : X → ℝ\) množica
+    \(\i{f > 0}\) regularna.
+  \end{definicija}
+  \begin{trditev}\label{th:amp-is-almost-psp}
+    Nad \(X\) velja \(\amp*\) natanko tedaj, ko je vsaka odprta podmnožica \(X\)
+    skoraj P-prostor.
+  \end{trditev}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{izrek}
+    Velja \(\amp* ∧ \awlpo* ⇒ \alpo*\).
+  \end{izrek}
+  
+  \begin{izrek}\label{th:alpo-is-awlpo-and-amp}
+    Ničelne množice \(f : X → ℝ\) so odprte natanko tedaj, ko je \(X\) skoraj
+    P-prostor in realno nepovezan.
+  \end{izrek}
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{trditev}
+    Nad lokalno povezanim prostorom velja \(\lpo*\).
+  \end{trditev}
+
+  \begin{trditev}[??]
+    Če nad \(2\)-števnim prostorom velja \(\lpo*\), je lokalno povezan.
+  \end{trditev}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{}
+
+  Vprašanja?
+
+  \note{
+  }
+\end{frame}
+
+
+\end{document}
